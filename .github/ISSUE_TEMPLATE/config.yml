@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and design discussions
+    url: https://github.com/alisanmtd-oss/T-one/discussions
+    about: Ask implementation questions or discuss larger designs before opening an issue.
+  - name: Security report
+    url: https://github.com/alisanmtd-oss/T-one/security/advisories/new
+    about: Report vulnerabilities or privacy concerns privately.

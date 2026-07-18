@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "release_name": "T One",
+  "generated_at": "2026-07-18T14:49:18.196444+00:00",
+  "source_manifest": "public_source_manifest.json",
+  "file_count": 51,
+  "findings": [],
+  "license_present": true,
+  "public_release_authorized": true,
+  "status": "ready_for_final_review"
+}

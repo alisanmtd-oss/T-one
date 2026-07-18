@@ -1,0 +1,7 @@
+{
+  "enabled": false,
+  "project_name": "T One",
+  "safety_mode": "read_only_until_human_confirmation",
+  "providers": [],
+  "tasks": []
+}

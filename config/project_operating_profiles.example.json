@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "updated_at": "",
+  "projects": {
+    "amazon-operations": {
+      "verified_values": {}
+    },
+    "b2b-growth": {
+      "verified_values": {}
+    }
+  }
+}

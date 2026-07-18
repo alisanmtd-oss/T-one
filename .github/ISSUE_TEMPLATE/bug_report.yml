@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible defect in the public community core
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include credentials, customer data, store IDs, screenshots with private data, or recovered conversations."
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use synthetic values and include the smallest reliable sequence.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Core schema
+        - AI provider or data boundary
+        - Credential storage
+        - Connector
+        - Workspace hierarchy
+        - Storage or cache
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, and relevant local configuration with secrets removed.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed secrets, personal data, store identifiers, and private business evidence.
+          required: true
+

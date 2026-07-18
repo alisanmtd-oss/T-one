@@ -1,0 +1,43 @@
+name: Feature request
+description: Propose a focused public-core capability
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What operator or developer problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed capability
+      description: Describe the smallest useful public contract or behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: route
+    attributes:
+      label: Commerce route, if applicable
+      description: Provide platform + country/site + store mode + ownership. Do not provide a real store ID.
+  - type: dropdown
+    id: consequence
+    attributes:
+      label: Highest external consequence
+      options:
+        - Local/read-only
+        - External read
+        - Reversible external write
+        - Spend, payment, fulfillment, message, or account action
+    validations:
+      required: true
+  - type: textarea
+    id: safety
+    attributes:
+      label: Data, authorization, and approval boundaries
+      description: Explain what must be isolated, redacted, limited, or confirmed.
+    validations:
+      required: true
+

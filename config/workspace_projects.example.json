@@ -1,0 +1,54 @@
+{
+  "schema_version": 3,
+  "workspace_id": "t-one-local",
+  "workspace_name": "T One",
+  "projects": [
+    {
+      "id": "apparel-growth",
+      "name": "Apparel Growth",
+      "channels": [
+        {
+          "id": "amazon-us",
+          "name": "Amazon US",
+          "platform": "amazon",
+          "country_site": "US",
+          "status": "store_configuration_required",
+          "stores": [
+            {
+              "id": "amazon-us-store-a",
+              "name": "Amazon US Store A",
+              "external_id": "",
+              "store_model": "marketplace_seller",
+              "ownership": "self_store",
+              "route_key": "amazon:US:marketplace_seller",
+              "status": "needs_connection",
+              "tasks": [
+                {
+                  "id": "amazon-us-listing-ops",
+                  "name": "Listing Operations",
+                  "status": "pending"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tiktok-shop-sg",
+          "name": "TikTok Shop Singapore",
+          "platform": "tiktok_shop",
+          "country_site": "SG",
+          "status": "needs_platform_store",
+          "stores": []
+        }
+      ],
+      "workstreams": [
+        {
+          "id": "b2b-lead-generation",
+          "name": "B2B Lead Generation",
+          "platform": "b2b",
+          "status": "pending"
+        }
+      ]
+    }
+  ]
+}
