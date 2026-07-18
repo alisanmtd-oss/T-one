@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "t-one-community-core"
 version = "0.1.0"
-description = "Local-first contracts and safety boundaries for AI-assisted commerce operations."
+description = "Local-first AI operating core for global e-commerce and B2B foreign trade."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 authors = [{ name = "T One contributors" }]
-keywords = ["ai-agents", "commerce", "local-first", "multi-store", "data-boundaries"]
+keywords = ["ai-agents", "ecommerce", "b2b", "foreign-trade", "cross-border", "local-first", "multi-store", "data-boundaries"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Programming Language :: Python :: 3",

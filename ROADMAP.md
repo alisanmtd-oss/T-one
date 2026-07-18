@@ -8,6 +8,7 @@ The roadmap is capability-based. Dates are intentionally avoided until maintaine
 - [x] AI provider catalog, model selection, and local credential references.
 - [x] Data classification and model redaction policies.
 - [x] Commerce schemas and atomic local storage.
+- [x] B2B company, company-user, supplier, factory, shared-catalog, quote-line, price-list, invoice, payout, and consent contracts.
 - [x] Workspace -> project -> channel -> store -> task hierarchy.
 - [x] Safe configuration examples and focused tests.
 - [x] Owner-selected Apache-2.0 license.
@@ -29,12 +30,19 @@ The roadmap is capability-based. Dates are intentionally avoided until maintaine
 - [ ] Country/site and store-mode capability matrix backed by primary documentation.
 - [ ] Approval-gated write adapters with idempotency and rollback evidence.
 
-## 0.4 - Content and growth
+## 0.4 - B2B foreign trade
+
+- [ ] Evidence-backed public lead research and consent-aware intake.
+- [ ] Customer timeline, qualification, sample, quotation, order, payment, shipment, and after-sales handoffs.
+- [ ] Company-scoped catalogs, price lists, documents, approvals, and audit history.
+- [ ] Confirmation-gated email, CRM, messaging, and quotation delivery connectors.
+
+## 0.5 - Content and growth
 
 - [ ] Competitor creative analysis with rights and evidence controls.
 - [ ] Image/video prompt, storyboard, editing, localization, and QA skill packs.
 - [ ] Content-to-commerce attribution and experiment records.
-- [ ] B2B lead research and CRM handoff contracts with consent controls.
+- [ ] Creative and market-learning feedback that can support both marketplace and B2B sales workstreams.
 
 ## Not planned as unguarded automation
 
