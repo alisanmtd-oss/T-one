@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "release_version": "0.3.0",
+  "catalog_kind": "sanitized_public_knowledge_packs",
+  "selection_model": "ordinary_chat_first",
+  "excluded_pack_ids": ["tiktok_shop"],
+  "global_boundaries": [
+    "A knowledge pack is public planning knowledge, not proof of a live platform connection.",
+    "Country/site, store mode, ownership, store binding and execution identity remain separate dimensions.",
+    "Unknown product, store, eligibility, quota, price, inventory and result facts remain unknown.",
+    "Publish, price, inventory, ads, message, order, shipment, payment, refund and dispute effects require explicit authorization and post-effect evidence.",
+    "Credentials, cookies, buyer PII, customer data and private operating evidence never enter this catalog."
+  ],
+  "packs": [
+    {
+      "id": "aliexpress",
+      "name": "AliExpress marketplace agent",
+      "aliases": ["aliexpress", "ali express", "速卖通"],
+      "summary": "Plans AliExpress marketplace research, listing, store, logistics and multi-market work while keeping seller identity separate from product-sourcing tools.",
+      "required_scope": ["country_or_market", "store_mode", "ownership", "store_binding", "seller_authorization"],
+      "capabilities": ["market research", "listing review", "store-scope planning", "logistics evidence review", "draft-only operations"],
+      "safety_boundaries": ["GLOBAL is planning-only", "supply source is not seller authorization", "no cookies or private signatures", "multi-store writes require per-store confirmation and readback"],
+      "research_dispositions": [
+        {"project": "justinritchie/aliexpress-mcp-server", "status": "rejected_unsafe"},
+        {"project": "dsers/dsers-mcp-server", "status": "research_only"},
+        {"project": "lofder/dsers-mcp-product", "status": "extract_rules_only"},
+        {"project": "OyaAIProd/dsers-mcp-product", "status": "rejected_unsafe_duplicate"},
+        {"project": "moltstudios/lumnix-mcp", "status": "research_only"}
+      ],
+      "public_rules": [
+        "A DSers or AliExpress supply-source integration is not an AliExpress seller operator, store connection or official rule source.",
+        "Documentation or an open-source wrapper does not prove an auditable backend, real store connection, live result or right to execute.",
+        "Reject connectors that require browser cookies, private signatures, anti-bot bypass, CAPTCHA bypass or credentials in prompts, logs or source code.",
+        "Borrowed rules and code patterns retain exact repository owner, repository and reviewed commit provenance.",
+        "Bulk publish, price, stock, shipment, message and delete actions require exact store, market, effect, per-item confirmation and readback.",
+        "Third-party thresholds and market claims remain observations until current official or authorized-store evidence confirms them."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "b2b_export",
+      "name": "B2B export agent",
+      "aliases": ["b2b", "b2b export", "foreign trade", "外贸", "外贸客户", "主动开发客户"],
+      "summary": "Structures lawful public-company research, catalogs, inquiries, quotations, samples, contracts, payments, delivery and shared customer timelines.",
+      "required_scope": ["country", "company_or_segment", "product_scope", "lawful_source", "account_owner"],
+      "capabilities": ["public company research", "lead hypothesis", "catalog draft", "quotation draft", "deal-stage planning", "evidence mapping"],
+      "safety_boundaries": ["no private-contact scraping", "no invented buyer or consent facts", "one shared account timeline", "every external message and commercial action requires approval"],
+      "public_rules": [
+        "Public company evidence creates a candidate and a hypothesis, not a verified buyer or consent record.",
+        "Recipient, channel, sender identity, suppression state, content and attachments are fixed before approval.",
+        "A quote view is not acceptance, a payment-provider success is not local finality, and a contract signature requires signer-authority evidence.",
+        "Research-only work never sends a message, writes an external CRM, books a meeting or purchases data."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "ebay",
+      "name": "eBay marketplace agent",
+      "aliases": ["ebay", "e bay", "易贝"],
+      "summary": "Plans marketplace-scoped eBay listing, inventory, order, fulfillment, finance and marketing work without defaulting to production or one country.",
+      "required_scope": ["marketplace_id", "store_binding", "ownership", "oauth_scope", "inventory_writer"],
+      "capabilities": ["listing review", "marketplace policy planning", "inventory ownership review", "fulfillment draft", "marketing eligibility review"],
+      "safety_boundaries": ["no default production or US route", "no public CORS proxy", "no blind write retry", "Inventory API writer ownership is explicit"],
+      "research_dispositions": [
+        {"project": "hendt/ebay-api", "status": "research_only"},
+        {"project": "tradebuddyhq/ebay-wrapper", "status": "extract_rules_only"},
+        {"project": "timotheus/ebaysdk-python", "status": "rejected_stale"},
+        {"project": "zVPS/ebay-sell-php-client", "status": "rejected_stale"}
+      ],
+      "public_rules": [
+        "Every method declares read/write effect, idempotency, scope, marketplace and owner-confirmation level.",
+        "No connector defaults to production, EBAY_US or a third-party proxy when route or credentials are missing.",
+        "Tokens, request bodies, order data and listing data never enter debug logs or an unadmitted proxy.",
+        "Shipment, refund, publish, price, inventory and advertising writes are not blindly replayed after 429 or 5xx.",
+        "Inventory API listings record writer ownership and are not concurrently edited through multiple writers.",
+        "Conflicting official release routes remain conflicting evidence with URL, version and date."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "etsy",
+      "name": "Etsy marketplace agent",
+      "aliases": ["etsy", "etsy shop"],
+      "summary": "Plans Etsy listing, shop, order, privacy, production-partner and evidence workflows for original or personalized goods.",
+      "required_scope": ["shop_id", "country", "ownership", "oauth_scope", "product_rights"],
+      "capabilities": ["listing draft review", "shop-scope planning", "pagination review", "production-partner disclosure planning", "derived-metric review"],
+      "safety_boundaries": ["order PII stays shop-bound", "pagination is never silently complete", "CLI flags are not owner approval", "license conflicts fail closed"],
+      "research_dispositions": [
+        {"project": "alveyautomation/etsy-mcp", "status": "extract_rules_only"},
+        {"project": "muryulia/Etsy3Py", "status": "rejected_unsafe"},
+        {"project": "sov2000/etspi-cli", "status": "rejected_unsafe"}
+      ],
+      "public_rules": [
+        "Read-only tools remain blocked when order PII can enter a model or arbitrary shop IDs can cross the authorized store scope.",
+        "OAuth rotation is encrypted, atomic, restart-safe and bound to the exact store and execution identity.",
+        "Paginated results expose incomplete_dataset or limit_reached and are not called complete shop data.",
+        "A CLI --yes flag never satisfies owner approval for delete, publish, inventory or shipment effects.",
+        "Conflicting LICENSE, package metadata and README claims fail closed.",
+        "Time-sensitive listing-media limits use dated official evidence.",
+        "Derived metrics are not native Etsy Stats and retain their formula, incomplete-data flag and evidence scope."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "global_local_channel",
+      "name": "Global and local channel planning agent",
+      "aliases": ["global channel", "local channel", "全球渠道", "本土渠道", "渠道规划"],
+      "summary": "Compares international and local commerce channels without collapsing a region, marketplace or account program into one executable store.",
+      "required_scope": ["country", "platform", "commerce_mode", "ownership", "fulfillment_mode"],
+      "capabilities": ["channel comparison", "country/site planning", "store-mode classification", "fulfillment option review"],
+      "safety_boundaries": ["regions are non-executable groups", "store mode and ownership are separate", "category eligibility is evidence-bound", "no platform-wide authorization claim"],
+      "public_rules": [
+        "A regional label is a planning group, not a country site or shared authorization.",
+        "Local, cross-border, semi-managed and platform-operated modes are not inferred from product category or fulfillment method.",
+        "A planned channel without a real store remains needs_platform_store."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "google_ads_channel",
+      "name": "Google Ads channel agent",
+      "aliases": ["google ads", "google advertising", "谷歌广告"],
+      "summary": "Plans Google Ads search, shopping and performance work with exact advertiser, conversion and merchant-data boundaries.",
+      "required_scope": ["country", "advertiser_binding", "conversion_source", "merchant_or_site_binding", "budget_approval"],
+      "capabilities": ["campaign research", "measurement preflight", "draft structure", "creative and feed input review", "profit-gate planning"],
+      "safety_boundaries": ["no model-supplied account ID", "no budget spend", "no invented conversion", "no causal claim without controlled evidence"],
+      "public_rules": [
+        "Campaign type, optimization layer and AI assistant are separate concepts.",
+        "An advertiser ID is accepted only from an authorized connector bound to the current store or project.",
+        "Draft, launch, spend, measurement and business outcome remain separate states."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "independent_commerce",
+      "name": "Independent commerce agent",
+      "aliases": ["independent store", "independent commerce", "独立站", "shopify", "woocommerce"],
+      "summary": "Plans independent-store catalog, payment, webhook, inventory and PIM workflows with explicit provider and finality boundaries.",
+      "required_scope": ["store_platform", "domain", "store_binding", "payment_provider", "webhook_secret_reference"],
+      "capabilities": ["catalog mapping", "PIM draft", "webhook verification design", "payment-state reconciliation", "order and inventory planning"],
+      "safety_boundaries": ["webhooks fail closed", "provider success is not local finality", "set and clear are explicit", "partial batches are not reported complete"],
+      "public_rules": [
+        "Missing, invalid or stale webhook signatures fail closed.",
+        "Duplicate and out-of-order events are reconciled idempotently from evidence rather than arrival order.",
+        "PIM updates distinguish set, clear and unchanged and require per-item response plus exact readback.",
+        "External checkout, payment, refund and fulfillment effects require owner approval."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "lazada",
+      "name": "Lazada marketplace agent",
+      "aliases": ["lazada", "来赞达"],
+      "summary": "Plans country-specific Lazada marketplace and affiliate work while separating seller, ads, logistics and affiliate identities.",
+      "required_scope": ["country_site", "seller_or_affiliate_identity", "store_binding", "ownership", "authorization_scope"],
+      "capabilities": ["listing review", "country-site planning", "affiliate evidence review", "seller and logistics boundary review", "draft-only operations"],
+      "safety_boundaries": ["each country is verified separately", "affiliate is not seller authorization", "no disabled TLS", "link states remain separate"],
+      "research_dispositions": [
+        {"project": "arm64x/PHP-Lazada-Affiliate-API-Tool", "status": "research_only"},
+        {"project": "vuonghoa/lazada-affiliate-api", "status": "rejected_unsafe_license_missing"},
+        {"project": "gtlinkLazada", "status": "rejected_unsafe"},
+        {"project": "NotifyLinks", "status": "extract_rules_only"},
+        {"project": "buywhere Lazada integration", "status": "research_only"}
+      ],
+      "public_rules": [
+        "Affiliate identity and scopes are separate from seller-center, logistics, ads and store-operation identities.",
+        "Link created, HTTP 200, page reachable, buyable, attributed, converted and settled are distinct states.",
+        "Reject connectors that disable TLS verification, accept arbitrary fetch URLs, automate account cookies or commit credentials.",
+        "Evidence from one country never establishes behavior across every Lazada country site.",
+        "Configuration files and tests without assertions do not prove signing, refresh, routing, pagination, idempotency or completion.",
+        "A public repository license does not grant rights to an unreviewed closed hosted service."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "meta_channel",
+      "name": "Meta channel agent",
+      "aliases": ["meta ads", "facebook ads", "instagram ads", "facebook广告", "instagram广告"],
+      "summary": "Plans Meta advertising and content-catalog work with exact business, page, pixel, catalog and advertiser bindings.",
+      "required_scope": ["country", "business_binding", "advertiser_binding", "page_or_catalog_binding", "measurement_source"],
+      "capabilities": ["campaign research", "catalog preflight", "measurement review", "creative draft", "profit and stop-rule planning"],
+      "safety_boundaries": ["business and advertiser identities are separate", "no model-supplied account ID", "no spend", "no fabricated attribution"],
+      "public_rules": [
+        "Business, page, catalog, pixel, ad account and execution identity remain separate bindings.",
+        "Local research can prepare a draft but cannot grant OAuth scopes or publish an ad.",
+        "Reach, attribution, conversion and profit are evidence states rather than model conclusions."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "shein",
+      "name": "SHEIN marketplace agent",
+      "aliases": ["shein", "希音"],
+      "summary": "Plans SHEIN marketplace work by country, operating mode, category authorization and fulfillment evidence.",
+      "required_scope": ["country_site", "commerce_mode", "ownership", "store_binding", "category_authorization"],
+      "capabilities": ["listing review", "mode and site planning", "category-schema review", "activity draft", "fulfillment boundary review"],
+      "safety_boundaries": ["mode and category are separate", "platform official full management is not connected", "store schema is not invented", "writes require per-store evidence"],
+      "public_rules": [
+        "Marketplace self-operated and semi-managed routes are evaluated separately by site and authorization.",
+        "Apparel, home, customized and all-category labels are category scope candidates rather than store modes.",
+        "A designer request without a corresponding store remains needs_platform_store."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "shopee",
+      "name": "Shopee marketplace agent",
+      "aliases": ["shopee", "虾皮"],
+      "summary": "Plans country-specific Shopee seller and affiliate work without using BR, VN or a broad Southeast Asia route as a default.",
+      "required_scope": ["country_site", "seller_or_affiliate_identity", "store_binding", "ownership", "authorization_scope"],
+      "capabilities": ["listing review", "country-site planning", "affiliate report review", "short-link draft review", "seller-operation boundaries"],
+      "safety_boundaries": ["affiliate is not seller authorization", "reports and short-link writes are separate", "no silent API fallback", "no secrets or order PII in logs"],
+      "research_dispositions": [
+        {"project": "bcat95/shopee-aff", "status": "rejected_license_missing"},
+        {"project": "RenanGalvao/saapi", "status": "extract_rules_only"},
+        {"project": "gregojoao/shopee-affiliate", "status": "extract_rules_only"}
+      ],
+      "public_rules": [
+        "Affiliate identity and endpoints are separate from Seller Open Platform, Ads and seller-center identities.",
+        "Every capability binds exact country site, account ownership and store binding; BR or VN examples are not global defaults.",
+        "Affiliate report queries and short-link creation are separate read and write effects.",
+        "Authentication failure or rate limiting never silently falls back to a different unofficial, partner or country API.",
+        "Tokens, secrets, SubId values, order PII and raw responses never enter prompts or ordinary logs.",
+        "Community SDK constraints and quotas remain third-party observations until current official or authorized-UI evidence confirms them."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "tiktok_ads_channel",
+      "name": "TikTok Ads channel agent",
+      "aliases": ["tiktok ads", "tik tok ads", "tiktok advertising", "tiktok广告", "tiktok 广告"],
+      "summary": "Plans TikTok advertising work as a separately authorized advertising channel; it does not include the excluded TikTok Shop knowledge pack.",
+      "required_scope": ["country", "advertiser_binding", "store_or_site_binding", "measurement_source", "budget_approval"],
+      "capabilities": ["campaign research", "measurement preflight", "creative-input review", "draft structure", "profit and stop-rule planning"],
+      "safety_boundaries": ["Ads identity is separate from commerce identity", "no model-supplied advertiser ID", "no spend", "no TikTok Shop pack or store execution"],
+      "public_rules": [
+        "An advertising account is accepted only from an authorized connector bound to the current project and store or site.",
+        "Creative supply, campaign objective, optimization layer and commerce destination remain separate concepts.",
+        "Draft, launch, spend, attribution and business outcome require separate evidence."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "walmart",
+      "name": "Walmart marketplace agent",
+      "aliases": ["walmart", "wal mart", "沃尔玛"],
+      "summary": "Plans Walmart marketplace work with country-specific authentication, persistent idempotency and evidence-backed effect confirmation.",
+      "required_scope": ["country_site", "store_binding", "ownership", "authorization_contract", "execution_identity"],
+      "capabilities": ["listing review", "country-site planning", "inventory and price draft", "order and shipment boundary review", "report evidence review"],
+      "safety_boundaries": ["US, Canada and Chile auth contracts differ", "tool annotations are not approval", "sensitive report URLs are protected", "quotas are not global constants"],
+      "research_dispositions": [
+        {"project": "M2E/Walmart integration", "status": "rejected_license_proprietary"},
+        {"project": "Walmart Chile Jumpseller integration", "status": "rejected_license_missing"},
+        {"project": "alveyautomation/walmart-mcp", "status": "extract_rules_only"},
+        {"project": "hey-nate/Walmart-Marketplace-MCP", "status": "rejected_unsafe"}
+      ],
+      "public_rules": [
+        "Authentication is isolated by country site, seller store and ownership; US, Canada and Chile contracts are not conflated.",
+        "A destructive-tool hint or schema annotation is not owner approval.",
+        "Idempotency records for item, inventory, price, order and shipment writes are persistent, atomic, store-scoped and restart-safe.",
+        "Do not acknowledge upstream completion before Walmart accepts the effect and a readback confirms intended state.",
+        "Tokens, client secrets, buyer PII, order payloads and presigned report URLs never enter prompts or ordinary logs.",
+        "Rate limits, quotas and retry intervals remain endpoint, account, site and time scoped."
+      ],
+      "live_connection_claimed": false
+    }
+  ]
+}

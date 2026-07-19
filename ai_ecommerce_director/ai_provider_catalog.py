@@ -11,6 +11,7 @@ from .llm import LLMClient
 
 
 CATALOG_PATH = Path("config") / "ai_provider_catalog.json"
+VERIFICATION_PATH = Path("config") / "ai_provider_verification_state.json"
 SAFE_PROVIDER_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{1,63}$")
 
 
@@ -23,13 +24,93 @@ def load_provider_catalog(root: Path) -> list[dict[str, Any]]:
     return [dict(item) for item in providers if isinstance(item, dict) and item.get("id")]
 
 
+def load_provider_verification(root: Path) -> dict[str, Any]:
+    try:
+        # Windows PowerShell 5 needs a BOM to auto-detect UTF-8, while Python's
+        # plain ``utf-8`` codec exposes that BOM to json.loads as U+FEFF.
+        # ``utf-8-sig`` accepts both BOM and BOM-less UTF-8 files.
+        payload = json.loads((root / VERIFICATION_PATH).read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    allowed = {"available", "configured", "verified", "blocked", "unsupported"}
+    catalog_states = payload.get("catalog_provider_states")
+    receipts = payload.get("live_receipts")
+    if not isinstance(catalog_states, list) or not isinstance(receipts, list):
+        return {}
+    if any(
+        not isinstance(item, dict) or str(item.get("state") or "") not in allowed
+        for item in catalog_states
+    ):
+        return {}
+    return payload
+
+
+def _merge_model_verification(
+    configured: list[dict[str, Any]],
+    verification: dict[str, Any],
+) -> list[dict[str, Any]]:
+    receipts = {
+        (str(item.get("provider") or ""), str(item.get("model") or "")): item
+        for item in verification.get("live_receipts", [])
+        if isinstance(item, dict)
+    }
+    rows: list[dict[str, Any]] = []
+    for item in configured:
+        row = dict(item)
+        receipt = receipts.get((str(row.get("name") or ""), str(row.get("model") or "")))
+        status = str((receipt or {}).get("status") or "")
+        if status == "ok":
+            state = "verified"
+        elif receipt:
+            state = "blocked"
+        elif row.get("ready"):
+            state = "configured"
+        else:
+            state = "configured"
+        row.update({
+            "verification_state": state,
+            "connection_test_status": status or "not_tested",
+            "connection_test_code": str((receipt or {}).get("code") or ""),
+            "connection_test_error": str((receipt or {}).get("error") or ""),
+            "connection_test_http_status": int((receipt or {}).get("status_code") or 0),
+            "connection_test_latency_ms": int((receipt or {}).get("latency_ms") or 0),
+            "last_tested_at": str(verification.get("audited_at") or "") if receipt else "",
+            "verified_modalities": ["text"] if status == "ok" else [],
+            "unknown_modalities": ["image", "audio", "video", "files", "tool_use"],
+            "rate_and_cost_state": "unknown",
+        })
+        rows.append(row)
+    return rows
+
+
 def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
-    configured = list_models(root)
+    verification = load_provider_verification(root)
+    configured = _merge_model_verification(list_models(root), verification)
+    catalog_states = {
+        str(item.get("provider_id") or ""): item
+        for item in verification.get("catalog_provider_states", [])
+        if isinstance(item, dict)
+    }
+    catalog = []
+    for item in load_provider_catalog(root):
+        state = catalog_states.get(str(item.get("id") or ""), {})
+        catalog.append({
+            **item,
+            "verification_state": str(state.get("state") or "available"),
+            "verified_models": list(state.get("verified_models") or []),
+            "configured_models": list(state.get("configured_models") or []),
+            "verification_blocker": str(state.get("blocker") or ""),
+        })
     return {
-        "catalog": load_provider_catalog(root),
+        "catalog": catalog,
         "configured": configured,
         "ready_count": sum(1 for item in configured if item.get("ready")),
         "configured_count": len(configured),
+        "verified_count": sum(1 for item in configured if item.get("verification_state") == "verified"),
+        "blocked_count": sum(1 for item in configured if item.get("verification_state") == "blocked"),
+        "verification_audited_at": str(verification.get("audited_at") or ""),
     }
 
 

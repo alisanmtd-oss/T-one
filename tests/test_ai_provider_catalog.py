@@ -4,7 +4,11 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from ai_ecommerce_director.ai_provider_catalog import configure_provider, provider_catalog_snapshot
+from ai_ecommerce_director.ai_provider_catalog import (
+    configure_provider,
+    load_provider_verification,
+    provider_catalog_snapshot,
+)
 
 
 class AIProviderCatalogTests(unittest.TestCase):
@@ -79,6 +83,98 @@ class AIProviderCatalogTests(unittest.TestCase):
             self.assertEqual(snapshot["configured_count"], 0)
             self.assertNotIn('"api_key":', json.dumps(snapshot))
             self.assertNotIn("secret-key", json.dumps(snapshot))
+
+    def test_snapshot_merges_exact_model_receipts_without_secret_values(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            (root / "config" / "multi_ai.json").write_text(
+                json.dumps(
+                    {
+                        "providers": [
+                            {
+                                "name": "deepseek-sales",
+                                "label": "DeepSeek sales",
+                                "base_url": "https://api.deepseek.com",
+                                "model": "deepseek-chat",
+                                "enabled": True,
+                                "requires_api_key": False,
+                                "tasks": ["chat"],
+                            }
+                        ],
+                        "routes": {"chat": ["deepseek-sales"]},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "config" / "ai_provider_verification_state.json").write_text(
+                json.dumps(
+                    {
+                        "audited_at": "2026-07-19T12:00:00+08:00",
+                        "catalog_provider_states": [
+                            {
+                                "provider_id": "deepseek",
+                                "state": "verified",
+                                "verified_models": ["deepseek-sales"],
+                                "configured_models": ["deepseek-sales"],
+                                "blocker": "",
+                            }
+                        ],
+                        "live_receipts": [
+                            {
+                                "provider": "deepseek-sales",
+                                "model": "deepseek-chat",
+                                "status": "ok",
+                                "latency_ms": 42,
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            snapshot = provider_catalog_snapshot(root)
+            model = snapshot["configured"][0]
+            self.assertEqual(model["verification_state"], "verified")
+            self.assertEqual(model["connection_test_http_status"], 0)
+            self.assertEqual(model["verified_modalities"], ["text"])
+            self.assertEqual(model["unknown_modalities"], ["image", "audio", "video", "files", "tool_use"])
+            self.assertEqual(snapshot["verified_count"], 1)
+            serialized = json.dumps(snapshot)
+            self.assertNotIn("secret-value", serialized)
+            self.assertNotIn("Bearer ", serialized)
+
+    def test_invalid_verification_state_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            (root / "config" / "ai_provider_verification_state.json").write_text(
+                json.dumps(
+                    {
+                        "catalog_provider_states": [
+                            {"provider_id": "deepseek", "state": "magically_connected"}
+                        ],
+                        "live_receipts": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            self.assertEqual(load_provider_verification(root), {})
+
+    def test_verification_state_accepts_utf8_bom_for_powershell_compatibility(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            path = root / "config" / "ai_provider_verification_state.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "catalog_provider_states": [
+                            {"provider_id": "deepseek", "state": "verified"}
+                        ],
+                        "live_receipts": [],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8-sig",
+            )
+            self.assertEqual(load_provider_verification(root)["catalog_provider_states"][0]["state"], "verified")
 
 
 if __name__ == "__main__":
