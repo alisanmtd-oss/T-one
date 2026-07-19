@@ -12,7 +12,7 @@ The roadmap is capability-based. Dates are intentionally avoided until maintaine
 - [x] Workspace -> project -> channel -> store -> task hierarchy.
 - [x] Safe configuration examples and focused tests.
 - [x] Owner-selected Apache-2.0 license.
-- [ ] First tagged public release.
+- [x] First tagged public release.
 
 ## 0.2 - Chat-first reference and extensible local agent
 
