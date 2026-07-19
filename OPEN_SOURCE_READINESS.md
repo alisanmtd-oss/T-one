@@ -2,7 +2,7 @@
 
 ## Current Decision
 
-The private product codebase must not be published as a whole. A fail-closed, exact-file allowlist now builds a sanitized `T One` staging package. Version 0.3 adds ordinary-chat routing and 13 sanitized non-TikTok-Shop knowledge packs while keeping the TikTok Shop pack, real desktop runtime, accounts, stores, business records, and execution connectors private. The owner selected Apache-2.0 for the public core; publication still requires a clean generated audit, tests, privacy verification, and final human review.
+The private product codebase must not be published as a whole. A fail-closed, exact-file allowlist now builds a sanitized `T One` staging package. Version 0.3 adds ordinary-chat routing and 13 sanitized non-TikTok-Shop knowledge packs. Version 0.3.1 refreshes only the generic browser demo with the accepted chat-first composer and progressively disclosed account settings. TikTok Shop knowledge, the real desktop runtime, accounts, stores, business records, credentials and execution connectors remain private. The owner selected Apache-2.0 for the public core; publication still requires a clean generated audit, tests, privacy verification, and final human review.
 
 ## P0 Before Public Release
 

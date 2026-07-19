@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1
+
+- Simplified the public chat demo to one goal-first composer with automatic agent selection.
+- Renamed settings to Agent, Model, Account, and Manage so technical controls stay out of the daily workflow.
+- Added a safe, non-connecting account-settings walkthrough for seven supported email and business-messaging account types.
+- Kept the demo local-only: it never accepts credentials, connects accounts, reads messages, or performs external actions.
+
 ## 0.3.0
 
 - Added ordinary-chat routing to sanitized public platform agents.
