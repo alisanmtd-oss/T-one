@@ -81,6 +81,8 @@ def _enrich_task(
             "browser_provider",
             "browser_profile_id",
             "browser_binding_status",
+            "browser_environment_id",
+            "browser_environment_sharing",
             "store_model",
             "ownership",
             "route_key",

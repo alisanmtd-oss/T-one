@@ -53,8 +53,9 @@ The project models the complete operating chain: product and SKU intake, marketp
 | Workspace isolation | `workspace -> project -> channel -> store -> task`, with platform, country/site, mode, ownership, and authorization boundaries |
 | Connector foundation | Read-only connector primitives, normalized intake records, and capability metadata; live store write adapters remain gated |
 | Local runtime | Atomic JSON storage, cache invalidation, safe example configuration, tests, release audit, and SHA256 manifest |
+| Chat-first UX reference | Dependency-free synthetic workspace with agent conversations, quick prompts, file-intake affordance, and one settings drawer |
 
-The current `0.x` release is a Python library and test suite. It is a foundation for building real agents and operator applications, not a finished hosted ERP or an unguarded bot that can spend money, publish listings, message customers, or ship orders by itself.
+The current `0.x` release is a Python library, tests, and a browser-only UX reference. It is a foundation for building real agents and operator applications, not a finished hosted ERP or an unguarded bot that can spend money, publish listings, message customers, or ship orders by itself.
 
 ## Architecture
 
@@ -84,6 +85,8 @@ python -m venv .venv
 ```
 
 Start with the synthetic examples in `config/`. Never commit live credentials, customer data, supplier contacts, store IDs, or operating evidence.
+
+To inspect the chat-first interaction model without installing anything, open [`demo/chat-first-workspace.html`](demo/chat-first-workspace.html) in a browser. It uses synthetic data, makes no network request, and never claims a live store or advertising connection.
 
 ## Community
 

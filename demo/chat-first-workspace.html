@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T One Chat-first Workspace Demo</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --sidebar: 244px;
+      --drawer: 344px;
+      --text: #17191b;
+      --muted: #6d7479;
+      --line: #e3e6e8;
+      --panel: #f4f6f7;
+      --accent: #0f766e;
+      --soft: #eff8f6;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 14px/1.5 Inter, "Segoe UI", "Microsoft YaHei", sans-serif; color: var(--text); background: #fff; }
+    button, textarea, select { font: inherit; }
+    button { color: inherit; }
+    .app { min-height: 100vh; display: grid; grid-template-columns: var(--sidebar) minmax(0, 1fr); }
+    .sidebar { position: fixed; inset: 0 auto 0 0; width: var(--sidebar); display: flex; flex-direction: column; border-right: 1px solid var(--line); background: var(--panel); }
+    .brand { height: 58px; display: flex; align-items: center; gap: 9px; padding: 0 16px; font-weight: 700; }
+    .mark { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 6px; background: #111; color: #fff; font-size: 11px; }
+    .new-chat { margin: 0 10px 12px; padding: 9px 10px; border: 0; border-radius: 7px; background: transparent; text-align: left; cursor: pointer; }
+    .new-chat:hover, .agent:hover, .settings:hover { background: #e7eaec; }
+    .project { padding: 0 10px; overflow: auto; }
+    .project-head { display: flex; justify-content: space-between; gap: 12px; margin: 8px 4px 7px; font-size: 11px; font-weight: 700; }
+    .project-head span { color: var(--muted); font-weight: 400; }
+    .agent { width: 100%; display: block; margin: 2px 0; padding: 9px 10px 9px 28px; border: 0; border-radius: 7px; background: transparent; text-align: left; cursor: pointer; }
+    .agent strong, .agent small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .agent strong { font-size: 12px; }
+    .agent small { margin-top: 2px; color: var(--muted); font-size: 10px; }
+    .agent.active { background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .025); }
+    .sidebar-foot { margin-top: auto; padding: 9px; border-top: 1px solid var(--line); }
+    .settings { width: 100%; padding: 9px; border: 0; border-radius: 7px; background: transparent; text-align: left; cursor: pointer; }
+    .main { grid-column: 2; min-width: 0; min-height: 100vh; transition: padding-right .18s ease; }
+    .topbar { height: 58px; display: flex; align-items: center; gap: 12px; padding: 0 28px; border-bottom: 1px solid var(--line); }
+    .back { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: #fff; cursor: pointer; }
+    .title { min-width: 0; }
+    .title strong, .title small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .title small { color: var(--muted); font-size: 10px; }
+    .status { margin-left: auto; padding: 4px 8px; border-radius: 999px; background: var(--soft); color: var(--accent); font-size: 10px; }
+    .thread { width: min(820px, calc(100% - 48px)); margin: 0 auto; padding: 46px 0 170px; }
+    .intro { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: 14px; }
+    .intro .mark { width: 32px; height: 32px; }
+    h1 { margin: 1px 0 5px; font-size: 17px; }
+    .intro p { margin: 0; color: #394044; }
+    .starters { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 28px 46px; }
+    .starter { padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; background: #fff; font-size: 11px; cursor: pointer; }
+    .starter:hover { background: #fafbfb; border-color: #cbd2d5; }
+    .progress { margin-left: 46px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .progress summary { padding: 12px 0; cursor: pointer; color: #4e565b; font-size: 11px; }
+    .progress div { padding: 0 0 14px; color: var(--muted); font-size: 11px; }
+    .messages { margin: 28px 0 0 46px; }
+    .message { max-width: 78%; margin: 12px 0; padding: 11px 13px; border-radius: 10px; background: #f3f5f6; white-space: pre-wrap; }
+    .message.user { margin-left: auto; background: #e9f4f2; }
+    .composer-wrap { position: fixed; z-index: 4; left: var(--sidebar); right: 0; bottom: 0; padding: 14px 24px 18px; background: linear-gradient(transparent, #fff 24%); transition: right .18s ease; }
+    .composer { width: min(720px, 100%); margin: 0 auto; padding: 10px; border: 1px solid #d9dddf; border-radius: 12px; background: #fff; box-shadow: 0 10px 28px rgba(20, 25, 28, .08); }
+    textarea { width: 100%; min-height: 48px; max-height: 150px; resize: vertical; border: 0; outline: 0; padding: 2px 3px 8px; }
+    .composer-actions { display: flex; align-items: center; gap: 8px; }
+    .attach, .send { width: 32px; height: 32px; border-radius: 8px; cursor: pointer; }
+    .attach { border: 1px solid var(--line); background: #fff; font-size: 18px; }
+    .model { max-width: 190px; border: 0; background: #fff; color: #3e4549; font-size: 11px; }
+    .send { margin-left: auto; border: 0; background: #111; color: #fff; }
+    .drawer { position: fixed; z-index: 8; inset: 0 0 0 auto; width: var(--drawer); padding: 0 18px 24px; overflow: auto; border-left: 1px solid var(--line); background: #fafbfb; box-shadow: -12px 0 34px rgba(0, 0, 0, .08); transform: translateX(105%); transition: transform .18s ease; }
+    .settings-open .drawer { transform: translateX(0); }
+    .settings-open .main { padding-right: var(--drawer); }
+    .settings-open .composer-wrap { right: var(--drawer); }
+    .drawer-head { height: 58px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+    .drawer-head h2 { flex: 1; margin: 0; font-size: 15px; }
+    .drawer-head button { width: 32px; height: 32px; border: 0; border-radius: 7px; background: transparent; font-size: 20px; cursor: pointer; }
+    .tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+    .tabs button { padding: 12px 3px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); cursor: pointer; }
+    .tabs button.active { border-color: #111; color: #111; }
+    .panel { display: none; padding: 18px 0; }
+    .panel.active { display: block; }
+    .setting-row { padding: 13px 0; border-bottom: 1px solid var(--line); }
+    .setting-row strong, .setting-row small { display: block; }
+    .setting-row small { margin-top: 4px; color: var(--muted); }
+    dialog { width: min(460px, calc(100vw - 32px)); border: 1px solid var(--line); border-radius: 10px; padding: 0; box-shadow: 0 22px 60px rgba(0, 0, 0, .18); }
+    dialog::backdrop { background: rgba(0, 0, 0, .28); }
+    .dialog-body { padding: 20px; }
+    .dialog-body h2 { margin: 0 0 7px; font-size: 17px; }
+    .dialog-body p { margin: 0 0 16px; color: var(--muted); }
+    .dropzone { display: block; padding: 22px; border: 1px dashed #b8c0c4; border-radius: 8px; text-align: center; background: #fafbfb; }
+    .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+    .dialog-actions button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 7px; background: #fff; cursor: pointer; }
+    @media (max-width: 820px) {
+      :root { --sidebar: 0px; }
+      .app { display: block; }
+      .sidebar { display: none; }
+      .main { min-height: 100vh; }
+      .topbar { padding: 0 14px; }
+      .thread { width: calc(100% - 28px); padding-top: 28px; }
+      .starters, .progress, .messages { margin-left: 0; }
+      .drawer { width: min(92vw, 360px); }
+      .settings-open .main { padding-right: 0; }
+      .settings-open .composer-wrap { right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" aria-label="智能体列表">
+      <div class="brand"><span class="mark">T1</span><span>T One</span></div>
+      <button class="new-chat" id="newChat" type="button">＋ 新建对话</button>
+      <div class="project">
+        <div class="project-head">示例电商项目 <span>3 个智能体</span></div>
+        <button class="agent active" data-agent="store" type="button"><strong>店铺运营智能体</strong><small>商品、订单、库存与日常运营</small></button>
+        <button class="agent" data-agent="content" type="button"><strong>内容创作智能体</strong><small>脚本、分镜、提示词与剪辑建议</small></button>
+        <button class="agent" data-agent="ads" type="button"><strong>广告投手智能体</strong><small>诊断、建议、草稿与人工确认</small></button>
+      </div>
+      <div class="sidebar-foot"><button class="settings" id="openSettings" type="button">设置</button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="back" type="button" aria-label="返回">←</button>
+        <div class="title"><strong id="topTitle">店铺运营智能体</strong><small id="topSubtitle">示例电商项目 · 通用演示</small></div>
+        <span class="status">可对话</span>
+      </header>
+      <section class="thread" aria-live="polite">
+        <div class="intro"><span class="mark">T1</span><div><h1 id="agentTitle">店铺运营智能体</h1><p id="agentIntro">直接告诉我你想处理什么；需要商品表或图片时，点输入框旁边的加号。</p></div></div>
+        <div class="starters" id="starters"></div>
+        <details class="progress"><summary>查看当前进度和资料</summary><div>演示模式没有连接真实店铺。所有执行动作都必须在接入授权后由负责人确认。</div></details>
+        <div class="messages" id="messages"></div>
+      </section>
+      <div class="composer-wrap">
+        <form class="composer" id="composer">
+          <textarea id="prompt" aria-label="给当前智能体下指令" placeholder="直接告诉智能体你要完成什么…"></textarea>
+          <div class="composer-actions"><button class="attach" id="attach" type="button" aria-label="添加文件">＋</button><select class="model" aria-label="模型"><option>OpenAI · 示例模型</option><option>本地模型 · 未配置</option></select><button class="send" type="submit" aria-label="发送">↑</button></div>
+        </form>
+      </div>
+    </main>
+
+    <aside class="drawer" aria-label="设置">
+      <div class="drawer-head"><h2>设置</h2><button id="closeSettings" type="button" aria-label="关闭设置">×</button></div>
+      <div class="tabs"><button class="active" data-tab="agent" type="button">当前智能体</button><button data-tab="model" type="button">模型</button><button data-tab="advanced" type="button">后台</button></div>
+      <section class="panel active" id="panel-agent"><div class="setting-row"><strong>按对话自动选择能力</strong><small>日常使用不需要理解插件、Skills 或路由。</small></div><div class="setting-row"><strong>外部动作默认需确认</strong><small>花费、发布、停投、发消息等动作不会静默执行。</small></div></section>
+      <section class="panel" id="panel-model"><div class="setting-row"><strong>模型配置</strong><small>公开演示不保存 API 密钥，也不会发起真实请求。</small></div></section>
+      <section class="panel" id="panel-advanced"><div class="setting-row"><strong>连接与诊断</strong><small>真实账号、自动任务、审计记录等管理功能应放在这里，不占用日常导航。</small></div></section>
+    </aside>
+  </div>
+
+  <dialog id="fileDialog"><form method="dialog" class="dialog-body"><h2>添加资料</h2><p>把商品表、图片或说明交给当前智能体；演示页面不会上传文件。</p><label class="dropzone">选择本地文件<input type="file" multiple hidden></label><div class="dialog-actions"><button value="cancel">取消</button><button value="ok">完成</button></div></form></dialog>
+
+  <script>
+    const agents = {
+      store: { title: '店铺运营智能体', intro: '直接告诉我你想处理什么；需要商品表或图片时，点输入框旁边的加号。', starters: ['帮我检查今天要处理的订单', '导入一份商品表并检查缺失字段', '整理本周店铺风险和下一步'] },
+      content: { title: '内容创作智能体', intro: '从创意到成片放在一个对话里，我会依次处理脚本、分镜、提示词和剪辑建议。', starters: ['把这个商品做成 30 秒视频脚本', '分析参考视频并整理分镜', '根据图片生成一套拍摄提示词'] },
+      ads: { title: '广告投手智能体', intro: '告诉我平台、目标和时间范围。我会先读取证据、解释原因，再给出需要你确认的建议或草稿。', starters: ['诊断昨天花费上升但转化下降的原因', '整理近 7 天广告问题和优先级', '生成预算调整草稿，但不要直接执行'] }
+    };
+    const app = document.getElementById('app');
+    const prompt = document.getElementById('prompt');
+    const messages = document.getElementById('messages');
+    let currentAgent = 'store';
+
+    function renderAgent(key) {
+      currentAgent = key;
+      const agent = agents[key];
+      document.getElementById('topTitle').textContent = agent.title;
+      document.getElementById('agentTitle').textContent = agent.title;
+      document.getElementById('agentIntro').textContent = agent.intro;
+      document.querySelectorAll('.agent').forEach(button => button.classList.toggle('active', button.dataset.agent === key));
+      document.getElementById('starters').replaceChildren(...agent.starters.map(text => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'starter';
+        button.textContent = text;
+        button.onclick = () => { prompt.value = text; prompt.focus(); };
+        return button;
+      }));
+      messages.replaceChildren();
+      prompt.placeholder = `直接告诉${agent.title}你要完成什么…`;
+    }
+
+    document.querySelectorAll('.agent').forEach(button => button.onclick = () => renderAgent(button.dataset.agent));
+    document.getElementById('newChat').onclick = () => { messages.replaceChildren(); prompt.value = ''; prompt.focus(); };
+    document.getElementById('openSettings').onclick = () => app.classList.toggle('settings-open');
+    document.getElementById('closeSettings').onclick = () => app.classList.remove('settings-open');
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') app.classList.remove('settings-open'); });
+    document.getElementById('attach').onclick = () => document.getElementById('fileDialog').showModal();
+    document.querySelectorAll('.tabs button').forEach(button => button.onclick = () => {
+      document.querySelectorAll('.tabs button').forEach(item => item.classList.toggle('active', item === button));
+      document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === `panel-${button.dataset.tab}`));
+    });
+    document.getElementById('composer').onsubmit = event => {
+      event.preventDefault();
+      const text = prompt.value.trim();
+      if (!text) return;
+      const user = document.createElement('div');
+      user.className = 'message user';
+      user.textContent = text;
+      const reply = document.createElement('div');
+      reply.className = 'message';
+      reply.textContent = `已收到。这个公开演示不会连接真实账号或执行外部动作；${agents[currentAgent].title}会先整理证据、缺失信息和下一步。`;
+      messages.append(user, reply);
+      prompt.value = '';
+    };
+    renderAgent('store');
+  </script>
+</body>
+</html>

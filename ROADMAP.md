@@ -14,8 +14,12 @@ The roadmap is capability-based. Dates are intentionally avoided until maintaine
 - [x] Owner-selected Apache-2.0 license.
 - [ ] First tagged public release.
 
-## 0.2 - Extensible local agent
+## 0.2 - Chat-first reference and extensible local agent
 
+- [x] Generic browser-only chat-first workspace reference with agent switching, quick prompts, file-intake affordance, and one settings drawer.
+- [x] Daily navigation separates operator conversations from advanced connection and diagnostic pages.
+- [x] Content work is represented as one end-to-end agent instead of several implementation-shaped projects.
+- [x] Advertising guidance follows an evidence -> recommendation -> owner-confirmation sequence; the demo never claims live execution.
 - [ ] Stable plugin, skill, and connector manifests.
 - [ ] Local MCP/API surface with scoped tokens and capability discovery.
 - [ ] Provider connection tests with useful, redacted error feedback.

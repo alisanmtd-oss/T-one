@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT_SUFFIXES = {".json", ".md", ".py", ".txt", ".toml", ".yaml", ".yml"}
+TEXT_SUFFIXES = {".html", ".json", ".md", ".py", ".txt", ".toml", ".yaml", ".yml"}
 SKIP_FILES = {"scripts/verify_public_tree.py"}
 FORBIDDEN_PATH_PARTS = {
     "browser_extension",

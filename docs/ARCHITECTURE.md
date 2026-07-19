@@ -21,6 +21,12 @@ workspace
 
 A channel expresses an intended operating route. A store represents a real executable authorization. A task combines a store or workstream context with a model, skills, tools, policy, and audit trail.
 
+## Chat-first operator surface
+
+The public `demo/chat-first-workspace.html` is a dependency-free interaction reference, not the private production desktop. Its daily surface contains only conversations with task-oriented agents. Product files enter through the conversation composer, while model, account connection, diagnostics, and automation controls live behind one settings drawer.
+
+Content planning, scripting, storyboarding, generation prompts, and editing guidance belong to one content agent. Advertising follows `observe evidence -> explain -> recommend -> owner confirmation`; spending, publishing, pausing, messaging, and other external writes remain outside the public demo.
+
 ## Route identity
 
 The minimum commerce route is:
@@ -55,5 +61,4 @@ Read-only adapters normalize external data into stable records. A future write a
 
 ## Public boundary
 
-This repository contains contracts and local-first primitives. Private production UI, browser automation, marketplace execution, live operating records, and recovered context are intentionally outside the first public release.
-
+This repository contains contracts, local-first primitives, and a synthetic browser-only UX reference. Private production UI and runtime code, browser automation, marketplace execution, live operating records, and recovered context are intentionally outside the public release.
