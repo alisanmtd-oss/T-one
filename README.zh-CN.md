@@ -6,11 +6,27 @@
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776AB.svg)](pyproject.toml)
 
-[English](README.md) | [路线图](ROADMAP.md) | [架构](docs/ARCHITECTURE.md) | [参与贡献](CONTRIBUTING.md) | [安全策略](SECURITY.md)
+[English](README.md) | [公共知识包](docs/PUBLIC_KNOWLEDGE_PACKS.md) | [路线图](ROADMAP.md) | [架构](docs/ARCHITECTURE.md) | [参与贡献](CONTRIBUTING.md) | [安全策略](SECURITY.md)
 
 T One 面向个人创业者、电商团队、开发者、工厂和服务商，目标是让 AI 智能体协助处理跨境电商与外贸工作，同时避免不同店铺、客户、凭据和证据互相串用。
 
 它为商品、SKU、Listing、库存、订单、履约、结算、供应商、工厂、仓库、B2B 客户、报价、付款、内容实验与人工审批提供统一的本地数据边界。当前公开版不会假装已经接通 Amazon、TikTok Shop、SHEIN、Shopee 等平台的真实写入权限。
+
+## 0.3：直接聊天选择平台智能体
+
+不需要先创建复杂项目或进入扩展配置。普通聊天里写出平台名，公共路由会选择对应的脱敏知识包；多平台问题保持为对比，不会把一个平台的规则串到另一个平台。
+
+本版公开 AliExpress、B2B 外贸、eBay、Etsy、全球/本土渠道规划、Google Ads、独立站、Lazada、Meta、SHEIN、Shopee、TikTok Ads 和 Walmart 共 13 个知识包。TikTok Shop 知识包明确不在公开范围内。
+
+```python
+from ai_ecommerce_director.platform_agents import route_public_chat
+
+result = route_public_chat("这个商品适合速卖通哪些市场？")
+assert result["agent_id"] == "aliexpress"
+assert result["external_execution_allowed"] is False
+```
+
+这些知识包只提供公开规划规则，不代表真实店铺、OAuth、广告账户或平台写入已经连接。详见 [公共知识包说明](docs/PUBLIC_KNOWLEDGE_PACKS.md)。
 
 ## 0.2 版本重点
 
@@ -34,6 +50,7 @@ T One 面向个人创业者、电商团队、开发者、工厂和服务商，�
 | 工作区隔离 | `工作区 → 项目 → 渠道 → 店铺 → 任务`，隔离平台、站点、模式、归属和授权 |
 | 连接器基础 | 只读连接器原语、标准化导入记录和能力元数据；真实写入仍受门禁控制 |
 | 聊天优先参考 | 智能体切换、快捷提示、资料入口、消息演示和统一设置抽屉 |
+| 公共平台智能体 | 普通聊天自动选择 13 个脱敏知识包；无需先进入项目或扩展配置 |
 
 当前 `0.x` 是 Python 库、测试和浏览器交互参考，是构建真实智能体与运营应用的基础，不是可以绕过确认自动花钱、发布商品、群发客户或发货的成品机器人。
 

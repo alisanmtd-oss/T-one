@@ -2,7 +2,7 @@
 
 ## Current Decision
 
-The private product codebase must not be published as a whole. A fail-closed, exact-file allowlist now builds a sanitized `T One` staging package. Version 0.2 adds a generic browser-only chat-first workspace reference while keeping the real desktop runtime, accounts, stores, business records, and execution connectors private. The owner selected Apache-2.0 for the public core; publication still requires a clean generated audit, tests, privacy verification, and final human review.
+The private product codebase must not be published as a whole. A fail-closed, exact-file allowlist now builds a sanitized `T One` staging package. Version 0.3 adds ordinary-chat routing and 13 sanitized non-TikTok-Shop knowledge packs while keeping the TikTok Shop pack, real desktop runtime, accounts, stores, business records, and execution connectors private. The owner selected Apache-2.0 for the public core; publication still requires a clean generated audit, tests, privacy verification, and final human review.
 
 ## P0 Before Public Release
 
@@ -26,11 +26,13 @@ The private product codebase must not be published as a whole. A fail-closed, ex
 - `scripts/build_public_release.py` copies only allowlisted regular files, rejects path traversal and symlinks, scans the result for private markers and live-secret patterns, and writes SHA-256 plus an audit record.
 - The public staging package contains the Python community core plus a dependency-free, synthetic chat-first UX reference. Product-specific marketplace and private-catalog flows, recovered conversations, business evidence, browser extension code and desktop shells remain private.
 - Community files now include bilingual repository introductions, architecture, roadmap, governance, contribution rules, support guidance, Issue forms, a pull-request template, Windows test CI, and a public-tree privacy verifier.
+- Version 0.3 publishes a package-data catalog for AliExpress, B2B export, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. The TikTok Shop knowledge pack is explicitly excluded.
 
 ## Sanitized Public Source Set
 
 ```text
 selected ai_ecommerce_director core modules (exact files only)
+sanitized ai_ecommerce_director platform agent router and 13 public knowledge packs
 selected config/*.example.json files
 selected independent tests
 public_release_template/README.md

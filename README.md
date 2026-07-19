@@ -7,7 +7,7 @@
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776AB.svg)](pyproject.toml)
 [![Discussions](https://img.shields.io/badge/community-Discussions-7A41C6.svg)](https://github.com/alisanmtd-oss/T-one/discussions)
 
-[中文介绍](README.zh-CN.md) | [Roadmap](ROADMAP.md) | [Architecture](docs/ARCHITECTURE.md) | [Contributing](CONTRIBUTING.md) | [Security](SECURITY.md)
+[中文介绍](README.zh-CN.md) | [Public knowledge packs](docs/PUBLIC_KNOWLEDGE_PACKS.md) | [Roadmap](ROADMAP.md) | [Architecture](docs/ARCHITECTURE.md) | [Contributing](CONTRIBUTING.md) | [Security](SECURITY.md)
 
 T One is built for solo operators, commerce teams, developers, factories, and service partners who want AI agents to help manage cross-border e-commerce and foreign-trade work without mixing stores, customers, credentials, or evidence.
 
@@ -54,8 +54,23 @@ The project models the complete operating chain: product and SKU intake, marketp
 | Connector foundation | Read-only connector primitives, normalized intake records, and capability metadata; live store write adapters remain gated |
 | Local runtime | Atomic JSON storage, cache invalidation, safe example configuration, tests, release audit, and SHA256 manifest |
 | Chat-first UX reference | Dependency-free synthetic workspace with agent conversations, quick prompts, file-intake affordance, and one settings drawer |
+| Public platform agents | Ordinary-chat routing to 13 sanitized knowledge packs; no project setup or extension registry is required |
 
 The current `0.x` release is a Python library, tests, and a browser-only UX reference. It is a foundation for building real agents and operator applications, not a finished hosted ERP or an unguarded bot that can spend money, publish listings, message customers, or ship orders by itself.
+
+## Chat-first platform agents
+
+Version 0.3 lets an application route ordinary chat such as “这个商品适合速卖通哪些市场？” to a sanitized platform knowledge pack. The public catalog covers AliExpress, B2B export, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. The TikTok Shop knowledge pack is intentionally excluded.
+
+```python
+from ai_ecommerce_director.platform_agents import route_public_chat
+
+route = route_public_chat("比较 Etsy 和 eBay 的上架边界")
+assert route["status"] == "multi_platform_comparison"
+assert route["external_execution_allowed"] is False
+```
+
+The router is deterministic and local. It does not read credentials, connect a store, queue work, or execute a platform action. See [Public knowledge packs](docs/PUBLIC_KNOWLEDGE_PACKS.md).
 
 ## Architecture
 
