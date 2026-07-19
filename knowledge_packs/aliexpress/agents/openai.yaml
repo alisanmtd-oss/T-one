@@ -1,0 +1,7 @@
+interface:
+  display_name: "AliExpress 速卖通专家"
+  short_description: "按主体、市场、类目、商品作用域与证据安全执行速卖通任务"
+  default_prompt: "Use $aliexpress to audit this AliExpress route, isolate tenant/category/product/task facts, and produce an evidence-backed, approval-gated next action without inheriting another project's defaults."
+
+policy:
+  allow_implicit_invocation: true

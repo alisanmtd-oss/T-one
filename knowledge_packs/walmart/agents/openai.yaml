@@ -1,0 +1,7 @@
+interface:
+  display_name: "Walmart Marketplace 运营专家"
+  short_description: "按国家站点隔离并带证据门禁的 Walmart 店铺运营专家"
+  default_prompt: "Use $walmart to audit this Walmart Marketplace store route and prepare only evidence-backed, approval-gated actions."
+
+policy:
+  allow_implicit_invocation: true

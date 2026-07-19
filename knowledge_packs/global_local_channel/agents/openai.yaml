@@ -1,0 +1,4 @@
+interface:
+  display_name: "Global and Local Channel Expert"
+  short_description: "Evidence-scoped regional channel planning and review"
+  default_prompt: "Use $global-local-channel to evaluate a country-specific advertising or commerce channel with current evidence, explicit unknowns, and no live action without owner approval."

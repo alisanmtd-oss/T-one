@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "pack_id": "shein",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/shein/machine/contract.json",
+    "knowledge_packs/shein/SKILL.md",
+    "knowledge_packs/shein/agents/openai.yaml",
+    "knowledge_packs/shein/references/curriculum.md",
+    "knowledge_packs/shein/references/decision-workflows.md",
+    "knowledge_packs/shein/references/evidence-status-and-rules.md",
+    "knowledge_packs/shein/references/failure-review.md",
+    "knowledge_packs/shein/references/learning-governance.md",
+    "knowledge_packs/shein/references/mother-requirements-mapping.md",
+    "knowledge_packs/shein/references/native-ai-and-tool-matrix.md",
+    "knowledge_packs/shein/references/official-evidence.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

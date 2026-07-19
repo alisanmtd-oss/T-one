@@ -11,12 +11,16 @@ class PublicPlatformAgentTests(unittest.TestCase):
     def test_catalog_has_all_sanitized_non_tiktok_shop_packs(self) -> None:
         payload = load_public_knowledge_packs()
         ids = {item["id"] for item in payload["packs"]}
-        self.assertEqual(len(ids), 13)
+        self.assertEqual(len(ids), 17)
         self.assertNotIn("tiktok_shop", ids)
         self.assertTrue(
             {
+                "amazon",
                 "aliexpress",
                 "b2b_export",
+                "b2b_outbound",
+                "b2b_platform_sales",
+                "commerce_video",
                 "ebay",
                 "etsy",
                 "global_local_channel",
@@ -31,6 +35,12 @@ class PublicPlatformAgentTests(unittest.TestCase):
             }.issubset(ids)
         )
         self.assertTrue(all(not item["live_connection_claimed"] for item in list_public_agents()))
+
+    def test_new_public_packs_route_from_ordinary_chat(self) -> None:
+        self.assertEqual(route_public_chat("检查 Amazon listing 边界")["agent_id"], "amazon")
+        self.assertEqual(route_public_chat("整理主动开发客户名单")["agent_id"], "b2b_outbound")
+        self.assertEqual(route_public_chat("分析 Alibaba.com 询盘")["agent_id"], "b2b_platform_sales")
+        self.assertEqual(route_public_chat("给商品视频做分镜")["agent_id"], "commerce_video")
 
     def test_ordinary_chat_selects_one_platform_agent_without_external_execution(self) -> None:
         result = route_public_chat("这个商品适合速卖通哪些市场？缺少事实保持未知。")

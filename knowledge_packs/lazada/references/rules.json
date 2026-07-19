@@ -1,0 +1,849 @@
+{
+  "schema_version": 1,
+  "expert_id": "expert-lazada-marketplace",
+  "updated_at": "2026-07-19T04:10:00+08:00",
+  "rules": [
+    {
+      "id": "LZ-R001",
+      "stability": "stable",
+      "rule": "SEA/Southeast Asia is a display group only; executable routes must be SG, MY, TH, VN, PH or ID.",
+      "evidence_ids": [
+        "LZ-LEDGER-002"
+      ]
+    },
+    {
+      "id": "LZ-R002",
+      "stability": "stable",
+      "rule": "Persist country_user_info.country, seller_id and short_code per country store even when one Crossborder authorization covers several stores.",
+      "evidence_ids": [
+        "LZ-LEDGER-002"
+      ]
+    },
+    {
+      "id": "LZ-R003",
+      "stability": "stable",
+      "rule": "Do not reuse tokens across APPKEYs, unrelated stores or execution identities; bind every call to tenant/project/store/country/mode/ownership/execution identity.",
+      "evidence_ids": [
+        "LZ-LEDGER-002"
+      ]
+    },
+    {
+      "id": "LZ-R004",
+      "stability": "volatile",
+      "rule": "Resolve ABA, ALA or ASA from the actual app; local subscription and cross-border authorization prerequisites may differ.",
+      "evidence_ids": [
+        "LZ-LEDGER-002"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R005",
+      "stability": "volatile",
+      "rule": "Read access-token and refresh-token expiry from the current authorization response; documentation examples must not be hard-coded as universal runtime values.",
+      "evidence_ids": [
+        "LZ-LEDGER-002"
+      ],
+      "recheck_days": 7
+    },
+    {
+      "id": "LZ-R006",
+      "stability": "volatile",
+      "rule": "Marketplace Ease is an officially documented MP merchant semi-managed program, but it is not executable in T One until country availability, seller eligibility, shared route taxonomy and real authorization are verified.",
+      "evidence_ids": [
+        "LZ-LEDGER-003"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R007",
+      "stability": "volatile",
+      "rule": "Fetch target category attributes dynamically; Marketplace Ease can use supply_price where ordinary price/special_price fields are not applicable.",
+      "evidence_ids": [
+        "LZ-LEDGER-003"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R008",
+      "stability": "stable",
+      "rule": "Choice JIT and VMI describe inventory management responsibility; do not map either to an ordinary local/cross-border store mode or verified official_full_managed mode.",
+      "evidence_ids": [
+        "LZ-LEDGER-005"
+      ]
+    },
+    {
+      "id": "LZ-R009",
+      "stability": "volatile",
+      "rule": "Finance API availability permits scoped reads only after authorization; payout status, transaction records, ERP reconciliation and bank receipt remain separate completion states.",
+      "evidence_ids": [
+        "LZ-LEDGER-004"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R010",
+      "stability": "volatile",
+      "rule": "Open Platform AI Assistant remains blocked_owner_input because the visible entry redirected to login; do not invent its prompts, outputs or metrics.",
+      "evidence_ids": [
+        "LZ-LEDGER-008"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R011",
+      "stability": "volatile",
+      "rule": "Sponsored Max AI Diagnosis recommendations are guidance only, not guaranteed outcomes; keep bidding, budget, continuity and item suggestions reviewable and approval-gated.",
+      "evidence_ids": [
+        "LZ-LEDGER-006"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R012",
+      "stability": "volatile",
+      "rule": "NPL eligibility, 60-day listing window, 30-day support and campaign exclusivity must be checked in the actual country Seller Center at decision time.",
+      "evidence_ids": [
+        "LZ-LEDGER-007"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R013",
+      "stability": "stable",
+      "rule": "Sponsored Solutions identity, eligibility, wallet/billing and spend are separate from Open Platform product/order authorization.",
+      "evidence_ids": [
+        "LZ-LEDGER-001",
+        "LZ-LEDGER-006"
+      ]
+    },
+    {
+      "id": "LZ-R014",
+      "stability": "stable",
+      "rule": "Publishing, price, inventory, promotions, ads, shipment, refunds, messages and payments require fresh evidence and owner confirmation.",
+      "evidence_ids": [
+        "LZ-LEDGER-001"
+      ]
+    },
+    {
+      "id": "LZ-R015",
+      "stability": "stable",
+      "rule": "A tool name, button, public page, schema or test does not establish a connected business capability.",
+      "evidence_ids": [
+        "LZ-LEDGER-001",
+        "LZ-LEDGER-013"
+      ]
+    },
+    {
+      "id": "LZ-R016",
+      "stability": "stable",
+      "rule": "Each evidence item records URL/ref, capture time, country site, store model, ownership, permission scope, validity and state.",
+      "evidence_ids": [
+        "LZ-LEDGER-002",
+        "LZ-LEDGER-006"
+      ]
+    },
+    {
+      "id": "LZ-R017",
+      "stability": "stable",
+      "rule": "The cross-border mother document is a candidate requirement checklist; seller experiences remain experiment hypotheses regardless of how many anecdotes agree.",
+      "evidence_ids": [
+        "LZ-LEDGER-009"
+      ]
+    },
+    {
+      "id": "LZ-R018",
+      "stability": "stable",
+      "rule": "Block anti-bot or verification bypass, anti-association evasion, unauthorized scraping and unlicensed competitor or buyer asset reuse.",
+      "evidence_ids": [
+        "LZ-LEDGER-009"
+      ]
+    },
+    {
+      "id": "LZ-R019",
+      "stability": "stable",
+      "rule": "Reuse the existing T One LLMClient, expert registry, connector configuration, approval queue and creative/advertising foundations; never create a second universal agent runtime.",
+      "evidence_ids": [
+        "LZ-LEDGER-001"
+      ]
+    },
+    {
+      "id": "LZ-R020",
+      "stability": "stable",
+      "rule": "No external page or software evidence means no new distilled platform knowledge; record a no-delta run instead.",
+      "evidence_ids": [
+        "LZ-LEDGER-009"
+      ]
+    },
+    {
+      "id": "LZ-R021",
+      "stability": "stable",
+      "rule": "Keep platform-public rules, pluggable category capabilities, tenant/project/product facts and task evidence in four isolated layers.",
+      "evidence_ids": [
+        "LZ-LEDGER-028"
+      ]
+    },
+    {
+      "id": "LZ-R022",
+      "stability": "stable",
+      "rule": "Project-specific product samples are regression evidence only inside their route and never become defaults for another tenant, product, store or open-source export.",
+      "evidence_ids": [
+        "LZ-LEDGER-028"
+      ]
+    },
+    {
+      "id": "LZ-R023",
+      "stability": "stable",
+      "rule": "If product, price, stock, media, warehouse, capacity, lead-time, brand, compliance or customer facts were not supplied or read from an authorized scoped source, mark them unknown and never inherit them.",
+      "evidence_ids": [
+        "LZ-LEDGER-028"
+      ]
+    },
+    {
+      "id": "LZ-R024",
+      "stability": "volatile",
+      "rule": "Resolve the exact country-site leaf category and current dynamic attributes for apparel, home, beauty, electronics, food/restricted goods, digital-goods eligibility, machinery and unknown categories; one category's schema cannot stand in for another.",
+      "evidence_ids": [
+        "LZ-LEDGER-017"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R025",
+      "stability": "stable",
+      "rule": "External users may import product tables or authorized images, but extraction must separate observable or supplied facts from unknowns before mapping to the live category schema.",
+      "evidence_ids": [
+        "LZ-LEDGER-017",
+        "LZ-LEDGER-028"
+      ]
+    },
+    {
+      "id": "LZ-R026",
+      "stability": "stable",
+      "rule": "Public and open-source expert assets must exclude tenant-private products, prices, inventory, media, warehouses, customer data and contact information.",
+      "evidence_ids": [
+        "LZ-LEDGER-028"
+      ]
+    },
+    {
+      "id": "LZ-R027",
+      "stability": "stable",
+      "rule": "Only leaf categories can create products; required, key, sale, normal and SKU attributes and Seller Center labels must be interpreted from the target schema.",
+      "evidence_ids": [
+        "LZ-LEDGER-017"
+      ]
+    },
+    {
+      "id": "LZ-R028",
+      "stability": "stable",
+      "rule": "Order IDs are store-scoped, order-item statuses remain separate, and push plus targeted reads is preferred to continuous polling.",
+      "evidence_ids": [
+        "LZ-LEDGER-018"
+      ]
+    },
+    {
+      "id": "LZ-R029",
+      "stability": "volatile",
+      "rule": "Resolve current fulfillment API availability and the active shipment provider/package state before execution; a documented unavailable operation cannot be assumed callable.",
+      "evidence_ids": [
+        "LZ-LEDGER-019"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R030",
+      "stability": "volatile",
+      "rule": "A reverse-order webhook is an event hint, not complete current state; use targeted detail/history/reason reads before any decision.",
+      "evidence_ids": [
+        "LZ-LEDGER-020"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R031",
+      "stability": "volatile",
+      "rule": "Sponsored Max campaign-level creation can group 1-100 products with optimized rather than even allocation; adding an already-active product may pause or remove its original campaign and therefore requires overlap preflight and approval.",
+      "evidence_ids": [
+        "LZ-LEDGER-021",
+        "LZ-LEDGER-022"
+      ],
+      "recheck_days": 7
+    },
+    {
+      "id": "LZ-R032",
+      "stability": "volatile",
+      "rule": "Do not project legacy Promoted Product Diagnosis onto campaign-level Sponsored Max; resolve campaign generation and seller rollout first.",
+      "evidence_ids": [
+        "LZ-LEDGER-023"
+      ],
+      "recheck_days": 7
+    },
+    {
+      "id": "LZ-R033",
+      "stability": "stable",
+      "rule": "A single dated seller or industry-blog tactic remains an experiment hypothesis and cannot become a universal bid or ROAS rule.",
+      "evidence_ids": [
+        "LZ-LEDGER-024"
+      ]
+    },
+    {
+      "id": "LZ-R034",
+      "stability": "volatile",
+      "rule": "A Promotion webhook notification is an authorized event hint, not proof of current promotion state or stackability; preserve seller, country-store, promotion type and promotion ID scope, then perform a targeted current-state read.",
+      "evidence_ids": [
+        "LZ-LEDGER-029"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R035",
+      "stability": "stable",
+      "rule": "Voucher expiry or stock-budget notifications never authorize automatic activation, extension, deactivation or budget change; every external promotion action remains approval-gated.",
+      "evidence_ids": [
+        "LZ-LEDGER-029"
+      ]
+    },
+    {
+      "id": "LZ-R036",
+      "stability": "volatile",
+      "rule": "Resolve the current official SDK from the authorized application's App Console and validate its language package, version, checksum, dependencies and successful scoped call; public documentation alone does not provide a usable SDK.",
+      "evidence_ids": [
+        "LZ-LEDGER-030"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R037",
+      "stability": "stable",
+      "rule": "The public lazop/iopsdk repository is historical research evidence and must not be auto-installed: an Apache-2.0 license does not establish maintenance, current API compatibility, dependency safety or authorization.",
+      "evidence_ids": [
+        "LZ-LEDGER-031"
+      ]
+    },
+    {
+      "id": "LZ-R038",
+      "stability": "stable",
+      "rule": "Bind every Lazada IM event and message to country site, store binding, seller IM identity, session_id and message_id; minimize buyer identifiers and never move message content across stores or tasks.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ]
+    },
+    {
+      "id": "LZ-R039",
+      "stability": "stable",
+      "rule": "If an IM process_msg security-interception field is present, display the platform prompt to the seller and do not claim the outbound message was delivered.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ]
+    },
+    {
+      "id": "LZ-R040",
+      "stability": "stable",
+      "rule": "Deduplicate IM recall pushes by sessionId plus messageId and update the existing message status; a recall system message is not a second buyer request.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ]
+    },
+    {
+      "id": "LZ-R041",
+      "stability": "volatile",
+      "rule": "Use Lazada IM push for live updates and bounded post-authorization historical synchronization; do not continuously poll message/session list APIs because documented permissions can be reclaimed.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R042",
+      "stability": "volatile",
+      "rule": "Seller-initiated conversation eligibility and no-reply message limits are country/account/time-sensitive; verify the current authorized Seller Center or API state and keep every outbound buyer message approval-gated.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R043",
+      "stability": "stable",
+      "rule": "A refund-order IM card is a scoped notification, not complete reverse-order state and never authorizes a refund, rejection or buyer contact without targeted current reads and approval.",
+      "evidence_ids": [
+        "LZ-LEDGER-032"
+      ]
+    },
+    {
+      "id": "LZ-R044",
+      "stability": "stable",
+      "rule": "A 2021 third-party video claim about an 85 percent chat response threshold or Seller Picks is a dated single-case hypothesis, not current six-country policy.",
+      "evidence_ids": [
+        "LZ-LEDGER-033"
+      ]
+    },
+    {
+      "id": "LZ-R045",
+      "stability": "stable",
+      "rule": "Bind every finance read to one tenant, project, store binding, country endpoint, seller finance identity and credential reference; never merge six country responses into one SEA ledger.",
+      "evidence_ids": [
+        "LZ-LEDGER-037"
+      ]
+    },
+    {
+      "id": "LZ-R046",
+      "stability": "volatile",
+      "rule": "GetTransactionDetails requires a bounded start/end period and documents a maximum limit of 500 with offset; use deterministic pagination plus a per-country watermark and preserve raw response lineage before reconciliation.",
+      "evidence_ids": [
+        "LZ-LEDGER-037"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R047",
+      "stability": "stable",
+      "rule": "A transaction paid_status or payment_ref_id is a platform record field, not proof of payout completion or bank receipt; keep transaction record, payout status, bank receipt and profit confirmation separate.",
+      "evidence_ids": [
+        "LZ-LEDGER-037"
+      ]
+    },
+    {
+      "id": "LZ-R048",
+      "stability": "stable",
+      "rule": "A third-party ERP Collected marker is an internal manually controlled state and cannot replace the Lazada payout record, bank evidence or owner-reviewed reconciliation.",
+      "evidence_ids": [
+        "LZ-LEDGER-038"
+      ]
+    },
+    {
+      "id": "LZ-R049",
+      "stability": "stable",
+      "rule": "If a connector omits fees or cannot reconcile its components to a settlement amount, preserve the mismatch as unknown connector coverage; never fabricate fee rows, force a balancing entry or generalize one ERP limitation into Lazada policy.",
+      "evidence_ids": [
+        "LZ-LEDGER-038"
+      ]
+    },
+    {
+      "id": "LZ-R050",
+      "stability": "stable",
+      "rule": "Documented fee, VAT and withholding-tax fields are data inputs, not jurisdictional tax advice or proof of completeness; retain currency, sign, statement period and source field exactly and escalate missing tax context.",
+      "evidence_ids": [
+        "LZ-LEDGER-037"
+      ]
+    },
+    {
+      "id": "LZ-R051",
+      "stability": "volatile",
+      "rule": "Resolve native-AI availability by country site, seller account, store model, ownership, feature and current UI; a regional playbook or named tool does not prove that one authorized store can access it.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-040",
+        "LZ-LEDGER-041"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R052",
+      "stability": "stable",
+      "rule": "Treat AI Smart Listing output as a pre-filled draft: separate supplied or observable facts from generated text, read the live leaf-category schema, validate every attribute and require approval before publishing.",
+      "evidence_ids": [
+        "LZ-LEDGER-039"
+      ]
+    },
+    {
+      "id": "LZ-R053",
+      "stability": "stable",
+      "rule": "AI Smart Product Optimisation, background changes, model adjustments and virtual try-on outputs require product and media rights, fidelity checks and human selection; generation does not authorize replacing listing media or making unsupported visual claims.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-040"
+      ]
+    },
+    {
+      "id": "LZ-R054",
+      "stability": "stable",
+      "rule": "Lazzie Seller answers, navigation, risk assessments and business advice are advisory outputs; verify the underlying country-store object and never treat a chatbot response as a completed operation or policy override.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-040"
+      ]
+    },
+    {
+      "id": "LZ-R055",
+      "stability": "volatile",
+      "rule": "Before enabling or changing LISA automated replies, verify country/account eligibility, source product details, greetings, FAQ/keyword/knowledge-base configuration, send behavior, audit trail and recovery path; automated buyer messages remain owner-approved external side effects.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-040"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R056",
+      "stability": "stable",
+      "rule": "Business Advisor's public six-country selector chooses an account venture and then requires that country's Seller Center login; selection is not a SEA dashboard, multi-store binding or proof of authenticated analytics.",
+      "evidence_ids": [
+        "LZ-LEDGER-041"
+      ]
+    },
+    {
+      "id": "LZ-R057",
+      "stability": "stable",
+      "rule": "Business Advisor metrics and AI insights must retain account, country, store, SKU, metric definition, time window and capture time; analytics existence does not authorize price, inventory, campaign or listing changes.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-041"
+      ]
+    },
+    {
+      "id": "LZ-R058",
+      "stability": "stable",
+      "rule": "Reject external listing prompt packs that invent product performance, discounts, shipping, inventory or design rules from a name and price; missing license and platform authorization keep them research-only and non-reusable.",
+      "evidence_ids": [
+        "LZ-LEDGER-042"
+      ]
+    },
+    {
+      "id": "LZ-R059",
+      "stability": "stable",
+      "rule": "AI translation is a country-language draft, not one SEA localization; validate product meaning, regulated claims, units, brand terms and target-site schema before any site-specific submission.",
+      "evidence_ids": [
+        "LZ-LEDGER-039",
+        "LZ-LEDGER-040"
+      ]
+    },
+    {
+      "id": "LZ-R060",
+      "stability": "volatile",
+      "rule": "A complete public LISA course proves only a documented workflow; resolve current country, store model, seller identity, feature entitlement and authenticated UI before reporting LISA as available to a store.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R061",
+      "stability": "stable",
+      "rule": "Bind each LISA size chart to the exact country store, product set, category schema and current product facts; never reuse a chart, FAQ, keyword or answer across country stores or unrelated products by default.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ]
+    },
+    {
+      "id": "LZ-R062",
+      "stability": "stable",
+      "rule": "LISA activation, deactivation, knowledge-package subscription, answer edit, toggle, keyword change, size-chart association and human-transfer text change are auditable configuration writes requiring an authorized store, current-state read, rollback plan and owner confirmation.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ]
+    },
+    {
+      "id": "LZ-R063",
+      "stability": "stable",
+      "rule": "Before creating a LISA keyword reply, search the current store knowledge base for an existing answer and reconcile duplicates or conflicts; keyword matching cannot be used to bypass product-fact validation or outbound-message approval.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ]
+    },
+    {
+      "id": "LZ-R064",
+      "stability": "stable",
+      "rule": "Keep LISA automated answer, transfer requested, human accepted, reply sent and buyer issue resolved as separate states; a configured handoff phrase or transfer action proves none of the later states.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ]
+    },
+    {
+      "id": "LZ-R065",
+      "stability": "stable",
+      "rule": "Any LISA report value must retain country account, store, metric definition, time window, capture time and source screen; public course screenshots are examples and never live store metrics.",
+      "evidence_ids": [
+        "LZ-LEDGER-043"
+      ]
+    },
+    {
+      "id": "LZ-R066",
+      "stability": "volatile",
+      "rule": "The public video claims about a 10-minute response threshold and 5%-18% conversion improvement are dated training claims, not a current six-country policy or performance guarantee; recheck definitions and eligibility in the exact country account.",
+      "evidence_ids": [
+        "LZ-LEDGER-044"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R067",
+      "stability": "stable",
+      "rule": "Verify an official GitHub identity through a reverse link from an official platform site, developer document or verified official social account; matching names, search rank, stars and repository descriptions are insufficient.",
+      "evidence_ids": [
+        "LZ-LEDGER-046",
+        "LZ-LEDGER-049"
+      ]
+    },
+    {
+      "id": "LZ-R068",
+      "stability": "stable",
+      "rule": "Official organization ownership does not establish seller-operation relevance: explicitly exclude infrastructure, AI frameworks and developer tools that provide no verified Lazada OAuth, listing, order, inventory, ads or webhook surface.",
+      "evidence_ids": [
+        "LZ-LEDGER-047",
+        "LZ-LEDGER-048"
+      ]
+    },
+    {
+      "id": "LZ-R069",
+      "stability": "volatile",
+      "rule": "Treat github.com/lazop official ownership as unknown until an official reverse link is captured; preserve lazop/iopsdk as a historical public artifact and use the authorized App Console for the current application-specific SDK.",
+      "evidence_ids": [
+        "LZ-LEDGER-030",
+        "LZ-LEDGER-031",
+        "LZ-LEDGER-049"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R070",
+      "stability": "stable",
+      "rule": "Before proposing any GitHub reuse, dedupe by owner/repo plus release or commit, audit license, maintenance, dependencies, secrets, security, data boundary and deployment cost, pin a version and obtain shared-owner approval; never install an unaudited repository or create a duplicate evaluator.",
+      "evidence_ids": [
+        "LZ-LEDGER-046",
+        "LZ-LEDGER-047",
+        "LZ-LEDGER-048"
+      ]
+    },
+    {
+      "id": "LZ-R071",
+      "stability": "stable",
+      "rule": "Social, video, forum, issue and pull-request comments are anonymized community signals or dated operator cases; inspect pinned, high-ranked, recent, author or official replies and disputes where the interface permits, filter spam or promotions, and verify policy, fee, API or feature claims against official current evidence before promotion.",
+      "evidence_ids": [
+        "LZ-LEDGER-044",
+        "LZ-LEDGER-045",
+        "LZ-LEDGER-048"
+      ]
+    },
+    {
+      "id": "LZ-R072",
+      "stability": "stable",
+      "rule": "A source may enter distillation only with coverage evidence for identity, date or version, site, sections and end state, relevant expansions or links, applicable pagination and comment coverage; record every inaccessible area and stop at login, CAPTCHA, payment or access control.",
+      "evidence_ids": [
+        "LZ-LEDGER-043",
+        "LZ-LEDGER-044",
+        "LZ-LEDGER-045",
+        "LZ-LEDGER-048"
+      ]
+    },
+    {
+      "id": "LZ-R073",
+      "stability": "stable",
+      "rule": "Logged-in browser learning may reuse only the owner-authorized current session through the supported browser interface; if initialization fails, stop before tabs, never export cookies or tokens, and continue with legal public sources without claiming the account or browser is absent.",
+      "evidence_ids": [
+        "LZ-LEDGER-050"
+      ]
+    },
+    {
+      "id": "LZ-R074",
+      "stability": "stable",
+      "rule": "A Lazada University search result, course title or course card proves only a public catalog entry; if the article or video redirects to country Seller Center login or signup, course content, seller entitlement, wallet and advertising capability remain unverified.",
+      "evidence_ids": [
+        "LZ-LEDGER-051"
+      ]
+    },
+    {
+      "id": "LZ-R075",
+      "stability": "stable",
+      "rule": "Marketplace, LazMall and LazGlobal on a country signup page are registration or program labels, not new executable T One store-model values; resolve the authorized country seller identity, store binding, ownership and actual program entitlement before routing.",
+      "evidence_ids": [
+        "LZ-LEDGER-052"
+      ]
+    },
+    {
+      "id": "LZ-R076",
+      "stability": "stable",
+      "rule": "Southeast Asia in LazGlobal marketing copy remains a non-executable display or program scope; never collapse SG, MY, TH, VN, PH and ID into one SEA store, seller ID, inventory, campaign, warehouse or write lock.",
+      "evidence_ids": [
+        "LZ-LEDGER-052"
+      ]
+    },
+    {
+      "id": "LZ-R077",
+      "stability": "volatile",
+      "rule": "Country signup benefits, fee holidays, advertising credits and onboarding promotions require current country terms, dates, eligibility and owner context; public marketing copy without versioned terms must not be hard-coded or generalized to six countries.",
+      "evidence_ids": [
+        "LZ-LEDGER-052"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R078",
+      "stability": "stable",
+      "rule": "A direct link from an official Seller Center can verify a social-channel identity for provenance, but channel popularity, titles, view counts and upload labels remain time-sensitive content metadata and do not establish platform policy or a connected store capability.",
+      "evidence_ids": [
+        "LZ-LEDGER-052",
+        "LZ-LEDGER-053"
+      ]
+    },
+    {
+      "id": "LZ-R079",
+      "stability": "stable",
+      "rule": "An official MCL warehouse tour may document a dated public workflow description, but warehouse eligibility, enrollment, fees, SKU mapping, inventory ownership, service levels, returns and current order objects remain unknown until read from an authorized country store or contract.",
+      "evidence_ids": [
+        "LZ-LEDGER-054"
+      ]
+    },
+    {
+      "id": "LZ-R080",
+      "stability": "stable",
+      "rule": "Keep warehouse enrollment, inbound appointment, receipt, putaway, sellable inventory, allocation, pick, pack, dispatch, carrier handoff and delivery as separate evidence states; a video frame or marketing description completes none of them for a specific SKU or order.",
+      "evidence_ids": [
+        "LZ-LEDGER-054"
+      ]
+    },
+    {
+      "id": "LZ-R081",
+      "stability": "stable",
+      "rule": "A platform transcript that contains only low-information music text and comments that contain only praise yield zero operational rule candidates; record their actual coverage and filtered-noise count without inferring instructions, SLA, sentiment consensus or service quality.",
+      "evidence_ids": [
+        "LZ-LEDGER-054"
+      ]
+    },
+    {
+      "id": "LZ-R082",
+      "stability": "volatile",
+      "rule": "Treat the public MCL program-page country list as a dated availability signal only: the 2026-07-19 capture named SG, MY, TH, VN and ID but not PH; recheck current official program terms and the exact seller account before any country eligibility decision.",
+      "evidence_ids": [
+        "LZ-LEDGER-055"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R083",
+      "stability": "stable",
+      "rule": "MCL's one consolidated stock model is a fulfillment-program concept, not one executable Southeast Asia store or inventory ledger. Retain country site, seller identity, store binding, program enrollment, warehouse, sales channel, SKU and inventory ownership on every object.",
+      "evidence_ids": [
+        "LZ-LEDGER-055",
+        "LZ-LEDGER-056"
+      ]
+    },
+    {
+      "id": "LZ-R084",
+      "stability": "stable",
+      "rule": "A Lazada Logistics Philippines page describing FBL, warehousing, pick-pack-ship, returns or customer service proves PH FBL or fulfillment presence only; zero MCL mentions and a missing PH navigation link cannot be promoted into PH MCL availability.",
+      "evidence_ids": [
+        "LZ-LEDGER-055",
+        "LZ-LEDGER-057"
+      ]
+    },
+    {
+      "id": "LZ-R085",
+      "stability": "stable",
+      "rule": "A public MCL or country logistics page, legal disclaimer, event page or contact section establishes no enrollment, contract, fee, SLA, seller eligibility, warehouse/SKU mapping or authorization to contact a person. Do not submit a lead or external message without owner confirmation.",
+      "evidence_ids": [
+        "LZ-LEDGER-055",
+        "LZ-LEDGER-056",
+        "LZ-LEDGER-057"
+      ]
+    },
+    {
+      "id": "LZ-R086",
+      "stability": "stable",
+      "rule": "Facility examples such as air-conditioned storage for beauty or groceries and fenced zones for high-value items are category-sensitive capability signals, not universal SKU acceptance. Resolve the target country leaf category, product compliance, storage requirements and authorized warehouse mapping before fulfillment planning.",
+      "evidence_ids": [
+        "LZ-LEDGER-057"
+      ]
+    },
+    {
+      "id": "LZ-R087",
+      "stability": "volatile",
+      "rule": "When a newer Lazada-authored sponsored article claims six-country MCL coverage including PH while the public MCL program page lists five countries, preserve the conflict instead of choosing or merging it; require a current first-party MCL term, contract or authorized seller eligibility read.",
+      "evidence_ids": [
+        "LZ-LEDGER-055",
+        "LZ-LEDGER-057",
+        "LZ-LEDGER-058"
+      ],
+      "recheck_days": 14
+    },
+    {
+      "id": "LZ-R088",
+      "stability": "stable",
+      "rule": "Sponsored-content volume, growth and service-quality figures remain dated marketing claims even when the byline is Lazada. Never turn nearly-60-percent, over-170-percent or similar figures into policy, SLA, forecast, guarantee or a seller-specific operating result without methodology and scoped live evidence.",
+      "evidence_ids": [
+        "LZ-LEDGER-058"
+      ]
+    },
+    {
+      "id": "LZ-R089",
+      "stability": "stable",
+      "rule": "A fully reviewed public social carousel with an MCL event caption, warehouse imagery, likes and zero comments proves only the bounded public post. It yields zero comment clusters and no seller entitlement, warehouse state, service result or official identity upgrade without a reverse-link chain.",
+      "evidence_ids": [
+        "LZ-LEDGER-059"
+      ]
+    },
+    {
+      "id": "LZ-R090",
+      "stability": "stable",
+      "rule": "A community page blocked before body or comments is opened_not_reviewed, not a dated case or consensus. Record HTTP status and zero coverage, stop before challenges or login, and never substitute search summaries for the inaccessible post.",
+      "evidence_ids": [
+        "LZ-LEDGER-060"
+      ]
+    },
+    {
+      "id": "LZ-R091",
+      "stability": "stable",
+      "rule": "A package license, recent release, CI run, star count, README feature list or passing unit test is not a connected Lazada capability. Admit a connector only after secure static review, exact country and seller-identity modeling, endpoint-contract tests and one owner-authorized scoped read.",
+      "evidence_ids": [
+        "LZ-LEDGER-061",
+        "LZ-LEDGER-062",
+        "LZ-LEDGER-063",
+        "LZ-LEDGER-067"
+      ]
+    },
+    {
+      "id": "LZ-R092",
+      "stability": "stable",
+      "rule": "Every unofficial Lazada client must fail closed when country or region is missing or invalid and must bind credentials to country_user_info.country, seller_id, short_code and T One store_binding. Never default an absent country to VN, accept ALL as an executable store or use a shared default token key.",
+      "evidence_ids": [
+        "LZ-LEDGER-002",
+        "LZ-LEDGER-061",
+        "LZ-LEDGER-063",
+        "LZ-LEDGER-067"
+      ]
+    },
+    {
+      "id": "LZ-R093",
+      "stability": "volatile",
+      "rule": "Method-mapping or mock-only tests do not validate Lazada transport. Check the exact endpoint's HTTP method, API path, body encoding, signature inputs, response schema and current app-generated official SDK before treating a client implementation as correct.",
+      "evidence_ids": [
+        "LZ-LEDGER-061",
+        "LZ-LEDGER-065",
+        "LZ-LEDGER-066"
+      ],
+      "recheck_days": 30
+    },
+    {
+      "id": "LZ-R094",
+      "stability": "stable",
+      "rule": "Reject any SDK or connector that disables TLS peer or hostname verification, defaults to InsecureSkipVerify, or can log app secrets, access tokens, signatures or signed request URLs; permissive licensing and release recency do not mitigate these defects.",
+      "evidence_ids": [
+        "LZ-LEDGER-062",
+        "LZ-LEDGER-067"
+      ]
+    },
+    {
+      "id": "LZ-R095",
+      "stability": "stable",
+      "rule": "A live probe of two SG endpoints cannot establish MY, TH, VN, PH or ID support, token refresh, pagination, error recovery or every generated manager. Maintain a country-by-endpoint verification matrix and leave untested cells blocked_connector or research_only.",
+      "evidence_ids": [
+        "LZ-LEDGER-063"
+      ]
+    },
+    {
+      "id": "LZ-R096",
+      "stability": "stable",
+      "rule": "Do not run, copy or commercialize an automated documentation scraper, mirrored platform documentation or generated API specification when access permission, root license or currentness is unknown; generated endpoint quantity is not connector evidence.",
+      "evidence_ids": [
+        "LZ-LEDGER-064"
+      ]
+    },
+    {
+      "id": "LZ-R097",
+      "stability": "stable",
+      "rule": "Verify package test claims by tracing the test entrypoint, failure paths, assertions and observable execution. Blank credentials, print-only cases, disabled TLS or an early return before the test runner make an 'every feature tested' claim unusable for admission.",
+      "evidence_ids": [
+        "LZ-LEDGER-067"
+      ]
+    }
+  ]
+}

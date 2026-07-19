@@ -1,0 +1,7 @@
+interface:
+  display_name: "Etsy T One Expert"
+  short_description: "Etsy originals, POD, listings, ads, and fulfillment"
+  default_prompt: "Use $etsy to audit this Etsy shop task and return evidence-backed drafts with shop-scoped approval gates."
+
+policy:
+  allow_implicit_invocation: true

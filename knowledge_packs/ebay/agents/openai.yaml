@@ -1,0 +1,4 @@
+interface:
+  display_name: "eBay T One 专家"
+  short_description: "eBay 多站点动态类目、刊登、履约、财务、广告与复盘专家"
+  default_prompt: "Use $ebay to audit this eBay task with dynamic marketplace/category metadata, tenant-scoped product facts, and store-scoped approval gates."

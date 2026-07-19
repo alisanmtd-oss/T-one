@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+
+- Published all 17 reusable non-TikTok-Shop knowledge packs as complete sanitized bundles.
+- Added per-pack Skill instructions, curated references, machine contracts, rules, evaluations, source ledgers or capability schemas where available.
+- Added Amazon, B2B outbound customer development, B2B marketplace sales and commerce-video packs to ordinary-chat routing.
+- Kept raw browser captures, private product fixtures, customer data, local learning runs and live connector state outside the public tree.
+- Continued to exclude the TikTok Shop agent, Skill, training contract, tests and references.
+
 ## 0.3.1
 
 - Simplified the public chat demo to one goal-first composer with automatic agent selection.

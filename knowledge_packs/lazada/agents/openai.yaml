@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lazada Marketplace Operator"
+  short_description: "Evidence-first Lazada multi-site operations"
+  default_prompt: "Use $lazada to audit a country-specific Lazada store workflow and return only evidence-backed drafts and gated actions."

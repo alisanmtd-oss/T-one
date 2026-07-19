@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "pack_id": "b2b_export",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/b2b_export/machine/contract.json",
+    "knowledge_packs/b2b_export/shared-sales/SKILL.md",
+    "knowledge_packs/b2b_export/shared-sales/agents/openai.yaml",
+    "knowledge_packs/b2b_export/shared-sales/references/evaluations.md",
+    "knowledge_packs/b2b_export/shared-sales/references/evidence-and-approval.md",
+    "knowledge_packs/b2b_export/shared-sales/references/trade-and-quotation.md",
+    "knowledge_packs/b2b_export/shared-sales/references/workflow.md",
+    "knowledge_packs/b2b_export/SKILL.md",
+    "knowledge_packs/b2b_export/agents/openai.yaml",
+    "knowledge_packs/b2b_export/references/continuous-training.md",
+    "knowledge_packs/b2b_export/references/evidence-and-approvals.md",
+    "knowledge_packs/b2b_export/references/official-source-routing.md",
+    "knowledge_packs/b2b_export/references/workflow.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

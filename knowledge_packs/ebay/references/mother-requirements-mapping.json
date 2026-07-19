@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "source_role": "cross_border_mother_requirement_checklist_not_official_authority",
+  "captured_at": "2026-07-18T22:25:00+08:00",
+  "expert": "ebay",
+  "allowed_mapping_statuses": [
+    "reuse_existing",
+    "extend_existing",
+    "research_only",
+    "blocked_connector",
+    "rejected_unsafe"
+  ],
+  "rules": [
+    "Map requirements into the existing T One architecture; never create a second universal Agent or model gateway.",
+    "A mother-document claim is a requirement candidate, not a platform fact.",
+    "Official current evidence and observed software outrank the mother document and seller experience.",
+    "Planned, named, configured or visible capabilities are not implemented or connected capabilities."
+  ],
+  "items": [
+    {
+      "id": "MOTHER-001",
+      "mother_requirement": "Separate marketplace commerce, independent commerce, and external media channels.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "platform expert registry and cross-channel advertising taxonomy already separate eBay marketplace ads from independent-site channels",
+      "gap": "eBay Offsite can still be misread as a Google Ads account",
+      "minimal_fusion_path": "keep eBay General/Priority/Offsite inside the eBay Marketing domain and retain the existing cross-channel measurement core",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-002",
+      "mother_requirement": "Keep marketplace on-site ads distinct from independent-site external ads.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "shared advertising agent already provides measurement, profit, draft, approval and stop-loss primitives",
+      "gap": "no real eBay Marketing authorization",
+      "minimal_fusion_path": "add an eBay-specific adapter contract and do not duplicate the advertising runtime",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-003",
+      "mother_requirement": "Switch between specialized platform experts from the product surface.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "platform_expert_registry, Skill/plugin/model/connector entry points and C1 expert shell exist",
+      "gap": "eBay page-to-save-to-real-call-to-writeback loop is not implemented",
+      "minimal_fusion_path": "register this existing Skill/contract through the shared integration task only after C4 is available",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-004",
+      "mother_requirement": "Every expert should master every mainstream and niche tool automatically.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "T One has connection-state labels and a capability registry",
+      "gap": "tool names such as WatchCount/Terapeak do not prove access, license, API or mastery",
+      "minimal_fusion_path": "record each tool as research_only/available_unconnected/connected_read_only/connected_write_gated/blocked using actual evidence",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-005",
+      "mother_requirement": "Continuously collect official updates, seller experience, video and GitHub projects.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "versioned learning and project automation foundations exist",
+      "gap": "eBay lacked a dedicated evidence-first cursor, failure log and recurring job",
+      "minimal_fusion_path": "use the eBay-only daily automation, official-first evidence taxonomy and no-increment rule",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-006",
+      "mother_requirement": "Do not disrupt working product functionality while extending expertise.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "C1 formal Windows package, T1 mark, one-store primary conversation and task-context isolation are completed",
+      "gap": "shared C4 integration is occupied/pending",
+      "minimal_fusion_path": "write only eBay-owned Skill/config/test/report assets and submit shared-core suggestions",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-007",
+      "mother_requirement": "Use Chinese forums and content communities as learning sources.",
+      "mapping_status": "research_only",
+      "existing_capability": "public research workflow exists",
+      "gap": "source quality, copyright, access permission, sample and site scope vary",
+      "minimal_fusion_path": "store only seller_hypothesis-style experiment candidates; never promote to official rules",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-008",
+      "mother_requirement": "Use overseas video, social groups, forums and eBay community sources.",
+      "mapping_status": "research_only",
+      "existing_capability": "browser/public research and content analysis foundations exist",
+      "gap": "logged-in/private group rights and data-use permission are not established",
+      "minimal_fusion_path": "use public permitted pages only, record provenance, and keep anecdotal claims as experiments",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-009",
+      "mother_requirement": "Automatically bypass anti-scraping controls on overseas sites.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "none authorized",
+      "gap": "the requirement violates platform/access boundaries",
+      "minimal_fusion_path": "use official pages/APIs, robots/terms/rate limits and legal browser sessions; stop at CAPTCHA/MFA/access controls",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-010",
+      "mother_requirement": "Check platform official university, announcements, policies and algorithms daily.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "official eBay Developer, Seller Center, Help and Seller Updates are public",
+      "gap": "not all pages publish dates and some official pages conflict",
+      "minimal_fusion_path": "capture official URLs, interaction logs, release dates, expiry and conflicts through the eBay automation",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-011",
+      "mother_requirement": "Collect payments, tax, customs and cross-border policy in real time.",
+      "mapping_status": "research_only",
+      "existing_capability": "Finances/API and international-selling evidence index exists",
+      "gap": "legal/tax advice, live seller payouts and country-specific obligations are absent",
+      "minimal_fusion_path": "index official eBay and competent-authority sources, mark time-sensitive and require professional/owner review",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-012",
+      "mother_requirement": "Promote seller experience to standard knowledge after three sellers agree.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "T One supports experiments and result writeback",
+      "gap": "seller agreement is not first-party authority and may be site/category specific",
+      "minimal_fusion_path": "record hypothesis, sample, site, metric and stop rule; never convert to official_rule",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-013",
+      "mother_requirement": "Learn automation, ERP, crawler and anti-association GitHub projects on a schedule.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "github_capability_registry provides project admission decisions",
+      "gap": "unknown repositories and anti-association tools are not approved",
+      "minimal_fusion_path": "use only admitted repositories; reject anti-association evasion and keep repository research separate from integration",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-014",
+      "mother_requirement": "Download and transcribe any platform video automatically.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "creative_video.py, CapCut/FFmpeg detection and analysis rules exist",
+      "gap": "download rights, private access and per-project tool routing are not established",
+      "minimal_fusion_path": "analyze only user-provided, owned, licensed or platform-permitted media; store rights evidence",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-015",
+      "mother_requirement": "Use eBay Terapeak for sold-price and market research.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "eBay Product Research (formerly Terapeak) is indexed as an official native research surface",
+      "gap": "no Seller Hub identity or actual query result",
+      "minimal_fusion_path": "use Product Research under the bound seller, recording query, site, date window, filters, sample and limitations",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-016",
+      "mother_requirement": "Use WatchCount for eBay popularity research.",
+      "mapping_status": "research_only",
+      "existing_capability": "candidate is catalogued",
+      "gap": "license, price, login, API, data rights and current operation are unverified",
+      "minimal_fusion_path": "verify legal public use before any task and never claim a connected API",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-017",
+      "mother_requirement": "Analyze competitor auction data.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "public research and eBay Product Research workflow exist",
+      "gap": "no current marketplace sample or seller tool session",
+      "minimal_fusion_path": "capture query/site/filters/sample and analyze structure; do not copy protected assets",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-018",
+      "mother_requirement": "Bulk scrape every competitor store and reproduce selection logic.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "permitted public research can inspect small, scoped samples",
+      "gap": "bulk scraping rights, access limits, privacy and copyright are absent",
+      "minimal_fusion_path": "use official Product Research/Browse APIs after authorization and sample within documented limits",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-019",
+      "mother_requirement": "Reuse competitor reviews, buyer images and videos directly in ads.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "POD IP and creative-rights gates exist",
+      "gap": "no ownership or commercial license",
+      "minimal_fusion_path": "analyze themes/structure only; require owned or licensed source assets for every Listing/ad",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-020",
+      "mother_requirement": "Use exchange-rate, tariff and cross-border cost tools.",
+      "mapping_status": "blocked_connector",
+      "existing_capability": "shared finance/profit layer and eBay Finances contract exist",
+      "gap": "no live payout, FX, tax, tariff, shipping or unit-cost connectors",
+      "minimal_fusion_path": "connect owner-approved sources and keep currency/time/source per value",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-021",
+      "mother_requirement": "Automatically select tools and cross-validate multiple data sources.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "single LLMClient gateway, model slots and capability routing exist",
+      "gap": "real eBay connector health and result provenance are absent",
+      "minimal_fusion_path": "route only through connected capability states and require source-level provenance/conflict handling",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-022",
+      "mother_requirement": "Continuously learn new tool versions and retire old methods.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "versioned evidence and daily automation now exist",
+      "gap": "no automatic API schema diff or live adapter upgrade",
+      "minimal_fusion_path": "watch official release notes, expire old evidence and open a development suggestion rather than silently changing shared core",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-023",
+      "mother_requirement": "Cover eBay seller levels, auction and fixed-price operation.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "Inventory/Metadata/Analytics contracts and Listing formats are trained",
+      "gap": "no live privileges, performance profile or category eligibility",
+      "minimal_fusion_path": "read bound Account/Analytics/Metadata evidence before store-specific advice",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-024",
+      "mother_requirement": "Cover eBay sites and cross-border sales.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "expert routes real marketplace IDs and blocks GLOBAL writes",
+      "gap": "shared adapter/capability pack still uses GLOBAL planning scope and no seller sites are bound",
+      "minimal_fusion_path": "keep the eBay contract site-specific now; propose shared registry migration later without editing occupied core",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-025",
+      "mother_requirement": "Cover categories, Listing, variations, images and video.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "dynamic schema, POD Listing/IP, Inventory/Metadata and Media training modules exist",
+      "gap": "no live category response, product facts, upload or saved listing",
+      "minimal_fusion_path": "bind Taxonomy/Metadata/Media/Inventory clients to the existing schema workflow after OAuth",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-026",
+      "mother_requirement": "Cover eBay price, offers, discounts and Promoted Listings.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "shared ad-profit gates and eBay Marketing contract exist",
+      "gap": "no Store subscription, price history, advertising eligibility, terms, campaign or report",
+      "minimal_fusion_path": "reuse shared measurement/approval and add eBay Marketing-specific evidence adapter",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-027",
+      "mother_requirement": "Cover orders, shipping, returns, disputes, performance and settlement.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "shared operations/finance layers and eBay Fulfillment/Analytics/Finances contracts exist",
+      "gap": "no seller-scoped API responses or ERP/cost data",
+      "minimal_fusion_path": "implement thin eBay clients behind existing order, approval, evidence and finance primitives",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-028",
+      "mother_requirement": "Clean advertising, course and low-quality content before learning.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "official-first evidence hierarchy and claim-status taxonomy",
+      "gap": "no automated content-quality classifier is required for this first-party-only run",
+      "minimal_fusion_path": "retain provenance and reject unsupported claims at evidence review",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-029",
+      "mother_requirement": "Distill general principles across platforms.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "shared listing, ad, finance, security, creative and model layers exist",
+      "gap": "platform-specific rules can be lost if over-generalized",
+      "minimal_fusion_path": "reuse common primitives while keeping eBay marketplace/category/API evidence in this expert",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-030",
+      "mother_requirement": "Update official policies daily.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "eBay daily automation is active",
+      "gap": "not every official source changes daily and repeated rewriting would create noise",
+      "minimal_fusion_path": "use source watermarks and write only evidence deltas or a no-increment result",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-031",
+      "mother_requirement": "Weekly collect the whole web, videos and GitHub.",
+      "mapping_status": "research_only",
+      "existing_capability": "automation and admitted GitHub registry exist",
+      "gap": "whole-web access, private video rights and unreviewed repositories are unsafe/unbounded",
+      "minimal_fusion_path": "prioritize official sources, permitted public evidence and admitted repositories only",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-032",
+      "mother_requirement": "Monthly Self-Instruct generation of massive industry Q&A.",
+      "mapping_status": "research_only",
+      "existing_capability": "evaluation and model gateway foundations exist",
+      "gap": "synthetic volume can amplify unsupported facts and does not prove business ability",
+      "minimal_fusion_path": "generate only evidence-linked regression variants after a verified failure or rule change",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-033",
+      "mother_requirement": "Provide one-click global knowledge update in the panel.",
+      "mapping_status": "research_only",
+      "existing_capability": "expert extension surface and recurring jobs exist",
+      "gap": "a cross-expert scheduler is outside this expert and C4 shared core is occupied",
+      "minimal_fusion_path": "keep the eBay job independent and submit a future shared UI suggestion",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "MOTHER-034",
+      "mother_requirement": "Provide an eBay expert switch command.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "expert-ebay-marketplace registration and the `$ebay` Skill entry exist",
+      "gap": "formal App route to this Skill is not verified",
+      "minimal_fusion_path": "reuse the registry and Skill metadata; no new expert runtime",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-035",
+      "mother_requirement": "Load a complete or compact mother knowledge base.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "layered public/project/store/task memory exists",
+      "gap": "loading a giant mother prompt conflicts with minimum-slice retrieval and evidence expiry",
+      "minimal_fusion_path": "use the concise Skill plus task-relevant references and contract slices",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-036",
+      "mother_requirement": "Parse any supplied video link and learn it automatically.",
+      "mapping_status": "research_only",
+      "existing_capability": "visual/video analysis and rights rules exist",
+      "gap": "rights, download permission, site access and project routing must be checked",
+      "minimal_fusion_path": "accept owned/licensed/user-provided files or permitted official pages; no bypass/download assumption",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "MOTHER-037",
+      "mother_requirement": "Perform competitor research from a keyword autonomously.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "Product Research/Browse candidates and public research workflow exist",
+      "gap": "no connected eBay research tool or current marketplace sample",
+      "minimal_fusion_path": "prepare scoped public research or use bound Product Research after authorization, preserving query/filters/sample",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "MOTHER-038",
+      "mother_requirement": "All outputs must use an immutable internal knowledge base and prohibit model knowledge.",
+      "mapping_status": "rejected_unsafe",
+      "existing_capability": "single model gateway plus versioned evidence references",
+      "gap": "immutable prompts cannot expire or correct errors",
+      "minimal_fusion_path": "use current evidence first, label inference, version rules, and allow audited correction",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "MOTHER-039",
+      "mother_requirement": "Never allow casual chat; operate only around commerce.",
+      "mapping_status": "research_only",
+      "existing_capability": "expert trigger and structured output constrain domain work",
+      "gap": "an absolute conversational ban is not a business capability",
+      "minimal_fusion_path": "keep responses task-focused without an immutable behavior lock",
+      "evidence_status": "draft"
+    },
+    {
+      "id": "BASELINE-001",
+      "mother_requirement": "Reuse completed C1 Windows package, T1 mark, project/platform/multi-store hierarchy, one-store conversation and context isolation.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "T-One-0.1.0 and C1 acceptance exist as dated baseline evidence",
+      "gap": "the 2026-07-18 22:58-23:01 formal-package retest failed with Python backend exit=9009, and no eBay live connector is included by C1",
+      "minimal_fusion_path": "repair the existing package startup in the shared-core task, then bind this expert to the same shell and route contract",
+      "evidence_status": "failed_attempt"
+    },
+    {
+      "id": "BASELINE-002",
+      "mother_requirement": "Reuse the only LLMClient + multi_ai.json gateway, nine ready models, persistence, DPAPI credentials and real model errors/calls.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "AI base chain is complete",
+      "gap": "model readiness does not create eBay OAuth/API access",
+      "minimal_fusion_path": "route eBay reasoning/copy/image/video/ads/data tasks through existing slots",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "BASELINE-003",
+      "mother_requirement": "Reuse extension/expert configuration and Etsy precedent without cloning it.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "expert registry and Etsy Skill/route tests exist",
+      "gap": "Etsy and eBay permissions, policies and identifiers differ",
+      "minimal_fusion_path": "reuse architecture/testing patterns only; keep eBay evidence, OAuth and objects separate",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "BASELINE-005",
+      "mother_requirement": "Reuse dynamic schema, adapter and evidence registry while showing most platform APIs/ERP as blocked.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "adapter/developer/activity/capability registries exist",
+      "gap": "eBay adapter/capability pack still plans GLOBAL and API application is only ready_to_apply",
+      "minimal_fusion_path": "enforce site-specific rules in this contract now and submit a shared-registry correction for C4",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "BASELINE-008",
+      "mother_requirement": "Reuse cross-channel ad measurement, profit, approval and stop-loss foundations.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "shared advertising core exists",
+      "gap": "eBay Marketing eligibility, terms, OAuth and reports are unconnected",
+      "minimal_fusion_path": "add eBay-specific Marketing evidence and action adapter without a new ad runtime",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "BASELINE-009",
+      "mother_requirement": "Reuse visual/video analysis, storyboard, branching, CapCut and FFmpeg detection.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "creative_video.py and media-analysis foundations exist",
+      "gap": "eBay Media API, listing/video moderation and performance writeback are not connected",
+      "minimal_fusion_path": "hand owned/licensed media artifacts to eBay Media/Marketing adapters after authorization",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "BASELINE-010",
+      "mother_requirement": "Use only GitHub projects admitted by github_capability_registry and do not equate research with integration.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "repository admission and license blocks exist",
+      "gap": "no new repository is needed for this eBay increment",
+      "minimal_fusion_path": "use official APIs and current local code; open a separate proposal if a verified connector gap requires a repository",
+      "evidence_status": "verified_live_fact"
+    },
+    {
+      "id": "BASELINE-012",
+      "mother_requirement": "Make category capabilities dynamic for apparel, home, beauty, electronics, food/restricted products, digital goods, collectibles, vehicle parts and machinery.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "dynamic product schema and platform adapter foundations exist",
+      "gap": "no connected eBay Taxonomy/Metadata client or category snapshot is available",
+      "minimal_fusion_path": "reuse the schema foundation and add marketplace category-tree, leaf-aspect, condition/category-policy retrieval and versioned cache after OAuth",
+      "evidence_status": "blocked_owner_input"
+    },
+    {
+      "id": "BASELINE-013",
+      "mother_requirement": "Keep each user's product, price, image, inventory, warehouse, brand and compliance facts inside the bound tenant/project/product/store.",
+      "mapping_status": "extend_existing",
+      "existing_capability": "route dimensions and task/product intake primitives exist",
+      "gap": "the current eBay App path does not yet read the unique Skill or prove product-fact provenance end to end",
+      "minimal_fusion_path": "add product_id provenance and unknown handling to the existing route/Skill integration; never use private_tenant sample facts as fallback",
+      "evidence_status": "unknown"
+    },
+    {
+      "id": "BASELINE-014",
+      "mother_requirement": "Keep listing, ad, order, return, payout, customer and failure evidence task-scoped and exclude private private_tenant data from open-source or multi-tenant releases.",
+      "mapping_status": "reuse_existing",
+      "existing_capability": "task context, evidence vocabulary and append-only result patterns already exist",
+      "gap": "shared release packaging still needs an explicit private-data leakage gate",
+      "minimal_fusion_path": "reuse task evidence ownership now and submit a shared build/release scan requirement to the main task",
+      "evidence_status": "draft"
+    }
+  ]
+}

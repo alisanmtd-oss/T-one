@@ -1,0 +1,780 @@
+{
+  "schema_version": 1,
+  "release_version": "0.4.0",
+  "pack_count": 17,
+  "pack_ids": [
+    "amazon",
+    "aliexpress",
+    "b2b_export",
+    "b2b_outbound",
+    "b2b_platform_sales",
+    "commerce_video",
+    "ebay",
+    "etsy",
+    "global_local_channel",
+    "google_ads_channel",
+    "independent_commerce",
+    "lazada",
+    "meta_channel",
+    "shein",
+    "shopee",
+    "tiktok_ads_channel",
+    "walmart"
+  ],
+  "excluded_pack_ids": [
+    "tiktok_shop"
+  ],
+  "include_files": [
+    {
+      "source": "public_release_template/knowledge_packs/amazon/machine/evidence-index.json",
+      "target": "knowledge_packs/amazon/machine/evidence-index.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/machine/rules.json",
+      "target": "knowledge_packs/amazon/machine/rules.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/machine/sources.json",
+      "target": "knowledge_packs/amazon/machine/sources.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/machine/curriculum.json",
+      "target": "knowledge_packs/amazon/machine/curriculum.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/machine/evaluations.json",
+      "target": "knowledge_packs/amazon/machine/evaluations.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/SKILL.md",
+      "target": "knowledge_packs/amazon/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/agents/openai.yaml",
+      "target": "knowledge_packs/amazon/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/references/curriculum.md",
+      "target": "knowledge_packs/amazon/references/curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/references/evidence-and-learning.md",
+      "target": "knowledge_packs/amazon/references/evidence-and-learning.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/amazon/PUBLIC_PACK.json",
+      "target": "knowledge_packs/amazon/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/machine/contract.json",
+      "target": "knowledge_packs/aliexpress/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/SKILL.md",
+      "target": "knowledge_packs/aliexpress/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/agents/openai.yaml",
+      "target": "knowledge_packs/aliexpress/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/references/course.md",
+      "target": "knowledge_packs/aliexpress/references/course.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/references/incremental-training.md",
+      "target": "knowledge_packs/aliexpress/references/incremental-training.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/references/maternal-requirements-matrix.md",
+      "target": "knowledge_packs/aliexpress/references/maternal-requirements-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/references/official-evidence.md",
+      "target": "knowledge_packs/aliexpress/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/references/workflow-and-tool-states.md",
+      "target": "knowledge_packs/aliexpress/references/workflow-and-tool-states.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/aliexpress/PUBLIC_PACK.json",
+      "target": "knowledge_packs/aliexpress/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/machine/contract.json",
+      "target": "knowledge_packs/b2b_export/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/SKILL.md",
+      "target": "knowledge_packs/b2b_export/shared-sales/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/agents/openai.yaml",
+      "target": "knowledge_packs/b2b_export/shared-sales/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/references/evaluations.md",
+      "target": "knowledge_packs/b2b_export/shared-sales/references/evaluations.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/references/evidence-and-approval.md",
+      "target": "knowledge_packs/b2b_export/shared-sales/references/evidence-and-approval.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/references/trade-and-quotation.md",
+      "target": "knowledge_packs/b2b_export/shared-sales/references/trade-and-quotation.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/shared-sales/references/workflow.md",
+      "target": "knowledge_packs/b2b_export/shared-sales/references/workflow.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/SKILL.md",
+      "target": "knowledge_packs/b2b_export/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/agents/openai.yaml",
+      "target": "knowledge_packs/b2b_export/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/references/continuous-training.md",
+      "target": "knowledge_packs/b2b_export/references/continuous-training.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/references/evidence-and-approvals.md",
+      "target": "knowledge_packs/b2b_export/references/evidence-and-approvals.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/references/official-source-routing.md",
+      "target": "knowledge_packs/b2b_export/references/official-source-routing.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/references/workflow.md",
+      "target": "knowledge_packs/b2b_export/references/workflow.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_export/PUBLIC_PACK.json",
+      "target": "knowledge_packs/b2b_export/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_outbound/SKILL.md",
+      "target": "knowledge_packs/b2b_outbound/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_outbound/agents/openai.yaml",
+      "target": "knowledge_packs/b2b_outbound/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_outbound/references/source-and-boundaries.md",
+      "target": "knowledge_packs/b2b_outbound/references/source-and-boundaries.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_outbound/PUBLIC_PACK.json",
+      "target": "knowledge_packs/b2b_outbound/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_platform_sales/SKILL.md",
+      "target": "knowledge_packs/b2b_platform_sales/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_platform_sales/agents/openai.yaml",
+      "target": "knowledge_packs/b2b_platform_sales/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_platform_sales/references/source-and-boundaries.md",
+      "target": "knowledge_packs/b2b_platform_sales/references/source-and-boundaries.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/b2b_platform_sales/PUBLIC_PACK.json",
+      "target": "knowledge_packs/b2b_platform_sales/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/commerce_video/machine/capabilities.json",
+      "target": "knowledge_packs/commerce_video/machine/capabilities.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/commerce_video/SKILL.md",
+      "target": "knowledge_packs/commerce_video/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/commerce_video/PUBLIC_PACK.json",
+      "target": "knowledge_packs/commerce_video/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/machine/contract.json",
+      "target": "knowledge_packs/ebay/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/SKILL.md",
+      "target": "knowledge_packs/ebay/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/agents/openai.yaml",
+      "target": "knowledge_packs/ebay/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/curriculum.md",
+      "target": "knowledge_packs/ebay/references/curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/evaluation-set.json",
+      "target": "knowledge_packs/ebay/references/evaluation-set.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/failure-review.json",
+      "target": "knowledge_packs/ebay/references/failure-review.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/mother-requirements-mapping.json",
+      "target": "knowledge_packs/ebay/references/mother-requirements-mapping.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/official-evidence.md",
+      "target": "knowledge_packs/ebay/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/references/rules.md",
+      "target": "knowledge_packs/ebay/references/rules.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/ebay/PUBLIC_PACK.json",
+      "target": "knowledge_packs/ebay/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/machine/contract.json",
+      "target": "knowledge_packs/etsy/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/legacy-commerce-operator.md",
+      "target": "knowledge_packs/etsy/legacy-commerce-operator.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/SKILL.md",
+      "target": "knowledge_packs/etsy/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/agents/openai.yaml",
+      "target": "knowledge_packs/etsy/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/connector-readiness.json",
+      "target": "knowledge_packs/etsy/references/connector-readiness.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/curriculum.json",
+      "target": "knowledge_packs/etsy/references/curriculum.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/evidence-index.json",
+      "target": "knowledge_packs/etsy/references/evidence-index.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/failure-review.json",
+      "target": "knowledge_packs/etsy/references/failure-review.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/mother-requirement-matrix.md",
+      "target": "knowledge_packs/etsy/references/mother-requirement-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/official-rules.md",
+      "target": "knowledge_packs/etsy/references/official-rules.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/references/workflows-and-gates.md",
+      "target": "knowledge_packs/etsy/references/workflows-and-gates.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/etsy/PUBLIC_PACK.json",
+      "target": "knowledge_packs/etsy/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/global_local_channel/machine/contract.json",
+      "target": "knowledge_packs/global_local_channel/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/global_local_channel/SKILL.md",
+      "target": "knowledge_packs/global_local_channel/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/global_local_channel/agents/openai.yaml",
+      "target": "knowledge_packs/global_local_channel/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/global_local_channel/PUBLIC_PACK.json",
+      "target": "knowledge_packs/global_local_channel/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/google_ads_channel/machine/contract.json",
+      "target": "knowledge_packs/google_ads_channel/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/google_ads_channel/SKILL.md",
+      "target": "knowledge_packs/google_ads_channel/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/google_ads_channel/agents/openai.yaml",
+      "target": "knowledge_packs/google_ads_channel/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/google_ads_channel/references/official-evidence.md",
+      "target": "knowledge_packs/google_ads_channel/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/google_ads_channel/PUBLIC_PACK.json",
+      "target": "knowledge_packs/google_ads_channel/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/machine/contract.json",
+      "target": "knowledge_packs/independent_commerce/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/SKILL.md",
+      "target": "knowledge_packs/independent_commerce/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/agents/openai.yaml",
+      "target": "knowledge_packs/independent_commerce/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/references/mother-requirement-fusion-matrix.md",
+      "target": "knowledge_packs/independent_commerce/references/mother-requirement-fusion-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/references/official-sources.md",
+      "target": "knowledge_packs/independent_commerce/references/official-sources.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/references/platform-adapters.md",
+      "target": "knowledge_packs/independent_commerce/references/platform-adapters.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/references/training-curriculum.md",
+      "target": "knowledge_packs/independent_commerce/references/training-curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/references/vertical-extensions.md",
+      "target": "knowledge_packs/independent_commerce/references/vertical-extensions.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/independent_commerce/PUBLIC_PACK.json",
+      "target": "knowledge_packs/independent_commerce/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/machine/contract.json",
+      "target": "knowledge_packs/lazada/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/SKILL.md",
+      "target": "knowledge_packs/lazada/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/agents/openai.yaml",
+      "target": "knowledge_packs/lazada/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/continuous-training.md",
+      "target": "knowledge_packs/lazada/references/continuous-training.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/curriculum.md",
+      "target": "knowledge_packs/lazada/references/curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/evidence-ledger.json",
+      "target": "knowledge_packs/lazada/references/evidence-ledger.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/failure-retrospective.md",
+      "target": "knowledge_packs/lazada/references/failure-retrospective.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/mother-requirements-matrix.json",
+      "target": "knowledge_packs/lazada/references/mother-requirements-matrix.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/mother-requirements-matrix.md",
+      "target": "knowledge_packs/lazada/references/mother-requirements-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/official-github-index.json",
+      "target": "knowledge_packs/lazada/references/official-github-index.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/official-sources.md",
+      "target": "knowledge_packs/lazada/references/official-sources.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/references/rules.json",
+      "target": "knowledge_packs/lazada/references/rules.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/lazada/PUBLIC_PACK.json",
+      "target": "knowledge_packs/lazada/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/meta_channel/machine/contract.json",
+      "target": "knowledge_packs/meta_channel/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/meta_channel/SKILL.md",
+      "target": "knowledge_packs/meta_channel/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/meta_channel/agents/openai.yaml",
+      "target": "knowledge_packs/meta_channel/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/meta_channel/references/official-evidence.md",
+      "target": "knowledge_packs/meta_channel/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/meta_channel/PUBLIC_PACK.json",
+      "target": "knowledge_packs/meta_channel/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/machine/contract.json",
+      "target": "knowledge_packs/shein/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/SKILL.md",
+      "target": "knowledge_packs/shein/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/agents/openai.yaml",
+      "target": "knowledge_packs/shein/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/curriculum.md",
+      "target": "knowledge_packs/shein/references/curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/decision-workflows.md",
+      "target": "knowledge_packs/shein/references/decision-workflows.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/evidence-status-and-rules.md",
+      "target": "knowledge_packs/shein/references/evidence-status-and-rules.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/failure-review.md",
+      "target": "knowledge_packs/shein/references/failure-review.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/learning-governance.md",
+      "target": "knowledge_packs/shein/references/learning-governance.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/mother-requirements-mapping.md",
+      "target": "knowledge_packs/shein/references/mother-requirements-mapping.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/native-ai-and-tool-matrix.md",
+      "target": "knowledge_packs/shein/references/native-ai-and-tool-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/references/official-evidence.md",
+      "target": "knowledge_packs/shein/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shein/PUBLIC_PACK.json",
+      "target": "knowledge_packs/shein/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/machine/contract.json",
+      "target": "knowledge_packs/shopee/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/SKILL.md",
+      "target": "knowledge_packs/shopee/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/agents/openai.yaml",
+      "target": "knowledge_packs/shopee/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/continuous-training.md",
+      "target": "knowledge_packs/shopee/references/continuous-training.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/course.md",
+      "target": "knowledge_packs/shopee/references/course.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/evaluation-set.md",
+      "target": "knowledge_packs/shopee/references/evaluation-set.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/evidence-index.md",
+      "target": "knowledge_packs/shopee/references/evidence-index.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/failure-review.md",
+      "target": "knowledge_packs/shopee/references/failure-review.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/mother-requirement-fusion-matrix.md",
+      "target": "knowledge_packs/shopee/references/mother-requirement-fusion-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/official-evidence.md",
+      "target": "knowledge_packs/shopee/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/rules.md",
+      "target": "knowledge_packs/shopee/references/rules.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/site-and-program-matrix.md",
+      "target": "knowledge_packs/shopee/references/site-and-program-matrix.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/references/workflow-and-tools.md",
+      "target": "knowledge_packs/shopee/references/workflow-and-tools.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/shopee/PUBLIC_PACK.json",
+      "target": "knowledge_packs/shopee/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/tiktok_ads_channel/machine/contract.json",
+      "target": "knowledge_packs/tiktok_ads_channel/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/tiktok_ads_channel/SKILL.md",
+      "target": "knowledge_packs/tiktok_ads_channel/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/tiktok_ads_channel/agents/openai.yaml",
+      "target": "knowledge_packs/tiktok_ads_channel/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/tiktok_ads_channel/references/surface-and-evidence.md",
+      "target": "knowledge_packs/tiktok_ads_channel/references/surface-and-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/tiktok_ads_channel/PUBLIC_PACK.json",
+      "target": "knowledge_packs/tiktok_ads_channel/PUBLIC_PACK.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/machine/contract.json",
+      "target": "knowledge_packs/walmart/machine/contract.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/SKILL.md",
+      "target": "knowledge_packs/walmart/SKILL.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/agents/openai.yaml",
+      "target": "knowledge_packs/walmart/agents/openai.yaml"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/curriculum.md",
+      "target": "knowledge_packs/walmart/references/curriculum.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/failure-reviews.json",
+      "target": "knowledge_packs/walmart/references/failure-reviews.json"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/github-official-audit-2026-07-19.md",
+      "target": "knowledge_packs/walmart/references/github-official-audit-2026-07-19.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/mother-requirement-mapping.md",
+      "target": "knowledge_packs/walmart/references/mother-requirement-mapping.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/official-evidence.md",
+      "target": "knowledge_packs/walmart/references/official-evidence.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/references/training-operations.md",
+      "target": "knowledge_packs/walmart/references/training-operations.md"
+    },
+    {
+      "source": "public_release_template/knowledge_packs/walmart/PUBLIC_PACK.json",
+      "target": "knowledge_packs/walmart/PUBLIC_PACK.json"
+    }
+  ],
+  "inventory": {
+    "amazon": [
+      "knowledge_packs/amazon/machine/evidence-index.json",
+      "knowledge_packs/amazon/machine/rules.json",
+      "knowledge_packs/amazon/machine/sources.json",
+      "knowledge_packs/amazon/machine/curriculum.json",
+      "knowledge_packs/amazon/machine/evaluations.json",
+      "knowledge_packs/amazon/SKILL.md",
+      "knowledge_packs/amazon/agents/openai.yaml",
+      "knowledge_packs/amazon/references/curriculum.md",
+      "knowledge_packs/amazon/references/evidence-and-learning.md",
+      "knowledge_packs/amazon/PUBLIC_PACK.json"
+    ],
+    "aliexpress": [
+      "knowledge_packs/aliexpress/machine/contract.json",
+      "knowledge_packs/aliexpress/SKILL.md",
+      "knowledge_packs/aliexpress/agents/openai.yaml",
+      "knowledge_packs/aliexpress/references/course.md",
+      "knowledge_packs/aliexpress/references/incremental-training.md",
+      "knowledge_packs/aliexpress/references/maternal-requirements-matrix.md",
+      "knowledge_packs/aliexpress/references/official-evidence.md",
+      "knowledge_packs/aliexpress/references/workflow-and-tool-states.md",
+      "knowledge_packs/aliexpress/PUBLIC_PACK.json"
+    ],
+    "b2b_export": [
+      "knowledge_packs/b2b_export/machine/contract.json",
+      "knowledge_packs/b2b_export/shared-sales/SKILL.md",
+      "knowledge_packs/b2b_export/shared-sales/agents/openai.yaml",
+      "knowledge_packs/b2b_export/shared-sales/references/evaluations.md",
+      "knowledge_packs/b2b_export/shared-sales/references/evidence-and-approval.md",
+      "knowledge_packs/b2b_export/shared-sales/references/trade-and-quotation.md",
+      "knowledge_packs/b2b_export/shared-sales/references/workflow.md",
+      "knowledge_packs/b2b_export/SKILL.md",
+      "knowledge_packs/b2b_export/agents/openai.yaml",
+      "knowledge_packs/b2b_export/references/continuous-training.md",
+      "knowledge_packs/b2b_export/references/evidence-and-approvals.md",
+      "knowledge_packs/b2b_export/references/official-source-routing.md",
+      "knowledge_packs/b2b_export/references/workflow.md",
+      "knowledge_packs/b2b_export/PUBLIC_PACK.json"
+    ],
+    "b2b_outbound": [
+      "knowledge_packs/b2b_outbound/SKILL.md",
+      "knowledge_packs/b2b_outbound/agents/openai.yaml",
+      "knowledge_packs/b2b_outbound/references/source-and-boundaries.md",
+      "knowledge_packs/b2b_outbound/PUBLIC_PACK.json"
+    ],
+    "b2b_platform_sales": [
+      "knowledge_packs/b2b_platform_sales/SKILL.md",
+      "knowledge_packs/b2b_platform_sales/agents/openai.yaml",
+      "knowledge_packs/b2b_platform_sales/references/source-and-boundaries.md",
+      "knowledge_packs/b2b_platform_sales/PUBLIC_PACK.json"
+    ],
+    "commerce_video": [
+      "knowledge_packs/commerce_video/machine/capabilities.json",
+      "knowledge_packs/commerce_video/SKILL.md",
+      "knowledge_packs/commerce_video/PUBLIC_PACK.json"
+    ],
+    "ebay": [
+      "knowledge_packs/ebay/machine/contract.json",
+      "knowledge_packs/ebay/SKILL.md",
+      "knowledge_packs/ebay/agents/openai.yaml",
+      "knowledge_packs/ebay/references/curriculum.md",
+      "knowledge_packs/ebay/references/evaluation-set.json",
+      "knowledge_packs/ebay/references/failure-review.json",
+      "knowledge_packs/ebay/references/mother-requirements-mapping.json",
+      "knowledge_packs/ebay/references/official-evidence.md",
+      "knowledge_packs/ebay/references/rules.md",
+      "knowledge_packs/ebay/PUBLIC_PACK.json"
+    ],
+    "etsy": [
+      "knowledge_packs/etsy/machine/contract.json",
+      "knowledge_packs/etsy/legacy-commerce-operator.md",
+      "knowledge_packs/etsy/SKILL.md",
+      "knowledge_packs/etsy/agents/openai.yaml",
+      "knowledge_packs/etsy/references/connector-readiness.json",
+      "knowledge_packs/etsy/references/curriculum.json",
+      "knowledge_packs/etsy/references/evidence-index.json",
+      "knowledge_packs/etsy/references/failure-review.json",
+      "knowledge_packs/etsy/references/mother-requirement-matrix.md",
+      "knowledge_packs/etsy/references/official-rules.md",
+      "knowledge_packs/etsy/references/workflows-and-gates.md",
+      "knowledge_packs/etsy/PUBLIC_PACK.json"
+    ],
+    "global_local_channel": [
+      "knowledge_packs/global_local_channel/machine/contract.json",
+      "knowledge_packs/global_local_channel/SKILL.md",
+      "knowledge_packs/global_local_channel/agents/openai.yaml",
+      "knowledge_packs/global_local_channel/PUBLIC_PACK.json"
+    ],
+    "google_ads_channel": [
+      "knowledge_packs/google_ads_channel/machine/contract.json",
+      "knowledge_packs/google_ads_channel/SKILL.md",
+      "knowledge_packs/google_ads_channel/agents/openai.yaml",
+      "knowledge_packs/google_ads_channel/references/official-evidence.md",
+      "knowledge_packs/google_ads_channel/PUBLIC_PACK.json"
+    ],
+    "independent_commerce": [
+      "knowledge_packs/independent_commerce/machine/contract.json",
+      "knowledge_packs/independent_commerce/SKILL.md",
+      "knowledge_packs/independent_commerce/agents/openai.yaml",
+      "knowledge_packs/independent_commerce/references/mother-requirement-fusion-matrix.md",
+      "knowledge_packs/independent_commerce/references/official-sources.md",
+      "knowledge_packs/independent_commerce/references/platform-adapters.md",
+      "knowledge_packs/independent_commerce/references/training-curriculum.md",
+      "knowledge_packs/independent_commerce/references/vertical-extensions.md",
+      "knowledge_packs/independent_commerce/PUBLIC_PACK.json"
+    ],
+    "lazada": [
+      "knowledge_packs/lazada/machine/contract.json",
+      "knowledge_packs/lazada/SKILL.md",
+      "knowledge_packs/lazada/agents/openai.yaml",
+      "knowledge_packs/lazada/references/continuous-training.md",
+      "knowledge_packs/lazada/references/curriculum.md",
+      "knowledge_packs/lazada/references/evidence-ledger.json",
+      "knowledge_packs/lazada/references/failure-retrospective.md",
+      "knowledge_packs/lazada/references/mother-requirements-matrix.json",
+      "knowledge_packs/lazada/references/mother-requirements-matrix.md",
+      "knowledge_packs/lazada/references/official-github-index.json",
+      "knowledge_packs/lazada/references/official-sources.md",
+      "knowledge_packs/lazada/references/rules.json",
+      "knowledge_packs/lazada/PUBLIC_PACK.json"
+    ],
+    "meta_channel": [
+      "knowledge_packs/meta_channel/machine/contract.json",
+      "knowledge_packs/meta_channel/SKILL.md",
+      "knowledge_packs/meta_channel/agents/openai.yaml",
+      "knowledge_packs/meta_channel/references/official-evidence.md",
+      "knowledge_packs/meta_channel/PUBLIC_PACK.json"
+    ],
+    "shein": [
+      "knowledge_packs/shein/machine/contract.json",
+      "knowledge_packs/shein/SKILL.md",
+      "knowledge_packs/shein/agents/openai.yaml",
+      "knowledge_packs/shein/references/curriculum.md",
+      "knowledge_packs/shein/references/decision-workflows.md",
+      "knowledge_packs/shein/references/evidence-status-and-rules.md",
+      "knowledge_packs/shein/references/failure-review.md",
+      "knowledge_packs/shein/references/learning-governance.md",
+      "knowledge_packs/shein/references/mother-requirements-mapping.md",
+      "knowledge_packs/shein/references/native-ai-and-tool-matrix.md",
+      "knowledge_packs/shein/references/official-evidence.md",
+      "knowledge_packs/shein/PUBLIC_PACK.json"
+    ],
+    "shopee": [
+      "knowledge_packs/shopee/machine/contract.json",
+      "knowledge_packs/shopee/SKILL.md",
+      "knowledge_packs/shopee/agents/openai.yaml",
+      "knowledge_packs/shopee/references/continuous-training.md",
+      "knowledge_packs/shopee/references/course.md",
+      "knowledge_packs/shopee/references/evaluation-set.md",
+      "knowledge_packs/shopee/references/evidence-index.md",
+      "knowledge_packs/shopee/references/failure-review.md",
+      "knowledge_packs/shopee/references/mother-requirement-fusion-matrix.md",
+      "knowledge_packs/shopee/references/official-evidence.md",
+      "knowledge_packs/shopee/references/rules.md",
+      "knowledge_packs/shopee/references/site-and-program-matrix.md",
+      "knowledge_packs/shopee/references/workflow-and-tools.md",
+      "knowledge_packs/shopee/PUBLIC_PACK.json"
+    ],
+    "tiktok_ads_channel": [
+      "knowledge_packs/tiktok_ads_channel/machine/contract.json",
+      "knowledge_packs/tiktok_ads_channel/SKILL.md",
+      "knowledge_packs/tiktok_ads_channel/agents/openai.yaml",
+      "knowledge_packs/tiktok_ads_channel/references/surface-and-evidence.md",
+      "knowledge_packs/tiktok_ads_channel/PUBLIC_PACK.json"
+    ],
+    "walmart": [
+      "knowledge_packs/walmart/machine/contract.json",
+      "knowledge_packs/walmart/SKILL.md",
+      "knowledge_packs/walmart/agents/openai.yaml",
+      "knowledge_packs/walmart/references/curriculum.md",
+      "knowledge_packs/walmart/references/failure-reviews.json",
+      "knowledge_packs/walmart/references/github-official-audit-2026-07-19.md",
+      "knowledge_packs/walmart/references/mother-requirement-mapping.md",
+      "knowledge_packs/walmart/references/official-evidence.md",
+      "knowledge_packs/walmart/references/training-operations.md",
+      "knowledge_packs/walmart/PUBLIC_PACK.json"
+    ]
+  }
+}

@@ -54,15 +54,15 @@ The project models the complete operating chain: product and SKU intake, marketp
 | Connector foundation | Read-only connector primitives, normalized intake records, and capability metadata; live store write adapters remain gated |
 | Local runtime | Atomic JSON storage, cache invalidation, safe example configuration, tests, release audit, and SHA256 manifest |
 | Chat-first UX reference | Dependency-free synthetic workspace with agent conversations, quick prompts, file-intake affordance, and one settings drawer |
-| Public platform agents | Ordinary-chat routing to 13 sanitized knowledge packs; no project setup or extension registry is required |
+| Public platform agents | Ordinary-chat routing to 17 complete sanitized knowledge-pack bundles; no project setup or extension registry is required |
 
 The current `0.x` release is a Python library, tests, and a browser-only UX reference. It is a foundation for building real agents and operator applications, not a finished hosted ERP or an unguarded bot that can spend money, publish listings, message customers, or ship orders by itself.
 
 ## Chat-first platform agents
 
-Version 0.3 lets an application route ordinary chat such as “这个商品适合速卖通哪些市场？” to a sanitized platform knowledge pack. The public catalog covers AliExpress, B2B export, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. The TikTok Shop knowledge pack is intentionally excluded.
+Version 0.4 publishes all reusable non-TikTok-Shop packs as browsable bundles under [`knowledge_packs/`](knowledge_packs/). The 17 packs cover Amazon, AliExpress, B2B export, B2B outbound customer development, B2B marketplace sales, commerce video, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. Each bundle contains the applicable Skill instructions, curated references and machine contracts. The TikTok Shop agent, Skill, training contract, tests and references are intentionally excluded.
 
-Version 0.3.1 also refreshes the dependency-free browser demo to match the chat-first interaction: users state a goal, T One selects the agent, files enter through the composer, and model/account/management controls stay in Settings. Its account walkthrough is illustrative only and does not accept credentials or connect to external services.
+The dependency-free browser demo keeps the chat-first interaction: users state a goal, T One selects the agent, files enter through the composer, and model/account controls stay in Settings. Its account walkthrough is illustrative only and does not accept credentials or connect to external services.
 
 ```python
 from ai_ecommerce_director.platform_agents import route_public_chat

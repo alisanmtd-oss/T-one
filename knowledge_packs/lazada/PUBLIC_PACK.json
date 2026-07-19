@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "pack_id": "lazada",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/lazada/machine/contract.json",
+    "knowledge_packs/lazada/SKILL.md",
+    "knowledge_packs/lazada/agents/openai.yaml",
+    "knowledge_packs/lazada/references/continuous-training.md",
+    "knowledge_packs/lazada/references/curriculum.md",
+    "knowledge_packs/lazada/references/evidence-ledger.json",
+    "knowledge_packs/lazada/references/failure-retrospective.md",
+    "knowledge_packs/lazada/references/mother-requirements-matrix.json",
+    "knowledge_packs/lazada/references/mother-requirements-matrix.md",
+    "knowledge_packs/lazada/references/official-github-index.json",
+    "knowledge_packs/lazada/references/official-sources.md",
+    "knowledge_packs/lazada/references/rules.json"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

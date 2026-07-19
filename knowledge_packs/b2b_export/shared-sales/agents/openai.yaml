@@ -1,0 +1,4 @@
+interface:
+  display_name: "外贸 B2B 成交智能体"
+  short_description: "证据驱动的外贸获客、跟单、报价、交付与设备交叉销售闭环"
+  default_prompt: "Use $b2b-foreign-trade-sales to audit this customer opportunity and prepare the next approval-gated sales action."

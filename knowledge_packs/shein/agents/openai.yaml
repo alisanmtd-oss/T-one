@@ -1,0 +1,4 @@
+interface:
+  display_name: "SHEIN Marketplace 专家"
+  short_description: "按站点、模式、授权和人工门禁运行 SHEIN 店铺工作流"
+  default_prompt: "Use $shein to audit this SHEIN store task and produce an evidence-backed, gated execution plan."
