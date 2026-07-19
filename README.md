@@ -62,6 +62,8 @@ The current `0.x` release is a Python library, tests, and a browser-only UX refe
 
 Version 0.3 lets an application route ordinary chat such as “这个商品适合速卖通哪些市场？” to a sanitized platform knowledge pack. The public catalog covers AliExpress, B2B export, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. The TikTok Shop knowledge pack is intentionally excluded.
 
+Version 0.3.1 also refreshes the dependency-free browser demo to match the chat-first interaction: users state a goal, T One selects the agent, files enter through the composer, and model/account/management controls stay in Settings. Its account walkthrough is illustrative only and does not accept credentials or connect to external services.
+
 ```python
 from ai_ecommerce_director.platform_agents import route_public_chat
 

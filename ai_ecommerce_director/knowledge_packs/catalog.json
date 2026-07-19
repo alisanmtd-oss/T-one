@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "release_version": "0.3.0",
+  "release_version": "0.3.1",
   "catalog_kind": "sanitized_public_knowledge_packs",
   "selection_model": "ordinary_chat_first",
   "excluded_pack_ids": ["tiktok_shop"],
