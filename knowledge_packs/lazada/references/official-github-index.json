@@ -1,0 +1,714 @@
+{
+  "schema_version": 2,
+  "expert_id": "expert-lazada-marketplace",
+  "updated_at": "2026-07-19T04:10:00+08:00",
+  "identity_policy": "A GitHub organization is official only when an official platform website, developer document or verified official social account links back to it. A matching name, search rank, stars or repository description is insufficient.",
+  "registry_dedupe": {
+    "registry_ref": "config/github_capability_registry.json",
+    "key": "owner/repo+release_or_commit",
+    "checked_at": "2026-07-19T01:01:00+08:00",
+    "existing_matches": [],
+    "boundary": "The shared registry was read only. This specialist does not modify shared ownership or integration state."
+  },
+  "knowledge_package_policy": {
+    "priority": "inventory existing T One assets, then compare two or three pre-distilled packages, then open only official deep pages needed to verify disputed rules",
+    "allowed_dispositions": [
+      "keep_reuse",
+      "merge_into_existing",
+      "extract_rules_only",
+      "research_only",
+      "rejected_stale",
+      "rejected_license",
+      "rejected_unsafe"
+    ],
+    "required_checks": [
+      "author or organization and official-identity evidence",
+      "owner/repo plus release or commit fingerprint",
+      "license and commercial boundary",
+      "README, docs or changelog, release, recent commits, issues, pull requests, security and CI",
+      "credentials, telemetry, executable code and data-flow risks",
+      "dependencies and deployment cost",
+      "country, site, store mode, ownership and seller-identity scope",
+      "one core workflow, one boundary or failure scenario and three key rules",
+      "overlap and the smallest merge location in the existing T One expert"
+    ],
+    "installation_boundary": "No candidate may be cloned, installed, executed, registered or copied into commercial code from this audit. A separate owner-approved connector review and a scoped successful read are required.",
+    "english_queries": [
+      "Lazada seller agent skills",
+      "Lazada operations playbook",
+      "Lazada sponsored solutions automation",
+      "Lazada Open Platform SDK",
+      "Lazada ERP integration",
+      "ecommerce agent skills marketplace seller agent commerce MCP",
+      "multichannel ecommerce ERP seller SOP checklist template evaluation SDK MCP ERP OMS PIM WMS"
+    ],
+    "time_allocation": "At least half of the increment is reserved for English package discovery, source audit, reuse and dedupe; generic official introduction pages remain below ten percent.",
+    "checked_at": "2026-07-19T03:48:00+08:00"
+  },
+  "organizations": [
+    {
+      "organization": "alibaba",
+      "organization_url": "https://github.com/alibaba",
+      "identity_status": "verified_official",
+      "verification_chain": [
+        {
+          "source_url": "https://opensource.alibaba.com/project",
+          "source_owner": "Alibaba Open Source",
+          "observation": "The official Alibaba open-source catalog linked its listed projects directly to github.com/alibaba repositories."
+        }
+      ],
+      "captured_at": "2026-07-19T01:02:00+08:00",
+      "catalog_observation": {
+        "official_catalog_projects_visible": 39,
+        "github_repositories_visible": 541,
+        "repository_sort": "Last pushed",
+        "pages_checked": [
+          1,
+          2
+        ],
+        "official_catalog_searches": {
+          "OpenAPI": 0,
+          "SDK": 0,
+          "ecommerce_cn": 0
+        },
+        "github_org_searches": {
+          "lazada": 0,
+          "openapi": 0
+        },
+        "boundary": "These are observations within the displayed catalog and organization search at capture time, not proof that no relevant repository exists elsewhere."
+      },
+      "representative_active_repositories": [
+        "alibaba/arthas",
+        "alibaba/termd",
+        "alibaba/rtp-llm",
+        "alibaba/tair-kvcache",
+        "alibaba/spring-ai-alibaba",
+        "alibaba/skill-up",
+        "alibaba/nacos",
+        "alibaba/MNN"
+      ],
+      "maintenance_status": "organization_active",
+      "lazada_relevance": "No Lazada seller, ads, OAuth, webhook, product, order or inventory repository was verified in the inspected official catalog and first two repository pages."
+    },
+    {
+      "organization": "lazop",
+      "organization_url": "https://github.com/lazop",
+      "identity_status": "unknown_unverified",
+      "verification_chain": [],
+      "captured_at": "2026-07-19T01:10:00+08:00",
+      "negative_identity_evidence": [
+        "No inspected Lazada official website or developer document linked back to github.com/lazop.",
+        "The current Lazada SDK document directs an authorized developer to App Console > Testing Tools > SDK Download."
+      ],
+      "boundary": "Do not call this organization official from its name alone. Retain lazop/iopsdk only as an independently observed historical public repository until an official reverse link is captured."
+    }
+  ],
+  "repositories": [
+    {
+      "owner_repo": "alibaba/skill-up",
+      "organization_identity": "verified_official",
+      "canonical_url": "https://github.com/alibaba/skill-up",
+      "purpose": "Go CLI and GitHub Action framework for evaluating Agent Skills.",
+      "seller_operations_relevance": "indirect_evaluation_reference_only",
+      "lazada_connector_relevance": "none_verified",
+      "license": "Apache-2.0",
+      "commercial_boundary": "License is permissive, but adoption still requires shared-owner dependency, security, data-flow and maintenance review.",
+      "latest_release": {
+        "tag": "v0.7.0",
+        "released_at": "2026-07-16",
+        "tag_commit": "5ac7ce0467a164d07aacbbf7052bcffda68a446b"
+      },
+      "observed_main_commit": "2728b2f01f894b22e6040ebde0644ae043b982e7",
+      "observed_main_commit_date": "2026-07-17",
+      "maintenance_status": "active_at_capture",
+      "deployment": "Go CLI, Docker-based GitHub Action on Linux, and configurable OpenAI-compatible endpoints.",
+      "dependencies_and_secrets": [
+        "Go toolchain or released binary",
+        "Docker for the documented GitHub Action path",
+        "agent-engine credentials stored as repository secrets when used in CI"
+      ],
+      "security": {
+        "policy_observed": "Only the latest release receives security fixes; private reporting guidance was present.",
+        "published_advisories_at_capture": 0,
+        "pinning_guidance": "Use a release tag or commit SHA instead of @main."
+      },
+      "coverage": {
+        "readme": [
+          "installation",
+          "configuration",
+          "CLI commands",
+          "GitHub Action",
+          "version pinning",
+          "license"
+        ],
+        "docs": [
+          "docs directory index",
+          "guide and design directories"
+        ],
+        "releases_pages": [
+          1,
+          2
+        ],
+        "issues_pages": [
+          1,
+          2
+        ],
+        "issues_open_closed_observed": {
+          "open": 10,
+          "closed": 21
+        },
+        "issue_detail": "Issue 134 inspected; no substantive reply thread was visible beyond the request body and comment input boundary.",
+        "pull_requests_pages": [
+          1,
+          2
+        ],
+        "pull_requests_open_closed_observed": {
+          "open": 3,
+          "closed": 114
+        },
+        "pull_request_detail": "PR 148 inspected; its author update reported many Windows tests passing but real guest lifecycle tests skipped where KVM was unavailable or not writable, and approval remained pending.",
+        "discussions": "not_enabled_404",
+        "security": "policy_and_advisory_page_checked",
+        "commits": "latest list and next-page link checked"
+      },
+      "comment_intelligence": {
+        "coverage": "Issue 134 and PR 148 timelines were inspected; no user identities or verbatim comments are stored.",
+        "clusters": [
+          {
+            "theme": "judge-specific skill support request",
+            "count_in_inspected_threads": 1,
+            "evidence_class": "community_signal"
+          },
+          {
+            "theme": "Windows guest lifecycle remains environment-limited",
+            "count_in_inspected_threads": 1,
+            "evidence_class": "dated_operator_case"
+          }
+        ],
+        "filtered_noise": 0,
+        "boundary": "Repository discussion signals do not establish Lazada policy, connector compatibility or production readiness."
+      },
+      "t_one_reuse": "Reference its per-case isolation and mocked-MCP override concepts only when reviewing the existing T One regression harness; do not create a second evaluator.",
+      "disposition": "research_only",
+      "install_or_run": "not_performed"
+    },
+    {
+      "owner_repo": "lazop/iopsdk",
+      "organization_identity": "unknown_unverified",
+      "canonical_url": "https://github.com/lazop/iopsdk",
+      "purpose": "Sparse historical public SDK scaffold.",
+      "seller_operations_relevance": "historical_only",
+      "license": "Apache-2.0",
+      "maintenance_status": "single_2018_commit_no_releases_or_packages_observed",
+      "security": "current compatibility and security unknown",
+      "t_one_reuse": "none; obtain the application-specific SDK from the authorized Lazada App Console instead",
+      "disposition": "rejected_stale",
+      "install_or_run": "not_performed"
+    },
+    {
+      "owner_repo": "alibaba/arthas",
+      "organization_identity": "verified_official",
+      "purpose": "Java diagnostics",
+      "lazada_connector_relevance": "official_but_no_direct_ecommerce_relevance",
+      "disposition": "excluded_unrelated"
+    },
+    {
+      "owner_repo": "alibaba/spring-ai-alibaba",
+      "organization_identity": "verified_official",
+      "purpose": "AI application framework",
+      "lazada_connector_relevance": "official_but_no_verified_lazada_seller_connector",
+      "disposition": "excluded_unrelated_to_current_gap"
+    },
+    {
+      "owner_repo": "alibaba/nacos",
+      "organization_identity": "verified_official",
+      "purpose": "Dynamic service discovery and configuration",
+      "lazada_connector_relevance": "official_but_no_direct_ecommerce_relevance",
+      "disposition": "excluded_unrelated"
+    }
+  ],
+  "knowledge_packages": [
+    {
+      "package_id": "ecomphp-lazada-php-4e0831c",
+      "name": "EcomPHP/lazada-php",
+      "canonical_url": "https://github.com/EcomPHP/lazada-php",
+      "author_or_organization": "EcomPHP / nVuln",
+      "organization_identity": "public_organization_not_verified_as_lazada_official",
+      "version_or_commit": {
+        "audited_commit": "4e0831cdfd813875885a2f93a32ef6ea3df61282",
+        "audited_commit_at": "2026-07-18T06:50:22Z",
+        "latest_release": "v1.0.0",
+        "latest_release_at": "2026-07-10",
+        "release_commit": "2ed456d2c297362c6fbd50edbe565e320dbe77ad"
+      },
+      "coverage_modules": [
+        "OAuth URL and token exchange",
+        "six regional endpoints",
+        "product",
+        "order",
+        "finance",
+        "fulfillment",
+        "returns",
+        "Sponsored Solutions",
+        "public API-metadata MCP"
+      ],
+      "source_basis": [
+        "README",
+        "LICENSE",
+        "composer.json",
+        "Auth.php",
+        "Client.php",
+        "Resource.php",
+        "OrderTest.php",
+        "SystemTest.php",
+        "MCP executable",
+        "releases",
+        "commits",
+        "issues",
+        "pull requests",
+        "security",
+        "CI"
+      ],
+      "license": "Apache-2.0",
+      "commercial_boundary": "Permissive license does not establish Lazada ownership, API correctness, seller authorization or T One integration approval.",
+      "maintenance": {
+        "commits_observed": 27,
+        "stars": 4,
+        "forks": 2,
+        "issues": 0,
+        "pull_requests": 0,
+        "ci_runs_visible": 5,
+        "security_policy": "none_detected",
+        "published_advisories": 0
+      },
+      "credentials_telemetry_executable_risk": [
+        "requires app_key, app_secret, callback URL, access and refresh token",
+        "Composer binary exposes an MCP server that reads undocumented ISV-console JSON handlers",
+        "README contains a ReadyToShip write example that must never be executed in research"
+      ],
+      "dependencies_and_deployment": [
+        "PHP >=7.4",
+        "guzzlehttp/guzzle ^7.5",
+        "Composer",
+        "PHPUnit for local tests"
+      ],
+      "t_one_overlap": "High: T One already has country routes, credential references, approval gates, evidence registry and a planned per-store Lazada connector; this PHP runtime does not match the existing Python desktop path.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID"
+        ],
+        "store_modes": [
+          "unspecified_by_package"
+        ],
+        "ownership": [
+          "authorized_seller_claimed_but_not_verified"
+        ],
+        "seller_identity": "stores one access token plus one region and does not persist country_user_info seller_id/short_code"
+      },
+      "sample_validation": {
+        "core_workflow": "Auth URL with state/country, code exchange, token plus region, then resource call was inspected statically; no credentials or live call were used.",
+        "boundary_or_failure": "setAccessToken assigns the token before region validation; baseUrl silently defaults to VN when region is absent; resource tests mock method mapping instead of HTTP encoding, signing, seller scope or live responses.",
+        "three_key_rules_checked": [
+          "CSRF state is desirable but not enforced as required by the package",
+          "a region string cannot replace country_user_info seller identity",
+          "method-mapping unit tests cannot prove transport or business completion"
+        ]
+      },
+      "official_difference_check": [
+        "current authorization page requires one-store token semantics and per-country country_user_info identity",
+        "official signing page appends the request body after sorted parameters",
+        "official request page says generic POST bodies are XML/UTF-8 and the app-specific official SDK remains the recommended path"
+      ],
+      "disposition": "extract_rules_only",
+      "merge_location": [
+        "existing Lazada Skill SDK review gate",
+        "existing rules and regression tests"
+      ],
+      "install_clone_run": "not_performed"
+    },
+    {
+      "package_id": "appolous-lazada-php-sdk-a3b7a08",
+      "name": "appolous/lazada-php-sdk",
+      "canonical_url": "https://github.com/appolous/lazada-php-sdk",
+      "author_or_organization": "Appolous Team",
+      "organization_identity": "public_organization_not_verified_as_lazada_official",
+      "version_or_commit": {
+        "audited_commit": "a3b7a087e73622bd825e360d9034fa13fbf4cb36",
+        "audited_commit_at": "2026-05-25T09:16:27Z",
+        "latest_release": "1.7",
+        "latest_release_at": "2026-05-25"
+      },
+      "coverage_modules": [
+        "raw LazopClient",
+        "request signing",
+        "GET/POST/file upload",
+        "Laravel compatibility"
+      ],
+      "source_basis": [
+        "README",
+        "LICENSE.md",
+        "composer.json",
+        "LazopClient.php",
+        "LazopRequest.php",
+        "releases",
+        "commits",
+        "issue 4",
+        "pull requests",
+        "security",
+        "Actions"
+      ],
+      "license": "MIT",
+      "commercial_boundary": "The license is permissive, but the inspected implementation fails the security gate.",
+      "maintenance": {
+        "stars": 9,
+        "forks": 14,
+        "latest_release_focus": "Laravel version declaration only",
+        "core_sdk_version_string": "lazop-sdk-php-20180422",
+        "tests_or_ci": "none_observed",
+        "security_policy": "none_detected",
+        "published_advisories": 0
+      },
+      "credentials_telemetry_executable_risk": [
+        "disables TLS peer and host verification for HTTPS",
+        "constructs a request URL containing app_key, access_token and sign",
+        "passes that full request URL into error logging",
+        "requires callers to supply raw tokens and endpoints"
+      ],
+      "dependencies_and_deployment": [
+        "PHP ^7.3 or ^8.0",
+        "Laravel illuminate/support 7 through 13",
+        "cURL"
+      ],
+      "t_one_overlap": "High and unsafe: duplicates low-level signing and transport while bypassing T One credential and security boundaries.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "MY_example_only"
+        ],
+        "store_modes": [
+          "unspecified"
+        ],
+        "ownership": [
+          "unspecified"
+        ],
+        "seller_identity": "not modeled"
+      },
+      "sample_validation": {
+        "core_workflow": "Raw endpoint, app key/secret, request path and optional token were inspected statically.",
+        "boundary_or_failure": "Both GET and POST disable TLS verification, and the error logger receives the signed URL with access token when present.",
+        "three_key_rules_checked": [
+          "HTTPS must retain peer and hostname verification",
+          "secrets and tokens must not enter logs",
+          "a recent framework-compatibility release does not prove current API correctness"
+        ]
+      },
+      "disposition": "rejected_unsafe",
+      "merge_location": "none; add a negative regression and package-rejection rule only",
+      "install_clone_run": "not_performed"
+    },
+    {
+      "package_id": "xkenchii-lazada-sdk-runtime-v0.1.0-alpha.0",
+      "name": "@lazada-sdk/sdk runtime subpackage",
+      "canonical_url": "https://github.com/xKeNcHii/lazada-sdk/tree/main/packages/sdk-ts",
+      "author_or_organization": "xKeNcHii",
+      "organization_identity": "unofficial_individual_repository",
+      "version_or_commit": {
+        "release": "v0.1.0-alpha.0",
+        "release_commit": "1efdc0105f0fd31ff1e740340ea44cd084e19804",
+        "released_at": "2026-04-21"
+      },
+      "coverage_modules": [
+        "TypeScript client",
+        "HMAC signing",
+        "regional routing",
+        "token refresh",
+        "pagination",
+        "generated endpoint managers",
+        "error taxonomy"
+      ],
+      "source_basis": [
+        "root and package README",
+        "package LICENSE",
+        "package.json",
+        "CHANGELOG",
+        "client.ts",
+        "token-manager.ts",
+        "release",
+        "commits",
+        "issues",
+        "pull requests",
+        "security",
+        "Actions"
+      ],
+      "license": "MIT_for_runtime_subpackage",
+      "commercial_boundary": "The runtime subpackage contains MIT terms; the repository root and scraper/spec/docs content have a separate unknown-license boundary.",
+      "maintenance": {
+        "release_state": "alpha_pre_release",
+        "stars": 2,
+        "forks": 0,
+        "issues": 0,
+        "pull_requests_visible": 9,
+        "actions_runs_visible": 90,
+        "security_policy": "none_detected",
+        "published_advisories": 0
+      },
+      "credentials_telemetry_executable_risk": [
+        "live examples require app credentials and seller token",
+        "default storage key lazada:default is not sufficient T One store isolation",
+        "no telemetry was identified in inspected runtime files"
+      ],
+      "dependencies_and_deployment": [
+        "Node >=20",
+        "pnpm 10.33.0 for repository development",
+        "openapi-fetch ^0.17.0",
+        "npm alpha distribution"
+      ],
+      "t_one_overlap": "High: token refresh, route, pagination and error patterns overlap existing T One connector requirements; TypeScript alpha runtime is not an approved Python desktop dependency.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "SG_live_claimed",
+          "MY_unverified",
+          "TH_unverified",
+          "VN_unverified",
+          "PH_unverified",
+          "ID_unverified"
+        ],
+        "store_modes": [
+          "unspecified"
+        ],
+        "ownership": [
+          "one_claimed_real_seller_test_not_available_to_T_One"
+        ],
+        "seller_identity": "region plus token, no T One store_binding or per-country seller identity"
+      },
+      "sample_validation": {
+        "core_workflow": "Static review covered regional routing, signing, access-token use and coalesced refresh.",
+        "boundary_or_failure": "The release itself says only GET /seller/get and POST /images/migrate were live-tested in SG; five countries, refresh round trip, live errors, Unicode, multi-page pagination and 31 of 33 managers were not validated.",
+        "three_key_rules_checked": [
+          "per-endpoint and per-country verification is mandatory",
+          "alpha release and unit tests do not establish connector readiness",
+          "token storage must be keyed by T One country seller identity, not a default key"
+        ]
+      },
+      "disposition": "research_only",
+      "merge_location": [
+        "existing connector readiness matrix",
+        "existing token-isolation and regression rules"
+      ],
+      "install_clone_run": "not_performed"
+    },
+    {
+      "package_id": "xkenchii-lazada-sdk-scraper-pipeline-91ab7be",
+      "name": "xKeNcHii/lazada-sdk documentation scraper and spec pipeline",
+      "canonical_url": "https://github.com/xKeNcHii/lazada-sdk/tree/main/scraper",
+      "author_or_organization": "xKeNcHii",
+      "organization_identity": "unofficial_individual_repository",
+      "version_or_commit": {
+        "scraper_blob": "91ab7be36da246b13866ab3f7c8a883772abc16c",
+        "repository_release": "v0.1.0-alpha.0"
+      },
+      "coverage_modules": [
+        "Open Platform API documentation retrieval",
+        "guide retrieval",
+        "Markdown mirror",
+        "OpenAPI generation",
+        "manager generation"
+      ],
+      "source_basis": [
+        "root README",
+        "scraper/scrape.py",
+        "CONTRIBUTING.md",
+        "root package.json",
+        "root LICENSE 404",
+        "runtime subpackage LICENSE"
+      ],
+      "license": "unknown_for_root_scraper_spec_and_docs",
+      "commercial_boundary": "MIT exists only under packages/sdk-ts; no repository-root license was found for the scraper, mirrored documentation or generated spec.",
+      "maintenance": {
+        "pipeline_state": "active_alpha",
+        "security_policy": "none_detected"
+      },
+      "credentials_telemetry_executable_risk": [
+        "automated documentation requests with three retries and a 0.2-second delay",
+        "calls undocumented or share-handler JSON endpoints",
+        "mirrors platform documentation",
+        "live refresh is an executable network side effect"
+      ],
+      "dependencies_and_deployment": [
+        "Python 3.11+",
+        "requests",
+        "tenacity",
+        "tqdm",
+        "Node >=20",
+        "pnpm"
+      ],
+      "t_one_overlap": "Duplicates evidence ingestion while conflicting with the explicit no-scraper and no-unreviewed-install boundary.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID"
+        ],
+        "store_modes": [
+          "documentation_only"
+        ],
+        "ownership": [
+          "public_docs_copyright_retained"
+        ],
+        "seller_identity": "not applicable"
+      },
+      "sample_validation": {
+        "core_workflow": "Static review traced documentation endpoints to Markdown and generated OpenAPI/managers.",
+        "boundary_or_failure": "The pipeline performs automated crawling and retries, lacks a root license for non-runtime assets and cannot prove that mirrored fields remain current.",
+        "three_key_rules_checked": [
+          "do not run automated scrapers",
+          "unknown-license docs/spec assets cannot enter commercial code",
+          "generated endpoint quantity never proves endpoint or country support"
+        ]
+      },
+      "disposition": "rejected_unsafe",
+      "merge_location": "none; retain only a negative audit record",
+      "install_clone_run": "not_performed"
+    },
+    {
+      "package_id": "easycb-easycb-go-6a3c10d",
+      "name": "easycb/easycb-go",
+      "canonical_url": "https://github.com/easycb/easycb-go",
+      "author_or_organization": "easycb",
+      "organization_identity": "unverified_third_party",
+      "version_or_commit": {
+        "audited_commit": "6a3c10d4d07b26d8df9ba65138ecb9203ac4c024",
+        "audited_commit_at": "2026-06-02",
+        "latest_release": "v0.1.27",
+        "latest_release_at": "2025-09-13",
+        "release_commit": "2921429"
+      },
+      "coverage_modules": [
+        "Lazada Go client",
+        "regional routing",
+        "request signing",
+        "product",
+        "order",
+        "voucher",
+        "fulfillment",
+        "finance"
+      ],
+      "source_basis": [
+        "README",
+        "LICENSE",
+        "go.mod",
+        "lazada/client.go",
+        "lazada/request.go",
+        "lazada/conf.go",
+        "lazada/client_test.go",
+        "lazada/order.go",
+        "releases",
+        "commits",
+        "issues",
+        "pull requests",
+        "security",
+        "Actions"
+      ],
+      "license": "MIT",
+      "commercial_boundary": "A permissive license and release history do not override the inspected TLS, test-harness and seller-identity defects.",
+      "maintenance": {
+        "commits_observed": 40,
+        "stars_at_capture": 152,
+        "forks_at_capture": 32,
+        "issues": 0,
+        "pull_requests": 0,
+        "security_policy": "none_detected",
+        "published_advisories": 0,
+        "ci_workflows": "none_observed"
+      },
+      "credentials_telemetry_executable_risk": [
+        "requires raw app key, app secret, regional endpoint and seller access token",
+        "TLS verification is disabled by default because sslVerify has a false zero value and InsecureSkipVerify negates it",
+        "the test fixture explicitly calls WithSslVerify(false), uses blank credentials and configures a localhost proxy",
+        "write methods include voucher, cancellation and shipment-related operations and must never be executed during research"
+      ],
+      "dependencies_and_deployment": [
+        "Go 1.17",
+        "no external module dependencies in the audited go.mod"
+      ],
+      "t_one_overlap": "High and unsafe: it duplicates signing, routing and order writes while omitting T One country seller identity, store binding, credential references and approval queues.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID",
+          "ALL_package_value_not_executable_store"
+        ],
+        "store_modes": [
+          "unspecified"
+        ],
+        "ownership": [
+          "unspecified"
+        ],
+        "seller_identity": "raw access token plus region only; no country_user_info seller_id, short_code or store_binding"
+      },
+      "sample_validation": {
+        "core_workflow": "Static review traced client creation, region/base-URL selection, signing and representative product/order/voucher calls; no credentials or network calls were used.",
+        "boundary_or_failure": "TLS verification is disabled by default, the test main returns before m.Run when blank-secret initialization fails, and representative tests print errors rather than asserting a successful scoped response.",
+        "three_key_rules_checked": [
+          "secure transport must be fail-closed by default",
+          "a region or ALL constant cannot replace a country seller identity",
+          "README test claims require observable test execution and assertions rather than an early-return harness"
+        ]
+      },
+      "disposition": "rejected_unsafe",
+      "merge_location": "none; retain only transport, isolation and test-integrity negative regressions",
+      "install_clone_run": "not_performed"
+    },
+    {
+      "package_id": "erpnext-apps-lazada-erpnext-connector-2021",
+      "name": "erpnext-apps/lazada_erpnext_connector",
+      "canonical_url": "https://github.com/erpnext-apps/lazada_erpnext_connector",
+      "author_or_organization": "erpnext-apps",
+      "organization_identity": "unverified_third_party",
+      "version_or_commit": {
+        "last_activity_observed": "2021-07-26"
+      },
+      "coverage_modules": [
+        "historical ERPNext connector candidate"
+      ],
+      "license": "MIT_observed_in_search_metadata",
+      "maintenance": {
+        "status": "stale_at_capture"
+      },
+      "credentials_telemetry_executable_risk": [
+        "not deep-reviewed because staleness gate failed"
+      ],
+      "dependencies_and_deployment": [
+        "unknown_not_reviewed"
+      ],
+      "t_one_overlap": "Would duplicate the existing ERP adapter/evidence registry and has no current Lazada authorization proof.",
+      "country_site_store_mode_ownership": {
+        "country_sites": [
+          "unknown"
+        ],
+        "store_modes": [
+          "unknown"
+        ],
+        "ownership": [
+          "unknown"
+        ]
+      },
+      "disposition": "rejected_stale",
+      "merge_location": "none",
+      "review_status": "candidate_screened",
+      "install_clone_run": "not_performed"
+    }
+  ],
+  "integration_boundary": "No repository was cloned, installed, executed or registered as a T One connector. A public repository, official organization or passing test does not establish a Lazada business capability."
+}

@@ -34,6 +34,8 @@ PATTERNS = {
 
 def main() -> int:
     findings: list[str] = []
+    if (ROOT / "knowledge_packs" / "tiktok_shop").exists():
+        findings.append("private TikTok Shop knowledge pack present")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
             continue

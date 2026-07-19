@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "expert_id": "amazon-commerce-operator",
+  "allowed_evidence_states": [
+    "verified_live_fact",
+    "time_sensitive_evidence",
+    "historical_operator_trace",
+    "draft",
+    "failed_attempt",
+    "unknown",
+    "blocked_owner_input"
+  ],
+  "facts": [
+    {
+      "id": "official-listing-ai-workflow-20260718",
+      "domain_ids": [
+        "seller-central-listing-ai",
+        "listing-seo-keywords",
+        "images-video-a-plus"
+      ],
+      "claim": "The official Listing AI page showed Add Products workflows for written descriptions and up to three images, Save as draft, and seller review/edit/approval before submission.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://sell.amazon.com/blog/amazon-listing-ai",
+      "evidence_region": "How to use AI to generate listing content using a product description or image",
+      "captured_at": "2026-07-18T22:23:11+08:00",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-25"
+    },
+    {
+      "id": "official-ads-search-term-report-20260718",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-search-terms",
+        "ads-measurement-experiments"
+      ],
+      "claim": "The current official Sponsored Products search term report page showed a May 18, 2026 update, a one-click inclusion threshold, summary/daily units, a 65-day lookback and ASIN search-term context rules.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://advertising.amazon.com/help/G3HEFZYWZF84NPS9",
+      "evidence_region": "page heading, updated date, report purpose, click threshold, ASIN note, time units and lookback window",
+      "captured_at": "2026-07-18T22:47:45+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "advertising_account",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-25"
+    },
+    {
+      "id": "official-ads-measurement-guide-20260718",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-measurement-experiments",
+        "ctr",
+        "product-economics",
+        "unit-economics-profit"
+      ],
+      "claim": "The current official Amazon Ads guide defined CPC, ACOS, CTR, ROAS and ROI and described different reversibility for daily versus campaign-level budgets.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://advertising.amazon.com/library/guides/basics-of-success-understanding-amazon-advertising",
+      "evidence_region": "Advertising costs and Advertising campaign results after in-page search and Page Down",
+      "captured_at": "2026-07-18T22:47:45+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "advertising_account",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-08-18"
+    },
+    {
+      "id": "official-ptd-discovery-and-auth-20260718",
+      "domain_ids": [
+        "category-product-type",
+        "api-data-security"
+      ],
+      "claim": "Amazon's current public PTD guide requires product-type discovery for the target marketplace and selling-partner authorization with the Product Listing role before the API can be treated as usable.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/search-available-product-type-definitions",
+      "evidence_region": "Prerequisites and Search Product Type Definitions; HTTP 200; SHA-256 ef07043aed455f3f9d1885d661225c8e640a0d23d738c2cc63e6d9eeebed5f7a",
+      "captured_at": "2026-07-18T23:47:42+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-25"
+    },
+    {
+      "id": "official-ptd-retrieval-integrity-20260718",
+      "domain_ids": [
+        "category-product-type",
+        "parent-child-variation",
+        "api-data-security"
+      ],
+      "claim": "The current PTD retrieval guide scopes schemas by marketplace and product type, supports NONE/CHILD/PARENT parentage, and returns seven-day schema links whose checksums and productTypeVersion must be preserved before field generation.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-en_EN/docs/retrieve-a-product-type-definition",
+      "evidence_region": "Steps 1-2 and parentageLevel section; HTTP 200; SHA-256 36d3b966e4b5efa4e2a46cab3501c09a8e3f37dbdd351e9fab77e014b1b5204b",
+      "captured_at": "2026-07-18T23:47:42+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-25"
+    },
+    {
+      "id": "official-ptd-model-and-meta-schema-20260718",
+      "domain_ids": [
+        "category-product-type",
+        "api-data-security"
+      ],
+      "claim": "Amazon's official Apache-2.0 SP-API model exposes discovery and definition response fields, while the current PTD meta-schema documentation requires JSON Schema Draft 2019-09 plus Amazon's custom vocabulary rather than resolving the identifier URI over the web.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://github.com/amzn/selling-partner-api-models/blob/main/models/product-type-definitions-api-model/definitionsProductTypes_2020-09-01.json",
+      "evidence_region": "official model operations and ProductTypeDefinition object; raw SHA-256 9f54478fd9c145be65fd5b266d13770e4eb41f3d19f1ade5342ce64786af0aaa; meta-schema page SHA-256 d74fa644736bc1523d7b4746709b05a6a1213e9cddb8ef4a49afbc0cf6f7f241",
+      "captured_at": "2026-07-18T23:47:42+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_github",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-08-18"
+    },
+    {
+      "id": "official-listings-preview-and-acceptance-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "category-product-type",
+        "api-data-security"
+      ],
+      "claim": "VALIDATION_PREVIEW is a non-persisting Listings Items check and VALID is preview-only; a live ACCEPTED response is only acceptance for processing, not proof of publication.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-en_EN/reference/putlistingsitem",
+      "evidence_region": "mode parameter and ListingsItemSubmissionResponse status enum; official model raw SHA-256 3c47dac73440f0bd25ed580cd77085a0fc3e793d34f177e16e9c7106c543b235",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-26"
+    },
+    {
+      "id": "official-listings-post-acceptance-readback-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "claim": "Initial acceptance can be followed by listing issues, so current issues must be read back with getListingsItem includedData=issues or issue/status notifications before any live-state claim.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-en_EN/docs/building-listings-management-workflows-guide",
+      "evidence_region": "submission feedback and post-acceptance issue monitoring; SHA-256 b8e174c5045de41b494eaf927a4fd3e940edbd8a2430c0542cbcb8d470ab8f76",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-26"
+    },
+    {
+      "id": "official-json-listings-feed-report-contract-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "claim": "JSON_LISTINGS_FEED is asynchronous; DONE still requires result-document inspection, FATAL leaves the applied-operation count unknown until report/readback, and the v2 report separates summary counts from per-message issues.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://github.com/amzn/selling-partner-api-models/blob/main/schemas/feeds/listings-feed-processing-report-schema-v2.json",
+      "evidence_region": "official feed model statuses and v2 feed/report schemas; raw SHA-256 ab235b4a0e5ce21083b885dd4f2b8cae7a6f597d7adf2647b47b90d6f5098a16 / 9f6c00a109f086c269427ae1bc4afe1f9ba49ff8df46de9de939fa2c9f00e1ef / 03daac9d3fa97d729efb3f3c2836c664036a8ef32a9829363d8026bb097178fd",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_github",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-08-19"
+    },
+    {
+      "id": "official-listing-notification-semantics-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "inventory-fbm-fba",
+        "api-data-security"
+      ],
+      "claim": "Status and issue notifications are marketplace-scoped change events, not complete listing state: missing BUYABLE indicates current non-buyability without a cause, severity NONE does not prove health, and targeted Listings Items readback is required.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/notification-type-values",
+      "evidence_region": "LISTINGS_ITEM_STATUS_CHANGE and LISTINGS_ITEM_ISSUES_CHANGE; HTTP 200; SHA-256 b2ad09b096ca8cf8f67421ba8cfafbda0c0aea2c36552eb21efbf7f92224034c",
+      "captured_at": "2026-07-19T00:32:37+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-26"
+    },
+    {
+      "id": "official-listing-issues-payload-conflict-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "claim": "Amazon's dated changelog deprecates LISTINGS_ITEM_ISSUES_CHANGE payload 1.0 in favor of 2023-12-13, but the current notification-values page contains stale or conflicting version text and the changelog has a 2023-12-23 typo; use the official 2023-12-13 schema as the expected contract and validate the accepted version at real subscription time.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-ja_JP/changelog/deprecation-of-listings_item_issues_change-notification-payload-version-10",
+      "evidence_region": "published 2024-02-28; effective 2024-09-25; page SHA-256 eaeab1cb099b5027a9c73ca27052e88723ca4e2e6eb4e42c0006d998e33fddd9; official 2023-12-13 schema SHA-256 1808d77a46c66f363c333b2ca0b7ea511ae2fc8d9344205d1ee60e7b848ec165",
+      "captured_at": "2026-07-19T00:32:37+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_and_github",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-26"
+    },
+    {
+      "id": "official-notification-filter-lifecycle-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "inventory-fbm-fba",
+        "api-data-security"
+      ],
+      "claim": "Notification filtering is type-specific; Listings status and issue events do not support filterExpression. A created subscription is not delivery proof, and filter migration requires a new shadow subscription plus readback and delivery evidence.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/filter-notification-subscriptions",
+      "evidence_region": "support matrix lines 629-656; optional-field guard lines 671-700; migration lines 799-827; create/get API references through response sections; page-end coverage recorded",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-26"
+    },
+    {
+      "id": "official-github-amzn-spapi-delta-20260719",
+      "domain_ids": [
+        "api-data-security",
+        "software-routing"
+      ],
+      "claim": "Amazon developer documentation verifies the linked amzn SP-API repositories. Samples commit 43fc67b removed Listings Wizard and moved Shipping Guru to the new Orders API; the repository is educational, not a supported product, and its MCP path is not admitted into T One.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://github.com/amzn/selling-partner-api-samples/commit/43fc67bc807a59d7a42d3fdccc1059b470f2a1a2",
+      "evidence_region": "official identity changelog; README, release v1.0.4, full commit file list/diff bottom, latest issues/PR page and security page; no published advisories shown",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_repository",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "next release, commit, license or security change"
+    },
+    {
+      "id": "official-github-unasserted-license-block-20260719",
+      "domain_ids": [
+        "api-data-security",
+        "software-routing"
+      ],
+      "claim": "The official SP-API Postman and PHP release repositories expose no repository license file at capture time. Postman also requires LWA client secret and refresh token for live calls, so both remain research-only and cannot be installed or given credentials.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://github.com/amzn/selling-partner-api-postman",
+      "evidence_region": "Postman official guide through sandbox section; repository README/root/security/no-release; PHP release README/root/composer presence/security/release; license absent in both root trees",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_repository",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "after license, release or security-state change"
+    },
+    {
+      "id": "amz-native-ai-public-comment-signals-20260719",
+      "domain_ids": [
+        "ai-commerce-tools",
+        "industry-intelligence",
+        "listing-seo-keywords",
+        "catalog-identity-compliance"
+      ],
+      "claim": "A US Seller Forums Amazon announcement exposed View enhancements for existing listings with review, edit and publish boundaries. The rendered discussion declared seven replies and exposed four unique anonymous top-level theme clusters alleging bullet-count conflict, product-type instability, unexpected content loss and general distrust. No Amazon reply or authorized-store reproduction was visible, so these are dated community signals that create regression tests, not verified product defects or policy exceptions.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "community_signal_with_official_announcement",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "captured_at": "2026-07-19T01:21:17+08:00",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_forum_mixed_evidence",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly for new Amazon replies, edited comments or official help changes"
+    },
+    {
+      "id": "official-sp-api-release-delta-20260527",
+      "domain_ids": [
+        "api-data-security",
+        "catalog-identity-compliance",
+        "variation-bulk-files",
+        "orders-customer-service-returns"
+      ],
+      "claim": "The May 27 2026 official SP-API release added productType to getListingsRestrictions, parentageLevel to PTD retrieval, filterExpression to createSubscription and DeliveryTipChange to the OrderChangeType notification schema. Public documentation proves the contract only; this store's SP-API connector remains unauthorized.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/sp-api-release-notes",
+      "evidence_region": "May 27 2026 API and documentation changes; getListingsRestrictions full query-parameter and response section; release-page footer",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "next SP-API release or deprecation change"
+    },
+    {
+      "id": "official-us-title-item-highlights-20260727",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "catalog-identity-compliance",
+        "ai-commerce-tools",
+        "industry-intelligence"
+      ],
+      "claim": "An Amazon US forum announcement updated June 10 2026 schedules, from July 27 2026, a 75-character title limit including spaces for all non-media categories and a 125-character Item Highlights field. View enhancements can recommend both; brand owners have a 14-day review window, while all sellers can inspect Manage All Inventory > View Change History. The rule is US- and effective-date-scoped, not a global default.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "official announcement body, update date, View enhancements and review boundary; corroborating official Q&A body and anonymous water-bottle example; both pages reached footer",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_forum_announcement",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "2026-07-27 and weekly until help-page authentication is restored"
+    },
+    {
+      "id": "amz-title-update-comment-signals-20260719",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "catalog-identity-compliance",
+        "ai-commerce-tools",
+        "industry-intelligence"
+      ],
+      "claim": "Two US forum discussions declared 185 and 410 replies but exposed only bounded default-order samples. Seven and eight anonymous theme clusters respectively raised Item Highlights error 100476, category and variation ambiguity, catalog-authority limitations, bundles, bulk/API access and AI policy-conflict concerns. Nested replies and a second sort were inaccessible and no authorized store reproduction was performed, so the clusters are regression candidates rather than verified defects or exceptions.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "community_signal_with_official_announcement",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "official body, default rendered top-level reply sample, visible Show replies controls, sort controls and page footer; usernames and case identifiers excluded",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_forum_mixed_evidence",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly for official answers, edits, reply deltas or authorized reproduction"
+    },
+    {
+      "id": "official-amz-ads-agentic-shopping-20260611",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-brand-display-video",
+        "ads-measurement-experiments",
+        "ai-commerce-tools",
+        "industry-intelligence"
+      ],
+      "claim": "Amazon Ads announced that existing sponsored-ads campaigns can be automatically eligible for Alexa for Shopping placements without separate setup, and that Sponsored Products and Sponsored Brands prompts can be optimized automatically. The page also describes aggregate prompt-engagement and conversion-lift metrics. This is a public delivery-eligibility contract, not proof that a routed advertiser account served, converted, or received every feature, and the aggregate metrics are not a tenant guarantee.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://advertising.amazon.com/library/news/agentic-shopping-advertising",
+      "evidence_region": "publication date; Alexa for Shopping and Alexa+ sections; sponsored-ad eligibility and prompt behavior; aggregate metrics; agentic-tool summary; footer reached",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "country_site": "GLOBAL_PUBLIC_PAGE",
+      "store_mode": "advertiser_public_documentation",
+      "ownership": "public_official_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "next Amazon Ads placement, enrollment, control or eligibility update"
+    },
+    {
+      "id": "official-amz-ads-agent-amc-diff-20260331",
+      "domain_ids": [
+        "ads-measurement-experiments",
+        "ai-commerce-tools",
+        "api-data-security"
+      ],
+      "claim": "Amazon Ads documented enhanced Ads Agent interactivity for Amazon Marketing Cloud: selected SQL can be sent to chat with a custom prompt, generated SQL can open in the current or a new query tab, and query plus date-range changes can be reviewed side by side and accepted or rejected. The public page lists the US and China among supported countries and says anyone with AMC access can enter through Ask AI for AMC help; it does not establish this advertiser's AMC entitlement or authorize query execution, scheduling or audience activation.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://advertising.amazon.com/en-gb/resources/whats-new/enhanced-ads-agent-interactivity-for-amazon-marketing-cloud",
+      "evidence_region": "launch summary; query-editor right-click workflow; selected-SQL chat; current/new tab output; side-by-side query and date-range diff; countries, access and entry; footer reached",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "country_site": "GLOBAL_LISTED_COUNTRIES",
+      "store_mode": "advertiser_amc_public_documentation",
+      "ownership": "public_official_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "next AMC Ads Agent availability, entitlement or editor change"
+    },
+    {
+      "id": "amz-ads-mcp-trust-comment-signals-20260719",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-measurement-experiments",
+        "ai-commerce-tools",
+        "industry-intelligence",
+        "api-data-security"
+      ],
+      "claim": "A public Amazon PPC/MCP discussion was read in Best, New and Controversial order. Five anonymous human theme clusters covered approval thresholds, maximum 24-hour exposure or blast radius, decision logs and accountability, agency displacement, and questions about third-party MCP tools. Two author replies were visible, no Amazon or other official reply was visible, and two nested reply branches were not expanded. One suggestion to auto-execute allegedly reversible negative-targeting or pause actions conflicts with T One's owner-confirmation gate and is rejected; maximum exposure, action type and decision-log fields remain regression candidates only.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "single_case_community_signal_with_conflict",
+      "source": "https://www.reddit.com/r/FulfillmentByAmazon/comments/1ti5a9c/anyone_elses_agency_or_inhouse_team_moving_to/",
+      "evidence_region": "full public thread to footer in Best, New and Controversial order; five anonymous human clusters; two author replies; no official reply; two unexpanded nested branches; AutoModerator promotion and vendor claims filtered",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "agency_or_inhouse_advertiser_discussion",
+      "ownership": "public_community_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "only for edited post, official reply, materially new comment cluster or audited third-party evidence"
+    },
+    {
+      "id": "official-amz-fba-prep-category-barcode-20260707",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "catalog-identity-compliance"
+      ],
+      "claim": "Amazon's July 7, 2026 US public FBA guide separates manufacturer, Amazon and Transparency barcode paths; individual, case-packed and set structures; loose-unit security; unit-label placement outside protective packaging; shipping-box barcode cleanup; and product-specific bagging or bubble-wrap prep. This is a preflight contract, not proof that a product is eligible, correctly prepped, received or sellable.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://sell.amazon.com/blog/fba-packaging-prep-labeling?mons_sel_locale=en_US",
+      "evidence_region": "page identity and publication date; barcode types; label placement; individual/case/set packaging; loose products; product-specific prep; shipping box; noncompliance; FAQ and footer reached",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "country_site": "US",
+      "store_mode": "public_seller_education",
+      "ownership": "public_official_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "monthly or on FBA prep, barcode or packaging change"
+    },
+    {
+      "id": "official-amz-us-fba-prep-responsibility-20260101",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "claim": "A current public Amazon staff reply states that the US store no longer offers FBA prep or item-labeling services and that each sellable unit must arrive prepared and labeled. The associated service change is effective January 1, 2026. Seller or selected-provider responsibility is site- and effective-date-scoped and does not authorize shipment creation, provider selection, packaging purchase or labeling.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "Amazon staff reply; unit preparation and barcode; glass protection; pallet constraints; declared replies and three visible anonymous themes; footer reached",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "country_site": "US",
+      "store_mode": "public_seller_forum_no_store_selected",
+      "ownership": "public_official_reply",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "monthly or on US FBA service change"
+    },
+    {
+      "id": "conflict-amz-fba-polybag-measurements-20260719",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "claim": "Amazon sources conflict on exact poly-bag measurements: the July 7, 2026 US public guide renders 1mm and a warning threshold for openings larger than 5 inches, while a dated Amazon staff education post renders 1.5 mil and 5 inches or larger. The linked current Seller Central help body was authentication/JavaScript gated, so neither exact thickness nor inclusive boundary is promoted.",
+      "evidence_state": "time_sensitive_evidence",
+      "source": "https://sell.amazon.com/blog/fba-packaging-prep-labeling?mons_sel_locale=en_US ; AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "current blog product-specific prep and FAQ; dated Amazon staff seven-step poly-bag list; linked current help inaccessible",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "country_site": "US",
+      "store_mode": "public_sources_without_authenticated_product_prep_guidance",
+      "ownership": "public_official_sources_with_unresolved_conflict",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly until current routed Prep guidance resolves both values"
+    },
+    {
+      "id": "amz-fba-upc-prepackaged-comment-signals-20260719",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "catalog-identity-compliance",
+        "brand-registry-ip",
+        "industry-intelligence"
+      ],
+      "claim": "A public Reddit FBA thread read in Best, New and Controversial order yielded seven anonymous themes: manufacturer UPC on the sellable unit, outer master-case shipment labels, scannability and conflicting barcodes, fragile protection, set or ready-to-ship markers, a three-foot drop suggestion and a country-of-origin label suggestion. Two author replies and no Amazon reply were visible. The last two suggestions remain unverified community signals and none of the thread establishes barcode eligibility for another product, brand, store or marketplace.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "single_case_community_signal",
+      "source": "https://www.reddit.com/r/FulfillmentByAmazon/comments/1t6xqvi/any_other_requirements_manufacturer_upc_instead/",
+      "evidence_region": "post and footer in Best, New and Controversial; two direct nested-comment pages; seven anonymous clusters; two author replies; no official reply; additional More replies unavailable",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "country_site": "US_ASSUMED_BY_THREAD_CONTEXT",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "only for edited post, official reply, new independent corroboration or current policy delta"
+    },
+    {
+      "id": "official-amz-fba-inventory-state-vector-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "api-data-security"
+      ],
+      "claim": "The current public FBA Inventory API documentation separates fulfillable, inbound, reserved, unfulfillable and researching inventory at marketplace scope. These states must remain distinct, and public documentation does not prove an authorized seller connection or a current store quantity.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_public_api_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-en_EN/docs/fba-inventory-api",
+      "evidence_region": "page identity, state definitions, marketplace/version/sandbox table, operation-role matrix, related reference links and footer; page end reached",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "GLOBAL_API_MARKETPLACE_SCOPED",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_public_developer_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly release delta or before connector implementation"
+    },
+    {
+      "id": "official-amz-fba-inventory-summary-query-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "api-data-security"
+      ],
+      "claim": "getInventorySummaries supports a full read, a delta read using startDateTime, or a seller-SKU read. Subsequent changed-summary pages retain startDateTime, sellerSkus is limited to 50, and additional details are omitted when details remains false; omitted details are not zero.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_public_api_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/get-fba-inventory-summaries",
+      "evidence_region": "three query modes, prerequisite role, details default, pagination/startDateTime requirement, sellerSkus limit, update marker and footer; page end reached",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "GLOBAL_API_MARKETPLACE_SCOPED",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_public_developer_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly release delta or before connector implementation"
+    },
+    {
+      "id": "official-amz-fba-inventory-sandbox-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "api-data-security"
+      ],
+      "claim": "The FBA Inventory dynamic sandbox demonstrates virtual create, add, read, deplete and delete flows with fictitious identifiers and quantities, and still requires authorization, marketplace ID and sandbox configuration. Sandbox output cannot establish a production SKU state or business completion.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_sandbox_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/lang-en_US/docs/fba-inventory-api-v1-dynamic-sandbox-guide",
+      "evidence_region": "requirements, dynamic versus static fields, virtual lifecycle sequence, delete constraints, related links and footer; page end reached; no call made",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "GLOBAL_API_MARKETPLACE_SCOPED",
+      "store_mode": "public_sandbox_documentation_unconnected",
+      "ownership": "Amazon_public_developer_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly release delta or after authorized sandbox call"
+    },
+    {
+      "id": "official-amz-fba-inventory-tool-metrics-20250523",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "product-economics"
+      ],
+      "claim": "Amazon's dated US seller blog describes excess inventory as more than 90 days of supply, stranded inventory as fulfillment-center stock without an active offer, aged inventory using FIFO, and 90-day rolling sell-through as sold-and-delivered units divided by average sellable fulfillment-center units. Recommendations use historical sales, demand and seasonality but do not authorize replenishment or inventory actions.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_dated_public_education",
+      "source": "https://sell.amazon.com/blog/fba-inventory?mons_sel_locale=en_US",
+      "evidence_region": "page metadata, metric definitions, performance/restock sections, AWD/FAQ/related links and country/footer; page end reached; Restock link stopped at Seller Central sign-in",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "US",
+      "store_mode": "public_seller_education_no_store_selected",
+      "ownership": "Amazon_public_seller_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "quarterly or current Seller Central metric delta"
+    },
+    {
+      "id": "expired-amz-us-inventory-report-alignment-expectation-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "claim": "A US Amazon announcement said Inventory Overview On-hand would include Available plus fulfillment-center transfer while Reserved would remove fulfillment-center transfer, and expected affected reports to align by mid-2026. At the July 19, 2026 capture the page contained no completion notice, so report alignment is unknown rather than complete.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_dated_expectation_expired_unverified_completion",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "official announcement identity, US scope, On-hand/Reserved change, mid-2026 expectation, zero replies, related discussions and footer; page end reached",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_forum_announcement",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly until current routed report comparison or official completion notice"
+    },
+    {
+      "id": "official-amz-inventory-report-purpose-timing-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "claim": "Amazon staff responses distinguish report purpose and timing: the US response separates Fulfillment Reports, consolidated FBA Inventory and customizable Inventory Reports and points to Inventory Ledger for an immediate view; the UK response distinguishes period reconciliation in Inventory Ledger from current availability in Amazon-fulfilled Inventory. The UK split remains UK-scoped, and neither response proves current store values.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_staff_replies_site_scoped",
+      "source": "AUTHENTICATED_SELLER_PORTAL ; AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "US question plus one Amazon reply to footer; UK question plus visible Amazon staff reply to footer. UK thread declared 12 comments but only two seller comments rendered, so community themes were not promoted",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "US_AND_UK_SITE_SCOPED",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_staff_public_replies",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "monthly, report change, or authenticated routed comparison"
+    },
+    {
+      "id": "amz-inventory-reconciliation-comment-signals-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm"
+      ],
+      "claim": "A public Reddit reconciliation thread yielded all three uniquely visible human theme clusters across Best, New and Controversial: a receiving miscount may later correct, a question about manual adjustment, and a suggestion to use delivery paperwork in a case or reimbursement request. There was no Amazon reply or verified outcome; sellout, removal/reship, adjustment, case and reimbursement actions are not authorized by these comments.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "single_case_community_signal_complete_visible_human_sample",
+      "source": "https://www.reddit.com/r/FulfillmentByAmazon/comments/1u3yssw/how_do_you_reconcile_inventory_differences_with/",
+      "evidence_region": "post and page footer under Best, New and Controversial; all three unique visible human clusters; zero author/Amazon replies; AutoModerator Discord and unrelated recommendation feed filtered",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "only for edited thread, new official reply or independent corroboration"
+    },
+    {
+      "id": "official-amz-promotion-types-public-workflow-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer",
+        "product-economics"
+      ],
+      "claim": "Amazon's May 27 2026 US seller guide separates Promotions, Deals, Coupons and Price Discounts by eligibility, placement, timing, creation path, review or validation and possible fees. It documents Coupons for up to 200 ASINs and Price Discounts up to 30 days, but public documentation and review submission do not prove current store eligibility or activation.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_public_seller_education",
+      "source": "https://sell.amazon.com/blog/seller-promotions",
+      "evidence_region": "identity/date/author, TOC, all four type sections and creation flows, tips, FAQ, related articles and footer; linked Seller Central help bodies blocked; embedded 3:49 video not reviewed",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "US",
+      "store_mode": "public_seller_education_no_store_selected",
+      "ownership": "Amazon_public_seller_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly content hash delta or before a routed promotion draft"
+    },
+    {
+      "id": "official-amz-price-discount-checkout-promotion-split-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer",
+        "product-economics"
+      ],
+      "claim": "A current Amazon staff reply distinguishes Price Discounts that modify the displayed offer price from Percentage Off and BOGO promotions that apply at checkout. A coupon configured not to stack blocks those Manage Promotions types but still combines with a Price Discount.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_staff_reply_site_scoped",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "full seller question, three declared reply renders, one unique Amazon staff reply after duplicate filtering, similar discussions and footer",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "US_FORUM_LOCALE",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_staff_public_reply",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly official reply/help delta or authenticated cart test"
+    },
+    {
+      "id": "official-amz-btp-coupon-combinability-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "product-economics"
+      ],
+      "claim": "A current Amazon staff reply says Brand Tailored Promotions use a separate combinability layer and can combine with a standard coupon even when that coupon is set not to stack. This requires a pairwise worst-case discount simulation and does not prove the routed store's live cart behavior.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_staff_reply_site_scoped",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "seller question, all one declared reply, unique Amazon staff response, controls, similar discussions and footer",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "US_FORUM_LOCALE",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_staff_public_reply",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly official reply/help delta or authenticated cart test"
+    },
+    {
+      "id": "official-amz-us-percentage-off-minimum-two-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "industry-intelligence"
+      ],
+      "claim": "The US Amazon announcement effective September 2 2025 requires at least two units for a Percentage Off promotion without a claim code. Single-unit Percentage Off needs a claim code; eligible Professional sellers can instead use a coupon and incur coupon fees.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_effective_dated_announcement",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "official announcement body and effective date to footer; nine replies declared but only four unique comments visible, so community themes were not promoted",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_forum_announcement",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly official edit or authenticated promotion-builder delta"
+    },
+    {
+      "id": "official-amz-fair-pricing-risk-public-guidance-20260719",
+      "domain_ids": [
+        "pricing-featured-offer",
+        "promotions-deals-coupons",
+        "account-health-policy",
+        "product-economics"
+      ],
+      "claim": "Amazon's dated US pricing guide says misleading prices, prices significantly above recent prices, higher per-unit bundle pricing, or excessive shipping may lead to Featured Offer or offer removal, shipping restrictions or selling-privilege action. A seller-entered reference price is not proof of a validated strike-through price.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_dated_public_seller_education",
+      "source": "https://sell.amazon.com/blog/amazon-pricing-strategies",
+      "evidence_region": "identity/date/author, TOC, Fair Pricing, competitive price, Featured Offer, new product, Pricing Health, Automate Pricing, related content and footer; embedded videos not reviewed",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "US",
+      "store_mode": "public_seller_education_no_store_selected",
+      "ownership": "Amazon_public_seller_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "monthly or current policy/store-price delta"
+    },
+    {
+      "id": "amz-fee-margin-competitor-role-comment-signal-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer",
+        "product-economics"
+      ],
+      "claim": "A current public Reddit thread yielded nine visible human comments plus one filtered bot announcement across Best, New and Controversial and three nested branches. The bounded signal is to distinguish an Amazon-retail offer from third-party seller economics and verify landed contribution margin; numeric fees, click prices and multipack claims remain unverified single-case content.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "single_case_community_signal_complete_visible_sample",
+      "source": "https://www.reddit.com/r/FulfillmentByAmazon/comments/1ufsvbd/amazon_fees/",
+      "evidence_region": "post, Best/New/Controversial, three More replies branches and footer; nine human comments plus one filtered AutoModerator item; no Amazon reply or verified outcome",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "comment edit, official corroboration or current fee-preview evidence"
+    },
+    {
+      "id": "official-amz-us-fbm-four-day-nonrfs-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "fulfillment-fba-fbm"
+      ],
+      "claim": "For US seller-fulfilled returns effective January 26, 2026, the four-calendar-day processing window begins after the seller receives a return only when Amazon did not issue Refund at First Scan through the prepaid-return-label program. RFS continues separately, so the four-day rule is not universal.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_effective_dated_announcement_with_staff_clarification",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "announcement body, effective date, Guided Refund section, KJ_Amazon RFS clarification and footer; 135 comments declared but the public renderer exposed only a small subset, so community themes were not promoted",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_forum_announcement_and_staff_reply",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly official edit or before routed return action"
+    },
+    {
+      "id": "official-amz-guided-refund-automated-safet-boundary-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "product-economics"
+      ],
+      "claim": "Amazon's current public US announcement describes Guided Refund for condition grading, allowed restocking treatment and evidence. Automated Refund is generally not SAFE-T eligible, with stated exceptions such as return loss in transit or incorrect delivery confirmation not caused by the seller; exact live case eligibility remains unverified.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_effective_dated_workflow_and_exception_boundary",
+      "source": "AUTHENTICATED_SELLER_PORTAL",
+      "evidence_region": "official body and staff clarification through footer; related help bodies required JavaScript or sign-in",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_public_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly official help delta or current routed case"
+    },
+    {
+      "id": "official-amz-orders-v2026-read-model-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security"
+      ],
+      "claim": "Orders API v2026-01-01 is the current read model and v0 is deprecated. The pinned current model contains searchOrders and getOrder, supports includedData and 24-hour pagination tokens, and does not contain confirmShipment; public contract evidence is not a connected seller response.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_documentation_plus_pinned_schema",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/orders-api ; https://github.com/amzn/selling-partner-api-models/blob/6ad2ee14835a9aa31889ae5607ea4e1fcc90f3ad/models/orders-api-model/orders_2026-01-01.json",
+      "evidence_region": "Orders overview and migration guide through footer plus pinned OpenAPI paths, filters, includedData, response codes and sandbox examples",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "GLOBAL_WITH_DOCUMENTED_AGE_EXCEPTIONS",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation_and_repository",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly release or model commit delta"
+    },
+    {
+      "id": "official-amz-orders-v2026-pii-role-no-rdt-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security"
+      ],
+      "claim": "Orders API v2026-01-01 PII does not require an RDT, but selling-partner authorization, appropriate roles, fulfillment/order-status conditions, phone-suppression behavior and site-specific tax-role address differences remain. This does not remove privacy or authorization gates.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_security_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/access-orders-pii",
+      "evidence_region": "PII field groups, no-RDT statement, prerequisite, role/status table, phone suppression, US/JP/SG differences and footer",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "GLOBAL_WITH_SITE_ROLE_DIFFERENCES",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_security_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly role, version or security delta"
+    },
+    {
+      "id": "official-amz-customer-feedback-browse-node-return-boundary-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "reviews-voc-quality"
+      ],
+      "claim": "In the pinned Customer Feedback API 2024-06-01 model, return topics and return trends are browse-node endpoints. Item endpoints cover review topics and trends, so category return percentages cannot be promoted as a child ASIN return cause.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_pinned_OpenAPI_schema_boundary",
+      "source": "https://github.com/amzn/selling-partner-api-models/blob/6ad2ee14835a9aa31889ae5607ea4e1fcc90f3ad/models/customer-feedback-api-model/customerFeedback_2024-06-01.json",
+      "evidence_region": "all paths, operation IDs, query parameters, return-topic and return-trend response schemas at pinned commit",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "GLOBAL_PER_MARKETPLACE_PARAMETER",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_GitHub_repository",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "model commit or API version delta"
+    },
+    {
+      "id": "amz-return-abuse-evidence-packet-community-signal-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "industry-intelligence"
+      ],
+      "claim": "A fully reviewed visible public Reddit sample with more than ten comments produced one bounded practice candidate: keep order identifiers, timestamps, condition images and support receipts in a scoped evidence packet. Direct buyer contact, off-platform escalation, retaliation, legal advice and unsupported universal claims were filtered and no action authority was inferred.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "single_case_community_signal_complete_visible_sample",
+      "source": "https://www.reddit.com/r/FulfillmentByAmazon/comments/1sqviyy/returns_fraud_by_single_buyer_over_200_orders/",
+      "evidence_region": "post, Best/New/Controversial, more than ten visible comments, visible nested branches and footer; removed comments and some More replies remained unavailable",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_content",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "official corroboration, comment edit or current routed evidence"
+    },
+    {
+      "id": "amz-returns-knowledge-package-audit-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security",
+        "industry-intelligence"
+      ],
+      "claim": "Five already-distilled candidates were compared. Amazon's pinned models and samples add current schema and workflow contracts; the SDK remains research-only because language support and bugs vary. Two Nexscope return Skills are MIT but have no release or security policy and sampled bodies are generic, uncited and missing Amazon state/failure boundaries, so they were not installed or copied.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "knowledge_package_admission_audit",
+      "source": "https://github.com/amzn/selling-partner-api-models ; https://github.com/amzn/selling-partner-api-samples ; https://github.com/amzn/selling-partner-api-sdk ; https://github.com/nexscope-ai/Amazon-Skills ; https://github.com/nexscope-ai/eCommerce-Skills",
+      "evidence_region": "README, license, pinned commits/releases, target skill/model files, issues, pulls, security/advisories and sampled workflow/failure/rules",
+      "captured_at": "2026-07-19T03:35:00+08:00",
+      "country_site": "GLOBAL_OR_UNSPECIFIED_AS_RECORDED_PER_PACKAGE",
+      "store_mode": "public_repository_no_store_selected",
+      "ownership": "official_and_third_party_public_repositories",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "commit, release, license or security delta"
+    },
+    {
+      "id": "amz-english-package-query-audit-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security",
+        "industry-intelligence"
+      ],
+      "claim": "The English package-search matrix added three bounded decisions without installing or authorizing anything. SkillCrate is a discovery-only research source because it has no LICENSE file and no returns workflow. mansournorouzi/amazon-sp-mcp is rejected_license because the repository has no LICENSE file, requires live LWA credentials, uses legacy Orders paths and retains an open security issue. Terra Natural's commercial remote MCP remains research_only and blocked_connector because it stores an encrypted refresh token, sends selected business data through subprocessors, exposes a write tier, and has no public source or test suite. Amazon's pinned models and samples remain the preferred contract references for the existing unconnected connector.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "english_knowledge_package_candidate_audit",
+      "source": "https://github.com/BWB03/skillcrate ; https://github.com/mansournorouzi/amazon-sp-mcp ; https://amazon-mcp.com/",
+      "evidence_region": "English query results followed into README or service body, repository trees, commits, releases, issues, pull requests, security/advisories, privacy, terms, pricing, credential surface and sampled workflow/failure/rules",
+      "captured_at": "2026-07-19T03:50:00+08:00",
+      "country_site": "GLOBAL_OR_UNSPECIFIED_AS_RECORDED_PER_CANDIDATE",
+      "store_mode": "public_repository_or_service_no_store_selected",
+      "ownership": "third_party_public_repositories_and_commercial_service",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "commit, release, license, security, privacy, terms or tool-scope delta"
+    },
+    {
+      "id": "official-amz-sales-traffic-report-contract-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security"
+      ],
+      "claim": "GET_SALES_AND_TRAFFIC_REPORT is a Seller report with the Brand Analytics role. It supports requested or scheduled generation, one marketplace per report, DAY/WEEK/MONTH date aggregation and PARENT/CHILD/SKU ASIN aggregation. WEEK and MONTH expand to full periods; dataStartTime is limited to two years; and the public page documents a three-requests-per-five-minutes limit.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_report_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/report-type-values-analytics",
+      "evidence_region": "seller retail analytics, Sales and Traffic Business Report, role, availability, request rate, JSON output, B2B scope, time boundary, report options, period expansion and footer",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "country_site": "GLOBAL_ONE_MARKETPLACE_PER_REPORT",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "weekly content, report option or schema delta"
+    },
+    {
+      "id": "official-amz-sales-traffic-schema-aggregation-boundary-20260719",
+      "domain_ids": [
+        "analytics-growth"
+      ],
+      "claim": "Pinned sellerSalesAndTrafficReport schema hash 912c0d0... separates salesAndTrafficByDate, aggregated across the catalog by period, from salesAndTrafficByAsin, aggregated by ASIN over the requested range. dateGranularity and asinGranularity are independent; a DAY request does not imply daily rows for every ASIN. B2B fields can be absent outside B2B, and percentage fields are not additive.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_pinned_JSON_schema_boundary",
+      "source": "https://github.com/amzn/selling-partner-api-models/blob/6ad2ee14835a9aa31889ae5607ea4e1fcc90f3ad/schemas/reports/sellerSalesAndTrafficReport.json",
+      "evidence_region": "full 68,161-byte schema, all top-level properties and seven definitions, SHA-256 912c0d01073c4770f8bbd1e24f5553afa197920ac12b37d2b59726118c21105d",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "country_site": "GLOBAL_ONE_MARKETPLACE_PER_REPORT",
+      "store_mode": "public_repository_no_seller_selected",
+      "ownership": "Amazon_official_GitHub_repository",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "model commit or report contract delta"
+    },
+    {
+      "id": "official-amz-data-kiosk-current-lifecycle-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security"
+      ],
+      "claim": "Current official Sales and Traffic GraphQL examples use analytics_salesAndTraffic_2024_04_24; analytics_salesAndTraffic_2023_11_15 was removed March 27 2026. Data Kiosk is asynchronous: createQuery, terminal processing state, data/error/no-document branch, getDocument, encrypted-at-rest JSONL retrieval, validation and nextToken pagination are separate states. DONE without a document means no data, not analytics completion.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_async_analytics_contract",
+      "source": "https://developer-docs.amazon.com/sp-api/docs/data-kiosk-api ; https://developer-docs.amazon.com/sp-api/docs/request-and-filter-data-with-graphql ; https://developer-docs.amazon.com/sp-api/docs/sp-api-deprecations",
+      "evidence_region": "API version and regions, key features, Reports comparison, role table, both current GraphQL examples, processing tutorial, document security warning, release notes and deprecation row",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "country_site": "GLOBAL_SP_API_REGIONS_NA_EU_FE",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "release, dataset, deprecation or schema delta"
+    },
+    {
+      "id": "official-amz-brand-analytics-dashboard-scope-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "keywords-search-terms",
+        "reviews-voc-quality"
+      ],
+      "claim": "The US public Brand Analytics tool requires a Professional account, Brand Representative status and Brand Registry enrollment. Search Catalog Performance, Search Query Performance, Top Search Terms, Repeat Purchase, Demographics, Market Basket and Customer Loyalty dashboards expose different populations and entities; they must not be merged or compared without preserving dashboard, view, site and period.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "official_current_dashboard_and_entitlement_contract",
+      "source": "https://sell.amazon.com/tools/amazon-brand-analytics?mons_sel_locale=en_US ; https://sell.amazon.com/blog/brand-analytics?mons_sel_locale=en_US",
+      "evidence_region": "tool page through footer plus all seven blog dashboard sections; embedded videos were not played and were excluded",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "country_site": "US_PUBLIC_PAGE_WITH_DASHBOARD_SITE_VARIATION_UNKNOWN",
+      "store_mode": "brand_registered_seller_no_store_selected",
+      "ownership": "Amazon_official_seller_education",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "monthly content, dashboard or entitlement delta"
+    },
+    {
+      "id": "amz-analytics-knowledge-package-audit-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security",
+        "industry-intelligence"
+      ],
+      "claim": "Three package paths were audited without installation. Amazon's MIT-0 Data Kiosk sample is extract_rules_only because its state machine is useful but its deployment guide embeds the removed 2023_11_15 dataset and broad AWS credentials. saleweaver/python-amazon-sp-api is rejected_stale for this analytics use because its current README also uses that removed dataset and its security policy says only 1.x is supported while the release is 2.1.9. jlevers/selling-partner-api remains research_only because it duplicates the runtime, has no visible security policy and current report/parser issues remain open.",
+      "evidence_state": "time_sensitive_evidence",
+      "signal_class": "english_knowledge_package_admission_audit",
+      "source": "https://github.com/amzn/selling-partner-api-samples/tree/main/use-cases/data-kiosk ; https://github.com/saleweaver/python-amazon-sp-api ; https://github.com/jlevers/selling-partner-api",
+      "evidence_region": "README, pinned commits/releases, license, deployment, credentials, dependencies, test trees, issues, pull requests, security surfaces and sampled workflow/failure/rules",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "country_site": "GLOBAL_OR_UNSPECIFIED_PER_PACKAGE",
+      "store_mode": "public_repository_no_store_selected",
+      "ownership": "official_and_third_party_public_repositories",
+      "store_binding": "public",
+      "execution_identity": "public_readonly",
+      "expires_or_recheck": "commit, release, license, security or dataset delta"
+    }
+  ]
+}

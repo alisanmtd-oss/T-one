@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meta Ads Channel Expert"
+  short_description: "Evidence-bounded Meta Ads planning and review"
+  default_prompt: "Use $meta-channel to research, draft, or review this Meta Ads task with current official evidence, route isolation, explicit unknowns, and owner approval before any live action."

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "pack_id": "etsy",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/etsy/machine/contract.json",
+    "knowledge_packs/etsy/legacy-commerce-operator.md",
+    "knowledge_packs/etsy/SKILL.md",
+    "knowledge_packs/etsy/agents/openai.yaml",
+    "knowledge_packs/etsy/references/connector-readiness.json",
+    "knowledge_packs/etsy/references/curriculum.json",
+    "knowledge_packs/etsy/references/evidence-index.json",
+    "knowledge_packs/etsy/references/failure-review.json",
+    "knowledge_packs/etsy/references/mother-requirement-matrix.md",
+    "knowledge_packs/etsy/references/official-rules.md",
+    "knowledge_packs/etsy/references/workflows-and-gates.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

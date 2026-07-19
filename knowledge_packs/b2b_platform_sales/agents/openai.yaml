@@ -1,0 +1,4 @@
+interface:
+  display_name: "B2B 平台外贸智能体"
+  short_description: "Operate evidence-scoped B2B platform sales workflows"
+  default_prompt: "Use $b2b-platform-sales-operator to audit and prepare one evidence-scoped B2B platform sales workflow."

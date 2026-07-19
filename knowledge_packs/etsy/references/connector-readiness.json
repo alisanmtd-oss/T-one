@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "expert_id": "expert-etsy-marketplace",
+  "updated_at": "2026-07-18T22:44:43+08:00",
+  "overall_state": "blocked_owner_input",
+  "local_truth": {
+    "api_application": {
+      "source": "config/api_applications.json",
+      "id": "etsy-open-api",
+      "status": "ready_to_apply"
+    },
+    "public_listing_source": {
+      "source": "config/api_sources.json",
+      "id": "etsy-open-api-listings",
+      "enabled": false,
+      "auth_type": "x-api-key",
+      "shop_oauth_adapter": false
+    },
+    "shared_security_baseline": {
+      "source": "SECURITY.md",
+      "external_oauth_client_implemented": false,
+      "signed_webhook_receiver_implemented": false,
+      "store_write_scopes_implemented": false
+    },
+    "environment_probe": {
+      "api_key_present": false,
+      "oauth_token_present": false,
+      "secret_values_read_or_stored": false
+    }
+  },
+  "minimum_fusion_path": [
+    {
+      "stage": 1,
+      "name": "approved_app_and_shop_binding",
+      "required_evidence": [
+        "approved_app_keystring",
+        "store_binding_id",
+        "shop_id",
+        "execution_identity_id",
+        "seller_country",
+        "ownership"
+      ],
+      "completion_probe": "authenticated minimum-scope shop read returns the bound shop_id",
+      "state": "blocked_owner_input"
+    },
+    {
+      "stage": 2,
+      "name": "minimum_scope_oauth",
+      "required_evidence": [
+        "credential_ref",
+        "granted_scopes",
+        "token_expiry",
+        "refresh_success",
+        "revocation_test"
+      ],
+      "completion_probe": "read-only Listings/receipts request succeeds only for the bound shop and rejects a different shop",
+      "state": "blocked_connector"
+    },
+    {
+      "stage": 3,
+      "name": "quota_aware_read_adapter",
+      "required_evidence": [
+        "qps_limit",
+        "qpd_limit",
+        "remaining_headers",
+        "429_retry_after",
+        "cache_key",
+        "backoff_trace"
+      ],
+      "completion_probe": "deterministic test proves no retry storm and no cross-shop cache entry",
+      "state": "blocked_connector"
+    },
+    {
+      "stage": 4,
+      "name": "signed_order_webhook_receiver",
+      "required_evidence": [
+        "public_https_callback",
+        "encrypted_signing_secret_ref",
+        "raw_body_signature_check",
+        "timestamp_window",
+        "webhook_id_dedupe",
+        "durable_event_inbox",
+        "resource_url_allowlist",
+        "shop_id_match"
+      ],
+      "completion_probe": "Etsy portal test event passes valid signature, rejects forged/stale/duplicate payloads and performs a scoped follow-up read",
+      "state": "blocked_connector"
+    },
+    {
+      "stage": 5,
+      "name": "orders_payments_and_ledger_readback",
+      "required_evidence": [
+        "transactions_r",
+        "receipt_read",
+        "payment_read",
+        "ledger_read",
+        "currency_and_fee_mapping",
+        "payment_post_shipping_timing"
+      ],
+      "completion_probe": "one authorized receipt reconciles to payment/ledger without claiming bank settlement",
+      "state": "blocked_connector"
+    },
+    {
+      "stage": 6,
+      "name": "developer_mode_write_simulation",
+      "required_evidence": [
+        "developer_mode",
+        "draft_test_listing",
+        "test_marker",
+        "no_stock_image",
+        "fee_acknowledgement",
+        "cleanup_plan",
+        "owner_approval"
+      ],
+      "completion_probe": "draft-only production test is read back and deactivated without accidental buyer impact",
+      "state": "blocked_owner_input"
+    },
+    {
+      "stage": 7,
+      "name": "third_variation_compatibility",
+      "required_evidence": [
+        "preview_eligibility",
+        "three_variation_read",
+        "receipt_variation_read",
+        "max_variations_supported_3",
+        "full_inventory_snapshot",
+        "product_limit_check",
+        "owner_approval"
+      ],
+      "completion_probe": "read path safely handles three variations before 2026-08-17; write simulation preserves omitted values and stops on 400/409",
+      "state": "blocked_owner_input"
+    }
+  ],
+  "webhook_contract": {
+    "official_events": [
+      "order.paid",
+      "order.canceled",
+      "order.shipped",
+      "order.delivered"
+    ],
+    "payload_identity": [
+      "event_type",
+      "resource_url",
+      "shop_id"
+    ],
+    "verification_inputs": [
+      "webhook-id",
+      "webhook-timestamp",
+      "webhook-signature",
+      "raw_body"
+    ],
+    "algorithm": "base64(HMAC_SHA256(base64_decode(signing_secret_without_whsec_prefix), webhook_id + '.' + webhook_timestamp + '.' + raw_body))",
+    "example_replay_window_seconds": 300,
+    "dedupe_key": "store_binding_id + shop_id + webhook-id",
+    "followup_read_required": true,
+    "event_alone_is_business_completion": false
+  },
+  "never_claim_until_proven": [
+    "oauth_connected",
+    "webhook_receiver_live",
+    "order_event_received",
+    "payment_reconciled",
+    "bank_settled",
+    "third_variation_shop_eligible",
+    "inventory_write_safe"
+  ],
+  "shared_core_suggestions_only": [
+    "Implement an Etsy OAuth callback and encrypted per-shop credential lifecycle in the existing connection framework.",
+    "Implement a signed webhook receiver using the existing durable EventInbox/EventDedup models; do not create an Etsy-only event bus.",
+    "Add per-key QPS/QPD headers, retry-after and cache telemetry to the existing adapter substrate.",
+    "Extend the existing dynamic product schema to three variations; do not add a parallel Etsy product model."
+  ]
+}

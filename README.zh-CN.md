@@ -12,11 +12,11 @@ T One 面向个人创业者、电商团队、开发者、工厂和服务商，�
 
 它为商品、SKU、Listing、库存、订单、履约、结算、供应商、工厂、仓库、B2B 客户、报价、付款、内容实验与人工审批提供统一的本地数据边界。当前公开版不会假装已经接通 Amazon、TikTok Shop、SHEIN、Shopee 等平台的真实写入权限。
 
-## 0.3：直接聊天选择平台智能体
+## 0.4：除 TikTok Shop 外的知识包全部公开
 
 不需要先创建复杂项目或进入扩展配置。普通聊天里写出平台名，公共路由会选择对应的脱敏知识包；多平台问题保持为对比，不会把一个平台的规则串到另一个平台。
 
-本版公开 AliExpress、B2B 外贸、eBay、Etsy、全球/本土渠道规划、Google Ads、独立站、Lazada、Meta、SHEIN、Shopee、TikTok Ads 和 Walmart 共 13 个知识包。TikTok Shop 知识包明确不在公开范围内。
+本版在 [`knowledge_packs/`](knowledge_packs/) 公开 17 个完整脱敏知识包：Amazon、AliExpress、B2B 外贸、主动开发客户、B2B 平台销售、商品视频、eBay、Etsy、全球/本土渠道规划、Google Ads、独立站、Lazada、Meta、SHEIN、Shopee、TikTok Ads 和 Walmart。每个包按现有资产提供适用的 Skill、参考资料、机器契约、规则、评测或来源记录。TikTok Shop 智能体、Skill、训练契约、测试和引用资料整套排除。
 
 ```python
 from ai_ecommerce_director.platform_agents import route_public_chat
@@ -28,7 +28,7 @@ assert result["external_execution_allowed"] is False
 
 这些知识包只提供公开规划规则，不代表真实店铺、OAuth、广告账户或平台写入已经连接。详见 [公共知识包说明](docs/PUBLIC_KNOWLEDGE_PACKS.md)。
 
-0.3.1 同步更新了无依赖浏览器演示：用户只需说目标，由 T One 自动选择智能体；文件从聊天框“＋”进入，模型、账号和管理统一收进设置。邮箱与通信账号页面仅演示 7 类账号的设置路径，不接收凭据、不连接外部服务。
+无依赖浏览器演示继续采用聊天优先方式：用户只需说目标，由 T One 自动选择智能体；文件从聊天框“＋”进入，模型和账号收进设置。邮箱与通信账号页面只演示设置路径，不接收凭据、不连接外部服务。
 
 ## 0.2 版本重点
 
@@ -52,7 +52,7 @@ assert result["external_execution_allowed"] is False
 | 工作区隔离 | `工作区 → 项目 → 渠道 → 店铺 → 任务`，隔离平台、站点、模式、归属和授权 |
 | 连接器基础 | 只读连接器原语、标准化导入记录和能力元数据；真实写入仍受门禁控制 |
 | 聊天优先参考 | 智能体切换、快捷提示、资料入口、消息演示和统一设置抽屉 |
-| 公共平台智能体 | 普通聊天自动选择 13 个脱敏知识包；无需先进入项目或扩展配置 |
+| 公共平台智能体 | 普通聊天自动选择 17 个完整脱敏知识包；无需先进入项目或扩展配置 |
 
 当前 `0.x` 是 Python 库、测试和浏览器交互参考，是构建真实智能体与运营应用的基础，不是可以绕过确认自动花钱、发布商品、群发客户或发货的成品机器人。
 
