@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+- Added exact provider-and-model multimodal verification receipts instead of inferring one model's capabilities from another model or provider.
+- Added per-modality verification counts and evidence references while keeping credentials, prompts, private files, and live connector state outside the public snapshot.
+- Preserved the 17 sanitized non-TikTok-Shop knowledge packs and continued to exclude the entire TikTok Shop agent pack and private desktop/runtime connectors.
+
 ## 0.4.0
 
 - Published all 17 reusable non-TikTok-Shop knowledge packs as complete sanitized bundles.

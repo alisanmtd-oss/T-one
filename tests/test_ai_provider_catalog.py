@@ -158,6 +158,80 @@ class AIProviderCatalogTests(unittest.TestCase):
             )
             self.assertEqual(load_provider_verification(root), {})
 
+    def test_snapshot_merges_exact_multimodal_receipt_without_promoting_other_models(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            (root / "config" / "multi_ai.json").write_text(
+                json.dumps(
+                    {
+                        "providers": [
+                            {
+                                "name": "deepseek-sales",
+                                "label": "DeepSeek sales",
+                                "base_url": "https://api.deepseek.com",
+                                "model": "deepseek-chat",
+                                "enabled": True,
+                                "requires_api_key": False,
+                                "tasks": ["chat"],
+                            },
+                            {
+                                "name": "deepseek-other",
+                                "label": "DeepSeek other",
+                                "base_url": "https://api.deepseek.com",
+                                "model": "deepseek-reasoner",
+                                "enabled": True,
+                                "requires_api_key": False,
+                                "tasks": ["chat"],
+                            },
+                        ],
+                        "routes": {"chat": ["deepseek-sales", "deepseek-other"]},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "config" / "ai_provider_verification_state.json").write_text(
+                json.dumps(
+                    {
+                        "audited_at": "2026-07-20T07:53:00+08:00",
+                        "catalog_provider_states": [
+                            {
+                                "provider_id": "deepseek",
+                                "state": "verified",
+                                "verified_models": ["deepseek-sales"],
+                            }
+                        ],
+                        "live_receipts": [
+                            {
+                                "provider": "deepseek-sales",
+                                "model": "deepseek-chat",
+                                "status": "ok",
+                            }
+                        ],
+                        "modality_receipts": [
+                            {
+                                "provider": "deepseek-sales",
+                                "model": "deepseek-chat",
+                                "status": "ok",
+                                "modalities": ["image", "files"],
+                                "evidence": "outputs/formal-app.json",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            snapshot = provider_catalog_snapshot(root)
+            verified, other = snapshot["configured"]
+            self.assertEqual(verified["verified_modalities"], ["text", "image", "files"])
+            self.assertEqual(verified["unknown_modalities"], ["audio", "video", "tool_use"])
+            self.assertEqual(verified["modality_receipt_refs"], ["outputs/formal-app.json"])
+            self.assertEqual(other["verified_modalities"], [])
+            self.assertEqual(snapshot["modality_counts"]["text"], 1)
+            self.assertEqual(snapshot["modality_counts"]["image"], 1)
+            self.assertEqual(snapshot["modality_counts"]["files"], 1)
+            self.assertEqual(snapshot["modality_counts"]["video"], 0)
+
     def test_verification_state_accepts_utf8_bom_for_powershell_compatibility(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = self._root(temp_dir)
