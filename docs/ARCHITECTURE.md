@@ -61,4 +61,4 @@ Read-only adapters normalize external data into stable records. A future write a
 
 ## Public boundary
 
-This repository contains contracts, local-first primitives, and a synthetic browser-only UX reference. Private production UI and runtime code, browser automation, marketplace execution, live operating records, and recovered context are intentionally outside the public release.
+This repository contains public contracts, local-first primitives, and a synthetic browser-only UX reference.

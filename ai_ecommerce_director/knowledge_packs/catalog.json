@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "release_version": "0.3.0",
+  "release_version": "0.4.0",
   "catalog_kind": "sanitized_public_knowledge_packs",
   "selection_model": "ordinary_chat_first",
   "excluded_pack_ids": ["tiktok_shop"],
@@ -12,6 +12,75 @@
     "Credentials, cookies, buyer PII, customer data and private operating evidence never enter this catalog."
   ],
   "packs": [
+    {
+      "id": "amazon",
+      "name": "Amazon marketplace agent",
+      "aliases": ["amazon", "amazon seller", "亚马逊"],
+      "summary": "Plans marketplace-scoped Amazon catalog, listing, inventory, order, fulfillment, advertising and analytics work without treating public documentation as a connected seller account.",
+      "required_scope": ["marketplace_id", "seller_store_binding", "ownership", "seller_plan", "fulfillment_mode", "authorization_scope"],
+      "capabilities": ["listing and variation review", "catalog and offer planning", "inventory and fulfillment evidence review", "report and analytics interpretation", "draft-only operations"],
+      "safety_boundaries": ["no default marketplace or seller identity", "public SP-API contracts are not live store data", "processing completion is not effect confirmation", "buyer and order data remain store-bound"],
+      "public_rules": [
+        "Bind every operational conclusion to marketplace, seller account, store, entity, period, currency and evidence source.",
+        "A public Seller Central or SP-API page does not prove account entitlement, authorization, inventory, orders, sales or advertising state.",
+        "Feed DONE means processing finished; inspect the result document, per-message issues and item readback before claiming the intended effect.",
+        "Listing, price, inventory, shipment, refund, message and advertising writes require exact store scope, approval, idempotency and readback.",
+        "Variation, browse-node, attribute, fee, report and eligibility rules remain marketplace and time scoped.",
+        "Private product fixtures, seller identifiers, browser profiles and operating traces never become public defaults."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "b2b_outbound",
+      "name": "B2B outbound customer-development agent",
+      "aliases": ["outbound sales", "customer development", "lead research", "主动开发客户", "客户开发"],
+      "summary": "Plans lawful public-company research, account deduplication, qualification hypotheses, one-to-one outreach drafts and handoff to a shared sales timeline.",
+      "required_scope": ["country", "product_scope", "lawful_source", "account_owner", "channel_mode", "suppression_state"],
+      "capabilities": ["public company research", "account deduplication", "decision-role hypothesis", "qualification draft", "one-to-one outreach draft", "approval packet preparation"],
+      "safety_boundaries": ["public contact path is not consent", "no private-contact scraping", "no bulk send or account evasion", "every external message requires exact approval and receipt"],
+      "public_rules": [
+        "A company signal creates a candidate hypothesis, not a verified buyer, decision maker, consent record or purchase intent.",
+        "Merge website, directory, event, trade and prior CRM traces into one canonical account before drafting contact.",
+        "Do not invent familiarity, pain points, price, stock, capacity, certifications, customer names, case studies or local presence.",
+        "The approved packet fixes sender, recipient, channel, subject, body and attachment hashes; any change invalidates approval.",
+        "Stop before send, connection request, form submission, call, sequence activation, paid-data purchase or external CRM write."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "b2b_platform_sales",
+      "name": "B2B marketplace sales agent",
+      "aliases": ["b2b marketplace", "alibaba.com", "made-in-china", "global sources", "tradekey", "B2B平台"],
+      "summary": "Plans seller readiness, catalog, keyword, RFQ, inquiry, platform-message, quotation and order workflows for an exact B2B marketplace account.",
+      "required_scope": ["platform_id", "country_site", "store_model", "store_binding", "ownership", "execution_identity"],
+      "capabilities": ["seller readiness review", "catalog and keyword draft", "RFQ and inquiry qualification", "platform reply draft", "shared quotation handoff"],
+      "safety_boundaries": ["a platform family is not an executable account", "RFQ and buyer ranks are not qualification", "no paid placement or message send", "one shared customer timeline across channels"],
+      "public_rules": [
+        "Keep Alibaba.com, Made-in-China, Global Sources, TradeKey and future platforms as separate evidence and authorization routes.",
+        "Without an authorized seller account, entitlements, quotas, inquiries, messages, orders, payments and native-AI output remain unknown.",
+        "RFQ matches, buyer ranks, traffic estimates and suggested replies are intermediate candidates rather than orders or revenue.",
+        "A visible button, generated text, local approval, API 2xx or screenshot is not an external effect receipt.",
+        "Stop before message, quotation submit, paid RFQ access, ad spend, catalog publish, order acceptance, payment, refund or shipment."
+      ],
+      "live_connection_claimed": false
+    },
+    {
+      "id": "commerce_video",
+      "name": "Commerce video director",
+      "aliases": ["commerce video", "product video", "storyboard", "shot breakdown", "商品视频", "分镜", "视频提示词"],
+      "summary": "Plans evidence-based competitor-video analysis, original storyboards, generation prompts, edit handoff, music-rights checks and creative QA.",
+      "required_scope": ["platform", "country_site", "product", "audience", "conversion_objective", "media_rights"],
+      "capabilities": ["technical media analysis", "shot breakdown", "hook proof and CTA review", "original storyboard", "prompt pack", "edit and subtitle plan"],
+      "safety_boundaries": ["no protected-scene or trademark copying", "no unlicensed audio reuse", "product facts remain evidence-bound", "upload outreach and spend require approval"],
+      "public_rules": [
+        "Separate observed duration, aspect ratio, shots, captions and product actions from marketing inference.",
+        "Reuse structure rather than protected people, dialogue, trademarks, music, scenes or distinctive creative expression.",
+        "Generated storyboards preserve verified color, material, quantity, fit and other product facts and mark unknowns.",
+        "Review product accuracy, continuity, safe-area text, audio rights and CTA before any public handoff.",
+        "Public upload, creator outreach, licensing purchase and advertising spend remain separately approved effects."
+      ],
+      "live_connection_claimed": false
+    },
     {
       "id": "aliexpress",
       "name": "AliExpress marketplace agent",
@@ -40,7 +109,7 @@
     {
       "id": "b2b_export",
       "name": "B2B export agent",
-      "aliases": ["b2b", "b2b export", "foreign trade", "外贸", "外贸客户", "主动开发客户"],
+      "aliases": ["b2b", "b2b export", "foreign trade", "外贸", "外贸客户"],
       "summary": "Structures lawful public-company research, catalogs, inquiries, quotations, samples, contracts, payments, delivery and shared customer timelines.",
       "required_scope": ["country", "company_or_segment", "product_scope", "lawful_source", "account_owner"],
       "capabilities": ["public company research", "lead hypothesis", "catalog draft", "quotation draft", "deal-stage planning", "evidence mapping"],

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Independent Commerce 专家"
+  short_description: "面向Shopify等独立站的运营、增长、履约与风险控制专家"
+  default_prompt: "Use $independent-commerce-operator to audit an independent store and produce an evidence-backed, write-gated action plan."

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "pack_id": "independent_commerce",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/independent_commerce/machine/contract.json",
+    "knowledge_packs/independent_commerce/SKILL.md",
+    "knowledge_packs/independent_commerce/agents/openai.yaml",
+    "knowledge_packs/independent_commerce/references/mother-requirement-fusion-matrix.md",
+    "knowledge_packs/independent_commerce/references/official-sources.md",
+    "knowledge_packs/independent_commerce/references/platform-adapters.md",
+    "knowledge_packs/independent_commerce/references/training-curriculum.md",
+    "knowledge_packs/independent_commerce/references/vertical-extensions.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

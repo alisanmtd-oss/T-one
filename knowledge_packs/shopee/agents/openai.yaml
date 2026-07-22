@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopee T One 专家"
+  short_description: "逐站点审计 Shopee 刊登、活动、广告与履约草稿"
+  default_prompt: "Use $shopee to audit a country-scoped Shopee store and prepare approval-gated next actions."

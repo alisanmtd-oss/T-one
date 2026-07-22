@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "mapped_at": "2026-07-18T22:16:06+08:00",
+  "allowed_statuses": [
+    "reuse_existing",
+    "extend_existing",
+    "research_only",
+    "blocked_connector",
+    "rejected_unsafe"
+  ],
+  "rows": [
+    {
+      "id": "ARCH-01",
+      "mother_requirement": "Split platform commerce and independent-store business into two main blocks.",
+      "t_one_capability": "Project/platform/multi-store hierarchy and expert registry already exist.",
+      "gap": "This Lazada expert must not redesign company-wide information architecture.",
+      "minimal_fusion_path": "Keep Lazada inside the marketplace expert route; submit shared-architecture suggestions only.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "ARCH-02",
+      "mother_requirement": "Strictly separate platform ads from off-site media ads.",
+      "t_one_capability": "Unified advertising foundation already separates account bindings and execution domains.",
+      "gap": "Lazada Sponsored Solutions has no real ads identity or wallet.",
+      "minimal_fusion_path": "Keep Sponsored Solutions as a Lazada domain and require a separate country ads binding.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C07"
+      ]
+    },
+    {
+      "id": "ARCH-03",
+      "mother_requirement": "One-click switch among modular platform experts.",
+      "t_one_capability": "platform_expert_registry and Skill/config entries already provide the expert foundation.",
+      "gap": "Lazada specialist assets need curriculum and evidence routing; shared UI changes are occupied.",
+      "minimal_fusion_path": "Add only Lazada Skill references and training contract; recommend shared UI integration later.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C01",
+        "C12"
+      ]
+    },
+    {
+      "id": "ARCH-04",
+      "mother_requirement": "Every expert contains every industry tool and is proficient automatically.",
+      "t_one_capability": "Capability and connector names exist, but connectivity is tracked separately.",
+      "gap": "Most Lazada tools lack license, OAuth, successful calls and data rights.",
+      "minimal_fusion_path": "Register candidates only after license/authorization/probe evidence; never claim proficiency from a name.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C01",
+        "C11"
+      ]
+    },
+    {
+      "id": "ARCH-05",
+      "mother_requirement": "Daily official/social/video/GitHub learning and automatic distillation.",
+      "t_one_capability": "Goal mode, evidence assets and local automation support exist.",
+      "gap": "Unbounded crawling and source mixing are unsafe; no authenticated Lazada data source.",
+      "minimal_fusion_path": "Run one daily official-evidence incremental automation; other sources remain hypotheses or authorized-input tasks.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "ARCH-06",
+      "mother_requirement": "Permanent knowledge storage and automatic retirement of stale rules.",
+      "t_one_capability": "Versioned files, authoritative memory and evidence registry patterns exist.",
+      "gap": "No Lazada-specific cursor, validity or expiry ledger existed.",
+      "minimal_fusion_path": "Use evidence-ledger.json, rules.json and training-state.json with valid_until/recheck fields.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "ARCH-07",
+      "mother_requirement": "Only extend data and do not disturb existing functionality.",
+      "t_one_capability": "C1 and shared core are complete/occupied; independent expert paths are available.",
+      "gap": "Shared taxonomy needs future Marketplace Ease review.",
+      "minimal_fusion_path": "Modify only Lazada-scoped assets and submit a shared-core suggestion instead of editing occupied files.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C12"
+      ]
+    },
+    {
+      "id": "SRC-01",
+      "mother_requirement": "Continuously ingest domestic forums, media and communities.",
+      "t_one_capability": "No verified forum connectors or licenses for this expert.",
+      "gap": "Anecdotes are not official rules and may require login or scraping.",
+      "minimal_fusion_path": "Use only public, permitted excerpts as experiment hypotheses with date/source; no automatic standardization.",
+      "status": "research_only",
+      "course_ids": [
+        "C00",
+        "C11"
+      ]
+    },
+    {
+      "id": "SRC-02",
+      "mother_requirement": "Continuously ingest YouTube, TikTok and overseas seller communities.",
+      "t_one_capability": "Creative video can inspect user-provided local media; no authorized social crawler exists.",
+      "gap": "Rights, login, robots and provenance are unresolved.",
+      "minimal_fusion_path": "Accept user-owned/authorized inputs or official public pages; store hypotheses, not platform facts.",
+      "status": "research_only",
+      "course_ids": [
+        "C00",
+        "C11"
+      ]
+    },
+    {
+      "id": "SRC-03",
+      "mother_requirement": "Automatically bypass anti-scraping controls.",
+      "t_one_capability": "T One safety policy stops at platform restrictions.",
+      "gap": "The requirement conflicts with policy and authorization boundaries.",
+      "minimal_fusion_path": "None; use official APIs, public permitted pages or owner-provided exports.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C00",
+        "C11"
+      ]
+    },
+    {
+      "id": "SRC-04",
+      "mother_requirement": "Give official seller, ads and developer sources highest priority.",
+      "t_one_capability": "Official-source-first policy and evidence registry already exist.",
+      "gap": "Lazada sources needed country/mode/date/permission indexing.",
+      "minimal_fusion_path": "Extend the Lazada evidence ledger and recheck volatile pages before decisions.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C02",
+        "C07"
+      ]
+    },
+    {
+      "id": "SRC-05",
+      "mother_requirement": "Continuously ingest payment, tax, customs and offshore-structure rules.",
+      "t_one_capability": "Finance/compliance domains exist but no Lazada-specific legal connector is connected.",
+      "gap": "High-stakes rules vary by entity, country and date.",
+      "minimal_fusion_path": "Research only from current official authorities when a concrete route requires it; never generalize globally.",
+      "status": "research_only",
+      "course_ids": [
+        "C10"
+      ]
+    },
+    {
+      "id": "SRC-06",
+      "mother_requirement": "Promote seller experience after three experienced sellers agree.",
+      "t_one_capability": "Evidence taxonomy can retain operator traces and hypotheses.",
+      "gap": "Anecdote count does not establish an official platform rule or causal result.",
+      "minimal_fusion_path": "Keep all seller experience as dated experiment hypotheses; validate against official rules and store results.",
+      "status": "research_only",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "SRC-07",
+      "mother_requirement": "Continuously learn ERP, automation, ads and crawler repositories from GitHub.",
+      "t_one_capability": "github_capability_registry enforces license/security/admission decisions.",
+      "gap": "Unknown repositories and auto-install are blocked.",
+      "minimal_fusion_path": "Use admitted references only; no runtime install or credential access without a separate review.",
+      "status": "research_only",
+      "course_ids": [
+        "C01",
+        "C11"
+      ]
+    },
+    {
+      "id": "SRC-08",
+      "mother_requirement": "Learn anti-association programs and methods.",
+      "t_one_capability": "Execution isolation exists for legitimate store separation.",
+      "gap": "Evasion guidance would facilitate platform risk-control circumvention.",
+      "minimal_fusion_path": "Retain only compliant credential/store/environment isolation; reject evasion techniques.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C00",
+        "C11"
+      ]
+    },
+    {
+      "id": "SRC-09",
+      "mother_requirement": "Download, denoise, transcribe and distill any video automatically.",
+      "t_one_capability": "CapCut/FFmpeg detection and local authorized-video analysis exist.",
+      "gap": "No blanket download right, social connector or transcription pipeline is verified.",
+      "minimal_fusion_path": "Process only user-provided or licensed media and preserve rights/provenance; Lazada expert consumes outputs rather than rebuilding video runtime.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C01",
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-01",
+      "mother_requirement": "Import the full Amazon tool suite into the mother expert.",
+      "t_one_capability": "Amazon has its own specialist/runtime assets.",
+      "gap": "Not a Lazada capability and would duplicate another expert.",
+      "minimal_fusion_path": "Do not import; reference shared measurement patterns only.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "TOOL-02",
+      "mother_requirement": "Import the full TikTok Shop tool suite.",
+      "t_one_capability": "TikTok has its own expert and channel boundaries.",
+      "gap": "Not a Lazada capability.",
+      "minimal_fusion_path": "Do not import; share only approved generic schemas.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "TOOL-03",
+      "mother_requirement": "Use SellerSprite, Shopee Spy, Lazada plug-ins and Ecomhunt SEA tools.",
+      "t_one_capability": "No verified Lazada third-party connector or license is present.",
+      "gap": "Tool ownership, data rights, country coverage and connection state are unknown.",
+      "minimal_fusion_path": "Maintain a research candidate list; connect only after license, owner authorization and a successful read probe.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-04",
+      "mother_requirement": "Scrape complete competitor stores, listing rhythm, prices and campaigns.",
+      "t_one_capability": "Public research and manual evidence review are allowed.",
+      "gap": "Bulk/private scraping and reconstruction can violate rules and rights.",
+      "minimal_fusion_path": "Use permitted public samples and official reports; aggregate observations without private data or bypass.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-05",
+      "mother_requirement": "Import AliExpress/Etsy/eBay tool suites.",
+      "t_one_capability": "Separate platform experts already exist or are being trained.",
+      "gap": "Not Lazada scope and risks duplicated runtime.",
+      "minimal_fusion_path": "Do not import; share only neutral evaluation and evidence patterns.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "TOOL-06",
+      "mother_requirement": "Use independent-site technology and store-detection tools.",
+      "t_one_capability": "Independent-store capability is a separate shared expert domain.",
+      "gap": "Not required for Lazada store execution; connector status is unknown.",
+      "minimal_fusion_path": "Keep outside Lazada; accept authorized public signals only when comparing channel strategy.",
+      "status": "research_only",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-07",
+      "mother_requirement": "Use broad product/ad-spy tools to find and copy winning logic.",
+      "t_one_capability": "Market research memory supports hypotheses and public evidence.",
+      "gap": "Private data, scraping, copied creative and causal claims are unsafe/unverified.",
+      "minimal_fusion_path": "Use lawful public evidence for hypotheses; never copy assets or claim complete strategy reconstruction.",
+      "status": "research_only",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-08",
+      "mother_requirement": "Use SimilarWeb, Semrush, Ahrefs and Trends for traffic/SEO.",
+      "t_one_capability": "No paid accounts or connectors are verified for this expert.",
+      "gap": "These are mainly independent-site signals, not Lazada seller truth.",
+      "minimal_fusion_path": "Use owner-provided exports or public signals only as secondary market evidence.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-09",
+      "mother_requirement": "Use ad libraries and spy tools to reconstruct all competitor targeting.",
+      "t_one_capability": "Shared ads foundation can analyze lawful public creative/metrics.",
+      "gap": "Public libraries do not expose complete targeting or strategy; paid spy tools are unconnected.",
+      "minimal_fusion_path": "Record visible facts and uncertainty; do not claim hidden audiences or reuse creative.",
+      "status": "research_only",
+      "course_ids": [
+        "C07",
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-10",
+      "mother_requirement": "Use POD/supply-chain tools and global price comparison.",
+      "t_one_capability": "POD listing, market research and feedback skills exist.",
+      "gap": "Supplier accounts and real quotations are not connected to Lazada.",
+      "minimal_fusion_path": "Reuse product-cost inputs and approved supplier evidence; keep external account operations separate.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C04",
+        "C10"
+      ]
+    },
+    {
+      "id": "TOOL-11",
+      "mother_requirement": "Embed complete Meta/TikTok Ads/Google toolkits in every expert.",
+      "t_one_capability": "A shared cross-channel advertising agent already exists.",
+      "gap": "Meta/TikTok/Google OAuth is absent and Lazada ads are a separate surface.",
+      "minimal_fusion_path": "Reference shared measurement/approval/stop-loss outputs; do not embed a second ads runtime.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C07"
+      ]
+    },
+    {
+      "id": "TOOL-12",
+      "mother_requirement": "Add Rakuten, Yandex and local-market ad tools.",
+      "t_one_capability": "No verified connectors in Lazada scope.",
+      "gap": "Unrelated channels and country permissions are unknown.",
+      "minimal_fusion_path": "Leave to channel experts and a future admitted connector review.",
+      "status": "research_only",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "TOOL-13",
+      "mother_requirement": "Use universal bulk crawlers on every marketplace.",
+      "t_one_capability": "Official API-first and browser fallback policy exists.",
+      "gap": "Universal crawling conflicts with platform restrictions and store isolation.",
+      "minimal_fusion_path": "Use Lazada official APIs/public permitted pages; block bypass and bulk private extraction.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-14",
+      "mother_requirement": "Download reviews, buyer images and videos for direct ad reuse.",
+      "t_one_capability": "Creative rights review exists.",
+      "gap": "No license or consent is established.",
+      "minimal_fusion_path": "Analyze visible themes only; reuse requires explicit commercial rights evidence.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C04",
+        "C11"
+      ]
+    },
+    {
+      "id": "TOOL-15",
+      "mother_requirement": "Automate exchange rates, tariffs and offshore structure calculation.",
+      "t_one_capability": "Finance schema can hold costs and currency.",
+      "gap": "No verified live rates, customs authority source or legal context is connected.",
+      "minimal_fusion_path": "Fetch official current sources for a concrete country/entity and require finance/legal review.",
+      "status": "research_only",
+      "course_ids": [
+        "C10"
+      ]
+    },
+    {
+      "id": "TOOL-16",
+      "mother_requirement": "Claim expert mastery of every advanced tool and auto-select any tool.",
+      "t_one_capability": "Capability-state checking and model/tool routing exist.",
+      "gap": "Mastery cannot be inferred without version, license, access and successful evidence.",
+      "minimal_fusion_path": "Choose only connected/allowed tools; expose available_unconnected and blocked states truthfully.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C01",
+        "C11"
+      ]
+    },
+    {
+      "id": "MOD-02",
+      "mother_requirement": "Rebuild a TikTok Shop expert inside the mother module.",
+      "t_one_capability": "TikTok specialist foundation and explicit country routing exist.",
+      "gap": "Not Lazada scope.",
+      "minimal_fusion_path": "Keep separate experts and separate authorization domains.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "MOD-03",
+      "mother_requirement": "Rebuild a SHEIN expert inside the mother module.",
+      "t_one_capability": "SHEIN expert registration exists.",
+      "gap": "Not Lazada scope.",
+      "minimal_fusion_path": "Keep separate and share only neutral schemas.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "MOD-04",
+      "mother_requirement": "Combine Shopee and Lazada as one Southeast Asia expert.",
+      "t_one_capability": "Separate Shopee and Lazada adapters/experts exist.",
+      "gap": "Combined routing would mix APIs, rules, ads and identities.",
+      "minimal_fusion_path": "Reject one executable SEA expert; keep platform and six country dimensions separate.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C02"
+      ]
+    },
+    {
+      "id": "MOD-05",
+      "mother_requirement": "Support Lazada cross-border, local and brand stores.",
+      "t_one_capability": "local/cross_border routes exist.",
+      "gap": "Brand is not verified as a store mode; Marketplace Ease is an official candidate program not in shared routing.",
+      "minimal_fusion_path": "Keep brand as eligibility/identity context; add Marketplace Ease as non-executable candidate pending shared review.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C02",
+        "C03"
+      ]
+    },
+    {
+      "id": "MOD-06",
+      "mother_requirement": "Cover Lazada Southeast Asia and Latin America sites.",
+      "t_one_capability": "Current Lazada official authorization and T One route cover SG/MY/TH/VN/PH/ID.",
+      "gap": "No official/current Lazada Latin America execution route was evidenced.",
+      "minimal_fusion_path": "Train and execute only the six verified sites; research any future market separately.",
+      "status": "research_only",
+      "course_ids": [
+        "C02"
+      ]
+    },
+    {
+      "id": "MOD-07",
+      "mother_requirement": "Use SLS logistics for the combined Shopee/Lazada module.",
+      "t_one_capability": "Platform adapters separate fulfillment concepts.",
+      "gap": "SLS is Shopee-specific and must not be projected onto Lazada.",
+      "minimal_fusion_path": "Use Lazada shipment-provider/FBL/multi-warehouse evidence only.",
+      "status": "research_only",
+      "course_ids": [
+        "C03",
+        "C08"
+      ]
+    },
+    {
+      "id": "MOD-08",
+      "mother_requirement": "Cover Lazada on-platform ads, campaigns and promotions.",
+      "t_one_capability": "Draft/read/approval gates and Sponsored Solutions separation exist.",
+      "gap": "No real ads account, wallet, campaign eligibility or live country calendar.",
+      "minimal_fusion_path": "Extend official evidence/course/evals; keep all live actions approval-gated and blocked until authorization.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C06",
+        "C07"
+      ]
+    },
+    {
+      "id": "MOD-09",
+      "mother_requirement": "Know platform algorithms and weights completely.",
+      "t_one_capability": "Evidence/hypothesis distinction exists.",
+      "gap": "Ranking weights and causal mechanisms are not publicly complete or stable.",
+      "minimal_fusion_path": "Use observable metrics and official feature docs; label algorithm claims unknown/hypothesis.",
+      "status": "research_only",
+      "course_ids": [
+        "C00",
+        "C07"
+      ]
+    },
+    {
+      "id": "MOD-10",
+      "mother_requirement": "Rebuild AliExpress, Etsy and eBay experts in this task.",
+      "t_one_capability": "Separate expert assets/automations exist.",
+      "gap": "User forbids cross-expert changes.",
+      "minimal_fusion_path": "Do not modify; reuse shared contracts only.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "MOD-11",
+      "mother_requirement": "Unify all independent-site business into one expert.",
+      "t_one_capability": "Independent-store architecture is outside Lazada.",
+      "gap": "No Lazada-specific need and shared architecture ownership is elsewhere.",
+      "minimal_fusion_path": "Do not import; Lazada remains a marketplace expert.",
+      "status": "research_only",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "MOD-12",
+      "mother_requirement": "Merge social operations and external ads into channel experts.",
+      "t_one_capability": "Shared advertising/creative foundations already define this boundary.",
+      "gap": "No real external OAuth; Lazada Sponsored Solutions stays platform-scoped.",
+      "minimal_fusion_path": "Reuse shared foundations and keep Lazada ads authorization separate.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C07"
+      ]
+    },
+    {
+      "id": "DIST-01",
+      "mother_requirement": "Filter marketing, courses and low-quality content.",
+      "t_one_capability": "Evidence priority and status taxonomy exist.",
+      "gap": "Lazada-specific source ledger was absent.",
+      "minimal_fusion_path": "Use official-first ledger; seller/media material remains draft or historical trace.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "DIST-02",
+      "mother_requirement": "Distill transferable operating logic.",
+      "t_one_capability": "Shared workflow/eval/Skill pattern exists.",
+      "gap": "Transfer can erase country/mode boundaries.",
+      "minimal_fusion_path": "Distill only after evidence and keep site/mode/ownership/permission in every rule.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "DIST-03",
+      "mother_requirement": "Retire old rules and resolve conflicts using official plus seller consensus.",
+      "t_one_capability": "Versioned evidence and official-source priority exist.",
+      "gap": "Seller consensus cannot override official rules; expiry mechanism needed.",
+      "minimal_fusion_path": "Official current evidence wins; seller claims remain hypotheses; use valid_until and conflict records.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "DIST-04",
+      "mother_requirement": "Run daily, weekly and monthly autonomous self-training jobs.",
+      "t_one_capability": "Codex automation supports recurring expert runs.",
+      "gap": "Multiple overlapping jobs would duplicate work and Self-Instruct could invent facts.",
+      "minimal_fusion_path": "Create one daily incremental automation with evidence gate and no-delta behavior; do not generate fact-like synthetic knowledge.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C12"
+      ]
+    },
+    {
+      "id": "UI-01",
+      "mother_requirement": "One-click global update from the software panel.",
+      "t_one_capability": "C1 formal App and expert/config entry foundations exist.",
+      "gap": "Shared UI is occupied; no Lazada live connector exists.",
+      "minimal_fusion_path": "Use the Lazada automation now; later propose a shared panel action that triggers the existing contract.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C01",
+        "C12"
+      ]
+    },
+    {
+      "id": "UI-02",
+      "mother_requirement": "Switch experts from the panel.",
+      "t_one_capability": "Expert registry and modular Skill selection already exist.",
+      "gap": "Lazada page/save-call-error-result manual verification remains a shared integration gap.",
+      "minimal_fusion_path": "Keep independent assets ready and submit an integration suggestion; do not edit occupied core.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "UI-03",
+      "mother_requirement": "Load a complete giant mother knowledge base or a condensed mother prompt.",
+      "t_one_capability": "Skills and evidence references support progressive loading.",
+      "gap": "A giant prompt would mix stale, unsafe and cross-platform facts.",
+      "minimal_fusion_path": "Use modular Skill + machine contract + evidence ledger; never create a universal mother prompt.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C00",
+        "C01"
+      ]
+    },
+    {
+      "id": "UI-04",
+      "mother_requirement": "Paste any video URL and auto-learn it.",
+      "t_one_capability": "Authorized local video analysis exists; external download is blocked.",
+      "gap": "No rights-safe social downloader/transcriber connector.",
+      "minimal_fusion_path": "Accept user-owned files or licensed URLs and send structured outputs to the Lazada evidence gate.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C11",
+        "C12"
+      ]
+    },
+    {
+      "id": "UI-05",
+      "mother_requirement": "Enter a competitor keyword and automatically use all tools for complete reconstruction.",
+      "t_one_capability": "Public market research and tool routing patterns exist.",
+      "gap": "No verified tools and complete reconstruction is not evidentially possible.",
+      "minimal_fusion_path": "Return a scoped public-evidence research plan, visible facts, unknowns and rights limits.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "HARD-01",
+      "mother_requirement": "Ban model-native reasoning and force every output to use the internal knowledge base.",
+      "t_one_capability": "LLMClient and evidence retrieval can ground outputs.",
+      "gap": "Permanent bans are brittle and internal memory may be stale.",
+      "minimal_fusion_path": "Require evidence-backed factual claims while allowing explicit reasoning, inference and unknown labels.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C00"
+      ]
+    },
+    {
+      "id": "HARD-02",
+      "mother_requirement": "Never mix platform ads and independent-site ads.",
+      "t_one_capability": "Ads domains/account bindings already separate them.",
+      "gap": "Lazada ads authorization is absent.",
+      "minimal_fusion_path": "Keep Sponsored Solutions under Lazada and off-site channels under shared ad experts.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C07"
+      ]
+    },
+    {
+      "id": "HARD-03",
+      "mother_requirement": "Permanently force all independent-store/OTA logic into one category.",
+      "t_one_capability": "Shared product strategy owns this classification.",
+      "gap": "Not Lazada scope and permanent immutability is inappropriate.",
+      "minimal_fusion_path": "Do not import; preserve current authoritative taxonomy.",
+      "status": "research_only",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "HARD-04",
+      "mother_requirement": "Always use crawlers and detection software to extract competitors.",
+      "t_one_capability": "API-first and evidence/rights gates exist.",
+      "gap": "Conflicts with platform rules and authorization.",
+      "minimal_fusion_path": "Use official APIs/public permitted pages and owner-provided exports only.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C11"
+      ]
+    },
+    {
+      "id": "HARD-05",
+      "mother_requirement": "Guarantee stable external collection, anti-bot bypass and permanent unresettable knowledge.",
+      "t_one_capability": "Versioned local assets exist but external services and rules change.",
+      "gap": "Guarantees and bypass are false/unsafe.",
+      "minimal_fusion_path": "Use dated evidence, retries, no-delta/failed states and explicit expiry; never bypass restrictions.",
+      "status": "rejected_unsafe",
+      "course_ids": [
+        "C00",
+        "C12"
+      ]
+    },
+    {
+      "id": "HARD-06",
+      "mother_requirement": "Remain compatible and avoid rewriting completed functions.",
+      "t_one_capability": "C1, gateway and expert foundations are complete.",
+      "gap": "Only Lazada-specific evidence and gaps need extension.",
+      "minimal_fusion_path": "Reuse existing core and write only scoped specialist assets.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C12"
+      ]
+    },
+    {
+      "id": "HARD-07",
+      "mother_requirement": "Never chat and only run cross-border tasks.",
+      "t_one_capability": "T One is a collaborative assistant with audited task outputs.",
+      "gap": "This is a style preference, not a platform fact or connector.",
+      "minimal_fusion_path": "Keep responses concise and operational without hard-coding an immutable conversational ban.",
+      "status": "research_only",
+      "course_ids": [
+        "C00"
+      ]
+    },
+    {
+      "id": "BASE-01",
+      "mother_requirement": "Treat C1 formal app, T1 brand shell, long store chat and hierarchy as completed baseline.",
+      "t_one_capability": "Authority memory states C1 and formal App validation are complete.",
+      "gap": "No Lazada-specific live store is bound.",
+      "minimal_fusion_path": "Reuse C1; add Lazada route/context only after a real binding exists.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "BASE-02",
+      "mother_requirement": "Use the single LLMClient/multi_ai gateway, nine ready models, DPAPI and real connection tests.",
+      "t_one_capability": "AI base chain is complete.",
+      "gap": "Model connectivity does not grant Lazada platform access.",
+      "minimal_fusion_path": "Route Lazada reasoning/copy/image/video/ads/data through existing slots only.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01"
+      ]
+    },
+    {
+      "id": "BASE-03",
+      "mother_requirement": "Fuse with the existing expert/Skill/plugin/model/connector foundation.",
+      "t_one_capability": "Registry, Skill and connector configuration entrypoints exist.",
+      "gap": "Lazada needed its own curriculum, rules, evidence ledger and eval extension.",
+      "minimal_fusion_path": "Add specialist assets and references without a second framework.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C01",
+        "C12"
+      ]
+    },
+    {
+      "id": "BASE-04",
+      "mother_requirement": "Enforce full route dimensions and API-first/browser-second/computer fallback.",
+      "t_one_capability": "Adapter and authority contracts already require all dimensions.",
+      "gap": "No Lazada execution identity; only public browser evidence is available.",
+      "minimal_fusion_path": "Keep status available_unconnected and use public official browser pages until owner authorization.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C02"
+      ]
+    },
+    {
+      "id": "BASE-05",
+      "mother_requirement": "Show Amazon APIs, real ERP, PTD and most platform OAuth as blocked/unconnected.",
+      "t_one_capability": "integration_hub marks Lazada planned_per_store and the expert contract marks named tools unconnected.",
+      "gap": "No real Lazada OAuth/ERP/logistics/settlement success proof.",
+      "minimal_fusion_path": "Maintain blocked_connector/blocked_owner_input states and specify the smallest connector work.",
+      "status": "blocked_connector",
+      "course_ids": [
+        "C01",
+        "C02",
+        "C10"
+      ]
+    },
+    {
+      "id": "BASE-08",
+      "mother_requirement": "Reuse unified ad measurement, profit, draft, approval and stop-loss foundations.",
+      "t_one_capability": "Cross-channel advertising agent already provides them.",
+      "gap": "Lazada Sponsored Solutions account/billing/eligibility and platform-native AI are unconnected.",
+      "minimal_fusion_path": "Reuse measurement contracts; extend Lazada-specific eligibility/AI evidence and country ads binding.",
+      "status": "extend_existing",
+      "course_ids": [
+        "C07",
+        "C10"
+      ]
+    },
+    {
+      "id": "BASE-09",
+      "mother_requirement": "Reuse creative_video, storyboard/prompt branching and CapCut/FFmpeg detection.",
+      "t_one_capability": "Shared visual foundation exists.",
+      "gap": "No project-specific Lazada media connector, platform upload or performance writeback.",
+      "minimal_fusion_path": "Consume licensed creative drafts; keep media upload and Sponsored creative changes approval-gated.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C04",
+        "C07",
+        "C11"
+      ]
+    },
+    {
+      "id": "BASE-10",
+      "mother_requirement": "Use only github_capability_registry admission decisions.",
+      "t_one_capability": "Registry blocks unknown repos, auto-install and commercial Kun integration.",
+      "gap": "No Lazada connector repo is admitted or needed for this evidence round.",
+      "minimal_fusion_path": "Do not install anything; use current official pages and existing runtime.",
+      "status": "reuse_existing",
+      "course_ids": [
+        "C01",
+        "C11"
+      ]
+    }
+  ]
+}

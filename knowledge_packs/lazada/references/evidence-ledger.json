@@ -1,0 +1,3701 @@
+{
+  "schema_version": 2,
+  "expert_id": "expert-lazada-marketplace",
+  "captured_at": "2026-07-19T04:10:00+08:00",
+  "fingerprint_policy": {
+    "canonical_url": "strip tracking parameters and fragments before comparison",
+    "content_hash": "sha256 over a normalized claim or captured content",
+    "duplicate_behavior": "skip and record; do not reopen unchanged official pages",
+    "version_behavior": "retain prior evidence and link newer versions with supersedes or conflicts_with"
+  },
+  "allowed_states": [
+    "verified_live_fact",
+    "time_sensitive_evidence",
+    "historical_operator_trace",
+    "draft",
+    "failed_attempt",
+    "unknown",
+    "blocked_owner_input"
+  ],
+  "allowed_evidence_classes": [
+    "official_current",
+    "verified_software_observation",
+    "multi_source_practice",
+    "single_case",
+    "historical_trace",
+    "unknown"
+  ],
+  "allowed_review_statuses": [
+    "candidate_screened",
+    "opened_not_reviewed",
+    "fully_reviewed",
+    "blocked"
+  ],
+  "entries": [
+    {
+      "id": "LZ-LEDGER-001",
+      "state": "verified_live_fact",
+      "topic": "current_t_one_connection_state",
+      "claim": "The current workspace has Lazada routing, training, approval and connector definitions, but no recorded real Lazada store_binding_id, OAuth success, seller_id/short_code binding, Seller Center session, ads wallet, ERP mapping or successful business API call.",
+      "source_type": "local_software_audit",
+      "source_refs": [
+        "config/integration_hub.json",
+        "config/platform_adapter_registry.json",
+        "config/platform_developer_capabilities.json",
+        "config/platform_activity_rules.json"
+      ],
+      "captured_at": "2026-07-18T22:11:11+08:00",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border"
+      ],
+      "ownership": [
+        "self_owned",
+        "private_tenant_owned",
+        "platform_co_ops",
+        "partner_owned"
+      ],
+      "permission_scope": "workspace_read_only",
+      "valid_until": "2026-07-25T22:11:11+08:00",
+      "boundary": "Absence is scoped to inspected T One configuration and runtime paths; re-audit after any connector change."
+    },
+    {
+      "id": "LZ-LEDGER-002",
+      "state": "time_sensitive_evidence",
+      "topic": "seller_authorization",
+      "claim": "The public authorization page shows OAuth2 code-for-token for six sites, ABA/ALA/ASA policies, single-site and Crossborder selection, and country_user_info with per-country seller_id and short_code. Token and subscription behavior is time-sensitive.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://open.lazada.com/apps/doc/doc?docId=108260&nodeId=10777",
+      "page_last_updated": "2026-03-05",
+      "captured_at": "2026-07-18T22:14:18+08:00",
+      "browser_actions": [
+        "opened",
+        "scrolled document",
+        "inspected authorization tables and token fields"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-14-18-431Z.yml",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border",
+        "choice_program"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "7c4950a6613399f4651397a0e6893a51b1c42b32e5d7451225d5c2a40ceb5e8e",
+      "boundary": "No authorization was initiated and demo token values are documentation examples, not credentials."
+    },
+    {
+      "id": "LZ-LEDGER-003",
+      "state": "time_sensitive_evidence",
+      "topic": "marketplace_ease_semi_managed",
+      "claim": "Lazada officially documents Marketplace Ease as MP merchant semi-managed: merchant supplies the supply price and fulfills orders, while Lazada sets the sales price and handles marketing; the page lists a restricted API surface.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://open.lazada.com/apps/doc/doc?docId=121534&nodeId=10544",
+      "page_last_updated": "2024-07-19",
+      "captured_at": "2026-07-18T22:15:17+08:00",
+      "browser_actions": [
+        "opened",
+        "inspected program definition",
+        "inspected allowed APIs",
+        "inspected category and supply_price differences"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-15-17-880Z.yml",
+      "country_sites": [
+        "unknown"
+      ],
+      "store_models": [
+        "marketplace_ease_semi_managed_candidate"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permission_scope": "public_documentation_only",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "40cc61cc6234fd795fca297b78fad5ec02303c2325cdefadd66a42995b5d07ec",
+      "boundary": "Country availability, seller eligibility and actual authorization are not established. Shared route registry still supports only local/cross_border; do not execute this candidate."
+    },
+    {
+      "id": "LZ-LEDGER-004",
+      "state": "time_sensitive_evidence",
+      "topic": "finance_api",
+      "claim": "The public Finance API page lists GetPayoutStatus, queryTransactionDetails and QueryAccountTransactions for viewing and analyzing seller finance data.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://open.lazada.com/apps/doc/doc?docId=108249&nodeId=10556",
+      "page_last_updated": "2024-07-19",
+      "captured_at": "2026-07-18T22:15:37+08:00",
+      "browser_actions": [
+        "opened",
+        "inspected finance API table and paths"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-15-37-971Z.yml",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border",
+        "marketplace_ease_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "31ab84eb9a7a830e681bfc030870d522f1586f15ae86eb1274cb3f538856b968",
+      "boundary": "API documentation does not prove finance scope, payout completion, bank receipt or ERP reconciliation."
+    },
+    {
+      "id": "LZ-LEDGER-005",
+      "state": "time_sensitive_evidence",
+      "topic": "choice_inventory",
+      "claim": "The Choice product page uses separate Choice APIs and describes JIT as seller-managed virtual inventory and VMI as platform-managed local physical inventory.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://open.lazada.com/apps/doc/doc?docId=121783&nodeId=45695",
+      "page_last_updated": "2024-10-14",
+      "captured_at": "2026-07-18T22:16:06+08:00",
+      "browser_actions": [
+        "opened",
+        "inspected Choice API list",
+        "inspected item_type and inventory models"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-16-06-523Z.yml",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "choice_program_pending_route_classification"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permission_scope": "public_documentation_only",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "7a3917786d3be6e64d0e4e39c4af16563ea53375c477ddeda6b3a12c15f2fe33",
+      "boundary": "JIT and VMI are inventory models, not proof of a selectable T One store model or official_full_managed classification."
+    },
+    {
+      "id": "LZ-LEDGER-006",
+      "state": "time_sensitive_evidence",
+      "topic": "sponsored_max_ai_diagnosis",
+      "claim": "The March 2026 Sponsored Max Diagnosis page exposes AI-powered guidance for bidding, daily budget, campaign continuity and item optimization across all six country Seller Centers; Lazada states recommendations are guidance and do not guarantee performance.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://www.lazadasolutions.com/news-updates/sponsored-max-upgraded-diagnosis-feature/",
+      "published_at": "2026-03-26",
+      "captured_at": "2026-07-18T22:13:08+08:00",
+      "browser_actions": [
+        "opened",
+        "scrolled",
+        "inspected feature areas",
+        "inspected six-country destination links"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-13-08-857Z.yml",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_eligible"
+      ],
+      "ownership": [
+        "eligible_seller"
+      ],
+      "permission_scope": "public_page_only_no_ads_account",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "8b67379a7b9a72ca5ea4c26f0f38e56ef5d7c77b059825f036b37464a6ae73b0",
+      "boundary": "Actual recommendations, editability and campaign effects require a country-specific ads account."
+    },
+    {
+      "id": "LZ-LEDGER-007",
+      "state": "time_sensitive_evidence",
+      "topic": "sponsored_max_npl",
+      "claim": "The July 8, 2026 NPL page describes eligible products listed within 60 days, up to 30 days of support, CPC charging, search/recommendation placements, Auto Bidding or Target ROI, product exclusivity rules and links to all six Seller Centers.",
+      "source_type": "official_page_browser_capture",
+      "source_url": "https://www.lazadasolutions.com/news-updates/sponsored-max-new-product-launcher/",
+      "published_at": "2026-07-08",
+      "captured_at": "2026-07-18T22:13:50+08:00",
+      "browser_actions": [
+        "clicked from official recent stories",
+        "inspected steps",
+        "inspected FAQ",
+        "inspected six-country links"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-13-50-958Z.yml",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_eligible"
+      ],
+      "ownership": [
+        "eligible_seller"
+      ],
+      "permission_scope": "public_page_only_no_ads_account",
+      "valid_until": "2026-08-08T23:59:59+08:00",
+      "claim_fingerprint_sha256": "0b72a9dc0a4dea5fb18a282c1b4a689485a1b2d477606ec7f40ec5db445acc66",
+      "boundary": "No item eligibility or campaign was checked in Seller Center; Start Promotion remains a gated external action."
+    },
+    {
+      "id": "LZ-LEDGER-008",
+      "state": "blocked_owner_input",
+      "topic": "open_platform_ai_assistant",
+      "claim": "The Open Platform documentation visibly offers AI Assistant, but clicking it in the public browser redirected to the Open Platform login page.",
+      "source_type": "official_page_browser_interaction",
+      "source_url": "https://open.lazada.com/apps/doc/doc?docId=108260&nodeId=10777",
+      "captured_at": "2026-07-18T22:14:47+08:00",
+      "browser_actions": [
+        "clicked AI Assistant",
+        "observed redirect to /apps/user/login",
+        "stopped before credentials"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-14-47-390Z.yml",
+      "country_sites": [
+        "unknown"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "owner_or_authorized_developer_required"
+      ],
+      "permission_scope": "login_required",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "boundary": "Inputs, outputs, editing, submission boundary, metrics and failure recovery remain unknown until an authorized developer account is provided."
+    },
+    {
+      "id": "LZ-LEDGER-011",
+      "state": "failed_attempt",
+      "topic": "browser_session_close",
+      "claim": "The Playwright session close command timed out, but a subsequent session list showed lazada_public was no longer open.",
+      "source_type": "browser_tool_failure_recovered",
+      "captured_at": "2026-07-18T22:16:40+08:00",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "local_runtime"
+      ],
+      "permission_scope": "public_browser_only",
+      "boundary": "The timeout is not evidence of a platform failure; only the local CLI close command was affected."
+    },
+    {
+      "id": "LZ-LEDGER-012",
+      "state": "blocked_owner_input",
+      "topic": "real_store_and_ads_authorization",
+      "claim": "Authenticated learning requires an owner-approved Lazada developer app, one concrete country store or cross-border account, per-country seller identities, and separate Sponsored Solutions access.",
+      "source_type": "authorization_gap",
+      "captured_at": "2026-07-18T22:16:06+08:00",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border",
+        "marketplace_ease_candidate",
+        "choice_program"
+      ],
+      "ownership": [
+        "owner_decision_required"
+      ],
+      "permission_scope": "credentials_and_external_authorization_not_provided",
+      "boundary": "Do not request passwords, MFA, bank or identity documents in the task payload."
+    },
+    {
+      "id": "LZ-LEDGER-013",
+      "state": "unknown",
+      "topic": "third_party_lazada_tools",
+      "claim": "SellerSprite, Lazada analysis plug-ins, competitor tools and ERP products named in the mother document have no verified current license, connector, authorization or successful data read for this expert.",
+      "source_type": "unverified_tool_inventory",
+      "captured_at": "2026-07-18T22:16:06+08:00",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permission_scope": "not_connected",
+      "valid_until": "2026-07-25T22:16:06+08:00",
+      "boundary": "Tool names are research candidates only; no scraping or private competitor data access is claimed."
+    },
+    {
+      "id": "LZ-LEDGER-014",
+      "state": "failed_attempt",
+      "topic": "directed_test_python_alias",
+      "claim": "The first directed test command did not enter unittest because the system python command resolves to the Windows Store placeholder; the same test was rerouted to the bundled workspace Python without changing system configuration.",
+      "source_type": "local_test_failure_recovered",
+      "captured_at": "2026-07-18T22:20:00+08:00",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "local_runtime"
+      ],
+      "permission_scope": "read_and_test_only",
+      "boundary": "This is a local command-resolution issue, not a Lazada platform or training-contract failure."
+    },
+    {
+      "id": "LZ-LEDGER-015",
+      "state": "failed_attempt",
+      "topic": "regression_capture_count_assertion",
+      "claim": "The first bundled-Python regression run completed 23 tests with one failure because the test expected seven official-page captures while the ledger correctly contains six official content captures plus one separate login-boundary capture.",
+      "source_type": "local_test_failure_recovered",
+      "captured_at": "2026-07-18T22:21:00+08:00",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "local_runtime"
+      ],
+      "permission_scope": "read_and_test_only",
+      "boundary": "The assertion was corrected to six and the blocked AI login evidence remains tested separately; no source was invented to satisfy the test."
+    },
+    {
+      "id": "LZ-LEDGER-016",
+      "state": "time_sensitive_evidence",
+      "topic": "product_api_surface",
+      "claim": "Product API page visibly lists category, image, create, QC, read, update, price/quantity, remove and sellable-quantity operations; the page itself is documentation and does not prove app authorization.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=108146",
+      "platform_content_id": "docId:108146",
+      "title": "Product API",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T22:39:34+08:00",
+      "browser_actions": [
+        "opened Product API",
+        "inspected operation table",
+        "clicked GetCategoryAttributes link"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-39-34-923Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "67d196142a32e98241a9959275a096a80b0c472fd8e26bcf4e6684d08dde4977",
+      "boundary": "Create, update, price, quantity, remove and inventory operations are external writes and remain unavailable without a scoped app, seller identity and approval."
+    },
+    {
+      "id": "LZ-LEDGER-017",
+      "state": "time_sensitive_evidence",
+      "topic": "category_tree_and_attributes",
+      "claim": "Category documentation states only leaf categories can create products and distinguishes required, key, sale, normal and SKU attributes; API field name and Seller Center display label are not interchangeable.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=120946",
+      "platform_content_id": "docId:120946",
+      "title": "Get category attributes",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T22:46:09+08:00",
+      "browser_actions": [
+        "opened category document",
+        "scrolled field tables",
+        "opened canonical GetCategoryAttributes API detail"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category.md",
+        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category_api_deeplink.md"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "96957e28230b7d5317601b8299fb630fdf6f0cd1783c9c42c3086cd7fdfec718",
+      "boundary": "Sample categories and attributes are illustrative, not a live target-site schema; fetch them for the exact site and category before drafting or writing."
+    },
+    {
+      "id": "LZ-LEDGER-018",
+      "state": "time_sensitive_evidence",
+      "topic": "order_read_and_push",
+      "claim": "Get Order documentation states order_id is unique only inside the current store, order items have separate identifiers and statuses, and push plus targeted reads is preferred over continuous polling.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=121327",
+      "platform_content_id": "docId:121327",
+      "title": "Get Order",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-22",
+      "captured_at": "2026-07-18T22:41:32+08:00",
+      "browser_actions": [
+        "opened tutorial",
+        "scrolled request, pagination, push and field sections"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-41-32-295Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "f051d3f997d72f86665d9816657711629500de1df41cd97df625e371861f7131",
+      "boundary": "No real order or buyer data was read; buyer PII and order actions remain authorization- and approval-gated."
+    },
+    {
+      "id": "LZ-LEDGER-019",
+      "state": "time_sensitive_evidence",
+      "topic": "fulfillment_api_availability",
+      "claim": "Fulfillment documentation lists GetShipmentProvider, Pack, RecreatePackage, PrintAWB and ReadyToShip, while also marking GetPackageInfo as not available right now; availability must be resolved before execution.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=120984",
+      "platform_content_id": "docId:120984",
+      "title": "New Fulfillment API Details",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T22:46:33+08:00",
+      "browser_actions": [
+        "opened fulfillment document",
+        "scrolled API list, country endpoints and availability notes"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_fulfillment.md",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "1807a7a12c856c95024780bf0736c0f9b0f508544a697f0f492605abc25b02b3",
+      "boundary": "Documentation age and seller-specific provider/package state require a fresh authenticated capability check before any fulfillment write."
+    },
+    {
+      "id": "LZ-LEDGER-020",
+      "state": "time_sensitive_evidence",
+      "topic": "reverse_order_webhook",
+      "claim": "Reverse Order webhook requires authorization, retries up to 12 times at 30-minute intervals, and explicitly does not push every reverse-order state; webhook receipt is not a complete current-state read.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=120232",
+      "platform_content_id": "docId:120232",
+      "title": "Webhook API Reverse Order",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T22:46:54+08:00",
+      "browser_actions": [
+        "opened reverse-order document",
+        "scrolled webhook properties and reverse-type/state table"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_reverse_order.md",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "any_authorized_seller"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "383b0ef216d34851b71ee3ee539706579e54af2e15b18719d055ee9f6ccf4d8a",
+      "boundary": "A webhook is an event hint; refund, rejection or customer-contact decisions require a fresh targeted read, history, reasons, authority and owner confirmation."
+    },
+    {
+      "id": "LZ-LEDGER-021",
+      "state": "time_sensitive_evidence",
+      "topic": "sponsored_max_campaign_level",
+      "claim": "Sponsored Max campaign-level creation supports 1-100 products with shared budget and bid settings; allocation is optimized rather than evenly split, and availability is progressively rolled out by country and seller.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.lazadasolutions.com/news-updates/sponsoredmax-campaign-level-creation/",
+      "platform_content_id": "news:sponsoredmax-campaign-level-creation",
+      "title": "Sponsored Max: Campaign-level creation for Sponsored Max - Product",
+      "author": "Lazada Sponsored Solutions",
+      "published_at": "2026-01-08",
+      "captured_at": "2026-07-18T22:44:13+08:00",
+      "browser_actions": [
+        "opened and scrolled page",
+        "expanded budget allocation FAQ",
+        "expanded active-product overlap FAQ",
+        "expanded Diagnosis availability FAQ"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-26-253Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-51-300Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-44-13-773Z.yml"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "eligible_seller_only"
+      ],
+      "ownership": [
+        "eligible_ads_account"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "7e2f0b2a893995d6fccbe27213b5567358efc06b95ec1b711eda6193a75c18d1",
+      "boundary": "No Seller Center campaign, budget, bid, product selection or Start Promotion action was executed."
+    },
+    {
+      "id": "LZ-LEDGER-022",
+      "state": "time_sensitive_evidence",
+      "topic": "sponsored_max_overlap_side_effect",
+      "claim": "Adding an already-active product to a new Sponsored Max Product campaign may automatically pause or remove the original campaign, so overlap preflight and owner approval are required before Start Promotion.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.lazadasolutions.com/news-updates/sponsoredmax-campaign-level-creation/",
+      "platform_content_id": "news:sponsoredmax-campaign-level-creation#faq-active-product",
+      "title": "Sponsored Max campaign FAQ: active product overlap",
+      "author": "Lazada Sponsored Solutions",
+      "published_at": "2026-01-08",
+      "captured_at": "2026-07-18T22:43:51+08:00",
+      "browser_actions": [
+        "expanded active-product overlap FAQ"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-51-300Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "eligible_seller_only"
+      ],
+      "ownership": [
+        "eligible_ads_account"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "4aac5d98c9a655c6f6ff384142d19defec0342f8403abd6921f2a5bd6539499e",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-021",
+          "type": "specializes"
+        }
+      ],
+      "boundary": "This is a material external side effect and cannot be treated as a harmless product-selection draft."
+    },
+    {
+      "id": "LZ-LEDGER-023",
+      "state": "time_sensitive_evidence",
+      "topic": "sponsored_max_diagnosis_campaign_scope",
+      "claim": "The campaign FAQ says Diagnosis currently supports legacy Promoted Product campaigns only and is not available for newly launched campaign-level Sponsored Max Product campaigns.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.lazadasolutions.com/news-updates/sponsoredmax-campaign-level-creation/",
+      "platform_content_id": "news:sponsoredmax-campaign-level-creation#faq-diagnosis",
+      "title": "Sponsored Max campaign FAQ: Diagnosis availability",
+      "author": "Lazada Sponsored Solutions",
+      "published_at": "2026-01-08",
+      "captured_at": "2026-07-18T22:44:13+08:00",
+      "browser_actions": [
+        "expanded Diagnosis availability FAQ"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-44-13-773Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "eligible_seller_only"
+      ],
+      "ownership": [
+        "eligible_ads_account"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "b66863fbf23c529de6dd2b8ff7a75d5842f60d70e06aa8c63dfda38952a7e7d3",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-006",
+          "type": "narrows_scope"
+        },
+        {
+          "evidence_id": "LZ-LEDGER-021",
+          "type": "specializes"
+        }
+      ],
+      "boundary": "Diagnosis availability must be resolved by campaign generation and actual seller rollout; do not project legacy capabilities onto new campaigns."
+    },
+    {
+      "id": "LZ-LEDGER-024",
+      "state": "historical_operator_trace",
+      "topic": "sponsored_max_delivery_hypothesis",
+      "claim": "A 2025 Thailand-oriented industry blog reports one operator experience: lowering Target ROAS by roughly 20-30 percent or testing Auto Bidding/Max CPC on selected products sometimes increased Sponsored Max delivery, while warning spend may accelerate; this remains a dated single-source experiment hypothesis.",
+      "source_type": "public_industry_blog_browser_capture",
+      "evidence_class": "single_case",
+      "canonical_url": "https://digitalbreaktime.com/en/2025/06/12/fix-sponsored-max-lazada-ads-en-2/",
+      "platform_content_id": "digitalbreaktime:2025-06-12:fix-sponsored-max-lazada-ads-en-2",
+      "title": "Sponsored Max Not Running or Spending: How to Fix Lazada Ads",
+      "author": "Thanakarn Lertsudwichai",
+      "published_at": "2025-06-12",
+      "captured_at": "2026-07-18T22:51:35+08:00",
+      "browser_actions": [
+        "opened public article",
+        "clicked Auto Bidding/Max CPC section",
+        "scrolled advice and risk warning"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_industry_blog.md",
+        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_industry_blog_after_click.md"
+      ],
+      "language": "en",
+      "country_sites": [
+        "TH_example",
+        "unknown_generalization"
+      ],
+      "store_models": [
+        "unknown_seller_context"
+      ],
+      "ownership": [
+        "third_party_author_experience"
+      ],
+      "permission_scope": "public_webpage_read_only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "single_source_dated_anecdote",
+      "claim_fingerprint_sha256": "f6b5c36683ca03db1384270d8532474a2e7b6b53948c41eba02f70e768e3c550",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-021",
+          "type": "operator_hypothesis_under_official_feature"
+        }
+      ],
+      "boundary": "Do not generalize the 20-30 percent adjustment, apply it automatically, or override current official eligibility and owner budget/stop-loss rules without two more independent sources and a controlled authorized experiment."
+    },
+    {
+      "id": "LZ-LEDGER-025",
+      "state": "verified_live_fact",
+      "topic": "increment_02_execution_identity_audit",
+      "claim": "A fresh local audit still found Lazada grouped as planned_per_store with no concrete store binding, OAuth, seller ID, authenticated browser, ads identity, ERP or finance read result.",
+      "source_type": "local_software_audit",
+      "evidence_class": "verified_software_observation",
+      "source_refs": [
+        "config/integration_hub.json",
+        "config/platform_adapter_registry.json",
+        "config/platform_developer_capabilities.json",
+        "config/current_task_queue.json"
+      ],
+      "captured_at": "2026-07-18T22:38:45+08:00",
+      "language": "en_zh_config",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permission_scope": "local_read_only",
+      "license": "workspace_internal",
+      "evidence_grade": "verified_local_state",
+      "valid_until": "2026-07-19T22:38:45+08:00",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-001",
+          "type": "confirms_no_change"
+        }
+      ],
+      "boundary": "No capability-state promotion is allowed."
+    },
+    {
+      "id": "LZ-LEDGER-026",
+      "state": "failed_attempt",
+      "topic": "category_api_tracking_deeplink",
+      "claim": "The Product API tracking deep link with an spm query displayed Page not found during the browser run, while the canonical official API path later loaded successfully; this is a recovered documentation-routing failure, not proof that the API is unavailable.",
+      "source_type": "browser_failure_recovered",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://open.lazada.com/apps/doc/api?path=%2Fcategory%2Fattributes%2Fget",
+      "platform_content_id": "api-path:/category/attributes/get",
+      "title": "GetCategoryAttributes API detail",
+      "author": "Lazada Open Platform",
+      "captured_at": "2026-07-18T22:47:20+08:00",
+      "browser_actions": [
+        "clicked tracked link and observed Page not found",
+        "removed tracking parameter",
+        "opened canonical API path successfully"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category_api_deeplink.md",
+      "language": "en",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "public_documentation"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "recovered_failure",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "899dca21952a7732f74cd4bf178d91ab2f4bfac9cb3e2a3157c360822b615eef",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-017",
+          "type": "recovered_access_path"
+        }
+      ],
+      "boundary": "Do not treat tracking-link failure as API retirement; recheck the canonical official URL and current authenticated API behavior separately."
+    },
+    {
+      "id": "LZ-LEDGER-027",
+      "state": "failed_attempt",
+      "topic": "formal_app_backend_startup",
+      "claim": "The formal T-One-0.1.0 portable app was launched twice from its shipped path and reproducibly displayed 'Python backend exited early (exit=9009)'. Runtime logs show the configured bundled Python candidate spawned but did not reach health within 18 seconds, then py was missing and the WindowsApps python fallback exited 9009; the backend later became healthy on port 8768, so the expert UI load/save/call chain remains unverified rather than permanently failed.",
+      "source_type": "local_software_runtime_failure",
+      "evidence_class": "verified_software_observation",
+      "source_refs": [
+        "desktop_app/dist/T-One-0.1.0.exe",
+        "desktop_app/main.js",
+        "logs/desktop-runtime.log",
+        "desktop_app/dist/private_tenant-agent-root.json"
+      ],
+      "title": "T One 0.1.0 formal portable startup acceptance",
+      "author": "T One local runtime",
+      "captured_at": "2026-07-18T23:01:00+08:00",
+      "actual_interactions": [
+        "launched formal executable",
+        "captured error dialog twice",
+        "read runtime log",
+        "checked bundled Python path",
+        "checked local health endpoint"
+      ],
+      "visible_input_output": [
+        "T One startup failed",
+        "Python backend exited early (exit=9009)",
+        "health later returned desktop_runtime_version 2 on port 8768"
+      ],
+      "errors": [
+        "configured candidate did not become healthy within 18 seconds",
+        "spawn py ENOENT",
+        "WindowsApps python fallback exit 9009"
+      ],
+      "language": "zh_en_runtime",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "shared_t_one_runtime"
+      ],
+      "permission_scope": "local_read_only_acceptance",
+      "license": "workspace_internal",
+      "evidence_grade": "verified_local_runtime_failure",
+      "valid_until": "2026-07-19T23:01:00+08:00",
+      "claim_fingerprint_sha256": "14ab6e9ee4869cdde83887a3f91fc51889db8c76a2a9d233df136815374fb671",
+      "boundary": "The Lazada specialist does not own desktop_app/main.js. Do not claim formal App expert ingestion, model save/call, connector error handling or store context is verified until the shared owner repairs and reruns this acceptance."
+    },
+    {
+      "id": "LZ-LEDGER-028",
+      "state": "verified_live_fact",
+      "topic": "t_one_product_scope_contract",
+      "claim": "The user-defined T One product scope requires four isolated layers: platform public rules, pluggable category capabilities, tenant/project/product facts, and task evidence. Project-specific product samples may validate a route but must never become global defaults or leak into public/open-source assets.",
+      "source_type": "authoritative_user_product_requirement",
+      "evidence_class": "verified_software_observation",
+      "source_refs": [
+        "current Lazada expert goal delegation: product scope correction"
+      ],
+      "title": "T One product scope correction",
+      "author": "workspace owner",
+      "captured_at": "2026-07-18T23:05:00+08:00",
+      "language": "zh",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border"
+      ],
+      "ownership": [
+        "t_one_product_specification"
+      ],
+      "permission_scope": "workspace_scope_definition",
+      "license": "user_provided_requirements_internal",
+      "evidence_grade": "authoritative_user_requirement",
+      "claim_fingerprint_sha256": "b78d2471157874c6c4c3073edf8f08310b7623f0826a6c03604e11db00b6d405",
+      "boundary": "This is a T One product architecture requirement, not a Lazada platform policy claim."
+    },
+    {
+      "id": "LZ-LEDGER-029",
+      "state": "time_sensitive_evidence",
+      "topic": "promotion_webhook_event_boundary",
+      "claim": "The official Promotion webhook page shows an authorized msg_type 11 notification with three retries at five-minute intervals for SELLER_VOUCHER, FLEXI_COMBO and FREE_SHIPPING; it includes a 72-hour-before-expiry event and voucher stock-budget fields, but does not establish current promotion state or stackability.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=120255",
+      "platform_content_id": "docId:120255",
+      "title": "Webhook API Promotion",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T23:28:25+08:00",
+      "browser_actions": [
+        "opened the official page",
+        "scrolled the webhook property table",
+        "inspected retry, authorization, promotion-type, expiry and stock-budget fields"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-28-25-890Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "authorized_country_seller_identity"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "ec7c0ca1237f61ead4907e37638a441e982e732b4a249dea2b013c1105c91b90",
+      "boundary": "No webhook, seller identity or promotion object was connected. Treat each notification as an event hint, preserve seller and promotion scope, and perform a targeted current-state read before any approval or action."
+    },
+    {
+      "id": "LZ-LEDGER-030",
+      "state": "time_sensitive_evidence",
+      "topic": "official_sdk_provenance_and_download",
+      "claim": "The official SDK page says an SDK is generated for a specific application, recommends using the official SDK, and requires a registered developer login plus App Console > Testing Tools > SDK Download; no current SDK package can be obtained or validated from the public page alone.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=108064",
+      "platform_content_id": "docId:108064",
+      "title": "Call API with official SDK",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-18T23:29:10+08:00",
+      "browser_actions": [
+        "opened the official SDK page in a new tab",
+        "inspected generation and capability descriptions",
+        "inspected the App Console download path and login prerequisite"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-10-791Z.yml",
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "registered_developer_application"
+      ],
+      "permission_scope": "public_documentation_only_app_console_login_required_for_download",
+      "license": "public_documentation_read_only_no_sdk_license_grant_observed",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "84863f106e966bd3b965b90988cca4350abc8c74814d23aecdf92b6999691472",
+      "boundary": "No developer login, application, language-specific package, checksum, dependency tree or real API call was available. The page's dated language list must be rechecked in the authorized App Console."
+    },
+    {
+      "id": "LZ-LEDGER-031",
+      "state": "historical_operator_trace",
+      "topic": "public_github_iopsdk_candidate",
+      "claim": "The public GitHub organization named lazop exposes one iopsdk repository under Apache-2.0, but the repository has one commit from 2018, no releases, no packages, zero stars or forks and only README/LICENSE content; its official Lazada ownership is unverified, and it is historical evidence rather than a current production SDK or install candidate.",
+      "source_type": "public_github_repository_browser_capture",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/lazop/iopsdk",
+      "platform_content_id": "github:lazop/iopsdk",
+      "title": "lazop/iopsdk: Lazada open platform sdk client",
+      "author": "public GitHub organization lazop; official identity unverified",
+      "published_at": "2018-03-29",
+      "captured_at": "2026-07-18T23:29:56+08:00",
+      "browser_actions": [
+        "opened the public repository",
+        "scrolled repository metadata and file list",
+        "clicked and inspected the Apache-2.0 license"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-36-451Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-56-370Z.yml"
+      ],
+      "language": "en",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "public_lazop_github_organization_identity_unverified"
+      ],
+      "permission_scope": "public_repository_read_only",
+      "license": "Apache-2.0",
+      "evidence_grade": "identity_unverified_historical_repository",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "1d4120edd58d696a6602798e6925786f417eba6cd42759bc2050da2c70f6eb0e",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-030",
+          "type": "historical_public_repo_does_not_replace_current_app_specific_sdk"
+        },
+        {
+          "evidence_id": "LZ-LEDGER-049",
+          "type": "identity_wording_superseded_by_reverse_link_review"
+        }
+      ],
+      "boundary": "Apache-2.0 permits licensed reuse but does not prove current compatibility, maintenance, dependency safety or authorization. Do not auto-install; obtain the application-specific official SDK from the authorized App Console and validate it separately."
+    },
+    {
+      "id": "LZ-LEDGER-032",
+      "state": "time_sensitive_evidence",
+      "topic": "im_open_api_message_and_push_boundary",
+      "claim": "The official Lazada IM Open API page identifies site_id, session_id and message_id, exposes security-interception and recall status, requires sessionId+messageId deduplication for recall pushes, and warns against polling message/session list APIs because push is available and polling can cause permission reclamation; SendMessage remains an authorized external action.",
+      "source_type": "official_page_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=120971",
+      "platform_content_id": "docId:120971",
+      "title": "Lazada IM Open API",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-08-02",
+      "captured_at": "2026-07-18T23:46:09+08:00",
+      "browser_actions": [
+        "opened the canonical official page",
+        "snapshotted message/session fields",
+        "scrolled 1500 pixels with mousewheel",
+        "inspected security interception, recall, refund card, session validity and API best practices"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-45-37-437Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-46-09-175Z.yml"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_im_app_authorized"
+      ],
+      "ownership": [
+        "authorized_country_seller_im_identity"
+      ],
+      "permission_scope": "public_documentation_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "official_primary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "1821e10548b9b8f427c77477f5b3eb3e1bdd5970e5873d37a5770e5bed8d59a8",
+      "boundary": "No IM app category, seller authorization, conversation, buyer data, push channel or SendMessage call was available. Message content and buyer identifiers remain store/session scoped and an outbound message requires owner confirmation."
+    },
+    {
+      "id": "LZ-LEDGER-033",
+      "state": "historical_operator_trace",
+      "topic": "seller_chat_response_rate_video_hypothesis",
+      "claim": "A public 2021 seller-training video description claims that at least an 85 percent Lazada Seller Chat Response Rate was needed for Seller Picks; because it is one dated third-party claim and the transcript panel did not finish loading, the threshold remains a historical experiment hypothesis that must be rechecked in the current country Seller Center.",
+      "source_type": "public_video_browser_capture",
+      "evidence_class": "single_case",
+      "canonical_url": "https://www.youtube.com/watch?v=FM5NFv4awr0",
+      "platform_content_id": "youtube:FM5NFv4awr0",
+      "title": "How To Achieve 100% Lazada Seller Chat Response Rate?",
+      "author": "Kongpreneur Lazada Seller",
+      "published_at": "2021-04-16",
+      "captured_at": "2026-07-18T23:50:48+08:00",
+      "browser_actions": [
+        "opened the public video page",
+        "played to 2:14 and paused",
+        "expanded the description",
+        "opened the platform-provided transcript panel",
+        "observed the transcript panel remain in loading state"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-48-34-160Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-50-48-531Z.yml"
+      ],
+      "language": "en",
+      "country_sites": [
+        "MY_example",
+        "unknown_generalization"
+      ],
+      "store_models": [
+        "unknown_seller_context"
+      ],
+      "ownership": [
+        "third_party_video_author"
+      ],
+      "permission_scope": "public_video_stream_and_platform_transcript_ui_only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "single_source_dated_video_description",
+      "claim_fingerprint_sha256": "f7edc9ab07862b800f5a1e968f90a273290d9fe42620519a232d231831ed61c5",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-032",
+          "type": "dated_operator_metric_claim_under_official_im_surface"
+        }
+      ],
+      "boundary": "Do not treat 85 percent, Seller Picks eligibility or any optimization tactic as current six-country policy. No video was downloaded and no unavailable transcript was extracted by another method."
+    },
+    {
+      "id": "LZ-LEDGER-034",
+      "state": "failed_attempt",
+      "topic": "public_community_return_thread_access",
+      "claim": "The selected public Reddit return/refund thread returned HTTP 403 with a JavaScript challenge in the real browser, so no thread content was captured or distilled.",
+      "source_type": "public_community_access_failure",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://www.reddit.com/r/ShopeePH/comments/1t61ivr/returnrefund_disabled_in_lazada_and_wants_me_chat/",
+      "platform_content_id": "reddit:1t61ivr",
+      "title": "Return/refund disabled in Lazada and wants me chat instead with the seller?",
+      "author": "unknown_public_reddit_user",
+      "published_at": "2026-05-07",
+      "captured_at": "2026-07-18T23:47:16+08:00",
+      "browser_actions": [
+        "opened canonical public thread",
+        "observed HTTP 403 and JavaScript challenge",
+        "stopped without attempting challenge bypass"
+      ],
+      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-47-16-408Z.yml",
+      "language": "en_fil",
+      "country_sites": [
+        "PH_candidate"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "public_community_unknown"
+      ],
+      "permission_scope": "public_page_access_blocked",
+      "license": "unknown_no_content_captured",
+      "evidence_grade": "verified_access_failure",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "9ae50eb17a7b48922caec70aea8d7e4dc8c7e677c56656be2f7e8116976a1bc3",
+      "boundary": "Do not use search snippets as a substitute for browser evidence, and do not bypass the challenge, log in, scrape or infer any return policy from this failed access."
+    },
+    {
+      "id": "LZ-LEDGER-035",
+      "state": "failed_attempt",
+      "topic": "sg_seller_help_article_redirect",
+      "claim": "The SG Seller Center chat-best-practices URL redirected to a generic Help Center route where the article body was absent; the page only exposed public support entry labels and hours, so no seller chat policy or response-rate rule was distilled.",
+      "source_type": "official_help_access_failure",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://sellercenter.lazada.sg/seller/helpcenter/chat-best-practices-and-faqs-14875.html",
+      "platform_content_id": "sg-help:chat-best-practices-and-faqs-14875",
+      "title": "Chat Best Practices and FAQs",
+      "author": "Lazada SG Seller Center Help",
+      "captured_at": "2026-07-18T23:49:32+08:00",
+      "browser_actions": [
+        "opened the public seller-help URL",
+        "observed redirect to generic Help Center",
+        "snapshotted visible support entry labels",
+        "scrolled without clicking Chat Now or Raise Concern"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-49-32-439Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T15-49-22-446Z.log"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG"
+      ],
+      "store_models": [
+        "seller_help_unknown_auth_context"
+      ],
+      "ownership": [
+        "public_sg_seller_help"
+      ],
+      "permission_scope": "public_help_shell_only",
+      "license": "public_documentation_read_only_no_reuse_grant",
+      "evidence_grade": "verified_content_missing",
+      "valid_until": "2026-07-25T23:59:59+08:00",
+      "claim_fingerprint_sha256": "5b03d3f04604986737a4350344f4cfb4d773a9b159460c5fb263fc80e85048eb",
+      "boundary": "The visible ADA/live-chat service labels and hours describe the help surface captured, not buyer-to-seller IM policy, seller response-rate rules or successful support contact."
+    },
+    {
+      "id": "LZ-LEDGER-036",
+      "state": "failed_attempt",
+      "topic": "increment_04_browser_cli_recovery",
+      "claim": "The first IM URL command split the ampersand nodeId query and the CLI rejected an unsupported scroll command; both failures were recovered with the canonical docId URL and mousewheel without changing Lazada platform state.",
+      "source_type": "local_browser_tooling_failure_recovered",
+      "evidence_class": "verified_software_observation",
+      "source_refs": [
+        "playwright-cli command output for lazada_increment04"
+      ],
+      "title": "Increment-04 Playwright URL and scroll command recovery",
+      "author": "T One Lazada training runtime",
+      "captured_at": "2026-07-18T23:46:04+08:00",
+      "actual_interactions": [
+        "attempted full URL containing ampersand nodeId",
+        "retried canonical docId URL",
+        "attempted unsupported scroll command",
+        "used documented mousewheel command"
+      ],
+      "visible_input_output": [
+        "nodeId is not recognized",
+        "Unknown command: scroll",
+        "canonical page loaded",
+        "mousewheel completed"
+      ],
+      "errors": [
+        "local command query splitting",
+        "unsupported CLI command"
+      ],
+      "language": "en",
+      "country_sites": [
+        "not_applicable"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "local_training_runtime"
+      ],
+      "permission_scope": "local_read_only_recovery",
+      "license": "workspace_internal",
+      "evidence_grade": "verified_recovered_tool_failure",
+      "claim_fingerprint_sha256": "c9e51ab7056d1ef12210d4d423ca2e352a2b46f0d9385b5827d10d3313089a52",
+      "boundary": "These were local tool invocation failures, not Lazada platform errors, and they do not change connector status."
+    },
+    {
+      "id": "LZ-LEDGER-037",
+      "state": "time_sensitive_evidence",
+      "topic": "finance_transaction_detail_api",
+      "claim": "The official GetTransactionDetails API is an authorization-required GET read for a specified period with six country endpoints, required start_time/end_time, optional trans_type, a maximum limit of 500 and offset pagination; its response schema includes transaction, fee, tax, payout-reference and status fields, while the public example is dated demo data rather than a live seller result.",
+      "source_type": "official_api_detail_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/api?path=%2Ffinance%2Ftransaction%2Fdetail%2Fget",
+      "platform_content_id": "api-path:/finance/transaction/detail/get",
+      "title": "GetTransactionDetails",
+      "author": "Lazada Open Platform",
+      "published_at": "2022-09-16",
+      "captured_at": "2026-07-19T00:01:54+08:00",
+      "browser_actions": [
+        "opened the public API-detail page in a headed browser",
+        "inspected the authorization label, six endpoints, request parameters and response example",
+        "scrolled 1200 pixels to the response and testing-tool boundary",
+        "did not sign in, open the testing console or call the API"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-01-54-681Z.yml",
+        "playwright-cli lazada_increment05 mousewheel output"
+      ],
+      "visible_input_output": [
+        "GET /finance/transaction/detail/get",
+        "Authorization Required",
+        "start_time and end_time required",
+        "limit maximum 500",
+        "offset supported",
+        "VN/SG/PH/MY/TH/ID service endpoints",
+        "public response example dated 17 May 2016"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local",
+        "cross_border_if_authorized"
+      ],
+      "ownership": [
+        "authorized_country_seller_finance_identity_required"
+      ],
+      "permission_scope": "public_documentation_read_only; authenticated API call not attempted",
+      "license": "public_documentation_citation_and_summary_only",
+      "evidence_grade": "official_page_real_browser_capture_no_live_call",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "62f5d8eba3968b6a476005705f4bdebbec792db6f9583db34fe9ed3a81018d3c",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-004",
+          "type": "detail_page_under_finance_api_index"
+        }
+      ],
+      "boundary": "The page proves the documented read schema only. It does not prove app authorization, a successful seller transaction read, payout completion, bank receipt, tax completeness, profit confirmation or ERP reconciliation."
+    },
+    {
+      "id": "LZ-LEDGER-038",
+      "state": "time_sensitive_evidence",
+      "topic": "third_party_erp_payment_reconciliation",
+      "claim": "BigSeller's public 2025 help page describes a third-party reconciliation view that can summarize Lazada statements across connected stores, export rows, filter by store or currency and let a user manually mark a statement Collected after receipt; it also warns that fees available through the platform interface may not sum to settlement, which is a connector-specific observation rather than Lazada policy.",
+      "source_type": "public_third_party_erp_help_browser_capture",
+      "evidence_class": "single_case",
+      "canonical_url": "https://help.bigseller.com/en_US/detailPage/10/1/5806/content",
+      "platform_content_id": "bigseller-help:5806",
+      "title": "How to use Platform Payment Reconciliation (Lazada)?",
+      "author": "BigSeller Help Center",
+      "published_at": "2025-12-26",
+      "captured_at": "2026-07-19T00:04:01+08:00",
+      "browser_actions": [
+        "opened the public help article in a separate headed-browser tab",
+        "inspected the update time, feature description and field definitions",
+        "scrolled 1000 pixels",
+        "did not sign up, connect a store, export data, synchronize statements or mark Collected"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-04-01-334Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-03-52-830Z.log",
+        "playwright-cli lazada_increment05 mousewheel output"
+      ],
+      "visible_input_output": [
+        "Update Time: 26 Dec 2025 06:03",
+        "summarize statement information for all Lazada stores on one page",
+        "filter by store or currency",
+        "manual marking of released payments",
+        "some expenses or fees cannot be obtained from the platform interface"
+      ],
+      "errors": [
+        "two third-party page console errors after scrolling; article content remained visible"
+      ],
+      "language": "en",
+      "country_sites": [
+        "multi_store_lazada_country_not_specified"
+      ],
+      "store_models": [
+        "third_party_erp_connected_store_candidate"
+      ],
+      "ownership": [
+        "bigseller_authorized_store_required"
+      ],
+      "permission_scope": "public_help_read_only; no T One or BigSeller connector authorization",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "single_third_party_product_observation",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "cd7bd8c5cea00fd080dcbaeab09e41369c8445dc0fe638cfd796cbd280ad34d1",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-037",
+          "type": "third_party_reconciliation_behavior_not_official_rule"
+        }
+      ],
+      "boundary": "This is evidence of BigSeller's documented product behavior, not a verified T One connector or universal Lazada accounting rule. A manually marked Collected flag is not Lazada payout status or bank-receipt evidence, and the interface-limit warning needs connector-specific verification."
+    },
+    {
+      "id": "LZ-LEDGER-039",
+      "state": "time_sensitive_evidence",
+      "topic": "official_seller_ai_readiness_playbook",
+      "claim": "The official 2025 AI Readiness Playbook describes AI Smart Listing as generating and pre-filling product attributes from images or keywords; Business Advisor as store and SKU analytics; Lazzie Seller as an ASC chatbot for FAQs, navigation, risk assessment and business advice; LISA as a customer-query chatbot; and AI Smart Product Optimisation as improving titles, descriptions and photos, while the public PDF does not prove current seller eligibility or a completed listing, message or ad action.",
+      "source_type": "official_pdf_browser_and_page_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://lazada-com.oss-ap-southeast-1.aliyuncs.com/216-press-release.pdf",
+      "platform_content_id": "lazada-group-pdf:216-press-release",
+      "title": "Bridging the AI Gap: Artificial Intelligence Readiness Playbook for Online Sellers",
+      "author": "Lazada Group and Kantar Singapore",
+      "published_at": "2025-04-08",
+      "captured_at": "2026-07-19T00:25:51+08:00",
+      "browser_actions": [
+        "opened the official Lazada Group press-release index",
+        "scrolled the 2025 and 2024 release list",
+        "clicked the AI Readiness Playbook DOWNLOAD PDF link",
+        "opened the 41-page PDF in a new headed-browser tab",
+        "scrolled the PDF viewer",
+        "captured pages 34, 35 and 37 through the PDF page renderer"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-23-47-698Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-25-51-748Z.yml"
+      ],
+      "source_pages": [
+        34,
+        35,
+        37
+      ],
+      "visible_input_output": [
+        "AI Smart Listing: images or keywords to generated and pre-filled attributes",
+        "Business Advisor: store and SKU metrics",
+        "Lazzie Seller: ASC FAQ, navigation, risk assessment and business advice",
+        "LISA: greetings, FAQs, intent and Smart Answer based on product details",
+        "AI Smart Product Optimisation: titles, descriptions and photos",
+        "country training-link rows for ID/MY/PH/SG/TH/VN"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "seller_account_mode_not_stated"
+      ],
+      "ownership": [
+        "authorized_seller_account_required_for_live_features"
+      ],
+      "permission_scope": "public PDF read only; no Seller Center feature access",
+      "license": "copyright_retained; citation and summary only; reproduction requires permission",
+      "evidence_grade": "official_product_playbook_no_authenticated_feature_observation",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "68f39a1ccc7686d96bf5eb9858b1738b283272d39ba5c18b4c352b056df2b787",
+      "boundary": "The playbook describes intended inputs and outputs, not exact current entry paths, country/account eligibility, editable fields, save/submit behavior, model version, generated quality, send state or business results. Generated listing or reply content remains a draft until validated against live schema and authorization."
+    },
+    {
+      "id": "LZ-LEDGER-040",
+      "state": "time_sensitive_evidence",
+      "topic": "official_seller_genai_release_and_feature_annex",
+      "claim": "The official 8 April 2025 Lazada release says new seller GenAI features include AI Smart Product Optimisation, AI-powered translations and Lazzie Seller, and its annex names Business Advisor, Sponsored Solutions, AI Smart Listing, Virtual Try-Ons, AI Selling Points and LISA; the release is an announcement and survey summary, not a current authenticated Seller Center observation or proof of six-country availability.",
+      "source_type": "official_press_release_pdf_browser_and_page_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://lazada-com.oss-ap-southeast-1.aliyuncs.com/218-press-release.pdf",
+      "platform_content_id": "lazada-group-pdf:218-press-release",
+      "title": "Three in Four Southeast Asian ECommerce Sellers Require Additional Support in Their AI Adoption, Lazada Report Reveals",
+      "author": "Lazada Group",
+      "published_at": "2025-04-08",
+      "captured_at": "2026-07-19T00:24:26+08:00",
+      "browser_actions": [
+        "opened and scrolled the official Lazada Group press-release index",
+        "clicked the report DOWNLOAD PDF link",
+        "opened the five-page PDF in a new headed-browser tab",
+        "captured the release, feature announcement and annex pages through the PDF page renderer"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-23-47-698Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-24-24-524Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-24-25-498Z.log"
+      ],
+      "source_pages": [
+        0,
+        1,
+        3
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "surveyed_ecommerce_seller_mode_not_stated"
+      ],
+      "ownership": [
+        "lazada_group_public_release"
+      ],
+      "permission_scope": "public press release read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "official_release_and_survey_annex_not_live_ui",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "616dc6d0e477345855d6c848ae8ea06d6723bfba4f96a5f3eeaf7400749d3ba2",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-039",
+          "type": "announcement_summary_for_playbook_features"
+        }
+      ],
+      "boundary": "Survey satisfaction and usage percentages are dated aggregate claims, not a performance guarantee, current eligibility check or evidence that T One can access any named feature."
+    },
+    {
+      "id": "LZ-LEDGER-041",
+      "state": "verified_live_fact",
+      "topic": "business_advisor_public_country_selector_and_login_boundary",
+      "claim": "The public Lazada Business Advisor Enterprise entry redirected to /selectVenture, displayed Indonesia, Malaysia, Philippines, Singapore, Thailand and Vietnam, enabled Continue only after selecting Singapore, and then navigated to the SG Seller Center login; no authenticated dashboard, store metric, AI insight, save state or business output was visible.",
+      "source_type": "official_live_entry_browser_observation",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://ba.lazada.com/selectVenture",
+      "platform_content_id": "business-advisor-enterprise:selectVenture",
+      "title": "Business Advisor Enterprise",
+      "author": "Lazada Seller Center",
+      "captured_at": "2026-07-19T00:29:42+08:00",
+      "browser_actions": [
+        "opened https://ba.lazada.com in a headed browser",
+        "observed redirect to /selectVenture",
+        "snapshotted the disabled Continue state",
+        "selected Singapore",
+        "snapshotted the enabled Continue state",
+        "clicked Continue",
+        "observed navigation to sellercenter.lazada.sg login",
+        "stopped without entering credentials"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-28-43-044Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-29-07-353Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-28-33-566Z.log"
+      ],
+      "visible_input_output": [
+        "Please select the country for your account",
+        "Indonesia/Malaysia/Philippines/Singapore/Thailand/Vietnam",
+        "Continue disabled before selection",
+        "Continue enabled after Singapore selection",
+        "SG Seller Center login URL after Continue"
+      ],
+      "errors": [
+        "Playwright click timed out while waiting for navigation, but the page had already reached the SG Seller Center login URL"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "seller_account_mode_unknown_until_login"
+      ],
+      "ownership": [
+        "country_account_owner_login_required"
+      ],
+      "permission_scope": "public country selection and login redirect only",
+      "license": "public interface observation only",
+      "evidence_grade": "live_public_entry_and_auth_boundary",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "47461e31696287d02a69480635688678a24744d61c085aac6c5d1860a54df494",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-039",
+          "type": "live_entry_boundary_for_described_business_advisor"
+        }
+      ],
+      "boundary": "The selector proves a six-country account choice and SG login boundary, not a bound seller account, cross-border linkage, dashboard access, AI-generated insight, metric accuracy or completed decision."
+    },
+    {
+      "id": "LZ-LEDGER-042",
+      "state": "historical_operator_trace",
+      "topic": "unlicensed_listing_multi_agent_prompt_counterexample",
+      "claim": "A public 2026 GitHub gist proposes a five-prompt Shopee/Lazada listing team that, from only a product name and price, outputs claims such as 100% dust-mite protection, 10-year durability, a 40% discount, free shipping and 50 units left; the gist shows zero stars and forks and no visible license, so it is an unsafe single-case counterexample, not reusable Lazada knowledge or a connected tool.",
+      "source_type": "public_github_gist_browser_capture",
+      "evidence_class": "single_case",
+      "canonical_url": "https://gist.github.com/gokusenz/c4d2cbc67ea06924d9ab990c58e6626f",
+      "platform_content_id": "github-gist:c4d2cbc67ea06924d9ab990c58e6626f",
+      "title": "E-commerce Listing Team — Shopee/Lazada",
+      "author": "gokusenz",
+      "published_at": "2026-05-31",
+      "captured_at": "2026-07-19T00:27:01+08:00",
+      "browser_actions": [
+        "opened the public GitHub gist profile",
+        "located the ecom-team.md gist",
+        "opened the canonical gist",
+        "inspected metadata, two revisions, zero stars/forks, prompts and examples",
+        "scrolled the gist",
+        "did not download, clone, install or copy prompts into T One"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-26-45-228Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-27-01-304Z.yml"
+      ],
+      "language": "th_en",
+      "country_sites": [
+        "platform_name_only_no_country_scope"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "third_party_gist_author"
+      ],
+      "permission_scope": "public read only",
+      "license": "not_displayed_unknown",
+      "evidence_grade": "single_unlicensed_prompt_gist_counterexample",
+      "claim_fingerprint_sha256": "ef6581fcae031ed5a9ebf15fb5acf1001540fc7cf2488607fc208c0e33be5dc4",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-039",
+          "type": "unsafe_external_prompt_counterexample_to_platform_ai_workflow"
+        }
+      ],
+      "boundary": "Do not copy the prompt pack, product claims, promotional numbers, visual rules or tool assertions. It does not use Lazada's dynamic schema, prove product facts, show country/store authorization or provide an executable connector."
+    },
+    {
+      "id": "LZ-LEDGER-043",
+      "state": "time_sensitive_evidence",
+      "topic": "lisa_public_course_complete_configuration_workflow",
+      "claim": "The public Lazada University LISA guide was inspected through all 29 slides and shows Seller Center and chat-bubble entry paths, activation state, product-bound size charts, knowledge-base subscriptions and edits, keyword and synonym replies, performance-report sections, and human-service transfer text; these public screenshots describe configuration workflows but do not prove current eligibility, country rollout, authenticated inputs, saved settings, sent replies or business outcomes for any store.",
+      "source_type": "official_university_course_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://university.lazada.com/course/learn?id=46452&type=article",
+      "platform_content_id": "lazada-university:course:46452",
+      "title": "Lisa客服机器人设置指南",
+      "author": "Lazada University",
+      "published_at": "2026-06-04",
+      "captured_at": "2026-07-19T01:20:44+08:00",
+      "browser_actions": [
+        "opened the public course from Lazada University search",
+        "identified the displayed date and 29-slide structure",
+        "advanced through slides 1-29",
+        "inspected entry, activation, size-chart, knowledge-base, keyword, report and human-service sections",
+        "verified slide 29 of 29",
+        "did not log in, activate, subscribe, edit, save, send or transfer"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-49-22-992Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-14-42-509Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-16-03-296Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-17-37-393Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-20-44-357Z.png"
+      ],
+      "coverage": {
+        "slides": "1-29",
+        "reached_end": true,
+        "expanded_modules": [
+          "entry and activation",
+          "size charts",
+          "knowledge base",
+          "keywords and synonyms",
+          "reports",
+          "human service"
+        ],
+        "comments": "no comments module visible",
+        "unavailable": [
+          "authenticated country-store UI",
+          "live metric definitions",
+          "save result",
+          "buyer-message result"
+        ]
+      },
+      "visible_input_output": [
+        "LISA is Active",
+        "Size chart view and product association",
+        "knowledge-base subscriptions and common knowledge configuration",
+        "keyword add/edit/delete with response content",
+        "LISA conversation and knowledge-base report sections",
+        "Human Service transfer phrase editing"
+      ],
+      "errors": [],
+      "language": "zh_en_ui",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "public_training_store_mode_not_stated"
+      ],
+      "ownership": [
+        "lazada_university_public_training"
+      ],
+      "permission_scope": "public course read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "complete_public_course_coverage_not_authenticated_feature",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "eed8a5acfdf87aef53e0c94864c6a0a3f37d5bdf2502d1709b6831e9f1a2d1fe",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-039",
+          "type": "deeper_public_workflow_evidence_for_lisa"
+        }
+      ],
+      "boundary": "Every LISA setting and report remains scoped to a country seller identity, store, product or knowledge source. Activation, subscription, toggle, edit, transfer and outbound reply are configuration or communication side effects that require an authorized store and owner confirmation."
+    },
+    {
+      "id": "LZ-LEDGER-044",
+      "state": "time_sensitive_evidence",
+      "topic": "official_public_chat_response_video_complete_playback",
+      "claim": "The public Lazada University video '三大技巧助力提升10分钟回复率' was played from 00:00 through 01:25 and its page description recommends IM CHAT multi-store management, LISA or 店小蜜 configuration, human-service setup and strong chat reminders; its displayed 50% response-rate threshold and 5%-18% conversion-improvement claim are dated training-video claims, not current six-country policy, eligibility or guaranteed results.",
+      "source_type": "official_university_video_complete_playback",
+      "evidence_class": "official_current",
+      "canonical_url": "https://university.lazada.com/course/learn?id=14344&type=video",
+      "platform_content_id": "lazada-university:video:14344",
+      "title": "三大技巧助力提升10分钟回复率",
+      "author": "Lazada University",
+      "published_at": "2026-06-02",
+      "captured_at": "2026-07-19T01:24:55+08:00",
+      "browser_actions": [
+        "opened the video from Lazada University public search",
+        "inspected title, displayed date, views, duration and description",
+        "played the video from 00:00 to 01:25",
+        "verified the 01:25 of 01:25 end state",
+        "inspected the final strong-reminder sequence",
+        "did not download, transcribe by bypass, log in, configure chat or send a message"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-23-04-123Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-23-34-444Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-24-55-250Z.png"
+      ],
+      "coverage": {
+        "playback": "00:00-01:25 of 01:25",
+        "description": true,
+        "chapters": "not visible",
+        "subtitles_or_transcript": "separate control not visible",
+        "comments": "no comments, pinned-comment or sorting module visible",
+        "unavailable": [
+          "current country policy definition",
+          "authenticated configuration",
+          "actual response-rate or conversion result"
+        ]
+      },
+      "visible_input_output": [
+        "IM CHAT multi-store management",
+        "LISA or 店小蜜",
+        "human customer service",
+        "CHAT strong reminders",
+        "10-minute response-rate training claim",
+        "5%-18% conversion-improvement training claim"
+      ],
+      "errors": [],
+      "language": "zh",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "public_training_store_mode_not_stated"
+      ],
+      "ownership": [
+        "lazada_university_public_training"
+      ],
+      "permission_scope": "public playback only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "complete_public_video_playback_dated_metric_claim",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "44bf2a7da067c4ae58563e07bb82f0bce6b0e909a512f93ccba8970c5760262a",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-043",
+          "type": "dated_response_workflow_training_context"
+        }
+      ],
+      "boundary": "Multi-store chat tooling does not merge seller IDs or authorizations. Reminder settings and replies are external effects, and displayed metric claims must be rechecked in the current country Seller Center before use."
+    },
+    {
+      "id": "LZ-LEDGER-045",
+      "state": "failed_attempt",
+      "topic": "zhihu_lazada_official_org_login_boundary",
+      "claim": "The Lazada University footer opened the Lazada Southeast Asia Ecommerce Zhihu organization page and exposed organization metadata, but the article list required login; no article body, comment, author reply or policy fact was captured, and the session stopped without login, CAPTCHA, phone or credential handling.",
+      "source_type": "official_social_link_login_boundary_browser_capture",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://www.zhihu.com/org/lazadadong-nan-ya-dian-shang/posts",
+      "platform_content_id": "zhihu-org:lazadadong-nan-ya-dian-shang",
+      "title": "Lazada东南亚电商 - 知乎",
+      "author": "Lazada东南亚电商",
+      "captured_at": "2026-07-19T00:54:58+08:00",
+      "browser_actions": [
+        "clicked the Zhihu organization link from Lazada University",
+        "inspected visible organization metadata and the login-required article boundary",
+        "stopped without login or bypass"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-54-58-017Z.yml"
+      ],
+      "coverage": {
+        "organization_header": true,
+        "article_bodies": 0,
+        "comments": 0,
+        "author_replies": 0,
+        "unavailable_reason": "login required"
+      },
+      "visible_input_output": [
+        "organization metadata",
+        "article list login requirement"
+      ],
+      "errors": [
+        "login required for article content"
+      ],
+      "language": "zh",
+      "country_sites": [
+        "regional_public_org_no_article_scope"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "public_organization_link"
+      ],
+      "permission_scope": "public header only",
+      "license": "public metadata citation only",
+      "evidence_grade": "verified_login_boundary_no_content",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "a7850cf9949cec46e7d58f51ac553bd99342402fefa3155365ef24c90500ced2",
+      "boundary": "Do not use search snippets, organization naming or assumed logged-in content as Lazada knowledge. Logged-in Chrome access remained unavailable in this round because its browser client did not initialize."
+    },
+    {
+      "id": "LZ-LEDGER-046",
+      "state": "verified_live_fact",
+      "topic": "alibaba_official_github_identity_reverse_link",
+      "claim": "Alibaba's official open-source project catalog linked listed projects directly to github.com/alibaba repositories, providing a verified reverse-link identity chain for the Alibaba GitHub organization; the inspected catalog displayed 39 projects, while its OpenAPI, SDK and ecommerce keyword searches displayed zero matches within that catalog only.",
+      "source_type": "official_open_source_site_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://opensource.alibaba.com/project",
+      "platform_content_id": "alibaba-open-source:project-catalog",
+      "title": "Alibaba Open Source Projects",
+      "author": "Alibaba Open Source",
+      "captured_at": "2026-07-19T01:00:18+08:00",
+      "browser_actions": [
+        "opened the official Alibaba open-source site and project catalog",
+        "inspected the project count and direct GitHub repository links",
+        "searched OpenAPI, SDK and ecommerce terms in the visible catalog",
+        "did not clone, install or execute any repository"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-00-18-981Z.yml"
+      ],
+      "coverage": {
+        "official_catalog_projects_visible": 39,
+        "searches": [
+          "OpenAPI",
+          "SDK",
+          "电商"
+        ],
+        "pagination": "catalog page did not expose a relevant next page in the inspected state",
+        "comments": "not applicable"
+      },
+      "visible_input_output": [
+        "39 official catalog projects",
+        "direct github.com/alibaba links",
+        "zero displayed catalog matches for three terms"
+      ],
+      "errors": [],
+      "language": "en_zh",
+      "country_sites": [
+        "not_applicable_open_source_identity"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "alibaba_official_open_source_site"
+      ],
+      "permission_scope": "public catalog read only",
+      "license": "site_metadata_citation_only",
+      "evidence_grade": "verified_official_organization_reverse_link",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "b03da81099785ffca28c7ea95cd1f0223b86700379134b2365c2ea6def35af68",
+      "boundary": "An official organization identity does not make every repository relevant to Lazada seller operations, licensed for a specific integration, secure, maintained or connected to T One."
+    },
+    {
+      "id": "LZ-LEDGER-047",
+      "state": "verified_live_fact",
+      "topic": "alibaba_github_org_repository_scope_and_negative_search",
+      "claim": "The verified Alibaba GitHub organization displayed 541 repositories sorted by last pushed; pages one and two and organization searches for lazada and openapi were inspected, with zero displayed matches for those searches, while recent repositories were primarily infrastructure, AI frameworks and developer tools rather than verified Lazada seller connectors.",
+      "source_type": "verified_official_github_org_deep_browser_capture",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://github.com/orgs/alibaba/repositories",
+      "platform_content_id": "github-org:alibaba:repositories",
+      "title": "Alibaba repositories",
+      "author": "Alibaba GitHub organization",
+      "captured_at": "2026-07-19T01:08:46+08:00",
+      "browser_actions": [
+        "opened the repositories list sorted by last pushed",
+        "inspected page one and page two",
+        "searched lazada and openapi within the organization",
+        "inspected representative recent repositories",
+        "did not clone, install, execute or register a connector"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-02-12-675Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-46-669Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-01-38-628Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-01-54-182Z.yml"
+      ],
+      "coverage": {
+        "repository_pages": [
+          1,
+          2
+        ],
+        "sort": "Last pushed",
+        "displayed_repo_count": 541,
+        "searches": {
+          "lazada": 0,
+          "openapi": 0
+        },
+        "representative_repositories": [
+          "arthas",
+          "termd",
+          "rtp-llm",
+          "tair-kvcache",
+          "spring-ai-alibaba",
+          "skill-up",
+          "nacos",
+          "MNN"
+        ]
+      },
+      "visible_input_output": [
+        "541 repositories",
+        "last-pushed sort",
+        "zero displayed lazada/openapi matches",
+        "active unrelated repositories"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "not_applicable_open_source_inventory"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "verified_alibaba_github_org"
+      ],
+      "permission_scope": "public organization read only",
+      "license": "repository_specific_not_inferred_from_organization",
+      "evidence_grade": "two_repository_pages_and_filtered_searches",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "258c31ccf8a00263c5476eea61799861903b2f85b15ca0c7e50b8923df0b0fe6",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-046",
+          "type": "verified_organization_inventory_observation"
+        }
+      ],
+      "boundary": "Zero results apply only to the inspected organization search at capture time and cannot establish global nonexistence. Stars, freshness and official ownership do not prove Lazada relevance."
+    },
+    {
+      "id": "LZ-LEDGER-048",
+      "state": "time_sensitive_evidence",
+      "topic": "alibaba_skill_up_deep_repository_audit",
+      "claim": "The official alibaba/skill-up repository was audited across README, docs, two release pages, license, two issue pages plus issue 134, two pull-request pages plus PR 148, security and recent commits: it is an active Apache-2.0 Agent Skills evaluation CLI at v0.7.0, but it is not a Lazada connector, and PR evidence shows a Windows guest-lifecycle path remained skipped where KVM was unavailable or not writable.",
+      "source_type": "verified_official_github_repository_deep_audit",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://github.com/alibaba/skill-up",
+      "platform_content_id": "github-repo:alibaba/skill-up@v0.7.0",
+      "title": "alibaba/skill-up",
+      "author": "Alibaba GitHub organization",
+      "published_at": "2026-07-16",
+      "captured_at": "2026-07-19T01:08:40+08:00",
+      "browser_actions": [
+        "inspected README installation, configuration, CLI, GitHub Action, versioning and license",
+        "opened docs index",
+        "inspected release pages one and two and v0.7.0",
+        "opened Apache-2.0 license",
+        "inspected issue pages one and two and issue 134",
+        "inspected PR pages one and two and PR 148 timeline/review state",
+        "checked Discussions 404, security policy/advisory state and recent commits",
+        "did not clone, install, run or provide credentials"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-05-42-562Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-16-348Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-27-420Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-25-560Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-33-308Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-40-590Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-50-573Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-57-295Z.yml"
+      ],
+      "coverage": {
+        "readme": true,
+        "docs_index": true,
+        "release_pages": [
+          1,
+          2
+        ],
+        "latest_release": "v0.7.0",
+        "license": "Apache-2.0",
+        "issue_pages": [
+          1,
+          2
+        ],
+        "issue_detail": 134,
+        "pull_request_pages": [
+          1,
+          2
+        ],
+        "pull_request_detail": 148,
+        "discussions": "404_not_enabled",
+        "security": true,
+        "commits": "latest list and next link",
+        "comments": "issue and PR timelines inspected; no identities or verbatim comment text retained"
+      },
+      "visible_input_output": [
+        "Go CLI evaluation commands",
+        "mocked MCP per-case isolation in v0.7.0",
+        "release/tag pinning guidance",
+        "latest-release security-fix policy",
+        "Windows lifecycle tests skipped in the inspected PR environment"
+      ],
+      "errors": [
+        "Discussions returned 404/not enabled",
+        "real Windows guest lifecycle not verified in the inspected PR environment"
+      ],
+      "language": "en",
+      "country_sites": [
+        "not_applicable_evaluation_framework"
+      ],
+      "store_models": [
+        "not_applicable"
+      ],
+      "ownership": [
+        "verified_alibaba_github_org"
+      ],
+      "permission_scope": "public repository read only",
+      "license": "Apache-2.0",
+      "evidence_grade": "deep_repository_audit_reference_only",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "795ba4f82b415fbe695150241d4ced21ac4e7e9deb8449237fb94f0e4c025b5c",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-047",
+          "type": "representative_active_repo_deep_audit"
+        }
+      ],
+      "boundary": "Use only as a research reference for the existing T One regression harness. Shared-owner approval, pinned version, dependency/security/data-flow review and local verification are required before any adoption; no second evaluator or Lazada capability is created."
+    },
+    {
+      "id": "LZ-LEDGER-049",
+      "state": "unknown",
+      "topic": "lazop_github_official_identity_not_verified",
+      "claim": "No inspected Lazada official website or developer document reverse-linked to github.com/lazop, while the current Lazada SDK document directs authorized developers to generate and download an app-specific SDK from App Console; therefore the lazop organization identity is unverified and its iopsdk repository remains a historical public artifact rather than verified official SDK provenance.",
+      "source_type": "official_identity_chain_gap_and_current_sdk_document",
+      "evidence_class": "unknown",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=108064&nodeId=10442",
+      "platform_content_id": "docId:108064+lazop-identity-review",
+      "title": "Call API with official SDK and Lazop identity review",
+      "author": "Lazada Open Platform plus public GitHub observation",
+      "captured_at": "2026-07-19T01:10:00+08:00",
+      "browser_actions": [
+        "rechecked the current official SDK acquisition path",
+        "compared it with the prior lazop/iopsdk observation",
+        "searched inspected official Lazada sources for a reverse link",
+        "did not infer identity from organization name"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-10-791Z.yml"
+      ],
+      "coverage": {
+        "official_sdk_path": true,
+        "official_reverse_link_to_lazop": "not_found_in_inspected_sources",
+        "repo_history": "retained under LZ-LEDGER-031",
+        "unavailable": [
+          "authoritative Lazada statement assigning github.com/lazop ownership"
+        ]
+      },
+      "visible_input_output": [
+        "App Console > Testing Tools > SDK Download",
+        "no verified official reverse link"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "developer_app_authorization_required"
+      ],
+      "ownership": [
+        "identity_unknown_for_lazop"
+      ],
+      "permission_scope": "public evidence comparison only",
+      "license": "iopsdk_observed_Apache-2.0_identity_unverified",
+      "evidence_grade": "negative_identity_evidence_not_proof_of_nonownership",
+      "valid_until": "2026-08-18T23:59:59+08:00",
+      "claim_fingerprint_sha256": "091ca601ee16d3d2d1dc32c4acb129910db43ca0030b077778c8840d3ace6f35",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-031",
+          "type": "supersedes_official_identity_wording_but_preserves_repo_observation"
+        },
+        {
+          "evidence_id": "LZ-LEDGER-030",
+          "type": "current_sdk_acquisition_path"
+        }
+      ],
+      "boundary": "Absence of a captured reverse link is not proof that Alibaba or Lazada does not own the organization. Status remains unknown, not unofficial; do not install or call it official until verified."
+    },
+    {
+      "id": "LZ-LEDGER-050",
+      "state": "failed_attempt",
+      "topic": "logged_in_chrome_browser_client_initialization_failure",
+      "claim": "The authorized read-only attempt to reuse the owner's current logged-in Chrome session stopped before listing or claiming any tab because the bundled browser client failed during setupBrowserRuntime with 'Cannot redefine property: process' after a clean kernel retry; no tab, cookie, token, password, account data or private content was accessed.",
+      "source_type": "local_browser_connector_failure_observation",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "local://codex/chrome-browser-client",
+      "platform_content_id": "codex-chrome-runtime:setupBrowserRuntime",
+      "title": "Codex Chrome browser-client bootstrap",
+      "author": "local Codex runtime",
+      "captured_at": "2026-07-19T01:28:00+08:00",
+      "browser_actions": [
+        "loaded the documented browser-client module path",
+        "called setupBrowserRuntime with the documented globals",
+        "reset the JS kernel and retried once",
+        "stopped after the same initialization error",
+        "did not use fallback cookie, profile or credential extraction"
+      ],
+      "browser_capture_refs": [],
+      "coverage": {
+        "runtime_bootstrap": "failed_before_browser_object",
+        "tabs_listed": 0,
+        "tabs_claimed": 0,
+        "logged_in_pages_read": 0,
+        "private_content_read": 0
+      },
+      "visible_input_output": [
+        "Cannot redefine property: process"
+      ],
+      "errors": [
+        "setupBrowserRuntime failed before browser access"
+      ],
+      "language": "en",
+      "country_sites": [
+        "not_resolved"
+      ],
+      "store_models": [
+        "not_resolved"
+      ],
+      "ownership": [
+        "owner_authorized_current_chrome_session_not_accessed"
+      ],
+      "permission_scope": "read-only browser bootstrap only",
+      "license": "local_runtime_observation",
+      "evidence_grade": "verified_connector_failure_before_session_access",
+      "valid_until": "2026-07-26T23:59:59+08:00",
+      "claim_fingerprint_sha256": "dbfb377a3fa9cf0a0c75c9b0612bfad52e220e238e6fa05450b6345bd6c1619d",
+      "boundary": "Keep logged-in social/community reading blocked for this run. Do not export cookies, copy tokens, inspect profiles, switch identities or claim that Chrome itself is absent. Continue only with legal public sources."
+    },
+    {
+      "id": "LZ-LEDGER-051",
+      "state": "time_sensitive_evidence",
+      "topic": "lazada_university_sponsored_course_catalog_auth_boundary",
+      "claim": "The public Lazada University search for 全效宝2.0 displayed 21 results (3 series and 18 lessons), but clicking both an article and a video course redirected to Malaysia Seller Center login or signup; the catalog therefore proves dated public course listings only and does not prove course access, Sponsored Solutions eligibility, wallet access or an executable ads capability.",
+      "source_type": "official_university_catalog_and_auth_boundary_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://university.lazada.com/course/search?q=%E5%85%A8%E6%95%88%E5%AE%9D2.0&tabType=all",
+      "platform_content_id": "lazada-university:search:full-effect-2.0",
+      "title": "Lazada University search: 全效宝2.0",
+      "author": "Lazada University",
+      "published_at": "2026-06-05",
+      "captured_at": "2026-07-19T01:51:36+08:00",
+      "browser_actions": [
+        "opened the public search catalog",
+        "inspected the all, series and lesson result counts",
+        "opened the intelligent-plan article card",
+        "observed the Malaysia Seller Center login redirect",
+        "returned to the catalog and opened the matching video card",
+        "observed the Malaysia Seller Center signup redirect",
+        "stopped without credentials, OTP or authorization"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-51-36-800Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-52-20-191Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-52-42-335Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-01-972Z.yml"
+      ],
+      "coverage": {
+        "catalog_results": 21,
+        "series_results": 3,
+        "lesson_results": 18,
+        "article_card_opened": "id=16041",
+        "video_card_opened": "id=16178",
+        "auth_boundaries": [
+          "MY Seller Center login",
+          "MY Seller Center signup"
+        ],
+        "course_body_read": false,
+        "comments": 0,
+        "reached_catalog_end": "not_required_search_results_visible",
+        "unavailable": [
+          "course article body",
+          "course video playback",
+          "authenticated ads UI",
+          "wallet",
+          "campaign object",
+          "seller eligibility"
+        ]
+      },
+      "visible_input_output": [
+        "3 series",
+        "18 lessons",
+        "21 total results",
+        "article and video cards dated 2026-06-05 or 2026-06-03",
+        "Malaysia Seller Center authentication pages"
+      ],
+      "errors": [
+        "the first command split an unquoted ampersand from the query string; the canonical URL was reopened safely"
+      ],
+      "language": "zh_en_ui",
+      "country_sites": [
+        "MY_auth_boundary",
+        "other_sites_not_resolved"
+      ],
+      "store_models": [
+        "unknown_until_country_seller_login"
+      ],
+      "ownership": [
+        "lazada_university_public_catalog"
+      ],
+      "permission_scope": "public catalog read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "public_catalog_plus_two_auth_redirects_not_course_access",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "b8978b41616b554ce718ab28cd6decff547db5c2dc92508b2cffc8d2509b9404",
+      "boundary": "Do not use a search result, course title, login page or signup page to report Full-effect advertising, course completion, seller eligibility, wallet access, campaign creation or any connected Sponsored Solutions capability."
+    },
+    {
+      "id": "LZ-LEDGER-052",
+      "state": "time_sensitive_evidence",
+      "topic": "my_seller_center_public_signup_program_axes",
+      "claim": "The Malaysia Seller Center public signup page was scrolled to its measured end and visibly separates Marketplace, LazMall and LazGlobal registration programs, with LazGlobal links carrying CN/cross-border parameters and marketing copy about selling across Southeast Asia; these public program labels do not create an executable SEA store or shared seller ID, and the form, phone OTP, identity, bank and terms were not submitted.",
+      "source_type": "official_my_seller_center_signup_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://sellercenter.lazada.com.my/apps/register/index",
+      "platform_content_id": "lazada-my:seller-center:signup",
+      "title": "Lazada Seller Center | Sign Up",
+      "author": "Lazada Malaysia Seller Center",
+      "captured_at": "2026-07-19T01:53:44+08:00",
+      "browser_actions": [
+        "opened the public Malaysia signup page after the University redirect",
+        "inspected the country selector and Marketplace, LazMall and LazGlobal navigation",
+        "scrolled in five measured segments to the page bottom",
+        "inspected registration-program cards, sign-up form, terms, seller steps, support links and FAQ",
+        "verified scrollY 5488 plus viewport 917 equals document height 6397",
+        "did not enter phone, password, OTP, identity, bank or seller data and did not accept terms"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-44-269Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-49-636Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-55-924Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-01-663Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-27-479Z.png"
+      ],
+      "coverage": {
+        "top_navigation": [
+          "Marketplace",
+          "LazMall",
+          "LazGlobal"
+        ],
+        "sections": [
+          "program cards",
+          "registration form",
+          "terms",
+          "new-seller marketing benefits",
+          "steps to start selling",
+          "support links",
+          "FAQ",
+          "footer"
+        ],
+        "scroll_segments": [
+          0,
+          1000,
+          2500,
+          5000,
+          5488
+        ],
+        "reached_page_end": true,
+        "final_scroll": {
+          "scroll_y": 5488,
+          "viewport_height": 917,
+          "document_height": 6397
+        },
+        "external_actions": 0,
+        "unavailable": [
+          "current program eligibility",
+          "authenticated account type",
+          "seller ID",
+          "saved registration",
+          "country-store binding",
+          "benefit terms and final eligibility"
+        ]
+      },
+      "visible_input_output": [
+        "Malaysia country selector",
+        "local Marketplace program copy",
+        "LazMall brand-owner or authorized-seller copy",
+        "LazGlobal CN/crossBorder URL parameters and regional marketing copy",
+        "phone/password/OTP fields",
+        "identity and bank onboarding steps",
+        "Sponsored Solutions and Seller Instant Messaging AI terms links"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "MY"
+      ],
+      "store_models": [
+        "local_program_label",
+        "cross_border_program_label"
+      ],
+      "ownership": [
+        "public_signup_not_resolved"
+      ],
+      "permission_scope": "public signup-page read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "deep_public_signup_coverage_not_registration",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "2188389d13a19f0294b03c901145a0e47ac79d2cc1397b469e066fd3f57c3136",
+      "boundary": "Marketplace, LazMall and LazGlobal remain public program or registration labels until an authorized country store is resolved. Regional marketing text and volatile new-seller benefits cannot be hard-coded as a SEA route, current fee rule, eligibility decision or business result."
+    },
+    {
+      "id": "LZ-LEDGER-053",
+      "state": "time_sensitive_evidence",
+      "topic": "lazada_my_official_youtube_reverse_link_and_channel_catalog",
+      "claim": "The Lazada MY Seller Center footer directly linked to YouTube channel UCd-n4Q5ngfwoaUhKJTf7akg, verifying Sell With Lazada MY as an official social channel for this evidence chain; its Videos page was inspected under Latest and Most popular sorting, but channel counts, titles, views and age labels are time-sensitive catalog observations rather than current policy or store capability.",
+      "source_type": "official_seller_center_reverse_link_and_youtube_channel_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.youtube.com/channel/UCd-n4Q5ngfwoaUhKJTf7akg",
+      "platform_content_id": "youtube-channel:UCd-n4Q5ngfwoaUhKJTf7akg",
+      "title": "Sell With Lazada MY",
+      "author": "Sell With Lazada MY",
+      "captured_at": "2026-07-19T01:54:45+08:00",
+      "browser_actions": [
+        "followed the direct YouTube footer link from the official MY Seller Center signup page",
+        "inspected channel handle, description and video count",
+        "opened the Videos tab",
+        "inspected the Latest sorting and its first visible items",
+        "switched to Most popular",
+        "inspected the first 30 visible popular items and one scrolled segment",
+        "did not subscribe, like, save, share or sign in"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-45-962Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-55-10-400Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-08-34-848Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-08-50-949Z.yml"
+      ],
+      "coverage": {
+        "verification_chain": [
+          "sellercenter.lazada.com.my footer",
+          "youtube.com/channel/UCd-n4Q5ngfwoaUhKJTf7akg"
+        ],
+        "channel_tabs": [
+          "Videos"
+        ],
+        "video_sorts": [
+          "Latest",
+          "Most popular"
+        ],
+        "latest_visible_items": 3,
+        "most_popular_visible_items": 30,
+        "most_popular_scroll_segments": 1,
+        "channel_total_displayed": 218,
+        "comments": "not_applicable_channel_catalog",
+        "unavailable": [
+          "authenticated channel analytics",
+          "country-store feature linkage",
+          "policy version",
+          "seller eligibility"
+        ]
+      },
+      "visible_input_output": [
+        "@SellWithLazada_MY",
+        "218 displayed videos",
+        "Latest and Most popular tabs",
+        "MCL Warehouse Tour in Latest",
+        "older seller stories, onboarding and legacy operation videos in Most popular"
+      ],
+      "errors": [],
+      "language": "en_ms_zh_ui",
+      "country_sites": [
+        "MY"
+      ],
+      "store_models": [
+        "public_seller_education_channel_not_store_specific"
+      ],
+      "ownership": [
+        "official_lazada_my_social_channel_verified_by_reverse_link"
+      ],
+      "permission_scope": "public YouTube channel read only",
+      "license": "YouTube_platform_access_copyright_retained_summary_only",
+      "evidence_grade": "verified_official_social_identity_and_bounded_catalog_coverage",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "4b5da94bd9fe0136e0aa1d509ca1a987c8e2413470e21bfdda9cee4299259e11",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-052",
+          "type": "official_reverse_link_source"
+        }
+      ],
+      "boundary": "An official social identity validates channel provenance, not every video's current policy status. Popularity, view counts, upload age and titles never prove a live seller feature, connector, SLA or campaign result."
+    },
+    {
+      "id": "LZ-LEDGER-054",
+      "state": "time_sensitive_evidence",
+      "topic": "lazada_my_mcl_warehouse_video_complete_comment_coverage",
+      "claim": "The official Sell With Lazada MY video Lazada Multi-Channel Logistics (MCL) Warehouse Tour, published 2026-05-26, was played to 145.741/145.741 seconds with autoplay disabled, its full description and platform transcript panel were inspected, and both Most popular and Newest comment sorts showed the same two non-substantive praise comments; the video describes inbound sorting, packing, dispatch, campaign scalability and inventory-management benefits only as dated official marketing, not store eligibility, SLA, connected warehouse, fulfilled order or delivery proof.",
+      "source_type": "verified_official_social_video_complete_browser_observation",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://www.youtube.com/watch?v=GboKMDIg4mI",
+      "platform_content_id": "youtube-video:GboKMDIg4mI",
+      "title": "Lazada Multi-Channel Logistics (MCL) Warehouse Tour",
+      "author": "Sell With Lazada MY",
+      "published_at": "2026-05-26",
+      "captured_at": "2026-07-19T01:55:37+08:00",
+      "browser_actions": [
+        "opened the video from the official channel Latest list",
+        "disabled autoplay",
+        "expanded the complete description",
+        "opened the platform transcript panel",
+        "inspected all six displayed transcript segments",
+        "scrolled to comments",
+        "inspected both displayed comments under Most popular",
+        "switched to Newest and verified the same two comments",
+        "filtered both comments as non-substantive praise and retained no user identity",
+        "recovered from advertisements and one unintended autoplay navigation",
+        "played the target video to currentTime 145.741 of duration 145.741 with ended=true",
+        "did not like, dislike, subscribe, save, share, reply or sign in"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-56-23-127Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-57-05-394Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-00-53-954Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-01-11-718Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-02-34-035Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-03-07-231Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-04-42-313Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-05-23-463Z.yml"
+      ],
+      "coverage": {
+        "playback": {
+          "start_seconds": 0,
+          "end_seconds": 145.741,
+          "duration_seconds": 145.741,
+          "ended": true,
+          "autoplay_disabled": true
+        },
+        "description_expanded": true,
+        "transcript_segments": 6,
+        "transcript_quality": "music_only_low_information_not_operational_narration",
+        "comment_count": 2,
+        "comment_sorts": [
+          "Most popular",
+          "Newest"
+        ],
+        "pinned_comments": 0,
+        "author_or_official_replies": 0,
+        "nested_replies": 0,
+        "substantive_comment_clusters": 0,
+        "filtered_noise": {
+          "generic_praise": 2,
+          "spam_or_promotion": 0,
+          "policy_or_failure_claims": 0
+        },
+        "reached_video_end": true,
+        "unavailable": [
+          "chapters",
+          "operational narration transcript",
+          "warehouse eligibility",
+          "program terms",
+          "fees",
+          "SLA",
+          "returns route",
+          "authorized inventory or order state"
+        ]
+      },
+      "visible_input_output": [
+        "2026-05-26 publication date",
+        "2:25.741 video duration",
+        "description names inbound sorting, packing and dispatch plus faster processing, campaign scalability and inventory-management benefits",
+        "platform transcript contains music-only low-information phrases",
+        "two comments under two sorts with no substantive logistics claim",
+        "final ended=true"
+      ],
+      "errors": [
+        "an initial advertisement was skipped",
+        "autoplay moved to an unrelated video before it was disabled and the canonical target was reopened",
+        "a later advertisement reset playback and required a safe resume",
+        "the first JavaScript selector command lost quotes in the local shell and was rerun with safe quoting"
+      ],
+      "language": "en_ms_zh_ui",
+      "country_sites": [
+        "MY"
+      ],
+      "store_models": [
+        "public_mcl_marketing_store_eligibility_not_stated"
+      ],
+      "ownership": [
+        "official_lazada_my_social_content"
+      ],
+      "permission_scope": "public YouTube playback, description, transcript and comments read only",
+      "license": "YouTube_platform_access_copyright_retained_summary_only",
+      "evidence_grade": "complete_official_video_plus_two_comment_sorts_not_service_entitlement",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "8d875c75672de347ca51dec3d783cb2f9e70e514898983dd0d3d5d7f80a13301",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-053",
+          "type": "official_channel_identity_chain"
+        }
+      ],
+      "boundary": "A warehouse tour, marketing description, transcript entry, view count or praise comment proves no authorized warehouse enrollment, SKU receipt, inventory state, order allocation, pick/pack completion, dispatch, carrier handoff, delivery, fee, return route, SLA or T One connector."
+    },
+    {
+      "id": "LZ-LEDGER-055",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "official_mcl_program_page_country_list_and_stock_model",
+      "claim": "On 2026-07-19 the public Lazada Logistics Multi-Channel Logistics page was scrolled through What is MCL, How Does MCL Work, Benefits and the legal footer to the verified page end; it describes MCL for strategic Lazada partners or brands, one consolidated stock across online channels, and current public availability in Singapore, Malaysia, Thailand, Vietnam and Indonesia, while exposing no Philippines entry, eligibility form, pricing, SLA, seller identity, warehouse mapping or live inventory/order state.",
+      "source_type": "official_lazada_logistics_program_page_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.logistics.lazada.com/multi-channel-logistics",
+      "platform_content_id": "lazada-logistics:mcl:program-page",
+      "title": "Multi-Channel Logistics",
+      "author": "Lazada Logistics",
+      "captured_at": "2026-07-19T02:27:59+08:00",
+      "browser_actions": [
+        "opened the public MCL program page",
+        "inspected navigation and all five displayed country links",
+        "scrolled through What is MCL, How Does MCL Work and all three Benefits blocks",
+        "verified the legal footer and reached the measured page end",
+        "did not open Contact Us or submit any form"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-27-59-217Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-32-56-387Z.yml"
+      ],
+      "coverage": {
+        "sections": [
+          "navigation",
+          "What is MCL",
+          "How Does MCL Work",
+          "Benefits 1-3",
+          "legal footer"
+        ],
+        "displayed_country_links": [
+          "SG",
+          "ID",
+          "TH",
+          "VN",
+          "MY"
+        ],
+        "program_availability_text": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "ID"
+        ],
+        "scroll_segments": [
+          0,
+          891,
+          1786,
+          2111
+        ],
+        "final_scroll": {
+          "scroll_y": 2111,
+          "viewport_height": 917,
+          "document_height": 3028,
+          "reached_page_end": true
+        },
+        "comment_module": "not_present",
+        "contact_or_enrollment_action": 0,
+        "unavailable": [
+          "publication date",
+          "versioned eligibility",
+          "PH MCL status",
+          "fees",
+          "SLA",
+          "warehouse and SKU mapping",
+          "authorized inventory or order state"
+        ]
+      },
+      "visible_input_output": [
+        "MCL is offered to strategic Lazada partners or brands",
+        "one consolidated stock across online channels",
+        "public availability text names SG, MY, TH, VN and ID",
+        "footer says page information is reference only and services require separate legal terms"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "ID",
+        "PH_not_listed"
+      ],
+      "store_models": [
+        "public_mcl_program_page_eligibility_not_stated"
+      ],
+      "ownership": [
+        "lazada_logistics_first_party_public_page"
+      ],
+      "permission_scope": "public page read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "deep_first_party_program_page_not_seller_entitlement",
+      "valid_until": "2026-08-02T23:59:59+08:00",
+      "content_fingerprint_sha256": "83f0f86c5273796675b51271700aa1bead4fe4d50ac9939d117538cbfb4cf60a",
+      "claim_fingerprint_sha256": "fc9adda027d67df2c69c31e39a119241930c26d0b9f32f241f5a1e8f14849dd1",
+      "boundary": "The five-country text is a volatile public-program observation, not a seller eligibility decision. One consolidated stock does not create one regional seller ID, country inventory ledger, warehouse contract or executable SEA route."
+    },
+    {
+      "id": "LZ-LEDGER-056",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "official_my_logistics_country_page_mcl_marketing_boundary",
+      "claim": "On 2026-07-19 the public Lazada Logistics Malaysia country page was scrolled through Key Highlights, Infrastructure, contact section and legal footer to the verified page end; it describes Malaysia one-stop multi-channel logistics, express and standard delivery options and campaign scaling from a single inventory source, but exposes no public fees, SLA, product eligibility, warehouse/SKU mapping or authorized store state, and no contact action was taken.",
+      "source_type": "official_lazada_logistics_my_country_page_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.logistics.lazada.com/malaysia",
+      "platform_content_id": "lazada-logistics:country:MY",
+      "title": "Lazada Logistics Malaysia",
+      "author": "Lazada Logistics",
+      "captured_at": "2026-07-19T02:29:39+08:00",
+      "browser_actions": [
+        "followed the Malaysia country link from the MCL navigation",
+        "inspected the country introduction and three Key Highlights",
+        "scrolled through Infrastructure and the contact section",
+        "redacted visible personal contact data from stored evidence",
+        "verified the legal footer and reached the measured page end",
+        "did not email, click Contact Us or submit a form"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-29-39-546Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-03-448Z.yml"
+      ],
+      "coverage": {
+        "sections": [
+          "country introduction",
+          "Key Highlights",
+          "Infrastructure",
+          "contact section",
+          "legal footer"
+        ],
+        "scroll_segments": [
+          0,
+          699,
+          1398,
+          3352
+        ],
+        "final_scroll": {
+          "scroll_y": 3352,
+          "viewport_height": 917,
+          "document_height": 4269,
+          "reached_page_end": true
+        },
+        "form_fields": 0,
+        "comment_module": "not_present",
+        "contact_or_enrollment_action": 0,
+        "unavailable": [
+          "fees",
+          "SLA",
+          "program contract",
+          "seller eligibility",
+          "product eligibility",
+          "warehouse and SKU mapping",
+          "authorized store state"
+        ]
+      },
+      "visible_input_output": [
+        "single inventory source",
+        "one-stop multi-channel logistics",
+        "express and standard delivery options",
+        "campaign scaling marketing claim"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "MY"
+      ],
+      "store_models": [
+        "public_mcl_country_marketing_eligibility_not_stated"
+      ],
+      "ownership": [
+        "lazada_logistics_first_party_public_page"
+      ],
+      "permission_scope": "public page read only; personal contact data not retained",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "deep_first_party_country_page_not_enrollment_or_contract",
+      "valid_until": "2026-08-02T23:59:59+08:00",
+      "content_fingerprint_sha256": "e5e0e05e8f5b40f63234180aa8ce274f78088aeb8f92b3e5456d5b762e0fda8f",
+      "claim_fingerprint_sha256": "274ebcd718e929ae3b886cf85075484a32cad911c47a2795c22eeced68414f47",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-055",
+          "type": "country_detail_page"
+        }
+      ],
+      "boundary": "A public country page and visible contact section prove neither MCL enrollment nor authority to contact a Lazada employee. Current terms and a scoped seller-store read remain required."
+    },
+    {
+      "id": "LZ-LEDGER-057",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "official_ph_fbl_page_does_not_resolve_mcl_availability",
+      "claim": "On 2026-07-19 the public Lazada Logistics Philippines country page was opened by its direct country URL and scrolled through FBL, Key Highlights, infrastructure, sortation and legal footer to the verified page end; it describes Philippines end-to-end fulfillment including storage, pick, pack, ship, returns and customer service plus category-sensitive storage zones, but contains zero MCL mentions and is absent from the site's displayed Countries navigation, so it proves PH FBL/logistics presence but not PH MCL availability.",
+      "source_type": "official_lazada_logistics_ph_country_page_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://www.logistics.lazada.com/philippines",
+      "platform_content_id": "lazada-logistics:country:PH",
+      "title": "Lazada Logistics Philippines",
+      "author": "Lazada Logistics",
+      "captured_at": "2026-07-19T02:38:53+08:00",
+      "browser_actions": [
+        "opened the direct Philippines country route after it was absent from the displayed country navigation",
+        "inspected the FBL description and four Key Highlights",
+        "scrolled through infrastructure, category-sensitive storage and sortation sections",
+        "verified zero MCL text mentions",
+        "redacted visible personal contact data from stored evidence",
+        "verified the legal footer and reached the measured page end",
+        "did not email or submit any contact action"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-38-53-851Z.yml"
+      ],
+      "coverage": {
+        "sections": [
+          "FBL description",
+          "testimonial",
+          "Key Highlights",
+          "Infrastructure",
+          "air-conditioned storage",
+          "fenced high-value zone",
+          "sortation",
+          "contact section",
+          "legal footer"
+        ],
+        "displayed_country_navigation": [
+          "SG",
+          "ID",
+          "TH",
+          "VN",
+          "MY"
+        ],
+        "mcl_text_mentions": 0,
+        "fbl_text_mentions": 1,
+        "scroll_segments": [
+          0,
+          900,
+          1800,
+          2700,
+          5103
+        ],
+        "final_scroll": {
+          "scroll_y": 5103,
+          "viewport_height": 917,
+          "document_height": 6020,
+          "reached_page_end": true
+        },
+        "comment_module": "not_present",
+        "contact_or_enrollment_action": 0,
+        "unavailable": [
+          "PH MCL availability",
+          "versioned FBL eligibility",
+          "fees",
+          "SLA",
+          "authorized warehouse and SKU mapping",
+          "live order or return state"
+        ]
+      },
+      "visible_input_output": [
+        "PH end-to-end storage, pick, pack, ship, returns and customer-service description",
+        "air-conditioned storage marketing example for Health and Beauty or Groceries",
+        "fenced-zone marketing example for high-value or risk items",
+        "zero MCL mentions"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "PH"
+      ],
+      "store_models": [
+        "public_fbl_fulfillment_page_eligibility_not_stated"
+      ],
+      "ownership": [
+        "lazada_logistics_first_party_public_page"
+      ],
+      "permission_scope": "public page read only; personal contact data not retained",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "deep_first_party_ph_fbl_page_not_mcl_confirmation",
+      "valid_until": "2026-08-02T23:59:59+08:00",
+      "content_fingerprint_sha256": "45f4d8ac2d298165c770bae5c893d698b3b9e47389dcf96ddf4b2918e3bf0dd1",
+      "claim_fingerprint_sha256": "a1be106a956a240ff86f91bf0121dea457757545aee5bd2dca717308320faedb",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-055",
+          "type": "country_availability_conflict_context"
+        }
+      ],
+      "boundary": "PH FBL and country logistics infrastructure cannot be promoted to PH MCL eligibility. Category storage examples are facility marketing claims, not SKU acceptance or universal handling rules."
+    },
+    {
+      "id": "LZ-LEDGER-058",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "dated_sponsored_mcl_six_country_and_growth_claim_conflict",
+      "claim": "Inside Retail Asia published a Lazada-authored Sponsored article on 2026-06-30 claiming MCL availability across SG/TH/VN/ID/PH/MY and citing nearly 60% of total volume plus over 170% year-on-year daily fulfilled-item growth; the full article, disclosure, author/date, tags, recommendations and footer were scrolled to the end, its Lazada author archive showed only this article and no pagination, and no comment module existed. The country claim conflicts with the current public MCL program page's five-country list, while the performance numbers remain dated sponsored claims rather than policy, SLA or guaranteed results.",
+      "source_type": "dated_lazada_authored_sponsored_industry_article_deep_browser_capture",
+      "evidence_class": "single_case",
+      "canonical_url": "https://insideretail.asia/2026/06/30/why-multi-channel-logistics-is-a-growth-lever-for-brands-in-southeast-asia/",
+      "platform_content_id": "inside-retail-asia:article:mcl-growth-lever:2026-06-30",
+      "title": "Why multi-channel logistics is a growth lever for brands in Southeast Asia",
+      "author": "Lazada sponsored-content byline",
+      "published_at": "2026-06-30",
+      "captured_at": "2026-07-19T02:30:50+08:00",
+      "browser_actions": [
+        "opened the full public article",
+        "verified the Sponsored label, Lazada byline and publication date",
+        "scrolled through all four article sections, tags, recommendations and the page footer",
+        "inspected the Lazada author archive as a second-level page",
+        "verified the archive displayed only this article and no pagination",
+        "checked for comments, replies and forms and found no comment module",
+        "did not log in, subscribe, share or submit any form"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-30-50-128Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-16-195Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-32-02-258Z.yml"
+      ],
+      "coverage": {
+        "article_sections": [
+          "Managing multi-channel operations",
+          "Unified fulfilment infrastructure",
+          "Delivering results",
+          "Next phase of ecommerce growth"
+        ],
+        "disclosure": "Sponsored",
+        "byline": "Lazada",
+        "published_at": "2026-06-30",
+        "scroll_segments": [
+          0,
+          1851,
+          3703,
+          5554,
+          6489
+        ],
+        "final_scroll": {
+          "scroll_y": 6489,
+          "viewport_height": 917,
+          "document_height": 7406,
+          "reached_page_end": true
+        },
+        "secondary_page": {
+          "url": "https://insideretail.asia/author/lazada/",
+          "article_count": 1,
+          "pagination": 0,
+          "reached_page_end": true
+        },
+        "comment_count": 0,
+        "comment_sorts": [],
+        "author_or_official_replies": 0,
+        "nested_replies": 0,
+        "unavailable": [
+          "methodology for volume metrics",
+          "country-specific program terms",
+          "seller eligibility",
+          "fees",
+          "SLA",
+          "authorized MCL object state"
+        ]
+      },
+      "visible_input_output": [
+        "Sponsored disclosure and Lazada byline",
+        "six-country availability claim including PH",
+        "nearly 60% total-volume claim",
+        "over 170% year-on-year daily fulfilled-item growth claim",
+        "no comment module"
+      ],
+      "errors": [
+        "non-blocking advertising and console errors were present; article text remained readable"
+      ],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "sponsored_mcl_marketing_scope_not_seller_entitlement"
+      ],
+      "ownership": [
+        "lazada_sponsored_byline_on_third_party_publisher"
+      ],
+      "permission_scope": "public article and author archive read only",
+      "license": "publisher_copyright_retained_summary_only",
+      "evidence_grade": "dated_sponsored_claim_with_full_page_and_disclosure_coverage",
+      "valid_until": "2026-08-02T23:59:59+08:00",
+      "content_fingerprint_sha256": "5e07f290eb81a52ff5e5024c8cff00b8fd3b2a1b1e5a4e5ae76fae171159cbd7",
+      "claim_fingerprint_sha256": "c95e8a21b1aeff00b962fbddb03a34507c6a4e75316b1fcfc073c436f41213d6",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-055",
+          "type": "conflicting_country_availability_claim"
+        },
+        {
+          "evidence_id": "LZ-LEDGER-057",
+          "type": "ph_fbl_does_not_resolve_mcl_claim"
+        }
+      ],
+      "boundary": "Sponsored content and performance figures are dated marketing evidence. Preserve the five-versus-six-country conflict and require a current official MCL term, contract or authorized seller eligibility read before execution."
+    },
+    {
+      "id": "LZ-LEDGER-059",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "public_my_mcl_warehouse_tour_instagram_zero_comments",
+      "claim": "On 2026-07-19 the public Instagram post DXJDJaeiTca from the platform-branded Sell With Lazada MY account was reviewed without login across all five carousel items, caption, exact publication timestamp, related-post boundary and the page end; it states that a first Malaysia MCL Warehouse Tour occurred and displays warehouse-visit imagery, but the post showed zero comments and seven likes, the public profile secondary page failed to load, and no reverse-link identity chain, seller eligibility, terms, warehouse mapping or operational result was established.",
+      "source_type": "public_platform_branded_social_post_complete_carousel_browser_capture",
+      "evidence_class": "verified_software_observation",
+      "canonical_url": "https://www.instagram.com/p/DXJDJaeiTca/",
+      "platform_content_id": "instagram-post:DXJDJaeiTca",
+      "title": "First Lazada MCL Warehouse Tour acknowledgement",
+      "author": "Sell With Lazada MY public account",
+      "published_at": "2026-04-15T05:57:27.000Z",
+      "captured_at": "2026-07-19T02:34:25+08:00",
+      "browser_actions": [
+        "opened the public post without login",
+        "dismissed one signup overlay without authenticating",
+        "inspected the caption and exact time element",
+        "advanced through carousel items 1 through 5 and visually inspected each item",
+        "checked the comment area and found the explicit no-comments state",
+        "scrolled through related-post boundary to the page end",
+        "opened the public profile as a second-level page and stopped when it failed to load",
+        "did not log in, follow, like, save, share, comment or submit anything"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-34-25-578Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-09-662Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-40-516Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-52-334Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-36-10-756Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-36-41-827Z.png",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-38-03-262Z.yml"
+      ],
+      "coverage": {
+        "carousel_items_reviewed": 5,
+        "caption_expanded": "fully_visible",
+        "published_at": "2026-04-15T05:57:27.000Z",
+        "comment_count": 0,
+        "comment_sorts": [],
+        "pinned_comments": 0,
+        "author_or_official_replies": 0,
+        "nested_replies": 0,
+        "substantive_comment_clusters": 0,
+        "filtered_noise": {
+          "likes_not_evidence": 7,
+          "spam_or_promotion": 0
+        },
+        "scroll_segments": [
+          0,
+          1111,
+          1306
+        ],
+        "reached_page_end": true,
+        "secondary_page": {
+          "url": "https://www.instagram.com/sellwithlazada_my/",
+          "status": "failed_to_load",
+          "post_or_profile_content_captured": false
+        },
+        "unavailable": [
+          "verified official reverse-link identity",
+          "profile details",
+          "comments",
+          "event invitation terms",
+          "MCL eligibility",
+          "warehouse and SKU mapping",
+          "operational results"
+        ]
+      },
+      "visible_input_output": [
+        "caption thanks participants in a first Malaysia MCL Warehouse Tour",
+        "five warehouse-visit carousel items",
+        "explicit no-comments state",
+        "seven likes",
+        "public profile secondary-page load failure"
+      ],
+      "errors": [
+        "a signup overlay appeared and was dismissed without login",
+        "the public profile second-level page returned a generic load error"
+      ],
+      "language": "en_caption_zh_cn_ui",
+      "country_sites": [
+        "MY"
+      ],
+      "store_models": [
+        "public_mcl_event_post_eligibility_not_stated"
+      ],
+      "ownership": [
+        "platform_branded_social_account_official_reverse_link_not_captured"
+      ],
+      "permission_scope": "public post read only; no account interaction",
+      "license": "Instagram_platform_access_copyright_retained_summary_and_coverage_only",
+      "evidence_grade": "complete_public_carousel_and_zero_comment_coverage_identity_not_fully_verified",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "content_fingerprint_sha256": "325d7302a360e48fb067590434632e0389d7dd0aa0d3f05a5ce84f3087ab6d0f",
+      "claim_fingerprint_sha256": "25e5f7abb13848eb9f8efa74bab1f1b1ba6f3f5081ec5a188aacc60b62014a02",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-054",
+          "type": "same_my_mcl_tour_theme_different_public_surface"
+        }
+      ],
+      "boundary": "An event recap, warehouse imagery, like count or zero-comment state proves no MCL program availability, seller entitlement, inventory state, SLA or operational performance. The account remains platform-branded but not reverse-link verified in this capture."
+    },
+    {
+      "id": "LZ-LEDGER-060",
+      "state": "failed_attempt",
+      "review_status": "blocked",
+      "topic": "reddit_ph_logistics_comment_track_network_security_block",
+      "claim": "Opening the current public Reddit thread about a Philippines Lazada Logistics parcel delay via Playwright returned HTTP 403 with a network-security block page before any post body, sort control or comment was available; no challenge, ticket, login or bypass was attempted, so the source remains opened_not_reviewed with zero comment samples and contributes no Lazada rule.",
+      "source_type": "public_community_access_boundary_browser_capture",
+      "evidence_class": "unknown",
+      "canonical_url": "https://www.reddit.com/r/lazadareviews/comments/1ud4ho1/lazada_logistics_is_a_joke_package_stuck_in/",
+      "platform_content_id": "reddit-post:1ud4ho1",
+      "title": "Public Philippines Lazada Logistics delay thread",
+      "author": "not_retained",
+      "captured_at": "2026-07-19T02:33:58+08:00",
+      "browser_actions": [
+        "opened the public top-sort URL",
+        "observed HTTP 403 and the network-security block page",
+        "stopped before any challenge, ticket, login or bypass",
+        "closed the named browser session"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-58-188Z.yml"
+      ],
+      "coverage": {
+        "http_status": 403,
+        "post_body_read": false,
+        "comment_count": 0,
+        "comment_sorts": [],
+        "pinned_comments": 0,
+        "author_or_official_replies": 0,
+        "nested_replies": 0,
+        "opened_not_reviewed": true,
+        "unavailable": [
+          "post body",
+          "all comments",
+          "sort controls",
+          "author updates",
+          "moderator or official replies"
+        ]
+      },
+      "visible_input_output": [
+        "network-security block message",
+        "support-ticket link not opened"
+      ],
+      "errors": [
+        "HTTP 403 network-security block"
+      ],
+      "language": "en",
+      "country_sites": [
+        "PH_topic_not_verified_from_page_body"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "public_community_unverified"
+      ],
+      "permission_scope": "blocked before content access",
+      "license": "not_applicable_no_content_captured",
+      "evidence_grade": "access_failure_only_zero_comment_coverage",
+      "valid_until": "2026-07-26T23:59:59+08:00",
+      "claim_fingerprint_sha256": "bea54af72cc0ab57a0406142e3d7fdb340acb8f9af5f030cd84d297057217638",
+      "boundary": "Do not use search summaries as a substitute for the blocked post or comments. Do not handle the challenge, submit a ticket, export cookies or claim a community consensus."
+    },
+    {
+      "id": "LZ-LEDGER-061",
+      "state": "historical_operator_trace",
+      "review_status": "fully_reviewed",
+      "topic": "ecomphp_lazada_php_knowledge_package_audit",
+      "claim": "A deep audit of EcomPHP/lazada-php at commit 4e0831cdfd813875885a2f93a32ef6ea3df61282 found Apache-2.0 licensing and recent CI/release activity, but its public client stores only an access token plus one region, defaults an unset region to VN, does not persist country_user_info seller identities, and its unit tests mock method mapping rather than live transport; the package was not installed and is extract_rules_only.",
+      "source_type": "public_github_repository_deep_package_audit",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/EcomPHP/lazada-php",
+      "platform_content_id": "github-repo:EcomPHP/lazada-php@4e0831cdfd813875885a2f93a32ef6ea3df61282",
+      "title": "EcomPHP/lazada-php",
+      "author": "EcomPHP / nVuln",
+      "published_at": "2026-07-18T06:50:22Z",
+      "captured_at": "2026-07-19T03:28:00+08:00",
+      "browser_actions": [
+        "read README, Apache-2.0 LICENSE and composer dependencies through the GitHub connector",
+        "inspected Auth.php, Client.php, Resource.php, OrderTest.php, SystemTest.php and the bundled MCP executable",
+        "checked v1.0.0 release, recent commits, issues, pull requests, security and CI pages",
+        "did not clone, install, execute, authorize or call Lazada"
+      ],
+      "coverage": {
+        "readme": true,
+        "license": "Apache-2.0",
+        "release": "v1.0.0",
+        "audited_commit": "4e0831cdfd813875885a2f93a32ef6ea3df61282",
+        "source_files": [
+          "src/Auth.php",
+          "src/Client.php",
+          "src/Resource.php",
+          "tests/OrderTest.php",
+          "tests/SystemTest.php",
+          "bin/lazada-mcp-server"
+        ],
+        "issues": 0,
+        "pull_requests": 0,
+        "security_policy": "none_detected",
+        "published_advisories": 0,
+        "ci_runs_visible": 5,
+        "discussion": "not_observed",
+        "unavailable": [
+          "maintainer security response SLA",
+          "live five-country transport tests",
+          "country_user_info persistence",
+          "T One connector approval"
+        ]
+      },
+      "visible_input_output": [
+        "one access token plus region client state",
+        "silent VN base URL fallback when region is absent",
+        "method-mapping tests with no HTTP transport",
+        "public MCP executable using ISV-console share handlers"
+      ],
+      "errors": [],
+      "language": "en_php",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "unspecified_by_package"
+      ],
+      "ownership": [
+        "unverified_third_party_package"
+      ],
+      "permission_scope": "public GitHub read only",
+      "license": "Apache-2.0",
+      "evidence_grade": "deep_unofficial_package_audit_not_connector_validation",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "316ed11cc8239a7cacf11adbc04537ead5c41d4897d99ea14c4d97abeefc0988",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-002",
+          "type": "official_country_seller_identity_difference"
+        },
+        {
+          "evidence_id": "LZ-LEDGER-030",
+          "type": "official_sdk_acquisition_precedence"
+        }
+      ],
+      "boundary": "A recent release, permissive license, CI or broad resource list does not establish a verified official SDK, six-country compatibility, per-country seller isolation or a connected T One capability."
+    },
+    {
+      "id": "LZ-LEDGER-062",
+      "state": "failed_attempt",
+      "review_status": "fully_reviewed",
+      "topic": "appolous_lazada_php_sdk_security_rejection",
+      "claim": "A deep audit of appolous/lazada-php-sdk at commit a3b7a087e73622bd825e360d9034fa13fbf4cb36 found MIT licensing and a 2026 Laravel-compatibility release, but the core client identifies itself as lazop-sdk-php-20180422, disables TLS peer and host verification for HTTPS, and logs a request URL that can contain app_key, access_token and sign; it was not installed and is rejected_unsafe.",
+      "source_type": "public_github_repository_deep_security_audit",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/appolous/lazada-php-sdk",
+      "platform_content_id": "github-repo:appolous/lazada-php-sdk@a3b7a087e73622bd825e360d9034fa13fbf4cb36",
+      "title": "appolous/lazada-php-sdk",
+      "author": "Appolous Team",
+      "published_at": "2026-05-25T09:16:27Z",
+      "captured_at": "2026-07-19T03:29:00+08:00",
+      "browser_actions": [
+        "read README, MIT LICENSE and composer dependencies",
+        "inspected LazopClient.php and LazopRequest.php including TLS, signed URL and error logging",
+        "checked releases, recent commits, issue 4, pull requests, security and Actions",
+        "did not clone, install, execute or provide a token"
+      ],
+      "coverage": {
+        "readme": true,
+        "license": "MIT",
+        "release": "1.7",
+        "audited_commit": "a3b7a087e73622bd825e360d9034fa13fbf4cb36",
+        "source_files": [
+          "src/LazopClient.php",
+          "src/LazopRequest.php"
+        ],
+        "issues_reviewed": [
+          4
+        ],
+        "pull_requests": 0,
+        "security_policy": "none_detected",
+        "published_advisories": 0,
+        "ci_workflows": 0,
+        "unavailable": [
+          "transport tests",
+          "OAuth implementation",
+          "seller identity isolation",
+          "security remediation"
+        ]
+      },
+      "visible_input_output": [
+        "CURLOPT_SSL_VERIFYPEER=false",
+        "CURLOPT_SSL_VERIFYHOST=false",
+        "signed request URL includes access token when supplied",
+        "error logger receives the request URL",
+        "release updates only Laravel support"
+      ],
+      "errors": [],
+      "language": "en_php",
+      "country_sites": [
+        "MY_example_only",
+        "other_sites_unknown"
+      ],
+      "store_models": [
+        "unspecified"
+      ],
+      "ownership": [
+        "unverified_third_party_package"
+      ],
+      "permission_scope": "public GitHub read only",
+      "license": "MIT",
+      "evidence_grade": "deep_security_rejection_no_execution",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "8ddd9950fae544e194bb962af6e0ef086077bf5fe8ba39af0e09fc77099c8162",
+      "boundary": "Do not reuse code that disables TLS verification or can expose app keys, access tokens or signatures through logs, regardless of license or release recency."
+    },
+    {
+      "id": "LZ-LEDGER-063",
+      "state": "historical_operator_trace",
+      "review_status": "fully_reviewed",
+      "topic": "xkenchii_lazada_sdk_alpha_runtime_audit",
+      "claim": "The xKeNcHii/lazada-sdk v0.1.0-alpha.0 runtime subpackage has an MIT license, Node 20 and pnpm dependencies, CI and unit tests, but its own release notes limit live validation to two SG endpoints and leave the other five countries, refresh round trips, wire errors, Unicode, pagination and 31 of 33 managers unverified; it remains research_only and was not installed.",
+      "source_type": "public_github_repository_deep_package_audit",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/xKeNcHii/lazada-sdk/tree/main/packages/sdk-ts",
+      "platform_content_id": "github-repo:xKeNcHii/lazada-sdk@v0.1.0-alpha.0:runtime",
+      "title": "@lazada-sdk/sdk v0.1.0-alpha.0",
+      "author": "xKeNcHii",
+      "published_at": "2026-04-21",
+      "captured_at": "2026-07-19T03:30:00+08:00",
+      "browser_actions": [
+        "read root and runtime README, runtime MIT LICENSE, package manifest and changelog",
+        "inspected client and token-manager implementation",
+        "checked release notes, recent commits, issues, pull requests, security and Actions",
+        "did not npm install, run examples, copy credentials or call a live seller"
+      ],
+      "coverage": {
+        "release": "v0.1.0-alpha.0",
+        "runtime_license": "MIT",
+        "root_license": "not_found",
+        "source_files": [
+          "packages/sdk-ts/src/client.ts",
+          "packages/sdk-ts/src/token-manager.ts"
+        ],
+        "live_validated_claims": [
+          "SG GET /seller/get",
+          "SG POST /images/migrate"
+        ],
+        "unvalidated_claims": [
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID",
+          "token refresh round trip",
+          "wire errors",
+          "Unicode",
+          "multi-page pagination",
+          "31 of 33 managers"
+        ],
+        "issues": 0,
+        "pull_requests_visible": 9,
+        "security_policy": "none_detected",
+        "published_advisories": 0,
+        "actions_runs_visible": 90
+      },
+      "visible_input_output": [
+        "alpha pre-release",
+        "54 claimed unit tests",
+        "two claimed SG production probes",
+        "default token storage key lazada:default",
+        "five countries explicitly unverified"
+      ],
+      "errors": [],
+      "language": "en_typescript",
+      "country_sites": [
+        "SG_claimed_two_endpoint_probe",
+        "MY_unverified",
+        "TH_unverified",
+        "VN_unverified",
+        "PH_unverified",
+        "ID_unverified"
+      ],
+      "store_models": [
+        "unspecified"
+      ],
+      "ownership": [
+        "unofficial_package_with_unavailable_real_seller_claim"
+      ],
+      "permission_scope": "public GitHub read only",
+      "license": "MIT_runtime_subpackage_only",
+      "evidence_grade": "deep_alpha_runtime_audit_not_independent_live_validation",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "d11b264fa5bbf269de5e441792986b22bd612eac9b4a9a62c01910fc969dc532",
+      "boundary": "Repository release claims were not independently reproduced. A two-endpoint SG probe does not establish five other countries, all endpoints, seller isolation, production error handling or T One connection."
+    },
+    {
+      "id": "LZ-LEDGER-064",
+      "state": "failed_attempt",
+      "review_status": "fully_reviewed",
+      "topic": "xkenchii_lazada_docs_scraper_rejection",
+      "claim": "The xKeNcHii/lazada-sdk documentation pipeline uses a Python scraper with retries and 0.2-second page requests against Lazada documentation endpoints, while the repository root has no LICENSE and only the runtime subpackage contains MIT terms; the scraper, mirrored docs and generated spec pipeline are rejected_unsafe and were neither installed nor run.",
+      "source_type": "public_github_repository_static_scraper_and_license_audit",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/xKeNcHii/lazada-sdk/tree/main/scraper",
+      "platform_content_id": "github-repo:xKeNcHii/lazada-sdk:scraper@91ab7be36da246b13866ab3f7c8a883772abc16c",
+      "title": "xKeNcHii Lazada documentation scraper and spec pipeline",
+      "author": "xKeNcHii",
+      "published_at": "2026-04-21",
+      "captured_at": "2026-07-19T03:31:00+08:00",
+      "browser_actions": [
+        "inspected root README, root package manifest, scraper/scrape.py and CONTRIBUTING.md",
+        "checked root LICENSE and received a GitHub 404 while the runtime subpackage LICENSE existed",
+        "reviewed the documented request, retry, mirror and code-generation path statically",
+        "did not install dependencies, run the scraper, mirror docs or generate code"
+      ],
+      "coverage": {
+        "scraper_blob": "91ab7be36da246b13866ab3f7c8a883772abc16c",
+        "root_license": "GitHub 404 not found",
+        "runtime_license": "MIT",
+        "request_delay_seconds": 0.2,
+        "retry_attempts": 3,
+        "output": [
+          "mirrored Markdown",
+          "generated OpenAPI",
+          "generated managers"
+        ],
+        "unavailable": [
+          "permission for automated retrieval",
+          "license for root scraper/spec/docs",
+          "currentness of mirrored fields",
+          "independent endpoint verification"
+        ]
+      },
+      "visible_input_output": [
+        "requests Session",
+        "three retry attempts",
+        "0.2-second delay",
+        "undocumented or share-handler JSON endpoints",
+        "docs and spec generation"
+      ],
+      "errors": [
+        "root LICENSE fetch returned GitHub 404"
+      ],
+      "language": "en_python_typescript",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "documentation_only"
+      ],
+      "ownership": [
+        "public_docs_copyright_retained"
+      ],
+      "permission_scope": "public GitHub read only; scraper not run",
+      "license": "unknown_for_root_scraper_spec_and_docs",
+      "evidence_grade": "static_rejected_unsafe_pipeline_audit",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "03bc12d07b0f4322d066ac9513c735a678808333288db727c6ac07721c099970",
+      "boundary": "Do not run, copy or commercialize an automated docs-mirroring pipeline with an unknown root license and unverified access permission. Generated endpoint quantity is not platform support evidence."
+    },
+    {
+      "id": "LZ-LEDGER-065",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "official_open_platform_signature_algorithm_transport_check",
+      "claim": "Lazada's official Signature algorithm page, last updated 2024-08-01, was reviewed from navigation to footer and states that manual callers must sort non-sign request parameters in ASCII order, prefix the API path, append any body, HMAC-SHA256 with the App Secret and output uppercase hexadecimal; it also requires the App Secret to remain confidential.",
+      "source_type": "official_open_platform_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=108068&nodeId=10400",
+      "platform_content_id": "lazada-open-platform:doc:108068",
+      "title": "Signature algorithm",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-08-01",
+      "captured_at": "2026-07-19T03:29:35+08:00",
+      "browser_actions": [
+        "opened the exact signature deep page",
+        "inspected documentation navigation, update date, algorithm steps and Java/C#/Python examples",
+        "scrolled through six measured segments to the legal footer",
+        "followed the directly related Requests and responses page",
+        "did not sign in or use credentials"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-28-51-526Z.yml",
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-29-35-215Z.yml"
+      ],
+      "coverage": {
+        "sections": [
+          "documentation navigation",
+          "last updated and reads",
+          "algorithm steps",
+          "Java sample",
+          "C# sample",
+          "Python sample",
+          "official SDK reference",
+          "legal footer"
+        ],
+        "scroll_segments": [
+          0,
+          700,
+          1400,
+          2100,
+          2800,
+          3092
+        ],
+        "final_scroll": {
+          "scroll_y": 3092,
+          "viewport_height": 720,
+          "document_height": 3812,
+          "reached_page_end": true
+        },
+        "secondary_page": "https://open.lazada.com/apps/doc/doc?docId=108066&nodeId=10448",
+        "comment_module": "not_present",
+        "unavailable": [
+          "authenticated app-specific SDK",
+          "endpoint-specific live request",
+          "current application error response"
+        ]
+      },
+      "visible_input_output": [
+        "ASCII parameter sorting",
+        "API path prefix",
+        "optional body appended",
+        "HMAC-SHA256",
+        "uppercase hexadecimal",
+        "App Secret confidentiality"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "authorized_open_platform_app_required_for_execution"
+      ],
+      "ownership": [
+        "lazada_open_platform_first_party_documentation"
+      ],
+      "permission_scope": "public documentation read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "deep_official_transport_rule_not_live_api_call",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "61795919da8a9e8cc5e5bc8570e1a76b966435c7cda5ff919696579062f1f475",
+      "boundary": "This is a manual-signing reference, not a successful request. Prefer the app-generated official SDK and verify the exact endpoint, method, body and seller scope before connection."
+    },
+    {
+      "id": "LZ-LEDGER-066",
+      "state": "time_sensitive_evidence",
+      "review_status": "fully_reviewed",
+      "topic": "official_open_platform_request_response_transport_check",
+      "claim": "Lazada's official Requests and responses page, last updated 2024-07-19, fit entirely in the viewport and states that most calls use GET, some use POST, POST bodies are XML and UTF-8, the API path is part of the URL, and responses are JSON; its age and generic scope require endpoint-specific verification or the app-generated official SDK before transport code is trusted.",
+      "source_type": "official_open_platform_deep_browser_capture",
+      "evidence_class": "official_current",
+      "canonical_url": "https://open.lazada.com/apps/doc/doc?docId=108066&nodeId=10448",
+      "platform_content_id": "lazada-open-platform:doc:108066",
+      "title": "Requests and responses",
+      "author": "Lazada Open Platform",
+      "published_at": "2024-07-19",
+      "captured_at": "2026-07-19T03:30:11+08:00",
+      "browser_actions": [
+        "opened from the directly related signature review",
+        "inspected the full short page, update date, GET/POST, body encoding, URL path and JSON response text",
+        "verified the whole document and footer fit within the measured viewport",
+        "did not call an API"
+      ],
+      "browser_capture_refs": [
+        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-30-11-623Z.yml"
+      ],
+      "coverage": {
+        "sections": [
+          "documentation navigation",
+          "last updated and reads",
+          "GET and POST",
+          "XML and UTF-8 body",
+          "API path URL",
+          "JSON response",
+          "legal footer"
+        ],
+        "final_scroll": {
+          "scroll_y": 0,
+          "viewport_height": 720,
+          "document_height": 720,
+          "reached_page_end": true
+        },
+        "secondary_page": "https://open.lazada.com/apps/doc/doc?docId=108068&nodeId=10400",
+        "comment_module": "not_present",
+        "unavailable": [
+          "endpoint-specific content-type override",
+          "app-specific official SDK",
+          "live request and error response"
+        ]
+      },
+      "visible_input_output": [
+        "most calls GET",
+        "some calls POST",
+        "generic POST body XML and UTF-8",
+        "API path in URL",
+        "JSON response"
+      ],
+      "errors": [],
+      "language": "en",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "authorized_open_platform_app_required_for_execution"
+      ],
+      "ownership": [
+        "lazada_open_platform_first_party_documentation"
+      ],
+      "permission_scope": "public documentation read only",
+      "license": "copyright_retained_citation_and_summary_only",
+      "evidence_grade": "full_short_official_transport_page_not_live_api_call",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "6a3a4ebaff0bfc14f4c98cc4f87a0aa725f3b1a9d4a5619785d076b418fb9284",
+      "relationship_to": [
+        {
+          "evidence_id": "LZ-LEDGER-065",
+          "type": "direct_transport_secondary_page"
+        }
+      ],
+      "boundary": "The generic 2024 page can expose a mismatch, but it cannot by itself prove every endpoint's current content type. Obtain the app-specific official SDK or exact current endpoint contract and test one scoped read."
+    },
+    {
+      "id": "LZ-LEDGER-067",
+      "state": "failed_attempt",
+      "review_status": "fully_reviewed",
+      "topic": "easycb_go_sdk_tls_test_and_identity_rejection",
+      "claim": "A deep audit of easycb/easycb-go at commit 6a3c10d4d07b26d8df9ba65138ecb9203ac4c024 found MIT licensing and many releases, but Lazada TLS verification is disabled by default, its test harness explicitly disables TLS, supplies blank credentials and returns before running tests when initialization fails, and its client models only a raw access token plus region rather than a country seller identity; it was not installed and is rejected_unsafe.",
+      "source_type": "public_github_repository_deep_security_and_test_audit",
+      "evidence_class": "historical_trace",
+      "canonical_url": "https://github.com/easycb/easycb-go",
+      "platform_content_id": "github-repo:easycb/easycb-go@6a3c10d4d07b26d8df9ba65138ecb9203ac4c024",
+      "title": "easycb/easycb-go",
+      "author": "easycb",
+      "published_at": "2026-06-02",
+      "captured_at": "2026-07-19T03:47:00+08:00",
+      "browser_actions": [
+        "read README, MIT license, go.mod and Lazada client, configuration, request, order and test files",
+        "checked releases, recent commits, issues, pull requests, security and Actions",
+        "traced the default TLS flag, TestMain early-return path and representative print-only tests statically",
+        "did not clone, install, execute, configure a proxy or provide credentials"
+      ],
+      "coverage": {
+        "audited_commit": "6a3c10d4d07b26d8df9ba65138ecb9203ac4c024",
+        "latest_release": "v0.1.27",
+        "license": "MIT",
+        "source_files": [
+          "lazada/client.go",
+          "lazada/request.go",
+          "lazada/conf.go",
+          "lazada/client_test.go",
+          "lazada/order.go"
+        ],
+        "issues": 0,
+        "pull_requests": 0,
+        "security_policy": "none_detected",
+        "published_advisories": 0,
+        "ci_workflows": "none_observed",
+        "unavailable": [
+          "successful test execution proof",
+          "current endpoint contract",
+          "country seller identity persistence",
+          "independent scoped live read"
+        ]
+      },
+      "visible_input_output": [
+        "InsecureSkipVerify is true when sslVerify is left at its default false value",
+        "test setup calls WithSslVerify(false)",
+        "test setup supplies blank app credentials and can return before m.Run",
+        "representative tests print API errors without assertions",
+        "client holds access token and region but no seller_id or store_binding"
+      ],
+      "errors": [],
+      "language": "en_go",
+      "country_sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "unspecified"
+      ],
+      "ownership": [
+        "unverified_third_party_package"
+      ],
+      "permission_scope": "public GitHub read only",
+      "license": "MIT",
+      "evidence_grade": "deep_security_and_test_rejection_no_execution",
+      "valid_until": "2026-08-19T23:59:59+08:00",
+      "claim_fingerprint_sha256": "2ac3b88479561ec43cbf9ed9975ad310cb5d1d8e9ab3f26886a26cd1d8a6c456",
+      "boundary": "Repository popularity, a permissive license, release count and README test claims do not permit reuse when secure transport is off by default, the harness may not run tests and seller identity isolation is absent."
+    }
+  ]
+}

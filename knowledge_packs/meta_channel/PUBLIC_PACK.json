@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "pack_id": "meta_channel",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/meta_channel/machine/contract.json",
+    "knowledge_packs/meta_channel/SKILL.md",
+    "knowledge_packs/meta_channel/agents/openai.yaml",
+    "knowledge_packs/meta_channel/references/official-evidence.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

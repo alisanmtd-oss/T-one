@@ -39,6 +39,9 @@ def load_provider_verification(root: Path) -> dict[str, Any]:
     receipts = payload.get("live_receipts")
     if not isinstance(catalog_states, list) or not isinstance(receipts, list):
         return {}
+    modality_receipts = payload.get("modality_receipts", [])
+    if not isinstance(modality_receipts, list):
+        return {}
     if any(
         not isinstance(item, dict) or str(item.get("state") or "") not in allowed
         for item in catalog_states
@@ -56,12 +59,37 @@ def _merge_model_verification(
         for item in verification.get("live_receipts", [])
         if isinstance(item, dict)
     }
+    allowed_modalities = ("text", "image", "audio", "video", "files", "tool_use")
+    modality_receipts: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for item in verification.get("modality_receipts", []):
+        if not isinstance(item, dict):
+            continue
+        key = (str(item.get("provider") or ""), str(item.get("model") or ""))
+        if not all(key):
+            continue
+        modality_receipts.setdefault(key, []).append(item)
     rows: list[dict[str, Any]] = []
     for item in configured:
         row = dict(item)
-        receipt = receipts.get((str(row.get("name") or ""), str(row.get("model") or "")))
+        model_key = (str(row.get("name") or ""), str(row.get("model") or ""))
+        receipt = receipts.get(model_key)
+        exact_modality_receipts = modality_receipts.get(model_key, [])
         status = str((receipt or {}).get("status") or "")
-        if status == "ok":
+        verified_modalities = ["text"] if status == "ok" else []
+        modality_test_statuses: dict[str, str] = {}
+        for modality_receipt in exact_modality_receipts:
+            modality_status = str(modality_receipt.get("status") or "")
+            for modality in modality_receipt.get("modalities", []):
+                modality_name = str(modality or "")
+                if modality_name not in allowed_modalities:
+                    continue
+                modality_test_statuses[modality_name] = modality_status or "unknown"
+                if modality_status == "ok" and modality_name not in verified_modalities:
+                    verified_modalities.append(modality_name)
+        verified_modalities = [
+            modality for modality in allowed_modalities if modality in verified_modalities
+        ]
+        if verified_modalities:
             state = "verified"
         elif receipt:
             state = "blocked"
@@ -76,9 +104,19 @@ def _merge_model_verification(
             "connection_test_error": str((receipt or {}).get("error") or ""),
             "connection_test_http_status": int((receipt or {}).get("status_code") or 0),
             "connection_test_latency_ms": int((receipt or {}).get("latency_ms") or 0),
-            "last_tested_at": str(verification.get("audited_at") or "") if receipt else "",
-            "verified_modalities": ["text"] if status == "ok" else [],
-            "unknown_modalities": ["image", "audio", "video", "files", "tool_use"],
+            "last_tested_at": str(verification.get("audited_at") or "") if receipt or exact_modality_receipts else "",
+            "verified_modalities": verified_modalities,
+            "unknown_modalities": [
+                modality
+                for modality in ("image", "audio", "video", "files", "tool_use")
+                if modality not in verified_modalities and modality not in modality_test_statuses
+            ],
+            "modality_test_statuses": modality_test_statuses,
+            "modality_receipt_refs": [
+                str(item.get("evidence") or "")
+                for item in exact_modality_receipts
+                if item.get("evidence")
+            ],
             "rate_and_cost_state": "unknown",
         })
         rows.append(row)
@@ -103,6 +141,14 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
             "configured_models": list(state.get("configured_models") or []),
             "verification_blocker": str(state.get("blocker") or ""),
         })
+    modality_counts = {
+        modality: sum(
+            1
+            for item in configured
+            if modality in list(item.get("verified_modalities") or [])
+        )
+        for modality in ("text", "image", "audio", "video", "files", "tool_use")
+    }
     return {
         "catalog": catalog,
         "configured": configured,
@@ -110,6 +156,7 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
         "configured_count": len(configured),
         "verified_count": sum(1 for item in configured if item.get("verification_state") == "verified"),
         "blocked_count": sum(1 for item in configured if item.get("verification_state") == "blocked"),
+        "modality_counts": modality_counts,
         "verification_audited_at": str(verification.get("audited_at") or ""),
     }
 

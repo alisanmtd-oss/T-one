@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google Ads Channel Expert"
+  short_description: "Evidence-bounded Google Ads planning and review"
+  default_prompt: "Use $google-ads-channel to research, draft, or review this Google Ads task with current official evidence, customer and conversion ownership, explicit unknowns, and owner approval before any live action."

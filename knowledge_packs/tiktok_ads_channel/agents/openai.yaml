@@ -1,0 +1,4 @@
+interface:
+  display_name: "TikTok Ads and TikTok One Expert"
+  short_description: "Separate TikTok media, creative, and Shop Ads"
+  default_prompt: "Use $tiktok-ads-channel to handle this TikTok Ads, TikTok One, TTO, or GMV Max task with official evidence, surface separation, creator authorization, explicit blocked fields, and owner approval before live action."

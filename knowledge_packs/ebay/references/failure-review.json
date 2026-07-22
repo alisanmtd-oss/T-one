@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "expert": "ebay",
+  "updated_at": "2026-07-19T04:28:00+08:00",
+  "allowed_statuses": [
+    "verified_live_fact",
+    "time_sensitive_evidence",
+    "historical_operator_trace",
+    "draft",
+    "failed_attempt",
+    "unknown",
+    "blocked_owner_input"
+  ],
+  "failures": [
+    {
+      "id": "EBAY-FAIL-001",
+      "status": "failed_attempt",
+      "surface": "skill-creator quick_validate.py",
+      "attempt": "Validate the existing eBay Skill with the bundled validator.",
+      "error": "Bundled Python environment did not provide PyYAML.",
+      "recovery": "Did not install a dependency; added stdlib unit validation and a dedicated stdlib asset validator.",
+      "recurrence_guard": "Run both the eBay unit suite and scripts/validate_training_assets.py; report the official validator limitation honestly.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-002",
+      "status": "failed_attempt",
+      "surface": "agents/openai.yaml generator",
+      "attempt": "Generate UI metadata using the skill-creator script and a Node YAML fallback.",
+      "error": "PyYAML was unavailable and the Node runtime had no YAML module.",
+      "recovery": "Kept the small manually-authored openai.yaml and validated required keys without adding dependencies.",
+      "recurrence_guard": "Do not claim official generator success; regenerate only when the bundled dependency is available or explicitly approved.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-003",
+      "status": "unknown",
+      "surface": "Inventory Mapping API documentation",
+      "attempt": "Resolve Sandbox/Production availability from official pages.",
+      "error": "Official aggregation/explorer wording was inconsistent during the first evidence pass.",
+      "recovery": "Kept US-only preview/recommendation as the stable fact and requires a runtime access check before use.",
+      "recurrence_guard": "Never hard-code environment access from one page; capture a developer-account response or current explorer result.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-004",
+      "status": "failed_attempt",
+      "surface": "Seller Center video-ad FAQ",
+      "attempt": "Click the performance-metrics FAQ in a real headed browser.",
+      "error": "GDPR cookie banner intercepted pointer events and the first click timed out.",
+      "recovery": "Used the visible Decline All control, refreshed the snapshot, retried the FAQ, and captured view-rate/video-completion-rate output.",
+      "recurrence_guard": "Handle visible consent controls normally; never force-click, inject cookies or bypass the consent layer.",
+      "browser_evidence_id": "EBAY-BROWSER-005",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-005",
+      "status": "blocked_owner_input",
+      "surface": "eBay AI Assistant",
+      "attempt": "Learn the real buyer-message suggestion input/output.",
+      "error": "No bound eBay seller Messages identity or buyer conversation was available.",
+      "recovery": "Captured only the official public edit/send/dismiss boundary and stopped.",
+      "recurrence_guard": "Do not fabricate an AI reply example as live output; require a bound seller and an owner-approved read-only observation.",
+      "browser_evidence_id": "EBAY-BROWSER-008",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-006",
+      "status": "blocked_owner_input",
+      "surface": "anonymous eBay listing-start flow",
+      "attempt": "Observe real category/condition flow using a generic apparel query.",
+      "error": "The flow required a product condition but no real product record or condition evidence was supplied.",
+      "recovery": "Stopped with Continue disabled and recorded the visible condition choices without selecting one.",
+      "recurrence_guard": "Never turn a UI suggestion into a product fact; require condition evidence before continuing.",
+      "browser_evidence_id": "EBAY-BROWSER-007",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-007",
+      "status": "unknown",
+      "surface": "shared eBay route registries",
+      "attempt": "Compare the eBay expert contract with current adapter/capability-pack configuration.",
+      "error": "The shared adapter and capability pack still declare GLOBAL planning scope, while the expert registry and official marketplace model require a concrete marketplace for execution.",
+      "recovery": "The eBay contract blocks GLOBAL writes; no occupied shared file was edited.",
+      "recurrence_guard": "Submit a C4 integration suggestion to migrate shared planning scope to explicit marketplace/site resolution before a connector can become executable.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-008",
+      "status": "failed_attempt",
+      "surface": "Playwright session cleanup",
+      "attempt": "Close the isolated browser and remove temporary snapshots in one shell invocation.",
+      "error": "The combined close command exceeded the wait window before returning.",
+      "recovery": "Terminated the waiting cell, verified only the eBay session remained open, then closed `ebay-training` separately; temporary workspace snapshots were removed.",
+      "recurrence_guard": "Close the browser session first, verify it is absent, then clean only the resolved task-owned temporary directory.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-009",
+      "status": "failed_attempt",
+      "surface": "desktop_app/dist/T-One-0.1.0.exe formal package",
+      "attempt": "Launch the current formal Windows package and inspect eBay extension/model/context readiness without writes.",
+      "error": "The visible dialog reported: Python backend exited early (exit=9009). Runtime logs also showed the configured Python candidate timing out, py ENOENT and python exit 9009 while another workspace backend was already listening.",
+      "recovery": "Captured the visible dialog and runtime evidence, verified /health read-only, and stopped before modifying shared desktop/server files while another shared build was active.",
+      "recurrence_guard": "The shared-core owner must retest portable launch against an existing authenticated backend and a cold backend, then verify extensions, model selection, Skill loading, task route and understandable errors in the formal package.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-010",
+      "status": "failed_attempt",
+      "surface": "Windows computer control of the existing T One Chrome entrance",
+      "attempt": "Open the local T One extensions route in a new tab for read-only UI acceptance.",
+      "error": "Computer control stopped because it could not determine the current browser URL with enough confidence to enforce policy.",
+      "recovery": "Did not retry or bypass the control policy. Continued with local source/health evidence and official public web evidence only.",
+      "recurrence_guard": "Use a policy-visible isolated browser session or the repaired formal App; never force navigation when URL confidence is unavailable.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-011",
+      "status": "failed_attempt",
+      "surface": "eBay Developer documentation raw fingerprint request",
+      "attempt": "Read canonical Taxonomy/Inventory documentation directly to capture title, Last-Modified, ETag and SHA256 before distillation.",
+      "error": "Direct requests to three official developer URLs returned HTTP 403, while the public web index could still expose the documented content.",
+      "recovery": "Recorded canonical URLs and the 403 fingerprint boundary; kept hash/Last-Modified/ETag unknown instead of inventing them and distilled only facts visible from the first-party indexed pages.",
+      "recurrence_guard": "Retry only through a normal permitted public browser or authorized developer environment; never bypass the 403 or claim a content hash that was not captured.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-012",
+      "status": "historical_operator_trace",
+      "surface": "replaced T-One-0.1.0 portable and unpacked build",
+      "attempt": "Retest the shared rebuilt formal package after the earlier backend exit 9009 failure.",
+      "error": "Portable SHA256 0e3a18f72a7048bbc74e9ae6c5a6c8d76cfe0c7406d8cc2fc40d2dc763f3839e and its unpacked launcher produced no targetable T One window in the bounded observation interval; the build was replaced again before expert-page acceptance.",
+      "recovery": "Detected the later file-hash change, refused to carry the old result forward, launched the newer 773a1512 build, captured a responsive 实时大盘 · T One main window and closed it normally.",
+      "recurrence_guard": "Bind each formal acceptance result to the exact executable SHA256 and preserve supersession links; never describe a prior same-version hash as current.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-013",
+      "status": "failed_attempt",
+      "surface": "direct business-policy and inventory-location documentation fingerprints",
+      "attempt": "Capture raw ETag, Last-Modified and content fingerprint for two new official developer guides before distillation.",
+      "error": "PowerShell HEAD/GET timed out and curl HEAD returned HTTP 302 to the eBay error route with no ETag or Last-Modified, while the same canonical pages loaded normally in the permitted headed browser.",
+      "recovery": "Recorded the redirect boundary, kept raw fingerprint headers unknown, and stored SHA256 only for normalized visible claim sets captured from the headed browser.",
+      "recurrence_guard": "Never follow an error redirect as if it were the canonical document or invent a raw page hash; use a normal public browser and label the hash scope exactly.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-014",
+      "status": "failed_attempt",
+      "surface": "lazy-loaded eBay Community thread content",
+      "attempt": "Find createInventoryLocation immediately after navigating to the redirected canonical community URL.",
+      "error": "The first snapshot contained skeleton placeholders and the text search returned no match before comments finished loading.",
+      "recovery": "Scrolled the public page, waited for the comments to render, handled the visible cookie choice with Decline, re-snapshotted and then read the eBay Staff and community replies.",
+      "recurrence_guard": "Treat an initial no-match on a lazy page as unknown; re-snapshot after ordinary scrolling/loading and never force hidden content or bypass consent controls.",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-015",
+      "status": "failed_attempt",
+      "surface": "Product Research Help, Seller Center and Community raw fingerprint requests",
+      "attempt": "Capture stable HTTP status, ETag, Last-Modified and raw content hash before opening three new public sources.",
+      "error": "curl HEAD followed repeated eBay error redirects and one request timed out. Headers from error routes could not be treated as canonical source fingerprints.",
+      "recovery": "Opened the canonical pages in a permitted headed browser, recorded the redirect/timing boundary, and hashed only normalized visible claim sets with the hash scope labeled explicitly.",
+      "recurrence_guard": "Do not follow an error route into a fake fingerprint, retry aggressively, or claim raw content equality. Use ordinary browser evidence and keep ETag/Last-Modified unknown when the canonical response is unavailable.",
+      "browser_evidence_id": "EBAY-BROWSER-015/016 and EBAY-COMMUNITY-002",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-016",
+      "status": "failed_attempt",
+      "surface": "legacy eBay for Business Podcast transcript candidate",
+      "attempt": "Use a publicly indexed Product Research podcast/transcript as the required supplemental video/audio source.",
+      "error": "The legacy URL redirected to a new Community topic whose live page displayed Discussion not found.",
+      "recovery": "Did not use cached search text as current transcript evidence, recorded the failed canonical URL, and rotated to a current public Community thread instead.",
+      "recurrence_guard": "A search result or old transcript URL is not evidence of current availability. Require the live permitted page or an authorized transcript before distilling content.",
+      "browser_evidence_id": "EBAY-BROWSER-017",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-017",
+      "status": "failed_attempt",
+      "surface": "local HTTP metadata and SHA256 capture for the dispute/signature increment",
+      "attempt": "Use Windows PowerShell Invoke-WebRequest plus modern static SHA256 helpers to capture canonical headers and hashes for three eBay Developer pages and the supplemental GitHub source.",
+      "error": "Invoke-WebRequest raised a NullReference exception, the installed .NET surface lacked SHA256.HashData and Convert.ToHexString, and direct eBay HEAD requests followed error redirects whose headers did not belong to the canonical pages.",
+      "recovery": "Used ordinary headed-browser evidence for the eBay pages, kept canonical ETag/Last-Modified unknown, hashed normalized visible claim sets with SHA256.Create, and used read-only curl/GitHub API metadata for the public repository. No dependency was installed.",
+      "recurrence_guard": "Do not treat error-route headers as source fingerprints or assume modern .NET hash helpers exist. Prefer the already-supported read-only curl and SHA256.Create path, label hash scope, and never install a package merely to fingerprint a public page.",
+      "browser_evidence_id": "EBAY-BROWSER-018/019/020 and EBAY-GITHUB-003",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-018",
+      "status": "failed_attempt",
+      "surface": "read-only deep-browser expressions and Windows command quoting",
+      "attempt": "Extract GitHub issue anchors, open a filtered PR page containing an ampersand, and pipe an inline PowerShell hash loop during the deep-coverage pass.",
+      "error": "Two Playwright eval expressions raised ReferenceError, the unquoted ampersand split the PR-list URL into a second shell command, and one inline PowerShell foreach-to-pipeline form produced an empty-pipe parser error.",
+      "recovery": "Used simpler body-text evaluation, direct PR URLs or query strings without an ampersand, and accumulated hash objects into an array before conversion. All failures were read-only; no page, account or repository state changed.",
+      "recurrence_guard": "Prefer simple Playwright expressions and direct resource URLs. Never pass an unescaped ampersand through Windows command parsing, and avoid piping directly from an inline foreach block on this PowerShell runtime.",
+      "browser_evidence_id": "EBAY-GITHUB-003/004",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-019",
+      "status": "failed_attempt",
+      "surface": "eBay training regression wording for MCP environment boundary",
+      "attempt": "Run the 30-test eBay expert suite after replacing the README-only Sandbox claim with a README/source conflict contract.",
+      "error": "One test still required the obsolete literal phrase Production GET-only, and the next run exposed a second stale literal hardcoding; the evidence ledger correctly used REST GET only, retained the source-code Sandbox conflict and described embedding credentials.",
+      "recovery": "Changed both assertions to the exact current semantic markers REST GET only and embedding credentials, while keeping a separate conflict assertion, then reran the suite.",
+      "recurrence_guard": "When a fact is superseded by a conflict-aware contract, update regression assertions to test the stable semantics and explicit conflict fields rather than a stale display phrase.",
+      "browser_evidence_id": "EBAY-GITHUB-004",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-020",
+      "status": "failed_attempt",
+      "surface": "Increment 5 isolated Playwright session continuity",
+      "attempt": "Continue the existing isolated headed-browser session after the task context was compacted, then extract page metadata with a nested object expression.",
+      "error": "The named browser session was no longer open. After reopening it, two metadata eval expressions failed because Windows command quoting changed the nested JavaScript expression.",
+      "recovery": "Reopened only the isolated public session, navigated back to the canonical Q2 page, used simple array/object expressions, and repeated the segmented coverage before distillation. The owner Chrome session was not attached or modified.",
+      "recurrence_guard": "After a long context boundary, check the named Playwright session before assuming continuity. Keep Windows CLI eval expressions simple and re-capture page/scroll evidence after reopening rather than relying on stale refs.",
+      "browser_evidence_id": "EBAY-BROWSER-023/024/025/026 and EBAY-COMMUNITY-003/004",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-021",
+      "status": "failed_attempt",
+      "surface": "Increment 6 Playwright content hashing and Community metadata extraction on Windows PowerShell",
+      "attempt": "Hash the Seller Center main element immediately after browser back-navigation, then extract Community JSON-LD dates with a nested regular expression in one CLI command.",
+      "error": "The Seller Center accessibility main did not map to a populated DOM main element after back-navigation, producing an empty hash, and PowerShell quoting split or rejected two nested JavaScript expressions.",
+      "recovery": "Re-snapshotted after load, hashed the normalized visible body for Seller Center, used the populated main element on the Help page, and simplified Community extraction to document.scripts plus string indexing. Every final hash is labeled with its exact DOM scope.",
+      "recurrence_guard": "Never accept an empty-body SHA256 as a page fingerprint. Check character count before storing a hash, re-snapshot after navigation, and keep Windows CLI JavaScript expressions simple without nested quote-heavy selectors or regexes.",
+      "browser_evidence_id": "EBAY-BROWSER-027/028 and EBAY-COMMUNITY-005",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-022",
+      "status": "failed_attempt",
+      "surface": "Seller Standards Community recovery advice distillation",
+      "attempt": "Promote a January 2025 Community Mentor claim that defects always remain for exactly 12 months and a suggestion to sell low-margin or loss-making items to dilute the rate into the general recovery playbook.",
+      "error": "The current official US policy has a volume-dependent 3-month or 12-month evaluation branch, and the intentional loss-making suggestion has no official support, ignores product margin and could encourage metric gaming. The thread had only two comments, no staff reply and no verified recovery outcome.",
+      "recovery": "Classified the thread as a fully reviewed `single_case`, retained its wording only as a regression counterexample, and made the current site policy plus bound dashboard/API lookback and exact metric the authoritative diagnosis path.",
+      "recurrence_guard": "Never convert Mentor role, a fixed age-off statement or volume-dilution advice into platform policy. Cross-check evaluation window, thresholds and consequences on the current site and read the bound seller profile before any recovery recommendation.",
+      "browser_evidence_id": "EBAY-BROWSER-029/030/031/032 and EBAY-COMMUNITY-006",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-023",
+      "status": "failed_attempt",
+      "surface": "anonymous GitHub REST metadata during knowledge-package discovery",
+      "attempt": "Use the unauthenticated GitHub REST API to collect current repository metadata and contents for all English-search candidates.",
+      "error": "The anonymous API quota was exhausted before the candidate set was complete.",
+      "recovery": "Did not read a local token or ask the resting owner for credentials. Used public GitHub HTML, exact raw-content URLs, release/issue/PR/security/discussion pages and read-only git ls-remote watermarks; no clone, install or execution occurred.",
+      "recurrence_guard": "Treat anonymous API rate limits as a source-access boundary. Rotate to ordinary public HTML/raw/git metadata, label missing fields unknown, and never bypass the limit or expose a token merely to finish a research audit.",
+      "browser_evidence_id": "EBAY-GITHUB-005/006/007",
+      "business_completion": false
+    },
+    {
+      "id": "EBAY-FAIL-024",
+      "status": "failed_attempt",
+      "surface": "eBay Developer offer-lifecycle deep pages in isolated Playwright",
+      "attempt": "Open the createOffer/publishOffer method pages and the static Managing offers guide in an isolated real browser, then complete the required 90-percent scroll and footer coverage.",
+      "error": "Every direct and fragment URL returned eBay HTTP 403 before content or scroll coverage was available.",
+      "recovery": "Closed the isolated sessions, recorded the pages as blocked/opened_not_reviewed, reused the existing fully reviewed Inventory API overview, and read the permitted public text-parser output only as corroboration. No 403 page was promoted to fully_reviewed or hashed as canonical content.",
+      "recurrence_guard": "A web parser or search index does not satisfy the real-browser scroll gate. Preserve the access failure, use an already accepted first-party source when available, and retry the deep page only after a legitimate access/version change without bypassing eBay controls.",
+      "browser_evidence_id": "EBAY-BROWSER-033",
+      "business_completion": false
+    }
+  ]
+}

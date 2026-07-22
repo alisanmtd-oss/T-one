@@ -320,4 +320,12 @@ def find_task_context(
         for channel, store, task in iter_project_tasks(project):
             if str(task.get("id") or "").strip().lower() == requested:
                 return project, channel, store, task
+    for task in _record_refs(workspace.get("standalone_tasks")):
+        if str(task.get("id") or "").strip().lower() == requested:
+            return {
+                "id": "",
+                "name": "独立任务",
+                "channels": [],
+                "workstreams": [],
+            }, None, None, task
     return None

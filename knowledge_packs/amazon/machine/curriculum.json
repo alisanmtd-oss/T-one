@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T03:35:00+08:00",
+  "agent_id": "amazon-commerce-operator",
+  "positioning": "Independent Amazon operating curriculum. Legacy recovered chats are evidence inputs, never the curriculum authority.",
+  "graduation_policy": {
+    "minimum_domain_score": 85,
+    "minimum_overall_score": 90,
+    "required_evidence_layers": [
+      "official_current",
+      "verified_live_store_or_software",
+      "independent_market_or_customer_signal",
+      "counterexample",
+      "eval_case"
+    ],
+    "blocking_rule": "A domain below its evidence or eval threshold remains learning_only and cannot authorize store decisions."
+  },
+  "required_subdomain_coverage": [
+    {
+      "id": "category-product-type",
+      "parent_domain": "catalog-identity-compliance",
+      "name": "类目、product type 与准入",
+      "required_outputs": [
+        "category decision",
+        "approval and compliance checklist",
+        "site-specific schema"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "parent-child-variation",
+      "parent_domain": "variation-bulk-files",
+      "name": "父子变体与主题",
+      "required_outputs": [
+        "canonical family map",
+        "allowed variation theme",
+        "duplicate-parent guard"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "failed_attempt"
+      ]
+    },
+    {
+      "id": "title",
+      "parent_domain": "listing-seo-keywords",
+      "name": "标题",
+      "required_outputs": [
+        "fact-safe title",
+        "length and prohibited-character check",
+        "buyer-page verification"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "main-image",
+      "parent_domain": "images-video-a-plus",
+      "name": "主图",
+      "required_outputs": [
+        "main-image compliance audit",
+        "product-count and color accuracy",
+        "buyer-page verification"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "secondary-images",
+      "parent_domain": "images-video-a-plus",
+      "name": "副图与图片槽位",
+      "required_outputs": [
+        "slot plan",
+        "claim evidence",
+        "submission versus publication state"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "bullet-points",
+      "parent_domain": "listing-seo-keywords",
+      "name": "五点",
+      "required_outputs": [
+        "five fact-safe benefits",
+        "internal-operations wording removal",
+        "keyword relevance check"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "description",
+      "parent_domain": "listing-seo-keywords",
+      "name": "描述",
+      "required_outputs": [
+        "buyer-readable description",
+        "claim and product-fact audit",
+        "site-specific formatting check"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "keywords-query-intent",
+      "parent_domain": "listing-seo-keywords",
+      "name": "关键词与搜索意图",
+      "required_outputs": [
+        "query-intent clusters",
+        "relevance evidence",
+        "listing and ads handoff"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal"
+      ]
+    },
+    {
+      "id": "backend-search-terms",
+      "parent_domain": "listing-seo-keywords",
+      "name": "Search Terms 与后台词",
+      "required_outputs": [
+        "deduplicated backend terms",
+        "field-limit check",
+        "prohibited-term check"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "attributes-compliance",
+      "parent_domain": "catalog-identity-compliance",
+      "name": "属性、Search Terms 关联字段与合规",
+      "required_outputs": [
+        "required-attribute map",
+        "source-of-truth evidence",
+        "persisted-value verification"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "failed_attempt"
+      ]
+    },
+    {
+      "id": "a-plus-content",
+      "parent_domain": "images-video-a-plus",
+      "name": "A+ Content",
+      "required_outputs": [
+        "eligibility and role check",
+        "module plan",
+        "review and publication state"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "price-reference-price",
+      "parent_domain": "pricing-featured-offer",
+      "name": "价格与参考价",
+      "required_outputs": [
+        "landed price",
+        "competitive context",
+        "margin floor and pricing-risk check"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "independent_market_or_customer_signal"
+      ]
+    },
+    {
+      "id": "promotions-coupons-deals",
+      "parent_domain": "promotions-deals-coupons",
+      "name": "优惠、Coupon、Deal 与叠加",
+      "required_outputs": [
+        "site/store/ASIN/SKU and exact mechanism",
+        "current eligibility, permission and fee check",
+        "base, offer, reference and validated-reference-price state",
+        "minimum quantity, limit, dates and audience",
+        "pairwise combinability matrix rather than a global stacking flag",
+        "worst-case combined discount and landed contribution margin",
+        "review, validation, activation and buyer-surface readback states"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store",
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "reviews-voc",
+      "parent_domain": "reviews-voc-quality",
+      "name": "评价与 VOC",
+      "required_outputs": [
+        "review-theme analysis",
+        "policy-safe response options",
+        "product-listing-factory feedback split"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal"
+      ]
+    },
+    {
+      "id": "inventory",
+      "parent_domain": "inventory-forecasting",
+      "name": "库存与补货",
+      "required_outputs": [
+        "marketplace/store/SKU-scoped FBA inventory state vector",
+        "source-purpose, freshness and report/API reconciliation",
+        "lead-time and uncertainty forecast",
+        "stockout, excess, aged, stranded and unfulfillable risks",
+        "profit-aware replenishment draft with owner gate"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "fbm",
+      "parent_domain": "fulfillment-fba-fbm",
+      "name": "FBM 履约",
+      "required_outputs": [
+        "ship-from and template state",
+        "handling and transit promise",
+        "returns and tracking responsibility"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "fba",
+      "parent_domain": "fulfillment-fba-fbm",
+      "name": "FBA 履约",
+      "required_outputs": [
+        "eligibility and prep",
+        "fee and inventory comparison",
+        "Send to Amazon and IPI awareness"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "fba-prep-packaging-labeling",
+      "parent_domain": "fulfillment-fba-fbm",
+      "name": "FBA 预处理、包装与标签",
+      "required_outputs": [
+        "site, product type, barcode mode and prep-category preflight",
+        "individual, case-packed and set unit map",
+        "unit and outer-label plus protective-packaging plan",
+        "exact-measurement conflict log",
+        "owner-gated inbound readiness"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "featured-offer",
+      "parent_domain": "pricing-featured-offer",
+      "name": "Featured Offer",
+      "required_outputs": [
+        "primary Offer Display state",
+        "eligibility blockers",
+        "price-delivery-stock diagnosis"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "account-listing-compliance",
+      "parent_domain": "account-health-policy",
+      "name": "账户与 Listing 合规",
+      "required_outputs": [
+        "account-health versus selling-access split",
+        "policy evidence",
+        "owner-only action list"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software"
+      ]
+    },
+    {
+      "id": "ads-search-terms",
+      "parent_domain": "ads-sponsored-products",
+      "name": "广告搜索词",
+      "required_outputs": [
+        "customer search-term analysis",
+        "positive and negative target candidates",
+        "click-window caveat"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "ads-targeting-bids-budget",
+      "parent_domain": "ads-sponsored-products",
+      "name": "广告词、商品投放、竞价与预算",
+      "required_outputs": [
+        "targeting structure",
+        "bid and budget guardrails",
+        "approval-gated launch packet"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store",
+        "unit_economics"
+      ]
+    },
+    {
+      "id": "ctr",
+      "parent_domain": "ads-measurement-experiments",
+      "name": "CTR 与点击诊断",
+      "required_outputs": [
+        "impressions and clicks denominator",
+        "creative-query-placement diagnosis",
+        "test window"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "cvr",
+      "parent_domain": "analytics-growth",
+      "name": "CVR 与转化诊断",
+      "required_outputs": [
+        "sessions or clicks denominator",
+        "offer-content-delivery diagnosis",
+        "site and time window"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "returns-refunds",
+      "parent_domain": "orders-customer-service-returns",
+      "name": "退货、退款与索赔",
+      "required_outputs": [
+        "site, fulfillment channel and RFS/non-RFS route",
+        "request-label-scan-receipt-refund-auto-refund-claim state machine",
+        "effective-dated SLA and SAFE-T boundary",
+        "PII-minimized order read",
+        "reason taxonomy with browse-node versus item boundary",
+        "customer-impacting action gate",
+        "listing-product-fulfillment root cause"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "unit-economics-profit",
+      "parent_domain": "product-economics",
+      "name": "利润与盈亏平衡",
+      "required_outputs": [
+        "contribution margin",
+        "break-even ACOS",
+        "cash and returns sensitivity"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_cost_data"
+      ]
+    },
+    {
+      "id": "seller-central-listing-ai",
+      "parent_domain": "catalog-identity-compliance",
+      "name": "Seller Central Listing 生成式 AI",
+      "required_outputs": [
+        "entry and permission state",
+        "input-output evidence",
+        "human accuracy and compliance review"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "seller-assistant-agentic-ai",
+      "parent_domain": "analytics-growth",
+      "name": "Seller Assistant 原生智能体",
+      "required_outputs": [
+        "availability and permission state",
+        "recommendation versus authorized action split",
+        "failure fallback"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store"
+      ]
+    },
+    {
+      "id": "bulk-files-repair",
+      "parent_domain": "variation-bulk-files",
+      "name": "批量文件、错误码与局部修复",
+      "required_outputs": [
+        "schema and batch identity",
+        "partial-success reconciliation",
+        "reload verification"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_live_store_or_software",
+        "failed_attempt"
+      ]
+    },
+    {
+      "id": "notification-subscription-lifecycle",
+      "parent_domain": "api-data-security",
+      "name": "Notification subscription lifecycle",
+      "required_outputs": [
+        "notification-type filter support matrix",
+        "create-and-readback state",
+        "delivery evidence",
+        "shadow migration and rollback gate"
+      ],
+      "evidence_required": [
+        "official_current",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "official-github-assets",
+      "parent_domain": "api-data-security",
+      "name": "Official GitHub asset admission",
+      "required_outputs": [
+        "official identity chain",
+        "commit or release pin",
+        "license and security review",
+        "minimal T One reuse point"
+      ],
+      "evidence_required": [
+        "official_current",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "industry-intelligence-delta",
+      "parent_domain": "industry-intelligence",
+      "name": "Industry intelligence delta",
+      "required_outputs": [
+        "event and publication time",
+        "site, mode and ownership scope",
+        "impact and expiry",
+        "stable-rule promotion decision"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal",
+        "counterexample"
+      ]
+    },
+    {
+      "id": "ai-commerce-capability",
+      "parent_domain": "ai-commerce-tools",
+      "name": "AI commerce capability",
+      "required_outputs": [
+        "announcement-beta-GA-connected-verified state",
+        "inputs, outputs and permission boundary",
+        "site and store isolation",
+        "fees, data destination, approval, errors and metrics"
+      ],
+      "evidence_required": [
+        "official_current",
+        "verified_software_or_store",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "social-comment-intelligence",
+      "parent_domain": "industry-intelligence",
+      "name": "Social and forum comment intelligence",
+      "required_outputs": [
+        "coverage and sort record",
+        "anonymous theme clusters and counts",
+        "official replies and unresolved signals",
+        "noise and promotion decision"
+      ],
+      "evidence_required": [
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "effective-dated-title-item-highlights",
+      "parent_domain": "listing-seo-keywords",
+      "name": "Effective-dated title and Item Highlights",
+      "required_outputs": [
+        "announcement and effective dates",
+        "country and category scope",
+        "native-AI review or change-history path",
+        "live field availability and readback"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal",
+        "eval_case"
+      ]
+    },
+    {
+      "id": "amazon-ads-native-ai-change-control",
+      "parent_domain": "ads-measurement-experiments",
+      "name": "Amazon Ads native-AI and placement change control",
+      "required_outputs": [
+        "automatic-eligibility versus verified-delivery audit",
+        "AMC source SQL, prompt, tab and query/date diff",
+        "account, marketplace, permission, billing and reporting state",
+        "owner gate, bounded experiment and profit readback"
+      ],
+      "evidence_required": [
+        "official_current",
+        "independent_market_or_customer_signal",
+        "counterexample",
+        "eval_case"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "product-research-category",
+      "name": "选品、类目、需求与机会验证",
+      "core_competencies": [
+        "customer need",
+        "search/purchase/review/return signals",
+        "seasonality",
+        "competition",
+        "POD suitability"
+      ],
+      "source_ids": [
+        "amz-product-opportunity-explorer",
+        "amz-keepa-candidate",
+        "amz-sellersprite-candidate"
+      ],
+      "graduate_when": "Builds hypotheses from at least three signal types and refuses demand/profit guarantees."
+    },
+    {
+      "id": "product-economics",
+      "name": "售价、费用、毛利、现金流与盈亏平衡",
+      "core_competencies": [
+        "referral fee",
+        "FBA/FBM cost",
+        "storage",
+        "returns",
+        "ads",
+        "landed cost",
+        "break-even ACOS"
+      ],
+      "source_ids": [
+        "amz-fba-economics",
+        "amz-ads-basics-metrics",
+        "amz-sp-api-finances"
+      ],
+      "graduate_when": "Calculates contribution margin and break-even before recommending spend or price."
+    },
+    {
+      "id": "fulfillment-fba-fbm",
+      "name": "FBA、FBM、仓配、配送承诺与退货责任",
+      "core_competencies": [
+        "FBA vs FBM",
+        "ship-from",
+        "handling/transit",
+        "tracking",
+        "returns responsibility",
+        "site and product-specific FBA prep",
+        "barcode mode",
+        "individual, case-packed and set structures",
+        "unit and outer labels",
+        "protective packaging",
+        "conflicting exact-measurement gate"
+      ],
+      "source_ids": [
+        "amz-fbm-shipping",
+        "amz-fba-economics",
+        "amz-customer-returns-help",
+        "amz-fba-prep-packaging-labeling-2026-07-07",
+        "amz-seller-forum-fba-prep-glass-pallet-2026",
+        "amz-seller-forum-poly-bagging-101-dated"
+      ],
+      "graduate_when": "Can compare fulfillment economics and service levels using the actual site and ship-from, and can build a product-specific FBA prep packet without guessing conflicting measurements or creating an inbound shipment."
+    },
+    {
+      "id": "ads-brand-display-video",
+      "name": "Sponsored Brands、Display、视频与品牌广告",
+      "core_competencies": [
+        "Sponsored Brands",
+        "display ads",
+        "video creative",
+        "Brand Store landing",
+        "new-to-brand"
+      ],
+      "source_ids": [
+        "amz-sponsored-brands-video",
+        "amz-display-ads",
+        "amz-brand-registry"
+      ],
+      "graduate_when": "Uses current product names and creative specs rather than obsolete course terminology."
+    },
+    {
+      "id": "ads-measurement-experiments",
+      "name": "ACOS/TACOS、归因、增量与实验",
+      "core_competencies": [
+        "ACOS",
+        "TACOS",
+        "attributed sales",
+        "new-to-brand",
+        "incrementality",
+        "test design"
+      ],
+      "source_ids": [
+        "amz-ads-basics-metrics",
+        "amz-sponsored-products",
+        "amz-sp-api-reports"
+      ],
+      "graduate_when": "Does not confuse attributed revenue with incremental profit and documents test windows."
+    },
+    {
+      "id": "analytics-growth",
+      "name": "Business Reports、Brand Analytics、机会与增长复盘",
+      "core_competencies": [
+        "metric envelope with marketplace, store, entity, period, currency and denominator",
+        "Sales and Traffic by-date versus by-ASIN aggregation",
+        "DAY/WEEK/MONTH boundary expansion",
+        "PARENT/CHILD/SKU identity",
+        "B2B versus consumer split",
+        "traffic and conversion recomputation",
+        "Brand Analytics dashboard entity and entitlement",
+        "Data Kiosk current dataset and async lifecycle",
+        "search behavior",
+        "repeat purchase",
+        "growth opportunities",
+        "cohort and trend",
+        "profit and return reconciliation"
+      ],
+      "source_ids": [
+        "amz-brand-analytics",
+        "amz-product-opportunity-explorer",
+        "amz-sp-api-reports",
+        "amz-sales-traffic-schema-pinned-2026",
+        "amz-data-kiosk-current-2026",
+        "amz-data-kiosk-sample-audit-2026"
+      ],
+      "graduate_when": "Connects traffic, conversion, margin, returns and repeat behavior with the correct marketplace, entity, time and denominator; keeps by-date and by-ASIN aggregations separate; handles Data Kiosk data/error/no-data states; and never reports public contracts as a connected store result."
+    },
+    {
+      "id": "api-data-security",
+      "name": "SP-API、Ads API、角色、Reports、财务与 PII 安全",
+      "core_competencies": [
+        "OAuth/LWA",
+        "roles",
+        "Product Listing role",
+        "PTD schema integrity",
+        "Reports API",
+        "Finances API",
+        "RDT",
+        "notification subscription filters",
+        "create-readback-delivery state",
+        "per-store/site authorization"
+      ],
+      "source_ids": [
+        "amz-sp-api-roles",
+        "amz-ptd-search-guide",
+        "amz-ptd-retrieve-guide",
+        "amz-ptd-meta-schema",
+        "amz-ptd-official-model",
+        "amz-sp-api-reports",
+        "amz-sp-api-finances",
+        "amz-sp-api-pii-rdt",
+        "amz-filter-notification-subscriptions",
+        "amz-create-subscription-reference",
+        "amz-get-subscription-reference",
+        "amz-sp-api-samples-official",
+        "amz-sp-api-sdk-official"
+      ],
+      "graduate_when": "Proves each role and operation with a read-only call, separates subscription creation from delivery evidence, and keeps restricted data outside general memory."
+    },
+    {
+      "id": "industry-intelligence",
+      "name": "Industry intelligence and lifecycle",
+      "core_competencies": [
+        "policy, algorithm, ads and API deltas",
+        "payments, tax, compliance, logistics and regulation",
+        "official news and event evidence",
+        "dated cases, comment clusters, conflicts and expiry"
+      ],
+      "source_ids": [
+        "amz-seller-university",
+        "amz-seller-university-top-videos-2023",
+        "amz-filter-notification-subscriptions",
+        "amz-seller-forum-ai-enhancement-comments-2026"
+      ],
+      "graduate_when": "Records event and publication time, site, mode, ownership, impact and expiry; news, likes or a single case never becomes a stable rule without corroboration."
+    },
+    {
+      "id": "ai-commerce-tools",
+      "name": "Amazon native AI and AI-commerce integration",
+      "core_competencies": [
+        "native listing and Seller Assistant availability",
+        "announcement versus beta, GA, connected and verified states",
+        "inputs, outputs, permissions and store isolation",
+        "fees, data destination, human gates, errors and measurable effect",
+        "SDK, sample and MCP reuse admission"
+      ],
+      "source_ids": [
+        "amz-listing-ai",
+        "amz-seller-university",
+        "amz-seller-university-ai-video-wxvcuc1c4ie",
+        "amz-seller-forum-ai-enhancement-comments-2026",
+        "amz-sp-api-samples-official",
+        "amz-sp-api-sdk-official"
+      ],
+      "graduate_when": "Can prove the current availability and permission state in the applicable site or software, and never converts marketing, metadata, a comment or an example repository into an implemented capability."
+    }
+  ]
+}

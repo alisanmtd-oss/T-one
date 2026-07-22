@@ -1,0 +1,3959 @@
+{
+  "schema_version": 1,
+  "expert_id": "expert-etsy-marketplace",
+  "updated_at": "2026-07-19T03:55:56+08:00",
+  "canonical_contract": "config/platform_expert_training/etsy.json",
+  "latest_learning_run": "references/learning-runs/2026-07-19-review-response-knowledge-package-audit-readonly.json",
+  "learning_runs": [
+    {
+      "run_id": "etsy-readonly-browser-2026-07-18T221205+0800",
+      "path": "references/learning-runs/2026-07-18-readonly-browser.json",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-personalization-ai-readonly-2026-07-18T222757+0800",
+      "path": "references/learning-runs/2026-07-18-personalization-ai-readonly.json",
+      "captured_at": "2026-07-18T22:27:57+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-native-listing-ai-readonly-2026-07-18T223540+0800",
+      "path": "references/learning-runs/2026-07-18-native-listing-ai-readonly.json",
+      "captured_at": "2026-07-18T22:35:40+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-connector-readiness-readonly-2026-07-18T224443+0800",
+      "path": "references/learning-runs/2026-07-18-connector-readiness-readonly.json",
+      "captured_at": "2026-07-18T22:44:43+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-dynamic-taxonomy-digital-readonly-2026-07-18T232855+0800",
+      "path": "references/learning-runs/2026-07-18-dynamic-taxonomy-digital-readonly.json",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-openapi-title-personalization-readonly-2026-07-18T234254+0800",
+      "path": "references/learning-runs/2026-07-18-openapi-title-personalization-readonly.json",
+      "captured_at": "2026-07-18T23:42:54+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-payment-settlement-readonly-2026-07-18T235452+0800",
+      "path": "references/learning-runs/2026-07-18-payment-settlement-readonly.json",
+      "captured_at": "2026-07-18T23:54:52+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-refund-cancellation-readonly-2026-07-19T000721+0800",
+      "path": "references/learning-runs/2026-07-19-refund-cancellation-readonly.json",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-case-chargeback-ddp-readonly-2026-07-19T001851+0800",
+      "path": "references/learning-runs/2026-07-19-case-chargeback-ddp-readonly.json",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-ads-metrics-attribution-readonly-2026-07-19T003248+0800",
+      "path": "references/learning-runs/2026-07-19-ads-metrics-attribution-readonly.json",
+      "captured_at": "2026-07-19T00:32:48+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-support-ai-billing-safety-readonly-2026-07-19T004514+0800",
+      "path": "references/learning-runs/2026-07-19-support-ai-billing-safety-readonly.json",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-official-github-openapi-audit-readonly-2026-07-19T010217+0800",
+      "path": "references/learning-runs/2026-07-19-official-github-openapi-audit-readonly.json",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-marketplace-insights-trends-comments-readonly-2026-07-19T013024+0800",
+      "path": "references/learning-runs/2026-07-19-marketplace-insights-trends-comments-readonly.json",
+      "captured_at": "2026-07-19T01:30:24+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-spring-summer-trend-report-comments-readonly-2026-07-19T014329+0800",
+      "path": "references/learning-runs/2026-07-19-spring-summer-trend-report-comments-readonly.json",
+      "captured_at": "2026-07-19T01:43:29+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-agentic-discovery-seller-agent-comments-readonly-2026-07-19T015716+0800",
+      "path": "references/learning-runs/2026-07-19-agentic-discovery-seller-agent-comments-readonly.json",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-listing-video-two-slot-comments-readonly-2026-07-19T021719+0800",
+      "path": "references/learning-runs/2026-07-19-listing-video-two-slot-comments-readonly.json",
+      "captured_at": "2026-07-19T02:17:19+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-creativity-vintage-craft-supplies-comments-readonly-2026-07-19T023910+0800",
+      "path": "references/learning-runs/2026-07-19-creativity-vintage-craft-supplies-comments-readonly.json",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-tags-attributes-category-comments-readonly-2026-07-19T030634+0800",
+      "path": "references/learning-runs/2026-07-19-tags-attributes-category-comments-readonly.json",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-openapi-knowledge-package-audit-readonly-2026-07-19T032940+0800",
+      "path": "references/learning-runs/2026-07-19-openapi-knowledge-package-audit-readonly.json",
+      "captured_at": "2026-07-19T03:29:40+08:00",
+      "result": "increment_observed"
+    },
+    {
+      "run_id": "etsy-review-response-knowledge-package-audit-readonly-2026-07-19T035556+0800",
+      "path": "references/learning-runs/2026-07-19-review-response-knowledge-package-audit-readonly.json",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "result": "increment_observed"
+    }
+  ],
+  "allowed_states": [
+    "verified_live_fact",
+    "time_sensitive_evidence",
+    "historical_operator_trace",
+    "draft",
+    "failed_attempt",
+    "unknown",
+    "blocked_owner_input"
+  ],
+  "allowed_evidence_tiers": [
+    "official_current",
+    "verified_software_observation",
+    "multi_source_practice",
+    "single_case",
+    "historical_trace",
+    "unknown"
+  ],
+  "baseline_source_ids": [
+    "etsy_api_home_access",
+    "etsy_api_auth",
+    "etsy_api_listings",
+    "etsy_api_shop_management",
+    "etsy_creativity_standards",
+    "etsy_production_partners",
+    "etsy_listing_images",
+    "etsy_ip_policy",
+    "etsy_tags",
+    "etsy_attributes_help_2026",
+    "etsy_keywords_101_2025",
+    "etsy_title_guidance_2026",
+    "etsy_listing_form",
+    "etsy_fees",
+    "etsy_payments_countries",
+    "etsy_advertising_policy",
+    "etsy_offsite_ads",
+    "etsy_processing_profiles",
+    "etsy_complete_order_tracking",
+    "etsy_customer_service_standards",
+    "etsy_eu_returns_2026",
+    "etsy_ai_seller_tools_2026"
+  ],
+  "incremental_records": [
+    {
+      "id": "etsy_what_can_sell",
+      "url": "https://help.etsy.com/hc/en-us/articles/360024112614-What-Can-I-Sell-on-Etsy",
+      "state": "verified_live_fact",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "self_owned",
+        "private_tenant_owned",
+        "platform_co_ops",
+        "partner_owned"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "allowed_item_classes",
+        "handmade_reselling_block",
+        "service_boundary"
+      ]
+    },
+    {
+      "id": "etsy_prohibited_current_2026",
+      "url": "https://www.etsy.com/legal/prohibited/",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_until": "2026-08-11",
+      "refresh_days": 7,
+      "claim_keys": [
+        "current_prohibited_categories",
+        "counterfeit_block",
+        "international_compliance"
+      ]
+    },
+    {
+      "id": "etsy_prohibited_future_2026",
+      "url": "https://www.etsy.com/legal/policy/prohibited-items-policy-effective/1475031537022",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-08-11",
+      "refresh_days": 7,
+      "claim_keys": [
+        "future_policy_not_current",
+        "section_2_natural_fur_change"
+      ]
+    },
+    {
+      "id": "etsy_sales_discounts_2026",
+      "url": "https://help.etsy.com/hc/en-gb/articles/115014260108-How-to-Set-Up-Sales-and-Discounts-for-Your-Shop",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "four_discount_surfaces",
+        "highest_overlapping_sale",
+        "shop_manager_write"
+      ]
+    },
+    {
+      "id": "etsy_review_system_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360000572708-How-the-Review-System-Works-for-Sellers",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "review_window",
+        "review_json_download",
+        "review_media_public"
+      ]
+    },
+    {
+      "id": "etsy_negative_review_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015808588-What-to-Do-if-You-Receive-a-Negative-Review",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "report_policy_violation_only",
+        "public_reply_one_time",
+        "buyer_edit_lock_after_reply"
+      ]
+    },
+    {
+      "id": "etsy_purchase_protection_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/5850122619287-What-is-Etsy-s-Purchase-Protection-for-Sellers",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL",
+        "US_IMPORT"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-05-07",
+      "refresh_days": 14,
+      "claim_keys": [
+        "eligibility_not_guaranteed",
+        "coverage_cap",
+        "shipping_tracking_service_requirements"
+      ]
+    },
+    {
+      "id": "etsy_ads_campaign_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360033701174-How-to-Set-Up-and-Manage-an-Etsy-Ads-Campaign",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "shop_manager_entry",
+        "new_shop_wait",
+        "daily_budget_minimum",
+        "listing_strategy"
+      ]
+    },
+    {
+      "id": "etsy_ads_placement_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015745808-How-Ads-Are-Placed-in-Etsy-Search",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "auction",
+        "quality_click_likelihood",
+        "bid_relevance",
+        "self_search_not_performance_proof"
+      ]
+    },
+    {
+      "id": "etsy_writing_assistant_2026",
+      "url": "https://www.etsy.com/seller-handbook/article/1391026289050",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:12:05+08:00",
+      "country_sites": [
+        "US_ENGLISH_SELECTED"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "conditional_beta",
+        "desktop_and_seller_app_entry",
+        "listing_and_message_context_inputs",
+        "insufficient_context_recovery",
+        "editable_draft",
+        "seller_review_before_send",
+        "no_verified_api"
+      ]
+    },
+    {
+      "id": "etsy_personalization_migration_2026",
+      "url": "https://developers.etsy.com/documentation/tutorials/personalization-migration/",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:27:57+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "dedicated_personalization_endpoints",
+        "legacy_fields_deprecated",
+        "five_typed_questions",
+        "full_replacement_write",
+        "compatibility_parameter",
+        "overwrite_409"
+      ]
+    },
+    {
+      "id": "etsy_openapi_reference_2026",
+      "url": "https://developers.etsy.com/documentation/reference/",
+      "state": "unknown",
+      "captured_at": "2026-07-18T22:27:57+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "dynamic_reference_render_failed",
+        "taxonomy_inventory_index_only",
+        "third_variation_not_promoted"
+      ]
+    },
+    {
+      "id": "etsy_search_visibility_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/25869947521175-How-to-Use-the-Etsy-Search-Visibility-Page",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:35:40+08:00",
+      "country_sites": [
+        "GLOBAL",
+        "ENGLISH_SHOPS"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "search_visibility_three_areas",
+        "conditional_update_titles_entry",
+        "review_edit_approve",
+        "csv_backup",
+        "twenty_four_hour_reflection_boundary"
+      ]
+    },
+    {
+      "id": "etsy_stats_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015774268-How-to-Use-Etsy-Stats-for-Your-Shop",
+      "state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:35:40+08:00",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "shop_stats_metrics",
+        "traffic_sources",
+        "ads_clicks_not_visits",
+        "refresh_and_bot_filtering",
+        "self_search_not_performance_proof"
+      ]
+    },
+    {
+      "id": "etsy_api_request_standards_2026",
+      "url": "https://developers.etsy.com/documentation/essentials/requests/",
+      "canonical_url": "https://developers.etsy.com/documentation/essentials/requests/",
+      "content_id": "etsy-open-api-v3-request-standards",
+      "title": "Request Standards",
+      "author": "Etsy",
+      "captured_at": "2026-07-18T22:44:43+08:00",
+      "content_hash": "sha256:0d526247ff40922325c2b92c32f24ca3d8b72c5a9297bcfe0f4d8902d05d4a7b",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "x_api_key_keystring_shared_secret",
+        "oauth_bearer_additional",
+        "documented_header_not_connection_proof"
+      ]
+    },
+    {
+      "id": "etsy_open_api_github_2026",
+      "url": "https://github.com/etsy/open-api",
+      "canonical_url": "https://github.com/etsy/open-api",
+      "content_id": "github-repository-332033739",
+      "title": "etsy/open-api",
+      "author": "Etsy GitHub organization",
+      "published_at": "2021-01-22",
+      "captured_at": "2026-07-18T22:44:43+08:00",
+      "content_hash": "sha256:f7c3349c11409da3895230745cef8b1b56c72418543c0d6aef082ca2a58f229b",
+      "version_fingerprints": [
+        "readme-git-sha1:4305c51a23bf53cbc081b85050ad74da6df7955b",
+        "security-git-sha1:9a9fa51d32443e93484d591c8dc1254b550fde21",
+        "default_branch:main",
+        "pushed_at:2026-04-29"
+      ],
+      "language": "en",
+      "license": "unknown_no_detected_license",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "official_org_repository",
+        "repository_activity_fingerprint",
+        "license_unknown",
+        "research_only_no_install"
+      ]
+    },
+    {
+      "id": "etsy_open_api_shared_secret_announcement_2026",
+      "url": "https://github.com/etsy/open-api/discussions/1531",
+      "canonical_url": "https://github.com/etsy/open-api/discussions/1531",
+      "content_id": "github-discussion-1531",
+      "title": "Reminder: Shared secret enforcement",
+      "author": "Etsy Open API official repository",
+      "published_at": "2026-02-06",
+      "captured_at": "2026-07-18T22:44:43+08:00",
+      "content_hash": "sha256:36ba2b2fae81f26df504050480c82aeee975f03a13e060596975a02b8c97c053",
+      "language": "en",
+      "license": "public_announcement_read_only_no_code_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-02-09",
+      "refresh_days": 30,
+      "claim_keys": [
+        "shared_secret_enforcement_date",
+        "corroborated_by_request_standards"
+      ]
+    },
+    {
+      "id": "etsy_variations_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015664047-How-to-Add-Variations-for-Your-Listings",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015664047-How-to-Add-Variations-for-Your-Listings",
+      "content_id": "etsy-help-115015664047",
+      "title": "How to Add Variations for Your Listings",
+      "author": "Etsy",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:420dcb590eee03f695753666db1051d88790ba18d0e2dceddac857a741534ae3",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_until": "2026-08-17",
+      "refresh_days": 14,
+      "claim_keys": [
+        "category_dependent_variations",
+        "current_two_attribute_ui",
+        "digital_variations_unavailable",
+        "custom_variations_not_search_facets"
+      ]
+    },
+    {
+      "id": "etsy_digital_listings_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015628347-How-to-Manage-Your-Digital-Listings",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015628347-How-to-Manage-Your-Digital-Listings",
+      "content_id": "etsy-help-115015628347",
+      "title": "How to Manage Your Digital Listings",
+      "author": "Etsy",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:380e925a11129d1257db4e0627e812327215e71c8cda6f457ca61189fa6b5ac2",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "instant_and_made_to_order_types",
+        "seller_made_or_designed",
+        "five_files_twenty_mb",
+        "digital_variations_unavailable",
+        "made_to_order_completion_write"
+      ]
+    },
+    {
+      "id": "reddit_digital_variations_case_1psg97o",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1psg97o/selling_digital_commissions_with_variations/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1psg97o/selling_digital_commissions_with_variations/",
+      "content_id": "reddit-post-1psg97o",
+      "title": "Selling Digital Commissions with Variations?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2025-12-21",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:2a11ef002e8f192a2f951f403fc55ac012780b899681ba997c4de69d723fb915",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "reported_digital_variation_absence",
+        "misclassification_question",
+        "buyer_confusion_anecdote"
+      ]
+    },
+    {
+      "id": "reddit_digital_variations_case_1uxxam6",
+      "url": "https://www.reddit.com/r/EtsyDigitalSeller/comments/1uxxam6/selling_digital_products_on_etsy_for_multiple/",
+      "canonical_url": "https://www.reddit.com/r/EtsyDigitalSeller/comments/1uxxam6/selling_digital_products_on_etsy_for_multiple/",
+      "content_id": "reddit-post-1uxxam6",
+      "title": "Selling Digital Products on Etsy for Multiple levels of variations",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-07-16",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:3dd00a02df669a583b8281064f162144c912b6e1c2bc0985a36b0e9df42872b5",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "reported_digital_variation_absence",
+        "separate_listing_hypothesis",
+        "bundle_hypothesis"
+      ]
+    },
+    {
+      "id": "reddit_digital_as_physical_case_1mdelr3",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1mdelr3/listing_digital_as_physical_products/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1mdelr3/listing_digital_as_physical_products/",
+      "content_id": "reddit-post-1mdelr3",
+      "title": "listing digital as physical products",
+      "author": "pseudonymous_public_user_not_retained",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:5a3abf0c81c765e01afd01a3186ef3ba191d4708b54a88a4230d6ac55d68bc34",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "competitor_misclassification_question",
+        "accurate_item_type_practice"
+      ]
+    },
+    {
+      "id": "etsy_openapi_spec_3_0_0_2026",
+      "url": "https://www.etsy.com/openapi/generated/oas/3.0.0.json",
+      "canonical_url": "https://www.etsy.com/openapi/generated/oas/3.0.0.json",
+      "content_id": "etsy-openapi-oas-3.0.0",
+      "title": "Etsy Open API v3 OpenAPI Specification",
+      "author": "Etsy",
+      "captured_at": "2026-07-18T23:42:38+08:00",
+      "content_hash": "sha256:f1ef521ae668f147e9e9ab298047922708d6b20a62b5794ceaa0f555938da4ae",
+      "version_fingerprints": [
+        "openapi:3.0.2",
+        "info.version:3.0.0",
+        "bytes:904326"
+      ],
+      "language": "en",
+      "license": "Etsy_API_terms_public_spec_read_only_no_code_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "ENGLISH_SHOPS_FOR_SUGGESTED_TITLE"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "allow_suggested_title_query",
+        "suggested_title_nullable",
+        "owner_oauth_required",
+        "english_shop_language",
+        "not_all_listings_have_suggestions",
+        "personalization_multiple_support_flag_warning"
+      ]
+    },
+    {
+      "id": "etsy_openapi_release_2026_03_24",
+      "url": "https://github.com/etsy/open-api/releases/tag/3.0.0-general-release-2026-03-24",
+      "canonical_url": "https://github.com/etsy/open-api/releases/tag/3.0.0-general-release-2026-03-24",
+      "content_id": "github-release-etsy-open-api-3.0.0-general-release-2026-03-24",
+      "title": "3.0.0 General Release 2026-03-24",
+      "author": "Etsy Open API official repository",
+      "published_at": "2026-03-24",
+      "captured_at": "2026-07-18T23:42:47+08:00",
+      "content_hash": "sha256:b3c9838050bc60fb095e9fd965fad58619c42cd7f2a102b3db1591bf00c5417d",
+      "language": "en",
+      "license": "public_release_notes_read_only_no_code_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-03-24",
+      "refresh_days": 14,
+      "claim_keys": [
+        "latest_visible_release",
+        "listing_video_upload_fix",
+        "image_ranking_fix",
+        "digital_made_to_order_activation_fix",
+        "video_format_400_fix"
+      ]
+    },
+    {
+      "id": "etsy_personalization_ga_2026",
+      "url": "https://github.com/etsy/open-api/discussions/1581",
+      "canonical_url": "https://github.com/etsy/open-api/discussions/1581",
+      "content_id": "github-discussion-1581",
+      "title": "Action Required: Prepare for General Audience Launch of New Personalization Features",
+      "author": "Etsy Open API official repository",
+      "published_at": "2026-04-14",
+      "captured_at": "2026-07-18T23:42:54+08:00",
+      "content_hash": "sha256:6bc022c543a4c2025af2d2ff2acf2580c54ed8ab520077c5e7734671bb61a3a9",
+      "language": "en",
+      "license": "public_announcement_read_only_no_code_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-05-11",
+      "refresh_days": 7,
+      "claim_keys": [
+        "personalization_ga_date",
+        "typed_multi_question_required",
+        "migrate_reads_and_writes",
+        "compatibility_flag_only_after_migration"
+      ]
+    },
+    {
+      "id": "etsy_payment_account_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015747228-How-to-Manage-Your-Payment-Account",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015747228-How-to-Manage-Your-Payment-Account",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015747228.json",
+      "content_id": "etsy-help-115015747228",
+      "title": "How to Manage Your Payment Account",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T17:49:20Z",
+      "captured_at": "2026-07-18T23:54:31+08:00",
+      "content_hash": "sha256:fc7113fdf1fb45cb88b69eb7b79e61bafe39b46a3f0dde30e8de7bde368e6d45",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "payment_account_state_model",
+        "available_for_deposit_deductions",
+        "negative_balance_boundary",
+        "account_specific_bank_and_reserve_state"
+      ]
+    },
+    {
+      "id": "etsy_receive_deposit_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360046998234-How-to-Receive-Your-Etsy-Payments-Deposit",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360046998234-How-to-Receive-Your-Etsy-Payments-Deposit",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360046998234.json",
+      "content_id": "etsy-help-360046998234",
+      "title": "How to Receive Your Etsy Payments Deposit",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T23:11:06Z",
+      "captured_at": "2026-07-18T23:54:30+08:00",
+      "content_hash": "sha256:c6c643efe737d216fec0a913308cb1c6f8b460cd57f774cafc486d9af2278621",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_LIMITED_BETA_FOR_INSTANT_TRANSFER"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "deposit_schedule_not_availability",
+        "country_currency_minimums",
+        "standard_bank_timing",
+        "instant_transfer_conditional_beta",
+        "payment_action_gate"
+      ]
+    },
+    {
+      "id": "etsy_payment_reserve_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360058722214-What-is-a-Payment-Account-Reserve",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360058722214-What-is-a-Payment-Account-Reserve",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360058722214.json",
+      "content_id": "etsy-help-360058722214",
+      "title": "What is a Payment Account Reserve?",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T11:45:42Z",
+      "captured_at": "2026-07-18T23:54:30+08:00",
+      "content_hash": "sha256:40b39b99a9c1e52fc0036fb11718c955b9bd31ee88e1df1b3c45eda9cfed96d8",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "physical_item_reserve",
+        "account_specific_percentage_and_period",
+        "etsy_confirmed_tracking_release",
+        "displayed_holding_period"
+      ]
+    },
+    {
+      "id": "etsy_deposit_reconciliation_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360016389113-How-to-Calculate-Your-Etsy-Payments-Deposit-Amount",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360016389113-How-to-Calculate-Your-Etsy-Payments-Deposit-Amount",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360016389113.json",
+      "content_id": "etsy-help-360016389113",
+      "title": "How to Calculate Your Etsy Payments Deposit Amount",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-14T13:32:19Z",
+      "captured_at": "2026-07-18T23:54:31+08:00",
+      "content_hash": "sha256:46e9d2b1f03be3539d4641be5e2a7c4cc8956536b452d3a6ca075a077b6c8eba",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "monthly_statement_csv",
+        "availability_window_reconciliation",
+        "deposit_not_net_profit",
+        "bank_receipt_separate"
+      ]
+    },
+    {
+      "id": "etsy_payments_tutorial_2026",
+      "url": "https://developers.etsy.com/documentation/tutorials/payments/",
+      "canonical_url": "https://developers.etsy.com/documentation/tutorials/payments/",
+      "content_id": "etsy-open-api-v3-payments-tutorial",
+      "title": "Payments Tutorial",
+      "author": "Etsy",
+      "captured_at": "2026-07-18T23:53:58+08:00",
+      "content_hash": "sha256:6862e4fac56287f5cbb09a4a028a253638c649e4843d2420ea8524a88aa2f399",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "ledger_read_only",
+        "payment_post_fulfillment",
+        "transactions_r",
+        "no_bank_settlement_object"
+      ]
+    },
+    {
+      "id": "reddit_payment_deposit_case_1ul22fq",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1ul22fq/how_does_etsys_paymentdeposit_work/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1ul22fq/how_does_etsys_paymentdeposit_work/",
+      "content_id": "reddit-post-1ul22fq",
+      "title": "How does Etsy's payment/deposit work",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-07-01",
+      "captured_at": "2026-07-18T23:54:52+08:00",
+      "content_hash": "sha256:4ace1341bbbbbc1d88c67d277e362f02a858af6382de9d6dad5f55dfa8fbf785",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN_GBP_MENTIONED"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "seller_confusion_between_reserve_availability_and_deposit",
+        "inconsistent_community_duration_claims",
+        "official_account_state_controls"
+      ]
+    },
+    {
+      "id": "etsy_cancel_sale_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015587347-How-to-Cancel-a-Sale",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015587347-How-to-Cancel-a-Sale",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015587347.json",
+      "content_id": "etsy-help-115015587347",
+      "title": "How to Cancel a Sale",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T07:24:52Z",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "content_hash": "sha256:c791610dfdf995fb633b50220f42c22a579aa1550af6704055a2b9ad16b92614",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "seller_only_cancellation",
+        "cancellation_full_refund",
+        "cancellation_processing_and_buyer_receipt_separate",
+        "refund_does_not_cancel",
+        "sold_out_not_auto_renewed",
+        "non_etsy_payment_branch"
+      ]
+    },
+    {
+      "id": "etsy_issue_refund_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360002089188-How-to-Issue-a-Full-or-Partial-Refund-For-an-Order",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360002089188-How-to-Issue-a-Full-or-Partial-Refund-For-an-Order",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360002089188.json",
+      "content_id": "etsy-help-360002089188",
+      "title": "How to Issue a Full or Partial Refund For an Order",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T19:01:52Z",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "content_hash": "sha256:5c2201cec03111316c61b4d8672c2889cb55a177f9bdf32e732dc746dfba931d",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "full_partial_review_submit",
+        "payment_account_and_card_shortfall",
+        "seller_cannot_choose_buyer_destination",
+        "after_processing_before_180_days",
+        "chargeback_nonrefundable",
+        "outside_refund_no_fee_recovery"
+      ]
+    },
+    {
+      "id": "etsy_buyer_return_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360022953514-How-to-Help-a-Buyer-With-a-Return",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360022953514-How-to-Help-a-Buyer-With-a-Return",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360022953514.json",
+      "content_id": "etsy-help-360022953514",
+      "title": "How to Help a Buyer With a Return",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T23:22:22Z",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "content_hash": "sha256:55c0a9d605ab4ec35bc576249de6a9479e281dca83db6fd10eb57075d3055895",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_RETURN_LABEL_OPTION"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "coordinate_wait_refund",
+        "destination_timeframe_shipping_responsibility",
+        "country_scoped_return_label",
+        "label_and_message_external_actions",
+        "refund_not_above_original_amount"
+      ]
+    },
+    {
+      "id": "etsy_processing_order_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015440727-Why-Is-an-Order-or-Payment-in-My-Shop-Still-Processing",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015440727-Why-Is-an-Order-or-Payment-in-My-Shop-Still-Processing",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015440727.json",
+      "content_id": "etsy-help-115015440727",
+      "title": "Why Is an Order or Payment in My Shop Still Processing?",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T13:35:41Z",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "content_hash": "sha256:9eb03cf6ae3b763608946e79e9a04517348874ef5f02fa0e15c745d99452590c",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "processing_blocks_ship_and_cancel",
+        "usually_72_hours_not_guaranteed",
+        "confirmation_surfaces",
+        "failed_processing_relists_and_notifies"
+      ]
+    },
+    {
+      "id": "reddit_refund_math_case_1um57mc",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1um57mc/can_some_explain_to_me_how_this_refund_math_works/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1um57mc/can_some_explain_to_me_how_this_refund_math_works/",
+      "content_id": "reddit-post-1um57mc",
+      "title": "Can some explain to me how this refund math works?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-07-03",
+      "captured_at": "2026-07-19T00:07:21+08:00",
+      "content_hash": "sha256:e4fc6735492cb48977ff74bbeee59350309889d73668757aee33056452db31bf",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "unknown"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "seller_confusion_refund_balance_and_card_shortfall",
+        "actual_ledger_unknown",
+        "official_refund_funding_controls"
+      ]
+    },
+    {
+      "id": "etsy_answer_help_request_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/13241489600919-How-to-Answer-a-Help-Request-from-a-Buyer",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/13241489600919-How-to-Answer-a-Help-Request-from-a-Buyer",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/13241489600919.json",
+      "content_id": "etsy-help-13241489600919",
+      "title": "How to Answer a Help Request from a Buyer",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T07:20:03Z",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash": "sha256:f068e45dba385da1188a07ed765c19ed32ee9e7de2cd35d4206f45990284b924",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "labeled_help_request",
+        "email_notification",
+        "normal_48_hour_resolution_window",
+        "etsy_policy_precedence",
+        "keep_issue_in_etsy_messages"
+      ]
+    },
+    {
+      "id": "etsy_resolve_buyer_case_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360016126873-How-to-Resolve-a-Case-from-a-Buyer",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360016126873-How-to-Resolve-a-Case-from-a-Buyer",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360016126873.json",
+      "content_id": "etsy-help-360016126873",
+      "title": "How to Resolve a Case from a Buyer",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T11:08:53Z",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash": "sha256:3ef14daa6c59c79335e4d958c37af5bd1eeea6eedcdf942bbbb2ebbfd1e4b789",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "case_reasons_and_timing",
+        "case_log_evidence",
+        "etsy_refund_and_recoupment",
+        "closure_states",
+        "limited_outcome_review"
+      ]
+    },
+    {
+      "id": "etsy_shop_chargeback_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015729027-What-to-Do-If-There-s-a-Chargeback-in-Your-Shop",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015729027-What-to-Do-If-There-s-a-Chargeback-in-Your-Shop",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015729027.json",
+      "content_id": "etsy-help-115015729027",
+      "title": "What to Do If There's a Chargeback in Your Shop",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-16T15:40:09Z",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash": "sha256:243160e93275d5c24e6082cd94861d72b685ef637903c71203a5dfddb2a1c24a",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "etsy_email_evidence_deadline",
+        "payment_account_debit_not_order_refund",
+        "double_refund_prevention",
+        "shipping_and_listing_evidence"
+      ]
+    },
+    {
+      "id": "etsy_cases_policy_2026_07_09",
+      "url": "https://www.etsy.com/legal/policy/cases-policy/243306189901",
+      "canonical_url": "https://www.etsy.com/legal/policy/cases-policy/243306189901",
+      "content_id": "etsy-legal-cases-policy-243306189901",
+      "title": "Cases Policy",
+      "author": "Etsy",
+      "published_at": "2026-06-09",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "effective_from:2026-07-09",
+        "last_updated:2026-06-09",
+        "title:Cases Policy"
+      ],
+      "language": "en",
+      "license": "public_legal_policy_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_LEGAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-09",
+      "refresh_days": 7,
+      "claim_keys": [
+        "current_cases_policy_version",
+        "one_dispute_method",
+        "two_calendar_day_seller_response",
+        "early_resolution_integrity_conditions",
+        "no_conditional_case_closure"
+      ]
+    },
+    {
+      "id": "etsy_purchase_protection_policy_2026_07_09",
+      "url": "https://www.etsy.com/legal/policy/purchase-protection-program-for-sellers/34509585385",
+      "canonical_url": "https://www.etsy.com/legal/policy/purchase-protection-program-for-sellers/34509585385",
+      "content_id": "etsy-legal-purchase-protection-34509585385",
+      "title": "Purchase Protection Program for Sellers",
+      "author": "Etsy",
+      "published_at": "2026-06-09",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "effective_from:2026-07-09",
+        "last_updated:2026-06-09",
+        "title:Purchase Protection Program for Sellers"
+      ],
+      "language": "en",
+      "license": "public_legal_policy_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_DESTINATION_ORDERS"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-09",
+      "refresh_days": 7,
+      "claim_keys": [
+        "current_purchase_protection_version",
+        "us_destination_ddp",
+        "rare_no_ddp_exception",
+        "explicit_buyer_acknowledgement",
+        "seller_ineligible_and_excess_responsibility",
+        "primary_coverage_first"
+      ]
+    },
+    {
+      "id": "reddit_us_ddp_policy_case_1u187pz",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1u187pz/etsy_announcement_upcoming_policy_changes_for/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1u187pz/etsy_announcement_upcoming_policy_changes_for/",
+      "content_id": "reddit-post-1u187pz",
+      "title": "Etsy Announcement: Upcoming policy changes for orders shipped to the US",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-06-09",
+      "captured_at": "2026-07-19T00:18:51+08:00",
+      "content_hash": "sha256:5173fb2402da4ad11c457f6498822e592b1c691c4ff44b75dc4f66c78a545f8e",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "MULTIPLE_NON_US_SELLERS_TO_US"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "seller_ddp_carrier_uncertainty",
+        "etsy_ddp_verification_unknown",
+        "conflicting_duties_and_return_claims",
+        "official_policy_controls"
+      ]
+    },
+    {
+      "id": "etsy_ads_performance_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360034223613-How-to-Review-the-Performance-of-Your-Etsy-Ads",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360034223613-How-to-Review-the-Performance-of-Your-Etsy-Ads",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360034223613.json",
+      "content_id": "etsy-help-360034223613",
+      "title": "How to Review the Performance of Your Etsy Ads",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-17T13:29:42Z",
+      "captured_at": "2026-07-19T00:32:48+08:00",
+      "content_hash": "sha256:f60fea3d7de47a48e8168652ccb19db0099b404c626efe55ec9e4b25e162f226",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "ads_metric_dictionary",
+        "click_vs_visit_boundary",
+        "any_shop_item_30_day_attribution",
+        "average_cpc_and_roas_scope",
+        "search_term_privacy_suppression",
+        "minimum_30_day_context",
+        "no_sales_guarantee"
+      ]
+    },
+    {
+      "id": "reddit_ads_budget_roas_case_1ruo9fi",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1ruo9fi/when_to_increase_etsy_ads/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1ruo9fi/when_to_increase_etsy_ads/",
+      "content_id": "reddit-post-1ruo9fi",
+      "title": "When to increase Etsy ads",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-03-15",
+      "captured_at": "2026-07-19T00:32:48+08:00",
+      "content_hash": "sha256:e0e2c7cba010e48b36d9928f83848c068c107c2f7ea8dd6e09a867debb76b1df",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 90,
+      "claim_keys": [
+        "budget_exhaustion_question",
+        "roas_percent_vs_multiple_ambiguity",
+        "conflicting_budget_advice",
+        "official_metrics_and_live_economics_control"
+      ]
+    },
+    {
+      "id": "etsy_contact_support_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115013375488-How-to-Contact-Etsy-Support",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115013375488-How-to-Contact-Etsy-Support",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115013375488.json",
+      "content_id": "etsy-help-115013375488",
+      "title": "How to Contact Etsy Support",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T16:42:54Z",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:4c1a931f831aa5444fd1446cc7c6f06467737f8a01d88866b0d27d1b9ac8cc52",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "official_support_path",
+        "eligible_shop_manager_ai_chat",
+        "contact_form_fallback",
+        "no_public_inbound_phone",
+        "callback_request_boundary",
+        "from_etsy_and_email_authenticity"
+      ]
+    },
+    {
+      "id": "etsy_support_ai_agent_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/27283630080151-How-Etsy-s-Customer-Support-AI-Agent-Works",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/27283630080151-How-Etsy-s-Customer-Support-AI-Agent-Works",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/27283630080151.json",
+      "content_id": "etsy-help-27283630080151",
+      "title": "How Etsy's Customer Support AI Agent Works",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T16:39:17Z",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:3d59a8830e67c513a5a8983c36a3237a7797ec975c182bed16f65264332a0a6f",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "EEA",
+        "UK",
+        "US",
+        "CANADA"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "etsy_member"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "help_center_grounding",
+        "issue_categorization",
+        "human_escalation",
+        "verification_request",
+        "zendesk_and_sierra_providers",
+        "recording_and_identifier_masking",
+        "regional_training_privacy",
+        "six_year_transcript_retention"
+      ]
+    },
+    {
+      "id": "etsy_shop_balance_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360024112294-How-Do-I-Pay-My-Etsy-Shop-Balance",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360024112294-How-Do-I-Pay-My-Etsy-Shop-Balance",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360024112294.json",
+      "content_id": "etsy-help-360024112294",
+      "title": "How Do I Pay My Etsy Shop Balance?",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-16T13:11:35Z",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:6b01699aafb3c74061b4aa52dd7233274286acb24ee5ab1128dfafc260692ea0",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_AUTOBILLING",
+        "EEA_PAYMENT_AUTHENTICATION"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "fees_offset_sales_funds",
+        "month_end_negative_to_amount_due",
+        "later_sale_reduces_amount_due",
+        "pay_now_submit_boundary",
+        "conditional_us_autobilling",
+        "eea_payment_authentication"
+      ]
+    },
+    {
+      "id": "etsy_suspected_fraud_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015654008-What-to-Do-if-You-Suspect-Fraud-in-Your-Etsy-Account",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015654008-What-to-Do-if-You-Suspect-Fraud-in-Your-Etsy-Account",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015654008.json",
+      "content_id": "etsy-help-115015654008",
+      "title": "What to Do if You Suspect Fraud in Your Etsy Account",
+      "author": "Etsy",
+      "content_updated_at": "2026-07-18T12:50:48Z",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:0c95088414fc1e5bdc4300472d3d172c8a4e1b0eceb295335557e0d682b11441",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "buyer"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "unrecognized_charge_not_automatic_compromise",
+        "processing_delay_not_automatic_fraud",
+        "owner_password_and_mfa_actions",
+        "no_full_bank_information_in_support"
+      ]
+    },
+    {
+      "id": "reddit_ads_charge_currency_case_paoc5b",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/paoc5b/inconsistencies_in_etsy_ad_charges/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/paoc5b/inconsistencies_in_etsy_ad_charges/",
+      "content_id": "reddit-post-paoc5b",
+      "title": "Inconsistencies in Etsy Ad charges?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2021-08-24",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:3d85ca107b59611353197a630b2044a49ad4c33f73b2fab2091b52347af43127",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "CANADA_SELLER_CAD_USD_MENTIONED"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 180,
+      "claim_keys": [
+        "ads_vs_payment_amount_mismatch",
+        "currency_explanation_single_case",
+        "offsite_tax_and_error_speculation",
+        "same_shop_reconciliation_required"
+      ]
+    },
+    {
+      "id": "reddit_ads_bank_billing_case_1kg5fgd",
+      "url": "https://www.reddit.com/r/Etsy/comments/1kg5fgd/does_etsy_ads_take_payment_daily_from_your_bank/",
+      "canonical_url": "https://www.reddit.com/r/Etsy/comments/1kg5fgd/does_etsy_ads_take_payment_daily_from_your_bank/",
+      "content_id": "reddit-post-1kg5fgd",
+      "title": "Does Etsy Ads take payment daily from your bank account?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2025-05-06",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:a92021d5c1c5200a0cce66eec025ba7c44fac3bc331f86a8213ad865cc9b11b7",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 180,
+      "claim_keys": [
+        "daily_bank_charge_confusion",
+        "sales_offset_vs_no_sale_liability",
+        "negative_balance_replies",
+        "actual_billing_state_required"
+      ]
+    },
+    {
+      "id": "reddit_ads_billing_cycle_case_17p8shv",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/17p8shv/how_etsy_ads_works/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/17p8shv/how_etsy_ads_works/",
+      "content_id": "reddit-post-17p8shv",
+      "title": "How Etsy ads works",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2023-11-06",
+      "captured_at": "2026-07-19T00:45:14+08:00",
+      "content_hash": "sha256:78871f462e0f81003eb9506be5443e7642f1a0392a09ba35e1f3855845927a59",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 180,
+      "claim_keys": [
+        "external_ad_network_billing_comparison",
+        "sales_offset_reply",
+        "remaining_amount_billed_reply",
+        "official_balance_state_controls"
+      ]
+    },
+    {
+      "id": "etsy_github_org_identity_2026",
+      "url": "https://github.com/etsy",
+      "canonical_url": "https://github.com/etsy",
+      "content_id": "github-org-etsy",
+      "title": "Etsy GitHub organization",
+      "author": "Etsy",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:7fc329b36d4adcf5e53671cf6f06d47d31c6c92c25bd474087a7cef3eef8092a",
+      "language": "en",
+      "license": "public_metadata_read_only",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "developer"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "verified_organization_controls_etsy_com",
+        "85_public_repositories",
+        "official_identity_not_install_permission"
+      ]
+    },
+    {
+      "id": "etsy_openapi_dev_mcp_2026",
+      "url": "https://developer.etsy.com/documentation/mcp_server/devmcpserver/",
+      "canonical_url": "https://developer.etsy.com/documentation/mcp_server/devmcpserver/",
+      "content_id": "etsy-developer-openapi-dev-mcp",
+      "title": "Etsy OpenAPI Dev MCP Server",
+      "author": "Etsy",
+      "published_at": "2026-04-15",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:05d1a3e49e1a7c3516f75efa39b3ae8ea855a6c82c4a63d8deb3b20fdd0b3aaa",
+      "language": "en",
+      "license": "public_documentation_read_only_server_source_and_license_unknown",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL_DEVELOPER_PUBLIC"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "developer"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "hosted_mcp_url",
+        "schema_endpoint_and_guide_lookup",
+        "does_not_call_etsy_api",
+        "tool_count_mismatch",
+        "not_connected"
+      ]
+    },
+    {
+      "id": "etsy_seller_api_access_2026",
+      "url": "https://github.com/etsy/open-api/discussions/1647",
+      "canonical_url": "https://github.com/etsy/open-api/discussions/1647",
+      "content_id": "github-discussion-1647",
+      "title": "Seller API Access announcement",
+      "author": "Etsy Open API support",
+      "published_at": "2026-07-13",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:d1efc74a9ee8f51e3df24d3656256bd50e9d3c35e6a3accecb0179d46fb40107",
+      "language": "en",
+      "license": "public_announcement_read_only",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "individual_self_shop",
+        "commercial_multi_seller"
+      ],
+      "ownership": [
+        "per_shop_owner"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-13",
+      "refresh_days": 14,
+      "claim_keys": [
+        "seller_access_self_shop_only",
+        "eligible_active_good_standing_shop",
+        "commercial_access_unchanged",
+        "cross_shop_reuse_forbidden"
+      ]
+    },
+    {
+      "id": "etsy_inventory_shipping_endpoint_migration_2026",
+      "url": "https://github.com/etsy/open-api/discussions/1653",
+      "canonical_url": "https://github.com/etsy/open-api/discussions/1653",
+      "content_id": "github-discussion-1653",
+      "title": "Inventory and shipping endpoint migration",
+      "author": "Etsy Open API support",
+      "published_at": "2026-07-17",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:1e91f0044551f8e27e10b9a37b52486799936decd1365e961b66534a908b7801",
+      "language": "en",
+      "license": "public_announcement_read_only",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "developer"
+      ],
+      "ownership": [
+        "per_shop_owner"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-29",
+      "refresh_days": 7,
+      "claim_keys": [
+        "dedicated_shipping_read",
+        "dedicated_inventory_read",
+        "includes_return_400_from_2026_07_29",
+        "payload_shape_unchanged"
+      ]
+    },
+    {
+      "id": "etsy_third_variation_announcement_2026",
+      "url": "https://github.com/etsy/open-api/discussions/1648",
+      "canonical_url": "https://github.com/etsy/open-api/discussions/1648",
+      "content_id": "github-discussion-1648",
+      "title": "Third variation readiness announcement",
+      "author": "Etsy Open API support",
+      "published_at": "2026-07-14",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:9b2633803dcd6b8bf90311002d87098a81775fc2f065fec1fceb8a54671149bd",
+      "language": "en",
+      "license": "public_announcement_read_only",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL_DEVELOPER_PREVIEW"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "developer"
+      ],
+      "ownership": [
+        "per_shop_owner"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-08-17",
+      "refresh_days": 7,
+      "claim_keys": [
+        "max_variations_supported_3",
+        "2500_product_limit",
+        "400_on_property_limit",
+        "omission_can_delete",
+        "no_production_before_ga"
+      ]
+    },
+    {
+      "id": "etsy_open_api_security_policy_2026",
+      "url": "https://github.com/etsy/open-api/security/policy",
+      "canonical_url": "https://github.com/etsy/open-api/security/policy",
+      "content_id": "github-security-policy-etsy-open-api",
+      "title": "Security policy for etsy/open-api",
+      "author": "Etsy",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:2e96b822ed2beeb26761a9984bf709d84e752576bf6ecf217e90d6faf52bc727",
+      "language": "en",
+      "license": "public_metadata_read_only",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "developer"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "bugcrowd_and_security_email_reporting",
+        "no_published_advisories_at_capture",
+        "absence_not_safety_proof"
+      ]
+    },
+    {
+      "id": "etsy_marketplace_insights_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/35122361353239-How-Do-I-Use-Etsy-s-Marketplace-Insights-Tool",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/35122361353239-How-Do-I-Use-Etsy-s-Marketplace-Insights-Tool",
+      "content_id": "etsy-help-35122361353239",
+      "title": "How Do I Use Etsy's Marketplace Insights Tool?",
+      "author": "Etsy",
+      "captured_at": "2026-07-19T01:30:24+08:00",
+      "content_hash": "sha256:b26dabe4ff0c3727120d02518e3f6db3fd00d1fed517d04cabfa9aa1acfba8ec",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 7,
+      "claim_keys": [
+        "web_entry",
+        "thirty_day_search_and_listing_window",
+        "free_15_weekly",
+        "plus_unlimited",
+        "seven_day_result_retention",
+        "no_listing_write",
+        "search_term_not_policy_permission"
+      ]
+    },
+    {
+      "id": "etsy_marketplace_insights_handbook_2025",
+      "url": "https://www.etsy.com/seller-handbook/article/1404564905677",
+      "canonical_url": "https://www.etsy.com/seller-handbook/article/1404564905677",
+      "content_id": "etsy-seller-handbook-1404564905677",
+      "title": "How to Spot Trends and Keywords With Marketplace Insights",
+      "author": "Etsy Staff",
+      "published_at": "2025-11-04",
+      "captured_at": "2026-07-19T01:30:24+08:00",
+      "content_hash": "sha256:12269170045d39b52bb98d015f31dc02085185f07dc11758c531817d3fa3e1cf",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_SELLER_HANDBOOK"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2025-11-04",
+      "refresh_days": 7,
+      "claim_keys": [
+        "beta_status",
+        "listing_inventory_marketing_hypotheses",
+        "stats_measurement",
+        "title_suggestions_plus_visibility_workflow",
+        "no_ranking_or_sales_guarantee"
+      ]
+    },
+    {
+      "id": "reddit_marketplace_insights_loading_case_1uvpkq5",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1uvpkq5/is_marketplace_insights_down_for_you/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1uvpkq5/is_marketplace_insights_down_for_you/",
+      "content_id": "reddit-post-1uvpkq5",
+      "title": "Is marketplace insights down for you?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-07-14",
+      "captured_at": "2026-07-19T01:30:24+08:00",
+      "content_hash": "sha256:1c7f092823e2200e051bf68db389a3814710a981e432b47c88e91c79173718f9",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "intermittent_loading_error",
+        "plus_hidden_limit_speculation",
+        "third_party_recommendation_noise",
+        "official_help_controls"
+      ]
+    },
+    {
+      "id": "etsy_spring_summer_trend_report_2026",
+      "url": "https://www.etsy.com/seller-handbook/article/1473931456647",
+      "canonical_url": "https://www.etsy.com/seller-handbook/article/1473931456647",
+      "content_id": "etsy-seller-handbook-1473931456647",
+      "title": "Seller Trend Report: Spring and Summer 2026",
+      "author": "Etsy Staff",
+      "published_at": "2026-03-17",
+      "captured_at": "2026-07-19T01:43:29+08:00",
+      "content_hash": "sha256:1c395206b9435631c1c8f3f2afff8fda7b4661d975d47cd3d7c89aecf0c918f7",
+      "language": "en",
+      "license": "public_documentation_read_only_no_code_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "US_SIGNED_IN_DATA",
+        "NORTHERN_HEMISPHERE_SEASONAL_FRAMING"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-03-17",
+      "data_as_of": "2026-02-10",
+      "refresh_days": 30,
+      "claim_keys": [
+        "three_month_year_over_year_window",
+        "normalized_us_signed_in_search_activity",
+        "us_active_buyer_age_signal_subset",
+        "directional_method",
+        "northern_hemisphere_seasonal_frame",
+        "hypothesis_not_shop_demand"
+      ]
+    },
+    {
+      "id": "etsy_chatgpt_app_conversational_search_2026",
+      "url": "https://www.etsy.com/news/from-keywords-to-conversation-etsyas-next-steps-into-conversational-search-with-app-in-chatgpt",
+      "canonical_url": "https://www.etsy.com/news/from-keywords-to-conversation-etsyas-next-steps-into-conversational-search-with-app-in-chatgpt",
+      "content_id": "etsy-news-chatgpt-app-conversational-search-2026-05-05",
+      "title": "From Keywords to Conversation: Etsy's next steps into conversational search with an app in ChatGPT",
+      "author": "Rafe Colburn, Chief Product and Technology Officer",
+      "published_at": "2026-05-05",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:From Keywords to Conversation: Etsy's next steps into conversational search with an app in ChatGPT",
+        "published_at:2026-05-05",
+        "sections:building_on_what_we_learned|testing_into_conversational_search_on_etsy",
+        "claims:chatgpt_app_live_beta|tag_etsy_search_compare_click|on_etsy_gift_search_test"
+      ],
+      "language": "en",
+      "license": "public_news_read_only_no_text_or_media_reuse",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "CURRENT_BETA_COUNTRY_NOT_DISCLOSED",
+        "DE_LOCALIZED_ENGLISH_RENDER_CAPTURE"
+      ],
+      "store_models": [
+        "buyer_discovery",
+        "marketplace_seller_inventory"
+      ],
+      "ownership": [
+        "all_eligible_unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-05-05",
+      "refresh_days": 7,
+      "claim_keys": [
+        "chatgpt_etsy_app_live_beta",
+        "buyer_tag_etsy_prompt",
+        "listing_results_review_compare_click",
+        "on_etsy_gift_search_early_test",
+        "country_listing_controls_fees_attribution_api_unknown",
+        "t_one_unconnected"
+      ]
+    },
+    {
+      "id": "etsy_openai_instant_checkout_2025",
+      "url": "https://www.etsy.com/news/meeting-buyers-where-they-are-etsy-partners-with-openai-to-enable-ai-powered-shopping",
+      "canonical_url": "https://www.etsy.com/news/meeting-buyers-where-they-are-etsy-partners-with-openai-to-enable-ai-powered-shopping",
+      "content_id": "etsy-news-openai-instant-checkout-2025-09-29",
+      "title": "Meeting Buyers Where They Are: Etsy partners with OpenAI to enable AI-powered shopping",
+      "author": "Rafe Colburn, Chief Product and Technology Officer",
+      "published_at": "2025-09-29",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:Meeting Buyers Where They Are: Etsy partners with OpenAI to enable AI-powered shopping",
+        "published_at:2025-09-29",
+        "country_scope:US_ChatGPT_users",
+        "claims:discover_browse_purchase_directly_in_chatgpt"
+      ],
+      "language": "en",
+      "license": "public_news_read_only_no_text_or_media_reuse",
+      "evidence_tier": "historical_trace",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "US"
+      ],
+      "store_models": [
+        "buyer_discovery",
+        "marketplace_seller_inventory"
+      ],
+      "ownership": [
+        "historically_eligible_unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2025-09-29",
+      "effective_until": "superseded_as_current_flow_by_2026_product_version_evidence",
+      "refresh_days": 30,
+      "claim_keys": [
+        "historical_us_chatgpt_discovery_browse_purchase",
+        "historical_instant_checkout",
+        "not_current_availability_proof",
+        "fees_opt_out_and_attribution_unknown"
+      ]
+    },
+    {
+      "id": "etsy_q1_2026_seller_insights_agent",
+      "url": "https://investors.etsy.com/sec-filings/all-sec-filings/content/0001370637-26-000042/q126shareholderletter.htm",
+      "canonical_url": "https://investors.etsy.com/sec-filings/all-sec-filings/content/0001370637-26-000042/q126shareholderletter.htm",
+      "content_id": "etsy-q1-2026-shareholder-letter-ex99-1",
+      "title": "Etsy Q1 2026 Shareholder Letter",
+      "author": "Etsy, Inc.",
+      "published_at": "2026-04-29",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "content_hash": "sha256:66de2330e50f77969c977c601b32eb3f47ce0e0e585c88ec15cbde935393b887",
+      "language": "en",
+      "license": "public_investor_filing_read_only_no_media_reuse",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL_INVESTOR_DISCLOSURE",
+        "PUBLIC_AVAILABILITY_NOT_DISCLOSED"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "buyer_discovery"
+      ],
+      "ownership": [
+        "all_public_disclosure_only"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-04-29",
+      "refresh_days": 7,
+      "claim_keys": [
+        "early_buyer_and_seller_agents",
+        "seller_insights_decision_support_intent",
+        "work_in_progress_disclaimer",
+        "public_entry_permissions_cost_api_unknown",
+        "research_only"
+      ]
+    },
+    {
+      "id": "reddit_ai_search_traffic_case_1tmrck0",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1tmrck0/listing_traffic_from_ai_searches/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1tmrck0/listing_traffic_from_ai_searches/",
+      "content_id": "reddit-post-1tmrck0",
+      "title": "Listing Traffic from AI Searches",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-05-24",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "content_hash": "sha256:0ae89c1c1acff45844820956313481f7289e8feef2c86197d26f0a9b3960588c",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "conflicting_ai_referral_observations",
+        "no_shared_shop_period_or_metric",
+        "no_order_or_incrementality_evidence",
+        "single_case_only"
+      ]
+    },
+    {
+      "id": "reddit_chatgpt_checkout_fee_conflict_1nvva2c",
+      "url": "https://www.reddit.com/r/EtsyCommunity/comments/1nvva2c/shoppers_can_now_purchase_on_etsy_through_chatgpt/",
+      "canonical_url": "https://www.reddit.com/r/EtsyCommunity/comments/1nvva2c/shoppers_can_now_purchase_on_etsy_through_chatgpt/",
+      "content_id": "reddit-post-1nvva2c",
+      "title": "Shoppers can now purchase on Etsy through ChatGPT? AI in checkout, what could possibly go wrong?",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2025-10-02",
+      "captured_at": "2026-07-19T01:57:16+08:00",
+      "content_hash": "sha256:c0bca4ce493548485e3f5541930102daa3042fb41eb7f3df1054c4f18290b138",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN",
+        "US_FEATURE_DISCUSSION"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "conflicting_checkout_and_redirect_observations",
+        "unsupported_fee_offsite_ads_and_opt_out_claims",
+        "buyer_information_concerns",
+        "archived_historical_comment_signal"
+      ]
+    },
+    {
+      "id": "etsy_listing_video_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360053206073-How-to-Add-Listing-Videos",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360053206073-How-to-Add-Listing-Videos",
+      "content_id": "etsy-help-360053206073",
+      "title": "How to Add Listing Videos",
+      "author": "Etsy Help Center",
+      "published_at": "2020-08-19T10:34:20Z",
+      "content_updated_at": "2026-07-17T23:34:48Z",
+      "captured_at": "2026-07-19T02:17:19+08:00",
+      "content_hash": "sha256:618af33d17a531d425f97952a7f4729710bf05739cdf330145844a71f0b2c010",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-17",
+      "refresh_days": 7,
+      "claim_keys": [
+        "up_to_two_listing_videos",
+        "three_to_fifteen_seconds",
+        "one_hundred_mb_and_formats",
+        "audio_removed",
+        "resolution_and_aspect_contract",
+        "desktop_and_seller_app_steps",
+        "upload_delete_and_device_readback_blocked"
+      ]
+    },
+    {
+      "id": "etsy_listing_video_smartphone_handbook_2020",
+      "url": "https://www.etsy.com/seller-handbook/article/821069114343",
+      "canonical_url": "https://www.etsy.com/seller-handbook/article/821069114343",
+      "content_id": "etsy-seller-handbook-821069114343",
+      "title": "How to Take Listing Videos With Your Smartphone",
+      "author": "Etsy Staff",
+      "published_at": "2020-05-15",
+      "captured_at": "2026-07-19T02:17:19+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:How to Take Listing Videos With Your Smartphone",
+        "published_at:2020-05-15",
+        "sections:set_stage|prep_phone|light|stabilize|frame|finish",
+        "historical_technical_wording:one_video|five_to_fifteen_seconds"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "historical_trace",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_SELLER_HANDBOOK"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2020-05-15",
+      "effective_until": "technical_count_and_minimum_superseded_by_2026_07_17_help",
+      "refresh_days": 30,
+      "claim_keys": [
+        "phone_video_background_and_lighting",
+        "stabilization_focus_and_exposure",
+        "1080p_30fps_guidance",
+        "old_singular_and_five_second_wording_superseded"
+      ]
+    },
+    {
+      "id": "etsy_listing_video_types_handbook_2024",
+      "url": "https://www.etsy.com/seller-handbook/article/821069530001",
+      "canonical_url": "https://www.etsy.com/seller-handbook/article/821069530001",
+      "content_id": "etsy-seller-handbook-821069530001",
+      "title": "3 Types of Listing Videos That Online Shoppers Love",
+      "author": "Etsy Staff",
+      "published_at": "2024-11-05",
+      "captured_at": "2026-07-19T02:17:19+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:3 Types of Listing Videos That Online Shoppers Love",
+        "published_at:2024-11-05",
+        "sections:common_questions|product_in_use|creative_details|category_guidance",
+        "research_reference:2018_buyer_research"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_SELLER_HANDBOOK"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2024-11-05",
+      "refresh_days": 30,
+      "claim_keys": [
+        "answer_common_product_questions",
+        "show_product_in_use",
+        "show_process_and_details",
+        "category_specific_examples",
+        "historical_research_not_outcome_proof"
+      ]
+    },
+    {
+      "id": "reddit_two_listing_videos_rollout_case_1tq3qt4",
+      "url": "https://www.reddit.com/r/Etsy/comments/1tq3qt4/just_spotted_etsy_giving_the_option_to_have_two/",
+      "canonical_url": "https://www.reddit.com/r/Etsy/comments/1tq3qt4/just_spotted_etsy_giving_the_option_to_have_two/",
+      "content_id": "reddit-post-1tq3qt4",
+      "title": "Just spotted Etsy giving the option to have two videos in one listing",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2026-05-28",
+      "captured_at": "2026-07-19T02:17:19+08:00",
+      "content_hash": "sha256:bd5c8c919b1187567475ad1678ec80f1c1cd50106039b45e23786187de64818e",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "early_two_slot_rollout_reports",
+        "desktop_app_and_buyer_device_differences",
+        "sound_and_duration_requests",
+        "current_help_controls",
+        "no_outage_or_effect_proof"
+      ]
+    },
+    {
+      "id": "etsy_creativity_standards",
+      "url": "https://www.etsy.com/legal/creativity/",
+      "canonical_url": "https://www.etsy.com/legal/creativity/",
+      "content_id": "etsy-legal-creativity",
+      "title": "Etsy Creativity Standards",
+      "author": "Etsy",
+      "content_updated_at": "2025-06-10",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:Etsy Creativity Standards",
+        "last_updated:2025-06-10",
+        "sections:made_by|designed_by|handpicked_by|sourced_by",
+        "media_rules:made_real_final_media|designed_partner_disclosure|sourced_commercial_images_subject_to_ip"
+      ],
+      "language": "en",
+      "license": "public_policy_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2025-06-10",
+      "refresh_days": 30,
+      "claim_keys": [
+        "made_designed_handpicked_sourced_classes",
+        "made_media_and_specialized_alteration",
+        "designed_partner_ship_from_and_ai_disclosure",
+        "handpicked_vintage_and_evidence",
+        "sourced_craft_party_and_personalized_items"
+      ]
+    },
+    {
+      "id": "etsy_craft_party_supplies_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/32404729668887-What-Craft-and-Party-Supplies-am-I-Allowed-to-Sell",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/32404729668887-What-Craft-and-Party-Supplies-am-I-Allowed-to-Sell",
+      "content_id": "etsy-help-32404729668887",
+      "title": "What Craft and Party Supplies am I Allowed to Sell?",
+      "author": "Etsy Help Center",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash_state": "blocked_raw_json_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:What Craft and Party Supplies am I Allowed to Sell?",
+        "sections:craft_supply_table|qualifying_blanks|not_qualifying|party_supplies",
+        "examples:craft_machines_allowed|plain_tumblers_and_tshirts_not_sourced",
+        "footer_and_related_links_reached:2026-07-19"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "craft_primary_creation_purpose",
+        "non_exhaustive_category_examples",
+        "qualifying_blank_no_independent_retail_use",
+        "ready_to_use_blank_exclusion",
+        "party_specific_celebratory_purpose"
+      ]
+    },
+    {
+      "id": "etsy_drop_delivery_reselling_help_2026",
+      "url": "https://help.etsy.com/hc/en-gb/articles/23948763872151-Does-Etsy-Allow-Drop-Delivery-or-Reselling",
+      "canonical_url": "https://help.etsy.com/hc/en-gb/articles/23948763872151-Does-Etsy-Allow-Drop-Delivery-or-Reselling",
+      "content_id": "etsy-help-23948763872151",
+      "title": "Does Etsy Allow Drop Delivery or Reselling?",
+      "author": "Etsy Help Centre",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash_state": "blocked_raw_json_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:Does Etsy Allow Drop Delivery or Reselling?",
+        "sections:drop_delivery|reselling|allowed_exceptions|production_partner",
+        "exceptions:craft_party_supplies|vintage_over_twenty|qualifying_gift_baskets",
+        "footer_and_related_links_reached:2026-07-19"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "GB_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 30,
+      "claim_keys": [
+        "drop_delivery_generally_prohibited",
+        "resale_limited_exceptions",
+        "card_tag_note_not_transformation",
+        "production_partner_original_design_or_customization",
+        "truthful_fulfillment_and_dispatch"
+      ]
+    },
+    {
+      "id": "etsy_creativity_removal_reasons_help_2026",
+      "url": "https://help.etsy.com/hc/en-in/articles/34707360607511-Reasons-a-Listing-May-Be-Removed-Under-Etsy-s-Creativity-Standards",
+      "canonical_url": "https://help.etsy.com/hc/en-in/articles/34707360607511-Reasons-a-Listing-May-Be-Removed-Under-Etsy-s-Creativity-Standards",
+      "content_id": "etsy-help-34707360607511",
+      "title": "Reasons a Listing May Be Removed Under Etsy's Creativity Standards",
+      "author": "Etsy Help Center",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash_state": "blocked_raw_json_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:Reasons a Listing May Be Removed Under Etsy's Creativity Standards",
+        "sections:removal_reasons_table|appeal",
+        "appeal_states:not_available|view_and_appeal",
+        "footer_and_related_links_reached:2026-07-19"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "IN_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "refresh_days": 14,
+      "claim_keys": [
+        "creativity_removal_reason_table",
+        "superficial_customization_and_template_examples",
+        "vintage_remake_under_twenty_not_eligible",
+        "appeal_rollout_not_universal",
+        "policy_violations_readback_required"
+      ]
+    },
+    {
+      "id": "etsy_vintage_items_policy_2018",
+      "url": "https://www.etsy.com/legal/policy/vintage-items-on-etsy/242665563649",
+      "canonical_url": "https://www.etsy.com/legal/policy/vintage-items-on-etsy/242665563649",
+      "content_id": "etsy-legal-vintage-242665563649",
+      "title": "Vintage Items on Etsy",
+      "author": "Etsy",
+      "content_updated_at": "2018-11-16",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash_state": "rendered_legal_page_verified_no_raw_fingerprint",
+      "version_fingerprints": [
+        "title:Vintage Items on Etsy",
+        "last_updated:2018-11-16",
+        "questions:source|age_determination|designer_collection|materials",
+        "insufficient_evidence:relative_death|competitor_listing|estate_or_yard_sale"
+      ],
+      "language": "en",
+      "license": "public_policy_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "historical_trace",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2018-11-16",
+      "effective_until": "current_creativity_standards_control",
+      "refresh_days": 90,
+      "claim_keys": [
+        "vintage_age_twenty_years",
+        "source_age_designer_material_photo_evidence",
+        "insufficient_inheritance_competitor_estate_evidence",
+        "historical_detail_current_policy_precedence"
+      ]
+    },
+    {
+      "id": "reddit_creativity_label_rollout_case_1dz2x73",
+      "url": "https://www.reddit.com/r/Etsy/comments/1dz2x73/etsy_announcement_change_to_item_type_labels/",
+      "canonical_url": "https://www.reddit.com/r/Etsy/comments/1dz2x73/etsy_announcement_change_to_item_type_labels/",
+      "content_id": "reddit-post-1dz2x73",
+      "title": "Etsy Announcement - Change to Item Type Labels",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2024-07-09",
+      "captured_at": "2026-07-19T02:39:10+08:00",
+      "content_hash": "sha256:b9f56ede17b86554b0aef5981bc54691b9432102bf9607de46e5d9a2e3c86083",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2024-07-09",
+      "refresh_days": 90,
+      "claim_keys": [
+        "historical_item_label_rollout_reports",
+        "post_author_vintage_correction",
+        "sourced_not_general_resale_correction",
+        "mixed_process_questions",
+        "no_current_defect_or_policy_proof"
+      ]
+    },
+    {
+      "id": "etsy_tags",
+      "url": "https://help.etsy.com/hc/en-us/articles/360000336307-How-to-Use-Tags-to-Get-Found-in-Search",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360000336307-How-to-Use-Tags-to-Get-Found-in-Search",
+      "content_id": "etsy-help-360000336307",
+      "title": "How to Use Tags to Get Found in Search",
+      "author": "Etsy Help Center",
+      "published_at": "2018-02-13T19:49:19Z",
+      "content_updated_at": "2026-07-18T10:38:17Z",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "content_hash": "sha256:3ec805a331e624c0565f0653beb7210fe41bc1b8c492f5677e9f060e1a8037b4",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-18",
+      "refresh_days": 14,
+      "claim_keys": [
+        "thirteen_tags_twenty_characters",
+        "accurate_relevant_diverse_phrases",
+        "unmatched_attribute_and_buyer_minded_terms",
+        "character_and_punctuation_limits",
+        "public_desktop_and_seller_app_paths_no_shop_readback"
+      ]
+    },
+    {
+      "id": "etsy_attributes_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115014502508-How-to-Use-Attributes-When-Listing-an-Item",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115014502508-How-to-Use-Attributes-When-Listing-an-Item",
+      "content_id": "etsy-help-115014502508",
+      "title": "How to Use Attributes When Listing an Item",
+      "author": "Etsy Help Center",
+      "published_at": "2017-11-02T19:05:11Z",
+      "content_updated_at": "2026-07-15T05:34:25Z",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "content_hash": "sha256:8bb21791f6805990493e55bad53878f5fdf60cc6c7f771f6fca6f656c9b9f112",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-15",
+      "refresh_days": 14,
+      "claim_keys": [
+        "category_controls_attribute_set",
+        "fill_relevant_truthful_options",
+        "closest_available_value_plus_specific_accurate_tag",
+        "sustainability_claim_responsibility",
+        "publish_is_external_write"
+      ]
+    },
+    {
+      "id": "etsy_keywords_101_2025",
+      "url": "https://www.etsy.com/seller-handbook/article/382774281517",
+      "canonical_url": "https://www.etsy.com/seller-handbook/article/382774281517",
+      "content_id": "etsy-seller-handbook-382774281517",
+      "title": "Keywords 101: Everything You Need to Know",
+      "author": "Etsy Staff",
+      "published_at": "2025-08-26",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "content_hash_state": "blocked_raw_html_403_rendered_page_verified",
+      "version_fingerprints": [
+        "title:Keywords 101 Everything You Need to Know",
+        "published:2025-08-26",
+        "as_of:August 2025",
+        "sections:categories|attributes|titles|descriptions|tags|brainstorming|tools",
+        "footer_and_regions_reached:2026-07-19"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_SELLER_HANDBOOK"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2025-08-26",
+      "refresh_days": 30,
+      "claim_keys": [
+        "categories_and_attributes_act_like_tags",
+        "most_specific_subcategory",
+        "exact_category_attribute_tag_dedup",
+        "all_thirteen_varied_multiword_tags",
+        "shop_language_translation_misspelling_plural_and_regional_boundaries",
+        "search_changes_and_shop_outcomes_not_guaranteed"
+      ]
+    },
+    {
+      "id": "etsy_listing_form",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015628707-How-to-Create-a-Listing",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015628707-How-to-Create-a-Listing",
+      "content_id": "etsy-help-115015628707",
+      "title": "How to Create a Listing",
+      "author": "Etsy Help Center",
+      "published_at": "2017-12-05T21:13:30Z",
+      "content_updated_at": "2026-07-18T18:34:04Z",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "content_hash": "sha256:b8bc4ff8f9fc69ea26456858da2f928a29e8645ae8da26eb83dd2fcb5cdd37d2",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-18",
+      "refresh_days": 7,
+      "claim_keys": [
+        "seven_listing_form_tabs",
+        "category_prefill_requires_confirmation",
+        "category_controls_attributes_and_variations",
+        "draft_publish_and_forty_eight_hour_search_states",
+        "five_to_fifteen_second_page_conflicts_with_dedicated_help"
+      ]
+    },
+    {
+      "id": "reddit_etsy_seo_title_length_case_1sj7idi",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1sj7idi/what_is_etsys_true_seo/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1sj7idi/what_is_etsys_true_seo/",
+      "content_id": "reddit-post-1sj7idi",
+      "title": "what is etsy's true seo?",
+      "author": "pseudonymous_public_users_not_retained",
+      "published_at": "2026-04-12",
+      "captured_at": "2026-07-19T03:06:34+08:00",
+      "content_hash": "sha256:468d9a0dcd410b99b257d4181a24f21080b070bb0bd824a42c7d06addad027d4",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-04-12",
+      "refresh_days": 90,
+      "claim_keys": [
+        "conflicting_short_long_title_outcomes",
+        "category_specific_information_need",
+        "auto_title_and_third_party_tool_leads",
+        "alt_text_and_seo_speculation",
+        "no_universal_seo_outcome_rule"
+      ]
+    },
+    {
+      "id": "etsy_negative_review_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115015808588-What-to-Do-if-You-Receive-a-Negative-Review",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115015808588-What-to-Do-if-You-Receive-a-Negative-Review",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115015808588.json",
+      "content_id": "etsy-help-115015808588",
+      "title": "What to Do if You Receive a Negative Review",
+      "author": "Etsy Help Center",
+      "content_updated_at": "2026-07-18T18:27:39Z",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash": "sha256:a737c22eee53774e50766355ebdf133ba0818ddfaa7ae0127ef7101d972ba47c",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-18",
+      "refresh_days": 14,
+      "claim_keys": [
+        "policy_violation_only_removal",
+        "mixed_third_party_item_service_nuance",
+        "private_resolution",
+        "one_time_public_response",
+        "last_edit_100_day_window",
+        "buyer_edit_lock",
+        "response_privacy_boundary"
+      ]
+    },
+    {
+      "id": "etsy_leave_review_help_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/115013197687-How-to-Leave-a-Review-on-Etsy",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/115013197687-How-to-Leave-a-Review-on-Etsy",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/115013197687.json",
+      "content_id": "etsy-help-115013197687",
+      "title": "How to Leave a Review on Etsy",
+      "author": "Etsy Help Center",
+      "content_updated_at": "2026-07-18T08:08:35Z",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash": "sha256:b728c6a52fb34a15fd850d532fa9e33d81f03c5045643cc9ab2188ddd5e56cc0",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-18",
+      "refresh_days": 14,
+      "claim_keys": [
+        "overall_and_subratings",
+        "rolling_twelve_month_shop_average",
+        "physical_and_digital_100_day_window",
+        "case_does_not_pause_window",
+        "cancellation_voids_review",
+        "seller_response_locks_buyer_edit"
+      ]
+    },
+    {
+      "id": "etsy_report_review_2026",
+      "url": "https://help.etsy.com/hc/en-us/articles/360000442208-How-to-Report-a-Review",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360000442208-How-to-Report-a-Review",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360000442208.json",
+      "content_id": "etsy-help-360000442208",
+      "title": "How to Report a Review",
+      "author": "Etsy Help Center",
+      "published_at": "2018-02-20T16:48:53Z",
+      "content_updated_at": "2026-07-18T19:11:16Z",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash": "sha256:3b6aa875ece927aa51a36a609ec0e85669a8f0aaf6904bcfaf2fbb323458fda9",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-18",
+      "refresh_days": 14,
+      "claim_keys": [
+        "review_media_or_response_reportable",
+        "estimated_delivery_100_day_report_window",
+        "etsy_decides_violation",
+        "confidential_one_report_boundary",
+        "ip_requires_separate_route"
+      ]
+    },
+    {
+      "id": "etsy_customer_service_standards",
+      "url": "https://help.etsy.com/hc/en-us/articles/360036207794-What-are-Etsy-s-Customer-Service-Standards",
+      "canonical_url": "https://help.etsy.com/hc/en-us/articles/360036207794-What-are-Etsy-s-Customer-Service-Standards",
+      "hash_source_url": "https://help.etsy.com/api/v2/help_center/en-us/articles/360036207794.json",
+      "content_id": "etsy-help-360036207794",
+      "title": "What are Etsy's Customer Service Standards?",
+      "author": "Etsy Help Center",
+      "content_updated_at": "2026-07-16T15:11:36Z",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash": "sha256:8f969a2022a678ba55ae80586620b7203d32f186ff8be737126f13ddbafd2c1a",
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL",
+        "US_ENGLISH_HELP"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2026-07-16",
+      "refresh_days": 14,
+      "claim_keys": [
+        "message_80_percent_48_hours",
+        "review_threshold_by_review_count",
+        "case_threshold_by_order_count",
+        "on_time_shipping_80_percent",
+        "separate_exclusions",
+        "daily_refresh_monthly_overview",
+        "search_protection_and_privilege_consequences"
+      ]
+    },
+    {
+      "id": "etsy_extortion_policy_2020",
+      "url": "https://www.etsy.com/legal/policy/extortion/239966959186",
+      "canonical_url": "https://www.etsy.com/legal/policy/extortion/239966959186",
+      "content_id": "etsy-legal-extortion-239966959186",
+      "title": "Extortion",
+      "author": "Etsy",
+      "content_updated_at": "2020-07-15",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash_state": "rendered_legal_page_verified_no_raw_fingerprint",
+      "version_fingerprints": [
+        "title:Extortion",
+        "last_updated:2020-07-15",
+        "buyer_threat_for_extra_items_or_refund",
+        "seller_compensation_for_positive_review",
+        "etsy_messages_and_checkout_evidence_boundary"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2020-07-15",
+      "refresh_days": 30,
+      "claim_keys": [
+        "buyer_review_threat_extortion",
+        "seller_compensation_for_positive_review_prohibited",
+        "etsy_messages_and_checkout_evidence"
+      ]
+    },
+    {
+      "id": "etsy_shilling_policy_2020",
+      "url": "https://www.etsy.com/legal/policy/shilling/243317364583",
+      "canonical_url": "https://www.etsy.com/legal/policy/shilling/243317364583",
+      "content_id": "etsy-legal-shilling-243317364583",
+      "title": "Shilling",
+      "author": "Etsy",
+      "content_updated_at": "2020-01-09",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash_state": "rendered_legal_page_verified_no_raw_fingerprint",
+      "version_fingerprints": [
+        "title:Shilling",
+        "last_updated:2020-01-09",
+        "biased_friend_or_family_review",
+        "compensation_for_biased_review",
+        "sock_puppet_prohibited"
+      ],
+      "language": "en",
+      "license": "public_documentation_read_only_no_text_or_media_reuse_claim",
+      "evidence_tier": "official_current",
+      "state": "time_sensitive_evidence",
+      "country_sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "all"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2020-01-09",
+      "refresh_days": 30,
+      "claim_keys": [
+        "biased_friend_family_review_prohibited",
+        "compensated_biased_review_prohibited",
+        "sock_puppet_prohibited",
+        "honest_transaction_conditions",
+        "modern_incentive_requires_current_review"
+      ]
+    },
+    {
+      "id": "reddit_reviews_seller_guide_1bq6vtj",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1bq6vtj/all_about_reviews_a_guide_for_sellers_and_faqs/",
+      "canonical_url": "https://www.reddit.com/r/EtsySellers/comments/1bq6vtj/all_about_reviews_a_guide_for_sellers_and_faqs/",
+      "content_id": "reddit-post-1bq6vtj",
+      "title": "All About Reviews: A Guide for Sellers and FAQs",
+      "author": "pseudonymous_public_user_not_retained",
+      "published_at": "2024-03-28",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_hash": "sha256:46baba238392fe8a318221a22b9edb58f5ebdf681acdded244d73073c7146169",
+      "content_hash_basis": "rendered_structured_receipt_raw_fetch_blocked_403",
+      "language": "en",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "evidence_tier": "single_case",
+      "state": "historical_operator_trace",
+      "country_sites": [
+        "UNKNOWN"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "ownership": [
+        "unknown"
+      ],
+      "permissions": [
+        "public_read"
+      ],
+      "effective_from": "2024-03-28",
+      "refresh_days": 90,
+      "claim_keys": [
+        "private_resolution_practice",
+        "one_message_hypothesis",
+        "public_response_future_reader_hypothesis",
+        "unsupported_response_visibility_claim",
+        "unsupported_lower_rating_conversion_claim",
+        "official_policy_controls"
+      ]
+    }
+  ],
+  "fingerprint_updates": [
+    {
+      "id": "etsy_api_listings",
+      "captured_at": "2026-07-18T23:28:55+08:00",
+      "content_hash": "sha256:6cc3cf049e6d3c57eb07d7e92acbf22cac81b5e6c1d583f138fbc568200c3ba0",
+      "new_claim_keys": [
+        "seller_taxonomy_tree",
+        "properties_by_taxonomy_id",
+        "supports_variations_true_gate",
+        "seller_vs_buyer_taxonomy_depth"
+      ]
+    },
+    {
+      "id": "etsy_openapi_reference_2026",
+      "captured_at": "2026-07-18T23:42:38+08:00",
+      "content_hash": "sha256:f1ef521ae668f147e9e9ab298047922708d6b20a62b5794ceaa0f555938da4ae",
+      "new_claim_keys": [
+        "official_downloadable_spec_resolves_dynamic_shell",
+        "title_suggestion_read_schema",
+        "current_personalization_schema"
+      ],
+      "remaining_boundary": "No authorized shop response or T One Etsy connector"
+    },
+    {
+      "id": "etsy_payments_tutorial_2026",
+      "captured_at": "2026-07-18T23:53:58+08:00",
+      "content_hash": "sha256:6862e4fac56287f5cbb09a4a028a253638c649e4843d2420ea8524a88aa2f399",
+      "new_claim_keys": [
+        "current_page_fingerprint",
+        "no_bank_deposit_settlement_object"
+      ],
+      "remaining_boundary": "No transactions_r OAuth, ledger response, payment response or bank evidence"
+    },
+    {
+      "id": "etsy_ads_campaign_2026",
+      "captured_at": "2026-07-19T00:32:48+08:00",
+      "content_updated_at": "2026-07-18T04:30:26Z",
+      "content_hash": "sha256:63f8959c6788b33e00b6175b0eec2e8749c64439ccf97a7203ef5e45448afb15",
+      "new_claim_keys": [
+        "daily_budget_maximum",
+        "next_day_payment_account_charge",
+        "budget_exhaustion_stops_delivery",
+        "attributed_order_item_can_differ"
+      ],
+      "remaining_boundary": "No authenticated Ads campaign, order marker, spend or Payment account charge"
+    },
+    {
+      "id": "etsy_offsite_ads",
+      "captured_at": "2026-07-19T00:32:48+08:00",
+      "content_updated_at": "2026-07-18T14:50:21Z",
+      "content_hash": "sha256:deb37462d5faf7571c7540b4e68895205cd11c0b300d3aa4594c84eb77b79bad",
+      "new_claim_keys": [
+        "final_etsy_ads_click_fee_precedence",
+        "offsite_dashboard_metrics",
+        "multiple_orders_per_click",
+        "no_seller_budget"
+      ],
+      "remaining_boundary": "No authenticated enrollment, dashboard, attributed order or fee readback"
+    },
+    {
+      "id": "etsy_open_api_github_2026",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:b4f1681dcadecb71e831be8b969535dc3c220a843a6337bd5a407386145388d1",
+      "commit": "2ecce66e07627358a074d46188586f0283c9a6cf",
+      "release": "3.0.0-general-release-2026-03-24",
+      "new_claim_keys": [
+        "verified_org_identity_chain",
+        "documentation_channel_not_sdk",
+        "license_not_detected",
+        "security_policy_and_advisory_state"
+      ],
+      "remaining_boundary": "No license admission, clone, install, SDK, Etsy shop OAuth or T One connector"
+    },
+    {
+      "id": "etsy_third_variation_2026",
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "content_hash": "sha256:c4803898fe96c66052fcc1b14bf52fe8ce60f7cd42a820cd4d5fd22a0d9a7603",
+      "new_claim_keys": [
+        "full_payload_delete_guard",
+        "2500_and_400_product_limits",
+        "409_unsupported_variation_error",
+        "ga_date_unknown"
+      ],
+      "remaining_boundary": "No eligible preview shop, production GA, listings_w OAuth or authenticated read/write"
+    },
+    {
+      "id": "etsy_openapi_reference_2026_round_20_compatibility_scan",
+      "captured_at": "2026-07-19T03:29:40+08:00",
+      "content_hash": "sha256:f1ef521ae668f147e9e9ab298047922708d6b20a62b5794ceaa0f555938da4ae",
+      "dedupe_state": "unchanged_document_skipped_for_rule_relearning",
+      "new_claim_keys": [
+        "three_includes_array_parameters_have_scalar_null_defaults",
+        "exact_transform_must_be_versioned_and_fixture_tested"
+      ],
+      "exact_parameters": [
+        "GET /v3/application/shops/{shop_id}/listings includes",
+        "GET /v3/application/listings/{listing_id} includes",
+        "GET /v3/application/listings/batch includes"
+      ],
+      "remaining_boundary": "No admitted generated client, approved Etsy app, shop OAuth, request fixture implementation or live endpoint readback"
+    },
+    {
+      "id": "etsy_negative_review_2026_round_21",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_updated_at": "2026-07-18T18:27:39Z",
+      "content_hash": "sha256:a737c22eee53774e50766355ebdf133ba0818ddfaa7ae0127ef7101d972ba47c",
+      "new_claim_keys": [
+        "last_edit_starts_public_response_window",
+        "mixed_third_party_feedback_may_remain",
+        "response_delete_does_not_unlock_buyer_edit"
+      ],
+      "remaining_boundary": "No bound review, report eligibility, message or public-response control"
+    },
+    {
+      "id": "etsy_leave_review_help_2026_round_21",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_updated_at": "2026-07-18T08:08:35Z",
+      "content_hash": "sha256:b728c6a52fb34a15fd850d532fa9e33d81f03c5045643cc9ab2188ddd5e56cc0",
+      "new_claim_keys": [
+        "overall_and_subratings",
+        "rolling_twelve_month_shop_average",
+        "open_case_does_not_pause_window"
+      ],
+      "remaining_boundary": "No bound buyer order or actual review eligibility"
+    },
+    {
+      "id": "etsy_report_review_2026_round_21",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_updated_at": "2026-07-18T19:11:16Z",
+      "content_hash": "sha256:3b6aa875ece927aa51a36a609ec0e85669a8f0aaf6904bcfaf2fbb323458fda9",
+      "new_claim_keys": [
+        "one_confidential_report",
+        "etsy_decides_policy_violation",
+        "ip_requires_separate_route"
+      ],
+      "remaining_boundary": "No authenticated report UI, report decision or readback"
+    },
+    {
+      "id": "etsy_customer_service_standards_round_21",
+      "captured_at": "2026-07-19T03:55:56+08:00",
+      "content_updated_at": "2026-07-16T15:11:36Z",
+      "content_hash": "sha256:8f969a2022a678ba55ae80586620b7203d32f186ff8be737126f13ddbafd2c1a",
+      "new_claim_keys": [
+        "review_threshold_by_review_count",
+        "case_threshold_by_order_count",
+        "daily_stats_monthly_overview"
+      ],
+      "remaining_boundary": "No authenticated same-shop denominators, exclusions or current compliance state"
+    }
+  ],
+  "third_party_knowledge_package_audits": [
+    {
+      "repository": "profplum700/etsy-v3-api-client",
+      "url": "https://github.com/profplum700/etsy-v3-api-client",
+      "version_or_commit": "v3.0.0@01ec46b1caa9a426797ffec7d1cc6d09ab72d0ae",
+      "license": "unresolved_no_license_file_github_detector_null",
+      "decision": "rejected_license",
+      "installed_or_copied": false,
+      "fingerprints": [
+        "sha256:bae1b62205c909c7e8e1242366d97f4b3ba3ad39592349e462b3c6795add0735",
+        "sha256:68b36821714050c6ec6899e7aca55b159270ec2d189e5158aa85519dfa8cef2c",
+        "sha256:7c96e29bdb804dbf7311f37ba63e2c72faa6354b1a56d73cfbdd3ea47239b8a1",
+        "sha256:24106ab21d3c62f449d3e47768ee3bb2670571a2e16975ea1dba0a334f505e3d",
+        "sha256:4e331c1202183d40e9be6d93fbf4527709f91c0ad228624e3c99ba547d2a077c"
+      ]
+    },
+    {
+      "repository": "guimauvedigital/etsy",
+      "url": "https://github.com/guimauvedigital/etsy",
+      "version_or_commit": "1.0.0@1aa7ad977cba7e48e3368c3b62ecd588e7e7534a",
+      "license": "Apache-2.0",
+      "decision": "extract_rules_only",
+      "installed_or_copied": false,
+      "fingerprints": [
+        "sha256:025e842e9ba28e8a67dda9f82503d2268c970dc98679af3c2fbf62c1cf7d0b67",
+        "sha256:c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "sha256:59ea184ed49124a4094ba07cd6616e014b30153c0e5a85019e0246861f3ad17d",
+        "sha256:5f1f11237c0ee3bbc74fc3e065d6fdc1ee876b0c3e10c30dea8199044b69e666"
+      ]
+    },
+    {
+      "repository": "gordonturner/etsy-open-api-client",
+      "url": "https://github.com/gordonturner/etsy-open-api-client",
+      "version_or_commit": "release-3.0.0@dab396a4d3b47fd6aeda48f8ecf606369b1c3321",
+      "license": "unresolved_no_license_file_github_detector_null",
+      "decision": "rejected_license",
+      "installed_or_copied": false,
+      "fingerprints": [
+        "sha256:2ce5ce96fb32712c3f81a7bb808c4db62a85f797523a178b53182df5b55f3683",
+        "sha256:998b3a7946505e44f472f47af01c24a1d2bb1703f1582911584ac9a470e4e534",
+        "sha256:6bb8c61f9ac15242762fb171fca8e66e87f3648efb19dc0c434ca1e1d98b5376"
+      ]
+    }
+  ],
+  "review_response_knowledge_package_audits": [
+    {
+      "name": "Growing Your Craft review/extortion playbook",
+      "url": "https://www.growingyourcraft.com/blog/etsy-bad-review-1-star-response-template",
+      "version_or_updated_at": "2025-05-19 plus extortion secondary 2025-04-24",
+      "license": "all_rights_reserved",
+      "decision": "extract_rules_only",
+      "installed_or_copied": false,
+      "fingerprints": [
+        "sha256:e76c2ef5a549e838ff569c812d417100eb2d21057c025af3953a9a39075c6e69",
+        "sha256:8ff9ad1a0c8ed325ccbad1b0d7491c1a1d4e7215a1485ec171cd6d3466fdd7ef"
+      ]
+    },
+    {
+      "name": "How To Reply Etsy package",
+      "url": "https://howtoreply.app/etsy-1-star-review-response",
+      "version_or_updated_at": "copyright 2025; privacy updated January 2025",
+      "license": "unknown",
+      "decision": "rejected_unsafe",
+      "installed_or_copied": false,
+      "data_boundary": "review/message text can be sent to service and Anthropic, stored in Supabase/AWS and logged up to 30 days",
+      "fingerprints": [
+        "sha256:ffb5d6db575a796acf58732048c925e3e7be53868dc02482dcab707fbfc9a490",
+        "sha256:39a0dbe5323d13866f3214a4c5a6727b85418cc8deb13b1bee80f0cc54dababe",
+        "sha256:de2d0d54214287b1317ceb98b340e1b6a6f4f021de2c4f36f38c14e9cad38ecd",
+        "sha256:24035add1caaff28b905db27a54870cbded1a018cb7482c681593a1f9983f005"
+      ]
+    },
+    {
+      "name": "Reddit All About Reviews seller guide",
+      "url": "https://www.reddit.com/r/EtsySellers/comments/1bq6vtj/all_about_reviews_a_guide_for_sellers_and_faqs/",
+      "version_or_updated_at": "published 2024-03-28; archived and locked",
+      "license": "public_read_only_no_text_or_media_reuse",
+      "decision": "research_only",
+      "installed_or_copied": false,
+      "fingerprints": [
+        "sha256:46baba238392fe8a318221a22b9edb58f5ebdf681acdded244d73073c7146169"
+      ],
+      "fingerprint_boundary": "structured rendered-page receipt; raw fetch blocked 403"
+    }
+  ],
+  "official_github_organizations": [
+    {
+      "url": "https://github.com/etsy",
+      "verified_by": [
+        "github_verified_controls_www_etsy_com",
+        "etsy_developer_docs_feedback_to_etsy_open_api",
+        "open_api_readme_backlink_to_etsy_docs"
+      ],
+      "captured_at": "2026-07-19T01:02:17+08:00",
+      "public_repository_count": 85,
+      "seller_api_relevant_repositories": [
+        "etsy/open-api"
+      ],
+      "maintenance_state": "active"
+    }
+  ],
+  "official_github_repository_audits": [
+    {
+      "owner_repo": "etsy/open-api",
+      "revision": "2ecce66e07627358a074d46188586f0283c9a6cf",
+      "release": "3.0.0-general-release-2026-03-24",
+      "license": "not_detected",
+      "decision": "research_only",
+      "fusion": "existing Etsy evidence and adapter migration feed",
+      "install_allowed": false
+    },
+    {
+      "owner_repo": "etsy/combined-status-check-action",
+      "revision": "v2.0.0",
+      "license": "MIT",
+      "decision": "excluded_official_but_unrelated",
+      "fusion": "none",
+      "install_allowed": false
+    },
+    {
+      "owner_repo": "etsy/github-app-sts",
+      "revision": "v2.1.2",
+      "license": "Apache-2.0",
+      "decision": "excluded_wrong_auth_domain",
+      "fusion": "none",
+      "install_allowed": false
+    },
+    {
+      "owner_repo": "etsy/mcp-pinot",
+      "revision": "observed_2026-07-19",
+      "license": "Apache-2.0",
+      "decision": "excluded_unrelated_fork",
+      "fusion": "none",
+      "install_allowed": false
+    }
+  ],
+  "version_chains": [
+    {
+      "topic": "third_variation_rollout",
+      "superseded": "https://github.com/etsy/open-api/discussions/1569",
+      "current": [
+        "https://github.com/etsy/open-api/discussions/1648",
+        "https://developer.etsy.com/documentation/tutorials/third-variation/"
+      ],
+      "state": "time_sensitive_evidence",
+      "note": "Old postponed plan retained for traceability; current announcement and tutorial control, while exact GA remains unknown."
+    },
+    {
+      "topic": "chatgpt_etsy_shopping_surface",
+      "superseded": "https://www.etsy.com/news/meeting-buyers-where-they-are-etsy-partners-with-openai-to-enable-ai-powered-shopping",
+      "current": [
+        "https://www.etsy.com/news/from-keywords-to-conversation-etsyas-next-steps-into-conversational-search-with-app-in-chatgpt"
+      ],
+      "state": "time_sensitive_evidence",
+      "note": "Preserve the 2025 U.S. Instant Checkout launch as historical. The 2026 retailer-run Etsy app beta and separate on-Etsy gift-search test are the newer public product states, but current country, Listing eligibility, seller controls, fees, attribution, data boundary and checkout behavior remain unknown."
+    },
+    {
+      "topic": "listing_video_count_duration_rollout",
+      "superseded": [
+        "https://www.etsy.com/seller-handbook/article/821069114343",
+        "https://www.reddit.com/r/Etsy/comments/1tq3qt4/just_spotted_etsy_giving_the_option_to_have_two/"
+      ],
+      "current": [
+        "https://help.etsy.com/hc/en-us/articles/360053206073-How-to-Add-Listing-Videos"
+      ],
+      "state": "time_sensitive_evidence",
+      "note": "Current Help controls the public technical contract of up to two videos and 3–15 seconds. The older Handbook remains filming guidance, the May 2026 comments remain rollout history, and actual shop/app/buyer-device parity is blocked pending authorized observation."
+    },
+    {
+      "topic": "creativity_item_type_labels",
+      "superseded": [
+        "https://www.reddit.com/r/Etsy/comments/1dz2x73/etsy_announcement_change_to_item_type_labels/"
+      ],
+      "current": [
+        "https://www.etsy.com/legal/creativity/",
+        "https://help.etsy.com/hc/en-us/articles/32404729668887-What-Craft-and-Party-Supplies-am-I-Allowed-to-Sell",
+        "https://help.etsy.com/hc/en-in/articles/34707360607511-Reasons-a-Listing-May-Be-Removed-Under-Etsy-s-Creativity-Standards"
+      ],
+      "state": "time_sensitive_evidence",
+      "note": "The July 2024 community reports and post-author corrections remain historical UI evidence. Current Creativity Standards and Help control eligibility; current shop UI and enforcement require an authorized bound Listing readback."
+    },
+    {
+      "topic": "listing_video_minimum_duration_current_official_pages",
+      "superseded": [
+        "https://help.etsy.com/hc/en-us/articles/115015628707-How-to-Create-a-Listing"
+      ],
+      "current": [
+        "https://help.etsy.com/hc/en-us/articles/360053206073-How-to-Add-Listing-Videos"
+      ],
+      "state": "time_sensitive_evidence",
+      "note": "The Create-a-Listing page updated 2026-07-18 still says two 5-15 second videos, while the dedicated Listing-video Help updated 2026-07-17 says up to two 3-15 second videos. Use the dedicated technical Help for preflight, retain both versions, and require an authenticated editor observation for live behavior."
+    }
+  ],
+  "open_contradictions": [
+    {
+      "id": "ETSY-CONTRADICTION-001",
+      "topic": "title_suggestion_inputs",
+      "state": "unknown",
+      "source_ids": [
+        "etsy_title_guidance_2026",
+        "etsy_ai_seller_tools_2026"
+      ],
+      "resolution_gate": "Eligible authenticated Listing observation of actual current inputs and controls"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-002",
+      "topic": "current_shop_manager_variation_count_vs_api_third_variation_preview",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_variations_help_2026",
+        "etsy_third_variation_2026"
+      ],
+      "resolution_gate": "Use current two-attribute UI guidance before cutover, keep API readers three-variation safe, and require authenticated post-cutover UI observation before claiming three UI attributes"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-003",
+      "topic": "dev_mcp_tool_count",
+      "state": "unknown",
+      "source_ids": [
+        "etsy_openapi_dev_mcp_2026"
+      ],
+      "resolution_gate": "Retain the seven visible names as dated documentation and resolve only through an approved live capability probe or official page correction"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-004",
+      "topic": "third_variation_ga_and_custom_value_wording",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_third_variation_2026",
+        "etsy_third_variation_announcement_2026"
+      ],
+      "resolution_gate": "Do not claim GA; resolve taxonomy properties per category and distinguish supported values on predefined properties from custom property IDs"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-005",
+      "topic": "marketplace_insights_real_time_wording_vs_30_day_window",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_marketplace_insights_help_2026",
+        "etsy_marketplace_insights_handbook_2025"
+      ],
+      "resolution_gate": "Use the explicit 30-day data window operationally and retain real-time as marketing wording until an authenticated UI exposes refresh cadence"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-006",
+      "topic": "plus_unlimited_documentation_vs_loading_failure_theory",
+      "state": "unknown",
+      "source_ids": [
+        "etsy_marketplace_insights_help_2026",
+        "reddit_marketplace_insights_loading_case_1uvpkq5"
+      ],
+      "resolution_gate": "Keep unlimited as current official documentation and the loading issue as a dated single case; require official status/support or repeated evidence before changing the contract"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-007",
+      "topic": "trend_report_right_now_wording_vs_dated_us_directional_method",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_spring_summer_trend_report_2026"
+      ],
+      "resolution_gate": "Preserve the 2026-02-10 cutoff, prior-three-month year-over-year window, normalized signed-in U.S. population and directional status; do not promote headline framing to global, absolute or current shop demand"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-008",
+      "topic": "current_help_3_15_two_videos_vs_older_handbook_5_15_singular",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_listing_video_help_2026",
+        "etsy_listing_video_smartphone_handbook_2020"
+      ],
+      "resolution_gate": "Current Help controls technical validation; the older Handbook remains production guidance only, and actual shop/device behavior requires an authorized read-only observation"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-009",
+      "topic": "historical_2024_label_rollout_reports_vs_current_four_class_policy",
+      "state": "historical_operator_trace",
+      "source_ids": [
+        "reddit_creativity_label_rollout_case_1dz2x73",
+        "etsy_creativity_standards",
+        "etsy_craft_party_supplies_help_2026"
+      ],
+      "resolution_gate": "Use current official classifications for policy, retain 2024 reports as dated UI history, and require authenticated current Listing readback before diagnosing a present defect"
+    },
+    {
+      "id": "ETSY-CONTRADICTION-010",
+      "topic": "current_create_listing_page_five_second_minimum_vs_dedicated_video_help_three_second_minimum",
+      "state": "time_sensitive_evidence",
+      "source_ids": [
+        "etsy_listing_form",
+        "etsy_listing_video_help_2026"
+      ],
+      "resolution_gate": "Retain both current official page fingerprints, use the dedicated Listing-video Help for technical draft validation, and require a bound authenticated editor readback before claiming the live accepted minimum or error behavior"
+    }
+  ],
+  "blocked_live_evidence": [
+    {
+      "id": "etsy_real_shop",
+      "state": "blocked_owner_input",
+      "missing": [
+        "shop_id",
+        "store_binding_id",
+        "per_shop_oauth",
+        "authenticated_browser_identity"
+      ]
+    },
+    {
+      "id": "etsy_native_ai_authenticated_usage",
+      "state": "blocked_owner_input",
+      "missing": [
+        "eligible_shop",
+        "tool_entry_visibility",
+        "real_input",
+        "real_output",
+        "edit_and_submit_observation"
+      ]
+    },
+    {
+      "id": "etsy_ads_and_erp",
+      "state": "blocked_owner_input",
+      "missing": [
+        "ads_access",
+        "campaign_state",
+        "date_scoped_metrics",
+        "next_day_payment_account_charges",
+        "offsite_ads_state",
+        "final_click_and_order_fee_readback",
+        "erp_authorization",
+        "live_readback"
+      ]
+    },
+    {
+      "id": "etsy_support_ai_and_billing",
+      "state": "blocked_owner_input",
+      "missing": [
+        "active_good_standing_shop",
+        "visible_shop_manager_support_widget",
+        "support_ai_prompt_and_response",
+        "human_escalation_and_verification_state",
+        "same_shop_ads_and_payment_rows",
+        "amount_due_and_autobilling_state",
+        "owner_approved_support_or_payment_action"
+      ]
+    },
+    {
+      "id": "etsy_dynamic_taxonomy_and_digital_listing",
+      "state": "blocked_owner_input",
+      "missing": [
+        "shop_id",
+        "listings_r_or_listings_w_oauth",
+        "seller_taxonomy_response",
+        "category_property_response",
+        "authenticated_physical_and_digital_listing_forms"
+      ]
+    },
+    {
+      "id": "etsy_title_suggestion_openapi_read",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "owner_scoped_oauth",
+        "english_shop_language",
+        "eligible_listing_id",
+        "real_getListing_response",
+        "t_one_endpoint_adapter"
+      ]
+    },
+    {
+      "id": "etsy_openapi_dev_mcp_connection",
+      "state": "blocked_owner_input",
+      "missing": [
+        "approved_t_one_tool_registration",
+        "live_capability_probe",
+        "security_and_data_boundary_review",
+        "retention_and_privacy_review"
+      ]
+    },
+    {
+      "id": "etsy_logged_in_chrome_readonly_research",
+      "state": "unknown",
+      "missing": [
+        "working_current_chrome_extension_connection",
+        "claimed_relevant_tab",
+        "complete_browser_documentation",
+        "read_only_page_and_comment_coverage"
+      ]
+    },
+    {
+      "id": "etsy_openapi_2026_endpoint_migrations",
+      "state": "blocked_owner_input",
+      "missing": [
+        "approved_app_tier",
+        "bound_shop_id",
+        "owner_oauth",
+        "dedicated_inventory_and_shipping_adapter",
+        "post_2026_07_29_response_test",
+        "eligible_third_variation_test_shop"
+      ]
+    },
+    {
+      "id": "etsy_payment_settlement",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "transactions_r_oauth",
+        "payment_account_readback",
+        "reserve_state",
+        "monthly_statement_csv",
+        "scheduled_and_sent_deposit",
+        "bank_receipt",
+        "instant_transfer_live_eligibility"
+      ]
+    },
+    {
+      "id": "etsy_marketplace_insights_authenticated_use",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "authenticated_shop_manager",
+        "tool_eligibility",
+        "actual_plus_state",
+        "remaining_query_quota",
+        "keyword_result",
+        "country_and_language_scope",
+        "stats_outcome_window"
+      ]
+    },
+    {
+      "id": "etsy_agentic_discovery_and_seller_agent",
+      "state": "blocked_owner_input",
+      "missing": [
+        "current_country_and_listing_eligibility",
+        "seller_controls_or_opt_out",
+        "current_app_result_and_checkout_behavior",
+        "same_shop_referrer_and_order_attribution",
+        "payment_account_and_offsite_ads_fee_readback",
+        "public_or_authorized_seller_agent_entry",
+        "seller_agent_permissions_inputs_outputs_controls_and_data_boundary"
+      ]
+    },
+    {
+      "id": "etsy_listing_video_authenticated_parity",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "authenticated_desktop_and_seller_app_listing_editor",
+        "existing_listing_and_rights_cleared_clip",
+        "actual_slot_count",
+        "upload_validation_errors",
+        "upload_delete_and_post_action_readback",
+        "buyer_device_visibility",
+        "authorized_stats_baseline_and_outcome_window"
+      ]
+    },
+    {
+      "id": "etsy_creativity_classification_and_appeal",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "authenticated_listing_item_type_and_category_controls",
+        "seller_contribution_and_production_partner_evidence",
+        "craft_or_party_primary_purpose_evidence",
+        "vintage_source_age_material_and_photo_evidence",
+        "exact_policy_violation_reason",
+        "appeal_eligibility_state",
+        "owner_confirmation_before_appeal_relist_or_listing_change"
+      ]
+    },
+    {
+      "id": "etsy_category_attributes_tags_authenticated_state",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id",
+        "authenticated_listing_editor",
+        "current_seller_taxonomy_response",
+        "category_property_response",
+        "shop_language_and_translation_state",
+        "actual_sustainability_attribute_controls",
+        "pre_change_listing_snapshot",
+        "authorized_stats_baseline_and_outcome_window",
+        "owner_confirmation_before_publish"
+      ]
+    },
+    {
+      "id": "etsy_openapi_generated_client_preflight",
+      "state": "blocked_owner_input",
+      "missing": [
+        "license_admitted_client_implementation",
+        "approved_etsy_app",
+        "keystring_and_shared_secret_credential_refs",
+        "bound_shop_id_and_store_binding",
+        "minimum_scope_shop_oauth",
+        "authenticated_developer_portal_quota",
+        "generated_request_auth_error_fixture_tests",
+        "owner_approval_before_any_authorization_or_live_request"
+      ]
+    },
+    {
+      "id": "etsy_review_response_and_service_metrics_authenticated_state",
+      "state": "blocked_owner_input",
+      "missing": [
+        "bound_shop_id_and_store_binding",
+        "minimum_scope_oauth_or_fixed_authenticated_browser",
+        "order_id_and_review_id",
+        "exact_review_text_media_and_last_edit_timestamp",
+        "estimated_delivery_and_report_window",
+        "current_report_and_public_response_controls",
+        "same_shop_customer_service_stats_denominators_exclusions_and_refresh",
+        "owner_confirmation_before_report_message_refund_replacement_discount_or_public_response"
+      ]
+    }
+  ]
+}

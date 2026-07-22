@@ -1,0 +1,428 @@
+{
+  "schema_version": 3,
+  "updated_at": "2026-07-19T02:05:00+08:00",
+  "workspace": "visual-content",
+  "generation_routes": [
+    {
+      "id": "local_prompt_only",
+      "label": "本地提示词与分镜导出",
+      "provider": "local",
+      "mode": "local_prompt_export",
+      "connection_state": "available",
+      "default": true,
+      "prompt_export_available": true,
+      "external_generation_available": false,
+      "owner_configuration_required": false,
+      "note": "在本机生成提示词、分镜和剪辑建议，不上传素材，也不调用付费生成服务。"
+    },
+    {
+      "id": "seedance_2",
+      "label": "Seedance 2.0（待接入）",
+      "provider": "ByteDance",
+      "mode": "manual_external",
+      "connection_state": "not_connected",
+      "default": false,
+      "prompt_export_available": true,
+      "external_generation_available": false,
+      "owner_configuration_required": true,
+      "note": "保留用户指定的优先生成路线；账号、地区、计费、模型权限和素材上传边界确认前，只导出提示词。"
+    },
+    {
+      "id": "google_video",
+      "label": "Google 视频生成（待选择具体服务）",
+      "provider": "Google",
+      "mode": "manual_external",
+      "connection_state": "not_configured",
+      "default": false,
+      "prompt_export_available": true,
+      "external_generation_available": false,
+      "owner_configuration_required": true,
+      "note": "未假设具体模型、账号或地区可用性；负责人选定服务并完成授权、计费和条款核验前不执行生成。"
+    }
+  ],
+  "performance_feedback_contract": {
+    "required": [
+      "completed_creative_run",
+      "asset_or_variant_id",
+      "evidence_source",
+      "evidence_ref",
+      "window_start",
+      "window_end",
+      "measured_at",
+      "metrics"
+    ],
+    "evidence_sources": [
+      "platform_analytics_export",
+      "owner_dashboard",
+      "api_read",
+      "manual_verified"
+    ],
+    "metrics": [
+      "impressions",
+      "views",
+      "three_second_views",
+      "likes",
+      "comments",
+      "shares",
+      "saves",
+      "clicks",
+      "orders",
+      "spend",
+      "revenue",
+      "refunds"
+    ],
+    "rule": "回写只保存到原任务的项目、商品、站点和生成路线范围；没有可比基线和实验定义时结论必须保持 inconclusive。"
+  },
+  "workflow": [
+    "image_or_video_reference_intake",
+    "competitor_video_intake",
+    "technical_analysis",
+    "image_prompt_reverse_engineering",
+    "shot_by_shot_reverse_engineering",
+    "creative_deconstruction",
+    "viral_mechanism_analysis",
+    "creative_variant_branching",
+    "prompt_and_storyboard",
+    "template_edit",
+    "music_and_rights_check",
+    "render_and_quality_review",
+    "publish_approval"
+  ],
+  "analysis_schema": {
+    "identity": [
+      "platform",
+      "country_site",
+      "source_url",
+      "creator",
+      "product",
+      "captured_at"
+    ],
+    "technical": [
+      "duration_seconds",
+      "aspect_ratio",
+      "resolution",
+      "fps",
+      "scene_cut_seconds",
+      "audio_present"
+    ],
+    "image_reverse_engineering": [
+      "subject_facts",
+      "product_fidelity",
+      "composition_grid",
+      "camera_angle",
+      "lens_feel",
+      "lighting_setup",
+      "material_rendering",
+      "color_palette",
+      "background",
+      "props",
+      "text_layout",
+      "negative_constraints",
+      "unknowns"
+    ],
+    "video_reverse_engineering": [
+      "shot_id",
+      "in_time",
+      "out_time",
+      "visible_facts",
+      "shot_size",
+      "camera_angle",
+      "camera_motion",
+      "subject_action",
+      "product_action",
+      "transition",
+      "caption",
+      "voiceover",
+      "music_beat_role",
+      "commercial_function",
+      "confidence",
+      "unknowns"
+    ],
+    "creative": [
+      "hook_0_3s",
+      "shot_timeline",
+      "camera_motion",
+      "composition",
+      "lighting",
+      "color_style",
+      "on_screen_text",
+      "product_actions",
+      "edit_rhythm",
+      "music_role",
+      "voiceover",
+      "cta"
+    ],
+    "commercial": [
+      "audience",
+      "pain_point",
+      "proof",
+      "offer",
+      "comment_buying_signals",
+      "landing_page_match"
+    ],
+    "learning": [
+      "reusable_pattern",
+      "testable_variants",
+      "what_not_to_copy",
+      "rights_risk"
+    ]
+  },
+  "prompt_schema": [
+    "platform_and_country",
+    "objective",
+    "audience",
+    "duration_and_aspect_ratio",
+    "product_fidelity",
+    "reference_fact_map",
+    "consistency_anchors",
+    "hook",
+    "shot_sequence",
+    "camera_and_motion",
+    "lighting_and_color",
+    "actor_and_product_actions",
+    "caption_and_graphics",
+    "audio_plan",
+    "edit_plan",
+    "cta",
+    "negative_prompt",
+    "copyright_distance",
+    "variant_plan"
+  ],
+  "viral_analysis_schema": {
+    "evidence_inputs": [
+      "public_url_or_user_file",
+      "publish_time",
+      "views",
+      "likes",
+      "comments",
+      "shares",
+      "saves",
+      "clicks_or_orders_if_owned"
+    ],
+    "mechanisms": [
+      "hook_pattern",
+      "audience_identity",
+      "pain_or_desire",
+      "proof_type",
+      "curiosity_gap",
+      "pace_curve",
+      "emotion_curve",
+      "visual_novelty",
+      "offer",
+      "cta",
+      "comment_signal"
+    ],
+    "normalization": [
+      "account_baseline",
+      "age_of_post",
+      "paid_or_organic_if_known",
+      "market",
+      "platform",
+      "content_length"
+    ],
+    "rule": "没有播放、互动或成交证据时只能称为高潜结构，不能断言是爆款。"
+  },
+  "creative_branching": {
+    "mutation_axes": [
+      "hook",
+      "audience",
+      "use_case",
+      "proof",
+      "shot_order",
+      "visual_style",
+      "pacing",
+      "offer",
+      "cta"
+    ],
+    "protected_anchors": [
+      "product_facts",
+      "brand_rules",
+      "rights_constraints",
+      "country_site_policy",
+      "landing_page_match"
+    ],
+    "minimum_originality_changes": 3,
+    "default_test_matrix": [
+      "control_structure",
+      "pain_hook",
+      "result_hook",
+      "identity_hook",
+      "proof_first",
+      "visual_novelty"
+    ],
+    "output": [
+      "hypothesis",
+      "storyboard",
+      "prompt_pack",
+      "editing_notes",
+      "success_metric",
+      "stop_rule"
+    ]
+  },
+  "templates": [
+    {
+      "id": "ugc-pain-solution-15",
+      "name": "UGC 痛点到解决方案",
+      "duration_seconds": 15,
+      "aspect_ratio": "9:16",
+      "structure": [
+        "0-2秒直接说痛点",
+        "2-6秒展示产品和使用动作",
+        "6-11秒给可见细节或对比证据",
+        "11-15秒给场景化CTA"
+      ]
+    },
+    {
+      "id": "apparel-detail-12",
+      "name": "服装细节与上身",
+      "product_types": [
+        "apparel"
+      ],
+      "duration_seconds": 12,
+      "aspect_ratio": "9:16",
+      "structure": [
+        "0-2秒完整上身",
+        "2-5秒领口和面料近景",
+        "5-8秒版型与活动展示",
+        "8-12秒颜色/尺码与CTA"
+      ]
+    },
+    {
+      "id": "mix-pack-18",
+      "name": "多件装混色穿搭",
+      "product_types": [
+        "apparel"
+      ],
+      "duration_seconds": 18,
+      "aspect_ratio": "9:16",
+      "structure": [
+        "0-3秒同时展示全部实物",
+        "3-9秒逐套切换颜色和穿搭",
+        "9-14秒面料/洗水/尺码证据",
+        "14-18秒组合价值与CTA"
+      ]
+    },
+    {
+      "id": "warehouse-proof-15",
+      "name": "美国仓履约证明",
+      "product_types": [
+        "apparel",
+        "equipment"
+      ],
+      "required_context_flags": [
+        "warehouse_media_verified"
+      ],
+      "requires_us_warehouse_location": true,
+      "duration_seconds": 15,
+      "aspect_ratio": "9:16",
+      "structure": [
+        "0-3秒仓库与库存实拍",
+        "3-8秒拣货包装",
+        "8-12秒标签和交接",
+        "12-15秒真实时效与CTA"
+      ]
+    },
+    {
+      "id": "b2b-machine-demo-30",
+      "name": "B2B 直喷设备演示",
+      "product_types": [
+        "equipment"
+      ],
+      "required_context_flags": [
+        "equipment_specs_verified",
+        "equipment_demo_media_verified"
+      ],
+      "duration_seconds": 30,
+      "aspect_ratio": "16:9",
+      "structure": [
+        "0-4秒展示成品和产能结果",
+        "4-10秒上料与操作",
+        "10-20秒打印过程和细节",
+        "20-26秒成本/效率证据",
+        "26-30秒询盘CTA"
+      ]
+    }
+  ],
+  "music_policy": {
+    "allowed": [
+      "owned",
+      "commissioned",
+      "platform_commercial_library",
+      "commercial_license"
+    ],
+    "required_fields": [
+      "track_name",
+      "source",
+      "license_type",
+      "territory",
+      "attribution",
+      "expiry",
+      "proof_file"
+    ],
+    "blocked": [
+      "ripped_competitor_audio",
+      "unknown_license",
+      "personal_use_only",
+      "expired_license"
+    ],
+    "rule": "分析同行音乐只记录节奏、情绪和结构作用，不复制或下载未授权音轨。"
+  },
+  "tools": [
+    {
+      "id": "capcut",
+      "role": "desktop_editor",
+      "decision": "use_installed",
+      "launch_allowed": true
+    },
+    {
+      "id": "ffmpeg",
+      "repo": "FFmpeg/FFmpeg",
+      "role": "metadata_scene_frame_audio",
+      "decision": "pilot_isolated"
+    },
+    {
+      "id": "pyscenedetect",
+      "repo": "Breakthrough/PySceneDetect",
+      "role": "advanced_scene_detection",
+      "decision": "pilot_isolated_not_installed"
+    },
+    {
+      "id": "whisper_cpp",
+      "repo": "ggml-org/whisper.cpp",
+      "role": "local_transcription",
+      "decision": "pilot_isolated_not_installed"
+    },
+    {
+      "id": "remotion",
+      "repo": "remotion-dev/remotion",
+      "role": "programmable_templates",
+      "decision": "reference_only_license_gate"
+    },
+    {
+      "id": "opentimelineio",
+      "repo": "AcademySoftwareFoundation/OpenTimelineIO",
+      "role": "timeline_exchange",
+      "decision": "adopt_reference"
+    },
+    {
+      "id": "librosa",
+      "repo": "librosa/librosa",
+      "role": "music_beat_analysis",
+      "decision": "pilot_isolated_not_installed"
+    },
+    {
+      "id": "opencut",
+      "repo": "opencut-app/opencut",
+      "role": "editor_api_mcp_reference",
+      "decision": "watch"
+    }
+  ],
+  "guardrails": [
+    "Only analyze user-provided files or publicly accessible evidence.",
+    "Do not clone competitor trademarks, faces, copyrighted scenes, scripts or audio.",
+    "Reverse engineering may recover structure, camera language and commercial mechanisms, but must label visible facts, inference and unknowns separately.",
+    "Creative variation must change at least three non-factual axes and may not impersonate the original creator or brand.",
+    "Preserve product color, material, count and fit facts in generated prompts.",
+    "Public upload, ad spend and creator outreach require approval."
+  ]
+}

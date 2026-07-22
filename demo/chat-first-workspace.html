@@ -63,7 +63,7 @@
     .composer-actions { display: flex; align-items: center; gap: 8px; }
     .attach, .send { width: 32px; height: 32px; border-radius: 8px; cursor: pointer; }
     .attach { border: 1px solid var(--line); background: #fff; font-size: 18px; }
-    .model { max-width: 190px; border: 0; background: #fff; color: #3e4549; font-size: 11px; }
+    .auto-agent { color: var(--muted); font-size: 11px; }
     .send { margin-left: auto; border: 0; background: #111; color: #fff; }
     .drawer { position: fixed; z-index: 8; inset: 0 0 0 auto; width: var(--drawer); padding: 0 18px 24px; overflow: auto; border-left: 1px solid var(--line); background: #fafbfb; box-shadow: -12px 0 34px rgba(0, 0, 0, .08); transform: translateX(105%); transition: transform .18s ease; }
     .settings-open .drawer { transform: translateX(0); }
@@ -72,7 +72,7 @@
     .drawer-head { height: 58px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
     .drawer-head h2 { flex: 1; margin: 0; font-size: 15px; }
     .drawer-head button { width: 32px; height: 32px; border: 0; border-radius: 7px; background: transparent; font-size: 20px; cursor: pointer; }
-    .tabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+    .tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
     .tabs button { padding: 12px 3px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); cursor: pointer; }
     .tabs button.active { border-color: #111; color: #111; }
     .panel { display: none; padding: 18px 0; }
@@ -80,6 +80,17 @@
     .setting-row { padding: 13px 0; border-bottom: 1px solid var(--line); }
     .setting-row strong, .setting-row small { display: block; }
     .setting-row small { margin-top: 4px; color: var(--muted); }
+    .account-action { width: 100%; display: flex; align-items: center; gap: 12px; padding: 13px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; text-align: left; cursor: pointer; }
+    .account-action span { min-width: 0; flex: 1; }
+    .account-action strong, .account-action small { display: block; }
+    .account-action small { margin-top: 4px; color: var(--muted); }
+    .account-action em { color: var(--accent); font-size: 11px; font-style: normal; white-space: nowrap; }
+    .connection-settings { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .connection-settings[hidden] { display: none; }
+    .connection-settings label, .connection-settings input, .connection-settings select { display: block; width: 100%; }
+    .connection-settings label { margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+    .connection-settings select, .connection-settings input { margin-top: 5px; padding: 9px; border: 1px solid var(--line); border-radius: 7px; background: #fff; color: var(--text); }
+    .connection-settings p { margin: 8px 0 0; color: var(--muted); font-size: 10px; }
     dialog { width: min(460px, calc(100vw - 32px)); border: 1px solid var(--line); border-radius: 10px; padding: 0; box-shadow: 0 22px 60px rgba(0, 0, 0, .18); }
     dialog::backdrop { background: rgba(0, 0, 0, .28); }
     .dialog-body { padding: 20px; }
@@ -131,17 +142,18 @@
       <div class="composer-wrap">
         <form class="composer" id="composer">
           <textarea id="prompt" aria-label="给当前智能体下指令" placeholder="直接告诉智能体你要完成什么…"></textarea>
-          <div class="composer-actions"><button class="attach" id="attach" type="button" aria-label="添加文件">＋</button><select class="model" aria-label="模型"><option>OpenAI · 示例模型</option><option>本地模型 · 未配置</option></select><button class="send" type="submit" aria-label="发送">↑</button></div>
+          <div class="composer-actions"><button class="attach" id="attach" type="button" aria-label="添加文件">＋</button><small class="auto-agent">T One 自动选择智能体</small><button class="send" type="submit" aria-label="发送">↑</button></div>
         </form>
       </div>
     </main>
 
     <aside class="drawer" aria-label="设置">
       <div class="drawer-head"><h2>设置</h2><button id="closeSettings" type="button" aria-label="关闭设置">×</button></div>
-      <div class="tabs"><button class="active" data-tab="agent" type="button">当前智能体</button><button data-tab="model" type="button">模型</button><button data-tab="advanced" type="button">后台</button></div>
-      <section class="panel active" id="panel-agent"><div class="setting-row"><strong>按对话自动选择能力</strong><small>日常使用不需要理解插件、Skills 或路由。</small></div><div class="setting-row"><strong>外部动作默认需确认</strong><small>花费、发布、停投、发消息等动作不会静默执行。</small></div></section>
+      <div class="tabs"><button class="active" data-tab="agent" type="button">智能体</button><button data-tab="model" type="button">模型</button><button data-tab="account" type="button">账号</button><button data-tab="manage" type="button">管理</button></div>
+      <section class="panel active" id="panel-agent"><div class="setting-row"><strong>自动选择智能体</strong><small>日常使用只需要说目标；T One 根据对话选择已启用的智能体。</small></div><div class="setting-row"><strong>外部动作默认需确认</strong><small>花费、发布、停投、发消息等动作不会静默执行。</small></div></section>
       <section class="panel" id="panel-model"><div class="setting-row"><strong>模型配置</strong><small>公开演示不保存 API 密钥，也不会发起真实请求。</small></div></section>
-      <section class="panel" id="panel-advanced"><div class="setting-row"><strong>连接与诊断</strong><small>真实账号、自动任务、审计记录等管理功能应放在这里，不占用日常导航。</small></div></section>
+      <section class="panel" id="panel-account"><button class="account-action" id="openCommunications" type="button"><span><strong>邮箱与通信账号</strong><small>Gmail、Outlook、企业邮箱、飞书、企业微信、微信公众号和 WhatsApp Business</small></span><em>打开设置 →</em></button><div class="connection-settings" id="connectionSettings" hidden><label>账号类型<select id="connectionType"><option value="gmail">Gmail（未连接）</option><option value="outlook">Outlook（未连接）</option><option value="email">其他企业邮箱（未连接）</option><option value="feishu">飞书（未连接）</option><option value="wecom">企业微信（未连接）</option><option value="wechat">微信公众号（未连接）</option><option value="whatsapp">WhatsApp Business（未连接）</option></select></label><label><span id="connectionFieldLabel">Google OAuth Access Token</span><input id="connectionField" disabled placeholder="公开演示不接收或保存凭据"></label><p>这里仅演示设置路径。公开版本不会连接账号、读取邮件或联系人，也不会发送或发布。</p></div></section>
+      <section class="panel" id="panel-manage"><div class="setting-row"><strong>后台管理</strong><small>连接诊断、审计记录和高级配置不占用日常导航。</small></div></section>
     </aside>
   </div>
 
@@ -183,6 +195,14 @@
     document.getElementById('closeSettings').onclick = () => app.classList.remove('settings-open');
     document.addEventListener('keydown', event => { if (event.key === 'Escape') app.classList.remove('settings-open'); });
     document.getElementById('attach').onclick = () => document.getElementById('fileDialog').showModal();
+    const connectionLabels = { gmail: 'Google OAuth Access Token', outlook: 'Microsoft Graph Access Token', email: '邮箱应用密码 / Token', feishu: '飞书 App ID 与 App Secret', wecom: '企业微信 Corp ID 与 Corp Secret', wechat: '微信公众号 App ID 与 App Secret', whatsapp: 'WhatsApp Phone Number ID 与 Access Token' };
+    document.getElementById('openCommunications').onclick = () => {
+      const settings = document.getElementById('connectionSettings');
+      settings.hidden = !settings.hidden;
+    };
+    document.getElementById('connectionType').onchange = event => {
+      document.getElementById('connectionFieldLabel').textContent = connectionLabels[event.target.value];
+    };
     document.querySelectorAll('.tabs button').forEach(button => button.onclick = () => {
       document.querySelectorAll('.tabs button').forEach(item => item.classList.toggle('active', item === button));
       document.querySelectorAll('.panel').forEach(panel => panel.classList.toggle('active', panel.id === `panel-${button.dataset.tab}`));

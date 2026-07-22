@@ -1,0 +1,4 @@
+interface:
+  display_name: "主动开发客户外贸智能体"
+  short_description: "Research and draft evidence-scoped outbound buyer development"
+  default_prompt: "Use $b2b-outbound-customer-development to research and prepare one evidence-scoped outbound buyer-development workflow."

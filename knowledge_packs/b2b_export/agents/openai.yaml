@@ -1,0 +1,4 @@
+interface:
+  display_name: "B2B Export 成交专家"
+  short_description: "证据驱动的外贸获客、报价、交付、回款与设备交叉销售"
+  default_prompt: "Use $b2b-export-expert to inspect new authorized software or official-page evidence first, then prepare the smallest evidence-backed B2B export next action with approval gates and truthful connector state."

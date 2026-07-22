@@ -12,7 +12,7 @@ class WorkspaceSchemaTests(unittest.TestCase):
         workspace = normalize_workspace_config(
             {
                 "schema_version": 3,
-                "workspace_name": "T One",
+                "workspace_name": "T-one",
                 "projects": [
                     {
                         "id": "apparel-growth",

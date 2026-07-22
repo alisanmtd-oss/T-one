@@ -7,6 +7,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {".html", ".json", ".md", ".py", ".txt", ".toml", ".yaml", ".yml"}
 SKIP_FILES = {"scripts/verify_public_tree.py"}
+FORBIDDEN_EXACT_PATHS = {
+    "OPEN_SOURCE_READINESS.md",
+    "config/private_project_facts.json",
+    "docs/BRAND_PUBLIC_BOUNDARY.md",
+    "docs/FEISHU_BRAND_OPERATING_SYSTEM.md",
+}
 FORBIDDEN_PATH_PARTS = {
     "browser_extension",
     "browser_profiles",
@@ -34,10 +40,15 @@ PATTERNS = {
 
 def main() -> int:
     findings: list[str] = []
+    if (ROOT / "knowledge_packs" / "tiktok_shop").exists():
+        findings.append("private TikTok Shop knowledge pack present")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:
             continue
         relative = path.relative_to(ROOT).as_posix()
+        if relative in FORBIDDEN_EXACT_PATHS:
+            findings.append(f"internal release note present: {relative}")
+            continue
         if path.is_symlink():
             findings.append(f"symlink present: {relative}")
             continue

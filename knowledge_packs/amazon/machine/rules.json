@@ -1,0 +1,1092 @@
+{
+  "schema_version": 1,
+  "expert_id": "amazon-commerce-operator",
+  "rules": [
+    {
+      "id": "rule-listing-ai-draft-review",
+      "domain_ids": [
+        "seller-central-listing-ai",
+        "listing-seo-keywords",
+        "images-video-a-plus"
+      ],
+      "rule": "Listing AI output is a draft candidate. Review, edit and approve against product facts, category rules, brand rights and the exact family before any submission; verify publication separately.",
+      "source_ids": [
+        "amz-listing-ai"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:23:11+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "self_store",
+      "confirmation_gate": "owner_confirmation_before_submit"
+    },
+    {
+      "id": "rule-native-ai-access-not-assumed",
+      "domain_ids": [
+        "seller-central-listing-ai",
+        "seller-assistant-agentic-ai"
+      ],
+      "rule": "Official documentation, a visible entry or HTTP 200 does not prove current store entitlement or usable output; inspect the authenticated feature and record input, output, edit and submission boundaries.",
+      "source_ids": [
+        "amz-listing-ai",
+        "amz-seller-assistant-agentic",
+        "amz-seller-central-tools"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:23:11+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "self_store",
+      "confirmation_gate": "owner_authentication_and_action_confirmation"
+    },
+    {
+      "id": "rule-featured-offer-not-buying-options",
+      "domain_ids": [
+        "featured-offer",
+        "ads-sponsored-products"
+      ],
+      "rule": "See All Buying Options is not the primary Featured Offer. Use the current buyer purchase panel and store-side eligibility evidence before spend or promotion recommendations.",
+      "source_ids": [
+        "amz-featured-offer-pricing",
+        "amz-sponsored-products"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:23:11+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-19",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "self_store",
+      "confirmation_gate": "owner_confirmation_before_spend_or_promotion"
+    },
+    {
+      "id": "rule-ads-search-term-window",
+      "domain_ids": [
+        "ads-search-terms",
+        "ads-measurement-experiments"
+      ],
+      "rule": "Interpret the Sponsored Products search term report within its documented one-click inclusion threshold, summary/daily units and 65-day lookback; an absent term is not proof of zero impressions and report impressions may differ from Campaign Manager.",
+      "source_ids": [
+        "amz-ads-search-term-report"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:47:45+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "GLOBAL",
+      "store_mode": "advertising_account",
+      "ownership": "authorized_account_only",
+      "confirmation_gate": "owner_confirmation_before_campaign_change"
+    },
+    {
+      "id": "rule-ads-search-term-target-split",
+      "domain_ids": [
+        "ads-search-terms",
+        "ads-targeting-bids-budget"
+      ],
+      "rule": "Keep customer search terms separate from configured targets. Classify natural-language terms versus ASIN contexts, then generate positive or negative candidates only after sample-size, attribution-window and profit checks.",
+      "source_ids": [
+        "amz-ads-search-term-report",
+        "amz-ads-basics-metrics"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:47:45+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "GLOBAL",
+      "store_mode": "advertising_account",
+      "ownership": "authorized_account_only",
+      "confirmation_gate": "owner_confirmation_before_targeting_change"
+    },
+    {
+      "id": "rule-ads-metric-denominators",
+      "domain_ids": [
+        "ads-measurement-experiments",
+        "ctr",
+        "unit-economics-profit"
+      ],
+      "rule": "Store formula, denominator, advertising product, attribution window and time range with every metric. Do not substitute ROAS for ROI or compare ACOS across Sponsored Products and Sponsored Brands without preserving their sales scope.",
+      "source_ids": [
+        "amz-ads-basics-metrics"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T22:47:45+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-08-18",
+      "country_site": "GLOBAL",
+      "store_mode": "advertising_account",
+      "ownership": "authorized_account_only",
+      "confirmation_gate": "owner_confirmation_before_budget_or_bid_change"
+    },
+    {
+      "id": "rule-ptd-dynamic-product-schema",
+      "domain_ids": [
+        "category-product-type",
+        "parent-child-variation",
+        "api-data-security"
+      ],
+      "rule": "For every Amazon listing draft, discover the product type for the current marketplace, then retrieve the matching PTD requirements and NONE/CHILD/PARENT schema. Never reuse SHIRT, another category, another marketplace or another tenant as a default.",
+      "source_ids": [
+        "amz-ptd-search-guide",
+        "amz-ptd-retrieve-guide",
+        "amz-ptd-official-model"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T23:47:42+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "GLOBAL",
+      "store_mode": "marketplace_seller",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_listing_submission"
+    },
+    {
+      "id": "rule-ptd-schema-integrity",
+      "domain_ids": [
+        "category-product-type",
+        "api-data-security"
+      ],
+      "rule": "Treat PTD fields as verified only after an authorized response, retrieval of the linked schema and meta-schema within their validity window, checksum verification, and validation with Amazon's custom PTD vocabulary. Preserve productTypeVersion and return blocked_connector when authorization or Product Listing role evidence is missing.",
+      "source_ids": [
+        "amz-ptd-retrieve-guide",
+        "amz-ptd-meta-schema",
+        "amz-ptd-official-model"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-18T23:47:42+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-25",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_listing_submission"
+    },
+    {
+      "id": "rule-listings-preview-submit-readback",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "category-product-type",
+        "api-data-security"
+      ],
+      "rule": "Run current PTD validation and non-persisting VALIDATION_PREVIEW first. Require owner confirmation before omitting preview mode for a live PUT/PATCH. Treat VALID as preview-only, ACCEPTED as accepted for processing, and INVALID as not accepted; read back issues and verify the buyer page before claiming publication.",
+      "source_ids": [
+        "amz-put-listings-item",
+        "amz-listings-workflow-guide",
+        "amz-listings-official-model",
+        "amz-get-listing-details"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "marketplace_seller",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_live_put_or_patch"
+    },
+    {
+      "id": "rule-json-listings-feed-result-gate",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "rule": "Treat JSON_LISTINGS_FEED as asynchronous. IN_QUEUE and IN_PROGRESS are pending; DONE requires result-document and per-message issue inspection; CANCELLED is not submitted; FATAL is indeterminate until result-document inspection and item readback. Feed status alone never proves publication.",
+      "source_ids": [
+        "amz-get-feeds-reference",
+        "amz-feeds-official-model",
+        "amz-listings-feed-schema-v2",
+        "amz-listings-feed-report-schema-v2"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "marketplace_seller",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_create_feed"
+    },
+    {
+      "id": "rule-listing-issue-code-versioning",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "rule": "Classify listing issues by current severity, category, attribute and message, while retaining the dated raw code. Do not make exact historical error codes the only decision key because Amazon may change preview codes without changing validation logic.",
+      "source_ids": [
+        "amz-validation-preview-code-change",
+        "amz-listings-official-model",
+        "amz-listings-feed-report-schema-v2"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:12:06+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-08-19",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "none_for_read_only_classification"
+    },
+    {
+      "id": "rule-listing-notification-readback",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "inventory-fbm-fba",
+        "api-data-security"
+      ],
+      "rule": "Treat every listing status or issue notification as a marketplace- and store-scoped event hint. Preserve identity and payload metadata, then read the affected SKU with getListingsItem using issues, offers, fulfillmentAvailability and summaries as needed. Missing BUYABLE does not reveal the cause, severity NONE does not prove health, and no event proves buyer-page publication.",
+      "source_ids": [
+        "amz-notification-type-values",
+        "amz-manage-product-listings",
+        "amz-status-schema",
+        "amz-issues-schema-2023-12-13"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:32:37+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "marketplace_seller",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "none_for_read_only_notification_and_readback"
+    },
+    {
+      "id": "rule-listing-issues-payload-version-gate",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "rule": "Expect the LISTINGS_ITEM_ISSUES_CHANGE 2023-12-13 schema because the dated official changelog superseded 1.0, but preserve the current documentation conflict and validate the version accepted by the API when a real subscription is created. A file remaining in the official repository does not prove API support.",
+      "source_ids": [
+        "amz-issues-payload-deprecation",
+        "amz-notification-type-values",
+        "amz-issues-schema-2023-12-13",
+        "amz-notifications-official-model"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:32:37+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_and_aws_coordination_before_destination_or_subscription"
+    },
+    {
+      "id": "rule-community-single-case-promotion-gate",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "api-data-security"
+      ],
+      "rule": "Retain a public seller post or comment as a dated single_case hypothesis. Do not promote it to a general practice unless at least three independent sources support it and it does not conflict with current official rules; never use a single claim of missing notifications to disable an official notification workflow.",
+      "source_ids": [
+        "amz-community-listing-issues-1t0auwc",
+        "amz-notification-type-values"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T00:32:37+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-08-19",
+      "country_site": "GLOBAL",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_anecdote_only",
+      "confirmation_gate": "none_for_research_only"
+    },
+    {
+      "id": "rule-notification-filter-capability-gate",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "inventory-fbm-fba",
+        "api-data-security"
+      ],
+      "rule": "Check filterExpression support for the exact notification type before building a subscription. Reject filterExpression for LISTINGS_ITEM_STATUS_CHANGE and LISTINGS_ITEM_ISSUES_CHANGE, never combine it with eventFilter, and guard optional payload fields with has() so absent fields do not cause runtime failure or dropped events.",
+      "source_ids": [
+        "amz-filter-notification-subscriptions",
+        "amz-create-subscription-reference"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_any_subscription_mutation"
+    },
+    {
+      "id": "rule-notification-subscription-delivery-state-machine",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "inventory-fbm-fba",
+        "api-data-security"
+      ],
+      "rule": "Treat createSubscription 200 as subscription_record_created only. Require getSubscription readback, a destination receipt, a processing receipt and the affected business-resource readback before marking delivery or business state verified. To add filterExpression, create a new subscription, shadow it for 7-14 days, validate gaps and expected events, then require owner confirmation before deleting the old subscription.",
+      "source_ids": [
+        "amz-filter-notification-subscriptions",
+        "amz-create-subscription-reference",
+        "amz-get-subscription-reference"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-07-26",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "authorized_store_only",
+      "confirmation_gate": "owner_confirmation_before_create_or_delete_subscription"
+    },
+    {
+      "id": "rule-official-github-admission-and-supersession",
+      "domain_ids": [
+        "api-data-security",
+        "software-routing"
+      ],
+      "rule": "Verify an Amazon repository through a direct Amazon developer-documentation link, then deduplicate by owner/repo plus commit or tag. Audit README, docs, release, latest commit, license, issues, PRs and security before reuse. Samples stay educational reference; removed labs are superseded, unasserted-license repositories stay research_only, and no repository may receive store credentials or enter the runtime without a separate security pilot.",
+      "source_ids": [
+        "amz-github-org-official-chain",
+        "amz-sp-api-samples-official",
+        "amz-sp-api-sdk-official",
+        "amz-sp-api-postman-official",
+        "amz-sp-api-php-release-official",
+        "amz-sp-api-docs-archived"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "on_commit_release_license_or_security_change",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_repository_only",
+      "confirmation_gate": "separate_owner_and_security_approval_before_install"
+    },
+    {
+      "id": "rule-deep-source-coverage-before-promotion",
+      "domain_ids": [
+        "software-routing",
+        "api-data-security"
+      ],
+      "rule": "Before promoting a new source, record page identity, dated/versioned scope, sections traversed to the bottom, expanded content, directly related links, pagination or comment coverage and inaccessible areas. If video captions/comments, authenticated sections or dynamic GitHub content cannot be read, mark the exact blocked region and promote no claim from titles, snippets, stars or reaction counts.",
+      "source_ids": [
+        "amz-seller-university",
+        "amz-seller-university-ai-video-wxvcuc1c4ie",
+        "amz-filter-notification-subscriptions",
+        "amz-sp-api-samples-official"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:02:13+08:00",
+      "effective_at": "current_at_capture",
+      "recheck_after": "2026-08-19",
+      "country_site": "GLOBAL",
+      "store_mode": "public_research",
+      "ownership": "public_sources_only",
+      "confirmation_gate": "none_for_read_only_research"
+    },
+    {
+      "id": "rule-native-ai-content-change-control-20260719",
+      "domain_ids": [
+        "ai-commerce-tools",
+        "listing-seo-keywords",
+        "catalog-identity-compliance",
+        "images-video-a-plus"
+      ],
+      "rule": "Treat every Amazon-native AI output as an editable draft. Before any owner-approved submission, capture the current field state, validate generated fields against the current PTD and policy, show a field-level diff, preserve rollback material, and require explicit approval. After submission, separately read back Seller Central and the buyer page. Community failure reports create regression cases but do not prove a platform defect or policy exception.",
+      "source_ids": [
+        "amz-listing-ai",
+        "amz-seller-forum-ai-enhancement-comments-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:21:17+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "2026-07-26",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_and_community_evidence",
+      "confirmation_gate": "owner_confirmation_before_publish_or_catalog_change"
+    },
+    {
+      "id": "rule-effective-dated-us-title-item-highlights-20260727",
+      "domain_ids": [
+        "listing-seo-keywords",
+        "catalog-identity-compliance",
+        "ai-commerce-tools"
+      ],
+      "rule": "For Amazon US, keep the July 27 2026 non-media title limit of 75 characters including spaces and the 125-character Item Highlights field as scheduled until the effective date, then apply it only to the documented site and category. Do not propagate it globally. Require the live PTD or Seller Central form to expose Item Highlights; an unsupported-field error blocks that field and is not a policy exception.",
+      "source_ids": [
+        "amz-title-item-highlights-2026-07-27",
+        "amz-title-update-engage-qa-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "effective_at": "2026-07-27",
+      "recheck_after": "2026-07-27",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_and_community_evidence",
+      "confirmation_gate": "owner_confirmation_before_catalog_change"
+    },
+    {
+      "id": "rule-native-ai-title-review-history-readback-20260719",
+      "domain_ids": [
+        "ai-commerce-tools",
+        "listing-seo-keywords",
+        "catalog-identity-compliance"
+      ],
+      "rule": "Treat View enhancements title and Item Highlights output as a draft. Snapshot the current fields, validate against current PTD and effective policy, show a field-level diff and rollback material, and require owner confirmation. Respect the documented 14-day brand-owner review window; for other sellers inspect Manage All Inventory > View Change History. Verify Seller Central persistence and buyer-page output separately.",
+      "source_ids": [
+        "amz-title-item-highlights-2026-07-27",
+        "amz-title-update-engage-qa-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "2026-07-27",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_forum_announcement",
+      "confirmation_gate": "owner_confirmation_before_publish_or_catalog_change"
+    },
+    {
+      "id": "rule-listing-restrictions-product-type-preflight-20260719",
+      "domain_ids": [
+        "api-data-security",
+        "catalog-identity-compliance",
+        "variation-bulk-files"
+      ],
+      "rule": "Before an authorized listing create or repair, call getListingsRestrictions with the current ASIN, seller and marketplace. Include the resolved current-marketplace productType when available to evaluate product-type-specific GTIN exemption restrictions. Never infer product type, brand or restriction clearance, and keep the operation blocked_connector until store-scoped SP-API authorization is verified.",
+      "source_ids": [
+        "amz-sp-api-release-notes-2026-05-27",
+        "amz-listings-restrictions-reference-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:37:35+08:00",
+      "effective_at": "2026-05-27",
+      "recheck_after": "on_sp_api_release_or_authorized_connection_change",
+      "country_site": "GLOBAL",
+      "store_mode": "developer_application",
+      "ownership": "public_official_documentation",
+      "confirmation_gate": "owner_and_store_authorization_before_live_call"
+    },
+    {
+      "id": "rule-amz-ads-auto-eligible-placement-audit-20260719",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-brand-display-video",
+        "ads-measurement-experiments",
+        "ai-commerce-tools"
+      ],
+      "rule": "Treat automatic eligibility of an existing sponsored-ads campaign for Alexa placements or prompts as an additional delivery possibility, not a newly created campaign, verified serving, global entitlement or incremental-profit guarantee. Audit the routed advertiser account, marketplace, campaign and billing identity, placement/reporting visibility and available controls before measuring effect. Any pause, target, bid, budget, negative-targeting or other live campaign change remains owner-confirmed.",
+      "source_ids": [
+        "amz-ads-agentic-shopping-2026-06-11"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "effective_at": "2026-06-11",
+      "recheck_after": "on_amazon_ads_eligibility_or_control_change",
+      "country_site": "GLOBAL_PUBLIC_PAGE",
+      "store_mode": "advertiser_account",
+      "ownership": "public_official_documentation",
+      "confirmation_gate": "owner_confirmation_before_any_live_campaign_change"
+    },
+    {
+      "id": "rule-amz-amc-ai-sql-diff-approval-20260719",
+      "domain_ids": [
+        "ads-measurement-experiments",
+        "ai-commerce-tools",
+        "api-data-security"
+      ],
+      "rule": "For Ads Agent in AMC, preserve the selected source SQL, user prompt, output destination (current or new tab), generated query and date-range diff, and the accept or reject decision. A public Ask AI for AMC help entry does not prove routed-account AMC access. Query execution, scheduling, audience creation or activation and any downstream ad action require verified account permission and owner confirmation.",
+      "source_ids": [
+        "amz-ads-agent-amc-interactivity-2026-03-31"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "effective_at": "2026-03-31",
+      "recheck_after": "on_amc_ads_agent_entitlement_or_editor_change",
+      "country_site": "GLOBAL_LISTED_COUNTRIES",
+      "store_mode": "advertiser_amc",
+      "ownership": "public_official_documentation",
+      "confirmation_gate": "owner_confirmation_before_query_execution_schedule_audience_or_live_ad_change"
+    },
+    {
+      "id": "rule-amz-ppc-risk-log-community-boundary-20260719",
+      "domain_ids": [
+        "ads-sponsored-products",
+        "ads-measurement-experiments",
+        "ai-commerce-tools",
+        "api-data-security"
+      ],
+      "rule": "Use maximum exposure window, action type and decision-log fields from the public PPC automation discussion only as community-derived risk and audit regression candidates. Reject the suggestion that negative targeting, pauses, bids, budgets or spend may auto-execute merely because someone calls them reversible; all remain owner-gated. Named third-party MCP tools stay research_only until official identity, license, maintenance, security, credential and store-isolation review is complete.",
+      "source_ids": [
+        "amz-reddit-mcp-ppc-trust-layer-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T01:53:00+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "only_on_independent_corroboration_or_audited_tool_delta",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "agency_or_inhouse_advertiser_discussion",
+      "ownership": "public_community_content",
+      "confirmation_gate": "owner_confirmation_before_every_live_ad_action"
+    },
+    {
+      "id": "rule-fba-prep-category-barcode-preflight-20260719",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "catalog-identity-compliance"
+      ],
+      "rule": "Before any FBA inbound recommendation, resolve the current marketplace, product type and restrictions, barcode mode, prep category, individual/case-packed/set structure, protective packaging, unit label and outer-box label. Do not assume FNSKU or manufacturer barcode, transfer another product's exemption or Brand Registry role, create a set relationship from a do-not-separate marker, or interpret public documentation as a received inventory state.",
+      "source_ids": [
+        "amz-fba-prep-packaging-labeling-2026-07-07"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "effective_at": "2026-07-07",
+      "recheck_after": "on_FBA_prep_barcode_or_product_type_change",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_documentation",
+      "confirmation_gate": "owner_confirmation_before_inbound_or_label_action"
+    },
+    {
+      "id": "rule-us-fba-prep-seller-responsibility-20260101",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "rule": "For Amazon US from January 1, 2026, plan FBA prep and item labeling as the seller's or a selected provider's responsibility. Require the routed store, current product-specific Prep guidance and owner choice before creating an inbound shipment, selecting a provider, purchasing packaging or labeling units. Do not generalize the US effective-date rule to another country site.",
+      "source_ids": [
+        "amz-seller-forum-fba-prep-glass-pallet-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "effective_at": "2026-01-01",
+      "recheck_after": "on_US_FBA_service_change",
+      "country_site": "US",
+      "store_mode": "marketplace_seller",
+      "ownership": "public_official_reply",
+      "confirmation_gate": "owner_confirmation_before_provider_purchase_label_or_shipment_action"
+    },
+    {
+      "id": "rule-fba-polybag-measurement-conflict-block-20260719",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "rule": "Do not choose or convert an exact poly-bag thickness or suffocation-warning opening boundary from the unresolved Amazon-source conflict: 1mm versus 1.5 mil, and larger than 5 inches versus 5 inches or larger. Mark the exact field unknown/conflicting_evidence and block the affected prep decision until current routed Seller Central Prep guidance or another current authoritative rule resolves both unit and boundary semantics.",
+      "source_ids": [
+        "amz-fba-prep-packaging-labeling-2026-07-07",
+        "amz-seller-forum-poly-bagging-101-dated"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_until_current_authority_resolves_conflict",
+      "country_site": "US",
+      "store_mode": "public_sources_no_authenticated_product_guidance",
+      "ownership": "public_official_sources_with_conflict",
+      "confirmation_gate": "block_exact_measurement_and_inbound_action"
+    },
+    {
+      "id": "rule-fba-community-packaging-claim-boundary-20260719",
+      "domain_ids": [
+        "fulfillment-fba-fbm",
+        "catalog-identity-compliance",
+        "brand-registry-ip",
+        "industry-intelligence"
+      ],
+      "rule": "Treat forum or Reddit statements about manufacturer-barcode eligibility, three-foot drop tests, country-of-origin labels, set markers or prep acceptance as dated community signals unless current official, product-type and routed-store evidence confirms them. A high-vote comment, seller anecdote or author reply cannot grant a barcode exemption, prove compliance, authorize reuse of another brand's role, or override an owner gate.",
+      "source_ids": [
+        "amz-reddit-fba-manufacturer-barcode-prepackaged-2026",
+        "amz-seller-forum-fba-prep-glass-pallet-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:07:46+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "on_independent_corroboration_or_current_official_delta",
+      "country_site": "US_AND_UNSPECIFIED_COMMUNITY",
+      "store_mode": "public_seller_discussion",
+      "ownership": "public_mixed_official_and_community_content",
+      "confirmation_gate": "owner_confirmation_before_any_packaging_label_or_shipment_action"
+    },
+    {
+      "id": "rule-fba-inventory-state-vector-scope-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "api-data-security"
+      ],
+      "rule": "Preserve marketplace, store binding, SKU/FNSKU/ASIN, source, source purpose and captured_at, and keep fulfillable, inbound, reserved, unfulfillable and researching quantities separate. Never publish or reason from an unqualified stock number, and never treat public API documentation as a current seller quantity.",
+      "source_ids": [
+        "amz-fba-inventory-api-current"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_release_delta_or_before_connector_use",
+      "country_site": "GLOBAL_API_MARKETPLACE_SCOPED",
+      "store_mode": "public_developer_contract_no_seller_selected",
+      "ownership": "Amazon_public_developer_documentation",
+      "confirmation_gate": "owner_confirmation_before_any_inventory_or_shipment_change"
+    },
+    {
+      "id": "rule-fba-inventory-summary-watermark-detail-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "api-data-security"
+      ],
+      "rule": "Choose full, delta or seller-SKU getInventorySummaries mode explicitly. Preserve startDateTime across subsequent delta pages, batch sellerSkus at no more than 50, request details when required and treat fields omitted under details=false as not returned rather than zero.",
+      "source_ids": [
+        "amz-get-fba-inventory-summaries-current"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_release_delta_or_before_connector_use",
+      "country_site": "GLOBAL_API_MARKETPLACE_SCOPED",
+      "store_mode": "public_developer_contract_no_seller_selected",
+      "ownership": "Amazon_public_developer_documentation",
+      "confirmation_gate": "authorized_read_only_call_before_store_claim"
+    },
+    {
+      "id": "rule-fba-inventory-source-freshness-reconciliation-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "industry-intelligence"
+      ],
+      "rule": "Before comparing Inventory Ledger, FBA Inventory, another inventory report, API summary, Seller Central page or buyer page, preserve site/store/SKU plus requested_at, generated_at, data interval, captured_at and source purpose. The dated US mid-2026 alignment expectation is expired without completion evidence, and the UK period-versus-snapshot explanation remains UK-scoped; current agreement must be proven by routed reads.",
+      "source_ids": [
+        "amz-us-fba-inventory-overview-report-transition",
+        "amz-us-fba-inventory-report-timing-forum",
+        "amz-uk-fba-inventory-report-purpose-comments"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_until_alignment_verified_then_monthly",
+      "country_site": "US_AND_UK_SITE_SCOPED",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_announcement_and_staff_replies",
+      "confirmation_gate": "owner_confirmation_before_adjustment_shipment_case_or_reimbursement"
+    },
+    {
+      "id": "rule-fba-inventory-recommendation-owner-gate-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm",
+        "product-economics"
+      ],
+      "rule": "Treat restock, excess, aged, stranded and sell-through recommendations as drafts. Reconcile current inventory states, demand and uncertainty, seasonality, lead time, inbound, storage/fulfillment fees, returns, margin and cash exposure before proposing a quantity; buying, shipment and inventory changes always require the routed owner.",
+      "source_ids": [
+        "amz-fba-inventory-tool-public-blog-2025",
+        "amz-fba-inventory-api-current"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "quarterly_or_current_metric_delta",
+      "country_site": "US_EDUCATION_WITH_MARKETPLACE_SCOPED_STATE",
+      "store_mode": "public_sources_no_store_selected",
+      "ownership": "Amazon_public_seller_and_developer_content",
+      "confirmation_gate": "owner_confirmation_before_purchase_shipment_or_inventory_change"
+    },
+    {
+      "id": "rule-fba-inventory-community-action-boundary-20260719",
+      "domain_ids": [
+        "inventory-forecasting",
+        "fulfillment-fba-fbm"
+      ],
+      "rule": "Keep receiving corrections, manual adjustment, sellout, removal/reship, support-case and reimbursement suggestions from public comments as dated community signals. Even when all visible comments were sampled, they neither prove a current discrepancy nor authorize an adjustment, shipment, case or reimbursement request; require current routed inventory/report evidence and owner confirmation.",
+      "source_ids": [
+        "amz-reddit-fba-inventory-reconciliation-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T02:26:24+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "on_official_reply_or_independent_corroboration",
+      "country_site": "UNSPECIFIED_COMMUNITY",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_content",
+      "confirmation_gate": "owner_confirmation_before_any_external_or_inventory_action"
+    },
+    {
+      "id": "rule-promotion-pairwise-combinability-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer",
+        "product-economics"
+      ],
+      "rule": "Model promotion combinability as a dated, site-scoped pairwise matrix rather than one global stacking flag. Current US-forum staff guidance separates Price Discounts from checkout Promotions, says Coupon no-stack blocks Manage Promotions Percentage Off and BOGO but not a Price Discount, and says Brand Tailored Promotions can combine with a standard Coupon in a separate layer. Deal combinability remains unknown until current routed help or store evidence resolves it.",
+      "source_ids": [
+        "amz-seller-forum-price-discount-promotion-terminology-2026",
+        "amz-seller-forum-btp-coupon-combinability-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_official_reply_or_help_delta",
+      "country_site": "US_FORUM_LOCALE",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_staff_public_replies",
+      "confirmation_gate": "owner_confirmation_before_any_discount_or_promotion_change"
+    },
+    {
+      "id": "rule-us-percentage-off-minimum-quantity-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "industry-intelligence"
+      ],
+      "rule": "For the documented US context from September 2 2025, require at least two units for a Percentage Off promotion without a claim code. A single-unit Percentage Off requires a claim code; an eligible Professional seller may instead use a Coupon with its applicable fee. Recheck current routed eligibility and fees before drafting.",
+      "source_ids": [
+        "amz-us-percentage-off-minimum-quantity-2025"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "effective_at": "2025-09-02",
+      "recheck_after": "weekly_official_edit_or_help_delta",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_forum_announcement",
+      "confirmation_gate": "owner_confirmation_before_any_promotion_creation_or_edit"
+    },
+    {
+      "id": "rule-promotion-review-activation-readback-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer"
+      ],
+      "rule": "Keep draft, submitted for review, validated, active, cart-applied and buyer-surface-visible as separate states. Public documentation, a creation button, HTTP 200, accepted review or validated reference price is not proof of activation or customer effect; require current routed-store readback and the relevant buyer/cart observation.",
+      "source_ids": [
+        "amz-seller-promotions"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_content_hash_delta_or_before_execution",
+      "country_site": "US",
+      "store_mode": "public_seller_education_no_store_selected",
+      "ownership": "Amazon_public_seller_content",
+      "confirmation_gate": "owner_confirmation_before_submission_or_activation"
+    },
+    {
+      "id": "rule-promotion-worst-case-margin-fair-pricing-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "pricing-featured-offer",
+        "product-economics",
+        "account-health-policy"
+      ],
+      "rule": "Before a promotion draft, capture the exact mechanism, base/offer/reference price, validated-reference-price state, minimum quantity, limits, dates, audience, fee, active discounts, inventory and Featured Offer. Simulate the worst credible pairwise combination and landed contribution margin after selling, fulfillment, storage, promotion, return, ad and applicable tax costs, then apply Fair Pricing and account-health checks. Unknown inputs block execution.",
+      "source_ids": [
+        "amz-seller-promotions",
+        "amz-amazon-pricing-strategies-2024",
+        "amz-reddit-amazon-fees-margin-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "before_every_promotion_draft_and_monthly_policy_delta",
+      "country_site": "US_WITH_PRODUCT_AND_STORE_SCOPE_REQUIRED",
+      "store_mode": "public_sources_no_store_selected",
+      "ownership": "Amazon_public_content_plus_single_case_signal",
+      "confirmation_gate": "owner_confirmation_before_price_coupon_deal_promotion_budget_or_inventory_change"
+    },
+    {
+      "id": "rule-public-promotion-guidance-not-live-eligibility-20260719",
+      "domain_ids": [
+        "promotions-deals-coupons",
+        "software-routing"
+      ],
+      "rule": "Treat public eligibility, rating, duration, ASIN-count and fee descriptions as documented baselines only. Until the intended store, site, ASIN/SKU and mechanism are read in the fixed routed environment, current eligibility, fee, reference-price validation, active-discount state and customer effect remain unknown/blocked_connector.",
+      "source_ids": [
+        "amz-seller-promotions",
+        "amz-seller-central-tools"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:00:28+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "on_authenticated_store_read_or_public_content_delta",
+      "country_site": "US",
+      "store_mode": "public_seller_education_no_store_selected",
+      "ownership": "Amazon_public_seller_content",
+      "confirmation_gate": "blocked_connector_until_BitBrowser_22_authenticated_read_then_owner_confirmation_for_write"
+    },
+    {
+      "id": "rule-amazon-knowledge-package-delta-admission-20260719",
+      "domain_ids": [
+        "industry-intelligence",
+        "api-data-security",
+        "orders-customer-service-returns"
+      ],
+      "rule": "Inventory and deduplicate the existing T One Amazon Skill, rules, curriculum, evals, failure reviews and connectors before package discovery. Audit identity, pinned version, license, maintenance, issues, releases, security, executable or credential surface, dependencies, overlap and site/store/ownership scope; sample one workflow, one failure boundary and three rules; then merge only the verified delta into the existing unique asset. Official, MIT/Apache or production-ready marketing is not installation or operational proof.",
+      "source_ids": [
+        "amz-sp-api-samples-official",
+        "amz-sp-api-models-official",
+        "amz-sp-api-sdk-official",
+        "amz-nexscope-amazon-skills-audit",
+        "amz-nexscope-ecommerce-skills-audit",
+        "amz-skillcrate-english-discovery-audit-2026",
+        "amz-mansournorouzi-sp-mcp-rejected-audit-2026",
+        "amz-terra-natural-commercial-mcp-audit-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:35:00+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "candidate_commit_release_license_or_security_delta",
+      "country_site": "GLOBAL",
+      "store_mode": "public_repository_no_store_selected",
+      "ownership": "official_and_third_party_public_repositories",
+      "confirmation_gate": "no_install_or_runtime_connection_without_separate_security_dependency_and_owner_review"
+    },
+    {
+      "id": "rule-return-route-fba-rfs-nonrfs-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "fulfillment-fba-fbm"
+      ],
+      "rule": "Route every return by country/site, store, fulfillment channel and live program state. Keep FBA, FBM with Refund at First Scan, and FBM without RFS separate. The US four-calendar-day window effective 2026-01-26 applies after the seller receives an FBM return only when Amazon did not already issue RFS; it is not a universal hold for RFS or FBA returns.",
+      "source_ids": [
+        "amz-customer-returns-help",
+        "amz-us-fbm-refund-process-2026-01-26"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-01-26",
+      "recheck_after": "weekly_official_edit_or_before_return_action",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_announcement_and_staff_clarification",
+      "confirmation_gate": "current_routed_return_state_then_owner_confirmation_before_refund_or_claim"
+    },
+    {
+      "id": "rule-return-lifecycle-not-business-completion-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns"
+      ],
+      "rule": "Keep return requested, authorized, label issued, first scan, received, graded, refund drafted, refund issued, Automated Refund, SAFE-T or reimbursement eligibility, claim submitted and outcome read back as separate states. A public page, button, refund draft, evidence upload or submitted case is not a customer or business outcome.",
+      "source_ids": [
+        "amz-customer-returns-help",
+        "amz-us-fbm-refund-process-2026-01-26"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-01-26",
+      "recheck_after": "before_each_return_or_refund_task",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_public_content",
+      "confirmation_gate": "owner_confirmation_before_refund_fee_claim_case_or_customer_contact_and_readback_after_action"
+    },
+    {
+      "id": "rule-guided-refund-safet-evidence-boundary-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "product-economics"
+      ],
+      "rule": "Guided Refund can structure condition grading, allowed restocking treatment and evidence, but cannot authorize a refund or fee. Automated Refund is not categorically always or never SAFE-T eligible; current public guidance identifies limited exceptions such as return transit loss or incorrect delivery confirmation not caused by the seller. Unknown eligibility remains blocked until current routed help and case facts are read.",
+      "source_ids": [
+        "amz-us-fbm-refund-process-2026-01-26"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-01-26",
+      "recheck_after": "weekly_help_delta_or_before_SAFE_T_decision",
+      "country_site": "US",
+      "store_mode": "public_forum_no_store_selected",
+      "ownership": "Amazon_official_announcement_and_staff_reply",
+      "confirmation_gate": "blocked_connector_until_current_case_and_help_read_then_owner_confirmation"
+    },
+    {
+      "id": "rule-orders-api-v2026-read-contract-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security"
+      ],
+      "rule": "Use Orders API v2026-01-01 as the current read model: searchOrders and getOrder, exactly one primary date filter, minimal includedData and pagination tokens within 24 hours. Do not inject legacy confirmShipment into this read path. Apply the documented site-specific order-age boundary. A public page, OpenAPI model, sample or SDK remains contract evidence only until the routed seller authorization, roles, marketplace and real response are verified.",
+      "source_ids": [
+        "amz-orders-api-current-2026",
+        "amz-orders-api-migration-2026",
+        "amz-sp-api-models-official",
+        "amz-sp-api-samples-official",
+        "amz-sp-api-sdk-official"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-01-01",
+      "recheck_after": "weekly_release_or_model_commit_delta",
+      "country_site": "GLOBAL_WITH_DOCUMENTED_AGE_EXCEPTIONS",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation_and_repositories",
+      "confirmation_gate": "blocked_connector_until_authorized_read; owner_confirmation_for_any_write_operation"
+    },
+    {
+      "id": "rule-orders-v2026-pii-no-rdt-but-role-gated-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "api-data-security"
+      ],
+      "rule": "Orders API v2026-01-01 PII does not require an RDT, superseding the legacy bulk-Orders RDT workflow for this version. Selling-partner authorization, appropriate roles, fulfillment and order-status conditions, country/site field rules and data minimization still apply. Request the smallest buyer or recipient field group and keep all customer PII out of logs, prompts and general knowledge memory. Other restricted SP-API resources may still require RDT.",
+      "source_ids": [
+        "amz-orders-api-pii-current-2026",
+        "amz-orders-api-migration-2026",
+        "amz-sp-api-pii-rdt"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-01-01",
+      "recheck_after": "weekly_role_version_or_security_delta",
+      "country_site": "GLOBAL_WITH_SITE_ROLE_DIFFERENCES",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_security_documentation",
+      "confirmation_gate": "blocked_connector_until_authorization_and_role_verification; never_persist_PII_in_training_assets"
+    },
+    {
+      "id": "rule-customer-feedback-browse-node-not-asin-cause-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "reviews-voc-quality"
+      ],
+      "rule": "Customer Feedback API return topics and trends are documented at browse-node/category scope, not item scope. Do not label a child ASIN's return or defect cause from category occurrence percentages; combine category signals with current item reviews, authorized return or report evidence and product, listing and fulfillment observations.",
+      "source_ids": [
+        "amz-sp-api-models-official"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "model_commit_or_API_version_delta",
+      "country_site": "GLOBAL_PER_MARKETPLACE_PARAMETER",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_OpenAPI_model",
+      "confirmation_gate": "no_item_level_root_cause_or_external_action_without_item_and_store_evidence"
+    },
+    {
+      "id": "rule-return-abuse-community-evidence-no-outreach-20260719",
+      "domain_ids": [
+        "orders-customer-service-returns",
+        "industry-intelligence"
+      ],
+      "rule": "A return-abuse community case may suggest an anonymous evidence packet containing scoped order IDs, timestamps, condition images and support receipts, but it remains single_case. It never authorizes buyer accusation, direct or off-platform contact, retaliation, public or legal escalation, a support submission or a refund/claim decision. Verify official identity, routed policy and current order state first.",
+      "source_ids": [
+        "amz-reddit-return-abuse-evidence-2026",
+        "amz-customer-returns-help"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:18:35+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "official_corroboration_or_comment_delta",
+      "country_site": "UNSPECIFIED_COMMUNITY_WITH_US_OFFICIAL_BODY",
+      "store_mode": "public_single_case_no_store_identity",
+      "ownership": "public_community_signal_plus_Amazon_public_guidance",
+      "confirmation_gate": "no_contact_submission_claim_refund_or_external_escalation_without_owner_confirmation"
+    },
+    {
+      "id": "rule-analytics-metric-envelope-reaggregation-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "ads-measurement-experiments",
+        "profit-finance"
+      ],
+      "rule": "Every Amazon KPI must retain source surface, marketplace, store binding, seller/vendor mode, entity level, parent/child/SKU identity, period and timezone, currency, numerator, denominator, B2B or consumer population, attribution or order basis, generated/captured time and freshness. Never sum percentages, averages, rates or currency values across incompatible rows; re-aggregate compatible numerators and denominators first, then reconcile to margin and returns.",
+      "source_ids": [
+        "amz-sp-api-reports",
+        "amz-sales-traffic-schema-pinned-2026",
+        "amz-brand-analytics"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "report_schema_dashboard_or_metric_definition_delta",
+      "country_site": "GLOBAL_PER_SOURCE_AND_MARKETPLACE",
+      "store_mode": "public_contract_no_seller_selected",
+      "ownership": "Amazon_official_report_schema_and_dashboard_documentation",
+      "confirmation_gate": "no_store_performance_or_profit_claim_until_authorized_data_and_scope_reconciliation"
+    },
+    {
+      "id": "rule-sales-traffic-independent-granularities-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security"
+      ],
+      "rule": "For GET_SALES_AND_TRAFFIC_REPORT, request exactly one marketplace and preserve dateGranularity DAY/WEEK/MONTH separately from asinGranularity PARENT/CHILD/SKU. salesAndTrafficByDate is catalog-by-period; salesAndTrafficByAsin is ASIN-over-requested-range. Do not infer a daily-by-ASIN Cartesian table. WEEK expands to Sunday-Saturday, MONTH to full calendar month, and dataStartTime older than two years is invalid.",
+      "source_ids": [
+        "amz-sp-api-reports",
+        "amz-sales-traffic-schema-pinned-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "weekly_report_option_or_schema_delta",
+      "country_site": "GLOBAL_ONE_MARKETPLACE_PER_REPORT",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation_and_schema",
+      "confirmation_gate": "blocked_connector_until_Brand_Analytics_role_authorization_and_real_report"
+    },
+    {
+      "id": "rule-data-kiosk-current-dataset-terminal-document-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security"
+      ],
+      "rule": "Use current Analytics Sales and Traffic dataset analytics_salesAndTraffic_2024_04_24 and reject examples that still call removed analytics_salesAndTraffic_2023_11_15. Keep createQuery, IN_QUEUE/IN_PROGRESS, CANCELLED/DONE/FATAL, dataDocumentId/errorDocumentId/no-document, getDocument, encrypted-at-rest JSONL processing, validation and nextToken pagination as separate states. DONE without a document means no data; it is not a completed growth analysis.",
+      "source_ids": [
+        "amz-data-kiosk-current-2026",
+        "amz-data-kiosk-sample-audit-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "effective_at": "2026-03-27",
+      "recheck_after": "release_deprecation_dataset_or_schema_delta",
+      "country_site": "GLOBAL_SP_API_REGIONS_NA_EU_FE",
+      "store_mode": "developer_application_no_seller_selected",
+      "ownership": "Amazon_official_developer_documentation_and_samples",
+      "confirmation_gate": "blocked_connector_until_role_authorization_query_document_and_validation_evidence"
+    },
+    {
+      "id": "rule-brand-analytics-dashboard-entity-entitlement-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "keywords-search-terms",
+        "reviews-voc-quality"
+      ],
+      "rule": "Brand Analytics public access requires a Professional account plus Brand Representative status for an enrolled Brand Registry brand. Preserve dashboard and view: Search Catalog Performance is catalog funnel, Search Query Performance is brand-query performance and share, Top Search Terms is broad store search context, while repeat purchase, demographics, market basket and loyalty use different populations. A public page or dashboard name never proves routed-store entitlement or live data.",
+      "source_ids": [
+        "amz-brand-analytics"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "monthly_content_entitlement_or_dashboard_delta",
+      "country_site": "US_PUBLIC_PAGE_WITH_SITE_VARIATION_UNKNOWN",
+      "store_mode": "brand_registered_seller_no_store_selected",
+      "ownership": "Amazon_official_seller_education",
+      "confirmation_gate": "blocked_connector_until_authenticated_entitlement_dashboard_and_export_are_verified"
+    },
+    {
+      "id": "rule-analytics-package-delta-only-no-install-20260719",
+      "domain_ids": [
+        "analytics-growth",
+        "api-data-security",
+        "industry-intelligence"
+      ],
+      "rule": "Use the pinned official schema as the analytics contract, extract only lifecycle and failure-state ideas from the official Data Kiosk sample, reject the saleweaver README example as stale for current Data Kiosk, and hold jlevers research-only. Do not install a second wrapper, deploy AWS resources, enter LWA/AWS credentials or claim a connection from documentation, tests or a release badge.",
+      "source_ids": [
+        "amz-sales-traffic-schema-pinned-2026",
+        "amz-data-kiosk-sample-audit-2026",
+        "amz-saleweaver-python-sp-api-audit-2026",
+        "amz-jlevers-sp-api-audit-2026"
+      ],
+      "evidence_state": "time_sensitive_evidence",
+      "captured_at": "2026-07-19T03:55:36+08:00",
+      "effective_at": "2026-07-19",
+      "recheck_after": "commit_release_license_security_or_dataset_delta",
+      "country_site": "GLOBAL_OR_UNSPECIFIED_PER_PACKAGE",
+      "store_mode": "public_repository_no_store_selected",
+      "ownership": "official_and_third_party_public_repositories",
+      "confirmation_gate": "no_install_deploy_credentials_authorization_or_real_call"
+    }
+  ]
+}

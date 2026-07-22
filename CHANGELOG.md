@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.4.1
+
+- Added exact provider-and-model multimodal verification receipts instead of inferring one model's capabilities from another model or provider.
+- Added per-modality verification counts and evidence references while keeping credentials, prompts, private files, and live connector state outside the public snapshot.
+- Preserved the 17 sanitized non-TikTok-Shop knowledge packs and continued to exclude the entire TikTok Shop agent pack and private desktop/runtime connectors.
+
+## 0.4.0
+
+- Published all 17 reusable non-TikTok-Shop knowledge packs as complete sanitized bundles.
+- Added per-pack Skill instructions, curated references, machine contracts, rules, evaluations, source ledgers or capability schemas where available.
+- Added Amazon, B2B outbound customer development, B2B marketplace sales and commerce-video packs to ordinary-chat routing.
+- Kept raw browser captures, private product fixtures, customer data, local learning runs and live connector state outside the public tree.
+- Continued to exclude the TikTok Shop agent, Skill, training contract, tests and references.
+
+## 0.3.1
+
+- Simplified the public chat demo to one goal-first composer with automatic agent selection.
+- Renamed settings to Agent, Model, Account, and Manage so technical controls stay out of the daily workflow.
+- Added a safe, non-connecting account-settings walkthrough for seven supported email and business-messaging account types.
+- Kept the demo local-only: it never accepts credentials, connects accounts, reads messages, or performs external actions.
+
 ## 0.3.0
 
 - Added ordinary-chat routing to sanitized public platform agents.

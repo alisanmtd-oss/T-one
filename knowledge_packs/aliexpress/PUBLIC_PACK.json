@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "pack_id": "aliexpress",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/aliexpress/machine/contract.json",
+    "knowledge_packs/aliexpress/SKILL.md",
+    "knowledge_packs/aliexpress/agents/openai.yaml",
+    "knowledge_packs/aliexpress/references/course.md",
+    "knowledge_packs/aliexpress/references/incremental-training.md",
+    "knowledge_packs/aliexpress/references/maternal-requirements-matrix.md",
+    "knowledge_packs/aliexpress/references/official-evidence.md",
+    "knowledge_packs/aliexpress/references/workflow-and-tool-states.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

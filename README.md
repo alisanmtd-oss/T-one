@@ -54,13 +54,15 @@ The project models the complete operating chain: product and SKU intake, marketp
 | Connector foundation | Read-only connector primitives, normalized intake records, and capability metadata; live store write adapters remain gated |
 | Local runtime | Atomic JSON storage, cache invalidation, safe example configuration, tests, release audit, and SHA256 manifest |
 | Chat-first UX reference | Dependency-free synthetic workspace with agent conversations, quick prompts, file-intake affordance, and one settings drawer |
-| Public platform agents | Ordinary-chat routing to 13 sanitized knowledge packs; no project setup or extension registry is required |
+| Public platform agents | Ordinary-chat routing to 17 complete sanitized knowledge-pack bundles; no project setup or extension registry is required |
 
 The current `0.x` release is a Python library, tests, and a browser-only UX reference. It is a foundation for building real agents and operator applications, not a finished hosted ERP or an unguarded bot that can spend money, publish listings, message customers, or ship orders by itself.
 
 ## Chat-first platform agents
 
-Version 0.3 lets an application route ordinary chat such as “这个商品适合速卖通哪些市场？” to a sanitized platform knowledge pack. The public catalog covers AliExpress, B2B export, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. The TikTok Shop knowledge pack is intentionally excluded.
+Version 0.4 publishes all reusable non-TikTok-Shop packs as browsable bundles under [`knowledge_packs/`](knowledge_packs/). The 17 packs cover Amazon, AliExpress, B2B export, B2B outbound customer development, B2B marketplace sales, commerce video, eBay, Etsy, global/local channel planning, Google Ads, independent commerce, Lazada, Meta, SHEIN, Shopee, TikTok Ads, and Walmart. Each bundle contains the applicable Skill instructions, curated references and machine contracts. The TikTok Shop agent, Skill, training contract, tests and references are intentionally excluded.
+
+The dependency-free browser demo keeps the chat-first interaction: users state a goal, T One selects the agent, files enter through the composer, and model/account controls stay in Settings. Its account walkthrough is illustrative only and does not accept credentials or connect to external services.
 
 ```python
 from ai_ecommerce_director.platform_agents import route_public_chat
@@ -85,7 +87,7 @@ Workspace
 
 If a channel is planned but no authorized platform store exists, its status must be `needs_platform_store`. T One must not pretend that listing, order, shipment, settlement, promotion, or advertising execution is available.
 
-Read the [Architecture](docs/ARCHITECTURE.md) and the sanitized [Brand Operating System](docs/FEISHU_BRAND_OPERATING_SYSTEM.md) for the evidence and operating model.
+Read the [Architecture](docs/ARCHITECTURE.md) for the public contracts and operating model.
 
 ## Quick start
 
@@ -112,11 +114,9 @@ To inspect the chat-first interaction model without installing anything, open [`
 
 Good first contributions include platform/country taxonomies, B2B contracts, connector schemas, safe local skills, data-boundary tests, documentation, and synthetic examples. Contributions must not contain real customer, store, supplier, warehouse, account, or credential data.
 
-## Public/private boundary
+## Data safety
 
-This repository is built from an exact-file allowlist. It excludes private stores, customers, leads, contacts, warehouses, product campaigns, recovered conversations, screenshots, browser profiles, cookies, live connector credentials, private desktop shells, browser extensions, raw Feishu pages, and unlicensed third-party assets.
-
-The public-facing name is **T One**. The repository uses a text-only identity until separately reviewed visual assets have clear ownership and redistribution rights. See [BRAND_PUBLIC_BOUNDARY.md](docs/BRAND_PUBLIC_BOUNDARY.md).
+This public repository contains redistribution-approved source files, documentation, and synthetic examples only. Never commit secrets or real business records. The public-facing name is **T One**.
 
 ## License and release integrity
 

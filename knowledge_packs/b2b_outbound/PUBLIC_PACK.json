@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "pack_id": "b2b_outbound",
+  "release_version": "0.4.0",
+  "public_files": [
+    "knowledge_packs/b2b_outbound/SKILL.md",
+    "knowledge_packs/b2b_outbound/agents/openai.yaml",
+    "knowledge_packs/b2b_outbound/references/source-and-boundaries.md"
+  ],
+  "live_connection_claimed": false,
+  "excluded_private_assets": [
+    "credentials_and_tokens",
+    "store_and_browser_sessions",
+    "customer_order_and_message_data",
+    "private_product_and_project_fixtures",
+    "raw_browser_captures_and_local_learning_runs"
+  ]
+}

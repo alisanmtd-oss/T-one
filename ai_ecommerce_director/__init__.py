@@ -1,3 +1,3 @@
-"""AI Ecommerce Director v0.1."""
+"""T-one community and private runtime package."""
 
-__version__ = "0.1.0"
+__version__ = "0.4.0"
