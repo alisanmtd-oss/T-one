@@ -18,7 +18,7 @@ Each directory under `knowledge_packs/` contains the applicable subset of:
 
 `knowledge_packs/MANIFEST.json` is the exact public inventory for all 17 bundles. Two private source Skills are folded into their canonical public packs: the foreign-trade sales foundation is included under `b2b_export/shared-sales`, and the legacy Etsy operator is included under the canonical `etsy` pack. This avoids publishing duplicate routers while preserving their reusable knowledge.
 
-The catalog does not include credentials, cookies, browser profiles, store IDs, customer or order data, recovered conversations, screenshots, private product facts, or executable write connectors. `live_connection_claimed` is always `false`, and the public router always returns `external_execution_allowed: false`.
+The catalog uses redistribution-approved public material and synthetic examples. `live_connection_claimed` is always `false`, and the public router always returns `external_execution_allowed: false`.
 
 ## Example
 

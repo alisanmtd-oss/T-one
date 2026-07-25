@@ -75,4 +75,4 @@ These bindings prevent the curriculum from becoming a reasoning-only syllabus. `
 | `M11_review_iteration` | Eight browser evidence cycles, source/version fingerprints, v1 supersession, GitHub duplicate skips, comment zero/block boundaries, stale-ref/locator recovery, software registry observations, failure records and regression corpus | `evaluated` |
 | `M12_scope_isolation` | Product-scope contract plus anonymous home, beauty, appliance, toy, pet, electronics, food/restricted-goods, digital and general B2B regression cases | `evaluated` |
 
-The evidence series begins at [browser-evidence-2026-07-18.md](browser-evidence-2026-07-18.md) and the latest cycle is [browser-evidence-2026-07-19-cycle-08.md](browser-evidence-2026-07-19-cycle-08.md). No module is currently `store_verified` or `operationally_validated`.
+The public evidence series is summarized in [official-evidence.md](official-evidence.md). Dated raw browser traces are intentionally excluded from the public release. No module is currently `store_verified` or `operationally_validated`.

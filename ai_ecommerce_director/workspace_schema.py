@@ -5,16 +5,88 @@ from typing import Any, Iterator
 
 
 STORE_PLATFORMS = {
+    "1688",
+    "aliexpress",
     "amazon",
+    "coupang",
+    "douyin_ecommerce",
     "ebay",
+    "emag",
     "etsy",
+    "jd",
+    "kuaishou_shop",
     "lazada",
+    "ozon",
+    "pinduoduo",
+    "rakuten",
     "shein",
     "shopee",
     "shopify",
+    "taobao_tmall",
     "tiktok_shop",
     "walmart",
+    "wechat_channels",
+    "wildberries",
     "woocommerce",
+}
+
+NON_OPERATING_STORE_STATUSES = {
+    "authorization_expired",
+    "authorization_pending",
+    "configured_only",
+    "disconnected",
+    "disabled",
+    "draft",
+    "expired",
+    "invalid",
+    "missing_store",
+    "needs_configuration",
+    "needs_platform_store",
+    "not_connected",
+    "not_authorized",
+    "pending_authorization",
+    "pending_authorized_sync",
+    "planned",
+    "placeholder",
+    "platform_store_pending_authorization",
+    "platform_store_pending_identity",
+    "revoked",
+    "unauthorized",
+    "unbound",
+    "verification_failed",
+}
+
+_STORE_STATUS_FIELDS = (
+    "status",
+    "binding_status",
+    "connection_status",
+    "authorization_status",
+    "execution_readiness",
+    "route_status",
+)
+
+_STORE_EXTERNAL_ID_FIELDS = (
+    "external_id",
+    "store_external_id",
+    "platform_store_id",
+    "shop_id",
+    "seller_id",
+    "merchant_id",
+    "account_id",
+)
+
+_POSITIVE_AUTHORIZATION_STATUSES = {
+    "active",
+    "active_store",
+    "authorized",
+    "bound",
+    "connected",
+    "connection_ready",
+    "live",
+    "operating",
+    "ready",
+    "valid",
+    "verified",
 }
 
 
@@ -30,6 +102,67 @@ def _record_refs(value: Any) -> list[dict[str, Any]]:
     if not isinstance(value, list):
         return []
     return [item for item in value if isinstance(item, dict)]
+
+
+def is_business_bound_store(store: Any) -> bool:
+    """Return whether a store object may appear on operating surfaces.
+
+    Configuration and onboarding may keep planned placeholders, but sidebars,
+    dashboards, task pickers and operating counts must share one stricter
+    visibility boundary.
+    """
+
+    if not isinstance(store, dict):
+        return False
+    if store.get("business_visible") is False or store.get("is_placeholder") is True:
+        return False
+    statuses = {
+        str(store.get(field) or "").strip().lower()
+        for field in _STORE_STATUS_FIELDS
+        if str(store.get(field) or "").strip()
+    }
+    if statuses.intersection(NON_OPERATING_STORE_STATUSES):
+        return False
+    identity = next(
+        (
+            str(store.get(field) or "").strip()
+            for field in _STORE_EXTERNAL_ID_FIELDS
+            if str(store.get(field) or "").strip()
+        ),
+        "",
+    )
+    if not identity:
+        return False
+
+    connection_method = str(store.get("connection_method") or "").strip().lower()
+    is_api_route = any(
+        marker in connection_method
+        for marker in ("official", "api", "oauth", "sp_api", "ads_api")
+    )
+    if is_api_route and store.get("key_present") is False:
+        return bool(statuses.intersection(_POSITIVE_AUTHORIZATION_STATUSES))
+    return True
+
+
+def business_bound_stores(value: Any) -> list[dict[str, Any]]:
+    return [item for item in _record_refs(value) if is_business_bound_store(item)]
+
+
+def business_visible_project_tasks(project: dict[str, Any]) -> list[dict[str, Any]]:
+    """Return tasks that belong on operating surfaces.
+
+    Project workstreams are always business-visible. Store tasks are visible
+    only when their parent store passes the single bound-store truth gate.
+    Pending/placeholder stores remain available through configuration and
+    onboarding data, but cannot inflate dashboards, maps or task trees.
+    """
+
+    tasks: list[dict[str, Any]] = []
+    for channel in _record_refs(project.get("channels")):
+        for store in business_bound_stores(channel.get("stores")):
+            tasks.extend(_record_refs(store.get("tasks")))
+    tasks.extend(_record_refs(project.get("workstreams")))
+    return tasks
 
 
 def _channel_id(platform: str, country: str) -> str:
@@ -320,4 +453,12 @@ def find_task_context(
         for channel, store, task in iter_project_tasks(project):
             if str(task.get("id") or "").strip().lower() == requested:
                 return project, channel, store, task
+    for task in _record_refs(workspace.get("standalone_tasks")):
+        if str(task.get("id") or "").strip().lower() == requested:
+            return {
+                "id": "",
+                "name": "独立任务",
+                "channels": [],
+                "workstreams": [],
+            }, None, None, task
     return None

@@ -35,6 +35,17 @@ class AIProviderCatalogTests(unittest.TestCase):
                             "api_key_env": "",
                             "default_model": "qwen3:latest",
                         },
+                        {
+                            "id": "future-ai",
+                            "label": "Future AI",
+                            "api_format": "future_adapter",
+                            "base_url": "",
+                            "api_key_env": "",
+                            "default_model": "",
+                            "integration_state": "future_adapter",
+                            "model_families": ["Future Text", "Future Vision"],
+                            "capability_slots": ["text", "image"],
+                        },
                     ]
                 },
                 ensure_ascii=False,
@@ -79,10 +90,27 @@ class AIProviderCatalogTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = self._root(temp_dir)
             snapshot = provider_catalog_snapshot(root)
-            self.assertEqual(len(snapshot["catalog"]), 2)
+            self.assertEqual(len(snapshot["catalog"]), 3)
+            self.assertEqual(snapshot["catalog_provider_count"], 3)
+            self.assertEqual(snapshot["configurable_provider_count"], 2)
+            self.assertEqual(snapshot["future_adapter_count"], 1)
+            self.assertEqual(snapshot["model_family_slot_count"], 2)
             self.assertEqual(snapshot["configured_count"], 0)
             self.assertNotIn('"api_key":', json.dumps(snapshot))
             self.assertNotIn("secret-key", json.dumps(snapshot))
+
+    def test_future_adapter_is_visible_but_cannot_be_configured(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            snapshot = provider_catalog_snapshot(root)
+            future = next(item for item in snapshot["catalog"] if item["id"] == "future-ai")
+            self.assertEqual(future["integration_state"], "future_adapter")
+            self.assertEqual(future["model_families"], ["Future Text", "Future Vision"])
+            with self.assertRaisesRegex(ValueError, "只预留了位置"):
+                configure_provider(
+                    root,
+                    {"preset_id": "future-ai", "name": "future-ai-user"},
+                )
 
     def test_snapshot_merges_exact_model_receipts_without_secret_values(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

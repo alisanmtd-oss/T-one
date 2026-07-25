@@ -1,75 +1,96 @@
 # T One
 
-**面向全球电商与外贸 B2B 的开源、本地优先 AI 运营核心。**
+**面向多项目、多平台、多店铺团队的本地优先商业运营中枢。**
 
-[![CI](https://github.com/alisanmtd-oss/T-one/actions/workflows/ci.yml/badge.svg)](https://github.com/alisanmtd-oss/T-one/actions/workflows/ci.yml)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-3776AB.svg)](pyproject.toml)
+[English](README.md) | [能力状态](docs/CAPABILITY_STATUS.md) | [文件说明](docs/FILE_GUIDE.md) | [路线图](ROADMAP.md)
 
-[English](README.md) | [公共知识包](docs/PUBLIC_KNOWLEDGE_PACKS.md) | [路线图](ROADMAP.md) | [架构](docs/ARCHITECTURE.md) | [参与贡献](CONTRIBUTING.md) | [安全策略](SECURITY.md)
+T One 用一套长期业务上下文组织平台电商、独立站、B2B 获客、主动开发、
+内容与广告、财务、风控和审批：
 
-T One 面向个人创业者、电商团队、开发者、工厂和服务商，目标是让 AI 智能体协助处理跨境电商与外贸工作，同时避免不同店铺、客户、凭据和证据互相串用。
+`工作区 -> 项目 -> 平台 -> 真实店铺或业务容器 -> 长期主对话 -> 工作流`
 
-它为商品、SKU、Listing、库存、订单、履约、结算、供应商、工厂、仓库、B2B 客户、报价、付款、内容实验与人工审批提供统一的本地数据边界。当前公开版不会假装已经接通 Amazon、TikTok Shop、SHEIN、Shopee 等平台的真实写入权限。
+T One 不是“所有平台、ERP、收款工具和通讯软件都已经连接”的宣传壳。
+当前公开仓库是经过脱敏的社区核心，不包含真实店铺凭据、客户资料、浏览器环境、
+私有连接器和执行证据。
 
-## 0.4：除 TikTok Shop 外的知识包全部公开
+![T One 对话优先工作区](assets/screenshots/t-one-chat-workspace.png)
 
-不需要先创建复杂项目或进入扩展配置。普通聊天里写出平台名，公共路由会选择对应的脱敏知识包；多平台问题保持为对比，不会把一个平台的规则串到另一个平台。
+## 产品方向
 
-本版在 [`knowledge_packs/`](knowledge_packs/) 公开 17 个完整脱敏知识包：Amazon、AliExpress、B2B 外贸、主动开发客户、B2B 平台销售、商品视频、eBay、Etsy、全球/本土渠道规划、Google Ads、独立站、Lazada、Meta、SHEIN、Shopee、TikTok Ads 和 Walmart。每个包按现有资产提供适用的 Skill、参考资料、机器契约、规则、评测或来源记录。TikTok Shop 智能体、Skill、训练契约、测试和引用资料整套排除。
+- 一个项目可以包含多个平台和多家真实店铺。
+- 一家店铺或一个业务容器保留一段长期主对话。
+- Listing、库存、订单、广告、内容、财务和客服是主对话里的工作流，不再制造重复侧栏智能体。
+- 没有绑定真实店铺的平台，不进入经营数据和实时大盘。
+- 法律、版权、财务、审批、证据和连接器治理作为共享能力，只建设一次。
+- 店铺写入、广告花费、付款、发货、退款、外联、身份、银行和 MFA 必须经过负责人确认。
 
-```python
-from ai_ecommerce_director.platform_agents import route_public_chat
+## 当前哪些能用
 
-result = route_public_chat("这个商品适合速卖通哪些市场？")
-assert result["agent_id"] == "aliexpress"
-assert result["external_execution_allowed"] is False
-```
+本仓库使用四种严格状态：
 
-这些知识包只提供公开规划规则，不代表真实店铺、OAuth、广告账户或平台写入已经连接。详见 [公共知识包说明](docs/PUBLIC_KNOWLEDGE_PACKS.md)。
+| 状态 | 含义 |
+| --- | --- |
+| **已验证** | 已实现，并通过公开测试或公开演示验证。 |
+| **需要配置** | 接口或本地能力已实现，但需要用户自己的合法凭据或运行环境。 |
+| **部分实现** | 有可复用基础，但完整业务闭环尚未完成。 |
+| **未连接 / 规划中** | 只有文档、结构或设计，不能当成真实连接。 |
 
-无依赖浏览器演示继续采用聊天优先方式：用户只需说目标，由 T One 自动选择智能体；文件从聊天框“＋”进入，模型和账号收进设置。邮箱与通信账号页面只演示设置路径，不接收凭据、不连接外部服务。
+| 能力 | 状态 | 公开证据 |
+| --- | --- | --- |
+| 本地 Python 社区核心 | **已验证** | 包、测试、合成数据 |
+| 项目 / 平台 / 店铺 / 任务隔离 | **已验证** | 领域模型与回归测试 |
+| 对话优先浏览器参考界面 | **已验证** | 合成演示，不含真实店铺 |
+| 知识包注册与读取 | **已验证** | 已脱敏公开知识包 |
+| 审批与证据合同 | **已验证** | 本地合同与测试 |
+| 本地模型和供应商配置合同 | **部分实现** | 不附带任何模型凭据 |
+| 平台和 ERP 读取 | **需要配置** | 有接口合同，没有公开真实账号 |
+| 平台写入和广告执行 | **未连接 / 规划中** | 保持审批门禁 |
+| Gmail、Outlook、WhatsApp、微信、Telegram、飞书 | **未连接 / 规划中** | 没有公开 OAuth 或实时连接器 |
+| PayPal、连连、万里汇等资金结算 | **未连接 / 规划中** | 当前仅有财务结构 |
+| Windows 正式桌面程序 | **私有产品，不在本仓库** | 公开截图仅说明交互方向 |
 
-## 0.2 版本重点
+评估或接入前，请先读 [docs/CAPABILITY_STATUS.md](docs/CAPABILITY_STATUS.md)。
 
-- 提供一个完全使用合成数据、无需依赖的聊天优先界面参考。
-- 日常入口只保留智能体对话；模型、账号连接、诊断和自动任务归入一个设置后台。
-- 脚本、分镜、提示词和剪辑建议归入一个内容创作智能体，不再拆成多个项目。
-- 广告智能体采用“读取证据 → 解释原因 → 给出建议 → 负责人确认”的流程，不会在演示中花费、停投或发布。
-- 商品表、图片和说明从对话输入框旁的加号进入，不再占用顶部导航。
+## 公开核心与私有产品的边界
 
-直接在浏览器打开 [`demo/chat-first-workspace.html`](demo/chat-first-workspace.html) 即可体验交互参考。该页面不发送网络请求、不保存密钥，也不连接真实店铺。
+公开仓库包含：
 
-## 当前公共核心
+- 低依赖 Python 社区核心；
+- 合成配置与测试数据；
+- 脱敏后的平台知识包；
+- 浏览器参考界面；
+- 审批、证据、路由和隔离合同；
+- 测试、社区文件和发布完整性清单。
 
-| 能力 | 公开状态 |
-|---|---|
-| AI 服务商 | 服务商目录、显式模型选择、任务路由元数据和脱敏错误反馈 |
-| 本地凭据 | Windows DPAPI 加密存储与凭据引用；不把明文密钥写进项目 JSON |
-| AI 数据边界 | 数据分级、输入输出脱敏、服务商策略检查和敏感字段阻断 |
-| 电商数据契约 | 商品、SKU、Listing、店铺、订单、库存、履约、结算、反馈、证据与风险记录 |
-| 外贸数据契约 | 企业、企业用户、供应商、工厂、共享目录、报价、发票、付款与同意记录 |
-| 工作区隔离 | `工作区 → 项目 → 渠道 → 店铺 → 任务`，隔离平台、站点、模式、归属和授权 |
-| 连接器基础 | 只读连接器原语、标准化导入记录和能力元数据；真实写入仍受门禁控制 |
-| 聊天优先参考 | 智能体切换、快捷提示、资料入口、消息演示和统一设置抽屉 |
-| 公共平台智能体 | 普通聊天自动选择 17 个完整脱敏知识包；无需先进入项目或扩展配置 |
+公开仓库不包含：
 
-当前 `0.x` 是 Python 库、测试和浏览器交互参考，是构建真实智能体与运营应用的基础，不是可以绕过确认自动花钱、发布商品、群发客户或发货的成品机器人。
+- 真实店铺、客户、供应商、员工和财务数据；
+- 密码、Token、Cookie、浏览器环境、身份证明；
+- 私有 Windows 桌面运行时和商业连接器；
+- 不受控的店铺写入、外联、投放、付款和发货；
+- 私有提示词、内部证据库和原始会话记录。
 
-## 基础架构
+## 组织与系统结构
 
 ```text
-工作区
-  项目
-    渠道（平台 + 国家/站点 + 店铺模式 + 归属）
-      店铺（独立授权与执行身份）
-        任务（模型 + Skill + 工具 + 策略 + 证据 + 审计）
-    项目工作流（B2B、研究、创意、财务或供应链）
+Owner / 投资与项目决策者
+  -> 集团经营中枢 / PMO
+    -> 事业组组长
+      -> 部门主管
+        -> 岗位智能体与可复用 Skills
+
+事业组
+  - 平台经营
+  - 独立站
+  - B2B 平台获客
+  - 主动开发客户
+  - 内容与广告
+  - 共享财务、法律、证据、审批和连接器
 ```
 
-如果只是计划进入某个平台或站点、还没有真实授权店铺，状态必须是 `needs_platform_store`。T One 不能假装已经可以上架、拉单、发货回传、结算、参加活动或投放广告。
+所有平台授权和外部执行身份都必须按项目、平台、国家站点、店铺模式和真实店铺隔离。
 
-## 本地安装与验证
+## 快速开始
 
 ```powershell
 git clone https://github.com/alisanmtd-oss/T-one.git
@@ -81,19 +102,61 @@ python -m venv .venv
 .\.venv\Scripts\python -m unittest discover -s tests -v
 ```
 
-请从 `config/` 中的合成示例开始。不要把真实密钥、客户资料、供应商联系人、店铺 ID 或运营证据提交到 Git。
+打开 `demo/chat-first-workspace.html` 可以查看合成数据演示。它不会连接真实店铺，
+也不会执行外部动作。
 
-## 公开与私有边界
+## 文件目录说明
 
-本仓库由精确文件白名单生成。它不包含真实店铺、客户、线索、联系人、仓库、具体商品活动、恢复会话、截图、浏览器配置、Cookie、在线凭据、私有桌面运行时、浏览器插件或未授权第三方资产。
+| 路径 | 内容 |
+| --- | --- |
+| `ai_ecommerce_director/` | 公开 Python 领域模型、路由、证据、审批和知识包 API |
+| `knowledge_packs/` | 已脱敏的平台与业务知识资产 |
+| `config/` | 合成示例和公开安全注册表 |
+| `demo/` | 只使用合成数据的浏览器参考界面 |
+| `docs/` | 架构、文件说明、状态真值和知识包说明 |
+| `scripts/` | 公开校验和发布完整性工具 |
+| `tests/` | 公开行为与安全边界回归测试 |
+| `.github/` | Issue、PR 和社区工作流 |
 
-公开的 `demo/chat-first-workspace.html` 只是合成交互参考，不是私有桌面的源代码，也不包含连接器与执行身份。
+详细说明见 [docs/FILE_GUIDE.md](docs/FILE_GUIDE.md)。
 
-## 社区、许可与发布完整性
+## 界面截图
 
-- 在 [Discussions](https://github.com/alisanmtd-oss/T-one/discussions) 讨论架构、平台知识、外贸流程与实现问题。
-- 通过 [Issues](https://github.com/alisanmtd-oss/T-one/issues) 提交可复现 Bug 或范围清晰的功能建议。
-- 提交代码前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
-- 安全与隐私问题请使用 GitHub 私密漏洞报告。
+截图用于展示交互方向，不代表某个平台或 ERP 已经真实接通。
 
-T One 采用 [Apache-2.0](LICENSE)。每次公开 staging 都包含 `PUBLIC_RELEASE_AUDIT.json` 和 `SHA256SUMS.json`；只有隐私检查、哈希、安装、测试和 CI 全部通过才接受发布。
+![T One 设置参考](assets/screenshots/t-one-settings.png)
+
+## 下一版本方向
+
+下一公开版本优先完成：
+
+1. 稳定的 Skill、插件和连接器清单；
+2. 带可撤销权限的本地 MCP/API；
+3. 能返回明确错误的供应商连接测试；
+4. 先完成只读平台与 ERP 适配，再考虑写入；
+5. 按平台、站点、店铺模式、主体税务、履约和规则版本拆分结算与成本结构；
+6. 耐久任务、证据、审批和失败恢复；
+7. 更清楚的安装、兼容性和验收说明。
+
+完整顺序和明确不做的内容见 [ROADMAP.md](ROADMAP.md)。
+
+## Codex 配套 Skill
+
+独立项目 **[Codex × T One Operator Skill](https://github.com/alisanmtd-oss/codex-t-one-skill)**
+用来教 Codex 正确识别、配置、操作和验收
+T One，避免把草稿、计划和真实连接混为一谈。它与 T One 主仓库分开发布，
+便于运行时和操作规则独立迭代。
+
+## 安全与贡献
+
+- 不提交真实凭据、个人资料、店铺、客户、供应商或财务数据。
+- 页面按钮、结构、研究报告或单元测试不能单独证明“已经连接”。
+- 未知仓库和连接器必须先做许可证与安全审查。
+- 一切外部副作用必须经过人工确认。
+
+请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)、[SECURITY.md](SECURITY.md)、
+[GOVERNANCE.md](GOVERNANCE.md) 和 [SUPPORT.md](SUPPORT.md)。
+
+## 许可证
+
+Apache License 2.0，详见 [LICENSE](LICENSE)。

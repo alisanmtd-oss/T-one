@@ -21,7 +21,7 @@ Record both provenance and lifecycle. Provenance is exactly one of `official_cur
 
 Treat social/forum comments as a separate evidence track, not as page-body facts. When accessible, inspect at least ten rendered comments or all if fewer, including pinned, high-relevance and newest views, author/platform replies, nested replies, disagreement and edited follow-ups where the platform exposes them; record actual rendered counts, pagination and sort coverage. Anonymize themes, cluster repeated pain points and filter promotional, duplicated, bot-like, off-topic or context-uncertain content. Likes and repetition do not upgrade a claim. Policy, fees, API or feature-change leads must return to an applicable official source. If comments require login and the authorized browser cannot be controlled, record `blocked_comment_access` and produce no comment-derived rule.
 
-Use [browser-evidence-2026-07-18.md](references/browser-evidence-2026-07-18.md) as the first observed public-browser cycle, not as proof of a live store. Never borrow another platform or store identity, bypass login/CAPTCHA/MFA/paywalls, or submit external effects during learning.
+Use [official-evidence.md](references/official-evidence.md) as the public summary of observed browser cycles, not as proof of a live store. Dated raw browser traces are intentionally excluded from the public release. Never borrow another platform or store identity, bypass login/CAPTCHA/MFA/paywalls, or submit external effects during learning.
 
 ## Resolve the execution scope first
 

@@ -21,7 +21,24 @@ def load_provider_catalog(root: Path) -> list[dict[str, Any]]:
     except (OSError, ValueError):
         return []
     providers = payload.get("providers") if isinstance(payload, dict) else []
-    return [dict(item) for item in providers if isinstance(item, dict) and item.get("id")]
+    normalized: list[dict[str, Any]] = []
+    for item in providers:
+        if not isinstance(item, dict) or not item.get("id"):
+            continue
+        row = dict(item)
+        row["integration_state"] = str(row.get("integration_state") or "configurable")
+        row["model_families"] = [
+            str(value)
+            for value in row.get("model_families", [])
+            if str(value).strip()
+        ]
+        row["capability_slots"] = [
+            str(value)
+            for value in row.get("capability_slots", [])
+            if str(value).strip()
+        ]
+        normalized.append(row)
+    return normalized
 
 
 def load_provider_verification(root: Path) -> dict[str, Any]:
@@ -151,6 +168,16 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
     }
     return {
         "catalog": catalog,
+        "catalog_provider_count": len(catalog),
+        "configurable_provider_count": sum(
+            1 for item in catalog if item.get("integration_state") != "future_adapter"
+        ),
+        "future_adapter_count": sum(
+            1 for item in catalog if item.get("integration_state") == "future_adapter"
+        ),
+        "model_family_slot_count": sum(
+            len(item.get("model_families") or []) for item in catalog
+        ),
         "configured": configured,
         "ready_count": sum(1 for item in configured if item.get("ready")),
         "configured_count": len(configured),
@@ -167,6 +194,8 @@ def configure_provider(root: Path, payload: dict[str, Any]) -> dict[str, Any]:
     preset = catalog.get(preset_id)
     if not preset:
         raise ValueError("请选择受支持的 AI 供应商预设。")
+    if str(preset.get("integration_state") or "configurable") == "future_adapter":
+        raise ValueError("该 AI 公司目前只预留了位置，运行时适配器尚未接入，不能保存为可用模型。")
 
     provider_name = str(payload.get("name") or f"{preset_id}-user").strip().lower()
     if not SAFE_PROVIDER_ID.fullmatch(provider_name):

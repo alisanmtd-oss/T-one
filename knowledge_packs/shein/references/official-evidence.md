@@ -6,7 +6,7 @@ Use this register as an index, not as permission to execute. Re-open the officia
 
 ## Browser-observed public evidence cycle
 
-The pages below were actually opened and interacted with in an isolated, unauthenticated browser on 2026-07-18. Full clicks, scrolling, software version, errors and permission boundaries are recorded in [browser-evidence-2026-07-18.md](browser-evidence-2026-07-18.md).
+The pages below were actually opened and interacted with in an isolated, unauthenticated browser on 2026-07-18. This file keeps the public-safe summary; raw clicks, scrolling traces, software details, and private receipts are intentionally excluded from the public release.
 
 | ID | Official source | Actual operation | Verified use | Boundary |
 |---|---|---|---|---|
@@ -21,7 +21,7 @@ The pages below were actually opened and interacted with in an isolated, unauthe
 
 ### Developer sandbox and authorization cycle 02
 
-The following pages were actually opened and interacted with from 22:34–22:41 Asia/Shanghai. See [browser-evidence-2026-07-18-cycle-02.md](browser-evidence-2026-07-18-cycle-02.md) for the action/error log.
+The following pages were actually opened and interacted with from 22:34–22:41 Asia/Shanghai. The private action/error log is not part of the public release.
 
 | ID | Official source | Actual operation | Verified use | Boundary |
 |---|---|---|---|---|
@@ -33,7 +33,7 @@ The following pages were actually opened and interacted with from 22:34–22:41 
 
 ### US analytics and public Seller Forum transcript cycle 03
 
-The following pages were opened and interacted with from 23:29–23:32 Asia/Shanghai. Full fingerprints, clicks and boundaries are in [browser-evidence-2026-07-18-cycle-03.md](browser-evidence-2026-07-18-cycle-03.md).
+The following pages were opened and interacted with from 23:29–23:32 Asia/Shanghai. Full fingerprints and click traces remain private.
 
 | ID | Source | Actual operation | Verified use | Boundary |
 |---|---|---|---|---|
@@ -42,7 +42,7 @@ The following pages were opened and interacted with from 23:29–23:32 Asia/Shan
 
 ### US application, category catalogue and community cycle 04
 
-The following pages/software were opened from 23:46–23:53 Asia/Shanghai. Full fingerprints, clicks, blocked attempts and T One observations are in [browser-evidence-2026-07-18-cycle-04.md](browser-evidence-2026-07-18-cycle-04.md).
+The following pages/software were opened from 23:46–23:53 Asia/Shanghai. Full fingerprints, clicks, and blocked-attempt traces remain private.
 
 | ID | Source | Actual operation | Verified use | Boundary |
 |---|---|---|---|---|
@@ -53,7 +53,7 @@ The following pages/software were opened from 23:46–23:53 Asia/Shanghai. Full 
 
 ### Dynamic attributes, approved SPU detail and GitHub safety cycle 05
 
-Captured 2026-07-19 00:10–00:23 Asia/Shanghai with named isolated Playwright session `shein-cycle09-20260719`. No authenticated store, API debug call, credential, repository install/download or T One configuration change was used. Full action record: [browser-evidence-2026-07-19-cycle-05.md](browser-evidence-2026-07-19-cycle-05.md).
+Captured 2026-07-19 00:10–00:23 Asia/Shanghai with an isolated Playwright session. No authenticated store, API debug call, credential, repository install/download, or T One configuration change was used. The raw action record remains private.
 
 | Evidence ID | URL | Actual operation | Visible result | Boundary |
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ Captured 2026-07-19 00:10–00:23 Asia/Shanghai with named isolated Playwright s
 
 ### Inventory, locks and native-AI transcript boundary cycle 06
 
-Captured 2026-07-19 00:41–00:46 Asia/Shanghai with named isolated Playwright session `shein-cycle10-20260719`. No authenticated store, signed inventory request, inventory update, media download, T One install or configuration change occurred. Full action record: [browser-evidence-2026-07-19-cycle-06.md](browser-evidence-2026-07-19-cycle-06.md).
+Captured 2026-07-19 00:41–00:46 Asia/Shanghai with an isolated Playwright session. No authenticated store, signed inventory request, inventory update, media download, T One install, or configuration change occurred. The raw action record remains private.
 
 | Evidence ID | URL | Actual operation | Visible result | Boundary |
 |---|---|---|---|---|
@@ -72,7 +72,7 @@ Captured 2026-07-19 00:41–00:46 Asia/Shanghai with named isolated Playwright s
 
 ### Official GitHub identity, repository-depth and comment backfill cycle 07
 
-Captured 2026-07-19 01:00–01:23 Asia/Shanghai with isolated Playwright sessions and two failed attempts to use the owner-authorized current Chrome session. Full page, repository, comment and failure coverage is in [browser-evidence-2026-07-19-cycle-07.md](browser-evidence-2026-07-19-cycle-07.md). No account login, SDK download, repository clone/install/run, cookie/token access, comment inference or T One configuration change occurred.
+Captured 2026-07-19 01:00–01:23 Asia/Shanghai with isolated Playwright sessions. No account login, SDK download, repository clone/install/run, cookie/token access, comment inference, or T One configuration change occurred. Detailed session and failure traces remain private.
 
 | Evidence ID | URL | Actual operation | Visible result | Boundary |
 |---|---|---|---|---|
@@ -84,7 +84,7 @@ Captured 2026-07-19 01:00–01:23 Asia/Shanghai with isolated Playwright session
 
 ### Inventory v2, Webhook and official-video cycle 08
 
-Captured 2026-07-19 01:27–01:56 Asia/Shanghai with named Playwright sessions and the existing T One Extensions route. Full scroll, version-chain, YouTube/comment, T One search and failure coverage is in [browser-evidence-2026-07-19-cycle-08.md](browser-evidence-2026-07-19-cycle-08.md). No signed call, callback, subscription, store input, inventory write, download, install or external effect occurred.
+Captured 2026-07-19 01:27–01:56 Asia/Shanghai with isolated Playwright sessions and a local T One reference route. No signed call, callback, subscription, store input, inventory write, download, install, or external effect occurred. Full scroll, version-chain, comment, search, and failure traces remain private.
 
 | Evidence ID | URL | Actual operation | Visible result | Boundary |
 |---|---|---|---|---|

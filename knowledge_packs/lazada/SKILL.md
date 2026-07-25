@@ -46,7 +46,7 @@ Use a knowledge-package-first gap loop. Inventory the existing single Skill, rul
 
 ## Pass the evidence gate before learning
 
-Read [curriculum.md](references/curriculum.md), [evidence-ledger.json](references/evidence-ledger.json), [rules.json](references/rules.json) and [training-state.json](references/training-state.json) before changing expert knowledge.
+Read [curriculum.md](references/curriculum.md), [evidence-ledger.json](references/evidence-ledger.json), and [rules.json](references/rules.json) before changing expert knowledge. Private training state is intentionally excluded from the public release.
 
 Each training round must first inspect a real authorized Lazada identity or a Lazada official public page/sandbox and record the actual URL, capture time, country, mode, ownership, permission, interactions, visible input/output and errors. If no new external page, software, authorization response, store result or failure is captured, record `no_delta` and do not invent a new rule, course claim or tool capability.
 

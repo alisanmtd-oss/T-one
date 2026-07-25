@@ -42,7 +42,7 @@ Every training increment must begin with visible external evidence, not model-on
 4. Classify the evidence as `verified_live_fact`, `time_sensitive_evidence`, `historical_operator_trace`, `draft`, `failed_attempt`, `unknown`, or `blocked_owner_input`.
 5. Distill Skill, rules, workflows, evals, and tool mappings only when a visible increment exists. Otherwise record `no_increment` and leave training assets unchanged.
 
-Use [curriculum.json](references/curriculum.json), [evidence-index.json](references/evidence-index.json), [failure-review.json](references/failure-review.json), [training-state.json](references/training-state.json), the [mother-requirement matrix](references/mother-requirement-matrix.md), and the [latest read-only learning run](references/learning-runs/2026-07-19-review-response-knowledge-package-audit-readonly.json) as the versioned training ledger.
+Use [curriculum.json](references/curriculum.json), [evidence-index.json](references/evidence-index.json), [failure-review.json](references/failure-review.json), and the [mother-requirement matrix](references/mother-requirement-matrix.md) as the public training ledger. Private training state and dated raw learning-run receipts are intentionally excluded from the public release.
 
 Keep four layers separate: platform-public Etsy rules; category capabilities loaded from the current taxonomy/schema; tenant/project/product facts; and task evidence. Unknown category or product fields stay unknown. Never inherit another project’s prices, variations, media, inventory, warehouse, customers, production partner, ads economics or order evidence.
 

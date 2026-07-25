@@ -8,7 +8,7 @@ name: b2b-foreign-trade-sales
 
 1. Read `tk智能体_当前权威记忆.md`, `tk智能体_当前任务队列.md`, and `config/current_task_queue.json`.
 2. No private customer pool or operating file is included in this public pack.
-3. Read [project-assets.md](references/project-assets.md) before changing code, data, or the software workstreams.
+3. Read the public files in `references/` before changing code, data, or the software workstreams. Private project-asset inventories are intentionally excluded from the public release.
 4. Never load the 14GB raw conversation. Search the compact recovery files only when tracing a specific historical requirement.
 
 ## Choose the sales scope

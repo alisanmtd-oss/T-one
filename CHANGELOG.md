@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.2 - 2026-07-25
+
+- Reframed T One as a multi-project, multi-store group commerce operating brain.
+- Aligned English and Simplified Chinese entrypoints.
+- Added sanitized product screenshots, a file guide, and a strict capability status
+  matrix.
+- Separated the public Python core, synthetic browser reference, and private desktop
+  product boundaries.
+- Added the companion Codex x T One Operator Skill as a separate project direction.
+
 ## 0.4.1
 
 - Added exact provider-and-model multimodal verification receipts instead of inferring one model's capabilities from another model or provider.

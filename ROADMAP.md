@@ -1,56 +1,60 @@
-# Roadmap
+# T One public roadmap
 
-The roadmap is capability-based. Dates are intentionally avoided until maintainers can support the work safely.
+The roadmap is ordered by operational safety and evidence, not by the number of
+platform logos or UI buttons.
 
-## 0.1 - Public foundation
+## Shipped foundation
 
-- [x] Exact-file sanitized release builder and audit record.
-- [x] AI provider catalog, model selection, and local credential references.
-- [x] Data classification and model redaction policies.
-- [x] Commerce schemas and atomic local storage.
-- [x] B2B company, company-user, supplier, factory, shared-catalog, quote-line, price-list, invoice, payout, and consent contracts.
-- [x] Workspace -> project -> channel -> store -> task hierarchy.
-- [x] Safe configuration examples and focused tests.
-- [x] Owner-selected Apache-2.0 license.
-- [x] First tagged public release.
+- Local-first Python community core.
+- Workspace, project, platform, store, task, and execution-identity boundaries.
+- Synthetic chat-first browser reference.
+- Sanitized knowledge-pack registry.
+- Local approval and evidence contracts.
+- Public release allowlist, audit, and SHA-256 manifests.
+- English and Simplified Chinese entrypoints.
 
-## 0.2 - Chat-first reference and extensible local agent
+## Next public milestone: trustworthy integrations
 
-- [x] Generic browser-only chat-first workspace reference with agent switching, quick prompts, file-intake affordance, and one settings drawer.
-- [x] Daily navigation separates operator conversations from advanced connection and diagnostic pages.
-- [x] Content work is represented as one end-to-end agent instead of several implementation-shaped projects.
-- [x] Advertising guidance follows an evidence -> recommendation -> owner-confirmation sequence; the demo never claims live execution.
-- [ ] Stable plugin, skill, and connector manifests.
-- [ ] Local MCP/API surface with scoped tokens and capability discovery.
-- [ ] Provider connection tests with useful, redacted error feedback.
-- [ ] Project and store scoped role-based access control.
-- [ ] Background job queue, budgets, retry policy, and audit events.
+1. Publish a stable manifest for skills, plugins, agents, and connectors.
+2. Add a scoped local MCP/API with revocable tokens and read/draft/write capability
+   separation.
+3. Add provider connection tests that distinguish missing credentials, unsupported
+   scopes, network failure, and provider rejection.
+4. Provide read-only marketplace and ERP adapter examples before any write adapter.
+5. Add durable jobs, leases, retry policy, evidence receipts, and recovery.
+6. Keep project, platform, site, store mode, store binding, and execution identity
+   isolated in every adapter.
 
-## 0.3 - Commerce operations
+## Commerce operations
 
-- [ ] Read-only ERP and marketplace reference connectors.
-- [ ] Product intake from spreadsheet, image folder, and normalized API payloads.
-- [ ] Listing, inventory, order, fulfillment, settlement, activity, and ad contracts.
-- [ ] Country/site and store-mode capability matrix backed by primary documentation.
-- [ ] Approval-gated write adapters with idempotency and rollback evidence.
+- Dynamic product intake schemas for files, images, and platform-specific fields.
+- Listing, inventory, order, fulfillment, settlement, activity, advertising, refund,
+  and customer-service contracts.
+- Platform/site/store-mode rule versions with effective dates and source evidence.
+- Settlement and operating-cost planning that separates platform fees, tax,
+  advertising, samples, affiliate commission, logistics, payment-provider fees,
+  withdrawal, FX, refunds, and daily expenses.
+- Human approval for all external writes and financial actions.
 
-## 0.4 - B2B foreign trade
+## B2B and outbound development
 
-- [ ] Evidence-backed public lead research and consent-aware intake.
-- [ ] Customer timeline, qualification, sample, quotation, order, payment, shipment, and after-sales handoffs.
-- [ ] Company-scoped catalogs, price lists, documents, approvals, and audit history.
-- [ ] Confirmation-gated email, CRM, messaging, and quotation delivery connectors.
+- Separate B2B marketplace acquisition and outbound customer development workflows.
+- Shared CRM timeline, qualification, discovery, samples, quotation, negotiation,
+  order/PI/contract, delivery, payment, repurchase, and cross-sell contracts.
+- Confirmation-gated email, messaging, and social connectors.
+- Anti-spam, privacy, sanctions, export-control, and evidence boundaries.
 
-## 0.5 - Content and growth
+## Content and growth
 
-- [ ] Competitor creative analysis with rights and evidence controls.
-- [ ] Image/video prompt, storyboard, editing, localization, and QA skill packs.
-- [ ] Content-to-commerce attribution and experiment records.
-- [ ] Creative and market-learning feedback that can support both marketplace and B2B sales workstreams.
+- Competitor creative analysis with provenance and rights checks.
+- Image/video prompt, storyboard, editing, localization, and QA contracts.
+- Social publishing plans, tags, copy, music, comments, attribution, and feedback.
+- Tool routing without claiming unavailable third-party models or permissions.
 
-## Not planned as unguarded automation
+## Explicit non-goals
 
-- Bypassing login, CAPTCHA, identity, payment, or account-security controls.
-- Hidden mass messaging, fake engagement, review manipulation, or account farming.
-- Cross-store credential reuse or broad regional execution identities.
-- Automatic spend, payment, shipment, or irreversible store writes without policy limits and audit evidence.
+- No credentials, cookies, browser profiles, identity documents, or private data.
+- No bypass of CAPTCHA, MFA, platform restrictions, or account security.
+- No unguarded store writes, mass outreach, ad spend, payments, fulfillment, or refunds.
+- No claim that schemas, research, screenshots, or buttons are live integrations.
+- No bulk copying of third-party repositories without license and security review.

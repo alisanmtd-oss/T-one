@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import socket
 import subprocess
@@ -9,7 +10,7 @@ import urllib.request
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable
 from uuid import uuid4
 
 from . import usage as usage_meter
@@ -117,6 +118,22 @@ class LLMConfig:
         if self.requires_api_key and not self.api_key:
             return False
         return True
+
+
+@dataclass(slots=True)
+class LLMTool:
+    """One explicitly registered, local-only tool exposed to a model.
+
+    The first runtime slice intentionally accepts read-only tools only. External
+    writes, messages, store mutations, and payments continue through the human
+    approval queues instead of model tool calling.
+    """
+
+    name: str
+    description: str
+    parameters: dict[str, Any]
+    handler: Callable[[dict[str, Any]], Any]
+    read_only: bool = True
 
 
 def infer_provider_policy_id(name: str, base_url: str | None = None) -> str:
@@ -384,6 +401,127 @@ class LLMClient:
             errors,
         )
 
+    def chat_with_tools(
+        self,
+        system_prompt: str,
+        user_prompt: str,
+        *,
+        tools: list[LLMTool],
+        task: str | None = None,
+        context: dict[str, Any] | None = None,
+        max_tool_rounds: int = 3,
+        require_tool_call: bool = True,
+    ) -> dict[str, Any]:
+        """Run an OpenAI-compatible, read-only model tool loop.
+
+        A provider being text-ready does not imply tool support. This method
+        returns ``tool_call_verified`` only after a registered local handler ran
+        and its result was returned to the same model conversation.
+        """
+
+        configs = self.available_configs(task)
+        if self.max_attempts:
+            configs = configs[: self.max_attempts]
+        if not configs:
+            raise AIProviderChainError(
+                "provider_not_ready",
+                "当前任务没有可用模型：请先补齐 API Key、Base URL 和模型 ID，再执行连接测试。",
+            )
+        if max_tool_rounds < 1:
+            raise AIProviderChainError("invalid_tool_limit", "工具调用轮数必须至少为 1。")
+
+        tool_names: set[str] = set()
+        for tool in tools:
+            if not tool.name or not tool.name.replace("_", "").isalnum():
+                raise AIProviderChainError("invalid_tool_schema", "工具名称不符合安全规则。")
+            if tool.name in tool_names:
+                raise AIProviderChainError("invalid_tool_schema", f"工具重复注册：{tool.name}")
+            if not tool.read_only:
+                raise AIProviderChainError("tool_write_blocked", f"工具不是只读能力：{tool.name}")
+            if not callable(tool.handler):
+                raise AIProviderChainError("invalid_tool_schema", f"工具缺少本地处理器：{tool.name}")
+            tool_names.add(tool.name)
+
+        errors: list[dict[str, Any]] = []
+        for config in configs:
+            started_at = datetime.now(timezone.utc)
+            try:
+                if config.api_format != "openai":
+                    raise AIProviderChainError(
+                        "tool_protocol_not_supported",
+                        f"{config.name} 当前只验证了文字接口，尚未实现 {config.api_format} 工具协议。",
+                    )
+                policy = provider_policy(config.policy_id)
+                include_onboarding = bool(
+                    (context or {}).get("include_onboarding", True)
+                    and policy.allow_onboarding
+                )
+                trained_system_prompt = (
+                    add_ai_worker_onboarding(system_prompt, self.root)
+                    if include_onboarding
+                    else system_prompt.strip()
+                )
+                guarded_system_prompt = add_context_isolation_guard(
+                    trained_system_prompt,
+                    task or self.task,
+                    context,
+                )
+                safe_system_prompt = redact_text_for_model(
+                    guarded_system_prompt,
+                    max_data_level=policy.max_data_level,
+                    task=task or self.task,
+                ).text
+                safe_user_prompt = redact_text_for_model(
+                    user_prompt,
+                    max_data_level=policy.max_data_level,
+                    task=task or self.task,
+                ).text
+                result = self._chat_openai_with_tools(
+                    config,
+                    safe_system_prompt,
+                    safe_user_prompt,
+                    tools=tools,
+                    task=task or self.task,
+                    max_tool_rounds=max_tool_rounds,
+                    require_tool_call=require_tool_call,
+                )
+                return {
+                    **result,
+                    "provider": config.name,
+                    "model": config.model or "",
+                    "latency_ms": elapsed_ms(started_at),
+                    "attempts": errors,
+                }
+            except AIProviderChainError as exc:
+                if exc.code.startswith("tool_") or exc.code in {
+                    "invalid_tool_limit",
+                    "invalid_tool_schema",
+                }:
+                    raise
+                errors.append(
+                    {
+                        "provider": config.name,
+                        "model": config.model or "",
+                        "status": "failed",
+                        "code": exc.code,
+                        "error": exc.user_message,
+                    }
+                )
+            except Exception as exc:  # noqa: BLE001 - try the next configured provider.
+                errors.append(
+                    classify_provider_error(
+                        exc,
+                        provider=config.name,
+                        model=config.model or "",
+                    )
+                )
+        first = errors[0] if errors else {}
+        raise AIProviderChainError(
+            str(first.get("code") or "all_providers_failed"),
+            str(first.get("error") or "所有已配置模型均调用失败。"),
+            errors,
+        )
+
     def test_connections(self, *, task: str | None = None) -> list[dict[str, Any]]:
         results: list[dict[str, Any]] = []
         configs = self.available_configs(task)
@@ -467,6 +605,158 @@ class LLMClient:
         content = content.strip()
         self._meter(config, task, system_prompt + user_prompt, content, data.get("usage"), record)
         return content
+
+    def _chat_openai_with_tools(
+        self,
+        config: LLMConfig,
+        system_prompt: str,
+        user_prompt: str,
+        *,
+        tools: list[LLMTool],
+        task: str,
+        max_tool_rounds: int,
+        require_tool_call: bool,
+    ) -> dict[str, Any]:
+        endpoint = config.base_url.rstrip("/") + "/chat/completions"
+        messages: list[dict[str, Any]] = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
+        tool_map = {tool.name: tool for tool in tools}
+        tool_schemas = [
+            {
+                "type": "function",
+                "function": {
+                    "name": tool.name,
+                    "description": tool.description,
+                    "parameters": tool.parameters,
+                },
+            }
+            for tool in tools
+        ]
+        executions: list[dict[str, Any]] = []
+        combined_usage: dict[str, int] = {"prompt_tokens": 0, "completion_tokens": 0}
+
+        for round_index in range(max_tool_rounds + 1):
+            payload: dict[str, Any] = {
+                "model": config.model,
+                "messages": messages,
+                "temperature": config.temperature,
+            }
+            if tool_schemas:
+                payload["tools"] = tool_schemas
+                payload["tool_choice"] = "auto"
+            body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+            headers = {
+                "Content-Type": "application/json",
+                **config.headers,
+                **({"Authorization": f"Bearer {config.api_key}"} if config.api_key else {}),
+            }
+            request = urllib.request.Request(endpoint, data=body, method="POST", headers=headers)
+            timeout_seconds = min(
+                config.timeout_seconds,
+                self.request_timeout_seconds or config.timeout_seconds,
+            )
+            with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+                data = json.loads(response.read().decode("utf-8"))
+
+            usage = data.get("usage") if isinstance(data.get("usage"), dict) else {}
+            for key in combined_usage:
+                combined_usage[key] += int(usage.get(key) or 0)
+            message = data["choices"][0]["message"]
+            tool_calls = message.get("tool_calls") if isinstance(message, dict) else None
+            if tool_calls:
+                if round_index >= max_tool_rounds:
+                    raise AIProviderChainError(
+                        "tool_round_limit",
+                        "模型超过只读工具调用轮数，未执行更多工具。",
+                    )
+                if not isinstance(tool_calls, list):
+                    raise AIProviderChainError("tool_invalid_response", "模型工具调用格式无效。")
+                messages.append(
+                    {
+                        "role": "assistant",
+                        "content": message.get("content"),
+                        "tool_calls": tool_calls,
+                    }
+                )
+                for call in tool_calls:
+                    if not isinstance(call, dict):
+                        raise AIProviderChainError("tool_invalid_response", "模型工具调用格式无效。")
+                    function = call.get("function") if isinstance(call.get("function"), dict) else {}
+                    name = str(function.get("name") or "")
+                    tool = tool_map.get(name)
+                    if tool is None:
+                        raise AIProviderChainError(
+                            "tool_not_allowed",
+                            f"模型请求了未注册工具：{name or 'unknown'}。系统未执行。",
+                        )
+                    try:
+                        arguments = json.loads(str(function.get("arguments") or "{}"))
+                    except json.JSONDecodeError as exc:
+                        raise AIProviderChainError(
+                            "tool_invalid_arguments",
+                            f"工具参数不是有效 JSON：{name}。",
+                        ) from exc
+                    if not isinstance(arguments, dict):
+                        raise AIProviderChainError(
+                            "tool_invalid_arguments",
+                            f"工具参数必须是对象：{name}。",
+                        )
+                    result = tool.handler(arguments)
+                    if isinstance(result, dict) and int(result.get("external_action_count") or 0) != 0:
+                        raise AIProviderChainError(
+                            "tool_external_action_blocked",
+                            f"只读工具报告了外部动作，结果已阻断：{name}。",
+                        )
+                    serialized = json.dumps(result, ensure_ascii=False, sort_keys=True, default=str)
+                    if len(serialized) > 12000:
+                        serialized = json.dumps(
+                            {
+                                "truncated": True,
+                                "preview": serialized[:11500],
+                            },
+                            ensure_ascii=False,
+                            sort_keys=True,
+                        )
+                    receipt = {
+                        "tool": name,
+                        "status": "ok",
+                        "external_action_count": 0,
+                        "result_sha256": hashlib.sha256(serialized.encode("utf-8")).hexdigest(),
+                    }
+                    executions.append(receipt)
+                    messages.append(
+                        {
+                            "role": "tool",
+                            "tool_call_id": str(call.get("id") or ""),
+                            "name": name,
+                            "content": serialized,
+                        }
+                    )
+                continue
+
+            content = message.get("content") if isinstance(message, dict) else None
+            if not isinstance(content, str) or not content.strip():
+                raise ValueError("empty model response")
+            if require_tool_call and not executions:
+                raise AIProviderChainError(
+                    "tool_call_not_observed",
+                    "模型返回了文字，但没有调用 T-one 工具；不能标记为工具可用。",
+                )
+            content = content.strip()
+            prompt_trace = system_prompt + user_prompt + "".join(
+                str(item.get("content") or "") for item in messages if item.get("role") == "tool"
+            )
+            self._meter(config, task, prompt_trace, content, combined_usage, True)
+            return {
+                "text": content,
+                "tool_call_verified": bool(executions),
+                "tool_executions": executions,
+                "tool_rounds": round_index,
+            }
+
+        raise AIProviderChainError("tool_round_limit", "模型工具调用未能在轮数内完成。")
 
     def _chat_anthropic(self, config: LLMConfig, system_prompt: str, user_prompt: str, *, task: str = "default", record: bool = False) -> str:
         endpoint = config.base_url.rstrip("/") + "/v1/messages"

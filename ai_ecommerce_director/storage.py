@@ -299,6 +299,10 @@ def newest(records: Iterable[IntakeRecord], limit: int = 5) -> list[IntakeRecord
 
 def record_dedupe_key(record: IntakeRecord) -> str:
     fields = record.fields
+    if record.record_type == "operating_expense_entry":
+        fingerprint = normalized_value(fields.get("expense_fingerprint"))
+        if fingerprint:
+            return f"operating_expense_entry:{fingerprint}"
     if record.record_type == "video_script":
         script_key = normalized_value(fields.get("script_key"))
         if script_key:

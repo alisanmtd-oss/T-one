@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
   "workspace_id": "t-one-local",
-  "workspace_name": "T One",
+  "workspace_name": "T-one",
   "projects": [
     {
       "id": "apparel-growth",
