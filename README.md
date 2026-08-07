@@ -64,6 +64,12 @@ Version 0.4 publishes all reusable non-TikTok-Shop packs as browsable bundles un
 
 The dependency-free browser demo keeps the chat-first interaction: users state a goal, T One selects the agent, files enter through the composer, and model/account controls stay in Settings. Its account walkthrough is illustrative only and does not accept credentials or connect to external services.
 
+### One-click Windows demo
+
+Download and extract the source ZIP, then double-click `START.cmd` to open the offline demo in the default browser. Python, API keys, and dependency installation are not required. Run `START.cmd --verify-only` to verify the release folder without opening a browser.
+
+This launcher opens only the public synthetic-data HTML demo. It does not install the private desktop Runtime, connect stores or external services, or label any connector as connected.
+
 ```python
 from ai_ecommerce_director.platform_agents import route_public_chat
 
@@ -90,6 +96,8 @@ If a channel is planned but no authorized platform store exists, its status must
 Read the [Architecture](docs/ARCHITECTURE.md) for the public contracts and operating model.
 
 ## Quick start
+
+The following steps install the Python community core for development. They are not required for the one-click offline demo.
 
 ```powershell
 git clone https://github.com/alisanmtd-oss/T-one.git

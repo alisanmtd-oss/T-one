@@ -30,6 +30,12 @@ assert result["external_execution_allowed"] is False
 
 无依赖浏览器演示继续采用聊天优先方式：用户只需说目标，由 T One 自动选择智能体；文件从聊天框“＋”进入，模型和账号收进设置。邮箱与通信账号页面只演示设置路径，不接收凭据、不连接外部服务。
 
+### Windows 一键体验
+
+下载源码 ZIP 并解压后，双击 `START.cmd` 即可在默认浏览器打开离线演示；不需要 Python、API Key 或安装依赖。也可以运行 `START.cmd --verify-only` 检查发布目录是否完整而不打开浏览器。
+
+这个入口只打开公开的合成数据 HTML 演示，不安装私有桌面 Runtime，不连接店铺、ERP、邮箱、广告、付款或履约服务，也不会把任何接口标成已连接。
+
 ## 0.2 版本重点
 
 - 提供一个完全使用合成数据、无需依赖的聊天优先界面参考。
@@ -70,6 +76,8 @@ assert result["external_execution_allowed"] is False
 如果只是计划进入某个平台或站点、还没有真实授权店铺，状态必须是 `needs_platform_store`。T One 不能假装已经可以上架、拉单、发货回传、结算、参加活动或投放广告。
 
 ## 本地安装与验证
+
+下面是开发 Python 公共核心时使用的安装步骤，不是普通用户体验离线演示的前置条件。
 
 ```powershell
 git clone https://github.com/alisanmtd-oss/T-one.git
