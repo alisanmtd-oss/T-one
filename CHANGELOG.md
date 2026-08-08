@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.3 - 2026-08-08
+
+- Added an assisted Windows installer for the offline community demo, with selectable
+  install location, Start menu and desktop shortcuts, and an uninstaller.
+- Added a repeatable installer acceptance script and GitHub release build workflow.
+- Kept the public installer limited to synthetic offline assets; private operating
+  runtime, computer control, browser profiles, credentials, and live connectors remain excluded.
+
 ## 0.4.2 - 2026-07-25
 
 - Reframed T One as a multi-project, multi-store group commerce operating brain.

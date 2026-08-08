@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {".html", ".json", ".md", ".py", ".txt", ".toml", ".yaml", ".yml"}
 SKIP_FILES = {"scripts/verify_public_tree.py"}
+SKIP_DIRECTORY_PARTS = {".git", "build", "dist", "node_modules"}
 FORBIDDEN_EXACT_PATHS = {
     "OPEN_SOURCE_READINESS.md",
     "config/private_project_facts.json",
@@ -42,7 +43,7 @@ def main() -> int:
     if (ROOT / "knowledge_packs" / "tiktok_shop").exists():
         findings.append("private TikTok Shop knowledge pack present")
     for path in ROOT.rglob("*"):
-        if not path.is_file() or ".git" in path.parts:
+        if not path.is_file() or any(part in SKIP_DIRECTORY_PARTS for part in path.parts):
             continue
         relative = path.relative_to(ROOT).as_posix()
         if relative in FORBIDDEN_EXACT_PATHS:

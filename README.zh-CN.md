@@ -47,7 +47,8 @@ T One 不是“所有平台、ERP、收款工具和通讯软件都已经连接�
 | 平台写入和广告执行 | **未连接 / 规划中** | 保持审批门禁 |
 | Gmail、Outlook、WhatsApp、微信、Telegram、飞书 | **未连接 / 规划中** | 没有公开 OAuth 或实时连接器 |
 | PayPal、连连、万里汇等资金结算 | **未连接 / 规划中** | 当前仅有财务结构 |
-| Windows 正式桌面程序 | **私有产品，不在本仓库** | 公开截图仅说明交互方向 |
+| Windows 社区安装包 | **已验证** | 只含离线合成演示，不含真实连接或电脑控制 |
+| Windows 完整经营运行时 | **私有产品，不在本仓库** | 公开安装包不冒充这些能力 |
 
 评估或接入前，请先读 [docs/CAPABILITY_STATUS.md](docs/CAPABILITY_STATUS.md)。
 
@@ -58,7 +59,7 @@ T One 不是“所有平台、ERP、收款工具和通讯软件都已经连接�
 - 低依赖 Python 社区核心；
 - 合成配置与测试数据；
 - 脱敏后的平台知识包；
-- 浏览器参考界面；
+- 可安装的 Windows 离线参考界面；
 - 审批、证据、路由和隔离合同；
 - 测试、社区文件和发布完整性清单。
 
@@ -92,6 +93,14 @@ Owner / 投资与项目决策者
 
 ## 快速开始
 
+### 普通 Windows 安装
+
+从 Release 附件下载 `T-One-Community-Setup-*.exe`，双击后选择安装目录，再按向导完成安装。安装器会创建开始菜单和可选桌面快捷方式，并附带卸载程序；不需要 Python 或命令行。这个公开安装包只包含合成数据离线演示，不会控制电脑、连接店铺或调用外部服务。
+
+安装器源码位于 `desktop_public/`，固定依赖版本和 GitHub 工作流可从公开源码重复构建。
+
+### 开发者安装
+
 ```powershell
 git clone https://github.com/alisanmtd-oss/T-one.git
 cd T-one
@@ -113,6 +122,7 @@ python -m venv .venv
 | `knowledge_packs/` | 已脱敏的平台与业务知识资产 |
 | `config/` | 合成示例和公开安全注册表 |
 | `demo/` | 只使用合成数据的浏览器参考界面 |
+| `desktop_public/` | 公开 Electron 外壳与可选目录的 NSIS 安装器定义 |
 | `docs/` | 架构、文件说明、状态真值和知识包说明 |
 | `scripts/` | 公开校验和发布完整性工具 |
 | `tests/` | 公开行为与安全边界回归测试 |

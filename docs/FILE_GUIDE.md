@@ -30,6 +30,7 @@
 - `ROADMAP.md`: next milestones and explicit non-goals.
 - `CHANGELOG.md`: released and unreleased changes.
 - `SECURITY.md`: vulnerability reporting and security boundaries.
+- `desktop_public/`: public offline Electron shell and Windows installer definition.
 - `CONTRIBUTING.md`: contribution workflow.
 - `GOVERNANCE.md`: community decision process.
 - `BRAND_PUBLIC_BOUNDARY.md`: brand and data publication boundary.
@@ -38,6 +39,6 @@
 
 ## What is intentionally absent
 
-The public repository must not contain private desktop runtime code, credentials,
+The public repository must not contain private operating-runtime code, credentials,
 store/customer/supplier data, browser profiles, identity documents, internal prompts,
 raw conversations, or unrestricted external execution connectors.
