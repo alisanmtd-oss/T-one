@@ -33,6 +33,11 @@ class WindowsInstallerContractTests(unittest.TestCase):
         self.assertIn("installed_app_ready", acceptance)
         self.assertIn("Uninstall T One Community.exe", acceptance)
 
+    def test_release_upload_does_not_require_a_publish_job_checkout(self) -> None:
+        workflow = (ROOT / ".github" / "workflows" / "windows-installer.yml").read_text(encoding="utf-8")
+        self.assertIn('--repo "$env:REPOSITORY"', workflow)
+        self.assertIn("REPOSITORY: ${{ github.repository }}", workflow)
+
     def test_release_manifest_covers_current_public_files(self) -> None:
         from scripts.generate_sha256_manifest import build_manifest, file_digest
 

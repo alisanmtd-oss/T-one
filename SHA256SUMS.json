@@ -5,7 +5,7 @@
   ".github/PULL_REQUEST_TEMPLATE.md": "5a6102b4aa359d4dbfe5d8f2c39f1ecdd22f7ca90c400c345e692ce107558df9",
   ".github/dependabot.yml": "f2b9f03020b1c136c417bf43e1dce56ab30d4f510b3f6d18d1c555ab191e1e2c",
   ".github/workflows/ci.yml": "47b4d6b1a87d6799c8b38932d4131a66052d6510e63a3c9872f088ae18ef5bec",
-  ".github/workflows/windows-installer.yml": "348a65cc45485d56d196fe47fa43cb2af4ee3e18dff3939d1792d6f4855445d2",
+  ".github/workflows/windows-installer.yml": "1b76c8ffe8577c5934cad158b1fa08bd1b4fc06f69dc08384a84911660a6827d",
   ".gitignore": "ca6831f58236736617227a79e8c5b6d4e1ca1ecf1aa538bd3e86a56b24279554",
   "CHANGELOG.md": "9792a4975f56a92e8547428c8603e446851270fae492a639a4470a17e3a1f32c",
   "CODE_OF_CONDUCT.md": "2bdef2429c58a47cf6bcc67706ff6693552fe68d5c551faf480a0917a6e381ae",
@@ -208,6 +208,6 @@
   "tests/test_platform_agents.py": "584ec7363c3fddefa360e2a512abfd19d3f3706848b210213201f06ac68fdabc",
   "tests/test_storage.py": "5fef10a5541a1e3d97fe0532ddbbf9cf8691321d7814091f38ecacc871bbcb1a",
   "tests/test_storage_cache.py": "28706e27066d0835dd73af15dd481686f81d4344104b976508ea0e5595ed9cf9",
-  "tests/test_windows_installer_contract.py": "eac13536a958a8bcd7a6c03afb685247c433894982ba42ff2007d4f3a1707585",
+  "tests/test_windows_installer_contract.py": "8316dca15d2739f6a4c595b78e3e40d0b4f6348561be3a953d9da9ed05ede8d5",
   "tests/test_workspace_schema.py": "876beded0e40977e0522837286ed93e21fd4ed36daa9a78ea44835a0b0c123ed"
 }
