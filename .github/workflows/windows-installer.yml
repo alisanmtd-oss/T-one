@@ -1,0 +1,52 @@
+name: Windows installer
+
+on:
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: desktop_public/package-lock.json
+      - name: Install fixed desktop build dependencies
+        working-directory: desktop_public
+        run: npm ci
+      - name: Build assisted Windows installer
+        working-directory: desktop_public
+        run: npm run dist:win
+      - name: Verify public installer contract
+        run: python -m unittest tests.test_windows_installer_contract -v
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: T-One-Community-Windows-Setup
+          path: desktop_public/dist/T-One-Community-Setup-*.exe
+          if-no-files-found: error
+  publish:
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download verified installer artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: T-One-Community-Windows-Setup
+          path: release-assets
+      - name: Attach installer to published release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: gh release upload "$env:RELEASE_TAG" release-assets/T-One-Community-Setup-*.exe --clobber

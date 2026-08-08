@@ -52,7 +52,8 @@ Status labels in this repository have strict meanings:
 | Marketplace writes and advertising | **Not connected / planned** | Intentionally approval-gated |
 | Email, WhatsApp, WeChat, Telegram, Feishu | **Not connected / planned** | No public OAuth or live connector |
 | Payment and settlement providers | **Not connected / planned** | Financial schemas only |
-| Windows desktop application | **Private product, not in this repo** | Public screenshots are illustrative |
+| Windows community installer | **Verified** | Offline synthetic demo only; no live connectors or computer control |
+| Full Windows operating runtime | **Private product, not in this repo** | Public installer does not claim these capabilities |
 
 See [docs/CAPABILITY_STATUS.md](docs/CAPABILITY_STATUS.md) before evaluating or
 integrating any feature.
@@ -64,7 +65,7 @@ This repository publishes:
 - a dependency-light Python community core;
 - synthetic configuration and fixtures;
 - sanitized platform knowledge packs;
-- a browser-only reference experience;
+- an installable offline Windows shell for the browser reference experience;
 - approval, evidence, routing, and isolation contracts;
 - tests, contribution guidance, and release integrity manifests.
 
@@ -99,6 +100,19 @@ project, platform, site, store mode, and store binding.
 
 ## Quick start
 
+### Normal Windows installation
+
+Download `T-One-Community-Setup-*.exe` from the Release assets, open it, choose an
+installation directory, and continue through the setup wizard. It creates Start menu
+and optional desktop shortcuts and includes an uninstaller. No Python or command line
+is required. This public installer contains only the synthetic offline demo; it does
+not control the computer, connect a store, or call an external service.
+
+The installer source is under `desktop_public/`. The fixed dependency versions and
+GitHub workflow make the installer reproducible from public source.
+
+### Developer installation
+
 ```powershell
 git clone https://github.com/alisanmtd-oss/T-one.git
 cd T-one
@@ -120,6 +134,7 @@ It does not connect to a real store or execute external actions.
 | `knowledge_packs/` | Sanitized platform and business knowledge assets |
 | `config/` | Synthetic examples and public-safe registries |
 | `demo/` | Browser-only reference UI with synthetic data |
+| `desktop_public/` | Public Electron shell and assisted NSIS installer definition |
 | `docs/` | Architecture, file guide, status truth, and public knowledge-pack notes |
 | `scripts/` | Public validation and release-integrity helpers |
 | `tests/` | Regression tests for public behavior and safety boundaries |

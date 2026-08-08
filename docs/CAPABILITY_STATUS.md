@@ -20,6 +20,7 @@ This file is the public truth table for T One Community Core.
 | Knowledge-pack catalog | `verified` | Sanitized packs; no private TikTok Shop pack |
 | Approval/evidence contracts | `verified` | Local contracts, no automatic external writes |
 | Browser reference UI | `verified` | Synthetic data; demo-only |
+| Windows community installer | `verified` | Installable shell for the same offline synthetic demo |
 | Model/provider configuration | `partial` | Credentials are never shipped |
 | Local MCP/API surface | `partial` | Scoped read/draft surface, not a universal runtime |
 | Marketplace/ERP reads | `requires_setup` | No public live account |
@@ -27,7 +28,7 @@ This file is the public truth table for T One Community Core.
 | Advertising execution | `planned` | No public ad account or budget authorization |
 | Messaging/email/social connectors | `planned` | No public OAuth sessions |
 | Payments/settlement/banking | `planned` | Financial contracts only |
-| Windows desktop app | `private_product` | Not distributed from this repository |
+| Full Windows operating runtime | `private_product` | Computer control and commercial connectors are not distributed here |
 
 ## Verification rule
 

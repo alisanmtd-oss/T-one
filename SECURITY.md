@@ -2,9 +2,9 @@
 
 ## Supported Deployment
 
-T One is currently a local Python library for a trusted Windows workstation. It is not a public SaaS server, a hosted control plane, or a write-capable marketplace agent.
+T One Community Core is a local Python library plus an offline Windows shell for the synthetic public demo. It is not a public SaaS server, a hosted control plane, a computer-control agent, or a write-capable marketplace agent.
 
-Private desktop applications, browser assistants, browser profiles, store automations, and live connector credentials are not included in this repository.
+Private operating runtimes, browser assistants, browser profiles, store automations, and live connector credentials are not included in this repository.
 
 ## Secrets and Private Data
 
