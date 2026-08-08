@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {"PUBLIC_RELEASE_AUDIT.json", "SHA256SUMS.json"}
 TEXT_SUFFIXES = {".cmd", ".html", ".json", ".md", ".ps1", ".py", ".toml", ".txt", ".yaml", ".yml"}
+TEXT_NAMES = {".gitignore", "LICENSE"}
 
 
 def public_files() -> list[str]:
@@ -25,7 +26,7 @@ def public_files() -> list[str]:
 
 def file_digest(path: Path) -> str:
     payload = path.read_bytes()
-    if path.suffix.lower() in TEXT_SUFFIXES:
+    if path.name in TEXT_NAMES or path.suffix.lower() in TEXT_SUFFIXES:
         payload = payload.replace(b"\r\n", b"\n")
     return hashlib.sha256(payload).hexdigest()
 
