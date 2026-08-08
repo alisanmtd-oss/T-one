@@ -199,7 +199,7 @@
   "requirements-dev.txt": "09dd56ac24ec24e758131c6b32aed758e83b183c99d6e7c5fb468dd48e225af2",
   "requirements.txt": "55a0f96ed906a49c4b4c35b555a1a7f87c43a363478faebd052879497525f918",
   "scripts/accept_windows_installer.ps1": "c03b878cda32f9211e083b47932e223c6e3529c3e42e18f0930053bc47e637aa",
-  "scripts/generate_sha256_manifest.py": "f0262aee10dfdd2e1c42f34d104dabf02778c3f1d7ce45ecca55cd5589aeb612",
+  "scripts/generate_sha256_manifest.py": "9e7e2c9beb395d21009ece8c3461ba4b5ee8e8db25cbe90ca4cb2368103284ec",
   "scripts/verify_public_tree.py": "e6200e7020ae7cd9bfebfceb785bd26b305556bac40109419d4944687167c887",
   "tests/test_ai_provider_catalog.py": "5a67334b4a40e3e220df5adc207baad4dab09d21dad5071617bab20be3a34031",
   "tests/test_chat_first_demo.py": "1d4febb80ad482f774390d5698ca6865a3a07d2cd6c56115cf1ecc1efba382a4",
