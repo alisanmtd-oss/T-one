@@ -49,4 +49,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
-        run: gh release upload "$env:RELEASE_TAG" release-assets/T-One-Community-Setup-*.exe --clobber
+          REPOSITORY: ${{ github.repository }}
+        run: gh release upload "$env:RELEASE_TAG" release-assets/T-One-Community-Setup-*.exe --clobber --repo "$env:REPOSITORY"
