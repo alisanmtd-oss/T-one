@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {"PUBLIC_RELEASE_AUDIT.json", "SHA256SUMS.json"}
-TEXT_SUFFIXES = {".cmd", ".html", ".js", ".json", ".md", ".ps1", ".py", ".toml", ".txt", ".yaml", ".yml"}
+TEXT_SUFFIXES = {".cjs", ".cmd", ".html", ".js", ".json", ".md", ".ps1", ".py", ".toml", ".txt", ".yaml", ".yml"}
 TEXT_NAMES = {".gitignore", "LICENSE"}
 
 
