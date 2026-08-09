@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.4 - 2026-08-10
+
+- Made Simplified Chinese the default GitHub entrypoint and moved the normal Windows
+  download path to the top of the page.
+- Added a Chinese capability market to the public offline desktop app, organized by
+  Agent, Skill, MCP, and CLI with purpose filters and truthful connection states.
+- Added local-only Agent/Skill assignment for the synthetic demo; no external account,
+  MCP server, CLI, store, or network request is invoked.
+- Added repeatable Electron UI acceptance and a current Chinese screenshot.
+
 ## 0.4.3 - 2026-08-08
 
 - Added an assisted Windows installer for the offline community demo, with selectable

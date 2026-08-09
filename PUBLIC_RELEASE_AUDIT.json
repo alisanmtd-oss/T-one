@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "release_name": "T-one",
-  "generated_at": "2026-08-08T08:03:00+00:00",
+  "release_name": "T One 中文社区版 0.4.4",
+  "generated_at": "2026-08-10T00:00:00+00:00",
   "source_manifest": "public_source_manifest.json",
-  "file_count": 211,
+  "file_count": 215,
   "findings": [],
   "license_present": true,
   "public_release_authorized": true,
-  "status": "ready_for_final_review"
+  "status": "verified_ready_for_public_release"
 }

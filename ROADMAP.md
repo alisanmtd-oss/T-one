@@ -12,10 +12,12 @@ platform logos or UI buttons.
 - Local approval and evidence contracts.
 - Public release allowlist, audit, and SHA-256 manifests.
 - English and Simplified Chinese entrypoints.
+- Simplified-Chinese-first GitHub entrypoint and assisted Windows installer.
+- Offline capability market grouped by Agent, Skill, MCP, and CLI.
 
 ## Next public milestone: trustworthy integrations
 
-1. Publish a stable manifest for skills, plugins, agents, and connectors.
+1. Extend the shipped public capability taxonomy into a stable machine-readable manifest.
 2. Add a scoped local MCP/API with revocable tokens and read/draft/write capability
    separation.
 3. Add provider connection tests that distinguish missing credentials, unsupported
