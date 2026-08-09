@@ -20,6 +20,7 @@ build/
 runtime_data/
 data/
 outputs/
+output/
 logs/
 config/account_profile.json
 config/company_operating_profile.json

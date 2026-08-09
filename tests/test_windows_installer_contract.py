@@ -18,6 +18,8 @@ class WindowsInstallerContractTests(unittest.TestCase):
         self.assertTrue(build["nsis"]["createDesktopShortcut"])
         self.assertTrue(build["nsis"]["createStartMenuShortcut"])
         self.assertIn("Setup", build["nsis"]["artifactName"])
+        self.assertEqual(package["version"], "0.4.4")
+        self.assertEqual(build["productName"], "T One 中文社区版")
 
     def test_public_installer_contains_only_the_offline_demo_and_license(self) -> None:
         package = json.loads((ROOT / "desktop_public" / "package.json").read_text(encoding="utf-8"))
@@ -25,6 +27,7 @@ class WindowsInstallerContractTests(unittest.TestCase):
         self.assertEqual(sources, {"../demo/chat-first-workspace.html", "../LICENSE"})
         main = (ROOT / "desktop_public" / "main.js").read_text(encoding="utf-8")
         self.assertIn("chat-first-workspace.html", main)
+        self.assertIn("T One 中文社区版", main)
         self.assertNotIn("shell.openExternal", main)
 
     def test_repeatable_installer_acceptance_script_exists(self) -> None:

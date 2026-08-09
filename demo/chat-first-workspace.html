@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T One Chat-first Workspace Demo</title>
+  <title>T One 中文社区版</title>
   <style>
     :root {
       color-scheme: light;
@@ -25,7 +25,7 @@
     .brand { height: 58px; display: flex; align-items: center; gap: 9px; padding: 0 16px; font-weight: 700; }
     .mark { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 6px; background: #111; color: #fff; font-size: 11px; }
     .new-chat { margin: 0 10px 12px; padding: 9px 10px; border: 0; border-radius: 7px; background: transparent; text-align: left; cursor: pointer; }
-    .new-chat:hover, .agent:hover, .settings:hover { background: #e7eaec; }
+    .new-chat:hover, .agent:hover, .settings:hover, .market-link:hover { background: #e7eaec; }
     .project { padding: 0 10px; overflow: auto; }
     .project-head { display: flex; justify-content: space-between; gap: 12px; margin: 8px 4px 7px; font-size: 11px; font-weight: 700; }
     .project-head span { color: var(--muted); font-weight: 400; }
@@ -36,6 +36,8 @@
     .agent.active { background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, .025); }
     .sidebar-foot { margin-top: auto; padding: 9px; border-top: 1px solid var(--line); }
     .settings { width: 100%; padding: 9px; border: 0; border-radius: 7px; background: transparent; text-align: left; cursor: pointer; }
+    .market-link { width: calc(100% - 20px); margin: 10px; padding: 10px; border: 1px solid #d7dddf; border-radius: 8px; background: #fff; text-align: left; cursor: pointer; }
+    .market-link strong, .market-link small { display: block; }.market-link small { margin-top: 2px; color: var(--muted); font-size: 10px; }
     .main { grid-column: 2; min-width: 0; min-height: 100vh; transition: padding-right .18s ease; }
     .topbar { height: 58px; display: flex; align-items: center; gap: 12px; padding: 0 28px; border-bottom: 1px solid var(--line); }
     .back { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: #fff; cursor: pointer; }
@@ -65,6 +67,23 @@
     .attach { border: 1px solid var(--line); background: #fff; font-size: 18px; }
     .auto-agent { color: var(--muted); font-size: 11px; }
     .send { margin-left: auto; border: 0; background: #111; color: #fff; }
+    [hidden] { display: none !important; }
+    .market-view { width: min(980px, calc(100% - 48px)); margin: 0 auto; padding: 34px 0 64px; }
+    .market-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+    .market-head h1 { margin: 0 0 5px; font-size: 22px; }.market-head p { margin: 0; color: var(--muted); font-size: 12px; }
+    .market-truth { padding: 5px 9px; border-radius: 999px; background: #fff7ed; color: #9a5412; font-size: 10px; white-space: nowrap; }
+    .capability-types { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .capability-types button { display: grid; gap: 3px; padding: 11px; border: 1px solid var(--line); border-radius: 9px; background: #fafbfb; text-align: left; cursor: pointer; }
+    .capability-types b { font-size: 12px; }.capability-types small { color: var(--muted); font-size: 9px; }
+    .capability-types button[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); color: var(--accent); }
+    .market-toolbar { display: flex; align-items: end; justify-content: space-between; gap: 10px; margin: 12px 0; }
+    .market-toolbar label { display: grid; gap: 4px; color: var(--muted); font-size: 10px; }
+    .market-toolbar select, .market-toolbar input { min-height: 34px; min-width: 220px; padding: 7px 9px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+    .capability-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .capability-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; min-height: 76px; padding: 11px; border: 1px solid var(--line); border-radius: 9px; background: #fafbfb; }
+    .capability-card[hidden] { display: none; }.capability-card b, .capability-card small { display: block; }.capability-card b { font-size: 12px; }.capability-card small { margin-top: 4px; color: var(--muted); font-size: 9px; line-height: 1.45; }
+    .capability-card button { padding: 7px 9px; border: 1px solid #cfd7d9; border-radius: 7px; background: #fff; color: var(--accent); font-size: 9px; font-weight: 700; cursor: pointer; }.capability-card button:disabled { color: #7b858a; cursor: not-allowed; }
+    .market-status { margin: 12px 0 0; padding: 10px 12px; border-radius: 8px; background: var(--soft); color: #315c58; font-size: 10px; }
     .drawer { position: fixed; z-index: 8; inset: 0 0 0 auto; width: var(--drawer); padding: 0 18px 24px; overflow: auto; border-left: 1px solid var(--line); background: #fafbfb; box-shadow: -12px 0 34px rgba(0, 0, 0, .08); transform: translateX(105%); transition: transform .18s ease; }
     .settings-open .drawer { transform: translateX(0); }
     .settings-open .main { padding-right: var(--drawer); }
@@ -107,6 +126,7 @@
       .topbar { padding: 0 14px; }
       .thread { width: calc(100% - 28px); padding-top: 28px; }
       .starters, .progress, .messages { margin-left: 0; }
+      .market-view { width: calc(100% - 28px); padding-top: 24px; }.capability-types, .capability-grid { grid-template-columns: 1fr; }.market-toolbar { align-items: stretch; flex-direction: column; }.market-toolbar label, .market-toolbar select, .market-toolbar input { width: 100%; min-width: 0; }
       .drawer { width: min(92vw, 360px); }
       .settings-open .main { padding-right: 0; }
       .settings-open .composer-wrap { right: 0; }
@@ -124,16 +144,17 @@
         <button class="agent" data-agent="content" type="button"><strong>内容创作智能体</strong><small>脚本、分镜、提示词与剪辑建议</small></button>
         <button class="agent" data-agent="ads" type="button"><strong>广告投手智能体</strong><small>诊断、建议、草稿与人工确认</small></button>
       </div>
+      <button class="market-link" id="capabilityMarket" type="button"><strong>能力市场</strong><small>选择 Agent、Skill，查看 MCP、CLI</small></button>
       <div class="sidebar-foot"><button class="settings" id="openSettings" type="button">设置</button></div>
     </aside>
 
     <main class="main">
       <header class="topbar">
-        <button class="back" type="button" aria-label="返回">←</button>
+        <button class="back" id="backToChat" type="button" aria-label="返回对话">←</button>
         <div class="title"><strong id="topTitle">店铺运营智能体</strong><small id="topSubtitle">示例电商项目 · 通用演示</small></div>
-        <span class="status">可对话</span>
+        <span class="status" id="topStatus">可对话</span>
       </header>
-      <section class="thread" aria-live="polite">
+      <div id="chatView"><section class="thread" aria-live="polite">
         <div class="intro"><span class="mark">T1</span><div><h1 id="agentTitle">店铺运营智能体</h1><p id="agentIntro">直接告诉我你想处理什么；需要商品表或图片时，点输入框旁边的加号。</p></div></div>
         <div class="starters" id="starters"></div>
         <details class="progress"><summary>查看当前进度和资料</summary><div>演示模式没有连接真实店铺。所有执行动作都必须在接入授权后由负责人确认。</div></details>
@@ -144,7 +165,30 @@
           <textarea id="prompt" aria-label="给当前智能体下指令" placeholder="直接告诉智能体你要完成什么…"></textarea>
           <div class="composer-actions"><button class="attach" id="attach" type="button" aria-label="添加文件">＋</button><small class="auto-agent">T One 自动选择智能体</small><button class="send" type="submit" aria-label="发送">↑</button></div>
         </form>
-      </div>
+      </div></div>
+      <section class="market-view" id="marketView" hidden aria-labelledby="marketTitle">
+        <div class="market-head"><div><h1 id="marketTitle">能力市场</h1><p>先选能力类型，再按用途查找。公开版只展示可公开、可验证的能力。</p></div><span class="market-truth">离线社区版</span></div>
+        <nav class="capability-types" aria-label="能力类型">
+          <button type="button" data-capability-type="agent" aria-pressed="false"><b>Agent</b><small>岗位智能体 · 3</small></button>
+          <button type="button" data-capability-type="skill" aria-pressed="true"><b>Skill</b><small>公开知识包 · 4</small></button>
+          <button type="button" data-capability-type="mcp" aria-pressed="false"><b>MCP</b><small>工具连接 · 1</small></button>
+          <button type="button" data-capability-type="cli" aria-pressed="false"><b>CLI</b><small>命令行执行器 · 2</small></button>
+        </nav>
+        <div class="market-toolbar"><label>用途分类<select id="capabilityCategory"><option value="all">全部用途</option></select></label><label>搜索当前分类<input id="capabilitySearch" type="search" placeholder="输入名称或用途"></label></div>
+        <div class="capability-grid" id="capabilityGrid">
+          <article class="capability-card" data-kind="agent" data-category="store" data-search="店铺运营 商品 订单 库存"><span><b>店铺运营智能体</b><small>已包含 · 店铺与履约 · 可加入示例任务</small></span><button type="button" data-assign-capability="store-agent">加入示例任务</button></article>
+          <article class="capability-card" data-kind="agent" data-category="content" data-search="内容创作 视频 脚本"><span><b>内容创作智能体</b><small>已包含 · 内容与商品 · 可加入示例任务</small></span><button type="button" data-assign-capability="content-agent">加入示例任务</button></article>
+          <article class="capability-card" data-kind="agent" data-category="marketing" data-search="广告 投放 营销"><span><b>广告投手智能体</b><small>已包含 · 增长与营销 · 可加入示例任务</small></span><button type="button" data-assign-capability="ads-agent">加入示例任务</button></article>
+          <article class="capability-card" data-kind="skill" data-category="platform" data-search="shein 希音 平台 运营"><span><b>SHEIN 运营知识包</b><small>已包含 · 平台运营 · 规则与工作流</small></span><button type="button" data-assign-capability="shein-skill">加入示例任务</button></article>
+          <article class="capability-card" data-kind="skill" data-category="platform" data-search="shopee 虾皮 平台 运营"><span><b>Shopee 运营知识包</b><small>已包含 · 平台运营 · 规则与工作流</small></span><button type="button" data-assign-capability="shopee-skill">加入示例任务</button></article>
+          <article class="capability-card" data-kind="skill" data-category="growth" data-search="b2b 主动开发 客户"><span><b>B2B 主动开发知识包</b><small>已包含 · 获客与增长 · 规则与工作流</small></span><button type="button" data-assign-capability="b2b-skill">加入示例任务</button></article>
+          <article class="capability-card" data-kind="skill" data-category="content" data-search="商品 视频 内容"><span><b>商品视频知识包</b><small>已包含 · 内容与商品 · 规则与工作流</small></span><button type="button" data-assign-capability="video-skill">加入示例任务</button></article>
+          <article class="capability-card" data-kind="mcp" data-category="tools" data-search="mcp 外部 工具 连接"><span><b>通用 MCP 连接合同</b><small>未配置 · 公开版不附带服务器、Token 或账号</small></span><button type="button" disabled>需自行配置</button></article>
+          <article class="capability-card" data-kind="cli" data-category="ai" data-search="codex cli ai 编程"><span><b>Codex CLI</b><small>未检测 · 公开离线演示不会调用本机 CLI</small></span><button type="button" disabled>公开版未连接</button></article>
+          <article class="capability-card" data-kind="cli" data-category="ai" data-search="codebuddy workbuddy cli ai 编程"><span><b>WorkBuddy / CodeBuddy CLI</b><small>未检测 · 公开离线演示不会调用本机 CLI</small></span><button type="button" disabled>公开版未连接</button></article>
+        </div>
+        <p class="market-status" id="marketStatus">Agent 和 Skill 可加入示例任务，仅保存在这台电脑的演示数据中。公开离线版不会连接外部工具、账号或店铺。</p>
+      </section>
     </main>
 
     <aside class="drawer" aria-label="设置">
@@ -168,11 +212,58 @@
     const app = document.getElementById('app');
     const prompt = document.getElementById('prompt');
     const messages = document.getElementById('messages');
+    const chatView = document.getElementById('chatView');
+    const marketView = document.getElementById('marketView');
+    const category = document.getElementById('capabilityCategory');
+    const capabilitySearch = document.getElementById('capabilitySearch');
     let currentAgent = 'store';
+    let currentCapabilityType = 'skill';
+
+    const categoryLabels = {
+      agent: { store: '店铺与履约', content: '内容与商品', marketing: '增长与营销' },
+      skill: { platform: '平台运营', growth: '获客与增长', content: '内容与商品' },
+      mcp: { tools: '通用工具' },
+      cli: { ai: 'AI 与编程' }
+    };
+
+    function showChat() {
+      chatView.hidden = false;
+      marketView.hidden = true;
+      document.getElementById('topSubtitle').textContent = '示例电商项目 · 通用演示';
+      document.getElementById('topStatus').textContent = '可对话';
+    }
+
+    function applyCapabilityFilter() {
+      const query = capabilitySearch.value.trim().toLowerCase();
+      document.querySelectorAll('.capability-card').forEach(card => {
+        const typeMatch = card.dataset.kind === currentCapabilityType;
+        const categoryMatch = category.value === 'all' || card.dataset.category === category.value;
+        const searchMatch = !query || String(card.dataset.search || '').toLowerCase().includes(query);
+        card.hidden = !(typeMatch && categoryMatch && searchMatch);
+      });
+    }
+
+    function selectCapabilityType(type) {
+      currentCapabilityType = type;
+      document.querySelectorAll('[data-capability-type]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.capabilityType === type)));
+      category.replaceChildren(new Option('全部用途', 'all'), ...Object.entries(categoryLabels[type] || {}).map(([value, label]) => new Option(label, value)));
+      applyCapabilityFilter();
+    }
+
+    function showMarket() {
+      app.classList.remove('settings-open');
+      chatView.hidden = true;
+      marketView.hidden = false;
+      document.getElementById('topTitle').textContent = '能力市场';
+      document.getElementById('topSubtitle').textContent = '中文社区版 · 离线能力清单';
+      document.getElementById('topStatus').textContent = '离线';
+      selectCapabilityType(currentCapabilityType);
+    }
 
     function renderAgent(key) {
       currentAgent = key;
       const agent = agents[key];
+      showChat();
       document.getElementById('topTitle').textContent = agent.title;
       document.getElementById('agentTitle').textContent = agent.title;
       document.getElementById('agentIntro').textContent = agent.intro;
@@ -190,7 +281,24 @@
     }
 
     document.querySelectorAll('.agent').forEach(button => button.onclick = () => renderAgent(button.dataset.agent));
-    document.getElementById('newChat').onclick = () => { messages.replaceChildren(); prompt.value = ''; prompt.focus(); };
+    document.getElementById('newChat').onclick = () => { showChat(); messages.replaceChildren(); prompt.value = ''; prompt.focus(); };
+    document.getElementById('capabilityMarket').onclick = showMarket;
+    document.getElementById('backToChat').onclick = () => renderAgent(currentAgent);
+    document.querySelectorAll('[data-capability-type]').forEach(button => button.onclick = () => selectCapabilityType(button.dataset.capabilityType));
+    category.onchange = applyCapabilityFilter;
+    capabilitySearch.oninput = applyCapabilityFilter;
+    const assignedCapabilities = new Set(JSON.parse(localStorage.getItem('tone-demo-capabilities') || '[]'));
+    document.querySelectorAll('[data-assign-capability]').forEach(button => {
+      const sync = () => { button.textContent = assignedCapabilities.has(button.dataset.assignCapability) ? '已加入示例任务' : '加入示例任务'; };
+      button.onclick = () => {
+        const id = button.dataset.assignCapability;
+        if (assignedCapabilities.has(id)) assignedCapabilities.delete(id); else assignedCapabilities.add(id);
+        localStorage.setItem('tone-demo-capabilities', JSON.stringify([...assignedCapabilities]));
+        sync();
+        document.getElementById('marketStatus').textContent = `示例任务已选择 ${assignedCapabilities.size} 项能力；仅保存在这台电脑的演示数据中，不会连接外部工具或店铺。`;
+      };
+      sync();
+    });
     document.getElementById('openSettings').onclick = () => app.classList.toggle('settings-open');
     document.getElementById('closeSettings').onclick = () => app.classList.remove('settings-open');
     document.addEventListener('keydown', event => { if (event.key === 'Escape') app.classList.remove('settings-open'); });

@@ -1,6 +1,6 @@
 {
   "name": "t-one-community-desktop",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": true,
   "description": "Installable Windows shell for the public, offline T One community demo",
   "author": "T One Community",
@@ -15,7 +15,7 @@
   },
   "build": {
     "appId": "org.tone.community.desktop",
-    "productName": "T One Community",
+    "productName": "T One 中文社区版",
     "asar": true,
     "files": ["main.js", "package.json"],
     "extraResources": [
@@ -28,9 +28,9 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "T One Community",
+      "shortcutName": "T One 中文社区版",
       "artifactName": "T-One-Community-Setup-${version}.${ext}",
-      "uninstallDisplayName": "T One Community"
+      "uninstallDisplayName": "T One 中文社区版"
     }
   }
 }
