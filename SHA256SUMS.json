@@ -206,7 +206,7 @@
   "requirements.txt": "55a0f96ed906a49c4b4c35b555a1a7f87c43a363478faebd052879497525f918",
   "scripts/accept_chinese_public_desktop.cjs": "a19275bf917aa2b6ad1f8e7abc150ddd015ce3d89e770e614492766350248714",
   "scripts/accept_windows_installer.ps1": "a3c1d6d19d912db5205d74f091dbc52c4e0afc444ec9bcfa220f48cae58cefa7",
-  "scripts/generate_sha256_manifest.py": "2f42970ed610f9a6d9cc1d9629d85af6e121ba33c9942e5e56c09ddfa9a189b7",
+  "scripts/generate_sha256_manifest.py": "45ae7e3b54e17ef1acd8be7b3802f6a513b5753058df559d34da00f128bb44e0",
   "scripts/verify_public_tree.py": "e6200e7020ae7cd9bfebfceb785bd26b305556bac40109419d4944687167c887",
   "tests/test_ai_provider_catalog.py": "5a67334b4a40e3e220df5adc207baad4dab09d21dad5071617bab20be3a34031",
   "tests/test_chinese_entrypoint.py": "4335140425394dac4b27c4f7ed228edf6c5e5fe1eb75d5e9eb91fb8c84ee6c3b",
@@ -216,6 +216,6 @@
   "tests/test_platform_agents.py": "584ec7363c3fddefa360e2a512abfd19d3f3706848b210213201f06ac68fdabc",
   "tests/test_storage.py": "5fef10a5541a1e3d97fe0532ddbbf9cf8691321d7814091f38ecacc871bbcb1a",
   "tests/test_storage_cache.py": "28706e27066d0835dd73af15dd481686f81d4344104b976508ea0e5595ed9cf9",
-  "tests/test_windows_installer_contract.py": "fa075f10f0df82145cd696e8b3eb14a425571fbd5af3de933daab2f92ae90b72",
+  "tests/test_windows_installer_contract.py": "2410f8f44f74aaf476bb0e89e6a5f7a77df1706deb3c83442a3b30cf8065d05e",
   "tests/test_workspace_schema.py": "876beded0e40977e0522837286ed93e21fd4ed36daa9a78ea44835a0b0c123ed"
 }

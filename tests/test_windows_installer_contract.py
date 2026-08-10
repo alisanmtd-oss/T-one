@@ -44,8 +44,9 @@ class WindowsInstallerContractTests(unittest.TestCase):
         self.assertIn("REPOSITORY: ${{ github.repository }}", workflow)
 
     def test_release_manifest_covers_current_public_files(self) -> None:
-        from scripts.generate_sha256_manifest import build_manifest, file_digest
+        from scripts.generate_sha256_manifest import TEXT_SUFFIXES, build_manifest, file_digest
 
+        self.assertIn(".css", TEXT_SUFFIXES)
         recorded = json.loads((ROOT / "SHA256SUMS.json").read_text(encoding="utf-8"))
         self.assertEqual(recorded, build_manifest())
         installer_source = ROOT / "desktop_public" / "main.js"
