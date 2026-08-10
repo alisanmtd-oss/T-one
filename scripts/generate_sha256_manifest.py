@@ -20,7 +20,9 @@ def public_files() -> list[str]:
     return sorted(
         path.decode("utf-8")
         for path in output.split(b"\0")
-        if path and path.decode("utf-8") not in EXCLUDED
+        if path
+        and path.decode("utf-8") not in EXCLUDED
+        and (ROOT / path.decode("utf-8")).is_file()
     )
 
 

@@ -1,8 +1,8 @@
 {
   "name": "t-one-community-desktop",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "private": true,
-  "description": "Installable Windows shell for the public, offline T One community demo",
+  "description": "Installable local-first T One community workspace for Windows",
   "author": "T One Community",
   "license": "Apache-2.0",
   "main": "main.js",
@@ -17,12 +17,23 @@
     "appId": "org.tone.community.desktop",
     "productName": "T One 中文社区版",
     "asar": true,
-    "files": ["main.js", "package.json"],
-    "extraResources": [
-      {"from": "../demo/chat-first-workspace.html", "to": "public-demo/chat-first-workspace.html"},
-      {"from": "../LICENSE", "to": "LICENSE.txt"}
+    "files": [
+      "main.js",
+      "preload.js",
+      "ui/**/*",
+      "package.json"
     ],
-    "win": {"target": ["nsis"]},
+    "extraResources": [
+      {
+        "from": "../LICENSE",
+        "to": "LICENSE.txt"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
