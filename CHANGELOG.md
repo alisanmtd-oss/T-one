@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 - 2026-08-10
+
+- Replaced the single-file synthetic demo shell with a real local Electron workspace.
+- Added persistent project and task folders, task-scoped conversation history, attachments,
+  results, receipts, memory directories, and restart recovery.
+- Added task-scoped Agent and Skill assignment plus truthful MCP/CLI registration and
+  CLI path detection, explicit task executor selection, and real CLI result roundtrips.
+- Added explicit MCP initialize checks; MCP endpoints are never probed automatically.
+- Protected optional connection secrets with Electron safeStorage and kept them out of
+  renderer state, screenshots, source, and release evidence.
+- Removed the duplicated 30 KB legacy demo page and its duplicate test shell.
+
 ## 0.4.4 - 2026-08-10
 
 - Made Simplified Chinese the default GitHub entrypoint and moved the normal Windows

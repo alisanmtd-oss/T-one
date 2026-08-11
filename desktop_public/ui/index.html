@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>T One 中文社区版</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span>T1</span><b>T One</b><small>中文社区版</small></div>
+      <button class="primary" id="newProject">＋ 新建项目</button>
+      <nav class="nav">
+        <button data-view="home" class="active">工作台</button>
+        <button data-view="market">能力市场</button>
+        <button data-view="connections">MCP 与 CLI</button>
+      </nav>
+      <div class="project-title"><b>项目与任务</b><small id="projectCount">0 个项目</small></div>
+      <div id="projectTree" class="project-tree"></div>
+      <button class="settings" data-view="settings">设置</button>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div><h1 id="pageTitle">工作台</h1><p id="pageSubtitle">每个项目一个文件夹，任务和资料不会混在一起</p></div>
+        <span class="truth" id="truthStatus">本地保存</span>
+      </header>
+
+      <section class="view home-view" id="homeView">
+        <div class="hero">
+          <div><small>T ONE LOCAL WORKSPACE</small><h2>把项目、任务、AI 和资料放回正确的位置</h2><p>项目建立后会生成独立目录。任务历史、附件、结果和回执分别保存，连接的 AI 与 Skill 能快速找到当前任务。</p></div>
+          <button class="primary" id="heroNewProject">新建第一个项目</button>
+        </div>
+        <div class="stats" id="stats"></div>
+        <div class="section-head"><div><h3>最近任务</h3><p>继续上次的上下文，不用重新讲一遍。</p></div></div>
+        <div class="cards" id="recentTasks"></div>
+      </section>
+
+      <section class="view task-view" id="taskView" hidden>
+        <div class="task-toolbar">
+          <div><h2 id="taskName"></h2><p id="taskPath"></p></div>
+          <div><button class="secondary" id="openFolder">打开项目文件夹</button><button class="secondary" id="newTask">＋ 新建任务</button></div>
+        </div>
+        <div class="task-layout">
+          <article class="chat-panel">
+            <div class="task-context"><b>历史对话</b><span id="capabilitySummary">未选择能力</span></div>
+            <div class="messages" id="messages"></div>
+            <form class="composer" id="composer">
+              <textarea id="prompt" placeholder="直接说清楚目标；T One 会为当前任务选择少量相关能力。"></textarea>
+              <div><button type="button" class="icon" id="attach" title="添加文件">＋</button><span id="fileSummary">暂无附件</span><button class="send" type="submit">发送</button></div>
+            </form>
+          </article>
+          <aside class="task-side"><h3>当前任务</h3><div id="taskDetails"></div><button class="secondary full" data-view="market">选择 Agent / Skill</button><label class="executor-label">任务执行器<select id="taskExecutor"><option value="">不调用 CLI</option></select></label><button class="primary full" id="runCli">用所选 CLI 真实执行</button><small class="executor-help">只在当前任务目录运行；无真实输出就显示失败。</small></aside>
+        </div>
+      </section>
+
+      <section class="view" id="marketView" hidden>
+        <div class="section-head"><div><h2>能力市场</h2><p>按类型和用途选择；只有实际安装或检测后才显示可调用。</p></div><span id="marketTask">请先选择任务</span></div>
+        <div class="tabs" id="marketTabs"><button data-kind="agent" class="active">Agent</button><button data-kind="skill">Skill</button><button data-kind="mcp">MCP</button><button data-kind="cli">CLI</button></div>
+        <div class="toolbar"><input id="marketSearch" type="search" placeholder="搜索名称、平台或用途"><select id="marketCategory"><option value="all">全部分类</option></select></div>
+        <div class="market-grid" id="marketGrid"></div>
+      </section>
+
+      <section class="view" id="connectionsView" hidden>
+        <div class="section-head"><div><h2>MCP 与 CLI</h2><p>先登记，再检测；保存不等于已连接，检测到也不等于已授权。</p></div><button class="primary" id="addConnection">＋ 添加连接</button></div>
+        <div class="connection-groups"><section><h3>MCP 服务</h3><div id="mcpConnections" class="cards"></div></section><section><h3>CLI 工具</h3><div id="cliConnections" class="cards"></div></section></div>
+      </section>
+
+      <section class="view" id="settingsView" hidden>
+        <div class="section-head"><div><h2>设置</h2><p>社区版数据默认只保存在本机。</p></div></div>
+        <div class="settings-card"><b>工作区目录</b><code id="workspacePath"></code><p>每个项目含 tasks、shared、knowledge 和 exports；每个任务含 inputs、results、receipts 和 memory。</p></div>
+        <div class="settings-card"><b>外部动作</b><p>发布、投放、付款、发货、退款和店铺写入不由社区版静默执行。</p></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="projectDialog"><form method="dialog" id="projectForm"><h2>新建项目</h2><label>项目名称<input name="name" required maxlength="120" placeholder="例如：SHEIN 美国站运营"></label><label>简单说明<textarea name="description" maxlength="300" placeholder="这个项目要完成什么"></textarea></label><div class="dialog-actions"><button value="cancel">取消</button><button class="primary" value="default">创建项目</button></div></form></dialog>
+  <dialog id="taskDialog"><form method="dialog" id="taskForm"><h2>新建任务</h2><label>任务名称<input name="name" required maxlength="120" placeholder="例如：整理本周订单和商品问题"></label><div class="dialog-actions"><button value="cancel">取消</button><button class="primary" value="default">创建任务</button></div></form></dialog>
+  <dialog id="connectionDialog"><form method="dialog" id="connectionForm"><h2>添加 MCP / CLI</h2><label>类型<select name="type"><option value="mcp">MCP 服务</option><option value="cli">CLI 工具</option></select></label><label>名称<input name="name" required placeholder="例如：公司数据 MCP"></label><label>地址或命令<input name="target" required placeholder="MCP URL 或 CLI 命令/完整路径"></label><label>CLI 参数（可选）<input name="arguments" placeholder='JSON 数组，例如 ["exec","-"]'></label><label>Token 请求头（MCP 可选）<input name="secretHeader" placeholder="Authorization 或 X-Your-Token"></label><label>Token（可选）<input name="secret" type="password" autocomplete="off" placeholder="使用系统加密保存，不回显"></label><p>登记后状态是“已保存，未连接”。CLI 可做路径检测并由任务明确调用；MCP 只在点击测试时联网。</p><div class="dialog-actions"><button value="cancel">取消</button><button class="primary" value="default">保存</button></div></form></dialog>
+  <div class="toast" id="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

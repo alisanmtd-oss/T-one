@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EXCLUDED = {"PUBLIC_RELEASE_AUDIT.json", "SHA256SUMS.json"}
-TEXT_SUFFIXES = {".cjs", ".cmd", ".html", ".js", ".json", ".md", ".ps1", ".py", ".toml", ".txt", ".yaml", ".yml"}
+TEXT_SUFFIXES = {".cjs", ".cmd", ".css", ".html", ".js", ".json", ".md", ".ps1", ".py", ".toml", ".txt", ".yaml", ".yml"}
 TEXT_NAMES = {".gitignore", "LICENSE"}
 
 
@@ -20,7 +20,9 @@ def public_files() -> list[str]:
     return sorted(
         path.decode("utf-8")
         for path in output.split(b"\0")
-        if path and path.decode("utf-8") not in EXCLUDED
+        if path
+        and path.decode("utf-8") not in EXCLUDED
+        and (ROOT / path.decode("utf-8")).is_file()
     )
 
 
