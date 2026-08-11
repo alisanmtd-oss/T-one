@@ -9,6 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WindowsInstallerContractTests(unittest.TestCase):
+    def test_python_core_and_desktop_share_release_version(self) -> None:
+        import tomllib
+
+        core = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+        desktop = json.loads((ROOT / "desktop_public" / "package.json").read_text(encoding="utf-8"))
+        self.assertEqual(core["project"]["version"], desktop["version"])
+
     def test_assisted_installer_has_normal_windows_install_flow(self) -> None:
         package = json.loads((ROOT / "desktop_public" / "package.json").read_text(encoding="utf-8"))
         build = package["build"]

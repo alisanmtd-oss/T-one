@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "t-one-community-core"
-version = "0.4.4"
+version = "0.5.0"
 description = "Local-first AI operating core for global e-commerce and B2B foreign trade."
 readme = "README.md"
 requires-python = ">=3.11"
