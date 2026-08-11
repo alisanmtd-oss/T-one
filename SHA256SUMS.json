@@ -201,7 +201,7 @@
   "knowledge_packs/walmart/references/mother-requirement-mapping.md": "6b798dd57f0818b3856a25ec8980075d23f7e65e549beb7d9fb2b735a10bd22e",
   "knowledge_packs/walmart/references/official-evidence.md": "f7572d436dfb8b9ca68e31091a2068c44f1a6fa7245f764dc8549795272387cb",
   "knowledge_packs/walmart/references/training-operations.md": "e48b7e97ab656a9fe16a278039c818d177e14d4040b207f29d693712df2ad242",
-  "pyproject.toml": "38d8f3faef9718d1257cea53f49b43cd9e21f766b21154bf2e8361015dda7f85",
+  "pyproject.toml": "2c69a59b131d1151dfaf2091c2d0c066087128696b5a3917cd07a3671b7c1595",
   "requirements-dev.txt": "09dd56ac24ec24e758131c6b32aed758e83b183c99d6e7c5fb468dd48e225af2",
   "requirements.txt": "55a0f96ed906a49c4b4c35b555a1a7f87c43a363478faebd052879497525f918",
   "scripts/accept_chinese_public_desktop.cjs": "a19275bf917aa2b6ad1f8e7abc150ddd015ce3d89e770e614492766350248714",
@@ -216,6 +216,6 @@
   "tests/test_platform_agents.py": "584ec7363c3fddefa360e2a512abfd19d3f3706848b210213201f06ac68fdabc",
   "tests/test_storage.py": "5fef10a5541a1e3d97fe0532ddbbf9cf8691321d7814091f38ecacc871bbcb1a",
   "tests/test_storage_cache.py": "28706e27066d0835dd73af15dd481686f81d4344104b976508ea0e5595ed9cf9",
-  "tests/test_windows_installer_contract.py": "2410f8f44f74aaf476bb0e89e6a5f7a77df1706deb3c83442a3b30cf8065d05e",
+  "tests/test_windows_installer_contract.py": "317aa93dfe667e663f6f19a5a0f1786787f252831d96792c7619fddb7e322b21",
   "tests/test_workspace_schema.py": "876beded0e40977e0522837286ed93e21fd4ed36daa9a78ea44835a0b0c123ed"
 }
