@@ -1,6 +1,6 @@
 # Google Ads official-evidence routing
 
-Use the canonical records in `config/platform_expert_training/advertising_media_buyer/evidence_index.json`.
+Use the canonical records in `private_platform_training_contract_excluded`.
 
 ## Current public evidence observed on 2026-07-18
 

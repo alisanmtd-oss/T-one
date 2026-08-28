@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-17",
+  "purpose": "把电商、B2B 外贸、新媒体和公共运营拆成可安装、可授权、可审计的能力单元；一个任务只加载实际需要的能力。",
+  "composition_rule": [
+    "业务线 -> 岗位域 -> 工作阶段 -> 能力单元 -> 平台适配器 -> 真实店铺/账号执行身份",
+    "平台适配器必须使用 platform + country_site + store_mode + ownership + store_id；销售计划、履约方式、联盟/直播/广告项目另设维度。",
+    "同一用户可以有多个项目组；同一项目组可以有多个店铺任务；账号、浏览器环境、API 授权、库存和证据不得跨店串用。",
+    "Skill 负责流程和知识，Agent 负责岗位目标与决策，Plugin/Connector 负责真实系统连接，Schedule 负责周期运行。"
+  ],
+  "human_input_policy": {
+    "minimum_required_facts": [
+      "产品或服务是什么",
+      "SKU/变体或可识别的商品资料来源",
+      "成本或成本数据来源",
+      "售价/定价规则或利润底线",
+      "图片/视频/素材或素材来源",
+      "库存/产能/交期的真实数据来源",
+      "需要执行的真实店铺、账号或客户主体"
+    ],
+    "ai_may_draft_or_infer": [
+      "标题、五点、详情、关键词和多语言文案",
+      "竞品分组、内容选题、脚本、分镜和提示词",
+      "活动、广告、补货、客服和跟进建议",
+      "线索评分、客户画像、报价草稿和复盘摘要"
+    ],
+    "must_not_infer_as_fact": [
+      "品牌或知识产权授权",
+      "公司、税务、银行和身份资料",
+      "账号密码、MFA、验证码和支付凭据",
+      "不存在的库存、成本、销量、利润、客户同意或平台授权",
+      "平台官方全托管身份"
+    ]
+  },
+  "business_lines": [
+    {
+      "id": "commerce",
+      "name": "电商运营",
+      "subtypes": ["shelf_commerce", "content_commerce", "independent_store"],
+      "domains": [
+        {"id": "commerce.strategy", "name": "市场与渠道策略", "stages": ["market_selection", "site_and_store_architecture", "competitor_research", "assortment"]},
+        {"id": "commerce.product", "name": "商品与 Listing", "stages": ["product_truth", "sku_variant_model", "visuals", "localization", "publish_quality_gate"]},
+        {"id": "commerce.growth", "name": "价格、活动、广告与内容增长", "stages": ["unit_economics", "pricing", "promotion", "ads", "affiliate_live"]},
+        {"id": "commerce.transaction", "name": "交易与履约", "stages": ["orders", "inventory", "procurement", "warehouse", "shipment", "returns", "customer_service"]},
+        {"id": "commerce.finance", "name": "财务与经营分析", "stages": ["settlement", "profit", "cashflow", "dashboard", "forecast", "review"]}
+      ]
+    },
+    {
+      "id": "b2b_export",
+      "name": "B2B 外贸",
+      "subtypes": ["wholesale_apparel", "pod_factory", "printing_equipment", "agent_and_channel"],
+      "domains": [
+        {"id": "b2b.market", "name": "市场与客户发现", "stages": ["market_selection", "icp", "source_discovery", "enrichment", "dedupe_scoring"]},
+        {"id": "b2b.sales", "name": "销售开发与成交", "stages": ["outreach", "qualification", "discovery", "quotation", "sample", "negotiation", "contract"]},
+        {"id": "b2b.delivery", "name": "订单、生产与交付", "stages": ["sales_order", "production", "quality_control", "documents", "shipping", "payment"]},
+        {"id": "b2b.retention", "name": "售后与增长", "stages": ["aftersales", "reorder", "agent_development", "upstream_downstream_partnership"]}
+      ]
+    },
+    {
+      "id": "media_growth",
+      "name": "新媒体与内容增长",
+      "subtypes": ["brand_media", "commerce_content", "b2b_lead_generation", "live_content"],
+      "domains": [
+        {"id": "media.strategy", "name": "账号与内容策略", "stages": ["account_positioning", "audience", "trend_competitor", "content_calendar"]},
+        {"id": "media.production", "name": "视觉与视频生产", "stages": ["script", "storyboard", "prompt", "shooting", "generation", "editing", "subtitles_music", "quality_gate"]},
+        {"id": "media.operations", "name": "发布、直播与互动", "stages": ["publish_schedule", "live", "comments", "direct_messages", "community"]},
+        {"id": "media.conversion", "name": "线索与成交协同", "stages": ["product_handoff", "b2b_lead_handoff", "attribution", "analytics", "review"]}
+      ]
+    },
+    {
+      "id": "shared_operations",
+      "name": "公共运营与治理",
+      "subtypes": ["data", "automation", "security", "model_and_knowledge"],
+      "domains": [
+        {"id": "shared.connection", "name": "连接与执行身份", "stages": ["api", "browser", "messaging", "erp", "warehouse", "payment"]},
+        {"id": "shared.governance", "name": "权限、审批与证据", "stages": ["rbac", "scope", "approval", "audit", "rollback"]},
+        {"id": "shared.intelligence", "name": "模型、知识与调度", "stages": ["model_routing", "skill_install", "agent_assignment", "schedule", "distillation", "evaluation"]}
+      ]
+    }
+  ],
+  "capability_units": [
+    {"id": "commerce.market_site_selection", "domain": "commerce.strategy", "name": "平台/国家站点选择", "input": ["商品事实", "目标市场", "成本履约"], "output": ["候选平台与具体国家站点", "不适合原因"], "action": "draft", "approval": "none", "evidence": "公开规则与经营数据"},
+    {"id": "commerce.store_route_design", "domain": "commerce.strategy", "name": "店铺路由设计", "input": ["真实店铺", "国家站点", "店铺模式", "归属"], "output": ["route key", "接口能力矩阵", "授权缺口"], "action": "configure", "approval": "owner_for_credentials", "evidence": "店铺授权与平台能力"},
+    {"id": "commerce.competitor_monitoring", "domain": "commerce.strategy", "name": "同行商品/价格/活动/广告监控", "input": ["竞品清单", "站点"], "output": ["变化记录", "可执行假设"], "action": "read", "approval": "none", "evidence": "公开页面快照"},
+    {"id": "commerce.assortment_planning", "domain": "commerce.strategy", "name": "选品与货盘规划", "input": ["需求", "成本", "库存", "竞争"], "output": ["测试货盘", "停止条件"], "action": "draft", "approval": "none", "evidence": "评分与约束"},
+
+    {"id": "commerce.product_truth_ingest", "domain": "commerce.product", "name": "商品事实导入", "input": ["表格/ERP/图片/文件"], "output": ["规范化商品事实", "缺失字段"], "action": "configure", "approval": "owner_for_missing_facts", "evidence": "原始文件引用"},
+    {"id": "commerce.variant_modeling", "domain": "commerce.product", "name": "SKU/颜色/尺码/套装变体建模", "input": ["SKU", "变体", "包装数量"], "output": ["父子关系", "唯一 SKU", "渠道映射"], "action": "draft", "approval": "before_publish", "evidence": "变体矩阵"},
+    {"id": "commerce.listing_copy", "domain": "commerce.product", "name": "Listing 文案与本地化", "input": ["商品事实", "关键词", "站点规则"], "output": ["标题", "卖点", "详情", "后台词"], "action": "draft", "approval": "before_publish", "evidence": "事实引用与违禁词检查"},
+    {"id": "commerce.product_visuals", "domain": "commerce.product", "name": "商品图/视频生成与优化", "input": ["实物素材", "平台规范", "竞品参考"], "output": ["主图", "副图", "尺寸图", "视频"], "action": "draft", "approval": "before_publish", "evidence": "素材来源与渲染预览"},
+    {"id": "commerce.listing_quality_gate", "domain": "commerce.product", "name": "发布前质量门禁", "input": ["Listing", "变体", "图片", "Offer", "库存"], "output": ["错误清单", "可发布状态"], "action": "read", "approval": "none", "evidence": "字段级校验"},
+    {"id": "commerce.listing_publish_sync", "domain": "commerce.product", "name": "刊登、更新与状态同步", "input": ["通过门禁的商品", "店铺路由"], "output": ["平台商品 ID", "处理报告", "失败重试"], "action": "execute", "approval": "policy_based", "evidence": "平台回执与买家页"},
+
+    {"id": "commerce.unit_economics", "domain": "commerce.growth", "name": "单品利润与底价", "input": ["成本", "平台费", "履约费", "广告", "退货"], "output": ["毛利", "保本价", "预算上限"], "action": "read", "approval": "none", "evidence": "公式与数据来源"},
+    {"id": "commerce.pricing_rules", "domain": "commerce.growth", "name": "定价与调价规则", "input": ["利润底线", "竞品", "库存"], "output": ["售价", "区间", "触发条件"], "action": "execute", "approval": "policy_based", "evidence": "变更前后价格"},
+    {"id": "commerce.promotion_stacking", "domain": "commerce.growth", "name": "活动与优惠叠加", "input": ["平台规则", "站点", "店铺模式", "利润底线"], "output": ["可叠加矩阵", "活动计划", "冲突警报"], "action": "execute", "approval": "budget_or_margin_gate", "evidence": "平台活动回执"},
+    {"id": "commerce.ad_campaigns", "domain": "commerce.growth", "name": "广告创建、优化与止损", "input": ["可售商品", "预算", "目标", "搜索词/素材"], "output": ["广告结构", "出价", "否词", "调优日志"], "action": "execute", "approval": "budget_gate", "evidence": "广告后台回执与花费"},
+    {"id": "commerce.affiliate_creator", "domain": "commerce.growth", "name": "达人/联盟协作", "input": ["商品", "佣金", "达人画像"], "output": ["候选达人", "邀约草稿", "归因"], "action": "draft_or_execute", "approval": "outreach_gate", "evidence": "授权与归因记录"},
+    {"id": "commerce.live_operations", "domain": "commerce.growth", "name": "直播货盘与场控", "input": ["库存", "脚本", "优惠", "排期"], "output": ["直播计划", "实时动作", "复盘"], "action": "execute", "approval": "promotion_gate", "evidence": "直播与订单数据"},
+
+    {"id": "commerce.order_management", "domain": "commerce.transaction", "name": "订单拉取、审单与异常", "input": ["店铺订单"], "output": ["可履约订单", "风险订单", "异常队列"], "action": "execute", "approval": "risk_based", "evidence": "订单状态日志"},
+    {"id": "commerce.inventory_control", "domain": "commerce.transaction", "name": "库存同步与安全库存", "input": ["仓库库存", "占用", "在途", "销量"], "output": ["可售库存", "缺货/超卖警报"], "action": "execute", "approval": "none_with_limits", "evidence": "库存流水"},
+    {"id": "commerce.procurement_replenishment", "domain": "commerce.transaction", "name": "采购与补货", "input": ["预测", "安全库存", "交期", "MOQ"], "output": ["采购/调拨建议", "缺货风险"], "action": "draft", "approval": "purchase_gate", "evidence": "补货计算"},
+    {"id": "commerce.fulfillment_shipping", "domain": "commerce.transaction", "name": "仓配、面单与发货", "input": ["订单", "仓库", "物流规则"], "output": ["拣配单", "面单", "运单", "物流回传"], "action": "execute", "approval": "shipment_gate", "evidence": "承运商与平台回执"},
+    {"id": "commerce.customer_service", "domain": "commerce.transaction", "name": "客服消息与评价", "input": ["消息", "订单", "政策"], "output": ["回复草稿", "升级工单", "评价问题标签"], "action": "draft_or_execute", "approval": "message_policy", "evidence": "会话与工单"},
+    {"id": "commerce.returns_refunds", "domain": "commerce.transaction", "name": "退换货、退款与售后", "input": ["售后申请", "证据", "政策"], "output": ["处理建议", "退款/退货状态", "原因归因"], "action": "execute", "approval": "money_gate", "evidence": "售后回执"},
+
+    {"id": "commerce.settlement_reconciliation", "domain": "commerce.finance", "name": "平台结算与对账", "input": ["订单", "账单", "费用", "收款"], "output": ["差异", "应收", "回款状态"], "action": "read", "approval": "none", "evidence": "账单行级匹配"},
+    {"id": "commerce.store_dashboard", "domain": "commerce.finance", "name": "店铺/项目组实时大盘", "input": ["店铺经营数据", "任务状态"], "output": ["销售", "广告", "库存", "利润", "异常", "地图"], "action": "read", "approval": "scope_controlled", "evidence": "数据更新时间与来源"},
+    {"id": "commerce.forecast_review", "domain": "commerce.finance", "name": "预测、复盘与下一步", "input": ["经营数据", "实验", "异常"], "output": ["预测", "有效动作", "停止/扩大建议"], "action": "draft", "approval": "none", "evidence": "指标变化"},
+
+    {"id": "b2b.icp_market", "domain": "b2b.market", "name": "市场与 ICP 定义", "input": ["产品", "供货能力", "地区"], "output": ["客户类型", "规模", "需求信号", "排除条件"], "action": "draft", "approval": "none", "evidence": "市场与客户证据"},
+    {"id": "b2b.lead_discovery", "domain": "b2b.market", "name": "多渠道线索发现", "input": ["ICP", "地区"], "output": ["企业/联系人候选", "来源 URL"], "action": "read", "approval": "none", "evidence": "海关/地图/社媒/目录/展会/RFQ/独立站/平台/同行上下游"},
+    {"id": "b2b.lead_enrichment", "domain": "b2b.market", "name": "联系人补全、去重与评分", "input": ["原始线索"], "output": ["公司", "职位", "邮箱/电话/社媒", "评分", "去重键"], "action": "read", "approval": "privacy_policy", "evidence": "公开来源与更新时间"},
+    {"id": "b2b.crm_pipeline", "domain": "b2b.sales", "name": "CRM 阶段与待办", "input": ["合格线索", "互动"], "output": ["阶段", "负责人", "下一步", "失效原因"], "action": "configure", "approval": "none", "evidence": "CRM 变更日志"},
+    {"id": "b2b.outreach_drafting", "domain": "b2b.sales", "name": "邮件/WhatsApp/社媒触达草稿", "input": ["客户证据", "价值主张", "渠道规则"], "output": ["个性化首触达", "跟进序列"], "action": "draft", "approval": "human_before_send", "evidence": "引用的客户信号"},
+    {"id": "b2b.qualification_discovery", "domain": "b2b.sales", "name": "资格判断与需求访谈", "input": ["客户回复", "需求"], "output": ["预算", "数量", "规格", "交期", "决策链"], "action": "draft_or_execute", "approval": "communication_policy", "evidence": "客户原话"},
+    {"id": "b2b.quotation_sample", "domain": "b2b.sales", "name": "报价、样品与利润校验", "input": ["规格", "数量", "成本", "物流", "条款"], "output": ["报价单", "样品计划", "毛利"], "action": "draft", "approval": "price_and_sample_gate", "evidence": "报价版本"},
+    {"id": "b2b.negotiation_contract", "domain": "b2b.sales", "name": "谈判、合同与成交", "input": ["报价", "条款", "风险"], "output": ["谈判记录", "合同草稿", "成交/失单原因"], "action": "draft", "approval": "legal_and_money_gate", "evidence": "版本与批准记录"},
+    {"id": "b2b.production_qc", "domain": "b2b.delivery", "name": "生产、质检与进度", "input": ["销售订单", "BOM", "工艺", "交期"], "output": ["生产任务", "质检报告", "异常"], "action": "execute", "approval": "production_gate", "evidence": "生产与质检记录"},
+    {"id": "b2b.export_delivery", "domain": "b2b.delivery", "name": "单证、物流与交付", "input": ["订单", "包装", "贸易条款", "目的地"], "output": ["单证清单", "订舱/运单", "交付状态"], "action": "execute", "approval": "shipping_and_document_gate", "evidence": "承运与签收记录"},
+    {"id": "b2b.payment_collection", "domain": "b2b.delivery", "name": "应收、回款与逾期", "input": ["合同", "发票", "付款节点"], "output": ["应收账龄", "回款状态", "催收草稿"], "action": "read_or_draft", "approval": "money_gate", "evidence": "银行/收款平台对账"},
+    {"id": "b2b.aftersales_reorder", "domain": "b2b.retention", "name": "售后、复购与转介绍", "input": ["交付", "反馈", "消耗周期"], "output": ["问题闭环", "复购机会", "转介绍请求草稿"], "action": "draft", "approval": "human_before_send", "evidence": "客户反馈"},
+    {"id": "b2b.agent_partner_network", "domain": "b2b.retention", "name": "代理商与上下游合作", "input": ["地区", "渠道能力", "同行/上下游"], "output": ["候选伙伴", "合作模型", "冲突检查"], "action": "draft", "approval": "commercial_gate", "evidence": "主体与渠道核验"},
+
+    {"id": "media.account_strategy", "domain": "media.strategy", "name": "账号定位与受众", "input": ["品牌/产品", "平台", "市场"], "output": ["账号定位", "栏目", "人设边界"], "action": "draft", "approval": "brand_gate", "evidence": "受众与竞品"},
+    {"id": "media.trend_content_calendar", "domain": "media.strategy", "name": "趋势/同行研究与内容日历", "input": ["同行账号", "趋势", "业务目标"], "output": ["选题池", "发布时间表", "测试假设"], "action": "read_and_draft", "approval": "none", "evidence": "公开内容链接"},
+    {"id": "media.reference_reverse_engineering", "domain": "media.production", "name": "图片提示词与视频分镜反推", "input": ["用户素材或公开参考", "商品事实", "平台规范"], "output": ["图片构图/光线/镜头参数", "逐镜事实表", "提示词重建", "未知项与置信度"], "action": "read_and_draft", "approval": "rights_gate", "evidence": "关键帧、时间码与来源"},
+    {"id": "media.viral_creative_branching", "domain": "media.strategy", "name": "爆款机制分析与创意裂变", "input": ["公开表现数据", "账号基线", "逐镜拆解", "商品目标"], "output": ["爆款机制假设", "原创变体矩阵", "测试指标", "停止规则"], "action": "read_and_draft", "approval": "brand_and_rights_gate", "evidence": "表现数据、假设与版本"},
+    {"id": "media.script_storyboard_prompt", "domain": "media.production", "name": "脚本、分镜与 AI 提示词", "input": ["商品事实", "参考视频", "平台规范"], "output": ["脚本", "镜头表", "提示词包", "CTA"], "action": "draft", "approval": "before_production", "evidence": "参考与事实映射"},
+    {"id": "media.image_video_generation", "domain": "media.production", "name": "图片/视频生成与拍摄调用", "input": ["素材", "角色/风格约束", "分镜"], "output": ["镜头素材", "失败日志"], "action": "execute", "approval": "rights_gate", "evidence": "模型/素材/提示词版本"},
+    {"id": "media.editing_packaging", "domain": "media.production", "name": "剪辑、模板、字幕、音乐与封面", "input": ["镜头", "模板", "音乐许可"], "output": ["成片", "多比例版本", "字幕"], "action": "execute", "approval": "publish_gate", "evidence": "工程文件与版权记录"},
+    {"id": "media.publish_schedule", "domain": "media.operations", "name": "发布与排期", "input": ["成片", "文案", "标签", "账号"], "output": ["草稿/发布回执", "失败重试"], "action": "execute", "approval": "policy_based", "evidence": "平台回执"},
+    {"id": "media.community_dm", "domain": "media.operations", "name": "评论、私信与社群", "input": ["互动", "客户意图", "规则"], "output": ["回复草稿", "风险升级", "线索"], "action": "draft_or_execute", "approval": "message_policy", "evidence": "对话与同意记录"},
+    {"id": "media.live_execution", "domain": "media.operations", "name": "直播执行与实时复盘", "input": ["脚本", "货盘", "优惠", "实时数据"], "output": ["场控动作", "高光片段", "复盘"], "action": "execute", "approval": "promotion_gate", "evidence": "直播数据"},
+    {"id": "media.commerce_b2b_handoff", "domain": "media.conversion", "name": "电商/B2B 线索交接", "input": ["内容互动", "商品/客户意图"], "output": ["店铺转化事件", "CRM 线索", "负责人"], "action": "configure", "approval": "privacy_policy", "evidence": "归因与交接日志"},
+    {"id": "media.analytics_attribution", "domain": "media.conversion", "name": "内容数据与归因", "input": ["曝光", "互动", "点击", "订单", "线索"], "output": ["内容 ROI", "漏斗", "继续/停止建议"], "action": "read", "approval": "none", "evidence": "平台与业务数据"},
+
+    {"id": "shared.connector_identity", "domain": "shared.connection", "name": "API/浏览器/插件执行身份", "input": ["真实账号", "授权范围"], "output": ["独立连接器", "健康状态", "到期提醒"], "action": "configure", "approval": "owner_for_credentials", "evidence": "授权范围与测试回执"},
+    {"id": "shared.rbac_scope", "domain": "shared.governance", "name": "公司-项目组-任务-店铺权限", "input": ["角色", "项目", "任务", "店铺"], "output": ["最小权限", "可见范围", "委派链"], "action": "configure", "approval": "admin_gate", "evidence": "权限变更日志"},
+    {"id": "shared.approval_audit_rollback", "domain": "shared.governance", "name": "审批、审计证据与回滚", "input": ["外部动作", "风险", "预算"], "output": ["允许/阻止/待确认", "证据", "回滚点"], "action": "govern", "approval": "policy_engine", "evidence": "不可变动作日志"},
+    {"id": "shared.model_routing", "domain": "shared.intelligence", "name": "多模型路由与降级", "input": ["任务类型", "成本", "速度", "模型健康"], "output": ["选用模型", "回退模型", "用量"], "action": "configure", "approval": "budget_gate", "evidence": "模型调用日志"},
+    {"id": "shared.skill_agent_install", "domain": "shared.intelligence", "name": "Skill/Agent/Plugin 按任务安装", "input": ["任务目标", "能力包"], "output": ["已安装能力", "连接缺口", "权限要求"], "action": "configure", "approval": "scope_controlled", "evidence": "安装记录"},
+    {"id": "shared.schedule_orchestration", "domain": "shared.intelligence", "name": "周期任务与多店调度", "input": ["计划", "优先级", "并发上限", "店铺隔离"], "output": ["队列", "重试", "熔断", "完成证据"], "action": "execute", "approval": "policy_based", "evidence": "任务运行日志"},
+    {"id": "shared.learning_distillation", "domain": "shared.intelligence", "name": "学习、蒸馏、压缩与版本化", "input": ["官方规则", "实操记录", "失败", "结果"], "output": ["更新后的 Skill", "过期知识", "回归测试"], "action": "configure", "approval": "review_before_release", "evidence": "来源、版本和测试"}
+  ]
+}

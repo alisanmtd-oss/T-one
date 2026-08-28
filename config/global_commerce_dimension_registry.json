@@ -1,0 +1,396 @@
+{
+  "schema_version": "2026-07-25.g65-global-commerce-models",
+  "updated_at": "2026-07-25T00:00:00+08:00",
+  "registry_kind": "global_commerce_dimension_registry",
+  "purpose": "统一登记 T One 的国家/站点、产品、履约、流量、内容、客户、财务和风险维度；供跨境电商、中国电商、社交媒体、外贸、POD、工厂、货源和 B2B 共同使用。",
+  "truth_policy": {
+    "no_fake_connection": true,
+    "external_actions": 0,
+    "unknown_until_evidenced": true,
+    "dashboard_zero_means_no_local_or_authorized_data": true,
+    "parent_sku_only_for_sku_count": true,
+    "real_platform_bill_is_final_finance_truth": true
+  },
+  "commerce_model_taxonomy": {
+    "composition_policy": {
+      "relationship_model": "one_primary_model_plus_optional_secondary_models",
+      "commerce_forms": "multiple_forms_allowed_per_project_store_or_product_line",
+      "dashboard_usage": "filter_group_and_analyze_only; model existence never means platform data exists",
+      "ai_routing_usage": "route by relationship_model + commerce_forms + platform + country_site + store_mode + product_family",
+      "owner_review_required_for": ["b2g", "c2m", "s2b2c", "platform_self_operated", "online_auction_commerce"]
+    },
+    "relationship_models": [
+      {
+        "id": "b2b",
+        "label": "B2B",
+        "chinese_label": "企业对企业",
+        "description": "企业向企业销售商品、原料、货盘、服务或解决方案。",
+        "typical_dimensions": ["company_account", "inquiry", "quote", "contract", "sample", "credit_terms", "invoice", "fulfillment_batch"]
+      },
+      {
+        "id": "b2c",
+        "label": "B2C",
+        "chinese_label": "企业对消费者",
+        "description": "商家或品牌面向个人消费者销售。",
+        "typical_dimensions": ["store", "listing", "order", "buyer", "payment", "review", "return", "customer_service"]
+      },
+      {
+        "id": "c2c",
+        "label": "C2C",
+        "chinese_label": "消费者对消费者",
+        "description": "个人卖家或用户之间交易，平台通常提供撮合、支付和信用体系。",
+        "typical_dimensions": ["personal_seller", "buyer", "auction_or_offer", "message", "dispute", "platform_escrow"]
+      },
+      {
+        "id": "d2c",
+        "label": "D2C",
+        "chinese_label": "品牌直达消费者",
+        "description": "品牌、工厂或内容主体绕过传统中间商，直接面向消费者经营。",
+        "typical_dimensions": ["brand_site", "owned_store", "crm", "subscription", "content_funnel", "repeat_purchase", "lifetime_value"]
+      },
+      {
+        "id": "c2b",
+        "label": "C2B",
+        "chinese_label": "消费者反向定制/报价",
+        "description": "消费者提出需求、价格或定制要求，企业按需求响应。",
+        "typical_dimensions": ["custom_request", "target_budget", "demand_pool", "quote_response", "custom_order", "owner_review"]
+      },
+      {
+        "id": "b2b2c",
+        "label": "B2B2C",
+        "chinese_label": "企业经渠道触达消费者",
+        "description": "供应商、平台、服务商或渠道商协作，最终面向消费者完成交易。",
+        "typical_dimensions": ["supplier", "channel_partner", "storefront", "consumer_order", "commission", "settlement_split"]
+      },
+      {
+        "id": "b2g",
+        "label": "B2G",
+        "chinese_label": "企业对政府/公共机构",
+        "description": "面向政府、学校、公共机构或大型组织的采购、招投标和履约。",
+        "typical_dimensions": ["tender", "qualification", "compliance_document", "bid", "contract", "delivery_acceptance", "invoice"]
+      },
+      {
+        "id": "o2o",
+        "label": "O2O",
+        "chinese_label": "线上到线下/线下到线上",
+        "description": "线上获客、预约、支付或下单，线下体验、交付、核销或服务。",
+        "typical_dimensions": ["online_channel", "offline_location", "appointment", "coupon", "qr_check", "pickup_or_service", "local_inventory"]
+      },
+      {
+        "id": "c2m",
+        "label": "C2M",
+        "chinese_label": "消费者到制造",
+        "description": "消费者需求、预售或数据直接驱动工厂设计、生产和备货。",
+        "typical_dimensions": ["demand_signal", "preorder", "prototype", "moq", "production_plan", "lead_time", "factory_capacity"]
+      },
+      {
+        "id": "s2b2c",
+        "label": "S2B2C",
+        "chinese_label": "供应链平台赋能商家触达消费者",
+        "description": "供应链、货盘、仓配或 SaaS 平台服务小 B，由小 B 面向消费者销售。",
+        "typical_dimensions": ["supply_platform", "small_business", "catalog", "dropship_or_resale", "service_fee", "consumer_order", "settlement_split"]
+      }
+    ],
+    "commerce_forms": [
+      {
+        "id": "cross_border_commerce",
+        "label": "跨境电商",
+        "description": "跨国家/地区销售、履约、结算和合规的电商形态。",
+        "typical_dimensions": ["country_site", "customs", "fx_rate", "vat_or_sales_tax", "cross_border_logistics", "localized_content"]
+      },
+      {
+        "id": "social_commerce",
+        "label": "社交电商",
+        "description": "以社交关系、达人、社群、私域或互动为核心的交易形态。",
+        "typical_dimensions": ["social_account", "creator", "community", "dm", "comment", "share", "affiliate", "trust_signal"]
+      },
+      {
+        "id": "content_commerce",
+        "label": "内容电商",
+        "description": "通过短视频、直播、图文、测评、博客或种草内容驱动交易。",
+        "typical_dimensions": ["content_asset", "view", "watch_time", "click", "product_card", "conversion", "creator_authorization"]
+      },
+      {
+        "id": "subscription_commerce",
+        "label": "订阅电商",
+        "description": "按周期复购、会员订阅、补充装或服务计划产生收入。",
+        "typical_dimensions": ["subscription_plan", "renewal", "churn", "cohort", "lifetime_value", "recurring_revenue"]
+      },
+      {
+        "id": "platform_self_operated",
+        "label": "平台自营",
+        "description": "平台以自营或强控货品方式经营，商家可能是供应商、品牌方或供货方。",
+        "typical_dimensions": ["vendor_account", "purchase_order", "platform_inventory", "retail_price", "vendor_terms", "chargeback", "settlement"]
+      },
+      {
+        "id": "online_auction_commerce",
+        "label": "线上拍卖电商",
+        "description": "通过竞价、拍卖、限时出价或报价机制完成交易。",
+        "typical_dimensions": ["auction_lot", "bid", "reserve_price", "winner", "escrow", "dispute", "auction_fee"]
+      }
+    ]
+  },
+  "country_site_groups": [
+    {
+      "id": "china_domestic",
+      "label": "中国本土与港澳台",
+      "market_type": "domestic_and_nearby",
+      "country_sites": ["CN", "HK", "MO", "TW"],
+      "default_currencies": ["CNY", "HKD", "TWD"],
+      "typical_platforms": ["taobao_tmall", "jd", "pinduoduo", "douyin_ecommerce", "kuaishou_shop", "wechat_channels", "xiaohongshu", "1688"]
+    },
+    {
+      "id": "north_america",
+      "label": "北美",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["US", "CA", "MX"],
+      "default_currencies": ["USD", "CAD", "MXN"],
+      "typical_platforms": ["amazon", "walmart", "ebay", "etsy", "shopify", "tiktok_shop"]
+    },
+    {
+      "id": "europe_core",
+      "label": "欧洲核心站点",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["GB", "DE", "FR", "IT", "ES", "NL", "BE", "IE", "PL", "SE"],
+      "default_currencies": ["GBP", "EUR", "PLN", "SEK"],
+      "typical_platforms": ["amazon", "ebay", "etsy", "aliexpress", "shopify", "shein"]
+    },
+    {
+      "id": "southeast_asia",
+      "label": "东南亚",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["SG", "MY", "TH", "VN", "PH", "ID"],
+      "default_currencies": ["SGD", "MYR", "THB", "VND", "PHP", "IDR"],
+      "typical_platforms": ["tiktok_shop", "shopee", "lazada", "aliexpress"]
+    },
+    {
+      "id": "east_asia",
+      "label": "日韩",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["JP", "KR"],
+      "default_currencies": ["JPY", "KRW"],
+      "typical_platforms": ["rakuten", "coupang", "amazon", "qoo10"]
+    },
+    {
+      "id": "latin_america",
+      "label": "拉美",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["BR", "CL", "CO", "PE", "AR"],
+      "default_currencies": ["BRL", "CLP", "COP", "PEN", "ARS"],
+      "typical_platforms": ["mercado_libre", "amazon", "aliexpress", "shopify", "shein"]
+    },
+    {
+      "id": "oceania",
+      "label": "澳新",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["AU", "NZ"],
+      "default_currencies": ["AUD", "NZD"],
+      "typical_platforms": ["amazon", "ebay", "etsy", "shopify"]
+    },
+    {
+      "id": "middle_east",
+      "label": "中东",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["AE", "SA", "TR", "IL"],
+      "default_currencies": ["AED", "SAR", "TRY", "ILS"],
+      "typical_platforms": ["amazon", "noon", "trendyol", "aliexpress", "shopify"]
+    },
+    {
+      "id": "africa_emerging",
+      "label": "非洲与新兴市场",
+      "market_type": "emerging",
+      "country_sites": ["ZA", "EG", "NG", "MA", "KE"],
+      "default_currencies": ["ZAR", "EGP", "NGN", "MAD", "KES"],
+      "typical_platforms": ["jumia", "amazon", "aliexpress", "shopify"]
+    },
+    {
+      "id": "south_asia",
+      "label": "南亚",
+      "market_type": "cross_border_and_local",
+      "country_sites": ["IN", "PK", "BD"],
+      "default_currencies": ["INR", "PKR", "BDT"],
+      "typical_platforms": ["amazon", "flipkart", "daraz", "shopify"]
+    }
+  ],
+  "country_site_fields": [
+    "country_code",
+    "marketplace_site",
+    "site_language",
+    "currency",
+    "timezone",
+    "tax_profile",
+    "vat_or_sales_tax",
+    "customs_profile",
+    "holiday_calendar",
+    "logistics_zone",
+    "payment_methods",
+    "return_address_policy",
+    "local_content_language",
+    "platform_eligibility",
+    "compliance_notes"
+  ],
+  "product_dimension_catalog": {
+    "product_levels": [
+      "product_family",
+      "category",
+      "subcategory",
+      "product_line",
+      "spu_or_style",
+      "parent_sku",
+      "child_sku_or_variant",
+      "listing",
+      "bundle",
+      "kit",
+      "design_asset",
+      "supplier_offer",
+      "factory_prototype",
+      "sample_batch"
+    ],
+    "sku_count_policy": {
+      "dashboard_primary_count": "parent_sku",
+      "child_sku_or_variant": "reference_only",
+      "spu_or_style": "use_when_platform_counts_spu_or_style",
+      "bundle_or_kit": "count_as_parent_when_sold_as_independent_product"
+    },
+    "product_families": [
+      "apparel",
+      "pod_blanks",
+      "phone_cases",
+      "home_living",
+      "home_kitchen",
+      "beauty_personal_care",
+      "consumer_electronics",
+      "electronics_accessories",
+      "toys_games",
+      "sports_outdoor",
+      "pet_supplies",
+      "auto_motorcycle",
+      "office_school",
+      "baby_maternity",
+      "jewelry_accessories",
+      "bags_luggage",
+      "shoes",
+      "furniture",
+      "garden_tools",
+      "hardware_tools",
+      "health_wellness",
+      "craft_supplies",
+      "3d_printing",
+      "industrial_b2b",
+      "digital_goods",
+      "food_grocery",
+      "seasonal_gifts",
+      "factory_prototypes",
+      "sourcing_offers",
+      "service_or_custom_order"
+    ],
+    "pod_surfaces": [
+      "t_shirt",
+      "hoodie",
+      "sweatshirt",
+      "phone_case",
+      "mug",
+      "tumbler",
+      "poster",
+      "canvas",
+      "sticker",
+      "tote_bag",
+      "pillow",
+      "blanket",
+      "hat",
+      "socks",
+      "jigsaw_puzzle",
+      "notebook",
+      "mouse_pad",
+      "pet_accessory",
+      "home_decor",
+      "3d_printed_object"
+    ],
+    "product_attributes": [
+      "title",
+      "brand",
+      "category_path",
+      "gtin_or_identifier",
+      "parent_sku",
+      "child_sku",
+      "spu",
+      "style",
+      "variation_theme",
+      "color",
+      "size",
+      "material",
+      "pattern",
+      "dimensions",
+      "weight",
+      "package_dimensions",
+      "cost",
+      "target_price",
+      "inventory_quantity",
+      "moq",
+      "lead_time",
+      "supplier",
+      "factory",
+      "rights_source",
+      "media_assets",
+      "certifications",
+      "safety_notes",
+      "listing_status",
+      "localization_language",
+      "season",
+      "occasion",
+      "target_audience"
+    ],
+    "product_lifecycle_states": [
+      "idea",
+      "research",
+      "candidate",
+      "sample_requested",
+      "sample_received",
+      "prototype",
+      "costed",
+      "draft_listing",
+      "owner_review",
+      "test_listing",
+      "test_order",
+      "production_planning",
+      "in_production",
+      "inbound",
+      "active",
+      "paused",
+      "clearance",
+      "discontinued",
+      "blocked_by_rights_or_policy"
+    ],
+    "product_risk_gates": [
+      "copyright_or_design_rights",
+      "trademark",
+      "patent",
+      "platform_restricted_product",
+      "safety_certification",
+      "children_product",
+      "food_or_health_claim",
+      "battery_or_dangerous_goods",
+      "cosmetics_or_ingestible",
+      "unmade_product_publish",
+      "direct_copy_external_link_image_design",
+      "owner_final_publish_approval"
+    ]
+  },
+  "operating_axes": {
+    "seller_modes": ["distribution", "pod", "factory", "selection", "testing", "brand", "sourcing_inventory"],
+    "store_modes": ["cross_border", "local_store", "semi_managed", "official_full_managed_reference_only", "brand_owner", "reseller", "affiliate_or_creator"],
+    "fulfillment_modes": ["fba", "fbm", "wfs", "platform_logistics", "third_party_overseas_warehouse", "cross_border_direct_ship_from_china", "domestic_direct_ship", "drop_ship", "factory_direct", "pod_factory", "local_delivery", "self_fulfillment"],
+    "traffic_sources": ["organic_search", "recommendation_feed", "short_video", "live", "creator_affiliate", "paid_ads", "email", "private_domain", "social_post", "influencer", "seo", "external_traffic", "platform_campaign", "coupon_or_deal"],
+    "content_formats": ["listing_image", "main_image", "a_plus_or_brand_content", "short_video", "live_stream", "note_post", "reel", "story", "blog", "email", "chat_reply", "ad_creative", "ugc", "creator_authorized_content"],
+    "customer_touchpoints": ["marketplace_message", "email", "whatsapp", "wechat", "enterprise_wechat", "feishu", "instagram_dm", "facebook_message", "tiktok_message", "live_comment", "review", "return_request", "dispute", "b2b_inquiry", "crm_note"],
+    "finance_axes": ["gross_sales", "paid_sales", "valid_sales", "buyer_paid", "platform_settlement", "commission", "transaction_fee", "payment_fee", "ad_spend", "creator_commission", "shipping_fee", "warehouse_fee", "tax", "refund", "reserve", "adjustment", "product_cost", "cash_occupancy", "contribution_profit"]
+  },
+  "dashboard_policy": {
+    "top_level_total": "sum_all_imported_or_authorized_platform_module_records",
+    "second_level": "group_by_platform_module_country_product_family",
+    "store_level": "aggregate_by_platform_and_project; do_not_expand_all_stores_by_default",
+    "product_level": "show_product_family_category_parent_sku_when_available; do_not_count_child_variants_as_parent_sku",
+    "country_level": "show_country_site_group_and_count_when configured_or_imported",
+    "unknown_policy": "missing value stays unknown or 0 with pending status; never infer real connected data from registry existence"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "local_tool_worker_pool": {
+    "max_workers": 4,
+    "max_pending_in_memory": 8,
+    "recovery_batch_limit": 32,
+    "poll_seconds": 2
+  },
+  "safety_boundary": {
+    "durable_backlog_source": "data/task_execution_runtime.sqlite3",
+    "external_actions_require_confirmation": true,
+    "capacity_validated": false,
+    "capacity_claim": "single_host_bounded_pool_not_100k_load_tested"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "enabled": true,
+  "safe_mode": true,
+  "logged_in_capture_only": true,
+  "notes": [
+    "Use already logged-in Chrome or BitBrowser tabs for selection tools and store backends. Do not open a separate unlogged browser profile.",
+    "AI-operated browser collection should happen through the installed capture extension on the current logged-in page.",
+    "Do not bypass login, slider, captcha, payment, authorization, or account settings.",
+    "FastMoss is the default product/content research entrance. TikTok buyer-side collection is kept as a backup after verification is passed."
+  ],
+  "sources": [
+    {
+      "id": "fastmoss-ai-click",
+      "name": "FastMoss viral video AI click collection",
+      "enabled": true,
+      "record_type": "viral_content_signal",
+      "source_platform": "FastMoss",
+      "marketplace": "TikTok Shop",
+      "url": "https://www.fastmoss.com/zh/media-source/video",
+      "collection_goal": "fastmoss_viral_video_to_product_competitor_research",
+      "data_category": "fastmoss_video_signal",
+      "max_clicks": 8,
+      "headless": false,
+      "incognito": false,
+      "initial_wait_seconds": 12,
+      "verification_wait_seconds": 0,
+      "keep_open_on_gate": true,
+      "keep_open_after_run": true,
+      "timeout_seconds": 260
+    },
+    {
+      "id": "tiktok-shop-buyer-ai-click",
+      "name": "TikTok Shop buyer-side AI click collection / Washed T-Shirt",
+      "enabled": true,
+      "record_type": "platform_ranking_signal",
+      "source_platform": "TikTok Shop",
+      "marketplace": "TikTok Shop",
+      "url": "https://shop.tiktok.com/us?source=product_detail&enter_method=left_panel_logo&first_entrance=video_detail&first_entrance_position=product_card&first_entrance_tt_scene=tt_seo",
+      "collection_goal": "washed_tshirt_buyer_shop_competitor_research",
+      "data_category": "tiktok_buyer_video_shop_washed_tshirt",
+      "product_target_id": "washed-tee-test",
+      "product_target_name": "Washed T-Shirt",
+      "product_family": "Garment dyed / vintage washed / acid wash T-shirt",
+      "max_clicks": 4,
+      "headless": false,
+      "incognito": false,
+      "initial_wait_seconds": 18,
+      "verification_wait_seconds": 0,
+      "keep_open_on_gate": true,
+      "keep_open_after_run": true,
+      "timeout_seconds": 1020
+    }
+  ]
+}

@@ -1,0 +1,846 @@
+{
+  "schema_version": "2026-07-21.g68-action-forecast-plan-loop",
+  "updated_at": "2026-07-21T16:20:00+08:00",
+  "registry_kind": "ai_analytics_data_foundation_registry",
+  "purpose": "把 T One 的全部经营数据登记成可供 AI 分析、诊断、预测、归因、预警和决策建议使用的事实表、指标、维度、粒度、来源和真值口径；避免只在页面上堆数字。",
+  "truth_policy": {
+    "no_fake_data": true,
+    "no_fake_connection": true,
+    "external_actions": 0,
+    "raw_record_preservation_required": true,
+    "canonical_metric_lineage_required": true,
+    "aggregate_requires_source_record_or_authorized_connector": true,
+    "unknown_until_evidenced": true,
+    "zero_means_no_local_or_authorized_data": true,
+    "platform_settlement_bill_is_final_finance_truth": true,
+    "parent_sku_is_primary_sku_count": true,
+    "child_sku_variant_reference_only": true,
+    "ai_analysis_must_include_source_window_and_confidence": true,
+    "ai_suggestion_cannot_execute_external_action_without_owner_approval": true
+  },
+  "analysis_layers": [
+    {
+      "id": "raw_ingestion",
+      "label": "原始记录层",
+      "purpose": "保留平台报表、ERP、账单、社媒后台、通信记录、人工录入和截图解析结果。",
+      "allowed_status": ["raw_imported", "manual_verified", "authorized_read", "pending_owner_review"]
+    },
+    {
+      "id": "canonical_fact",
+      "label": "标准事实层",
+      "purpose": "把不同平台字段映射到统一事实表，保留来源字段、来源文件、时间窗口和平台口径。",
+      "allowed_status": ["canonical_with_lineage", "partially_mapped", "unknown_field_preserved"]
+    },
+    {
+      "id": "rollup_feature",
+      "label": "聚合与特征层",
+      "purpose": "按平台、国家、店铺、账号、母体SKU、内容、直播、达人、活动、广告、客户和时间窗口聚合，供 AI 分析。",
+      "allowed_status": ["computed_from_canonical", "derived_with_formula", "blocked_missing_source"]
+    },
+    {
+      "id": "ai_analysis_case",
+      "label": "AI 分析案例层",
+      "purpose": "生成诊断、预测、归因、异常识别、机会识别和下一步建议。",
+      "allowed_status": ["analysis_draft", "owner_review_required", "accepted_learning_memory", "rejected_or_superseded"]
+    },
+    {
+      "id": "decision_receipt",
+      "label": "决策与回执层",
+      "purpose": "记录负责人批准、拒绝、修改、执行、结果回传和复盘，防止 AI 建议变成不可追溯动作。",
+      "allowed_status": ["owner_approved", "owner_rejected", "executed_with_evidence", "result_reconciled"]
+    }
+  ],
+  "time_grains": ["hour", "day", "week", "month", "quarter", "year", "custom_range", "event_time"],
+  "core_dimensions": [
+    "timestamp",
+    "date",
+    "time_grain",
+    "project_id",
+    "business_group",
+    "department",
+    "owner_or_supervisor",
+    "seller_mode",
+    "platform",
+    "country_site",
+    "store_mode",
+    "ownership",
+    "fulfillment_mode",
+    "warehouse_country",
+    "ship_from_country",
+    "store_id",
+    "platform_account_id",
+    "business_account_id",
+    "ad_account_id",
+    "social_account_id",
+    "communication_account_id",
+    "browser_profile_id",
+    "execution_identity_id",
+    "erp_source_id",
+    "wms_source_id",
+    "finance_source_id",
+    "currency",
+    "exchange_rate_source",
+    "product_family",
+    "category",
+    "spu_or_style",
+    "parent_sku",
+    "child_sku_or_variant",
+    "listing_id",
+    "asin_or_item_id",
+    "campaign_id",
+    "ad_group_id",
+    "keyword_or_target",
+    "content_id",
+    "video_id",
+    "live_session_id",
+    "creator_id",
+    "affiliate_plan_id",
+    "sample_request_id",
+    "customer_id",
+    "lead_id",
+    "conversation_id",
+    "order_id",
+    "settlement_id",
+    "warehouse_id",
+    "supplier_id",
+    "purchase_order_id",
+    "risk_gate_id",
+    "task_run_id",
+    "agent_id",
+    "model_id",
+    "source_record_id",
+    "source_file_hash",
+    "source_ref",
+    "observed_at",
+    "freshness_status",
+    "product_candidate_id",
+    "product_test_id",
+    "test_batch_id",
+    "test_variant_id",
+    "test_stage",
+    "test_route",
+    "test_cohort_id",
+    "experiment_hypothesis_id",
+    "source_market_id",
+    "competitor_product_id",
+    "content_variant_id",
+    "decision_status",
+    "decision_reason_code",
+    "action_event_id",
+    "action_type",
+    "action_scope",
+    "target_object_type",
+    "target_object_id",
+    "plan_id",
+    "plan_version",
+    "forecast_id",
+    "forecast_type",
+    "forecast_horizon",
+    "recommendation_id",
+    "recommendation_type",
+    "approval_id",
+    "receipt_id",
+    "trace_id",
+    "before_state_hash",
+    "after_state_hash",
+    "truth_level",
+    "confidence"
+  ],
+  "fact_tables": [
+    {"id": "store_sales_fact", "grain": ["day", "platform", "country_site", "store_id"], "primary_metrics": ["revenue", "orders", "units", "buyer_paid_amount"]},
+    {"id": "order_line_fact", "grain": ["event_time", "platform", "store_id", "order_id", "parent_sku"], "primary_metrics": ["order_amount", "order_units", "paid_order_flag", "valid_order_flag", "refund_order_flag"]},
+    {"id": "settlement_fee_fact", "grain": ["settlement_id", "platform", "store_id", "fee_type"], "primary_metrics": ["settlement_amount", "fee_total", "commission_fee", "payment_fee", "tax_amount"]},
+    {"id": "traffic_fact", "grain": ["day", "platform", "store_id", "listing_id"], "primary_metrics": ["sessions", "visits", "page_views", "impressions", "product_clicks"]},
+    {"id": "content_social_fact", "grain": ["day", "platform", "social_account_id", "content_id"], "primary_metrics": ["video_views", "likes", "comments", "saves", "shares", "followers", "homepage_views"]},
+    {"id": "live_session_fact", "grain": ["live_session_id", "platform", "store_id", "social_account_id"], "primary_metrics": ["live_duration_minutes", "live_views", "live_gmv", "live_orders", "live_product_clicks"]},
+    {"id": "creator_affiliate_fact", "grain": ["day", "platform", "store_id", "creator_id"], "primary_metrics": ["affiliate_gmv", "affiliate_orders", "creator_commission", "creator_content_count", "sample_sent"]},
+    {"id": "ad_campaign_fact", "grain": ["day", "platform", "ad_account_id", "campaign_id"], "primary_metrics": ["ad_spend", "ad_sales", "roas", "acos", "clicks", "ctr", "cpc", "conversion_rate"]},
+    {"id": "product_catalog_fact", "grain": ["day", "platform", "store_id", "parent_sku"], "primary_metrics": ["parent_sku_count", "product_count", "active_product_count", "sold_product_count", "new_active_product_count"]},
+    {"id": "inventory_warehouse_fact", "grain": ["day", "warehouse_id", "parent_sku"], "primary_metrics": ["stock_units", "reserved_units", "inbound_units", "oos_skus", "safety_stock_units"]},
+    {"id": "procurement_sourcing_fact", "grain": ["event_time", "supplier_id", "parent_sku", "purchase_order_id"], "primary_metrics": ["purchase_cost", "moq", "lead_time_days", "supplier_quote_count", "sample_cost"]},
+    {"id": "product_selection_signal_fact", "grain": ["event_time", "product_candidate_id", "platform", "country_site", "source_market_id"], "primary_metrics": ["candidate_score", "demand_signal_score", "competitor_count", "blue_ocean_score", "estimated_contribution_margin", "evidence_gap_count"]},
+    {"id": "product_test_plan_fact", "grain": ["product_test_id", "product_candidate_id", "platform", "country_site", "test_route"], "primary_metrics": ["test_budget", "test_stock_units", "test_duration_days", "test_content_variant_count", "pass_threshold_count", "fail_threshold_count"]},
+    {"id": "product_test_exposure_fact", "grain": ["day", "product_test_id", "test_variant_id", "content_variant_id"], "primary_metrics": ["test_impressions", "test_traffic", "test_clicks", "test_product_views", "test_live_views"]},
+    {"id": "product_test_conversion_fact", "grain": ["day", "product_test_id", "test_variant_id", "parent_sku"], "primary_metrics": ["test_add_to_cart", "test_checkout", "test_orders", "test_units", "test_revenue", "test_conversion_rate"]},
+    {"id": "product_test_inventory_cash_fact", "grain": ["day", "product_test_id", "test_batch_id", "warehouse_id", "parent_sku"], "primary_metrics": ["test_inventory_remaining", "test_sell_through_rate", "test_cash_lockup", "test_storage_cost", "test_replenishment_cap"]},
+    {"id": "product_test_decision_fact", "grain": ["event_time", "product_test_id", "decision_status"], "primary_metrics": ["scale_score", "decision_confidence", "failure_reason_count", "learning_memory_count"]},
+    {"id": "business_action_event_fact", "grain": ["event_time", "action_event_id", "action_scope", "target_object_type", "target_object_id"], "primary_metrics": ["action_event_count", "action_success_count", "action_failure_count", "action_blocked_count", "action_cost", "action_latency_seconds"]},
+    {"id": "plan_target_fact", "grain": ["plan_id", "plan_version", "time_grain", "action_scope", "target_object_id"], "primary_metrics": ["plan_target_value", "plan_actual_value", "plan_variance", "plan_completion_rate", "budget_ceiling_total", "inventory_ceiling_total"]},
+    {"id": "forecast_fact", "grain": ["forecast_id", "forecast_type", "forecast_horizon", "action_scope", "target_object_id"], "primary_metrics": ["forecast_p10", "forecast_p50", "forecast_p90", "forecast_actual", "forecast_absolute_error", "forecast_percentage_error"]},
+    {"id": "recommendation_fact", "grain": ["event_time", "recommendation_id", "recommendation_type", "action_scope", "target_object_id"], "primary_metrics": ["recommendation_count", "recommendation_confidence", "expected_impact_value", "recommendation_approved_count", "recommendation_rejected_count"]},
+    {"id": "plan_adjustment_fact", "grain": ["event_time", "plan_id", "plan_version", "approval_id"], "primary_metrics": ["plan_adjustment_count", "target_change_amount", "budget_change_amount", "inventory_change_units", "adjustment_confidence"]},
+    {"id": "action_outcome_attribution_fact", "grain": ["event_time", "action_event_id", "receipt_id", "target_object_id"], "primary_metrics": ["observed_revenue_impact", "observed_cost_impact", "observed_profit_impact", "observed_inventory_impact", "attribution_confidence"]},
+    {"id": "logistics_fulfillment_fact", "grain": ["event_time", "platform", "store_id", "warehouse_id", "order_id"], "primary_metrics": ["shipping_cost", "fulfillment_cost", "delivery_days", "late_shipment_count", "return_shipping_cost"]},
+    {"id": "b2b_outreach_fact", "grain": ["day", "project_id", "lead_id", "communication_account_id"], "primary_metrics": ["inquiries", "emails_sent", "replies", "bounces", "meetings", "qualified_customers"]},
+    {"id": "customer_service_fact", "grain": ["event_time", "platform", "store_id", "conversation_id"], "primary_metrics": ["message_count", "response_time_minutes", "complaint_count", "refund_request_count", "sentiment_score"]},
+    {"id": "compliance_risk_fact", "grain": ["event_time", "platform", "store_id", "risk_gate_id"], "primary_metrics": ["risk_count", "prohibited_count", "review_gated_count", "policy_violation_count"]},
+    {"id": "connector_health_fact", "grain": ["event_time", "connector_id", "platform", "store_id"], "primary_metrics": ["connector_available", "connector_error_count", "last_success_age_minutes", "permission_gap_count"]},
+    {"id": "seller_mode_configuration_fact", "grain": ["event_time", "project_id", "seller_mode", "platform", "country_site", "store_mode"], "primary_metrics": ["seller_mode_count", "seller_mode_variant_count", "mode_task_count", "mode_risk_count", "mode_profit_threshold", "mode_inventory_ceiling", "mode_content_requirement_count"]},
+    {"id": "ai_task_execution_fact", "grain": ["task_run_id", "agent_id", "model_id"], "primary_metrics": ["task_count", "completion_count", "blocked_count", "manual_review_count", "evidence_count", "latency_seconds"]}
+  ],
+  "metric_families": [
+    {
+      "id": "sales_orders",
+      "label": "销售与订单",
+      "metrics": [
+        "revenue", "orders", "units", "paid_orders", "valid_orders", "refund_order_count", "order_amount", "order_units", "buyer_paid_amount", "conversion_rate"
+      ]
+    },
+    {
+      "id": "settlement_fees_profit",
+      "label": "结算、费用与利润",
+      "metrics": [
+        "settlement_amount", "expected_payout", "expected_profit", "profit_rate", "fee_total", "operating_expense_amount", "commission_fee", "payment_fee", "tax_amount", "platform_service_fee", "adjustment_amount", "reserve_amount", "refund_amount"
+      ]
+    },
+    {
+      "id": "advertising",
+      "label": "广告投流",
+      "metrics": [
+        "ad_spend", "ad_sales", "roas", "acos", "campaign_count", "impressions", "clicks", "ctr", "cpc", "cpm", "cvr", "keyword_rank", "budget_used_rate"
+      ]
+    },
+    {
+      "id": "traffic_storefront",
+      "label": "店铺与商品流量",
+      "metrics": [
+        "traffic", "sessions", "visits", "page_views", "listing_views", "product_views", "homepage_views", "storefront_views", "product_clicks", "shop_clicks"
+      ]
+    },
+    {
+      "id": "content_social",
+      "label": "内容与社媒互动",
+      "metrics": [
+        "video_views", "likes", "comments", "saves", "shares", "social_engagement_count", "followers", "profile_views", "private_messages", "content_publish_count", "content_authorized_count"
+      ]
+    },
+    {
+      "id": "live_commerce",
+      "label": "直播电商",
+      "metrics": [
+        "live_duration_minutes", "live_views", "live_peak_viewers", "live_gmv", "live_orders", "live_product_clicks", "live_conversion_rate", "live_room_count", "live_anchor_count"
+      ]
+    },
+    {
+      "id": "creator_affiliate",
+      "label": "达人、联盟与样品",
+      "metrics": [
+        "creator_count", "active_creator_count", "creator_invites", "creator_collaborations", "creator_content_count", "affiliate_gmv", "affiliate_orders", "creator_commission", "sample_sent", "sample_cost", "sample_refund_reserve"
+      ]
+    },
+    {
+      "id": "product_catalog",
+      "label": "商品、母体SKU与动销",
+      "metrics": [
+        "parent_sku_count", "child_sku_count_reference", "product_count", "active_product_count", "sold_product_count", "product_activity_rate", "new_active_product_count", "new_active_product_ratio", "listing_count", "listing_quality_score"
+      ]
+    },
+    {
+      "id": "inventory_warehouse",
+      "label": "库存、仓库与补货",
+      "metrics": [
+        "stock_units", "reserved_units", "inbound_units", "oos_skus", "safety_stock_units", "sell_through_rate", "days_of_cover", "reorder_point", "warehouse_fee", "storage_age_days"
+      ]
+    },
+    {
+      "id": "procurement_sourcing",
+      "label": "采购、货源与供应商",
+      "metrics": [
+        "purchase_cost", "landed_cost", "moq", "lead_time_days", "supplier_quote_count", "supplier_on_time_rate", "sample_cost", "factory_capacity_units", "defect_rate"
+      ]
+    },
+    {
+      "id": "product_selection_research",
+      "label": "选品研究与候选池",
+      "metrics": [
+        "candidate_count", "qualified_candidate_count", "candidate_score", "data_source_count", "demand_signal_score", "search_volume", "search_growth_rate", "category_growth_rate", "estimated_monthly_sales", "competitor_count", "seller_concentration", "price_band_min", "price_band_median", "price_band_max", "review_count_median", "competitor_rating_average", "negative_review_pain_point_count", "blue_ocean_score", "trend_stability_score", "seasonality_score", "product_fit_score", "compliance_feasibility_score", "sourcing_feasibility_score", "estimated_contribution_margin", "evidence_gap_count"
+      ]
+    },
+    {
+      "id": "product_testing",
+      "label": "测品实验、放量与淘汰",
+      "metrics": [
+        "test_candidate_count", "test_plan_count", "active_test_count", "completed_test_count", "test_duration_days", "test_budget", "test_stock_units", "test_content_variant_count", "test_listing_variant_count", "test_price_variant_count", "test_traffic", "test_impressions", "test_clicks", "test_ctr", "test_product_views", "test_add_to_cart", "test_checkout", "test_orders", "test_units", "test_revenue", "test_conversion_rate", "first_order_hours", "orders_per_day", "sales_velocity", "test_growth_rate", "test_cac", "test_ad_spend", "test_roas", "test_acos", "test_live_duration_minutes", "test_live_views", "test_creator_count", "test_sample_count", "test_refund_order_count", "test_return_count", "test_return_rate", "test_cancellation_rate", "test_defect_rate", "test_late_shipment_rate", "test_gross_margin", "test_contribution_margin", "test_profit_rate", "test_cash_lockup", "test_days_of_cover", "test_sell_through_rate", "test_inventory_remaining", "test_storage_cost", "test_replenishment_lead_time_days", "test_reorder_point", "test_replenishment_cap", "pass_threshold_count", "fail_threshold_count", "scale_score", "decision_confidence", "decision_scale_count", "decision_retest_count", "decision_hold_count", "decision_exit_count", "failure_reason_count", "learning_memory_count"
+      ]
+    },
+    {
+      "id": "business_action_events",
+      "label": "经营动作与状态变化",
+      "metrics": [
+        "action_event_count", "action_success_count", "action_failure_count", "action_blocked_count", "action_pending_approval_count", "action_retried_count", "action_cost", "action_latency_seconds", "before_state_record_count", "after_state_record_count", "state_change_count", "receipt_coverage_rate", "evidence_coverage_rate", "idempotency_conflict_count", "permission_denied_count", "external_side_effect_count", "owner_override_count", "action_learning_count"
+      ]
+    },
+    {
+      "id": "planning_targets_variance",
+      "label": "目标、计划与偏差",
+      "metrics": [
+        "plan_count", "active_plan_count", "plan_target_value", "plan_actual_value", "plan_variance", "plan_variance_rate", "plan_completion_rate", "plan_at_risk_count", "plan_overdue_count", "budget_ceiling_total", "budget_used_total", "budget_remaining_total", "inventory_ceiling_total", "inventory_used_total", "capacity_target_units", "capacity_actual_units", "content_plan_count", "content_completed_count", "replenishment_plan_count", "replenishment_completed_count"
+      ]
+    },
+    {
+      "id": "forecast_quality",
+      "label": "预测、校准与漂移",
+      "metrics": [
+        "forecast_count", "forecast_p10", "forecast_p50", "forecast_p90", "forecast_actual", "forecast_absolute_error", "forecast_squared_error", "forecast_percentage_error", "forecast_mape", "forecast_rmse", "forecast_bias", "forecast_interval_coverage", "forecast_confidence", "forecast_feature_count", "forecast_missing_feature_count", "forecast_training_record_count", "forecast_validation_record_count", "forecast_horizon_days", "forecast_model_version_count", "forecast_drift_score", "forecast_stale_count", "forecast_recalibration_count"
+      ]
+    },
+    {
+      "id": "recommendation_plan_adjustment",
+      "label": "建议、审批与计划调整",
+      "metrics": [
+        "recommendation_count", "recommendation_confidence", "recommendation_evidence_count", "expected_impact_value", "recommendation_approved_count", "recommendation_rejected_count", "recommendation_modified_count", "recommendation_expired_count", "recommendation_executed_count", "recommendation_result_verified_count", "plan_adjustment_count", "target_change_amount", "budget_change_amount", "inventory_change_units", "content_change_count", "price_change_proposal_count", "ad_change_proposal_count", "adjustment_confidence", "observed_revenue_impact", "observed_cost_impact", "observed_profit_impact", "observed_inventory_impact", "attribution_confidence", "recommendation_learning_count"
+      ]
+    },
+    {
+      "id": "logistics_fulfillment",
+      "label": "物流、履约与退货",
+      "metrics": [
+        "shipping_cost", "fulfillment_cost", "delivery_days", "late_shipment_count", "tracking_upload_count", "return_count", "return_shipping_cost", "lost_package_count", "warehouse_transfer_count"
+      ]
+    },
+    {
+      "id": "b2b_outreach_communication",
+      "label": "外贸获客与通信",
+      "metrics": [
+        "inquiries", "emails_sent", "replies", "bounces", "meetings", "qualified_customers", "response_rate", "bounce_rate", "lead_score", "customer_stage_count"
+      ]
+    },
+    {
+      "id": "customer_service_reputation",
+      "label": "客服、评价与口碑",
+      "metrics": [
+        "message_count", "response_time_minutes", "complaint_count", "refund_request_count", "review_count", "rating_average", "negative_review_count", "sentiment_score", "case_resolution_rate"
+      ]
+    },
+    {
+      "id": "account_identity_connector",
+      "label": "账号、店铺、浏览器与连接健康",
+      "metrics": [
+        "platform_count", "store_count", "account_count", "social_account_count", "communication_account_count", "browser_profile_count", "erp_connection_count", "connector_available", "connector_error_count", "permission_gap_count"
+      ]
+    },
+    {
+      "id": "seller_mode_operations",
+      "label": "卖家模式与经营动作",
+      "metrics": [
+        "seller_mode_count", "seller_mode_variant_count", "mode_task_count", "mode_risk_count", "mode_profit_threshold", "mode_inventory_ceiling", "mode_content_requirement_count"
+      ]
+    },
+    {
+      "id": "compliance_risk_governance",
+      "label": "合规、风险与门禁",
+      "metrics": [
+        "risk_count", "prohibited_count", "review_gated_count", "policy_violation_count", "copyright_gate_count", "platform_policy_gate_count", "owner_approval_count", "blocked_external_action_count"
+      ]
+    },
+    {
+      "id": "ai_task_quality",
+      "label": "AI、任务与证据质量",
+      "metrics": [
+        "task_count", "completion_count", "blocked_count", "manual_review_count", "evidence_count", "source_record_count", "confidence", "latency_seconds", "model_error_count", "handoff_count", "receipt_count"
+      ]
+    }
+  ],
+  "product_selection_testing_contract": {
+    "purpose": "让 AI 能追溯一个商品从候选来源、测试假设、测试投入、流量与转化，到履约退货、结算利润、放量或淘汰的完整因果链。",
+    "lifecycle_stages": [
+      "source_intake",
+      "candidate_screen",
+      "feasibility_review",
+      "test_plan",
+      "content_listing_test",
+      "traffic_test",
+      "paid_test_optional",
+      "sales_validation",
+      "fulfillment_return_validation",
+      "unit_economics_reconciliation",
+      "decision",
+      "post_decision_review"
+    ],
+    "test_routes": [
+      "direct_ship_before_stock",
+      "small_batch_local_stock",
+      "small_batch_overseas_stock",
+      "organic_content_test",
+      "paid_traffic_test_optional",
+      "live_commerce_test",
+      "creator_affiliate_test",
+      "factory_virtual_prototype_draft_only",
+      "pod_design_surface_variant_test"
+    ],
+    "decision_statuses": [
+      "candidate_backlog",
+      "researching",
+      "ready_to_test",
+      "testing",
+      "insufficient_data",
+      "scale",
+      "retest",
+      "hold",
+      "exit",
+      "rejected_risk",
+      "blocked_missing_evidence"
+    ],
+    "required_test_plan_fields": [
+      "product_candidate_id",
+      "product_test_id",
+      "platform",
+      "country_site",
+      "seller_mode",
+      "test_route",
+      "hypothesis",
+      "start_at",
+      "planned_end_at",
+      "budget_ceiling",
+      "stock_ceiling",
+      "traffic_source",
+      "content_or_listing_variants",
+      "pass_thresholds",
+      "fail_thresholds",
+      "stop_loss_rules",
+      "owner_gate_status"
+    ],
+    "required_decision_evidence": [
+      "source_record_count",
+      "test_duration_days",
+      "traffic_and_conversion",
+      "orders_and_sales_velocity",
+      "refund_return_and_fulfillment",
+      "actual_or_estimated_unit_economics",
+      "inventory_and_cash_lockup",
+      "threshold_result",
+      "missing_fields",
+      "decision_confidence",
+      "decision_reason_codes"
+    ],
+    "threshold_policy": {
+      "platform_and_category_specific": true,
+      "sample_thresholds_are_not_platform_facts": true,
+      "missing_threshold_is_unknown": true,
+      "estimated_profit_cannot_override_actual_settlement": true,
+      "scale_requires_owner_approval": true,
+      "purchase_or_replenishment_requires_owner_approval": true,
+      "real_publish_requires_platform_policy_and_owner_review": true
+    },
+    "failure_reason_taxonomy": [
+      "insufficient_traffic",
+      "low_click_through",
+      "low_conversion",
+      "price_mismatch",
+      "creative_or_listing_mismatch",
+      "poor_product_market_fit",
+      "high_competition",
+      "margin_below_floor",
+      "high_ad_dependency",
+      "high_return_or_refund",
+      "quality_or_defect",
+      "late_or_unreliable_fulfillment",
+      "supplier_or_stock_risk",
+      "cash_lockup_exceeds_limit",
+      "compliance_or_ip_risk",
+      "platform_policy_block",
+      "seasonality_or_timing",
+      "insufficient_evidence"
+    ],
+    "external_actions": 0
+  },
+  "operating_intelligence_contract": {
+    "purpose": "把每一个可观察动作转成带身份、范围、前后状态、审批、回执和结果的数据事件；单店负责小方向，全局大盘负责跨平台、跨国家、跨产品和跨资源的大方向。",
+    "hierarchy": [
+      {"level": "atomic_action", "scope": "单次动作、输入、审批、执行、错误和结果"},
+      {"level": "store_micro_direction", "scope": "单店的商品、流量、内容、广告、库存、客服、利润和风险建议"},
+      {"level": "platform_site_rollup", "scope": "同平台、同国家站点下所有店铺聚合"},
+      {"level": "product_country_rollup", "scope": "同产品族、品类、母体SKU和国家的跨店表现"},
+      {"level": "business_group_direction", "scope": "事业组目标、预算、现金、人员、连接器和任务组合"},
+      {"level": "group_macro_direction", "scope": "集团级资源配置、风险、项目组合、现金流和投资决策"}
+    ],
+    "every_action_event_requires": [
+      "action_event_id",
+      "occurred_at",
+      "actor_type",
+      "actor_id",
+      "action_type",
+      "action_scope",
+      "target_object_type",
+      "target_object_id",
+      "project_id",
+      "platform",
+      "country_site",
+      "store_id_or_not_applicable",
+      "intent",
+      "input_snapshot_hash",
+      "before_state_hash",
+      "permission_state",
+      "approval_state",
+      "execution_state",
+      "external_side_effect",
+      "output_or_error",
+      "after_state_hash",
+      "evidence_refs",
+      "receipt_id",
+      "trace_id"
+    ],
+    "forecast_requirements": [
+      "forecast_id",
+      "forecast_type",
+      "scope",
+      "generated_at",
+      "forecast_horizon",
+      "feature_window",
+      "source_record_count",
+      "feature_snapshot_hash",
+      "model_id_and_version",
+      "p10",
+      "p50",
+      "p90",
+      "confidence",
+      "missing_fields",
+      "actual_when_available",
+      "error_metrics_when_actual_available",
+      "drift_status"
+    ],
+    "forecast_policy": {
+      "precision_is_measured_not_claimed": true,
+      "point_forecast_requires_interval": true,
+      "actual_result_required_for_accuracy_score": true,
+      "forecast_without_source_lineage_is_blocked": true,
+      "low_sample_or_high_drift_must_reduce_confidence": true,
+      "forecast_cannot_execute_action": true
+    },
+    "plan_adjustment_triggers": [
+      "target_variance",
+      "forecast_outside_plan_range",
+      "cash_or_budget_limit",
+      "inventory_shortage_or_overstock",
+      "profit_below_floor",
+      "traffic_or_conversion_anomaly",
+      "return_or_quality_risk",
+      "platform_or_compliance_change",
+      "connector_or_data_quality_failure",
+      "owner_strategy_change"
+    ],
+    "recommendation_lifecycle": [
+      "detected",
+      "evidence_attached",
+      "drafted",
+      "owner_review_required",
+      "approved_or_modified_or_rejected",
+      "executed_with_receipt_or_not_executed",
+      "outcome_observed",
+      "attribution_reviewed",
+      "learning_memory_updated"
+    ],
+    "dashboard_direction_policy": {
+      "store_view_is_micro_direction": true,
+      "platform_site_view_is_rollup": true,
+      "group_dashboard_is_macro_direction": true,
+      "macro_recommendation_must_explain_store_and_platform_contributors": true,
+      "store_recommendation_must_not_override_group_budget_or_risk_gate": true,
+      "realtime_means_latest_local_or_authorized_data_not_unverified_external_live_data": true
+    },
+    "external_actions": 0
+  },
+  "business_action_metric_dictionary": {
+    "purpose": "把当前系统实际记录的动作类型映射到业务对象和指标口径；未登记的新动作不得悄悄写入业务事件。",
+    "required_runtime_event_types": [
+      "task_created",
+      "task_status_changed",
+      "task_analysis_recorded",
+      "task_result_recorded",
+      "approval_requested",
+      "approval_decision_recorded",
+      "chat_object_enriched",
+      "multimodal_intake_recorded",
+      "learning_memory_approved",
+      "organization_management_action",
+      "agent_handoff_created",
+      "agent_handoff_acknowledged",
+      "operating_expense_recorded",
+      "operating_expense_exported",
+      "platform_finance_estimate_created",
+      "inventory_cash_plan_created",
+      "platform_statement_imported",
+      "platform_settlement_reconciled",
+      "payment_collection_estimate_created",
+      "payment_collection_statement_imported",
+      "payment_collection_reconciled",
+      "forecast_created",
+      "recommendation_created",
+      "plan_adjusted",
+      "connector_observation_recorded",
+      "external_action_blocked"
+    ],
+    "contracts": [
+      {
+        "id": "task_lifecycle",
+        "event_types": ["task_created", "task_status_changed"],
+        "action_scope": "task",
+        "target_object_type": "task_run",
+        "metric_ids": ["action_event_count", "task_count", "state_change_count"],
+        "truth_rule": "只表示本地任务状态；不得推断外部平台已执行。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "task_result",
+        "event_types": ["task_analysis_recorded", "task_result_recorded"],
+        "action_scope": "task",
+        "target_object_type": "task_result_receipt",
+        "metric_ids": ["action_event_count", "receipt_count", "receipt_coverage_rate"],
+        "truth_rule": "分析是 inference；只有带回执的本地结果才是 fact，均不等于外部执行。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "approval_lifecycle",
+        "event_types": ["approval_requested", "approval_decision_recorded"],
+        "action_scope": "approval",
+        "target_object_type": "approval_record",
+        "metric_ids": ["action_event_count", "action_pending_approval_count", "owner_approval_count"],
+        "truth_rule": "审批记录只证明决定或待审状态；外部动作仍需独立执行回执。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "chat_object_enrichment",
+        "event_types": ["chat_object_enriched"],
+        "action_scope": "conversation",
+        "target_object_type": "business_object",
+        "metric_ids": ["action_event_count", "source_record_count", "evidence_count"],
+        "truth_rule": "聊天提取值必须保留来源与置信度；推断不得覆盖授权连接事实。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "multimodal_intake",
+        "event_types": ["multimodal_intake_recorded"],
+        "event_type_prefixes": ["multimodal_"],
+        "action_scope": "source_intake",
+        "target_object_type": "source_asset",
+        "metric_ids": ["action_event_count", "source_record_count", "data_source_count"],
+        "truth_rule": "保留原始附件引用、解析结果和推断层级；不把截图推断写成平台事实。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "learning_memory",
+        "event_types": ["learning_memory_approved"],
+        "action_scope": "learning_memory",
+        "target_object_type": "reviewed_memory",
+        "metric_ids": ["action_event_count", "action_learning_count", "evidence_count"],
+        "truth_rule": "只有负责人核对来源后的经验记忆可记录；不得升级为官方平台规则或自动执行能力。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "organization_management",
+        "event_types": ["organization_management_action"],
+        "event_type_prefixes": ["organization_"],
+        "action_scope": "organization",
+        "target_object_type": "goal_or_assignment",
+        "metric_ids": ["action_event_count", "plan_count", "handoff_count"],
+        "truth_rule": "目标、优先级和分工是本地管理记录；人员身份和执行结果必须另有证据。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "agent_handoff",
+        "event_types": ["agent_handoff_created", "agent_handoff_acknowledged"],
+        "action_scope": "agent_handoff",
+        "target_object_type": "agent_handoff",
+        "metric_ids": ["action_event_count", "handoff_count", "receipt_count"],
+        "truth_rule": "创建交接不等于接收或产出；确认和结果分别记录。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "operating_expense",
+        "event_types": ["operating_expense_recorded", "operating_expense_exported"],
+        "action_scope": "finance",
+        "target_object_type": "operating_expense",
+        "metric_ids": ["action_event_count", "operating_expense_amount", "source_record_count"],
+        "truth_rule": "手工或导入费用必须标币种、日期、来源和 truth_level；不得当作平台结算。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "platform_finance_estimate",
+        "event_types": ["platform_finance_estimate_created"],
+        "action_scope": "platform_finance",
+        "target_object_type": "finance_estimate",
+        "metric_ids": ["action_event_count", "expected_profit", "expected_payout"],
+        "truth_rule": "估算只用于预算和计划；未知费率保持 unknown，不能覆盖账单真值。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "platform_statement",
+        "event_types": ["platform_statement_imported"],
+        "action_scope": "platform_finance",
+        "target_object_type": "platform_statement",
+        "metric_ids": ["action_event_count", "settlement_amount", "source_record_count"],
+        "truth_rule": "只有已导入的原始平台或支付渠道账单行可作为 actual_statement。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "inventory_cash_plan",
+        "event_types": ["inventory_cash_plan_created"],
+        "action_scope": "inventory_finance",
+        "target_object_type": "inventory_cash_plan",
+        "metric_ids": ["action_event_count", "replenishment_plan_count", "plan_count"],
+        "truth_rule": "库存和资金计划是待审草稿；采购、补货和付款必须另行审批并留回执。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "settlement_reconciliation",
+        "event_types": ["platform_settlement_reconciled"],
+        "action_scope": "platform_finance",
+        "target_object_type": "settlement_reconciliation",
+        "metric_ids": ["action_event_count", "settlement_amount", "evidence_coverage_rate"],
+        "truth_rule": "对账必须逐费用行关联估算、实际账单与差异原因。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "payment_collection",
+        "event_types": ["payment_collection_estimate_created", "payment_collection_statement_imported", "payment_collection_reconciled"],
+        "action_scope": "cash_collection",
+        "target_object_type": "payment_collection_record",
+        "metric_ids": ["action_event_count", "expected_payout", "settlement_amount"],
+        "truth_rule": "估算、收款机构账单和银行实收分层保存；银行或支付渠道流水是相应现金层最终真值。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "forecast",
+        "event_types": ["forecast_created"],
+        "action_scope": "analytics",
+        "target_object_type": "forecast",
+        "metric_ids": ["action_event_count", "forecast_count", "forecast_confidence"],
+        "truth_rule": "预测必须带来源窗口、样本数、区间和置信度；不能执行动作。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "recommendation",
+        "event_types": ["recommendation_created"],
+        "action_scope": "analytics",
+        "target_object_type": "recommendation",
+        "metric_ids": ["action_event_count", "recommendation_count", "recommendation_confidence"],
+        "truth_rule": "建议必须引用数据缺口和证据；需要外部动作时进入负责人审批。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "plan_adjustment",
+        "event_types": ["plan_adjusted"],
+        "action_scope": "planning",
+        "target_object_type": "plan_adjustment",
+        "metric_ids": ["action_event_count", "plan_adjustment_count", "plan_variance_rate"],
+        "truth_rule": "计划调整保留触发原因、前后值和审批状态。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "connector_observation",
+        "event_types": ["connector_observation_recorded"],
+        "event_type_prefixes": ["connector_"],
+        "action_scope": "connector",
+        "target_object_type": "connector_or_binding",
+        "metric_ids": ["action_event_count", "connector_available", "connector_error_count"],
+        "truth_rule": "登记、发现或候选不等于 connected；只有授权握手和读回执才能升级连接状态。",
+        "external_action": false,
+        "owner_gate": false
+      },
+      {
+        "id": "blocked_external_action",
+        "event_types": ["external_action_blocked"],
+        "action_scope": "external_action_gate",
+        "target_object_type": "blocked_action",
+        "metric_ids": ["action_event_count", "action_blocked_count", "blocked_external_action_count"],
+        "truth_rule": "记录被门禁拦截的外部动作；不得生成已执行或成功状态。",
+        "external_action": false,
+        "owner_gate": true
+      }
+    ],
+    "external_actions": 0
+  },
+  "required_metric_metadata": [
+    "metric_id",
+    "family_id",
+    "unit",
+    "default_grain",
+    "default_dimensions",
+    "source_record_types",
+    "truth_level",
+    "nullable_reason",
+    "owner_gate",
+    "aggregation_rule"
+  ],
+  "metric_metadata_policy": {
+    "one_row_per_registered_metric": true,
+    "direct_primary_metric_truth_level": "canonical_with_lineage",
+    "family_derived_metric_truth_level": "derived_with_formula_and_lineage",
+    "platform_native_scale_must_be_preserved": true,
+    "unknown_unit_or_formula_must_not_be_guessed": true,
+    "rates_scores_ranks_and_forecasts_are_non_additive": true,
+    "currency_aggregation_requires_identical_currency_scope": true
+  },
+  "source_freshness_contract": {
+    "required_fields": ["source_ref", "observed_at", "freshness_status", "truth_level", "source_record_count"],
+    "freshness_statuses": ["fresh", "delayed", "stale", "unknown"],
+    "truth_levels": ["authorized_read", "manual_verified", "canonical_with_lineage", "derived_with_formula_and_lineage", "actual_platform_settlement", "unknown_until_evidenced"],
+    "stale_data_never_becomes_zero": true,
+    "missing_source_never_becomes_connected": true,
+    "unknown_or_stale_must_be_visible_to_ai": true,
+    "source_record_count_is_required_for_ai_answers": true
+  },
+  "commerce_scope_contract": {
+    "required_route_dimensions": ["platform", "country_site", "store_mode", "ownership"],
+    "store_modes": [
+      {"id": "marketplace_seller", "label": "平台卖家店", "selectable": true, "executable": true},
+      {"id": "local_store", "label": "本土店", "selectable": true, "executable": true},
+      {"id": "cross_border", "label": "跨境 / 半托类", "selectable": true, "executable": true},
+      {"id": "platform_co_ops", "label": "TeeLab 联名 / 代运营", "selectable": true, "executable": true},
+      {"id": "teelab_owned", "label": "TeeLab 自营", "selectable": true, "executable": true},
+      {"id": "official_full_managed", "label": "平台官方全托管", "selectable": false, "executable": false, "recognition_only": true}
+    ],
+    "unbound_store_status": "needs_platform_store",
+    "unbound_store_excluded_from_operating_data": true,
+    "registered_platform_without_store_is_not_a_store": true,
+    "platform_group_is_not_an_executable_site": true,
+    "direct_ship_contract": {
+      "store_mode": "cross_border",
+      "fulfillment_mode": "cross_border_direct_ship_from_china",
+      "warehouse_country": "CN",
+      "ship_from_country": "CN",
+      "target_market_comes_from_country_site": true,
+      "does_not_create_a_new_store_identity": true
+    }
+  },
+  "platform_adaptation_contract": {
+    "required_scope": ["platform", "country_site", "store_mode", "ownership", "fulfillment_mode", "account_or_store_id"],
+    "metric_applicability_states": ["supported", "not_applicable", "unknown_until_evidenced", "source_missing"],
+    "not_applicable_is_not_zero": true,
+    "source_missing_is_not_zero": true,
+    "platform_candidate_or_learning_asset_never_enters_operating_data": true,
+    "platform_specific_formula_requires_dated_evidence": true,
+    "cross_site_formula_reuse_requires_explicit_compatibility": true
+  },
+  "ai_analysis_contract": {
+    "every_answer_must_reference": ["time_window", "source_record_count", "truth_level", "confidence", "missing_fields"],
+    "allowed_outputs": ["diagnosis", "trend_analysis", "anomaly_detection", "opportunity_discovery", "risk_warning", "forecast", "what_to_check_next", "owner_review_proposal"],
+    "blocked_outputs_without_approval": ["publish", "send_message", "change_price", "launch_ad", "spend_budget", "place_order", "refund", "ship", "oauth_connect", "scrape_private_area"],
+    "minimum_context_for_recommendation": ["platform", "country_site", "store_or_account_scope", "date_range", "source_lineage", "data_gap_list"]
+  },
+  "dashboard_policy": {
+    "top_dashboard_is_aggregate": true,
+    "platform_sections_are_platform_rollups": true,
+    "store_level_hidden_by_default": true,
+    "drilldown_allowed_when_source_exists": true,
+    "do_not_display_false_connected_running_synced": true,
+    "zero_card_must_explain_missing_source": true
+  }
+}

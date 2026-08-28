@@ -1,0 +1,303 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-17",
+  "registry_kind": "platform_store_adapter_registry",
+  "evidence_registry_ref": "config/platform_store_type_evidence_registry.json",
+  "purpose": "平台、国家站点、店铺类型与真实执行身份的唯一分类入口；岗位能力通过 adapter_id 适配，不把平台名当成岗位。",
+  "route_contract": {
+    "route_key_format": "platform:country_site:commerce_mode",
+    "required_scope_fields": ["tenant_id", "project_id", "store_binding_id", "platform", "country_site", "commerce_mode", "ownership", "execution_identity_id"],
+    "separate_axes": ["authorization_product", "seller_plan", "seller_entity_type", "account_program", "category_scope", "category_authorization_level", "fulfillment_mode", "listing_offer_type", "operating_program", "ads_account_id", "warehouse_id", "settlement_account_id", "integration_capability_scope"],
+    "route_statuses": ["needs_platform_store", "needs_authorization", "read_only", "draft_ready", "approval_required", "executable", "unsupported"],
+    "execution_domains": ["listing", "orders", "inventory", "shipment", "settlement", "aftersales", "activities", "ads"],
+    "invariants": [
+      "Southeast Asia 只能作为区域分组，TikTok Shop、Shopee、Lazada 必须落到 SG/MY/TH/VN/PH/ID 具体站点。",
+      "TeeLab 代运营 / 联名运营属于 ownership，不是 commerce_mode，也不等于 official_full_managed。",
+      "official_full_managed 只作为不可选择的识别标签。",
+      "同一平台的不同国家站点、店铺类型或真实店铺不得共享可执行凭据。",
+      "FBA/FBM/WFS、自仓、第三方仓属于 fulfillment_mode，不属于 store_mode。",
+      "Individual/Professional 等销售计划属于 seller_plan，不属于 store_mode。",
+      "ACCU属于卖家主体/准入身份，不是独立经营模式。",
+      "SIP、全球店、六合一、轻出海、CSP属于账号或店铺范围计划，不是国家站点。",
+      "L3/L7以及服装、家居、定制、全类目属于类目权限或类目范围，不是经营模式。",
+      "联盟、达人、直播、GMV Max、商品目录和广告属于 operating_program 或独立执行域，不冒充真实订单店铺。",
+      "没有达到证据登记表门槛的值只能标记 pending_verification，不得自动映射或执行。"
+    ]
+  },
+  "commerce_modes": [
+    {"id": "owned_platform", "name": "自有平台", "selectable": true},
+    {"id": "marketplace_seller", "name": "平台卖家店", "selectable": true},
+    {"id": "platform_self_operated", "name": "平台自运营", "selectable": true},
+    {"id": "local", "name": "本土店", "selectable": true, "aliases": ["local_store", "local_seller"]},
+    {"id": "cross_border", "name": "跨境店", "selectable": true, "aliases": ["cross_border_seller"]},
+    {"id": "semi_managed", "name": "半托管", "selectable": true},
+    {"id": "independent_site", "name": "独立站", "selectable": true},
+    {"id": "content_catalog", "name": "内容 / 商品目录", "selectable": true},
+    {"id": "invite_partner", "name": "邀请制 / 合作伙伴店", "selectable": true},
+    {"id": "official_full_managed", "name": "平台官方全托管（不接）", "selectable": false}
+  ],
+  "legacy_store_mode_aliases": {
+    "self_store": {"axis": "ownership", "canonical": "self_owned"},
+    "platform_co_ops": {"axis": "ownership", "canonical": "platform_co_ops"},
+    "tiktok_accu_local": {"axis": "seller_entity_type", "canonical": "US_ACCU", "commerce_mode": "local"},
+    "semi_managed_crossborder": {"axis": "commerce_mode", "canonical": "semi_managed", "secondary_axis": "seller_entity_type", "secondary_value": "cross_border"},
+    "semi_managed_local": {"axis": "commerce_mode", "canonical": "semi_managed", "secondary_axis": "seller_entity_type", "secondary_value": "local"}
+  },
+  "ownerships": [
+    {"id": "self_owned", "name": "用户 / 设计师自有"},
+    {"id": "teelab_owned", "name": "TeeLab 自营"},
+    {"id": "platform_co_ops", "name": "TeeLab 代运营 / 联名运营"},
+    {"id": "partner_owned", "name": "合作方所有"},
+    {"id": "b2b_client_owned", "name": "B2B 客户所有"}
+  ],
+  "adapters": [
+    {
+      "id": "teelab-owned-platform",
+      "platform": "teelab_platform",
+      "name": "TeeLab 自有平台",
+      "platform_category": "owned_platform",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["owned_platform"],
+      "ownerships": ["teelab_owned", "platform_co_ops"],
+      "fulfillment_modes": ["teelab_factory", "partner_factory", "third_party_warehouse"],
+      "operating_programs": ["marketplace", "creator_profile", "co_brand_operation"],
+      "blocked_store_modes": ["official_full_managed"]
+    },
+    {
+      "id": "amazon-marketplace",
+      "platform": "amazon",
+      "name": "Amazon Marketplace",
+      "platform_category": "marketplace",
+      "country_site_policy": "read_from_authorized_seller_account",
+      "planning_sites": ["US", "CA", "MX", "GB", "DE", "FR", "IT", "ES", "NL", "SE", "PL", "JP", "IN", "AU", "AE", "SA"],
+      "planning_sites_status": "internal_planning_not_execution_evidence",
+      "commerce_modes": ["marketplace_seller"],
+      "seller_plans": ["individual", "professional"],
+      "fulfillment_modes": ["fbm", "fba", "mcf", "third_party_warehouse"],
+      "operating_programs": ["seller_central", "sponsored_ads", "coupons", "deals", "brand_registry_if_eligible"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "tiktok-shop",
+      "platform": "tiktok",
+      "name": "TikTok Shop",
+      "platform_category": "marketplace",
+      "country_sites": ["US", "GB", "DE", "FR", "IT", "ES", "IE", "JP", "MX", "BR", "SG", "MY", "TH", "VN", "PH", "ID"],
+      "regional_groups": {"Southeast Asia": ["SG", "MY", "TH", "VN", "PH", "ID"]},
+      "commerce_modes": ["local", "cross_border"],
+      "seller_entity_types": ["US_ENTERPRISE", "US_INDIVIDUAL", "US_ACCU", "READ_FROM_AUTHORIZED_STORE"],
+      "fulfillment_modes": ["seller_fulfilled", "platform_logistics_if_available", "third_party_warehouse", "cross_border_direct_ship_from_china"],
+      "fulfillment_route_policy": {
+        "cross_border_direct_ship_from_china": {
+          "store_mode": "cross_border",
+          "warehouse_country": "CN",
+          "ship_from_country": "CN",
+          "verified_sites": ["JP"],
+          "other_site_status": "unknown_until_official_or_authorized_shop_evidence",
+          "execution_status": "reference_only_not_connected"
+        }
+      },
+      "operating_programs": ["affiliate", "creator_collaboration", "live", "shop_ads", "gmv_max", "platform_activities"],
+      "blocked_store_modes": ["official_full_managed"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json", "config/platform_store_type_evidence_registry.json"]
+    },
+    {
+      "id": "shein-marketplace",
+      "platform": "shein",
+      "name": "SHEIN Marketplace",
+      "platform_category": "marketplace",
+      "country_site_policy": "mode_specific_and_read_from_authorized_store",
+      "sites_by_mode": {
+        "platform_self_operated": ["US", "MX", "BR", "GB", "DE", "FR", "IT", "ES", "RO", "AT", "EUROPE_NON_EU"],
+        "semi_managed": ["US", "GB", "DE", "FR", "IT", "ES", "MX", "CA", "AE", "SA", "KR", "JP", "AU"]
+      },
+      "commerce_modes": ["platform_self_operated", "semi_managed"],
+      "category_scope_policy": "read_from_store_category_authorization",
+      "pending_category_scope_candidates": ["服装", "家居", "定制", "全类目"],
+      "fulfillment_modes": ["seller_fulfilled", "shein_platform_fulfilled_if_authorized", "third_party_warehouse"],
+      "operating_programs": ["marketplace", "seller_activities", "ads_if_authorized"],
+      "blocked_store_modes": ["official_full_managed"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "shopee-marketplace",
+      "platform": "shopee",
+      "name": "Shopee Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["SG", "MY", "TH", "VN", "PH", "ID", "TW", "BR"],
+      "regional_groups": {"Southeast Asia": ["SG", "MY", "TH", "VN", "PH", "ID"]},
+      "commerce_modes": ["marketplace_seller"],
+      "account_programs": ["ordinary_store", "global_store", "sip_program", "light_overseas_program"],
+      "blocked_commerce_modes": ["official_full_managed"],
+      "fulfillment_modes": ["seller_fulfilled", "platform_logistics_if_available", "third_party_warehouse"],
+      "operating_programs": ["seller_center", "ads", "vouchers", "campaigns", "affiliate_if_available"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "lazada-marketplace",
+      "platform": "lazada",
+      "name": "Lazada Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["SG", "MY", "TH", "VN", "PH", "ID"],
+      "regional_groups": {"Southeast Asia": ["SG", "MY", "TH", "VN", "PH", "ID"]},
+      "commerce_modes": ["local", "cross_border"],
+      "store_scope_programs": ["six_in_one_publish"],
+      "fulfillment_modes": ["seller_fulfilled", "platform_logistics_if_available", "third_party_warehouse"],
+      "operating_programs": ["seller_center", "sponsored_solutions", "vouchers", "campaigns", "affiliate_if_available"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "aliexpress-marketplace",
+      "platform": "aliexpress",
+      "name": "AliExpress Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["marketplace_seller", "semi_managed", "overseas_managed"],
+      "blocked_commerce_modes": ["official_full_managed"],
+      "fulfillment_modes": ["seller_fulfilled", "platform_logistics_if_available", "overseas_warehouse", "third_party_warehouse"],
+      "operating_programs": ["seller_center", "activities", "on_platform_ads_if_authorized", "affiliate_if_separately_authorized"],
+      "route_policy": "GLOBAL is read-only planning scope. A real connector must replace it with the exact market, seller entity, store binding and execution identity from the authorized store.",
+      "adapter_sources": ["config/platform_expert_training/aliexpress.json", "config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "walmart-marketplace",
+      "platform": "walmart",
+      "name": "Walmart Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["US", "CA", "MX"],
+      "commerce_modes": ["marketplace_seller"],
+      "fulfillment_modes": ["seller_fulfilled", "wfs", "third_party_warehouse"],
+      "operating_programs": ["marketplace", "connect_ads_if_authorized", "promotions"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "etsy-marketplace",
+      "platform": "etsy",
+      "name": "Etsy Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["marketplace_seller"],
+      "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+      "fulfillment_modes": ["seller_fulfilled", "pod_partner", "third_party_warehouse"],
+      "operating_programs": ["etsy_ads", "sales_and_coupons", "offsite_ads_if_applicable"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "ebay-marketplace",
+      "platform": "ebay",
+      "name": "eBay Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["marketplace_seller"],
+      "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+      "fulfillment_modes": ["seller_fulfilled", "third_party_warehouse"],
+      "operating_programs": ["promoted_listings", "markdown_manager", "seller_hub"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "shopify-independent-store",
+      "platform": "shopify",
+      "name": "Shopify 独立站",
+      "platform_category": "independent_store",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["independent_site"],
+      "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"],
+      "fulfillment_modes": ["self_warehouse", "third_party_warehouse", "pod_partner", "platform_fulfillment_if_configured"],
+      "operating_programs": ["markets", "discounts", "email", "seo", "apps", "ads_connectors"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "woocommerce-independent-store",
+      "platform": "woocommerce",
+      "name": "WooCommerce 独立站",
+      "platform_category": "independent_store",
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["independent_site"],
+      "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"],
+      "fulfillment_modes": ["self_warehouse", "third_party_warehouse", "pod_partner"],
+      "operating_programs": ["coupons", "seo", "email", "plugins", "ads_connectors"],
+      "adapter_sources": ["config/platform_developer_capabilities.json", "config/platform_activity_rules.json"]
+    },
+    {
+      "id": "content-catalogs",
+      "platform": "content_catalog",
+      "name": "社媒 / 广告商品目录",
+      "platform_category": "content_catalog",
+      "providers": ["facebook_shop", "instagram_shop", "pinterest", "google_merchant_center"],
+      "country_sites": ["GLOBAL"],
+      "commerce_modes": ["content_catalog"],
+      "operating_programs": ["catalog_sync", "feed_diagnostics", "dynamic_ads"],
+      "order_store": false
+    },
+    {
+      "id": "partner-marketplaces",
+      "platform": "partner_marketplace",
+      "name": "邀请制 / 合作型平台",
+      "platform_category": "partner_marketplace",
+      "providers": ["target_plus", "zalando_partner_program"],
+      "country_sites": ["CONFIGURE_PER_PROVIDER"],
+      "commerce_modes": ["invite_partner"],
+      "route_default_status": "needs_platform_store"
+    },
+    {
+      "id": "ozon-marketplace",
+      "platform": "ozon",
+      "name": "Ozon Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["RU"],
+      "commerce_modes": ["marketplace_seller"],
+      "fulfillment_modes": ["fbo", "fbs", "real_fbs"],
+      "operating_programs": ["seller_api", "seller_center", "promotions", "ads_if_authorized"],
+      "route_policy": "RU is an Ozon marketplace route label, not a shared credential. FBO/FBS/realFBS are fulfillment modes. Require one verified store binding and separate API, ads, ERP, and browser execution identities before any external action.",
+      "route_default_status": "needs_platform_store",
+      "adapter_sources": ["config/platform_store_type_evidence_registry.json", "config/commerce_skill_registry.json"]
+    },
+    {
+      "id": "emag-marketplace",
+      "platform": "emag",
+      "name": "eMAG Marketplace",
+      "platform_category": "marketplace",
+      "country_sites": ["RO", "HU", "BG"],
+      "commerce_modes": ["marketplace_seller"],
+      "fulfillment_modes": ["READ_FROM_AUTHORIZED_STORE"],
+      "operating_programs": ["seller_center", "product_import_api_if_authorized", "emag_ads_if_authorized", "cross_border"],
+      "route_policy": "RO/HU/BG are eMAG marketplace site labels, not shared credentials. Fulfillment mode, seller access, API, ads, ERP and browser execution identities must be verified and isolated per store binding before any external action.",
+      "route_default_status": "needs_platform_store",
+      "adapter_sources": ["config/platform_store_type_evidence_registry.json", "skills/platform-experts/emag/SKILL.md"]
+    },
+    {
+      "id": "rakuten-ichiba-marketplace",
+      "platform": "rakuten",
+      "name": "Rakuten Ichiba 乐天市场",
+      "platform_category": "marketplace",
+      "country_sites": ["JP"],
+      "commerce_modes": ["marketplace_seller"],
+      "operating_programs": ["rms", "r_storefront", "r_backoffice", "r_karte", "rakuten_web_service_public_search_if_app_id_approved"],
+      "route_policy": "JP is a Rakuten Ichiba site label, not a shared credential. RMS account, public Web Service App ID, advertising, ERP, browser and settlement identities must be separately verified and isolated per store binding. The public item search API is not a seller-management entitlement.",
+      "route_default_status": "needs_platform_store",
+      "adapter_sources": ["skills/platform-experts/rakuten/SKILL.md", "skills/platform-experts/rakuten/references/official-evidence-2026-07-21.md", "config/platform_fee_settlement_registry.json"]
+    },
+    {
+      "id": "regional-marketplace-candidates",
+      "platform": "regional_marketplace",
+      "name": "区域增长候选平台",
+      "platform_category": "marketplace",
+      "providers": ["mercado_libre", "coupang", "allegro", "jumia"],
+      "country_sites": ["CONFIGURE_PER_PROVIDER"],
+      "commerce_modes": ["READ_FROM_PROVIDER_EVIDENCE"],
+      "evidence_policy": "provider_specific_record_required_before_route_creation",
+      "route_default_status": "needs_platform_store"
+    },
+    {
+      "id": "china-marketplaces",
+      "platform": "china_marketplace",
+      "name": "中国本土电商",
+      "platform_category": "china_marketplace",
+      "providers": ["taobao", "tmall", "jd", "pinduoduo", "douyin_shop", "kuaishou_shop", "xiaohongshu", "wechat_store", "dewu"],
+      "country_sites": ["CN"],
+      "commerce_modes": ["READ_FROM_PROVIDER_EVIDENCE"],
+      "evidence_policy": "provider_specific_record_required_before_route_creation",
+      "route_default_status": "needs_platform_store"
+    }
+  ]
+}

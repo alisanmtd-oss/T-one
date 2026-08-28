@@ -2,7 +2,7 @@
   "schema_version": 1,
   "expert_id": "expert-lazada-marketplace",
   "skill_id": "lazada",
-  "skill_ref": "skills/platform-experts/lazada/SKILL.md",
+  "skill_ref": "private_platform_expert_source_excluded",
   "generated_at": "2026-07-18T21:30:00+08:00",
   "updated_at": "2026-07-19T04:10:00+08:00",
   "verified_at": "2026-07-19",
@@ -25,16 +25,16 @@
     ]
   },
   "training_assets": {
-    "curriculum_ref": "skills/platform-experts/lazada/references/curriculum.md",
-    "official_sources_ref": "skills/platform-experts/lazada/references/official-sources.md",
-    "evidence_ledger_ref": "skills/platform-experts/lazada/references/evidence-ledger.json",
-    "rules_ref": "skills/platform-experts/lazada/references/rules.json",
-    "mother_requirements_matrix_ref": "skills/platform-experts/lazada/references/mother-requirements-matrix.json",
-    "failure_retrospective_ref": "skills/platform-experts/lazada/references/failure-retrospective.md",
-    "training_state_ref": "skills/platform-experts/lazada/references/training-state.json",
-    "continuous_training_ref": "skills/platform-experts/lazada/references/continuous-training.md",
-    "official_github_index_ref": "skills/platform-experts/lazada/references/official-github-index.json",
-    "knowledge_package_audit_ref": "skills/platform-experts/lazada/references/official-github-index.json"
+    "curriculum_ref": "private_platform_expert_source_excluded",
+    "official_sources_ref": "private_platform_expert_source_excluded",
+    "evidence_ledger_ref": "private_platform_expert_source_excluded",
+    "rules_ref": "private_platform_expert_source_excluded",
+    "mother_requirements_matrix_ref": "private_platform_expert_source_excluded",
+    "failure_retrospective_ref": "private_platform_expert_source_excluded",
+    "training_state_ref": "private_platform_expert_source_excluded",
+    "continuous_training_ref": "private_platform_expert_source_excluded",
+    "official_github_index_ref": "private_platform_expert_source_excluded",
+    "knowledge_package_audit_ref": "private_platform_expert_source_excluded"
   },
   "knowledge_state_taxonomy": [
     "verified_live_fact",
@@ -405,7 +405,7 @@
   ],
   "model_gateway": {
     "runtime": "existing_t_one_llmclient",
-    "config_ref": "config/multi_ai.json",
+    "config_ref": "private_model_provider_registry_excluded",
     "new_agent_runtime_allowed": false,
     "slots": [
       "reasoning",
@@ -1262,7 +1262,7 @@
     "status": "ACTIVE",
     "cadence": "every_24_hours",
     "duplicate_check": "completed_before_create",
-    "incremental_cursor_ref": "skills/platform-experts/lazada/references/training-state.json",
+    "incremental_cursor_ref": "private_platform_expert_source_excluded",
     "no_delta_policy": "do_not_rewrite_knowledge",
     "source_diversity_policy": "one official primary plus at least one community, public-video or GitHub category per evidence-bearing round; single anecdotes stay dated hypotheses",
     "fingerprint_policy": "skip unchanged canonical URL/title/date/hash; retain version and conflict relationships",
@@ -1751,7 +1751,7 @@
       "expected_status": "blocked",
       "must_include": [
         "existing LLMClient",
-        "config/multi_ai.json"
+        "private_model_provider_registry_excluded"
       ],
       "must_not": [
         "new runtime"

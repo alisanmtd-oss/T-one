@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-07T00:00:00+08:00",
+  "truth_contract": {
+    "connected_definition": "Only an authenticated account or API that has passed a real read-only connection test may be marked connected.",
+    "local_import_definition": "A local CSV, XLSX, or JSON import is an evidence intake capability, not an external account connection.",
+    "promotion_state": "untrusted_imported_evidence",
+    "external_actions": [],
+    "prohibited_shortcuts": [
+      "automatic login",
+      "automatic extension installation",
+      "captcha or MFA bypass",
+      "unapproved external form submission",
+      "store write action"
+    ]
+  },
+  "providers": [
+    {
+      "id": "web-scraper",
+      "name": "Web Scraper",
+      "group": "数据采集",
+      "status": "local_file_import_available",
+      "connected": false,
+      "supported_file_formats": ["csv", "xlsx", "json"],
+      "local_import_state": "available",
+      "browser_extension_state": "owner_install_and_profile_binding_required",
+      "api_state": "blocked_owner_auth_and_plan",
+      "official_urls": [
+        "https://webscraper.io/",
+        "https://webscraper.io/documentation",
+        "https://webscraper.io/web-scraper-extension"
+      ],
+      "notes": "Chrome/Firefox extension exports can be imported locally. Cloud API, scheduling and webhooks require a separately approved account and plan."
+    },
+    {
+      "id": "octoparse",
+      "name": "八爪鱼 / Octoparse",
+      "group": "数据采集",
+      "status": "local_file_import_available",
+      "connected": false,
+      "supported_file_formats": ["csv", "xlsx", "json"],
+      "local_import_state": "available",
+      "desktop_state": "owner_install_and_export_required",
+      "api_state": "blocked_owner_api_key_and_plan",
+      "official_urls": [
+        "https://www.bazhuayu.com/",
+        "https://www.octoparse.com/"
+      ],
+      "notes": "Desktop or cloud exports can be imported locally. API access is not connected and depends on the owner's account, plan and key."
+    },
+    {
+      "id": "miaoshou-collector",
+      "name": "妙手采集",
+      "group": "数据采集",
+      "status": "local_file_import_available",
+      "connected": false,
+      "supported_file_formats": ["csv", "xlsx"],
+      "local_import_state": "available",
+      "browser_extension_state": "owner_install_and_profile_binding_required",
+      "api_state": "blocked_owner_developer_credentials",
+      "official_urls": [
+        "https://erp.91miaoshou.com/"
+      ],
+      "notes": "Miaoshou collection/export files can be imported. This does not mean that Miaoshou ERP, a store, or its open platform is connected."
+    },
+    {
+      "id": "waimaotools-collector",
+      "name": "外贸工具采集",
+      "group": "数据采集",
+      "status": "local_file_import_available",
+      "connected": false,
+      "supported_file_formats": ["csv"],
+      "local_import_state": "available",
+      "browser_account_state": "owner_login_required",
+      "api_state": "blocked_no_verified_public_api",
+      "official_urls": [
+        "https://add.waimaotools.com/user/login?redirect=%2F",
+        "https://waimaotools.com/add"
+      ],
+      "notes": "Publicly documented product-collection CSV exports can be imported. No verified public API connection is claimed."
+    }
+  ]
+}

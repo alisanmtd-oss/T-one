@@ -20,6 +20,32 @@ API_SOURCE_CONFIG = Path("config") / "api_sources.json"
 API_REPORT_PREFIX = "api_sources"
 
 
+def api_source_has_concrete_endpoint(source: dict[str, Any]) -> bool:
+    """Reject documentation templates before they enter the runtime queue."""
+
+    source_id = str(source.get("id") or "").strip().lower()
+    base_url = str(source.get("base_url") or "").strip()
+    path = str(source.get("path") or "").strip()
+    if not source_id or "placeholder" in source_id:
+        return False
+    if not base_url or not path:
+        return False
+    if "replace-with" in path.lower() or "{" in path or "}" in path:
+        return False
+    request_values = json.dumps(
+        {
+            "params": source.get("params"),
+            "body": source.get("body"),
+        },
+        ensure_ascii=False,
+    ).lower()
+    if "replace_" in request_values or "replace-with" in request_values:
+        return False
+    return base_url.startswith("https://") or base_url.startswith(
+        ("http://127.0.0.1", "http://localhost")
+    )
+
+
 @dataclass(slots=True)
 class ApiRunResult:
     run_date: str
@@ -60,7 +86,11 @@ def load_api_sources(root: Path) -> list[dict[str, Any]]:
         return []
     payload = json.loads(path.read_text(encoding="utf-8"))
     sources = payload.get("sources", []) if isinstance(payload, dict) else []
-    return [source for source in sources if isinstance(source, dict)]
+    return [
+        source
+        for source in sources
+        if isinstance(source, dict) and api_source_has_concrete_endpoint(source)
+    ]
 
 
 def collect_api_source(root: Path, source: dict[str, Any], run_date: str) -> tuple[dict[str, Any], list[IntakeRecord]]:
@@ -291,48 +321,12 @@ def render_endpoint_for_status(source: dict[str, Any]) -> str:
     return f"{base_url}/{path}" if path else base_url
 
 
-def build_api_report(run_date: str, statuses: list[dict[str, Any]], records: list[IntakeRecord]) -> str:
-    lines = [
-        "# API 数据源巡检报告",
-        "",
-        f"日期：{run_date}",
-        "",
-        "## 结论",
-        "",
-    ]
-    if not statuses:
-        lines.append("- 暂无 API 数据源配置。")
-    for status in statuses:
-        lines.append(
-            f"- {status.get('source_id')}：{status.get('status')}，保存 {status.get('saved_records', 0)} 条，"
-            f"{status.get('reason') or status.get('endpoint') or ''}"
-        )
-
-    lines.extend(["", "## 新增记录", ""])
-    if not records:
-        lines.append("- 暂无新增 API 记录。")
-    for record in records[:30]:
-        fields = record.fields
-        name = fields.get("product_name") or fields.get("video_url") or fields.get("url") or record.record_id[:8]
-        lines.append(f"- {name}｜{record.record_type}｜优先级 {record.score.get('priority', '待定')}")
-    return "\n".join(lines).rstrip() + "\n"
-
-
 def write_api_report(root: Path, run_date: str, content: str) -> Path:
     output_dir = root / "outputs"
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / f"{API_REPORT_PREFIX}_{run_date}.md"
     path.write_text(content, encoding="utf-8")
     return path
-
-
-def latest_api_report(root: Path) -> tuple[str, Path | None]:
-    output_dir = root / "outputs"
-    paths = sorted(output_dir.glob(f"{API_REPORT_PREFIX}_*.md"), reverse=True)
-    if not paths:
-        return "还没有 API 数据源巡检报告。", None
-    path = paths[0]
-    return path.read_text(encoding="utf-8"), path
 
 
 def api_source_display_label(status: dict[str, Any]) -> str:

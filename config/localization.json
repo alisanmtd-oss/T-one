@@ -1,0 +1,10 @@
+{
+  "default_locale": "zh-CN",
+  "supported_locales": ["zh-CN", "en-US", "es-MX", "de-DE", "fr-FR"],
+  "fallback_locale": "zh-CN",
+  "notes": [
+    "Use Chinese as the default UI language for the current operator workflow.",
+    "Keep user-entered business data unchanged.",
+    "Add marketplace/country-specific translations gradually as the product expands."
+  ]
+}

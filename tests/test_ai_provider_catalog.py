@@ -8,6 +8,7 @@ from ai_ecommerce_director.ai_provider_catalog import (
     configure_provider,
     load_provider_verification,
     provider_catalog_snapshot,
+    test_provider,
 )
 
 
@@ -277,6 +278,80 @@ class AIProviderCatalogTests(unittest.TestCase):
                 encoding="utf-8-sig",
             )
             self.assertEqual(load_provider_verification(root)["catalog_provider_states"][0]["state"], "verified")
+
+    def test_successful_connection_test_refreshes_exact_runtime_receipt(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = self._root(temp_dir)
+            (root / "config" / "multi_ai.json").write_text(
+                json.dumps(
+                    {
+                        "providers": [
+                            {
+                                "name": "deepseek-sales",
+                                "label": "DeepSeek sales",
+                                "base_url": "https://api.deepseek.com",
+                                "model": "deepseek-chat",
+                                "enabled": True,
+                                "requires_api_key": False,
+                                "tasks": ["chat"],
+                            }
+                        ],
+                        "routes": {"chat": ["deepseek-sales"]},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (root / "config" / "ai_provider_verification_state.json").write_text(
+                json.dumps(
+                    {
+                        "audited_at": "2025-01-01T00:00:00Z",
+                        "verification_policy": {
+                            "enforce_receipt_freshness": True,
+                            "max_age_hours": 24,
+                        },
+                        "catalog_provider_states": [
+                            {
+                                "provider_id": "deepseek",
+                                "state": "stale",
+                                "configured_models": ["deepseek-sales"],
+                            }
+                        ],
+                        "live_receipts": [
+                            {
+                                "provider": "deepseek-sales",
+                                "model": "deepseek-chat",
+                                "status": "ok",
+                                "tested_at": "2025-01-01T00:00:00Z",
+                            }
+                        ],
+                        "modality_receipts": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            with patch(
+                "ai_ecommerce_director.ai_provider_catalog.LLMClient.test_connections",
+                return_value=[
+                    {
+                        "provider": "deepseek-sales",
+                        "model": "deepseek-chat",
+                        "status": "ok",
+                        "latency_ms": 41,
+                    }
+                ],
+            ):
+                result = test_provider(root, "deepseek-sales")
+
+            self.assertEqual(result["status"], "ok")
+            state = load_provider_verification(root)
+            receipt = state["live_receipts"][0]
+            self.assertEqual(receipt["provider"], "deepseek-sales")
+            self.assertEqual(receipt["model"], "deepseek-chat")
+            self.assertEqual(receipt["latency_ms"], 41)
+            self.assertTrue(receipt["tested_at"].endswith("Z"))
+            model = provider_catalog_snapshot(root)["configured"][0]
+            self.assertTrue(model["runtime_eligible"])
 
 
 if __name__ == "__main__":

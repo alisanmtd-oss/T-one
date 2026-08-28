@@ -1,0 +1,74 @@
+{
+  "default_mode": "protected_legacy_store",
+  "positioning": "Protect existing revenue stores from AI experimentation while allowing controlled tests on new/sandbox stores.",
+  "rules": {
+    "experimental_new_store": {
+      "execution_allowed_after_confirmation": true,
+      "max_automation_level": "L3",
+      "description": "New or test store. AI may draft and queue experiments, but human confirmation and stop-loss review are still required.",
+      "allowed_after_confirmation": [
+        "small-budget creative test",
+        "listing draft update",
+        "limited discount test",
+        "live-room link/coupon test",
+        "manual upload after review"
+      ],
+      "stop_loss_required": true
+    },
+    "protected_legacy_store": {
+      "execution_allowed_after_confirmation": false,
+      "max_automation_level": "L2",
+      "description": "Existing or unknown store. AI may analyze and draft only. Store-impacting execution requires explicit protection override.",
+      "blocked_actions": [
+        "ads",
+        "listing",
+        "price",
+        "inventory",
+        "discount",
+        "campaign",
+        "creator outreach",
+        "asset upload",
+        "live links",
+        "coupons",
+        "store settings"
+      ]
+    },
+    "locked_revenue_store": {
+      "execution_allowed_after_confirmation": false,
+      "max_automation_level": "L1",
+      "description": "Stable, high-GMV, old, or active-ad store. AI must not disturb ads, listing, price, discounts, inventory, links, coupons, or live-room settings.",
+      "blocked_actions": [
+        "all store-impacting actions"
+      ]
+    }
+  },
+  "never_auto_execute": [
+    "publish_listing",
+    "update_listing",
+    "delist_product",
+    "update_price",
+    "update_inventory",
+    "set_discount",
+    "join_campaign",
+    "contact_creator",
+    "send_message",
+    "upload_asset",
+    "change_store_setting",
+    "payment",
+    "ship_order",
+    "appeal",
+    "authorize_app",
+    "launch_ad",
+    "update_ad_budget",
+    "pause_ad",
+    "add_live_product_link",
+    "change_live_discount",
+    "issue_coupon"
+  ],
+  "notes": [
+    "Unknown stores are protected by default.",
+    "Old stores, active-ad stores, stable sales stores and high-GMV stores require explicit protection override before any execution.",
+    "AI can always analyze, draft, score and recommend, but cannot execute store-impacting actions automatically.",
+    "New/test stores may be used for controlled experiments after human confirmation."
+  ]
+}

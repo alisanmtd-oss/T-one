@@ -11,10 +11,10 @@ Use this Skill for Google Ads only. Keep Google product structure, API identity,
 
 Read these before producing platform facts or updating this Skill:
 
-- `config/platform_expert_training/advertising_media_buyer/evidence_index.json`
-- `config/platform_expert_training/advertising_media_buyer/rules.json`
-- `config/platform_expert_training/advertising_media_buyer/tool_registry.json`
-- `config/platform_expert_training/advertising_media_buyer/training_state.json`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
 - [references/official-evidence.md](references/official-evidence.md)
 
 ## Evidence-first workflow
@@ -35,4 +35,4 @@ OAuth, 2SV/MFA, developer token, customer IDs, billing, and any live account cha
 
 ## T One integration
 
-Reuse the existing LLMClient, `config/multi_ai.json`, Google/independent-commerce expert inputs, and advertising measurement/profit/draft/human-review/stop-loss base. Do not create a second Google gateway or universal advertising Agent.
+Reuse the existing LLMClient, `private_model_provider_registry_excluded`, Google/independent-commerce expert inputs, and advertising measurement/profit/draft/human-review/stop-loss base. Do not create a second Google gateway or universal advertising Agent.

@@ -5,12 +5,12 @@
   "overall_state": "blocked_owner_input",
   "local_truth": {
     "api_application": {
-      "source": "config/api_applications.json",
+      "source": "private_runtime_registry_excluded",
       "id": "etsy-open-api",
       "status": "ready_to_apply"
     },
     "public_listing_source": {
-      "source": "config/api_sources.json",
+      "source": "private_runtime_registry_excluded",
       "id": "etsy-open-api-listings",
       "enabled": false,
       "auth_type": "x-api-key",

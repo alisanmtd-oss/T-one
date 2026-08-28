@@ -1,0 +1,348 @@
+{
+  "safe_mode": true,
+  "notes": [
+    "Read-only API templates. Keep secrets in Windows environment variables, not in this file.",
+    "Official marketplace APIs are mainly for authorized own-shop data. Competitor research usually needs third-party data tools or browser capture.",
+    "Publishing, price changes, ad changes, fulfillment, campaign signup, and creator outreach stay draft-only until the user confirms."
+  ],
+  "sources": [
+    {
+      "id": "keepa-product-query",
+      "provider": "Keepa",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "KEEPA_API_KEY",
+      "auth_type": "query",
+      "api_key_param": "key",
+      "base_url": "https://api.keepa.com",
+      "path": "product",
+      "params": {
+        "domain": 1,
+        "asin": "REPLACE_ASIN",
+        "history": 1,
+        "stats": 90
+      },
+      "items_path": "products",
+      "limit": 20,
+      "record_type": "platform_ranking_signal",
+      "source_platform": "Amazon",
+      "field_map": {
+        "product_name": "title",
+        "product_asin": "asin",
+        "brand": "brand",
+        "category_path": "categoryTree.0.name",
+        "current_sales_rank": "stats.current.3",
+        "review_count": "stats.current.17",
+        "rating": "stats.current.16"
+      },
+      "notes": "Use Keepa for Amazon BSR, price, review, and offer history. Replace ASIN or generate sources per monitored ASIN."
+    },
+    {
+      "id": "jungle-scout-product-database",
+      "provider": "Jungle Scout API",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "JUNGLESCOUT_API_KEY",
+      "auth_type": "bearer",
+      "base_url": "https://developer.junglescout.com",
+      "path": "replace-with-jungle-scout-product-endpoint",
+      "items_path": "data",
+      "limit": 20,
+      "record_type": "platform_ranking_signal",
+      "source_platform": "Amazon",
+      "notes": "Fill the exact endpoint from your Jungle Scout API docs if purchased."
+    },
+    {
+      "id": "sellersprite-openapi-placeholder",
+      "provider": "SellerSprite",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "SELLERSPRITE_API_KEY",
+      "auth_type": "bearer",
+      "base_url": "https://api.sellersprite.com",
+      "path": "replace-with-sellersprite-endpoint",
+      "items_path": "data.list",
+      "limit": 20,
+      "record_type": "platform_ranking_signal",
+      "source_platform": "Amazon",
+      "notes": "SellerSprite is useful for Chinese Amazon operator workflow. Fill endpoint after API access is confirmed."
+    },
+    {
+      "id": "dataforseo-serp-placeholder",
+      "provider": "DataForSEO",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "basic",
+      "basic_username_env": "DATAFORSEO_LOGIN",
+      "basic_password_env": "DATAFORSEO_PASSWORD",
+      "method": "POST",
+      "base_url": "https://api.dataforseo.com/v3",
+      "path": "serp/google/organic/live/advanced",
+      "body": [
+        {
+          "keyword": "amino acid cleanser",
+          "location_code": 2840,
+          "language_code": "en",
+          "device": "desktop"
+        }
+      ],
+      "items_path": "tasks.0.result.0.items",
+      "limit": 20,
+      "record_type": "hot_link",
+      "source_platform": "Google SERP",
+      "field_map": {
+        "product_name": "title",
+        "url": "url",
+        "visible_growth_signal": "description"
+      },
+      "notes": "Use DataForSEO for SERP/keyword monitoring when marketplace pages are blocked or when DTC competitor discovery is needed."
+    },
+    {
+      "id": "fastmoss-openapi-products",
+      "provider": "FastMoss",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "FASTMOSS_API_KEY",
+      "auth_type": "bearer",
+      "base_url": "https://openapi.fastmoss.com",
+      "path": "replace-with-fastmoss-doc-endpoint",
+      "items_path": "data.list",
+      "limit": 20,
+      "record_type": "hot_link",
+      "source_platform": "FastMoss",
+      "field_map": {
+        "product_name": "title",
+        "url": "url",
+        "current_sales": "sales",
+        "current_gmv": "gmv",
+        "visible_growth_signal": "growth"
+      },
+      "notes": "FastMoss is the preferred TikTok Shop product/video/creator research entrance if API access is available."
+    },
+    {
+      "id": "kalodata-enterprise-api",
+      "provider": "Kalodata",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "KALODATA_API_KEY",
+      "auth_type": "bearer",
+      "base_url": "https://api.kalodata.com",
+      "path": "replace-with-kalodata-enterprise-endpoint",
+      "items_path": "data.list",
+      "limit": 20,
+      "record_type": "hot_link",
+      "source_platform": "Kalodata",
+      "notes": "Use Kalodata for TikTok Shop GMV/product/creator validation after API or export access is confirmed."
+    },
+    {
+      "id": "echotik-api-products",
+      "provider": "EchoTik",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "ECHOTIK_API_KEY",
+      "auth_type": "bearer",
+      "base_url": "https://api.echotik.com",
+      "path": "replace-with-echotik-doc-endpoint",
+      "items_path": "data.list",
+      "limit": 20,
+      "record_type": "hot_link",
+      "source_platform": "EchoTik",
+      "notes": "Use EchoTik as a TikTok Shop second-opinion source after FastMoss/Kalodata."
+    },
+    {
+      "id": "amazon-sp-api-own-shop",
+      "provider": "Amazon SP-API",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://sellingpartnerapi-na.amazon.com",
+      "path": "",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "store_operation_event",
+      "source_platform": "Amazon",
+      "integration_notes": "Amazon SP-API uses an LWA access token in x-amz-access-token. AWS IAM credentials and AWS SigV4 are no longer required. This source is only for an authorized own shop."
+    },
+    {
+      "id": "amazon-sp-api-product-type-definitions",
+      "provider": "Amazon SP-API Product Type Definitions",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://sellingpartnerapi-na.amazon.com",
+      "search_path": "definitions/2020-09-01/productTypes",
+      "path": "definitions/2020-09-01/productTypes/{productType}",
+      "params": {
+        "marketplaceIds": "{marketplaceId}",
+        "productTypeVersion": "LATEST",
+        "requirements": "LISTING",
+        "requirementsEnforced": "ENFORCED",
+        "locale": "DEFAULT",
+        "parentageLevel": "{NONE|CHILD|PARENT}"
+      },
+      "items_path": "",
+      "limit": 1,
+      "record_type": "store_operation_event",
+      "source_platform": "Amazon",
+      "fields": {
+        "route_key": "amazon:{country_site}:marketplace_seller",
+        "operation_type": "amazon_sp_api_ptd_schema_check"
+      },
+      "integration_notes": "Search the target marketplace for a product type, then fetch the current marketplace/product-type/requirements/parentage schema before Listings Items or feed submission. Verify the linked schema checksum and preserve the returned productTypeVersion. Requires an LWA access token, seller authorization, and the Product Listing role; no AWS SigV4. This disabled template must be resolved from the current store route and product evidence, never from TeeLab defaults."
+    },
+    {
+      "id": "amazon-sp-api-listings-items",
+      "provider": "Amazon SP-API Listings Items",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://sellingpartnerapi-na.amazon.com",
+      "path": "listings/2021-08-01/items/{sellerId}/{sku}",
+      "methods": {
+        "read": "GET",
+        "validation_preview": "PUT or PATCH with mode=VALIDATION_PREVIEW",
+        "submit": "PUT or PATCH with mode omitted"
+      },
+      "params": {
+        "marketplaceIds": "{marketplaceId}",
+        "includedData": "issues"
+      },
+      "status_contract": {
+        "VALID": "validation_preview_only_non_persisting",
+        "ACCEPTED": "accepted_for_processing_not_live",
+        "INVALID": "not_accepted_for_processing"
+      },
+      "items_path": "",
+      "limit": 1,
+      "record_type": "store_operation_event",
+      "source_platform": "Amazon",
+      "fields": {
+        "route_key": "amazon:{country_site}:marketplace_seller",
+        "operation_type": "amazon_sp_api_listing_item_check"
+      },
+      "integration_notes": "Resolve sellerId, SKU and marketplaceId only from the current tenant/project/product/store binding. Validate against the current PTD, use VALIDATION_PREVIEW as a non-persisting check, require owner confirmation before a live PUT/PATCH, treat ACCEPTED only as accepted for processing, then read back getListingsItem includedData=issues and verify the buyer page when publication is claimed. Requires seller authorization and the Product Listing role."
+    },
+    {
+      "id": "amazon-sp-api-orders-reports",
+      "provider": "Amazon SP-API Orders / Reports",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://sellingpartnerapi-na.amazon.com",
+      "path": "",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "store_operation_event",
+      "source_platform": "Amazon",
+      "fields": {
+        "route_key": "amazon:US:marketplace_seller",
+        "operation_type": "amazon_sp_api_orders_reports_check"
+      },
+      "integration_notes": "Use Orders and Reports after seller authorization to read MFN orders, payments, fees, returns, and settlement data. No shipment/refund/write operation without confirmation."
+    },
+    {
+      "id": "amazon-ads-api",
+      "provider": "Amazon Ads API",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://advertising-api.amazon.com",
+      "path": "",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "ad_performance_signal",
+      "source_platform": "Amazon Ads",
+      "integration_notes": "Amazon Ads API needs OAuth and advertiser profile access. Use for campaign reports, keyword bids, spend, ACOS, and budget suggestions."
+    },
+    {
+      "id": "tiktok-shop-open-api-own-shop",
+      "provider": "TikTok Shop Open API",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://open-api.tiktokglobalshop.com",
+      "path": "",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "store_operation_event",
+      "source_platform": "TikTok Shop",
+      "integration_notes": "TikTok Shop Open API can read authorized own-shop products/orders/fulfillment data. It is not a public competitor ranking API."
+    },
+    {
+      "id": "walmart-marketplace-api-own-shop",
+      "provider": "Walmart Marketplace API",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "signed",
+      "base_url": "https://marketplace.walmartapis.com",
+      "path": "",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "store_operation_event",
+      "source_platform": "Walmart",
+      "integration_notes": "Walmart Marketplace API needs Walmart seller authorization/signature. Use for own items, orders, inventory, pricing, and feeds."
+    },
+    {
+      "id": "walmart-connect-ads-api",
+      "provider": "Walmart Connect API",
+      "enabled": false,
+      "requires_api_key": true,
+      "auth_type": "oauth",
+      "base_url": "https://developer.walmart.com",
+      "path": "replace-with-walmart-connect-ads-endpoint",
+      "items_path": "",
+      "limit": 20,
+      "record_type": "ad_performance_signal",
+      "source_platform": "Walmart Connect",
+      "integration_notes": "Walmart Connect API is for Walmart ad data and campaign operations after advertiser authorization."
+    },
+    {
+      "id": "etsy-open-api-listings",
+      "provider": "Etsy Open API",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "ETSY_API_KEY",
+      "auth_type": "x-api-key",
+      "api_key_header": "x-api-key",
+      "base_url": "https://openapi.etsy.com/v3/application",
+      "path": "listings/active",
+      "params": {
+        "limit": 25
+      },
+      "items_path": "results",
+      "limit": 20,
+      "record_type": "hot_link",
+      "source_platform": "Etsy",
+      "field_map": {
+        "product_name": "title",
+        "url": "url",
+        "selling_price": "price.amount"
+      }
+    },
+    {
+      "id": "youtube-data-api",
+      "provider": "YouTube Data API",
+      "enabled": false,
+      "requires_api_key": true,
+      "api_key_env": "YOUTUBE_API_KEY",
+      "auth_type": "query",
+      "api_key_param": "key",
+      "base_url": "https://www.googleapis.com/youtube/v3",
+      "path": "search",
+      "params": {
+        "part": "snippet",
+        "q": "amino acid cleanser shorts",
+        "type": "video",
+        "maxResults": 10
+      },
+      "items_path": "items",
+      "limit": 10,
+      "record_type": "viral_content_signal",
+      "source_platform": "YouTube",
+      "field_map": {
+        "product_name": "snippet.title",
+        "visible_growth_signal": "snippet.description"
+      }
+    }
+  ]
+}

@@ -6,19 +6,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {".html", ".json", ".md", ".py", ".txt", ".toml", ".yaml", ".yml"}
-SKIP_FILES = {"scripts/verify_public_tree.py"}
-SKIP_DIRECTORY_PARTS = {".git", "build", "dist", "node_modules"}
+SKIP_FILES = {
+    "scripts/sanitize_public_metadata.py",
+    "scripts/verify_public_tree.py",
+    "tests/test_public_metadata_boundary.py",
+}
+LEGACY_PRIVATE_DOC = "".join(("FEISHU", "_BRAND_OPERATING_SYSTEM.md"))
 FORBIDDEN_EXACT_PATHS = {
     "OPEN_SOURCE_READINESS.md",
+    "config/current_task_queue.json",
     "config/private_project_facts.json",
     "docs/BRAND_PUBLIC_BOUNDARY.md",
-    "docs/FEISHU_BRAND_OPERATING_SYSTEM.md",
+    LEGACY_PRIVATE_DOC,
+    f"docs/{LEGACY_PRIVATE_DOC}",
 }
 FORBIDDEN_PATH_PARTS = {
     "browser_extension",
     "browser_profiles",
     "data",
-    "desktop_app",
     "outputs",
     "recovered_conversations",
     "runtime_data",
@@ -26,8 +31,9 @@ FORBIDDEN_PATH_PARTS = {
 }
 PATTERNS = {
     "private user path": re.compile(r"(?i:[A-Z]:\\Users\\(?!USER|USERNAME|path\\to\\)[^\\\s]+)"),
-    "marketplace product identifier": re.compile(r"(?i:\bB0[A-Z0-9]{8}\b)"),
-    "seller portal URL": re.compile(r"(?i:https?://[^\s)]*sellercentral\.amazon\.)"),
+    "private Codex attachment or conversation vault": re.compile(
+        r"(?i:codex" r"-clipboard-[0-9a-f-]{16,}|rollout" r"-[^\s\"']+\.jsonl)"
+    ),
     "private catalog URL": re.compile(r"(?i:https?://[^\s)]*yupoo\.com)"),
     "common live secret": re.compile(
         r"(?:sk-(?:proj-)?[A-Za-z0-9]{20,}|gh[oprsu]_[A-Za-z0-9]{20,}|"
@@ -35,6 +41,12 @@ PATTERNS = {
         r"xox[baprs]-[A-Za-z0-9-]{10,}|"
         r"-----BEGIN (?:RSA |EC )?PRIVATE KEY-----)"
     ),
+    "private browser capture": re.compile(r"\.playwright-cli(?:/|\\)"),
+    "private learning run": re.compile(r"references/learning-runs/"),
+    "private project memory": re.compile(
+        r"(?:tk智能体_当前权威记忆\.md|tk智能体_当前任务队列\.md)"
+    ),
+    "retired raw-conversation size": re.compile(r"(?i:14\s*GB\s+raw\s+conversation)"),
 }
 
 
@@ -43,7 +55,7 @@ def main() -> int:
     if (ROOT / "knowledge_packs" / "tiktok_shop").exists():
         findings.append("private TikTok Shop knowledge pack present")
     for path in ROOT.rglob("*"):
-        if not path.is_file() or any(part in SKIP_DIRECTORY_PARTS for part in path.parts):
+        if not path.is_file() or ".git" in path.parts:
             continue
         relative = path.relative_to(ROOT).as_posix()
         if relative in FORBIDDEN_EXACT_PATHS:

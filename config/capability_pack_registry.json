@@ -1,0 +1,2104 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-21",
+  "registry_kind": "installable_pack_catalog",
+  "taxonomy_ref": "config/operating_job_taxonomy.json",
+  "adapter_registry_ref": "config/platform_adapter_registry.json",
+  "evidence_registry_ref": "config/platform_store_type_evidence_registry.json",
+  "expert_learning_policy_ref": "config/expert_learning_source_policy.json",
+  "layer_note": "layers 仅表示能力包在安装界面的组合类型，不是岗位分类层级；岗位分类以 taxonomy_ref 为准。",
+  "principles": [
+    "能力按任务安装，不给所有用户加载全部岗位。",
+    "店铺执行范围必须包含 platform + country/site + commerce mode + ownership + store_binding_id。",
+    "安装能力包只配置本地任务能力，不代表第三方 API、账号或浏览器会话已经授权。",
+    "一个浏览器环境/IP/窗口可以容纳多平台多店铺，但每次动作必须先选择唯一项目、平台、国家站点、模式、store_binding_id 与店铺级 execution_identity_id；凭据、数据、任务、审计证据和执行队列不得串店。",
+    "official_full_managed 只保留为识别标签，TeeLab 不以平台官方全托管身份接入。"
+  ],
+  "scale_model": {
+    "hierarchy": [
+      "workspace",
+      "project_group",
+      "store_task",
+      "execution_identity"
+    ],
+    "assignment": [
+      "role_permissions",
+      "project_scope",
+      "task_store_scope",
+      "browser_environment_scope",
+      "extension_automation_scope"
+    ],
+    "batch_operations": [
+      "商品采集与刊登",
+      "SKU与图片批量处理",
+      "价格模板",
+      "订单批处理",
+      "运单与面单",
+      "库存联动",
+      "采购与仓储",
+      "物流",
+      "财务",
+      "客服"
+    ],
+    "isolation": "浏览器环境/IP/窗口可以按负责人配置跨店复用；账号授权、执行身份、店铺状态、写锁、任务队列和审计证据必须按店铺隔离。共享环境不等于共享登录授权。"
+  },
+  "route_taxonomy": {
+    "required_dimensions": [
+      "tenant_id",
+      "project_id",
+      "platform",
+      "country_site",
+      "commerce_mode",
+      "ownership",
+      "store_binding_id",
+      "execution_identity_id"
+    ],
+    "platform_categories": [
+      {
+        "id": "owned_platform",
+        "name": "自有平台"
+      },
+      {
+        "id": "marketplace",
+        "name": "全球 / 区域 Marketplace"
+      },
+      {
+        "id": "independent_store",
+        "name": "独立站 / SaaS 店铺"
+      },
+      {
+        "id": "content_catalog",
+        "name": "社媒 / 广告商品目录"
+      },
+      {
+        "id": "partner_marketplace",
+        "name": "邀请制 / 合作型平台"
+      },
+      {
+        "id": "china_marketplace",
+        "name": "中国本土电商"
+      },
+      {
+        "id": "china_social_commerce",
+        "name": "??????"
+      },
+      {
+        "id": "china_social_media",
+        "name": "??????"
+      },
+      {
+        "id": "china_private_domain",
+        "name": "???? / ??"
+      },
+      {
+        "id": "china_sourcing_supply",
+        "name": "???? / ???"
+      }
+    ],
+    "commerce_modes": [
+      {
+        "id": "owned_platform",
+        "name": "自有平台",
+        "selectable": true
+      },
+      {
+        "id": "marketplace_seller",
+        "name": "平台卖家店",
+        "selectable": true
+      },
+      {
+        "id": "platform_self_operated",
+        "name": "平台自运营",
+        "selectable": true
+      },
+      {
+        "id": "local",
+        "name": "本土店",
+        "selectable": true
+      },
+      {
+        "id": "cross_border",
+        "name": "跨境店",
+        "selectable": true
+      },
+      {
+        "id": "semi_managed",
+        "name": "半托管",
+        "selectable": true
+      },
+      {
+        "id": "independent_site",
+        "name": "独立站",
+        "selectable": true
+      },
+      {
+        "id": "content_catalog",
+        "name": "内容 / 商品目录",
+        "selectable": true
+      },
+      {
+        "id": "invite_partner",
+        "name": "邀请制 / 合作伙伴店",
+        "selectable": true
+      },
+      {
+        "id": "official_full_managed",
+        "name": "平台官方全托管（不接）",
+        "selectable": false
+      },
+      {
+        "id": "domestic_store",
+        "name": "?????",
+        "selectable": true
+      },
+      {
+        "id": "content_commerce",
+        "name": "????",
+        "selectable": true
+      },
+      {
+        "id": "content_account",
+        "name": "????",
+        "selectable": true
+      },
+      {
+        "id": "private_domain",
+        "name": "?? / ??",
+        "selectable": true
+      },
+      {
+        "id": "sourcing_marketplace",
+        "name": "?? / ????",
+        "selectable": true
+      }
+    ],
+    "ownerships": [
+      {
+        "id": "self_owned",
+        "name": "用户 / 设计师自有"
+      },
+      {
+        "id": "teelab_owned",
+        "name": "TeeLab 自营"
+      },
+      {
+        "id": "platform_co_ops",
+        "name": "TeeLab 代运营 / 联名运营"
+      },
+      {
+        "id": "partner_owned",
+        "name": "合作方所有"
+      },
+      {
+        "id": "b2b_client_owned",
+        "name": "B2B 客户所有"
+      }
+    ],
+    "auxiliary_dimensions": {
+      "seller_plan": "账号销售计划或会员层级，例如 Amazon Individual / Professional；不能冒充店铺模式。",
+      "seller_entity_type": "企业、个人、ACCU、受益人所在地等准入身份；不能冒充经营模式。",
+      "account_program": "SIP、全球店、六合一、轻出海、CSP等账号或范围计划；不能冒充国家站点。",
+      "category_scope": "服装、家居、定制、全类目以及L3/L7属于类目范围或权限；不能冒充经营模式。",
+      "fulfillment_mode": "FBM、FBA、WFS、平台物流、自仓、第三方仓等履约方式；与店铺模式分开。",
+      "operating_program": "联盟、达人、直播、广告、平台活动等运营项目；与真实店铺授权分开。",
+      "authorization_identity": "API 应用、广告账号、浏览器环境或员工子账号；每个真实店铺独立绑定。"
+    },
+    "execution_domains": [
+      "listing",
+      "orders",
+      "inventory",
+      "shipment",
+      "settlement",
+      "aftersales",
+      "activities",
+      "ads"
+    ],
+    "route_statuses": [
+      "needs_platform_store",
+      "needs_authorization",
+      "read_only",
+      "draft_ready",
+      "approval_required",
+      "executable",
+      "unsupported"
+    ]
+  },
+  "layers": [
+    {
+      "id": "solution",
+      "name": "场景方案",
+      "description": "面向具体业务规模的一键组合"
+    },
+    {
+      "id": "role",
+      "name": "岗位能力",
+      "description": "电商、外贸、新媒体三条业务主线"
+    },
+    {
+      "id": "platform",
+      "name": "平台能力",
+      "description": "按平台、国家站点和经营模式加载"
+    },
+    {
+      "id": "shared",
+      "name": "公共能力",
+      "description": "库存、履约、客服、财务、内容、合规和数据"
+    }
+  ],
+  "packs": [
+    {
+      "id": "solution-multi-platform-store-operations",
+      "layer": "solution",
+      "family": "commerce",
+      "name": "多平台多店规模运营",
+      "description": "适合 Amazon、TikTok Shop、SHEIN、Shopee、Lazada、独立站等任意组合；先装通用闭环，再按实际店铺安装平台适配器。",
+      "dependencies": [
+        "role-commerce-shelf",
+        "shared-product-catalog",
+        "shared-inventory-procurement",
+        "shared-order-fulfillment",
+        "shared-customer-service",
+        "shared-finance-profit",
+        "shared-ads-promotions",
+        "shared-analytics-monitoring",
+        "shared-connector-automation",
+        "shared-security-approval"
+      ],
+      "toolkit": {
+        "plugins": [
+          "批量运营工作队列"
+        ],
+        "skills": [
+          "多平台多店任务编排",
+          "批量操作与失败重试"
+        ],
+        "agents": [
+          "多店运营调度员"
+        ]
+      },
+      "required_connectors": [
+        "每家店独立的平台授权或浏览器执行身份"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "solution-shein-multi-store",
+      "layer": "solution",
+      "family": "commerce",
+      "name": "SHEIN 多店运营预设",
+      "description": "多平台多店方案的 SHEIN 预设示例；只加载 SHEIN 与所选公共能力，每店独立任务和授权。",
+      "dependencies": [
+        "role-commerce-shelf",
+        "platform-shein",
+        "shared-product-catalog",
+        "shared-inventory-procurement",
+        "shared-order-fulfillment",
+        "shared-customer-service",
+        "shared-finance-profit",
+        "shared-ads-promotions",
+        "shared-analytics-monitoring",
+        "shared-connector-automation",
+        "shared-security-approval"
+      ],
+      "toolkit": {
+        "plugins": [],
+        "skills": [
+          "多店任务编排"
+        ],
+        "agents": [
+          "SHEIN 店群调度员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 SHEIN 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "role-commerce-shelf",
+      "layer": "role",
+      "family": "commerce",
+      "name": "货架电商运营",
+      "description": "商品、Listing、定价、活动、广告、订单、库存、客服、利润与回款的闭环岗位。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "店铺后台连接"
+        ],
+        "skills": [
+          "货架电商运营",
+          "Listing 优化",
+          "竞品监控",
+          "经营复盘"
+        ],
+        "agents": [
+          "电商运营经理",
+          "Listing 优化师"
+        ]
+      },
+      "required_connectors": [
+        "目标平台店铺授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "role-commerce-content",
+      "layer": "role",
+      "family": "commerce",
+      "name": "内容电商运营",
+      "description": "商品、短视频、达人、直播、活动和广告协同，以内容成交为目标。",
+      "dependencies": [
+        "shared-creative-video",
+        "shared-live-commerce",
+        "shared-ads-promotions"
+      ],
+      "toolkit": {
+        "plugins": [
+          "内容电商后台连接"
+        ],
+        "skills": [
+          "内容电商运营",
+          "达人协作",
+          "内容到成交归因"
+        ],
+        "agents": [
+          "内容电商经理",
+          "达人运营员"
+        ]
+      },
+      "required_connectors": [
+        "目标内容电商店铺和广告账号授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "role-commerce-independent-store",
+      "layer": "role",
+      "family": "commerce",
+      "name": "独立站运营",
+      "description": "商品目录、站点体验、SEO、广告、邮件、转化、支付、订单和复购。",
+      "dependencies": [
+        "shared-product-catalog",
+        "shared-analytics-monitoring"
+      ],
+      "toolkit": {
+        "plugins": [
+          "独立站连接"
+        ],
+        "skills": [
+          "独立站运营",
+          "转化率优化",
+          "SEO 与内容增长"
+        ],
+        "agents": [
+          "独立站运营经理",
+          "转化优化师"
+        ]
+      },
+      "required_connectors": [
+        "独立站 API 或管理员授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "role-b2b-export-sales",
+      "layer": "role",
+      "family": "b2b",
+      "name": "B2B 平台经营与跨渠道主动获客",
+      "description": "B2B 平台专家归入平台经营，负责店铺、商品、RFQ、询盘、活动、广告、排名、平台费用与订单；主动获客专家跨社媒、网站、地图、展会、招投标、合法贸易数据、招聘信号与渠道伙伴找客户。两者共用同一客户时间线、CRM、报价、样品、谈判、交付、合规、回款、复购与转介绍能力。",
+      "dependencies": [
+        "shared-finance-profit",
+        "shared-security-approval"
+      ],
+      "toolkit": {
+        "plugins": [
+          "公开线索采集",
+          "CRM",
+          "邮件与通讯草稿"
+        ],
+        "skills": [
+          "b2b-platform-sales-operator",
+          "b2b-outbound-customer-development",
+          "b2b-foreign-trade-sales",
+          "客户去重与评分",
+          "报价与跟单"
+        ],
+        "agents": [
+          "B2B 平台外贸智能体",
+          "主动开发客户外贸智能体",
+          "共享客户经理",
+          "跟单员"
+        ]
+      },
+      "required_connectors": [
+        "CRM",
+        "获客来源",
+        "经授权的邮件或通讯渠道"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "role-media-operations",
+      "layer": "role",
+      "family": "media_growth",
+      "name": "新媒体账号运营",
+      "description": "账号定位、选题、脚本、拍摄、剪辑、发布、直播、互动、私信线索和电商/B2B 交接。",
+      "dependencies": [
+        "shared-creative-video",
+        "shared-live-commerce",
+        "shared-analytics-monitoring"
+      ],
+      "toolkit": {
+        "plugins": [
+          "社媒账号连接",
+          "内容素材库"
+        ],
+        "skills": [
+          "新媒体账号运营",
+          "内容日历",
+          "评论与私信分流",
+          "品牌内容增长"
+        ],
+        "agents": [
+          "新媒体运营经理",
+          "内容策划",
+          "社群与私信运营员"
+        ]
+      },
+      "required_connectors": [
+        "目标社媒官方 API 或独立浏览器会话"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-shein",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "SHEIN Marketplace",
+      "description": "按真实授权区分平台自运营与半托管；供货/OBM官方全托管只识别不接入，类目范围与经营模式分开。",
+      "adapter_id": "shein-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "shein",
+        "country_site_policy": "mode_specific_and_read_from_authorized_store",
+        "commerce_modes": [
+          "platform_self_operated",
+          "semi_managed"
+        ],
+        "store_modes": [
+          "platform_self_operated",
+          "semi_managed"
+        ],
+        "blocked_modes": [
+          "official_full_managed"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "SHEIN 店铺连接"
+        ],
+        "skills": [
+          "SHEIN Listing",
+          "SHEIN 活动规则",
+          "SHEIN 多店隔离"
+        ],
+        "agents": [
+          "SHEIN 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 SHEIN 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-amazon",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Amazon Marketplace",
+      "description": "按国家站点和真实 Seller 账户隔离 Listing、订单、FBM/FBA、广告、活动与结算。",
+      "adapter_id": "amazon-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "amazon",
+        "country_site_policy": "read_from_authorized_seller_account",
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "seller_plans": [
+          "individual",
+          "professional"
+        ],
+        "fulfillment_modes": [
+          "fbm",
+          "fba"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Amazon Seller Central",
+          "Amazon 店铺连接"
+        ],
+        "skills": [
+          "amazon-commerce-operator",
+          "Amazon Listing",
+          "Amazon 广告与活动",
+          "Amazon 订单与履约"
+        ],
+        "agents": [
+          "Amazon 运营员",
+          "Amazon 广告专员"
+        ]
+      },
+      "required_connectors": [
+        "SP-API/Ads API 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-tiktok-shop",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "TikTok Shop",
+      "description": "国家站点必须拆到 US/GB/DE/FR/IT/ES/IE/MX/BR/SG/MY/TH/VN/PH/ID，不能用 SEA 代替。",
+      "adapter_id": "tiktok-shop",
+      "dependencies": [
+        "role-commerce-content"
+      ],
+      "route_policy": {
+        "platform": "tiktok",
+        "country_sites": [
+          "US",
+          "GB",
+          "DE",
+          "FR",
+          "IT",
+          "ES",
+          "IE",
+          "MX",
+          "BR",
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID"
+        ],
+        "commerce_modes": [
+          "local",
+          "cross_border"
+        ],
+        "store_modes": [
+          "local",
+          "cross_border"
+        ],
+        "seller_entity_types": [
+          "READ_FROM_AUTHORIZED_STORE"
+        ],
+        "blocked_modes": [
+          "official_full_managed"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "TikTok Shop 店铺连接",
+          "TikTok Ads 连接"
+        ],
+        "skills": [
+          "TikTok Shop Listing",
+          "GMV Max",
+          "TikTok 活动叠加"
+        ],
+        "agents": [
+          "TikTok Shop 运营员",
+          "内容投放专员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 Shop 授权",
+        "对应站点广告账号授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-shopee",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Shopee Marketplace",
+      "description": "东南亚按 SG/MY/TH/VN/PH/ID 独立站点处理，并支持 TW/BR；不能把 Southeast Asia 当成可绑定店铺。",
+      "adapter_id": "shopee-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "shopee",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID",
+          "TW",
+          "BR"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "account_programs": [
+          "ordinary_store",
+          "global_store",
+          "sip_program",
+          "light_overseas_program"
+        ],
+        "blocked_modes": [
+          "official_full_managed"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Shopee 店铺连接"
+        ],
+        "skills": [
+          "Shopee Listing",
+          "Shopee 活动与广告",
+          "Shopee 多站点履约"
+        ],
+        "agents": [
+          "Shopee 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每店每站点独立 Shopee 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-lazada",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Lazada Marketplace",
+      "description": "按 SG/MY/TH/VN/PH/ID 国家站点拆分本土与跨境授权；六合一是多站发布计划，不是一个站点。",
+      "adapter_id": "lazada-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "lazada",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "SG",
+          "MY",
+          "TH",
+          "VN",
+          "PH",
+          "ID"
+        ],
+        "commerce_modes": [
+          "local",
+          "cross_border"
+        ],
+        "store_modes": [
+          "local",
+          "cross_border"
+        ],
+        "store_scope_programs": [
+          "six_in_one_publish"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Lazada 店铺连接"
+        ],
+        "skills": [
+          "Lazada Listing",
+          "Lazada 活动与广告",
+          "Lazada 多站点履约"
+        ],
+        "agents": [
+          "Lazada 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每店每站点独立 Lazada 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-aliexpress",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "AliExpress Marketplace",
+      "description": "公开规则和本地草稿可直接使用；真实操作前必须绑定精确市场、卖家主体、店铺与执行身份，Choice/full-managed 仅识别不接入。",
+      "adapter_id": "aliexpress-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "aliexpress",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "marketplace_seller",
+          "semi_managed",
+          "overseas_managed"
+        ],
+        "store_modes": [
+          "marketplace_seller",
+          "semi_managed",
+          "overseas_managed"
+        ],
+        "blocked_modes": [
+          "official_full_managed"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "AliExpress 店铺连接（未授权）"
+        ],
+        "skills": [
+          "AliExpress Listing",
+          "AliExpress 活动与运营"
+        ],
+        "agents": [
+          "AliExpress 运营智能体"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 AliExpress 授权；当前未连接"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-walmart",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Walmart Marketplace",
+      "description": "按 US/CA/MX 站点和真实卖家主体隔离；WFS 与卖家自发货属于履约维度，不作为店铺模式。",
+      "adapter_id": "walmart-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "walmart",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "US",
+          "CA",
+          "MX"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "fulfillment_modes": [
+          "seller_fulfilled",
+          "wfs"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Walmart Marketplace 连接"
+        ],
+        "skills": [
+          "Walmart Listing",
+          "Walmart 履约与广告"
+        ],
+        "agents": [
+          "Walmart 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 Walmart Marketplace 授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-etsy",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Etsy Marketplace",
+      "description": "按真实店铺实例和归属管理；自有或TeeLab代运营属于ownership，不是Etsy店铺模式。",
+      "adapter_id": "etsy-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "etsy",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Etsy 店铺连接"
+        ],
+        "skills": [
+          "etsy-commerce-operator",
+          "pod-listing-operator",
+          "pod-market-research-memory",
+          "pod-feedback-quality-loop"
+        ],
+        "agents": [
+          "Etsy Listing/SEO 运营员",
+          "Etsy 订单履约运营员",
+          "Etsy 利润与广告复盘员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 Etsy 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-ebay",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "eBay Marketplace",
+      "description": "默认 GLOBAL，并可按实际市场继续拆站点；店铺、跨境销售和履约身份分别记录。",
+      "adapter_id": "ebay-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "ebay",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "eBay 店铺连接"
+        ],
+        "skills": [
+          "eBay Listing",
+          "eBay 跨境履约",
+          "eBay 广告与活动"
+        ],
+        "agents": [
+          "eBay 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 eBay 授权或独立浏览器会话"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-shopify",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Shopify 独立站",
+      "description": "以独立站实例为执行边界；支付、市场、广告、仓库与应用授权均独立配置。",
+      "adapter_id": "shopify-independent-store",
+      "dependencies": [
+        "role-commerce-independent-store"
+      ],
+      "route_policy": {
+        "platform": "shopify",
+        "platform_category": "independent_store",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "independent_site"
+        ],
+        "store_modes": [
+          "independent_site"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Shopify Admin API"
+        ],
+        "skills": [
+          "Shopify 商品与订单",
+          "Shopify 转化优化",
+          "Shopify 应用治理"
+        ],
+        "agents": [
+          "Shopify 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每站独立 Shopify Admin 授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-woocommerce",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "WooCommerce 独立站",
+      "description": "以 WordPress/WooCommerce 站点实例为边界，主题、插件、支付、订单和服务器权限分层管理。",
+      "adapter_id": "woocommerce-independent-store",
+      "dependencies": [
+        "role-commerce-independent-store"
+      ],
+      "route_policy": {
+        "platform": "woocommerce",
+        "platform_category": "independent_store",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "independent_site"
+        ],
+        "store_modes": [
+          "independent_site"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "WooCommerce REST API"
+        ],
+        "skills": [
+          "WooCommerce 商品与订单",
+          "WooCommerce 转化优化",
+          "WordPress 插件治理"
+        ],
+        "agents": [
+          "WooCommerce 运营员"
+        ]
+      },
+      "required_connectors": [
+        "每站独立 WooCommerce API 与管理员授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-content-catalogs",
+      "layer": "platform",
+      "family": "media_growth",
+      "name": "社媒与广告商品目录",
+      "description": "Facebook Shop、Instagram Shop、Pinterest 与 Google Merchant Center 属于目录/投放入口，默认不能冒充订单店铺。",
+      "adapter_id": "content-catalogs",
+      "dependencies": [
+        "shared-product-catalog",
+        "shared-ads-promotions"
+      ],
+      "route_policy": {
+        "platform": "content_catalog",
+        "platform_category": "content_catalog",
+        "country_sites": [
+          "GLOBAL"
+        ],
+        "commerce_modes": [
+          "content_catalog"
+        ],
+        "store_modes": [
+          "content_catalog"
+        ],
+        "catalog_providers": [
+          "facebook_shop",
+          "instagram_shop",
+          "pinterest",
+          "google_merchant_center"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "商品目录连接"
+        ],
+        "skills": [
+          "商品 Feed 治理",
+          "目录诊断",
+          "广告目录同步"
+        ],
+        "agents": [
+          "商品目录运营员"
+        ]
+      },
+      "required_connectors": [
+        "每个目录与广告账户独立授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-partner-marketplaces",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "邀请制与区域合作平台",
+      "description": "每个候选平台先建立独立证据记录；不得把不同平台的本土、跨境、邀请制模式合并成一个通用下拉框。",
+      "adapter_id": "partner-marketplaces",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "partner_marketplace",
+        "platform_category": "partner_marketplace",
+        "country_sites": [
+          "CONFIGURE_PER_PLATFORM"
+        ],
+        "commerce_modes": [
+          "READ_FROM_PROVIDER_EVIDENCE"
+        ],
+        "store_modes": [
+          "READ_FROM_PROVIDER_EVIDENCE"
+        ],
+        "route_default_status": "needs_platform_store",
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "候选渠道登记"
+        ],
+        "skills": [
+          "渠道准入研究",
+          "站点与接口核验"
+        ],
+        "agents": [
+          "渠道拓展研究员"
+        ]
+      },
+      "required_connectors": [
+        "通过渠道准入并取得真实店铺授权后单独配置"
+      ],
+      "automation_ceiling": "L2"
+    },
+    {
+      "id": "shared-product-catalog",
+      "layer": "shared",
+      "family": "operations",
+      "name": "商品资料与 PIM",
+      "description": "从表格、ERP、图片和素材中整理 SKU、变体、成本、售价、库存与可核验事实。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "商品资料导入"
+        ],
+        "skills": [
+          "商品事实整理",
+          "变体与 SKU 建模"
+        ],
+        "agents": [
+          "商品资料员"
+        ]
+      },
+      "required_connectors": [],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "shared-inventory-procurement",
+      "layer": "shared",
+      "family": "operations",
+      "name": "库存、采购与备货",
+      "description": "库存台账、可售量、安全库存、补货、调拨、采购和滞销风险。",
+      "dependencies": [
+        "shared-product-catalog"
+      ],
+      "toolkit": {
+        "plugins": [
+          "ERP 库存连接"
+        ],
+        "skills": [
+          "库存管理",
+          "补货预测",
+          "采购与调拨"
+        ],
+        "agents": [
+          "库存计划员",
+          "采购员"
+        ]
+      },
+      "required_connectors": [
+        "ERP、仓库或库存表"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "shared-order-fulfillment",
+      "layer": "shared",
+      "family": "operations",
+      "name": "订单、仓储与履约",
+      "description": "拉单、审单、拣配、物流、发货、异常、退换货和交付证据。",
+      "dependencies": [
+        "shared-inventory-procurement"
+      ],
+      "toolkit": {
+        "plugins": [
+          "订单与仓库连接"
+        ],
+        "skills": [
+          "订单履约",
+          "物流与仓配",
+          "异常订单处理"
+        ],
+        "agents": [
+          "订单履约员",
+          "仓配协调员"
+        ]
+      },
+      "required_connectors": [
+        "订单源",
+        "仓库",
+        "物流服务商"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "shared-customer-service",
+      "layer": "shared",
+      "family": "operations",
+      "name": "客服、评价与售后",
+      "description": "消息分流、回复草稿、退款退货、评价、投诉、质检和问题闭环。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "客服消息连接"
+        ],
+        "skills": [
+          "多语客服",
+          "售后与评价",
+          "投诉归因"
+        ],
+        "agents": [
+          "客户服务员",
+          "售后质检员"
+        ]
+      },
+      "required_connectors": [
+        "店铺消息或工单系统"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "shared-finance-profit",
+      "layer": "shared",
+      "family": "operations",
+      "name": "财务、利润与回款",
+      "description": "成本、平台费、广告费、退款、毛利、结算、应收应付和回款核对。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "结算与财务数据连接"
+        ],
+        "skills": [
+          "利润核算",
+          "渠道结算",
+          "回款与对账"
+        ],
+        "agents": [
+          "利润分析员",
+          "财务对账员"
+        ]
+      },
+      "required_connectors": [
+        "成本、平台账单和收款数据"
+      ],
+      "automation_ceiling": "L2"
+    },
+    {
+      "id": "shared-ads-promotions",
+      "layer": "shared",
+      "family": "growth",
+      "name": "广告、活动与优惠叠加",
+      "description": "由跨渠道广告投手智能体按平台、站点、经营模式、归属和广告账户管理 Meta Ads、TikTok Ads、Google Ads、Amazon Ads、活动、优惠、叠加规则与利润底线；TikTok One 独立作为创意与达人供应层。",
+      "dependencies": [
+        "shared-finance-profit"
+      ],
+      "toolkit": {
+        "plugins": [
+          "广告账号连接"
+        ],
+        "skills": [
+          "跨渠道广告投放",
+          "转化测量与归因",
+          "活动机制",
+          "优惠叠加",
+          "预算与利润门禁",
+          "素材测试与止损复盘"
+        ],
+        "agents": [
+          "跨渠道广告投手智能体",
+          "活动运营员"
+        ]
+      },
+      "required_connectors": [
+        "对应店铺广告账号",
+        "平台活动中心"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "shared-creative-video",
+      "layer": "shared",
+      "family": "media_growth",
+      "name": "视觉、视频与剪辑",
+      "description": "图片提示词与视频分镜反推、爆款证据归一化、创意裂变、脚本、商品图、剪辑、模板、字幕、音乐许可和成片质检。",
+      "dependencies": [
+        "shared-security-approval"
+      ],
+      "toolkit": {
+        "plugins": [
+          "本地视频分析",
+          "CapCut 桌面连接",
+          "图像生成"
+        ],
+        "skills": [
+          "图片提示词反推",
+          "逐镜分镜反推",
+          "爆款证据分析",
+          "原创裂变测试",
+          "AI 视频提示词",
+          "模板剪辑",
+          "音乐许可"
+        ],
+        "agents": [
+          "视觉导演",
+          "创意策略师",
+          "视频剪辑师",
+          "版权检查员"
+        ]
+      },
+      "required_connectors": [
+        "素材库",
+        "可用的视觉模型或剪辑工具"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "shared-live-commerce",
+      "layer": "shared",
+      "family": "media_growth",
+      "name": "直播运营",
+      "description": "直播排期、货盘、脚本、场控、主播协作、优惠、实时数据和复盘。",
+      "dependencies": [
+        "shared-ads-promotions",
+        "shared-inventory-procurement"
+      ],
+      "toolkit": {
+        "plugins": [
+          "直播后台连接"
+        ],
+        "skills": [
+          "直播策划",
+          "直播货盘",
+          "场控与复盘"
+        ],
+        "agents": [
+          "直播运营员",
+          "直播场控"
+        ]
+      },
+      "required_connectors": [
+        "直播账号和直播后台"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "shared-analytics-monitoring",
+      "layer": "shared",
+      "family": "data",
+      "name": "数据分析、预测与监控",
+      "description": "按项目、任务、店铺和路由读取真实指标，监控竞品、异常、趋势、预测与复盘。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "项目数据源",
+          "监控任务队列"
+        ],
+        "skills": [
+          "经营分析",
+          "竞品监控",
+          "异常识别",
+          "预测与复盘"
+        ],
+        "agents": [
+          "数据分析员",
+          "竞品研究员"
+        ]
+      },
+      "required_connectors": [
+        "真实经营数据源"
+      ],
+      "automation_ceiling": "L5"
+    },
+    {
+      "id": "platform-ozon",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Ozon Marketplace",
+      "description": "以 RU 单店路由处理 Ozon 的本地审核、商品草稿、履约与结算分析；FBO/FBS/realFBS 是履约而非店铺模式。",
+      "adapter_id": "ozon-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "ozon",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "RU"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "fulfillment_modes": [
+          "fbo",
+          "fbs",
+          "real_fbs"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Ozon 店铺连接（待授权）"
+        ],
+        "skills": [
+          "ozon-marketplace-operator",
+          "Ozon 商品与履约审核",
+          "Ozon 结算对账"
+        ],
+        "agents": [
+          "Ozon 运营专家"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 Ozon Seller API 或隔离浏览器会话；广告、ERP 另行授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-coupang",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Coupang 酷澎",
+      "description": "按 KR 单店、账号接入变体和隔离执行身份处理 Coupang 的本地审核、POD 商品草稿、订单履约与结算分析；未验证店铺固定为 needs_platform_store。",
+      "adapter_id": "coupang-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "coupang",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "KR"
+        ],
+        "commerce_modes": [
+          "cross_border",
+          "local_store"
+        ],
+        "store_modes": [
+          "cross_border",
+          "local_store"
+        ],
+        "account_variants": [
+          "c_prefix_cross_border",
+          "a0_local",
+          "a158_taiwan"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Coupang 店铺连接（待授权）"
+        ],
+        "skills": [
+          "pod-listing-operator",
+          "Coupang 商品与履约审核",
+          "Coupang 结算对账"
+        ],
+        "agents": [
+          "Coupang 酷澎运营智能体"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 Coupang 后台/API 或隔离浏览器身份；ERP、广告和结算来源另行授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "platform-rakuten-ichiba",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "Rakuten 乐天市场",
+      "description": "按 JP 单店和隔离执行身份处理 Rakuten Ichiba 的本地审核、日文 POD 商品草稿、授权报告分析与结算预演；未验证店铺固定为 needs_platform_store。",
+      "adapter_id": "rakuten-ichiba-marketplace",
+      "dependencies": [],
+      "route_policy": {
+        "platform": "rakuten",
+        "platform_category": "marketplace",
+        "country_sites": [
+          "JP"
+        ],
+        "commerce_modes": [
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ]
+      },
+      "toolkit": {
+        "plugins": [
+          "Rakuten RMS 店铺连接（待授权）"
+        ],
+        "skills": [
+          "pod-listing-operator",
+          "rakuten-ichiba-marketplace-operator",
+          "Rakuten RMS 运营审核",
+          "Rakuten 结算对账"
+        ],
+        "agents": [
+          "Rakuten 乐天市场运营智能体"
+        ]
+      },
+      "required_connectors": [
+        "每店独立 RMS、Rakuten Web Service App ID 或隔离浏览器身份；广告、ERP 和结算来源另行授权"
+      ],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "shared-connector-automation",
+      "layer": "shared",
+      "family": "platform",
+      "name": "API、浏览器与自动化连接",
+      "description": "为每家店分配独立 API 授权或浏览器执行身份，调度任务、重试、幂等和证据回写。",
+      "dependencies": [
+        "shared-security-approval"
+      ],
+      "toolkit": {
+        "plugins": [
+          "开放 API",
+          "浏览器执行",
+          "任务队列"
+        ],
+        "skills": [
+          "连接器治理",
+          "多店隔离",
+          "幂等与重试"
+        ],
+        "agents": [
+          "连接工程师",
+          "自动化调度员"
+        ]
+      },
+      "required_connectors": [],
+      "automation_ceiling": "L4"
+    },
+    {
+      "id": "shared-security-approval",
+      "layer": "shared",
+      "family": "governance",
+      "name": "权限、合规与确认门禁",
+      "description": "子账号范围、凭据隔离、平台规则、知识产权、审批、回滚、审计证据和外部动作边界。",
+      "dependencies": [],
+      "toolkit": {
+        "plugins": [
+          "审批队列",
+          "审计证据"
+        ],
+        "skills": [
+          "权限与店铺隔离",
+          "平台合规",
+          "知识产权检查",
+          "执行回滚"
+        ],
+        "agents": [
+          "合规审核员",
+          "权限管理员"
+        ]
+      },
+      "required_connectors": [],
+      "automation_ceiling": "L5"
+    },
+    {
+      "id": "platform-douyin-ecommerce",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "抖音电商",
+      "description": "抖音电商商品、内容、直播、达人与广告的本地能力路由；没有真实授权时只提供规则与数据结构。",
+      "adapter_id": "douyin-ecommerce-adapter",
+      "dependencies": [
+        "role-commerce-content"
+      ],
+      "route_policy": {
+        "platform": "douyin_ecommerce",
+        "platform_category": "china_social_commerce",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "domestic_store",
+          "content_commerce"
+        ],
+        "store_modes": [
+          "domestic_store",
+          "content_commerce"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "抖音电商连接器（待授权）"
+        ],
+        "skills": [
+          "商品与店铺运营",
+          "短视频与直播",
+          "达人合作与结算"
+        ],
+        "agents": [
+          "抖音电商专家",
+          "内容与直播智能体"
+        ]
+      },
+      "required_connectors": [
+        "抖音开放平台或受控浏览器；按店铺和账号隔离授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-kuaishou-shop",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "快手小店",
+      "description": "快手小店商品、短视频、直播和店铺经营的本地能力路由；未授权时不声称已连接。",
+      "adapter_id": "kuaishou-shop-adapter",
+      "dependencies": [
+        "role-commerce-content"
+      ],
+      "route_policy": {
+        "platform": "kuaishou_shop",
+        "platform_category": "china_social_commerce",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "domestic_store",
+          "content_commerce"
+        ],
+        "store_modes": [
+          "domestic_store",
+          "content_commerce"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "快手小店连接器（待授权）"
+        ],
+        "skills": [
+          "商品与店铺运营",
+          "短视频与直播"
+        ],
+        "agents": [
+          "快手小店专家"
+        ]
+      },
+      "required_connectors": [
+        "快手开放平台或受控浏览器授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-taobao-tmall",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "淘宝 / 天猫",
+      "description": "淘宝与天猫店铺、商品、订单、广告和结算的本地能力路由；真实执行必须按店铺授权。",
+      "adapter_id": "taobao-tmall-adapter",
+      "dependencies": [
+        "role-commerce-shelf"
+      ],
+      "route_policy": {
+        "platform": "taobao_tmall",
+        "platform_category": "china_marketplace",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "淘宝 / 天猫连接器（待授权）"
+        ],
+        "skills": [
+          "商品与店铺运营",
+          "广告与活动分析"
+        ],
+        "agents": [
+          "淘宝天猫专家"
+        ]
+      },
+      "required_connectors": [
+        "淘宝开放平台或受控浏览器授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-jd",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "京东",
+      "description": "京东店铺、商品、订单、广告、履约与结算的本地能力路由；未授权时仅保留知识包。",
+      "adapter_id": "jd-adapter",
+      "dependencies": [
+        "role-commerce-shelf"
+      ],
+      "route_policy": {
+        "platform": "jd",
+        "platform_category": "china_marketplace",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "京东连接器（待授权）"
+        ],
+        "skills": [
+          "商品运营",
+          "履约与结算"
+        ],
+        "agents": [
+          "京东专家"
+        ]
+      },
+      "required_connectors": [
+        "京东开放平台或受控浏览器授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-pinduoduo",
+      "layer": "platform",
+      "family": "commerce",
+      "name": "拼多多",
+      "description": "拼多多商品、订单、活动、广告和售后的本地能力路由；没有授权或账单时保持未知。",
+      "adapter_id": "pinduoduo-adapter",
+      "dependencies": [
+        "role-commerce-shelf"
+      ],
+      "route_policy": {
+        "platform": "pinduoduo",
+        "platform_category": "china_marketplace",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "store_modes": [
+          "domestic_store",
+          "marketplace_seller"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "拼多多连接器（待授权）"
+        ],
+        "skills": [
+          "商品与活动运营",
+          "订单与售后分析"
+        ],
+        "agents": [
+          "拼多多专家"
+        ]
+      },
+      "required_connectors": [
+        "拼多多开放平台或受控浏览器授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-xiaohongshu",
+      "layer": "platform",
+      "family": "media_growth",
+      "name": "小红书",
+      "description": "小红书账号、笔记、视频、直播与店铺的内容经营能力路由；授权关系未验证时不做成交归因。",
+      "adapter_id": "xiaohongshu-adapter",
+      "dependencies": [
+        "role-media-operations"
+      ],
+      "route_policy": {
+        "platform": "xiaohongshu",
+        "platform_category": "china_social_media",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "content_account",
+          "content_commerce"
+        ],
+        "store_modes": [
+          "content_account",
+          "content_commerce"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "小红书连接器（待授权）"
+        ],
+        "skills": [
+          "内容策划与分析",
+          "达人合作与复盘"
+        ],
+        "agents": [
+          "小红书内容智能体"
+        ]
+      },
+      "required_connectors": [
+        "开放平台、API 或受控浏览器；账号与店铺分开授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-wechat-channels",
+      "layer": "platform",
+      "family": "media_growth",
+      "name": "视频号 / 微信小店",
+      "description": "视频号、微信小店、私域会话和客户服务的本地能力路由；账号、小店和客服身份分开授权。",
+      "adapter_id": "wechat-channels-adapter",
+      "dependencies": [
+        "role-media-operations",
+        "shared-customer-service"
+      ],
+      "route_policy": {
+        "platform": "wechat_channels",
+        "platform_category": "china_private_domain",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "content_account",
+          "mini_shop",
+          "private_domain"
+        ],
+        "store_modes": [
+          "content_account",
+          "mini_shop",
+          "private_domain"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "视频号 / 微信小店连接器（待授权）"
+        ],
+        "skills": [
+          "内容与直播运营",
+          "私域客户管理",
+          "订单与客服协作"
+        ],
+        "agents": [
+          "视频号智能体",
+          "微信小店专家"
+        ]
+      },
+      "required_connectors": [
+        "视频号、微信小店或客服系统的独立授权"
+      ],
+      "automation_ceiling": "L3"
+    },
+    {
+      "id": "platform-1688-sourcing",
+      "layer": "platform",
+      "family": "operations",
+      "name": "1688 采购",
+      "description": "1688 供应商、货源、询报价、样品、采购和质检的本地能力路由；不得自动采购或搬运未授权素材。",
+      "adapter_id": "1688-sourcing-adapter",
+      "dependencies": [
+        "shared-inventory-procurement",
+        "shared-product-catalog"
+      ],
+      "route_policy": {
+        "platform": "1688",
+        "platform_category": "china_sourcing_supply",
+        "country_sites": [
+          "CN"
+        ],
+        "commerce_modes": [
+          "sourcing_marketplace"
+        ],
+        "store_modes": [
+          "sourcing_marketplace"
+        ],
+        "required_dimensions": [
+          "tenant_id",
+          "project_id",
+          "platform",
+          "country_site",
+          "commerce_mode",
+          "ownership",
+          "store_binding_id",
+          "execution_identity_id"
+        ],
+        "route_default_status": "needs_authorization"
+      },
+      "toolkit": {
+        "plugins": [
+          "1688 采购连接器（待授权）"
+        ],
+        "skills": [
+          "1688 货源研究",
+          "供应商与采购管理",
+          "质检与风险复核"
+        ],
+        "agents": [
+          "采购智能体",
+          "供应链智能体"
+        ]
+      },
+      "required_connectors": [
+        "1688 授权账号或受控浏览器；采购动作必须负责人确认"
+      ],
+      "automation_ceiling": "L3"
+    }
+  ]
+}

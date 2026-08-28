@@ -141,7 +141,7 @@ For finance reads, bind the request to exactly one country endpoint, store bindi
 
 Reconcile four independent states: Lazada transaction detail, Lazada payout status, external bank receipt and ERP/operator reconciliation. A `paid_status`, `payment_ref_id` or third-party manually marked `Collected` field cannot prove the other states. Preserve currency, sign, statement period, fee/tax fields and missing-data flags exactly. If connector components do not sum to settlement, keep the mismatch `unknown`, identify connector coverage and request evidence; do not invent fees, force balancing entries or treat one ERP help article as Lazada policy. Tax fields are source data, not tax advice or proof of completeness.
 
-Use the existing T One `LLMClient + config/multi_ai.json` gateway. Route reasoning, copy, image, video, ads and data tasks through the configured model slots; do not create another agent runtime.
+Use the existing T One `LLMClient + private_model_provider_registry_excluded` gateway. Route reasoning, copy, image, video, ads and data tasks through the configured model slots; do not create another agent runtime.
 
 ## Return an auditable result
 

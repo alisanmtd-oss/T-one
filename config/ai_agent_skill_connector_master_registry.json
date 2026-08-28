@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-17T19:00:00+08:00",
+  "purpose": "Canonical index for AI-connectable agents, Skills, MCP servers, APIs, CLIs, native AI surfaces and governed reference tools used or considered by T-one.",
+  "truth_rules": [
+    "A listed capability is not a verified live connection unless current_status is verified_connected.",
+    "Internal Skills without external authorization may research, audit and draft only.",
+    "Every executable authorization is isolated by tenant, project, platform, country_site, store_binding and commerce_mode.",
+    "Official store and ERP data outrank third-party observed data; estimates never replace orders, settlement, inventory or profit truth.",
+    "Unknown Skills, repositories and collectors are blocked from automatic installation or credential access.",
+    "External writes, spending, messages, payments, refunds, shipping and publishing require owner approval."
+  ],
+  "status_vocabulary": {
+    "verified_connected": "A real connection and bounded readback have been verified.",
+    "internal_ready": "Local Skill or workflow is present; external authorization may still be absent.",
+    "readonly_candidate": "Eligible for a scoped read-only pilot after contract and credential review.",
+    "api_adapter_candidate": "Official or vendor API exists and requires a governed T-one adapter.",
+    "directory_only": "Discovery/catalog layer only; each child Skill requires separate review.",
+    "manual_or_export": "Usable through a web UI, extension or export but not verified as an external agent interface.",
+    "reference_only": "Use design or taxonomy ideas only; do not connect runtime or credentials.",
+    "watch": "Monitor; no current implementation commitment.",
+    "blocked": "Not allowed until the stated legal, security, license or ownership blocker is resolved.",
+    "paused_by_owner": "Do not research live, request credentials or call the service until explicitly resumed.",
+    "not_configured": "Connector contract exists locally but no real account is connected."
+  },
+  "project_inventory": {
+    "local_skill_md_count": 21,
+    "platform_and_business_expert_count": 14,
+    "commerce_capability_registry_count": 24,
+    "platform_adapter_count": 16,
+    "communication_connector_count": 14,
+    "ai_provider_count": 15,
+    "github_candidate_count": 80,
+    "external_skill_repository_snapshot_count": 6,
+    "external_skill_md_inventory_count": 534,
+    "business_capability_bundle_count": 13,
+    "social_content_claim_audit_count": 3,
+    "skill_asset_classification_ref": "config/cross_border_skill_asset_registry.json#skill_asset_classification",
+    "verified_external_store_or_erp_connections": 0,
+    "t_one_local_mcp": {
+      "current_status": "verified_connected",
+      "client": "Codex CLI",
+      "tool_count": 3,
+      "tools": [
+        "tone.read_project_context",
+        "tone.submit_owner_review_draft",
+        "tone.read_draft_status"
+      ],
+      "external_execution_allowed": false
+    }
+  },
+  "user_highlighted_sources": [
+    {
+      "name": "LinkFox Skills",
+      "connection_types": ["cli_skill", "skill_catalog", "vendor_api_gateway", "store_oauth", "direct_vendor_api"],
+      "domains": ["market_research", "amazon", "tiktok", "shopee", "temu", "ozon", "ebay", "walmart", "etsy", "shopify", "1688", "lingxing", "patent_compliance", "image", "video", "marketing"],
+      "current_status": "directory_only",
+      "next_gate": "Use only linkfox-ai/linkfox-skills as canonical upstream. Current tree has 190 Skills although README says 118. Per-Skill archive, commit, hash, license, provider data rights, network, cost, credential and action review is required. Bulk install, automatic feedback, phone/SMS registration, API-key generation, subscription/payment, plaintext token storage and store writes remain blocked; w9uk5ie8v/LinkFoxSkills is an unlicensed rejected snapshot."
+    },
+    {
+      "name": "SellerSprite",
+      "connection_types": ["native_mcp", "official_api", "cli"],
+      "domains": ["amazon_market_intelligence"],
+      "current_status": "paused_by_owner",
+      "next_gate": "Use commercial API for enterprise integration; personal MCP is not an enterprise shared-service license."
+    },
+    {
+      "name": "Kalodata / Kalopilot",
+      "connection_types": ["skill", "web_ui", "enterprise_data_candidate"],
+      "domains": ["tiktok_shop_market_intelligence"],
+      "current_status": "blocked",
+      "next_gate": "Rotate exposed token; verify production endpoint, per-project isolation and commercial embedding rights."
+    },
+    {
+      "name": "Ziniao",
+      "connection_types": ["cli", "official_api", "skill_hub", "local_bridge"],
+      "domains": ["browser_identity", "store_environment", "page_execution"],
+      "current_status": "readonly_candidate",
+      "next_gate": "Dedicated member, app, terminal and store binding with read-only allowlist."
+    },
+    {
+      "name": "Miaoshou ERP",
+      "connection_types": ["official_api", "downloadable_skill", "erp_ui"],
+      "domains": ["store", "collection_box", "listing", "orders", "inventory", "fulfillment"],
+      "current_status": "api_adapter_candidate",
+      "next_gate": "Audit selected Skill and app scopes; never give plaintext AppSecret to an agent."
+    },
+    {
+      "name": "Lingxing ERP",
+      "connection_types": ["native_mcp", "official_api"],
+      "domains": ["erp", "profit", "inventory", "listing", "keyword", "ads", "reports"],
+      "current_status": "readonly_candidate",
+      "next_gate": "Dedicated read-only role and store/site readback; Amazon scopes remain paused."
+    },
+    {
+      "name": "Skywork Skill Hub",
+      "connection_types": ["hosted_skill_catalog", "system_prompt_catalog", "third_party_skill_aggregation"],
+      "domains": ["general_agent_workflows", "ecommerce", "marketing", "research", "productivity"],
+      "current_status": "directory_only",
+      "next_gate": "Resolve every candidate to its canonical upstream repository or vendor, then review license, version, dependencies, telemetry, network, credentials and external actions. Do not bulk-copy Skywork content into a commercial product."
+    },
+    {
+      "name": "BrowserAct SkillHub",
+      "connection_types": ["skill_catalog", "github_skill_repo", "binary_cli", "cloud_api"],
+      "domains": ["browser_automation", "public_web_data", "ecommerce_research", "social_listening", "lead_generation"],
+      "current_status": "directory_only",
+      "next_gate": "GitHub Skill content is MIT and reference-only. BrowserAct CLI, Skill Forge, cloud API, stealth, proxy, CAPTCHA, profile import, logged-in sessions and internal-endpoint exploration remain blocked pending source, license, security, target-site terms and data-processing review."
+    },
+    {
+      "name": "IvyeaOps",
+      "connection_types": ["self_hosted_web_workspace", "agent_runtime", "amazon_skills", "sellersprite_mcp_client", "lingxing_openapi_client"],
+      "domains": ["amazon_operations", "market_research", "listing", "ads_analysis", "knowledge_base", "erp"],
+      "current_status": "reference_only",
+      "next_gate": "Do not install or connect credentials. AGPL runtime integration, self-update, default admin credential, SellerSprite key transport, Lingxing/store authorization and composite tenant/project/store/site/mode isolation must be resolved first; Amazon remains paused by owner."
+    },
+    {
+      "name": "Letta / Letta Code",
+      "connection_types": ["agent_runtime", "memory_system", "skill_host", "mcp_client", "local_backend", "cloud_api"],
+      "domains": ["persistent_memory", "multi_agent", "skill_scoping", "tool_execution", "communications", "developer_agents"],
+      "current_status": "reference_only",
+      "next_gate": "The linked letta repo is legacy. Do not install Letta Code or connect Cloud, model keys, MCP, channels or real data. Any pilot must force deny-by-default permissions, disable telemetry, provide an actual Windows sandbox, disable self-modification and external Skill installation, and add T-one composite execution identity isolation."
+    },
+    {
+      "name": "Super Sales Agent",
+      "connection_types": ["skill_collection", "self_hosted_sales_workspace", "email_adapter", "crm_adapter", "approval_runtime"],
+      "domains": ["b2b_sales", "customer_timeline", "email", "okki_crm", "quotation", "orders", "logistics", "payments"],
+      "current_status": "reference_only",
+      "next_gate": "Reuse only the admitted sales workflow patterns. Do not install the runtime or Skills, import bundled business artifacts, read mail, write CRM, send quotations/messages, or enable auto-evolution. Replace in-memory events and simulated recovery success before any isolated synthetic pilot."
+    }
+  ],
+  "capability_groups": [
+    {
+      "id": "ai_models",
+      "label": "AI 模型与多模态",
+      "tools": ["OpenAI", "Anthropic", "Google Gemini", "DeepSeek", "Zhipu", "Qwen DashScope", "SiliconFlow", "OpenRouter", "xAI", "Mistral", "Groq", "Ollama", "LM Studio", "Custom OpenAI", "Custom Anthropic"],
+      "connection_types": ["api", "local_runtime"],
+      "canonical_source": "config/ai_provider_catalog.json",
+      "current_status": "not_configured"
+    },
+    {
+      "id": "agent_runtime",
+      "label": "智能体运行时与协作",
+      "tools": ["T-one control plane", "DeepSeek Harness 0.1.0-rc.6", "Hermes Agent v0.18.2", "Codex CLI", "Kun fixed MIT pilot.2", "Letta Code (reference-only; runtime blocked)", "OpenAI Agents SDK", "PydanticAI", "LangGraph", "Temporal", "Trigger.dev", "Activepieces", "Flowgram.ai", "Google UCP"],
+      "connection_types": ["local_runtime", "mcp_client", "framework", "protocol"],
+      "canonical_source": "config/github_capability_registry.json",
+      "current_status": "mixed_governed"
+    },
+    {
+      "id": "skill_discovery",
+      "label": "Skill 市场与发现",
+      "tools": ["LinkFox Skills", "Skywork Skill Hub", "BrowserAct SkillHub", "Ziniao Skill Hub", "Miaoshou Skill Plaza", "OpenClaw/ClawHub", "MCP Registry", "nexscope Amazon Skills", "nexscope eCommerce Skills"],
+      "connection_types": ["skill_catalog", "cli_skill", "registry"],
+      "canonical_source": "outputs/skywork_skillhub_reuse_audit_2026-07-20.md",
+      "current_status": "directory_only"
+    },
+    {
+      "id": "generic_market_rank",
+      "label": "跨平台公共搜索与排名",
+      "tools": ["SearchAPI MCP", "SerpApi MCP", "DataForSEO API", "Bright Data eCommerce MCP"],
+      "connection_types": ["native_mcp", "api"],
+      "canonical_source": "outputs/global_marketplace_data_ai_coverage_matrix_2026-07-20.md",
+      "current_status": "mixed_governed",
+      "notes": "SearchAPI or SerpApi may enter a read-only comparison. Bright Data remains blocked pending legal review."
+    },
+    {
+      "id": "marketplace_intelligence",
+      "label": "平台专项市场情报",
+      "tools": ["FastMoss", "EchoTik", "Kalodata", "SellerSprite", "Jungle Scout", "DataHawk", "Keepa", "Helium 10", "Shopdora", "eRank", "Nubimetrics", "Nint", "ItemScout", "MPSTATS", "ECDB", "Intelligence Node", "DataWeave"],
+      "connection_types": ["native_mcp", "api", "web_ui", "extension", "export"],
+      "canonical_source": "outputs/cross_border_market_data_ai_connector_scan_2026-07-20.md",
+      "current_status": "mixed_governed"
+    },
+    {
+      "id": "independent_store_intelligence",
+      "label": "独立站情报与 SEO",
+      "tools": ["Store Leads MCP", "Particl MCP", "Similarweb MCP", "Semrush MCP", "Ahrefs API/MCP", "Google Trends"],
+      "connection_types": ["native_mcp", "api", "internal_module"],
+      "canonical_source": "outputs/cross_border_market_data_ai_connector_scan_2026-07-20.md",
+      "current_status": "readonly_candidate"
+    },
+    {
+      "id": "store_operations",
+      "label": "平台自店 API",
+      "tools": ["TikTok Shop Seller API", "Amazon SP-API", "Amazon Ads API/MCP", "Walmart Marketplace API", "Walmart Connect API", "eBay Sell APIs", "Etsy Open API v3", "Shopify Admin GraphQL API", "Shopify Storefront MCP", "WooCommerce REST/Abilities/MCP", "Google Merchant API MCP", "Google Ads API", "Meta Marketing API"],
+      "connection_types": ["official_api", "native_mcp", "webhook"],
+      "canonical_source": "outputs/external_ai_connector_market_landscape_supplement_2026-07-20.md",
+      "current_status": "not_configured"
+    },
+    {
+      "id": "erp_wms",
+      "label": "ERP/WMS/刊登/履约",
+      "tools": ["Lingxing", "Miaoshou", "Mabang", "Tongtool", "ECCang", "BigSeller", "Wangdiantong/Huice", "Dianxiaomi"],
+      "connection_types": ["native_mcp", "official_api", "private_api", "erp_ui", "export"],
+      "canonical_source": "outputs/commerce_aggregator_connector_matrix_2026-07-17.md",
+      "current_status": "not_configured"
+    },
+    {
+      "id": "finance_profit_settlement",
+      "label": "财务、利润、结算与现金流",
+      "tools": ["Lingxing profit/report MCP or API", "Miaoshou and approved ERP APIs", "official marketplace order/settlement/payout/fee APIs", "payment reconciliation exports", "Spreadsheets", "Documents", "PDF"],
+      "connection_types": ["native_mcp", "official_api", "erp_export", "payment_export", "internal_skill"],
+      "canonical_source": "config/cross_border_skill_asset_registry.json",
+      "local_registry": "config/platform_fee_settlement_registry.json",
+      "local_runtime": [
+        "ai_ecommerce_director/platform_settlement_finance.py#save_pre_operation_estimate",
+        "ai_ecommerce_director/platform_settlement_finance.py#import_platform_settlement_statement",
+        "ai_ecommerce_director/platform_settlement_finance.py#reconcile_estimate_with_statement",
+        "ai_ecommerce_director/platform_settlement_finance.py#build_inventory_cash_plan"
+      ],
+      "current_status": "not_configured",
+      "notes": "Third-party profit, sales and GMV estimates are planning inputs only. Accounting truth requires first-party settlement, fees, refunds, advertising bills, approved costs and reconciliation."
+    },
+    {
+      "id": "inventory_procurement_supply_chain",
+      "label": "库存、采购、仓储与补货",
+      "tools": ["Miaoshou", "Lingxing", "Mabang", "Tongtool", "ECCang", "BigSeller", "Wangdiantong/Huice", "Dianxiaomi", "official inventory and fulfillment APIs", "pod-listing-operator"],
+      "connection_types": ["native_mcp", "official_api", "erp_wms_api", "export", "internal_skill"],
+      "canonical_source": "config/cross_border_skill_asset_registry.json",
+      "local_runtime": [
+        "ai_ecommerce_director/platform_settlement_finance.py#build_inventory_cash_plan"
+      ],
+      "current_status": "not_configured",
+      "notes": "Inventory truth comes from approved ERP/WMS/platform sources. Procurement, stock adjustment, transfer and shipment remain owner-approved write actions."
+    },
+    {
+      "id": "advertising",
+      "label": "广告与增长",
+      "tools": ["TikTok for Business MCP", "Google Ads API", "Google Merchant MCP", "Meta Marketing API", "Amazon Ads MCP", "Walmart Connect API", "Perpetua", "Pacvue", "Teikametrics"],
+      "connection_types": ["native_mcp", "official_api", "enterprise_api"],
+      "canonical_source": "outputs/cross_channel_advertising_agent_2026-07-18.md",
+      "current_status": "not_configured"
+    },
+    {
+      "id": "creative_content",
+      "label": "图片、视频、数字人与内容复盘",
+      "tools": ["LinkFoxAI", "HeyGen", "Seedance 2.0", "commerce-video-director", "FFmpeg", "PySceneDetect", "whisper.cpp", "OpenTimelineIO", "Remotion", "librosa", "CapCut", "OpenCut", "cheat-on-content methodology"],
+      "connection_types": ["api", "internal_skill", "local_cli", "reference_only"],
+      "canonical_source": "outputs/github_useful_projects_scan_2026-07-17_video.md",
+      "current_status": "mixed_governed"
+    },
+    {
+      "id": "b2b_crm_communications",
+      "label": "B2B、CRM、客服与通信",
+      "tools": ["b2b-platform-sales-operator", "b2b-outbound-customer-development", "b2b-foreign-trade-sales", "Super Sales Agent methodology", "Twenty CRM", "Chatwoot", "Feishu", "WeCom", "WeChat Official Account", "Telegram", "WhatsApp Business", "Gmail", "Outlook", "IMAP", "Meta Social", "YouTube", "Pinterest", "X", "LinkedIn"],
+      "connection_types": ["internal_skill", "api", "plugin", "webhook"],
+      "canonical_source": "config/communications_connector_control.json",
+      "current_status": "not_configured"
+    },
+    {
+      "id": "browser_desktop",
+      "label": "浏览器、桌面与 RPA",
+      "tools": ["Ziniao", "BitBrowser", "AdsPower MCP", "Playwright", "Chrome DevTools MCP", "UI-TARS Desktop", "Steel Browser", "Stagehand", "browser-use", "BrowserAct (reference-only; runtime blocked)"],
+      "connection_types": ["native_mcp", "local_api", "cli", "computer_use"],
+      "canonical_source": "config/github_capability_registry.json",
+      "current_status": "mixed_governed"
+    },
+    {
+      "id": "knowledge_eval_security",
+      "label": "记忆、知识、评测、可观测性和安全",
+      "tools": ["Graphiti", "Mem0", "Promptfoo", "Opik", "Langfuse", "MarkItDown", "Docling", "DuckDB", "dlt", "Microsoft Presidio", "OSV-Scanner", "SafeDep vet", "Betterleaks", "Gitleaks", "ToolHive", "Archestra", "Scrapling", "Crawl4AI", "Firecrawl", "Crawlee"],
+      "connection_types": ["library", "local_cli", "service", "reference_only"],
+      "canonical_source": "config/github_capability_registry.json",
+      "current_status": "mixed_governed"
+    },
+    {
+      "id": "commerce_reference_frameworks",
+      "label": "商城、ERP 和业务域开源参考",
+      "tools": ["Saleor", "Medusa", "Vendure", "ERPNext", "Odoo", "Bagisto", "Spree", "Shopware"],
+      "connection_types": ["reference_framework"],
+      "canonical_source": "config/github_capability_registry.json",
+      "current_status": "reference_only"
+    }
+  ],
+  "local_skills": [
+    "skills/t-one-operating-brain/SKILL.md",
+    "skills/amazon-commerce-operator/SKILL.md",
+    "skills/platform-experts/tiktok_shop/SKILL.md",
+    "skills/platform-experts/shein/SKILL.md",
+    "skills/platform-experts/shopee/SKILL.md",
+    "skills/platform-experts/lazada/SKILL.md",
+    "skills/platform-experts/aliexpress/SKILL.md",
+    "skills/platform-experts/walmart/SKILL.md",
+    "skills/platform-experts/ebay/SKILL.md",
+    "skills/platform-experts/rakuten/SKILL.md",
+    "skills/etsy-commerce-operator/SKILL.md",
+    "skills/platform-experts/etsy/SKILL.md",
+    "skills/platform-experts/independent_commerce/independent-commerce-operator/SKILL.md",
+    "skills/platform-experts/google-ads-channel/SKILL.md",
+    "skills/platform-experts/tiktok-ads-channel/SKILL.md",
+    "skills/platform-experts/meta-channel/SKILL.md",
+    "skills/platform-experts/global-local-channel/SKILL.md",
+    "skills/b2b-platform-sales-operator/SKILL.md",
+    "skills/b2b-outbound-customer-development/SKILL.md",
+    "skills/b2b-foreign-trade-sales/SKILL.md",
+    "skills/platform-experts/b2b_export/b2b-export-expert/SKILL.md",
+    "skills/commerce-video-director/SKILL.md"
+  ],
+  "recommended_connection_order": [
+    "SearchAPI_or_SerpApi_readonly_comparison",
+    "FastMoss_MCP_plus_EchoTik_API_validation",
+    "Store_Leads_plus_Particl_readonly",
+    "one_existing_non_amazon_ERP_shop_list_readback",
+    "one_non_amazon_ad_account_report_readonly",
+    "one_enterprise_email_or_Feishu_readonly"
+  ],
+  "paused_or_blocked": [
+    "All Amazon research, credential requests and calls remain paused by owner.",
+    "Kalodata token shown in a screenshot must be revoked and rotated.",
+    "Bright Data and similar collectors require written legal and platform-terms approval.",
+    "Unknown Skills and repositories cannot be automatically installed.",
+    "Personal WeChat automation is unsupported.",
+    "No external send, publish, price change, spend, payment, refund or shipment is authorized by this registry."
+  ],
+  "social_content_claim_audits": [
+    {
+      "source": "Douyin note 7650086656372926961 by 小L在跨境",
+      "published_at": "2026-06-11",
+      "claims": [
+        "Amazon Reviews",
+        "Amazon Ads Report",
+        "Amazon Product Detail",
+        "SellerSprite Product Research",
+        "Amazon Alexa For Shopping",
+        "Ruiguan Image Compliance",
+        "DLD Product Billboard"
+      ],
+      "verdict": "Mostly maps to real LinkFox API-backed Skills, but requires vendor keys, points, upstream data services and per-Skill review. Ruiguan naming has drifted into multiple current skills.",
+      "current_status": "research_only",
+      "report": "outputs/douyin_cross_border_codex_skill_claims_audit_2026-07-20.md"
+    },
+    {
+      "source": "Douyin video 7663420461354601762 by 千雪AI",
+      "published_at": "2026-07-17",
+      "claims": [
+        "SellerSprite",
+        "LinkFox AI",
+        "LinkFox Agent",
+        "Amazon Reviews",
+        "Self-improving Agent",
+        "LinkFox Skills"
+      ],
+      "verdict": "The six entries mix a data platform, creative SaaS, hosted agent, one API-backed Skill, a generic memory Skill and a Skill marketplace; they are not six equivalent Codex Skills.",
+      "current_status": "research_only",
+      "report": "outputs/douyin_cross_border_codex_skill_claims_audit_2026-07-20.md"
+    },
+    {
+      "source": "Douyin video 7660783859201510665 by 神七",
+      "published_at": null,
+      "claims": [
+        "LinkFox Agent",
+        "Self Improving Agent",
+        "LinkFox AI",
+        "Amazon Reviews",
+        "SellerSprite",
+        "LinkFox Skills"
+      ],
+      "verdict": "This is the same six-item claim set as the previously audited 千雪AI video, only reordered. It mixes a hosted agent, generic memory Skill, creative SaaS, one API-backed Amazon Skill, an Amazon data platform and a Skill marketplace; no new connector or Skill asset was discovered.",
+      "current_status": "research_only_duplicate_claim_set",
+      "report": "outputs/douyin_shenqi_codex_crossborder_six_tools_audit_2026-07-21.md"
+    }
+  ],
+  "canonical_sources": [
+    "outputs/t_one_ai_agent_skill_connector_master_catalog_2026-07-20.md",
+    "outputs/cross_border_skill_asset_catalog_2026-07-20.md",
+    "config/cross_border_skill_asset_registry.json",
+    "config/external_skill_repository_inventory.json",
+    "outputs/linkfox_skills_two_repository_audit_2026-07-20.md",
+    "outputs/super_sales_agent_repository_reaudit_2026-07-20.md",
+    "outputs/letta_agent_memory_runtime_audit_2026-07-20.md",
+    "outputs/ivyeaops_repository_reaudit_2026-07-20.md",
+    "outputs/browseract_skillhub_static_audit_2026-07-20.md",
+    "outputs/skywork_skillhub_reuse_audit_2026-07-20.md",
+    "outputs/douyin_cross_border_codex_skill_claims_audit_2026-07-20.md",
+    "outputs/douyin_shenqi_codex_crossborder_six_tools_audit_2026-07-21.md",
+    "outputs/nexscope_amazon_skills_static_audit_2026-07-20.md",
+    "outputs/external_ai_erp_skill_connector_due_diligence_2026-07-19.md",
+    "outputs/external_ai_connector_market_landscape_supplement_2026-07-20.md",
+    "outputs/cross_border_market_data_ai_connector_scan_2026-07-20.md",
+    "outputs/global_marketplace_data_ai_coverage_matrix_2026-07-20.md",
+    "outputs/commerce_aggregator_connector_matrix_2026-07-17.md",
+    "config/commerce_skill_registry.json",
+    "config/platform_expert_registry.json",
+    "config/ai_provider_catalog.json",
+    "config/communications_connector_control.json",
+    "config/github_capability_registry.json"
+  ]
+}

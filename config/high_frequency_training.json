@@ -1,0 +1,52 @@
+{
+  "enabled": true,
+  "internal_training_per_minute": 30,
+  "full_analysis_rounds_per_batch": 0,
+  "minute_workspace_enabled": false,
+  "minute_distillation_enabled": false,
+  "external_collection_per_minute": 1,
+  "distillation_mode": "max_safe_local",
+  "distillation_enabled": true,
+  "distillation_max_records": 2500,
+  "report_quality_gate": {
+    "minimum_score": 80,
+    "must_have": [
+      "sales_or_market_signal",
+      "product_lifecycle",
+      "advertising_signal",
+      "creative_script",
+      "creator_analysis",
+      "risk_and_compliance",
+      "next_actions"
+    ]
+  },
+  "seed_employee_workspace_each_run": true,
+  "training_mix": {
+    "tiktok_primary": 0.8,
+    "all_platform_supplement": 0.2
+  },
+  "category_rotation": [
+    "Beauty & Personal Care",
+    "Health & Supplements",
+    "Fashion Apparel",
+    "Shoes & Accessories",
+    "Jewelry & Streetwear Accessories",
+    "Phone Accessories",
+    "Home & Kitchen",
+    "Pet Supplies",
+    "Sports & Outdoors",
+    "Baby & Kids",
+    "Automotive Accessories",
+    "Tools & Small Appliances"
+  ],
+  "mode": "local_data_only",
+  "notes": [
+    "High-frequency mode only trains from local Data Lake, saved links, prior reports, employee exams and strategy memory.",
+    "Training weight is TikTok/TK 80% and all-platform supplement 20%.",
+    "TikTok/TK training must rotate across all categories, not only T-shirts.",
+    "Internal distillation may run up to 30 local rounds per minute when Codex budget allows.",
+    "It must not open or refresh TikTok, FastMoss, Kalodata, Amazon or any external platform 30 times per minute.",
+    "External collection stays throttled to avoid verification, account risk and empty-page pollution.",
+    "After every high-frequency run, run tk-health-check so stalled collection, verification gates, weak evidence, and missing L3-L5 product coverage are visible."
+  ]
+}

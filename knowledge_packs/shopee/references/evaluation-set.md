@@ -1,6 +1,6 @@
 # Shopee regression evaluation set
 
-The executable cases are in `config/platform_expert_training/shopee.json`. Maintain unique IDs and cases; every case must state an expected status and required response markers.
+The executable cases are in `private_platform_training_contract_excluded`. Maintain unique IDs and cases; every case must state an expected status and required response markers.
 
 Coverage groups:
 

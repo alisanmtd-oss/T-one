@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T06:55:00+08:00",
+  "scope": "non_amazon_local_preflight_only",
+  "required_route": ["tenant_id", "project_id", "task_id", "revenue_objective_id", "execution_identity_id", "source_connector_ref", "evidence_metric_code", "stop_rule_id"],
+  "scope_kinds": ["project_task", "store"],
+  "local_actions": ["inspect_scheduler", "prepare_monitor_plan"],
+  "blocked_actions": ["enable_schedule", "run_external_monitor", "fetch_private_data", "write_platform", "send_alert"],
+  "stop_rules": [
+    {"id": "stop-after-3-consecutive-failures", "trigger": "consecutive_failures_gte_3", "action": "stop_and_require_owner_review"},
+    {"id": "pause-on-source-or-auth-gap", "trigger": "source_unverified_or_auth_expired", "action": "pause_without_external_call"},
+    {"id": "pause-on-stale-evidence", "trigger": "evidence_older_than_two_cadence_windows", "action": "pause_and_mark_stale"},
+    {"id": "stop-on-task-pause", "trigger": "project_or_task_paused", "action": "stop"},
+    {"id": "block-on-write-request", "trigger": "external_write_or_message_requested", "action": "block"}
+  ],
+  "hard_boundaries": [
+    "no_global_24h_or_all_platform_coverage_claim",
+    "no_unscoped_scheduler_job",
+    "no_source_name_as_connection_proof",
+    "no_private_data_fetch",
+    "no_platform_write_or_message",
+    "no_schedule_enable_without_separate_owner_action",
+    "historical_unbound_queue_is_preserved_but_ineligible"
+  ]
+}

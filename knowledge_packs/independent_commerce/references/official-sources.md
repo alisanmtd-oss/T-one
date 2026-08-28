@@ -41,7 +41,7 @@ Use this file as the dated evidence index, not as a substitute for rechecking a 
 
 ### WooCommerce GitHub supplement
 
-The official [WooCommerce monorepo](https://github.com/woocommerce/woocommerce) was opened on 2026-07-18. Public repository metadata showed the active `trunk` branch and release `10.9.4` published 2026-07-07; the WooCommerce plugin subtree contains a GPL-3.0-or-later license file. Because `config/github_capability_registry.json` has no WooCommerce admission, the repository remains `research_only`: no clone, install, dependency change, code reuse, or runtime integration was performed.
+The official [WooCommerce monorepo](https://github.com/woocommerce/woocommerce) was opened on 2026-07-18. Public repository metadata showed the active `trunk` branch and release `10.9.4` published 2026-07-07; the WooCommerce plugin subtree contains a GPL-3.0-or-later license file. Because `private_github_admission_registry_excluded` has no WooCommerce admission, the repository remains `research_only`: no clone, install, dependency change, code reuse, or runtime integration was performed.
 
 ## BigCommerce
 

@@ -6,10 +6,10 @@ name: b2b-foreign-trade-sales
 
 ## Start from authority
 
-1. Read `tk智能体_当前权威记忆.md`, `tk智能体_当前任务队列.md`, and `config/current_task_queue.json`.
+1. Read `private_authoritative_project_memory_excluded`, `private_authoritative_project_memory_excluded`, and `private_task_queue_excluded`.
 2. No private customer pool or operating file is included in this public pack.
 3. Read the public files in `references/` before changing code, data, or the software workstreams. Private project-asset inventories are intentionally excluded from the public release.
-4. Never load the 14GB raw conversation. Search the compact recovery files only when tracing a specific historical requirement.
+4. Never load the retired private conversation archive. Search the compact recovery files only when tracing a specific historical requirement.
 
 ## Choose the sales scope
 
@@ -83,7 +83,7 @@ For training evidence, keep a separate evidence axis and use exactly one of `ver
 - Do not bulk-message, scrape private contacts, bypass access controls, or infer consent.
 - Do not state a price, margin, MOQ, inventory, capacity, lead time, freight, duty, tax, Incoterm, certification, warranty, installation, training, spare-parts commitment, bank detail, payment status, or shipping status without a named evidence source and timestamp.
 - Do not make a sanctions, export-control, customs, tax, privacy, or contract determination from model memory. Use the current official source checklist in [trade-and-quotation.md](references/trade-and-quotation.md) and escalate uncertain cases.
-- Do not install or run Super Sales Agent. Reuse only its approved reference patterns already registered in `config/github_capability_registry.json`.
+- Do not install or run Super Sales Agent. Reuse only its approved reference patterns already registered in `private_github_admission_registry_excluded`.
 
 ## Evaluate before release
 

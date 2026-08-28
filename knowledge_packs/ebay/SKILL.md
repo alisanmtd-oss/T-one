@@ -20,7 +20,7 @@ Read `../../../config/platform_expert_training/ebay.json` and `references/rules.
 - `references/evaluation-set.json` after a rule, workflow, connection-state or action-gate change.
 - `references/mother-requirements-mapping.json` when mapping the cross-border mother checklist to T One; it is a requirement source, not platform authority.
 
-Use only the existing T One `LLMClient + config/multi_ai.json` model gateway. Route work through the `reasoning`, `copy`, `image`, `video`, `ads`, or `data` slot; do not create a second agent runtime.
+Use only the existing T One `LLMClient + private_model_provider_registry_excluded` model gateway. Route work through the `reasoning`, `copy`, `image`, `video`, `ads`, or `data` slot; do not create a second agent runtime.
 
 ## Require an isolated route
 

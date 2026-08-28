@@ -1,0 +1,120 @@
+{
+  "notes": [
+    "Read-only collection strategy. Prefer official APIs when available; otherwise use browser extension/platform patrol/manual feed.",
+    "Do not bypass CAPTCHA, login verification or slider challenges. Pause and ask the user for human verification.",
+    "Collected data is saved as records first, then routed to AI analysis. Real store actions remain pending confirmation.",
+    "Video intelligence is TikTok-only. Amazon remains for rankings, listings, reviews, prices and images, not video scripts.",
+    "TikTok Shop is the primary growth channel. Never disable TikTok Shop buyer-side search, product-card links, creator/video intelligence, FastMoss or Kalodata bridges when narrowing video sources."
+  ],
+  "default_windows": {
+    "historical": "last_90_days",
+    "current": "last_24_hours",
+    "weekly": "last_7_days",
+    "monthly": "last_30_days"
+  },
+  "coverage": {
+    "goal": "all_platforms_all_markets_all_countries_all_categories",
+    "mode": "admin_only_24h_scheduler",
+    "category_depth": 5,
+    "markets": ["US", "CA", "MX", "UK", "DE", "FR", "IT", "ES", "JP", "KR", "AU", "SG", "MY", "TH", "VN", "PH", "ID", "Latin America", "MENA"],
+    "category_roots": [
+      "Beauty & Personal Care",
+      "Fashion",
+      "Health",
+      "Home",
+      "Electronics",
+      "Pet",
+      "Sports & Outdoor",
+      "Toys",
+      "Jewelry",
+      "POD / Gifts"
+    ],
+    "frontstage_policy": "Only show short reports, store advice, product decisions, video scripts, influencer strategy, ad budget and pending approvals to seller users.",
+    "backstage_policy": "Raw collection jobs, source ids, skill routing, API setup, evidence tables, employee exams and data lake details stay admin-only."
+  },
+  "schedule": [
+    {
+      "frequency": "15m",
+      "scope": "own_store_orders_ads_returns_inventory_customer_service",
+      "output": "sales_dashboard_realtime_big_screen_pending_actions"
+    },
+    {
+      "frequency": "1h",
+      "scope": "tiktok_shop_buyer_fastmoss_kalodata_creator_video_product_signals",
+      "output": "tk_content_strategy_selection_report_video_scripts"
+    },
+    {
+      "frequency": "4h",
+      "scope": "amazon_bsr_new_release_movers_reviews_prices_images",
+      "output": "selection_supplement_listing_review_painpoints"
+    },
+    {
+      "frequency": "1d",
+      "scope": "all_platform_category_tree_keyword_longtail_blue_ocean_hot_terms",
+      "output": "category_opportunity_report_word_banks"
+    },
+    {
+      "frequency": "1w",
+      "scope": "global_market_channel_policy_ip_tro_and_expansion_review",
+      "output": "strategy_memory_compliance_database_expansion_plan"
+    }
+  ],
+  "targets": [
+    {
+      "name": "marketplace_rankings",
+      "platforms": ["Amazon", "TikTok Shop", "Etsy", "Walmart", "SHEIN", "Shopify"],
+      "windows": ["current", "weekly", "monthly", "historical"],
+      "record_type": "platform_ranking_signal",
+      "analysis_route": "competitor_intelligence",
+      "outputs": ["fastest_growing_products", "new_releases", "movers", "keywords", "pricing_band", "review_risk"]
+    },
+    {
+      "name": "viral_content",
+      "platforms": ["TikTok", "TikTok Shop", "FastMoss", "Kalodata"],
+      "windows": ["current", "weekly", "monthly", "historical"],
+      "record_type": "viral_content_signal",
+      "analysis_route": "video_breakdown",
+      "outputs": ["viral_videos", "hooks", "scenes", "creator_types", "comment_purchase_intent", "replication_plan"]
+    },
+    {
+      "name": "competitor_reviews",
+      "platforms": ["Amazon", "TikTok Shop", "Etsy", "Walmart", "Shopify"],
+      "windows": ["weekly", "monthly", "historical"],
+      "record_type": "review_insight",
+      "analysis_route": "reviews",
+      "outputs": ["bad_reviews", "pain_points", "defects", "refund_reasons", "listing_gaps", "content_gaps"]
+    },
+    {
+      "name": "own_store_reviews_and_complaints",
+      "platforms": ["TikTok Shop", "Amazon", "Shopify", "POD Admin"],
+      "windows": ["current", "weekly", "monthly"],
+      "record_type": "review_insight",
+      "analysis_route": "reviews",
+      "outputs": ["complaints", "after_sales_risk", "refund_reasons", "quality_issues", "urgent_fixes"]
+    },
+    {
+      "name": "compliance_terms",
+      "platforms": ["TikTok Shop", "Amazon", "Etsy", "Walmart", "SHEIN"],
+      "windows": ["weekly", "monthly"],
+      "record_type": "compliance_term",
+      "analysis_route": "compliance",
+      "outputs": ["restricted_terms", "trademark_risks", "copyright_risks", "claim_risks", "safe_replacements"]
+    },
+    {
+      "name": "all_platform_ip_tro_risks",
+      "platforms": ["TikTok Shop", "Amazon", "Etsy", "Walmart", "SHEIN", "Temu", "Shopify", "POD Admin", "FastMoss", "Kalodata", "EchoTik"],
+      "windows": ["current", "weekly", "monthly", "historical"],
+      "record_type": "ip_image_risk",
+      "analysis_route": "compliance",
+      "outputs": ["image_elements", "rights_owners", "tro_cases", "authorization_proofs", "evidence_images", "suspected_listing_urls", "authorization_review_queue", "safe_design_rules"]
+    },
+    {
+      "name": "industry_research",
+      "platforms": ["All"],
+      "windows": ["weekly", "monthly", "historical"],
+      "record_type": "industry_research_asset",
+      "analysis_route": "industry_research",
+      "outputs": ["brand_library", "product_library", "keyword_library", "pain_point_library", "opportunity_list"]
+    }
+  ]
+}

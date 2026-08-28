@@ -23,9 +23,9 @@ PROFILE_FILENAME = "account_profile.json"
 
 # Operator-facing features the user can choose to pin on the home. id -> (label, url).
 FEATURE_CATALOG: list[dict[str, str]] = [
-    {"id": "selection", "label": "选品结果", "url": "/selection"},
+    {"id": "selection", "label": "商品研究", "url": "/chat?intent=product_data"},
     {"id": "product_scout", "label": "六维选品打分", "url": "/product-scout"},
-    {"id": "competitor", "label": "同行监控", "url": "/selection"},
+    {"id": "competitor", "label": "同行监控", "url": "/chat?intent=product_data&focus=competitor"},
     {"id": "big_screen", "label": "实时大屏", "url": "/realtime-big-screen"},
     {"id": "report", "label": "今日报告", "url": "/report"},
     {"id": "video", "label": "视频发布", "url": "/chat?intent=tk_content"},
@@ -43,10 +43,14 @@ FEATURE_CATALOG: list[dict[str, str]] = [
 # Recommended feature ids per seller mode.
 RECOMMENDED_FEATURES: dict[str, list[str]] = {
     "selection": ["selection", "product_scout", "competitor", "targets", "big_screen", "report", "chat", "approvals"],
-    "launch": ["video", "influencer", "launch", "budget", "selection", "big_screen", "chat", "approvals"],
+    "testing": ["video", "influencer", "launch", "budget", "selection", "big_screen", "chat", "approvals"],
+    "distribution": ["selection", "competitor", "lifecycle", "budget", "report", "chat", "approvals"],
     "factory": ["lifecycle", "selection", "launch", "budget", "targets", "big_screen", "chat", "approvals"],
     "brand": ["influencer", "video", "selection", "competitor", "big_screen", "chat", "approvals"],
     "pod": ["pod", "selection", "competitor", "big_screen", "chat", "approvals"],
+    "catalog_supply": ["selection", "competitor", "lifecycle", "budget", "report", "chat", "approvals"],
+    # Compatibility only: old profiles called testing_seller "launch".
+    "launch": ["video", "influencer", "launch", "budget", "selection", "big_screen", "chat", "approvals"],
 }
 
 # Model tiers for non-technical users: a one-click choice that maps to a
@@ -152,6 +156,20 @@ def list_models(root: Path) -> list[dict[str, Any]]:
                 )
             ),
             "added_via_ui": bool(p.get("added_via_ui")),
+            "deployment_profile_ref": str(p.get("deployment_profile_ref") or ""),
+            "deployment_state": str(p.get("deployment_state") or ""),
+            "deployment_blocker": str(p.get("deployment_blocker") or ""),
+            "native_reasoning_efforts": [
+                str(value)
+                for value in p.get("native_reasoning_efforts", [])
+                if str(value).strip()
+            ] if isinstance(p.get("native_reasoning_efforts"), list) else [],
+            "default_reasoning_effort": str(p.get("default_reasoning_effort") or ""),
+            "preserve_complete_assistant_message": bool(
+                p.get("preserve_complete_assistant_message")
+            ),
+            "preserve_reasoning_content": bool(p.get("preserve_reasoning_content")),
+            "preserve_tool_calls": bool(p.get("preserve_tool_calls")),
         })
     return result
 
@@ -470,20 +488,110 @@ def create_profile(root: Path, name: str, pin: str) -> dict[str, Any]:
     return save_profile(root, profile)
 
 
-def team_state(root: Path) -> dict[str, Any]:
+def _is_descendant_member(
+    profile: dict[str, Any],
+    member_login_id: str,
+    ancestor_login_id: str,
+) -> bool:
+    members = {
+        str(item.get("login_id") or ""): item
+        for item in profile.get("subaccounts", [])
+        if isinstance(item, dict) and str(item.get("login_id") or "")
+    }
+    current = members.get(str(member_login_id or ""))
+    visited: set[str] = set()
+    while isinstance(current, dict):
+        current_id = str(current.get("login_id") or "")
+        if not current_id or current_id in visited:
+            return False
+        visited.add(current_id)
+        parent_id = str(current.get("parent_login_id") or "owner")
+        if parent_id == ancestor_login_id:
+            return True
+        if parent_id == "owner":
+            return False
+        current = members.get(parent_id)
+    return False
+
+
+def _actor_can_manage_member(
+    profile: dict[str, Any],
+    actor_session: dict[str, Any] | None,
+    member: dict[str, Any],
+) -> bool:
+    actor_session = actor_session or {}
+    if actor_session.get("is_owner"):
+        return True
+    actor_login_id = str(actor_session.get("login_id") or "")
+    member_login_id = str(member.get("login_id") or "")
+    if not actor_login_id or actor_login_id == member_login_id:
+        return False
+    actor_permissions = {
+        str(item) for item in actor_session.get("permissions", []) if str(item).strip()
+    }
+    if "admin.manage_users" not in actor_permissions:
+        return False
+    groups = {
+        str(group.get("id") or ""): group
+        for group in profile.get("permission_groups", [])
+        if isinstance(group, dict)
+    }
+    member_permissions = {
+        str(item)
+        for item in groups.get(str(member.get("group_id") or ""), {}).get("permissions", [])
+        if str(item).strip()
+    }
+    if not member_permissions.issubset(actor_permissions):
+        return False
+    for requested, allowed in (
+        (member.get("project_scope"), actor_session.get("project_scope")),
+        (member.get("task_scope"), actor_session.get("task_scope")),
+        (member.get("platform_scope"), actor_session.get("platform_scope")),
+        (member.get("store_scope"), actor_session.get("store_scope")),
+        (member.get("country_scope"), actor_session.get("country_scope")),
+    ):
+        if not _scope_is_subset(requested, allowed):
+            return False
+    return _is_descendant_member(profile, member_login_id, actor_login_id)
+
+
+def team_state(
+    root: Path,
+    actor_session: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     profile = ensure_team_defaults(load_profile(root))
     save_profile(root, profile)
+    is_owner = not actor_session or bool(actor_session.get("is_owner"))
+    actor_permissions = {
+        str(item) for item in (actor_session or {}).get("permissions", []) if str(item).strip()
+    }
+    groups = [
+        group
+        for group in profile.get("permission_groups", [])
+        if isinstance(group, dict)
+        and (
+            is_owner
+            or set(str(item) for item in group.get("permissions", [])).issubset(
+                actor_permissions
+            )
+        )
+    ]
+    subaccounts = [
+        subaccount
+        for subaccount in profile.get("subaccounts", [])
+        if isinstance(subaccount, dict)
+        and (is_owner or _actor_can_manage_member(profile, actor_session, subaccount))
+    ]
     return {
         "permissions": PERMISSION_CATALOG,
-        "groups": profile.get("permission_groups", []),
+        "groups": groups,
         "subaccounts": [
             {
                 key: value
                 for key, value in subaccount.items()
                 if key not in {"salt", "pin_hash"}
             }
-            for subaccount in profile.get("subaccounts", [])
-            if isinstance(subaccount, dict)
+            for subaccount in subaccounts
         ],
     }
 
@@ -546,12 +654,24 @@ def save_subaccount(
     }
     if group_id not in groups or group_id == "owner":
         raise ValueError("Please choose a valid permission group.")
+    existing = next(
+        (
+            s
+            for s in profile.get("subaccounts", [])
+            if str(s.get("login_id")) == login_id
+        ),
+        {},
+    )
     if actor_session and not actor_session.get("is_owner"):
         actor_permissions = {
             str(item) for item in actor_session.get("permissions", []) if str(item).strip()
         }
         if "admin.manage_users" not in actor_permissions:
             raise ValueError("当前账号没有管理项目成员的权限。")
+        if login_id == str(actor_session.get("login_id") or ""):
+            raise ValueError("当前账号不能修改自己的成员记录。")
+        if existing and not _actor_can_manage_member(profile, actor_session, existing):
+            raise ValueError("不能修改不属于当前管理员下级范围的成员。")
         target_permissions = {
             str(item) for item in groups[group_id].get("permissions", []) if str(item).strip()
         }
@@ -567,7 +687,6 @@ def save_subaccount(
             if not _scope_is_subset(requested, allowed):
                 raise ValueError(f"不能给成员分配超出当前管理员范围的{label}。")
         parent_login_id = str(actor_session.get("login_id") or "owner")
-    existing = next((s for s in profile.get("subaccounts", []) if str(s.get("login_id")) == login_id), {})
     salt = str(existing.get("salt") or secrets.token_hex(8))
     pin_hash = str(existing.get("pin_hash") or "")
     if pin:
@@ -596,7 +715,7 @@ def save_subaccount(
     })
     profile["subaccounts"] = subs
     save_profile(root, profile)
-    return team_state(root)
+    return team_state(root, actor_session=actor_session)
 
 
 def set_subaccount_active(
@@ -613,19 +732,8 @@ def set_subaccount_active(
     for sub in profile.get("subaccounts", []):
         if str(sub.get("login_id")) == login_id:
             if actor_session and not actor_session.get("is_owner"):
-                actor_permissions = {
-                    str(item)
-                    for item in actor_session.get("permissions", [])
-                    if str(item).strip()
-                }
-                if "admin.manage_users" not in actor_permissions:
-                    raise ValueError("当前账号没有管理项目成员的权限。")
-                if not _scope_is_subset(
-                    sub.get("project_scope"), actor_session.get("project_scope")
-                ) or not _scope_is_subset(
-                    sub.get("task_scope"), actor_session.get("task_scope")
-                ):
-                    raise ValueError("不能修改超出当前管理员范围的成员。")
+                if not _actor_can_manage_member(profile, actor_session, sub):
+                    raise ValueError("不能修改不属于当前管理员下级范围的成员。")
             sub = dict(sub)
             sub["active"] = bool(active)
             sub["updated_at_utc"] = datetime.now(timezone.utc).isoformat()
@@ -635,7 +743,7 @@ def set_subaccount_active(
         raise ValueError("Subaccount not found.")
     profile["subaccounts"] = subs
     save_profile(root, profile)
-    return team_state(root)
+    return team_state(root, actor_session=actor_session)
 
 
 def verify_pin(root: Path, pin: str) -> bool:
@@ -822,6 +930,9 @@ def bind_store(
     ads_account_id: str = "",
     authorization_scopes: str | list[str] = "",
     shop_type: str = "",
+    fulfillment_mode: str = "",
+    warehouse_country: str = "",
+    ship_from_country: str = "",
     store_external_id: str = "",
     sub_store_name: str = "",
     store_ownership: str = "",
@@ -834,9 +945,16 @@ def bind_store(
     if not store_name:
         raise ValueError("请填写店铺名称。")
     if is_official_full_managed_shop_type(shop_type):
-        raise ValueError("平台官方全托管只做识别标签，当前不接入；请改选 T One 代运营、T One 自营、设计师自运营、本土店、跨境店或半托管路线。")
+        raise ValueError("平台官方全托管只做识别标签，当前不接入；请改选 TeeLab 代运营、TeeLab 自营、设计师自运营、本土店、跨境店或半托管路线。")
     normalized_country = normalize_executable_country_code(country_code)
-    normalized_shop_type = (shop_type or "").strip()
+    binding_dimensions = normalize_store_binding_dimensions(
+        platform_id,
+        shop_type=shop_type,
+        fulfillment_mode=fulfillment_mode,
+        warehouse_country=warehouse_country,
+        ship_from_country=ship_from_country,
+    )
+    normalized_shop_type = binding_dimensions["shop_type"]
     normalized_external_id = (store_external_id or "").strip()
     env_name = (key_env or platform["key_env"]).strip()
     stores = profile.get("stores") if isinstance(profile.get("stores"), list) else []
@@ -874,6 +992,10 @@ def bind_store(
         "ads_account_id": (ads_account_id or "").strip(),
         "authorization_scopes": scopes,
         "shop_type": normalized_shop_type,
+        "raw_shop_type": binding_dimensions["raw_shop_type"],
+        "fulfillment_mode": binding_dimensions["fulfillment_mode"],
+        "warehouse_country": binding_dimensions["warehouse_country"],
+        "ship_from_country": binding_dimensions["ship_from_country"],
         "store_ownership": normalize_store_ownership_for_binding(store_ownership, normalized_shop_type),
         "store_external_id": normalized_external_id,
         "sub_store_name": (sub_store_name or "").strip(),
@@ -892,6 +1014,77 @@ def normalize_executable_country_code(value: str) -> str:
     if normalized in {"SEA", "SOUTHEASTASIA", "东南亚", "LATAM", "LATINAMERICA", "拉美"}:
         raise ValueError("国家/站点必须填写具体站点，例如 US、SG、MY、TH、VN、PH、ID、MX 或 BR；区域分组不能作为可执行店铺。")
     return text.upper()
+
+
+TIKTOK_SHOP_PLATFORM_IDS = {"tiktok", "tiktok_shop", "tiktok-shop"}
+TIKTOK_CHINA_DIRECT_SHIP_ALIASES = {
+    "直邮店",
+    "中国仓直邮",
+    "中国直邮",
+    "direct_ship",
+    "direct_mail",
+    "china_direct_ship",
+    "cross_border_direct_ship_from_china",
+}
+
+
+def _normalize_store_dimension_token(value: str) -> str:
+    return re.sub(r"[\s-]+", "_", str(value or "").strip().lower())
+
+
+def _normalize_origin_country_code(value: str) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    token = re.sub(r"[^A-Za-z0-9\u4e00-\u9fff]+", "", text).upper()
+    if token in {"CN", "CHINA", "中国", "中国大陆", "MAINLANDCHINA"}:
+        return "CN"
+    return normalize_executable_country_code(text)
+
+
+def normalize_store_binding_dimensions(
+    platform_id: str,
+    *,
+    shop_type: str = "",
+    fulfillment_mode: str = "",
+    warehouse_country: str = "",
+    ship_from_country: str = "",
+) -> dict[str, str]:
+    """Keep store identity separate from its mutable fulfillment route."""
+    raw_shop_type = str(shop_type or "").strip()
+    shop_token = _normalize_store_dimension_token(raw_shop_type)
+    fulfillment_token = _normalize_store_dimension_token(fulfillment_mode)
+    platform_token = _normalize_store_dimension_token(platform_id)
+    direct_ship_requested = (
+        platform_token in TIKTOK_SHOP_PLATFORM_IDS
+        and (
+            shop_token in TIKTOK_CHINA_DIRECT_SHIP_ALIASES
+            or fulfillment_token in TIKTOK_CHINA_DIRECT_SHIP_ALIASES
+        )
+    )
+
+    normalized_warehouse = _normalize_origin_country_code(warehouse_country)
+    normalized_ship_from = _normalize_origin_country_code(ship_from_country)
+    if direct_ship_requested:
+        if normalized_warehouse and normalized_warehouse != "CN":
+            raise ValueError("TikTok Shop 中国直邮路线的仓库国家必须是 CN；其他仓库请改选对应履约路线。")
+        if normalized_ship_from and normalized_ship_from != "CN":
+            raise ValueError("TikTok Shop 中国直邮路线的发货国家必须是 CN；其他发货国请改选对应履约路线。")
+        return {
+            "shop_type": "cross_border",
+            "raw_shop_type": raw_shop_type,
+            "fulfillment_mode": "cross_border_direct_ship_from_china",
+            "warehouse_country": "CN",
+            "ship_from_country": "CN",
+        }
+
+    return {
+        "shop_type": raw_shop_type,
+        "raw_shop_type": raw_shop_type,
+        "fulfillment_mode": str(fulfillment_mode or "").strip(),
+        "warehouse_country": normalized_warehouse,
+        "ship_from_country": normalized_ship_from,
+    }
 
 
 def store_binding_identity(
@@ -915,10 +1108,10 @@ def normalize_store_ownership_for_binding(value: str = "", shop_type: str = "") 
     model = str(shop_type or "").strip().lower().replace("-", "_").replace(" ", "_")
     if raw in {"designer_self_store", "self_store", "designer_owned"}:
         return "designer_self_store"
-    if raw in {"platform_store", "operator_store", "t_one_operator_store", "backend_platform_store"}:
+    if raw in {"platform_store", "operator_store", "teelab_operator_store", "backend_platform_store"}:
         return "platform_store"
-    if raw in {"t_one_owned", "owned"} or "t_one_owned" in model:
-        return "t_one_owned"
+    if raw in {"teelab_owned", "owned"} or "teelab_owned" in model:
+        return "teelab_owned"
     if raw in {"platform_co_ops", "co_ops"} or "platform_co_ops" in model:
         return "platform_co_ops"
     if raw in {"b2b_customer_store", "customer_store"}:

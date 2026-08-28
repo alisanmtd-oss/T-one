@@ -2,17 +2,72 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 from .account import DEFAULT_MODEL_TIER, add_model, list_models
 from .credential_store import credential_available, provider_credential_ref, save_credential
+from .kimi_k3_local import blocker_message, preflight_kimi_k3
 from .llm import LLMClient
 
 
 CATALOG_PATH = Path("config") / "ai_provider_catalog.json"
 VERIFICATION_PATH = Path("config") / "ai_provider_verification_state.json"
 SAFE_PROVIDER_ID = re.compile(r"^[a-z0-9][a-z0-9._-]{1,63}$")
+
+
+def _parse_timestamp(value: Any) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def _receipt_freshness(
+    receipt: dict[str, Any] | None,
+    verification: dict[str, Any],
+) -> tuple[str, str]:
+    if not receipt:
+        return "not_tested", ""
+    policy = (
+        verification.get("verification_policy")
+        if isinstance(verification.get("verification_policy"), dict)
+        else {}
+    )
+    if not policy.get("enforce_receipt_freshness"):
+        return "current", ""
+    now = datetime.now(timezone.utc)
+    explicit_valid_until = _parse_timestamp(receipt.get("valid_until"))
+    if explicit_valid_until is not None:
+        return (
+            ("current", explicit_valid_until.isoformat().replace("+00:00", "Z"))
+            if now <= explicit_valid_until
+            else ("stale", explicit_valid_until.isoformat().replace("+00:00", "Z"))
+        )
+    tested_at = _parse_timestamp(
+        receipt.get("tested_at")
+        or receipt.get("recorded_at")
+        or verification.get("audited_at")
+    )
+    if tested_at is None:
+        return "stale", ""
+    try:
+        max_age_hours = max(1, int(policy.get("max_age_hours") or 24))
+    except (TypeError, ValueError):
+        max_age_hours = 24
+    valid_until = tested_at + timedelta(hours=max_age_hours)
+    return (
+        ("current", valid_until.isoformat().replace("+00:00", "Z"))
+        if now <= valid_until
+        else ("stale", valid_until.isoformat().replace("+00:00", "Z"))
+    )
 
 
 def load_provider_catalog(root: Path) -> list[dict[str, Any]]:
@@ -51,7 +106,7 @@ def load_provider_verification(root: Path) -> dict[str, Any]:
         return {}
     if not isinstance(payload, dict):
         return {}
-    allowed = {"available", "configured", "verified", "blocked", "unsupported"}
+    allowed = {"available", "configured", "verified", "stale", "blocked", "unsupported"}
     catalog_states = payload.get("catalog_provider_states")
     receipts = payload.get("live_receipts")
     if not isinstance(catalog_states, list) or not isinstance(receipts, list):
@@ -88,11 +143,12 @@ def _merge_model_verification(
     rows: list[dict[str, Any]] = []
     for item in configured:
         row = dict(item)
+        credential_ready = bool(row.get("ready"))
         model_key = (str(row.get("name") or ""), str(row.get("model") or ""))
         receipt = receipts.get(model_key)
         exact_modality_receipts = modality_receipts.get(model_key, [])
         status = str((receipt or {}).get("status") or "")
-        verified_modalities = ["text"] if status == "ok" else []
+        historical_modalities = ["text"] if status == "ok" else []
         modality_test_statuses: dict[str, str] = {}
         for modality_receipt in exact_modality_receipts:
             modality_status = str(modality_receipt.get("status") or "")
@@ -101,28 +157,73 @@ def _merge_model_verification(
                 if modality_name not in allowed_modalities:
                     continue
                 modality_test_statuses[modality_name] = modality_status or "unknown"
-                if modality_status == "ok" and modality_name not in verified_modalities:
-                    verified_modalities.append(modality_name)
-        verified_modalities = [
-            modality for modality in allowed_modalities if modality in verified_modalities
+                if modality_status == "ok" and modality_name not in historical_modalities:
+                    historical_modalities.append(modality_name)
+        historical_modalities = [
+            modality for modality in allowed_modalities if modality in historical_modalities
         ]
-        if verified_modalities:
+        freshness, valid_until = _receipt_freshness(receipt, verification)
+        verified_modalities = historical_modalities if freshness == "current" else []
+        deployment_state = str(row.get("deployment_state") or "")
+        if deployment_state.startswith("blocked_"):
+            state = "blocked"
+        elif receipt and freshness == "stale":
+            state = "stale"
+        elif status == "ok" and verified_modalities:
             state = "verified"
         elif receipt:
             state = "blocked"
-        elif row.get("ready"):
-            state = "configured"
         else:
             state = "configured"
+        runtime_eligible = bool(credential_ready and state == "verified")
+        historical_state = (
+            "verified"
+            if status == "ok"
+            else "blocked"
+            if receipt
+            else "not_tested"
+        )
+        reasoning_options = [
+            str(value)
+            for value in (receipt or {}).get("reasoning_options", [])
+            if str(value).strip()
+        ]
+        speed_options = [
+            str(value)
+            for value in (receipt or {}).get("speed_options", [])
+            if str(value).strip()
+        ]
+        strategy_evidence_state = (
+            "exact_receipt"
+            if freshness == "current" and (reasoning_options or speed_options)
+            else "unknown_default_only"
+        )
+        if not reasoning_options:
+            reasoning_options = ["standard"]
+        if not speed_options:
+            speed_options = ["standard"]
         row.update({
+            "credential_ready": credential_ready,
+            "runtime_eligible": runtime_eligible,
+            "ready": runtime_eligible,
             "verification_state": state,
+            "historical_verification_state": historical_state,
+            "receipt_freshness": freshness,
+            "receipt_valid_until": valid_until,
             "connection_test_status": status or "not_tested",
-            "connection_test_code": str((receipt or {}).get("code") or ""),
-            "connection_test_error": str((receipt or {}).get("error") or ""),
+            "connection_test_code": str(
+                (receipt or {}).get("code") or deployment_state
+            ),
+            "connection_test_error": str(
+                (receipt or {}).get("error")
+                or row.get("deployment_blocker")
+                or ""
+            ),
             "connection_test_http_status": int((receipt or {}).get("status_code") or 0),
             "connection_test_latency_ms": int((receipt or {}).get("latency_ms") or 0),
             "last_tested_at": str(verification.get("audited_at") or "") if receipt or exact_modality_receipts else "",
             "verified_modalities": verified_modalities,
+            "historically_verified_modalities": historical_modalities,
             "unknown_modalities": [
                 modality
                 for modality in ("image", "audio", "video", "files", "tool_use")
@@ -134,6 +235,20 @@ def _merge_model_verification(
                 for item in exact_modality_receipts
                 if item.get("evidence")
             ],
+            "reasoning_options": reasoning_options,
+            "speed_options": speed_options,
+            "strategy_evidence_state": strategy_evidence_state,
+            "selection_blocker": (
+                "verification_receipt_stale"
+                if state == "stale"
+                else "current_probe_failed"
+                if state == "blocked"
+                else "credential_or_runtime_not_ready"
+                if not credential_ready
+                else "current_exact_receipt_missing"
+                if not runtime_eligible
+                else ""
+            ),
             "rate_and_cost_state": "unknown",
         })
         rows.append(row)
@@ -148,14 +263,44 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
         for item in verification.get("catalog_provider_states", [])
         if isinstance(item, dict)
     }
+    configured_by_name = {
+        str(item.get("name") or ""): item for item in configured if item.get("name")
+    }
     catalog = []
     for item in load_provider_catalog(root):
         state = catalog_states.get(str(item.get("id") or ""), {})
+        configured_names = list(state.get("configured_models") or [])
+        exact_models = [
+            configured_by_name[name]
+            for name in configured_names
+            if name in configured_by_name
+        ]
+        verified_models = [
+            str(model.get("name") or "")
+            for model in exact_models
+            if model.get("runtime_eligible")
+        ]
+        historical_verified_models = [
+            str(model.get("name") or "")
+            for model in exact_models
+            if model.get("historical_verification_state") == "verified"
+        ]
+        if verified_models:
+            provider_state = "verified"
+        elif any(model.get("verification_state") == "blocked" for model in exact_models):
+            provider_state = "blocked"
+        elif any(model.get("verification_state") == "stale" for model in exact_models):
+            provider_state = "stale"
+        elif configured_names:
+            provider_state = "configured"
+        else:
+            provider_state = str(state.get("state") or "available")
         catalog.append({
             **item,
-            "verification_state": str(state.get("state") or "available"),
-            "verified_models": list(state.get("verified_models") or []),
-            "configured_models": list(state.get("configured_models") or []),
+            "verification_state": provider_state,
+            "verified_models": verified_models,
+            "historically_verified_models": historical_verified_models,
+            "configured_models": configured_names,
             "verification_blocker": str(state.get("blocker") or ""),
         })
     modality_counts = {
@@ -166,6 +311,20 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
         )
         for modality in ("text", "image", "audio", "video", "files", "tool_use")
     }
+    historical_modality_counts = {
+        modality: sum(
+            1
+            for item in configured
+            if modality in list(item.get("historically_verified_modalities") or [])
+        )
+        for modality in ("text", "image", "audio", "video", "files", "tool_use")
+    }
+    credential_ready_count = sum(
+        1 for item in configured if item.get("credential_ready")
+    )
+    runtime_eligible_count = sum(
+        1 for item in configured if item.get("runtime_eligible")
+    )
     return {
         "catalog": catalog,
         "catalog_provider_count": len(catalog),
@@ -179,12 +338,24 @@ def provider_catalog_snapshot(root: Path) -> dict[str, Any]:
             len(item.get("model_families") or []) for item in catalog
         ),
         "configured": configured,
-        "ready_count": sum(1 for item in configured if item.get("ready")),
+        "ready_count": runtime_eligible_count,
+        "credential_ready_count": credential_ready_count,
+        "runtime_eligible_count": runtime_eligible_count,
         "configured_count": len(configured),
         "verified_count": sum(1 for item in configured if item.get("verification_state") == "verified"),
+        "historically_verified_count": sum(
+            1
+            for item in configured
+            if item.get("historical_verification_state") == "verified"
+        ),
+        "stale_receipt_count": sum(
+            1 for item in configured if item.get("receipt_freshness") == "stale"
+        ),
         "blocked_count": sum(1 for item in configured if item.get("verification_state") == "blocked"),
         "modality_counts": modality_counts,
+        "historical_modality_counts": historical_modality_counts,
         "verification_audited_at": str(verification.get("audited_at") or ""),
+        "verification_policy": dict(verification.get("verification_policy") or {}),
     }
 
 
@@ -196,6 +367,13 @@ def configure_provider(root: Path, payload: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("请选择受支持的 AI 供应商预设。")
     if str(preset.get("integration_state") or "configurable") == "future_adapter":
         raise ValueError("该 AI 公司目前只预留了位置，运行时适配器尚未接入，不能保存为可用模型。")
+    if preset_id == "kimi-k3-local":
+        preflight = preflight_kimi_k3(root)
+        if not preflight.get("live_verified"):
+            raise ValueError(
+                "Kimi K3 尚未在本机或私有集群运行："
+                + blocker_message(preflight)
+            )
 
     provider_name = str(payload.get("name") or f"{preset_id}-user").strip().lower()
     if not SAFE_PROVIDER_ID.fullmatch(provider_name):
@@ -257,4 +435,70 @@ def test_provider(root: Path, provider_name: str) -> dict[str, Any]:
             "status": "not_ready",
             "error": "模型未启用、缺少本机 API Key，或没有完整的接口地址/模型 ID。",
         }
-    return results[0]
+    result = results[0]
+    record_provider_test_result(root, result)
+    return result
+
+
+def record_provider_test_result(root: Path, result: dict[str, Any]) -> None:
+    """Persist one exact health-check receipt so a successful probe is selectable."""
+
+    provider = str(result.get("provider") or "").strip()
+    model = str(result.get("model") or "").strip()
+    if not provider or not model:
+        return
+    path = root / VERIFICATION_PATH
+    verification = load_provider_verification(root)
+    if not verification:
+        verification = {
+            "schema_version": 2,
+            "catalog_provider_states": [],
+            "live_receipts": [],
+            "modality_receipts": [],
+        }
+    now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+    receipt = {
+        key: result[key]
+        for key in (
+            "provider",
+            "model",
+            "status",
+            "code",
+            "error",
+            "status_code",
+            "latency_ms",
+            "reasoning_options",
+            "speed_options",
+        )
+        if key in result
+    }
+    receipt["tested_at"] = now
+    receipts = [
+        item
+        for item in verification.get("live_receipts", [])
+        if isinstance(item, dict)
+        and (
+            str(item.get("provider") or "") != provider
+            or str(item.get("model") or "") != model
+        )
+    ]
+    receipts.append(receipt)
+    verification["live_receipts"] = receipts
+    verification["audited_at"] = now
+    policy = verification.setdefault("verification_policy", {})
+    policy.setdefault("enforce_receipt_freshness", True)
+    policy.setdefault("max_age_hours", 24)
+    policy.setdefault("require_exact_receipt_for_runtime_eligibility", True)
+    counts = verification.setdefault("scope_counts", {})
+    counts["live_text_health_checks"] = len(receipts)
+    counts["verified_text_models"] = sum(
+        str(item.get("status") or "") == "ok" for item in receipts
+    )
+    counts["blocked_live_tests"] = sum(
+        str(item.get("status") or "") != "ok" for item in receipts
+    )
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(verification, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8-sig",
+    )

@@ -1,0 +1,591 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-21T03:55:00+08:00",
+  "purpose": "Create per-platform rule libraries and safe course-ingestion queues so each T One specialist can learn from official, public, or user-authorized materials without loading raw third-party course text into prompts or open-source packages.",
+  "global_policy": {
+    "raw_third_party_course_bulk_copy_allowed": false,
+    "raw_public_distribution_allowed": false,
+    "screenshots_as_default_learning_method": false,
+    "token_waste_reduction": "Use URL/title/index/hash/short distillation cards; avoid screenshots and full transcript prompts unless a visual page state is the actual evidence.",
+    "official_source_priority": "official_current_rule > official_course_or_help > user_authorized_private_material > public_template > community_case > unknown",
+    "community_material_rule": "Community and forum materials are case studies or hypotheses, not platform rules.",
+    "private_or_restricted_content_rule": "Do not crawl, bypass, export, buy, or train on private enterprise Feishu/Seller Central/course content without clear authorization.",
+    "external_action_authorized": false,
+    "amazon_state": "paused_by_owner_unchanged"
+  },
+  "source_packages": [
+    {
+      "id": "UPCR-001",
+      "title": "跨境电商全平台资源终极合集（飞书文档+社区+官方手册+脱敏SOP全覆盖）",
+      "source_path": "attachment:2cf2a8d0-5993-483b-bb9a-af43fd6c0a17/pasted-text.txt",
+      "sha256": "E665F7224C8850906CC90F6093FDD714CDA0112659BA028EE32D72CB671F333B",
+      "deduped_ref": "outputs/conversation_audit/t_one_cross_border_resource_pack_dedup_2026-07-21.md",
+      "state": "deduped_and_quarantined_for_safe_platform_learning",
+      "allowed_use": [
+        "source_discovery",
+        "source_priority_policy",
+        "agent_delivery_planning",
+        "regression_question_seed"
+      ],
+      "blocked_use": [
+        "raw_public_republication",
+        "private_enterprise_document_collection",
+        "bypass_read_only_export",
+        "current_platform_rule_without_official_evidence"
+      ]
+    }
+  ],
+  "shared_sources": [
+    {
+      "id": "sinoclick-academy",
+      "label": "飞书逸途出海学院 / SinoClick Academy",
+      "url": "https://academy.sinoclick.com/",
+      "source_kind": "public_or_login_gated_course_index",
+      "default_acquisition": "index_titles_links_then_private_authorized_distillation",
+      "storage_policy": "Keep links, course metadata, short paraphrased learning cards and regression questions; do not mirror full courses without authorization."
+    },
+    {
+      "id": "feishu-template-center",
+      "label": "飞书模板中心",
+      "url": "https://www.feishu.cn/templates",
+      "source_kind": "public_template_index",
+      "default_acquisition": "metadata_and_authorized_template_copy",
+      "storage_policy": "Keep template title, category, link, fields and user-owned copied-template reference."
+    },
+    {
+      "id": "community-public-cases",
+      "label": "公开社区/论坛/知识库案例",
+      "source_kind": "community_case",
+      "default_acquisition": "metadata_first_then_manual_review",
+      "storage_policy": "Store as case/hypothesis only; never promote to current official rule without first-party evidence."
+    }
+  ],
+  "platform_rule_libraries": [
+    {
+      "platform_id": "amazon",
+      "label": "Amazon",
+      "consumer_ids": [
+        "amazon-commerce-operator",
+        "expert-amazon-marketplace"
+      ],
+      "skill_paths": [
+        "skills/amazon-commerce-operator/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "amazon-seller-university",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "seed_sources": [
+        {
+          "id": "amazon-seller-university",
+          "url": "https://sell.amazon.com/zh/learn/seller-university",
+          "source_kind": "official_public_learning_index",
+          "acquisition": "index_and_distill_official_topics; do not use Seller Central login/session pages unless owner authorizes"
+        }
+      ],
+      "rule_domains": [
+        "account_and_permissions",
+        "listing_and_catalog",
+        "brand_registry_and_a_plus",
+        "pricing_and_fees",
+        "fba_fbm_inventory",
+        "ads_and_promotions",
+        "returns_and_customer_service",
+        "account_health_and_appeals",
+        "settlement_and_tax"
+      ],
+      "training_status": "library_seeded_amazon_paused_no_live_store_action"
+    },
+    {
+      "platform_id": "tiktok_shop",
+      "label": "TikTok Shop",
+      "consumer_ids": [
+        "expert-tiktok-shop"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/tiktok_shop/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_center_account",
+        "site_and_store_mode",
+        "product_listing",
+        "creator_affiliate",
+        "live_and_video",
+        "official_and_marketing_accounts",
+        "ads_boundary",
+        "fees_settlement",
+        "returns_fulfillment",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "shein",
+      "label": "SHEIN Marketplace",
+      "consumer_ids": [
+        "expert-shein"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/shein/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "product_listing",
+        "supply_chain_and_inventory",
+        "pricing_and_fees",
+        "quality_and_returns",
+        "settlement",
+        "risk_and_compliance"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "shopee",
+      "label": "Shopee",
+      "consumer_ids": [
+        "expert-shopee"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/shopee/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "site_matrix",
+        "seller_onboarding",
+        "listing",
+        "ads",
+        "campaigns",
+        "logistics",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "lazada",
+      "label": "Lazada",
+      "consumer_ids": [
+        "expert-lazada"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/lazada/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "site_matrix",
+        "seller_onboarding",
+        "listing",
+        "ads",
+        "campaigns",
+        "logistics",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "walmart",
+      "label": "Walmart Marketplace",
+      "consumer_ids": [
+        "expert-walmart"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/walmart/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "catalog_and_item_setup",
+        "wfs_and_fulfillment",
+        "ads",
+        "pricing",
+        "returns",
+        "performance",
+        "settlement"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "ebay",
+      "label": "eBay",
+      "consumer_ids": [
+        "expert-ebay",
+        "ebay-commerce-operator"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/ebay/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_account",
+        "listing",
+        "promoted_listings",
+        "shipping",
+        "returns",
+        "fees",
+        "buyer_messages",
+        "seller_performance"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "etsy",
+      "label": "Etsy",
+      "consumer_ids": [
+        "expert-etsy",
+        "etsy-commerce-operator"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/etsy/SKILL.md",
+        "skills/etsy-commerce-operator/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "shop_setup",
+        "listing_and_tags",
+        "handmade_ip_policy",
+        "ads",
+        "shipping",
+        "fees",
+        "messages",
+        "seller_protection"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "aliexpress",
+      "label": "AliExpress / 速卖通",
+      "consumer_ids": [
+        "expert-aliexpress"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/aliexpress/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "listing",
+        "logistics",
+        "campaigns",
+        "ads",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "rakuten",
+      "label": "Rakuten / 乐天",
+      "consumer_ids": [
+        "expert-rakuten"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/rakuten/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "catalog",
+        "ads",
+        "logistics",
+        "customer_service",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "emag",
+      "label": "eMAG",
+      "consumer_ids": [
+        "expert-emag"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/emag/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "listing",
+        "fulfillment",
+        "ads",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "ozon",
+      "label": "Ozon",
+      "consumer_ids": [
+        "expert-ozon"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/ozon/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "listing",
+        "logistics",
+        "ads",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "library_seeded_waiting_official_course_index"
+    },
+    {
+      "platform_id": "coupang",
+      "label": "Coupang",
+      "consumer_ids": [
+        "expert-coupang"
+      ],
+      "skill_paths": [],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "listing",
+        "fulfillment",
+        "ads",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "rule_library_seeded_skill_not_found_create_or_map_before_training"
+    },
+    {
+      "platform_id": "wildberries",
+      "label": "Wildberries",
+      "consumer_ids": [
+        "expert-wildberries"
+      ],
+      "skill_paths": [],
+      "source_ids": [
+        "UPCR-001",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "seller_onboarding",
+        "listing",
+        "logistics",
+        "ads",
+        "returns",
+        "fees_settlement",
+        "policy_risk"
+      ],
+      "training_status": "rule_library_seeded_skill_not_found_create_or_map_before_training"
+    },
+    {
+      "platform_id": "independent_commerce",
+      "label": "独立站 / Shopify / WooCommerce",
+      "consumer_ids": [
+        "expert-independent-commerce",
+        "independent-commerce-operator"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/independent_commerce/independent-commerce-operator/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "feishu-template-center",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "site_build",
+        "seo",
+        "conversion",
+        "content",
+        "meta_google_ads",
+        "payment",
+        "shipping",
+        "privacy_tax",
+        "crm_retention"
+      ],
+      "training_status": "library_seeded_waiting_authorized_template_or_course_copy"
+    },
+    {
+      "platform_id": "b2b_export",
+      "label": "外贸 B2B / 阿里国际站 / 主动开发",
+      "consumer_ids": [
+        "expert-b2b-export-sales",
+        "b2b-platform-sales-operator",
+        "b2b-outbound-customer-development"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/b2b_export/b2b-export-expert/SKILL.md",
+        "skills/b2b-platform-sales-operator/SKILL.md",
+        "skills/b2b-outbound-customer-development/SKILL.md",
+        "skills/b2b-foreign-trade-sales/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "feishu-template-center",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "lead_source",
+        "company_research",
+        "inquiry_followup",
+        "quotation",
+        "contract",
+        "payment",
+        "customs",
+        "logistics",
+        "crm_timeline",
+        "compliance"
+      ],
+      "training_status": "library_seeded_waiting_authorized_template_or_course_copy"
+    },
+    {
+      "platform_id": "meta_channel",
+      "label": "Meta Ads / Facebook / Instagram",
+      "consumer_ids": [
+        "expert-meta-channel"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/meta-channel/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "account_permissions",
+        "pixel_and_catalog",
+        "campaign_objectives",
+        "creative_policy",
+        "budget_approval",
+        "measurement",
+        "risk_and_compliance"
+      ],
+      "training_status": "library_seeded_no_ad_spend_without_owner_approval"
+    },
+    {
+      "platform_id": "tiktok_ads_channel",
+      "label": "TikTok Ads",
+      "consumer_ids": [
+        "expert-tiktok-ads-channel"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/tiktok-ads-channel/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "account_permissions",
+        "pixel_catalog_events",
+        "shop_ads_boundary",
+        "gmv_max",
+        "creative_policy",
+        "budget_approval",
+        "measurement",
+        "risk_and_compliance"
+      ],
+      "training_status": "library_seeded_no_ad_spend_without_owner_approval"
+    },
+    {
+      "platform_id": "google_ads_channel",
+      "label": "Google Ads",
+      "consumer_ids": [
+        "expert-google-ads-channel"
+      ],
+      "skill_paths": [
+        "skills/platform-experts/google-ads-channel/SKILL.md"
+      ],
+      "source_ids": [
+        "UPCR-001",
+        "sinoclick-academy",
+        "community-public-cases"
+      ],
+      "rule_domains": [
+        "account_permissions",
+        "merchant_center",
+        "search_shopping_pmax",
+        "conversion_tracking",
+        "creative_policy",
+        "budget_approval",
+        "measurement",
+        "risk_and_compliance"
+      ],
+      "training_status": "library_seeded_no_ad_spend_without_owner_approval"
+    }
+  ],
+  "ingestion_pipeline": [
+    "discover_course_or_document_index",
+    "normalise_url_remove_session_tokens",
+    "classify_source_kind_and_permission",
+    "hash_or_fingerprint_source",
+    "dedupe_against_existing_materials",
+    "route_to_platform_rule_library",
+    "distill_short_learning_card",
+    "create_regression_questions",
+    "owner_review_for_non_official_or_paid_material",
+    "write_private_memory_reference",
+    "specialist_reads_only_its_platform_library"
+  ],
+  "blocked_acquisition_methods": [
+    "private_enterprise_feishu_crawling",
+    "seller_central_login_session_scraping_without_owner_authorization",
+    "bypass_read_only_export_or_print_restrictions",
+    "bulk_mirroring_paid_courses_to_open_source",
+    "screenshots_as_bulk_learning_replacement",
+    "community_case_promoted_to_official_rule",
+    "automatic_store_ads_outreach_payment_fulfillment_actions"
+  ]
+}

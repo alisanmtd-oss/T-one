@@ -7,7 +7,7 @@ import time
 from json import JSONDecodeError
 from pathlib import Path
 from datetime import datetime, timezone
-from typing import Any, Iterable
+from typing import Any, Iterable, Iterator
 
 from .types import IntakeRecord
 
@@ -34,6 +34,10 @@ _CACHE_LOCK = threading.RLock()
 FileSig = tuple[int, int, int]
 _PAYLOAD_CACHE: dict[str, tuple[FileSig, list[dict[str, Any]]]] = {}
 _KEY_INDEX_CACHE: dict[str, tuple[FileSig, dict[str, int]]] = {}
+_PAYLOAD_CACHE_MAX_BYTES = max(
+    0,
+    int(os.environ.get("T_ONE_JSONL_CACHE_MAX_BYTES", str(16 * 1024 * 1024))),
+)
 
 
 def _file_sig(path: Path) -> FileSig | None:
@@ -79,9 +83,13 @@ def _cached_payloads(path: Path) -> list[dict[str, Any]]:
     if sig is None:
         return []
     cache_key = _cache_key(path)
+    cache_allowed = sig[1] <= _PAYLOAD_CACHE_MAX_BYTES
     cached = _PAYLOAD_CACHE.get(cache_key)
-    if cached is not None and cached[0] == sig:
+    if cache_allowed and cached is not None and cached[0] == sig:
         return cached[1]
+    if not cache_allowed:
+        _PAYLOAD_CACHE.pop(cache_key, None)
+        _KEY_INDEX_CACHE.pop(cache_key, None)
     payloads: list[dict[str, Any]] = []
     for line in read_jsonl_lines(path):
         clean_line = line.lstrip("\ufeff").strip()
@@ -93,8 +101,9 @@ def _cached_payloads(path: Path) -> list[dict[str, Any]]:
             continue
         if isinstance(payload, dict):
             payloads.append(payload)
-    _PAYLOAD_CACHE[cache_key] = (sig, payloads)
-    _KEY_INDEX_CACHE.pop(cache_key, None)
+    if cache_allowed:
+        _PAYLOAD_CACHE[cache_key] = (sig, payloads)
+        _KEY_INDEX_CACHE.pop(cache_key, None)
     return payloads
 
 
@@ -225,6 +234,11 @@ def _append_to_caches(path: Path, payload: dict[str, Any], key: str) -> None:
 
 def read_records(root: Path, record_type: str | None = None) -> list[IntakeRecord]:
     paths = [record_path(root, record_type)] if record_type else sorted((root / DATA_DIR).glob("*.jsonl"))
+    # Large files and whole-lake reads are intentionally not copied into the
+    # permanent process cache. They are streamed once and only the requested
+    # IntakeRecord result list remains alive for the caller.
+    if record_type is None or any((_file_sig(path) or (0, 0, 0))[1] > _PAYLOAD_CACHE_MAX_BYTES for path in paths):
+        return list(iter_records(root, record_type))
     payload_groups: list[list[dict[str, Any]]] = []
     with _CACHE_LOCK:
         for path in paths:
@@ -243,11 +257,86 @@ def read_records(root: Path, record_type: str | None = None) -> list[IntakeRecor
     return records
 
 
-def read_jsonl_lines(path: Path) -> list[str]:
+def iter_jsonl_lines(path: Path) -> Iterator[str]:
+    """Yield JSONL lines without ever materialising the whole file.
+
+    ``errors='replace'`` preserves the previous tolerant behaviour while
+    avoiding the old ``read_text().splitlines()`` memory multiplication.
+    """
     try:
-        return path.read_text(encoding="utf-8-sig").splitlines()
-    except UnicodeDecodeError:
-        return path.read_text(encoding="utf-8", errors="replace").splitlines()
+        with path.open("r", encoding="utf-8-sig", errors="replace", newline="") as handle:
+            for line in handle:
+                yield line.rstrip("\r\n")
+    except OSError:
+        return
+
+
+def read_jsonl_lines(path: Path) -> Iterator[str]:
+    """Backward-compatible streaming alias used by cleanup/import code."""
+    return iter_jsonl_lines(path)
+
+
+def iter_records(root: Path, record_type: str | None = None) -> Iterator[IntakeRecord]:
+    """Stream records from one table or the full data lake without caching."""
+    paths = [record_path(root, record_type)] if record_type else sorted((root / DATA_DIR).glob("*.jsonl"))
+    for path in paths:
+        if not path.exists():
+            continue
+        for line in iter_jsonl_lines(path):
+            clean_line = line.lstrip("\ufeff").strip()
+            if not clean_line:
+                continue
+            try:
+                payload = json.loads(clean_line)
+                if isinstance(payload, dict):
+                    yield _build_record(payload)
+            except (JSONDecodeError, KeyError, TypeError, ValueError):
+                continue
+
+
+def _tail_jsonl_lines(path: Path, limit: int, chunk_size: int = 64 * 1024) -> list[str]:
+    """Read at most the final ``limit`` physical JSONL lines from disk.
+
+    The buffer grows only until enough newline boundaries are found. A single
+    unusually large JSON value still has to be held once, but preceding file
+    contents are never loaded.
+    """
+    if limit <= 0:
+        return []
+    try:
+        with path.open("rb") as handle:
+            handle.seek(0, os.SEEK_END)
+            position = handle.tell()
+            buffer = b""
+            newline_count = 0
+            while position > 0 and newline_count <= limit:
+                read_size = min(chunk_size, position)
+                position -= read_size
+                handle.seek(position)
+                chunk = handle.read(read_size)
+                buffer = chunk + buffer
+                newline_count += chunk.count(b"\n")
+    except OSError:
+        return []
+    lines = buffer.splitlines()
+    return [line.decode("utf-8-sig", errors="replace") for line in lines[-limit:]]
+
+
+def read_recent_records(root: Path, record_type: str, limit: int = 50) -> list[IntakeRecord]:
+    """Return the newest physical records from one JSONL table, oldest first."""
+    path = record_path(root, record_type)
+    records: list[IntakeRecord] = []
+    for line in _tail_jsonl_lines(path, max(0, int(limit))):
+        clean_line = line.lstrip("\ufeff").strip()
+        if not clean_line:
+            continue
+        try:
+            payload = json.loads(clean_line)
+            if isinstance(payload, dict):
+                records.append(_build_record(payload))
+        except (JSONDecodeError, KeyError, TypeError, ValueError):
+            continue
+    return records
 
 
 def write_records(root: Path, record_type: str, records: list[IntakeRecord]) -> Path:

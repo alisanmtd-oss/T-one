@@ -1,6 +1,6 @@
 # Meta Ads official-evidence routing
 
-Use the canonical evidence records in `config/platform_expert_training/advertising_media_buyer/evidence_index.json`; do not copy claims here as timeless truth.
+Use the canonical evidence records in `private_platform_training_contract_excluded`; do not copy claims here as timeless truth.
 
 ## Current public surfaces observed on 2026-07-18
 

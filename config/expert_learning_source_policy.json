@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T09:05:00+08:00",
+  "policy_id": "t-one-shared-expert-learning-policy",
+  "scope": "all_platform_b2b_creative_and_operations_experts",
+  "stage_contract": {
+    "knowledge_pack": {
+      "meaning": "reviewed rules, evidence, evaluations, failure boundaries and draft workflows",
+      "may_claim_live_operation": false
+    },
+    "operational_agent": {
+      "meaning": "a store- or account-scoped loop with an authorized connector, selected execution identity, approval gate, effect verification and receipt",
+      "required": [
+        "exact_platform_or_channel",
+        "exact_country_site_or_lawful_recipient_scope",
+        "store_binding_or_connector_account",
+        "store_scoped_execution_identity",
+        "approval_policy",
+        "effect_verification",
+        "audit_receipt"
+      ]
+    }
+  },
+  "work_allocation": {
+    "mainline_completion_minimum_ratio": 0.7,
+    "knowledge_package_discovery_audit_reuse_minimum_ratio_in_learning_round": 0.5,
+    "introductory_official_page_maximum_ratio": 0.1
+  },
+  "source_priority": [
+    "existing_t_one_assets_and_failure_logs",
+    "approved_mature_knowledge_packages_playbooks_schemas_sdks_mcps",
+    "targeted_current_official_deep_page_delta_verification",
+    "lawful_public_community_forums_and_video_counterexamples"
+  ],
+  "github_admission": {
+    "registry_ref": "config/github_capability_registry.json",
+    "no_install_before_audit": true,
+    "required_checks": [
+      "exact_owner_repo_and_version",
+      "identity_and_provenance",
+      "license_and_commercial_fit",
+      "maintenance_releases_issues_security_policy",
+      "credential_network_and_data_destinations",
+      "dependency_and_deployment_cost",
+      "overlap_and_deduplication",
+      "platform_site_store_and_ownership_scope",
+      "one_core_workflow_one_failure_three_rules"
+    ],
+    "decisions": [
+      "keep_reuse",
+      "merge_into_existing",
+      "extract_rules_only",
+      "research_only",
+      "rejected_stale",
+      "rejected_license",
+      "rejected_unsafe"
+    ]
+  },
+  "shared_cross_cutting_capabilities": {
+    "single_instance_only": true,
+    "capabilities": [
+      "legal_ip_and_copyright",
+      "privacy_and_data_minimization",
+      "communications_and_suppression",
+      "customer_crm_and_deduplication",
+      "product_pricing_and_margin",
+      "trade_compliance_and_fraud",
+      "video_and_media_learning",
+      "documents_payments_and_security",
+      "human_approval_and_audit_receipts"
+    ],
+    "rule": "Experts reference shared capabilities; they do not create a second legal, CRM, media, payment, security or approval runtime."
+  },
+  "video_learning": {
+    "shared_runtime": "ai_ecommerce_director/video_learning_intake.py",
+    "local_analysis_runtime": "ai_ecommerce_director/creative_video.py",
+    "preferred_inputs": [
+      "owner_selected_local_video",
+      "lawfully_obtained_subtitle_or_transcript",
+      "platform_permitted_public_metadata"
+    ],
+    "rights_basis": [
+      "owned",
+      "commissioned",
+      "public_domain",
+      "commercial_license",
+      "platform_permitted_research",
+      "user_provided_with_permission"
+    ],
+    "temporary_roots": [
+      "data/video_learning_temp",
+      "outputs/video_learning/temp"
+    ],
+    "download_connector_status": "blocked_not_implemented",
+    "delete_requirements": [
+      "temporary_download_true",
+      "owner_approved_delete_true",
+      "analysis_succeeded",
+      "receipt_persisted",
+      "exact_hash_unchanged",
+      "path_inside_designated_temporary_root"
+    ],
+    "stop_rules": [
+      "login_required",
+      "captcha_or_mfa",
+      "drm_or_paywall",
+      "private_or_restricted_content",
+      "rights_unknown",
+      "platform_terms_disallow_download",
+      "bulk_or_full_network_scrape"
+    ]
+  },
+  "external_action_gate": {
+    "draft_and_read_only_local_analysis_allowed": true,
+    "owner_confirmation_required": [
+      "login_or_authorization",
+      "network_video_fetch",
+      "message_send",
+      "listing_or_platform_write",
+      "order_fulfillment_refund_or_payment",
+      "ad_or_budget_change",
+      "external_file_upload"
+    ]
+  }
+}

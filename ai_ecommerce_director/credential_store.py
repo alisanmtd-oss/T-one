@@ -38,7 +38,7 @@ class _DataBlob(ctypes.Structure):
 
 
 def credential_store_path(root: Path) -> Path:
-    override = str(os.getenv("T_ONE_CREDENTIAL_STORE") or "").strip()
+    override = str(os.getenv("TEELAB_CREDENTIAL_STORE") or "").strip()
     if override:
         return Path(override).expanduser().resolve()
     return root / "data" / "private" / "ai_credentials.json"
@@ -88,7 +88,7 @@ def _protect_windows(value: str) -> str:
     input_buffer = ctypes.create_string_buffer(raw)
     input_blob = _DataBlob(len(raw), ctypes.cast(input_buffer, ctypes.POINTER(ctypes.c_byte)))
     output_blob = _DataBlob()
-    description = "T One AI credential"
+    description = "TeeLab AI credential"
     success = ctypes.windll.crypt32.CryptProtectData(
         ctypes.byref(input_blob),
         ctypes.c_wchar_p(description),

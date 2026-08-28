@@ -1,0 +1,1430 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-26",
+  "registry_kind": "evidence_backed_platform_store_taxonomy",
+  "purpose": "记录平台授权入口、国家站点、经营模式、店铺范围、卖家主体、类目权限和履约方式的证据。未核实内容不得进入可执行路由。",
+  "evidence_levels": [
+    {
+      "id": "verified_platform_official",
+      "rank": 4,
+      "meaning": "平台官方公开资料已明确说明。"
+    },
+    {
+      "id": "verified_erp_public_documentation",
+      "rank": 3,
+      "meaning": "妙手ERP公开帮助中心或官网已明确说明。"
+    },
+    {
+      "id": "observed_authenticated_ui_screenshot",
+      "rank": 2,
+      "meaning": "用户提供的已登录妙手ERP截图中可直接看到，但业务含义仍需公开文档或登录页进一步解释。"
+    },
+    {
+      "id": "internal_business_rule",
+      "rank": 1,
+      "meaning": "TeeLab自己的业务边界，不代表平台官方分类。"
+    },
+    {
+      "id": "pending_verification",
+      "rank": 0,
+      "meaning": "只有用户口述、搜索线索或待登录页面；不能作为事实或可执行选项。"
+    }
+  ],
+  "execution_gate": {
+    "minimum_evidence_for_canonical_option": "verified_erp_public_documentation",
+    "minimum_evidence_for_execution": "verified_platform_official",
+    "additional_execution_requirements": [
+      "真实 store_binding_id 已存在",
+      "platform + country_site + commerce_mode + ownership 已确认",
+      "店铺授权范围与类目权限已从连接器读取",
+      "execution_identity_id 与该店铺一对一绑定",
+      "写操作经过风险与确认门禁"
+    ],
+    "screenshot_only_rule": "截图可证明妙手存在某个按钮或字段，不能单独证明平台政策、站点覆盖或可执行能力。",
+    "unknown_rule": "未知值保留原始术语并标记 pending_verification，不自动映射到最相近的 canonical id。"
+  },
+  "axis_definitions": [
+    {
+      "id": "authorization_product",
+      "meaning": "ERP授权页选择的连接产品，例如 SHEIN、SHEIN半托管、Shopee全托管。它是连接入口，不必然等于平台店铺类型。"
+    },
+    {
+      "id": "country_site",
+      "meaning": "真实国家或站点；Southeast Asia 只能作为分组，不能代替 SG/MY/TH/VN/PH/ID。"
+    },
+    {
+      "id": "commerce_mode",
+      "meaning": "平台经营或合作模式，例如自运营、本土、跨境、半托管、平台官方全托管。"
+    },
+    {
+      "id": "store_scope_program",
+      "meaning": "普通店铺、全球店铺、SIP、六合一、轻出海、新链路等账号范围或平台项目；与经营模式分开。"
+    },
+    {
+      "id": "seller_entity_type",
+      "meaning": "企业、个人、受益人所在地、ACCU等主体或准入身份；与站点和经营模式分开。"
+    },
+    {
+      "id": "seller_plan",
+      "meaning": "平台收费或卖家服务计划，例如Amazon Individual/Professional；它不是国家站点、经营模式或履约方式。"
+    },
+    {
+      "id": "account_program",
+      "meaning": "Seller Center、Vendor Center、SIP、轻出海、全球店、CSP等账号合作或扩展计划；必须保留原始平台术语和适用范围。"
+    },
+    {
+      "id": "category_scope",
+      "meaning": "服装、家居、定制、全类目等商品经营范围；没有平台或店铺证据时不能称为店铺类型。"
+    },
+    {
+      "id": "category_authorization_level",
+      "meaning": "L3/L7或平台自己的末级类目授权深度；不是店铺模式。"
+    },
+    {
+      "id": "fulfillment_mode",
+      "meaning": "卖家履约、平台履约、FBM/FBA/WFS/FBT、自仓、第三方仓等履约方式；不是店铺模式。"
+    },
+    {
+      "id": "listing_offer_type",
+      "meaning": "商品曝光、刊登或收费方案，例如Mercado Libre Gratuita/Classic/Premium；它属于Listing层，不是店铺层。"
+    },
+    {
+      "id": "integration_capability_scope",
+      "meaning": "某个ERP/API对该店铺可执行的listing、order、inventory、shipment、settlement、ads、service能力；平台存在某模式不等于当前连接器支持全部能力。"
+    },
+    {
+      "id": "ownership",
+      "meaning": "用户自有、TeeLab自营、TeeLab代运营/联名运营、合作方或客户所有。"
+    },
+    {
+      "id": "execution_identity",
+      "meaning": "API授权、广告账号、员工子账号、BitBrowser环境或插件身份；每个真实店铺独立绑定。"
+    }
+  ],
+  "integration_support_snapshots": [
+    {
+      "provider": "miaoshou_erp",
+      "published_at": "2026-04-30",
+      "fact": "妙手公开FAQ当时仅声明支持Lazada、TikTok、Ozon、Mercado Libre的本土店授权。",
+      "interpretation": "这是妙手ERP在该日期的接入覆盖快照，不是这些平台是否存在本土店的官方政策，也不能推导其他平台永远不支持。",
+      "source_ids": ["miaoshou_current_local_store_support_3161"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "user_miaoshou_auth_ui_2026_07_17",
+      "level": "observed_authenticated_ui_screenshot",
+      "title": "用户提供的妙手ERP授权店铺页面截图",
+      "redacted_attachment_refs": [
+        "attachment:user_miaoshou_auth_ui_2026_07_17:1",
+        "attachment:user_miaoshou_auth_ui_2026_07_17:2"
+      ]
+    },
+    {
+      "id": "miaoshou_help_index",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP帮助中心",
+      "url": "https://erp.91miaoshou.com/help_center/index.html"
+    },
+    {
+      "id": "miaoshou_shein_auth_2943",
+      "level": "verified_erp_public_documentation",
+      "title": "Shein全托管店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2943.html"
+    },
+    {
+      "id": "miaoshou_shein_semi_auth_2477",
+      "level": "verified_erp_public_documentation",
+      "title": "Shein半托管店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2477.html"
+    },
+    {
+      "id": "miaoshou_shein_semi_fulfillment_11732",
+      "level": "verified_erp_public_documentation",
+      "title": "Shein半托管平台履约-订单处理流程",
+      "url": "https://erp.91miaoshou.com/help_center/article_11732.html"
+    },
+    {
+      "id": "shein_official_listing",
+      "level": "verified_platform_official",
+      "title": "SHEIN Marketplace Product Listings",
+      "url": "https://seller-us.shein.com/product-listing"
+    },
+    {
+      "id": "shein_official_full_category",
+      "level": "verified_platform_official",
+      "title": "SHEIN Teams Up with Global Sellers and Brands to Launch Full-Category Sales",
+      "url": "https://www.sheingroup.com/newsroom/shein-teams-up-with-global-sellers-and-brands-to-launch-full-category-sales"
+    },
+    {
+      "id": "miaoshou_tiktok_landing",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP TikTok Shop页面",
+      "url": "https://erp.91miaoshou.com/tiktok.html"
+    },
+    {
+      "id": "miaoshou_tiktok_auth_3192",
+      "level": "verified_erp_public_documentation",
+      "title": "TikTok跨境店、本土店授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_3192.html"
+    },
+    {
+      "id": "miaoshou_tiktok_fbt_13233",
+      "level": "verified_erp_public_documentation",
+      "title": "授权FBT海外仓及仓库商品配对方法",
+      "url": "https://erp.91miaoshou.com/help_center/article_13233.html"
+    },
+    {
+      "id": "miaoshou_shopee_sip_3177",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopee SIP 店铺常见问题",
+      "url": "https://erp.91miaoshou.com/help_center/article_3177.html"
+    },
+    {
+      "id": "miaoshou_shopee_light_12792",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopee轻出海授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_12792.html"
+    },
+    {
+      "id": "miaoshou_shopee_full_2751",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopee全托管授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2751.html"
+    },
+    {
+      "id": "miaoshou_lazada_6in1_2269",
+      "level": "verified_erp_public_documentation",
+      "title": "Lazada六合一发布时如何设置站点价格",
+      "url": "https://erp.91miaoshou.com/help_center/article_2269.html"
+    },
+    {
+      "id": "miaoshou_lazada_category_3174",
+      "level": "verified_erp_public_documentation",
+      "title": "Lazada六合一发布类目授权说明",
+      "url": "https://erp.91miaoshou.com/help_center/article_3174.html"
+    },
+    {
+      "id": "miaoshou_realtime_platforms_2904",
+      "level": "verified_erp_public_documentation",
+      "title": "实时概览功能介绍",
+      "url": "https://erp.91miaoshou.com/help_center/article_2904.html"
+    },
+    {
+      "id": "miaoshou_temu_local_2558",
+      "level": "verified_erp_public_documentation",
+      "title": "Temu本土店铺（美区、欧区）-店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2558.html"
+    },
+    {
+      "id": "miaoshou_temu_sites_7758",
+      "level": "verified_erp_public_documentation",
+      "title": "Temu半托管及本土店铺已支持授权接入的站点清单",
+      "url": "https://erp.91miaoshou.com/help_center/article_7758.html"
+    },
+    {
+      "id": "miaoshou_temu_semi_2857",
+      "level": "verified_erp_public_documentation",
+      "title": "Temu半托管-店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2857.html"
+    },
+    {
+      "id": "miaoshou_aliexpress_auth_3190",
+      "level": "verified_erp_public_documentation",
+      "title": "AliExpress（速卖通）店铺/托管店铺授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_3190.html"
+    },
+    {
+      "id": "miaoshou_ozon_auth_3189",
+      "level": "verified_erp_public_documentation",
+      "title": "Ozon店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_3189.html"
+    },
+    {
+      "id": "miaoshou_mercado_group_1120",
+      "level": "verified_erp_public_documentation",
+      "title": "Mercado帮助分组",
+      "url": "https://erp.91miaoshou.com/help_center/group_article_1120.html"
+    },
+    {
+      "id": "miaoshou_jumia_guide_3080",
+      "level": "verified_erp_public_documentation",
+      "title": "入门必看——Jumia篇",
+      "url": "https://erp.91miaoshou.com/help_center/article_3080.html"
+    },
+    {
+      "id": "miaoshou_wildberries_orders_9208",
+      "level": "verified_erp_public_documentation",
+      "title": "野莓（WildBerries）订单处理流程",
+      "url": "https://erp.91miaoshou.com/help_center/article_9208.html"
+    },
+    {
+      "id": "miaoshou_yandex_auth_12393",
+      "level": "verified_erp_public_documentation",
+      "title": "Yandex店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_12393.html"
+    },
+    {
+      "id": "amazon_official_fba",
+      "level": "verified_platform_official",
+      "title": "Amazon Fulfillment by Amazon",
+      "url": "https://sell.amazon.com/fulfillment-by-amazon"
+    },
+    {
+      "id": "amazon_official_fbm",
+      "level": "verified_platform_official",
+      "title": "Amazon Fulfilled by Merchant",
+      "url": "https://sell.amazon.com/programs/fulfilled-by-merchant"
+    },
+    {
+      "id": "amazon_official_selling_plans",
+      "level": "verified_platform_official",
+      "title": "Amazon selling plans",
+      "url": "https://sell.amazon.com/sell-online"
+    },
+    {
+      "id": "miaoshou_walmart_landing",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP Walmart平台页",
+      "url": "https://erp.91miaoshou.com/platforms/walmart.html"
+    },
+    {
+      "id": "miaoshou_current_local_store_support_3161",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP目前支持哪些平台的本土店铺授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_3161.html"
+    },
+    {
+      "id": "miaoshou_shein_listing_2938",
+      "level": "verified_erp_public_documentation",
+      "title": "SHEIN（希音）产品刊登教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2938.html"
+    },
+    {
+      "id": "miaoshou_shein_landing",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP SHEIN平台页",
+      "url": "https://erp.91miaoshou.com/shein.html"
+    },
+    {
+      "id": "miaoshou_lazada_local_sites_2329",
+      "level": "verified_erp_public_documentation",
+      "title": "Lazada跨境服务市场支持站点说明",
+      "url": "https://erp.91miaoshou.com/help_center/article_2329.html"
+    },
+    {
+      "id": "miaoshou_coupang_store_types_11807",
+      "level": "verified_erp_public_documentation",
+      "title": "Coupang酷澎店铺类型与妙手能力说明",
+      "url": "https://erp.91miaoshou.com/help_center/article_11807.html"
+    },
+    {
+      "id": "miaoshou_coupang_auth_2592",
+      "level": "verified_erp_public_documentation",
+      "title": "Coupang酷澎店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2592.html"
+    },
+    {
+      "id": "miaoshou_allegro_auth_2313",
+      "level": "verified_erp_public_documentation",
+      "title": "Allegro店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2313.html"
+    },
+    {
+      "id": "miaoshou_emag_auth_3259",
+      "level": "verified_erp_public_documentation",
+      "title": "eMAG店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_3259.html"
+    },
+    {
+      "id": "emag_official_start_selling_2026_07_21",
+      "level": "verified_platform_official",
+      "title": "Start selling on eMAG Marketplace",
+      "url": "https://marketplace.emag.ro/infocenter/start-selling/?lang=en",
+      "checked_at": "2026-07-21",
+      "scope": "公开卖家入口说明同一平台可覆盖 Romania、Hungary、Bulgaria；不构成任何卖家店铺、类目或执行授权。"
+    },
+    {
+      "id": "emag_official_cross_border_2026_07_21",
+      "level": "verified_platform_official",
+      "title": "eMAG Cross Border - Sell in 3 countries from 1 marketplace",
+      "url": "https://marketplace.emag.ro/infocenter/grow-your-business/cross-border/?lang=en",
+      "checked_at": "2026-07-21",
+      "scope": "公开跨境说明覆盖 Romania、Hungary、Bulgaria；不替代绑定店铺的履约、税务、费用或可售类目确认。"
+    },
+    {
+      "id": "emag_official_api_documentation_2026_07_21",
+      "level": "verified_platform_official",
+      "title": "eMAG Marketplace API Documentation",
+      "url": "https://marketplace.emag.ro/infocenter/emag-academy/how-to-add-a-product/product-import-through-api-or-feeds/api-documentation/?lang=en",
+      "checked_at": "2026-07-21",
+      "scope": "公开页面标注 API documentation v4.5.1 valid from 2026-03-02；文档存在不代表应用、卖家授权或任一接口已连接。"
+    },
+    {
+      "id": "miaoshou_miravia_auth_2699",
+      "level": "verified_erp_public_documentation",
+      "title": "Miravia店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2699.html"
+    },
+    {
+      "id": "miaoshou_wish_auth_2303",
+      "level": "verified_erp_public_documentation",
+      "title": "Wish店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2303.html"
+    },
+    {
+      "id": "miaoshou_joom_auth_2311",
+      "level": "verified_erp_public_documentation",
+      "title": "Joom店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2311.html"
+    },
+    {
+      "id": "miaoshou_daraz_auth_2305",
+      "level": "verified_erp_public_documentation",
+      "title": "Daraz店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2305.html"
+    },
+    {
+      "id": "miaoshou_joybuy_auth_12922",
+      "level": "verified_erp_public_documentation",
+      "title": "Joybuy店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_12922.html"
+    },
+    {
+      "id": "miaoshou_alibaba_auth_2317",
+      "level": "verified_erp_public_documentation",
+      "title": "Alibaba（阿里国际站）店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2317.html"
+    },
+    {
+      "id": "miaoshou_qoo10_auth_2312",
+      "level": "verified_erp_public_documentation",
+      "title": "Qoo10（趣天）店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2312.html"
+    },
+    {
+      "id": "miaoshou_shopify_auth_2318",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopify店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2318.html"
+    },
+    {
+      "id": "miaoshou_shoplazza_auth_2307",
+      "level": "verified_erp_public_documentation",
+      "title": "Shoplazza（店匠）店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2307.html"
+    },
+    {
+      "id": "miaoshou_shopyy_v1_auth_2308",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopyy V1.0店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2308.html"
+    },
+    {
+      "id": "miaoshou_shopyy_v2_auth_2309",
+      "level": "verified_erp_public_documentation",
+      "title": "Shopyy V2.0店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_2309.html"
+    },
+    {
+      "id": "miaoshou_shopline_auth_3193",
+      "level": "verified_erp_public_documentation",
+      "title": "SHOPLINE店铺授权教程",
+      "url": "https://erp.91miaoshou.com/help_center/article_3193.html"
+    },
+    {
+      "id": "shopline_official_independent_store",
+      "level": "verified_platform_official",
+      "title": "SHOPLINE全球跨境电商建站解决方案",
+      "url": "https://shoplineapp.cn/about-us/"
+    },
+    {
+      "id": "miaoshou_greatboss_bridge_6776",
+      "level": "verified_erp_public_documentation",
+      "title": "通过GreatBoss同步TikTok本土店铺授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_6776.html"
+    },
+    {
+      "id": "shein_official_marketplace_agreement",
+      "level": "verified_platform_official",
+      "title": "SHEIN Marketplace Agreement",
+      "url": "https://seller-us.shein.com/agreement"
+    },
+    {
+      "id": "shein_official_shipping_requirements",
+      "level": "verified_platform_official",
+      "title": "SHEIN Marketplace Shipping Requirements",
+      "url": "https://seller-us.shein.com/shipping-requirements"
+    },
+    {
+      "id": "shein_official_fulfillment_service",
+      "level": "verified_platform_official",
+      "title": "SHEIN Fulfillment Service",
+      "url": "https://seller-us.shein.com/shein-fulfillment-service"
+    },
+    {
+      "id": "tiktok_official_seller_api_overview",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Seller API Overview",
+      "url": "https://partner.tiktokshop.com/docv2/page/seller-api-overview"
+    },
+    {
+      "id": "tiktok_official_authorized_shops",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Get Authorized Shops",
+      "url": "https://partner.tiktokshop.com/docv2/page/get-authorized-shops"
+    },
+    {
+      "id": "tiktok_official_fulfillment_api",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Fulfillment API Overview",
+      "url": "https://partner.tiktokshop.com/docv2/page/fulfillment-api-overview"
+    },
+    {
+      "id": "tiktok_official_development_shops",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Development Shops",
+      "url": "https://partner.tiktokshop.com/docv2/page/seller-center-development-shops",
+      "captured_at": "2026-07-26",
+      "verified_facts": [
+        "Shop type and fulfillment are separate concerns in development-shop setup.",
+        "Seller Shipping and TikTok Shipping are separate fulfillment choices.",
+        "A development shop is test infrastructure and is not evidence of a connected production shop."
+      ]
+    },
+    {
+      "id": "tiktok_official_logistics_api_overview",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Logistics API Overview",
+      "url": "https://partner.tiktokshop.com/docv2/page/logistic-api-overview",
+      "captured_at": "2026-07-26",
+      "verified_facts": [
+        "Warehouse, delivery option, fulfillment type and shipping-label channel are separate logistics dimensions.",
+        "FULFILLMENT_BY_SELLER requires the seller to process the order through the Fulfillment API.",
+        "The generic logistics overview does not establish site-specific rates, taxes or direct-shipping availability."
+      ]
+    },
+    {
+      "id": "tiktok_official_jp_cross_border_direct_shipping",
+      "level": "verified_platform_official",
+      "title": "TikTok Shop Japan Market Updated APIs for Cross-border Direct Shipping",
+      "url": "https://partner.tiktokshop.com/docv2/page/jp-market-updated-apis-for-products-orders-logistics-and-customer-service",
+      "published_date": "2025-05-28",
+      "captured_at": "2026-07-26",
+      "market": "JP",
+      "api_versions": ["202309_and_later"],
+      "verified_facts": [
+        "China cross-border GS-POP sellers in JP have separate overseas-warehouse and direct-shipping fulfillment workflows.",
+        "Direct shipping uses Ship Package to schedule handover and Get Package Shipping Document to retrieve the label.",
+        "This evidence applies to JP and must not be generalized to another site."
+      ]
+    },
+    {
+      "id": "shopee_official_sip_terms",
+      "level": "verified_platform_official",
+      "title": "Shopee International Platform Terms",
+      "url": "https://help.shopee.com.my/portal/4/article/77240-Shopee-International-Platform-Terms-of-Service"
+    },
+    {
+      "id": "shopee_official_direct_program",
+      "level": "verified_platform_official",
+      "title": "Shopee Direct Program Terms",
+      "url": "https://help.shopee.ph/portal/4/article/196293-Direct-Program-Terms-and-Conditions"
+    },
+    {
+      "id": "shopee_official_fbs",
+      "level": "verified_platform_official",
+      "title": "Fulfilled by Shopee",
+      "url": "https://help.shopee.com.my/portal/4/article/78558-%5BFulfilled-by-Shopee-%28FBS%29%5D-What-is-Fulfilled-by-Shopee%3F"
+    },
+    {
+      "id": "miaoshou_shopee_local_conflict_13736",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP Shopee本土店支持限制",
+      "url": "https://erp.91miaoshou.com/help_center/article_13736.html"
+    },
+    {
+      "id": "lazada_official_authorization",
+      "level": "verified_platform_official",
+      "title": "Lazada Open Platform Authorization",
+      "url": "https://open.lazada.com/apps/doc/doc?docId=108260&nodeId=10777"
+    },
+    {
+      "id": "lazada_official_choice_inventory",
+      "level": "verified_platform_official",
+      "title": "Lazada Choice Product Inventory",
+      "url": "https://open.lazada.com/apps/doc/doc?docId=121783&nodeId=45695"
+    },
+    {
+      "id": "lazada_official_category_tree",
+      "level": "verified_platform_official",
+      "title": "Lazada Category Tree",
+      "url": "https://open.lazada.com/apps/doc/doc?docId=120946&nodeId=30715"
+    },
+    {
+      "id": "miaoshou_lazada_choice_2846",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP Lazada Choice授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_2846.html"
+    },
+    {
+      "id": "miaoshou_amazon_auth_2310",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP Amazon店铺授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_2310.html"
+    },
+    {
+      "id": "amazon_official_marketplace_ids",
+      "level": "verified_platform_official",
+      "title": "Amazon SP-API Marketplace IDs",
+      "url": "https://developer-docs.amazon.com/sp-api/docs/marketplace-ids"
+    },
+    {
+      "id": "amazon_official_listing_restrictions",
+      "level": "verified_platform_official",
+      "title": "Amazon Listings Restrictions API",
+      "url": "https://developer-docs.amazon.com/sp-api/lang-zh/docs/listings-restrictions-api"
+    },
+    {
+      "id": "miaoshou_walmart_auth_2301",
+      "level": "verified_erp_public_documentation",
+      "title": "妙手ERP Walmart US授权",
+      "url": "https://erp.91miaoshou.com/help_center/article_2301.html"
+    },
+    {
+      "id": "walmart_official_onboarding",
+      "level": "verified_platform_official",
+      "title": "Walmart Marketplace Onboarding",
+      "url": "https://marketplacelearn.walmart.com/guides/Getting%20started/Onboarding/Before-you-start-selling-on-Walmart-Marketplace?locale=en-US"
+    },
+    {
+      "id": "walmart_official_fulfillment",
+      "level": "verified_platform_official",
+      "title": "Walmart Shipping and Fulfillment",
+      "url": "https://marketplace.walmart.com/shipping-and-fulfillment/"
+    },
+    {
+      "id": "walmart_official_pro_seller",
+      "level": "verified_platform_official",
+      "title": "Walmart Pro Seller Overview",
+      "url": "https://marketplacelearn.walmart.com/guides/Growth%2520opportunities/Product%2520listings/pro-seller-overview"
+    },
+    {
+      "id": "temu_official_local_seller",
+      "level": "verified_platform_official",
+      "title": "Temu Local Seller Registration",
+      "url": "https://seller-eu.temu.com/login.html?login_scene=302"
+    },
+    {
+      "id": "aliexpress_official_semi_terms",
+      "level": "verified_platform_official",
+      "title": "AliExpress Semi-Managed Terms",
+      "url": "https://terms.alicdn.com/legal-agreement/terms/b_end_product_protocol/20230815005635428/20230815005635428.html"
+    },
+    {
+      "id": "aliexpress_official_full_terms",
+      "level": "verified_platform_official",
+      "title": "AliExpress Fully Managed Terms",
+      "url": "https://terms.alicdn.com/legal-agreement/terms/b_end_product_protocol/20231011130622172/20231011130622172.pdf"
+    },
+    {
+      "id": "aliexpress_official_overseas_terms",
+      "level": "verified_platform_official",
+      "title": "AliExpress Overseas Managed Terms",
+      "url": "https://terms.alicdn.com/legal-agreement/terms/b_end_product_protocol/20240226195545619/20240226195545619.html"
+    },
+    {
+      "id": "ozon_official_launch",
+      "level": "verified_platform_official",
+      "title": "Ozon Global Launch Steps",
+      "url": "https://docs.ozon.com/global/zh-hans/launch/steps/"
+    },
+    {
+      "id": "ozon_official_fulfillment",
+      "level": "verified_platform_official",
+      "title": "Ozon Global Fulfillment",
+      "url": "https://docs.ozon.com/global/tr/fulfillment/"
+    },
+    {
+      "id": "mercado_official_global_selling",
+      "level": "verified_platform_official",
+      "title": "Mercado Libre Global Selling",
+      "url": "https://global-selling.mercadolibre.com/landing/about"
+    },
+    {
+      "id": "mercado_official_listing_types",
+      "level": "verified_platform_official",
+      "title": "Mercado Libre Listing Types and Exposures",
+      "url": "https://global-selling.mercadolibre.com/devsite/api-docs/listing-types-and-exposures"
+    }
+  ],
+  "observed_authorization_surface": {
+    "source_id": "user_miaoshou_auth_ui_2026_07_17",
+    "tabs": ["全部平台(37)", "已授权(7)", "未授权(30)"],
+    "authorization_products": [
+      "TikTok Shop",
+      "TikTok Shop全托管",
+      "Shopee",
+      "Shopee全托管",
+      "Shopee轻出海",
+      "Lazada",
+      "Lazada全托管",
+      "Temu",
+      "SHEIN",
+      "SHEIN半托管",
+      "OZON",
+      "Yandex",
+      "AliExpress",
+      "速卖通托管",
+      "速卖通本土POP",
+      "coupang",
+      "Walmart",
+      "wildberries",
+      "allegro",
+      "mercado libre",
+      "JUMIA",
+      "JOOM",
+      "amazon",
+      "wish",
+      "eMAG",
+      "Miravia",
+      "Daraz",
+      "Joybuy",
+      "Alibaba",
+      "Qoo10",
+      "shopify",
+      "SHOPLAZZA",
+      "SHOPYY V1.0",
+      "SHOPYY V2.0",
+      "SHOPLINE",
+      "GreatBoss",
+      "其他"
+    ],
+    "store_scope_tabs": ["普通店铺", "全球店铺", "美通墨店铺"],
+    "visible_fields": ["店铺类型", "站点", "分组", "授权状态", "关键词", "所属全球店", "类目等级", "店铺别名", "授权时间"],
+    "category_level_notice": "页面提示类目从三级类目(L3)迁移到七级类目(L7)，升级至L7的店铺仅支持L7类目发品，L3店铺仅支持L3类目发品。",
+    "interpretation_status": "字段和按钮已观察；各平台按钮与范围标签的业务映射仍需逐平台核对。"
+  },
+  "platforms": [
+    {
+      "platform": "shein",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "SHEIN",
+          "verified_submodes": ["platform_self_operated", "supply_obm_official_full_managed"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shein_auth_2943"]
+        },
+        {
+          "raw_label": "SHEIN半托管",
+          "verified_submodes": ["semi_managed"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shein_semi_auth_2477"]
+        }
+      ],
+      "commerce_modes": [
+        {
+          "id": "platform_self_operated",
+          "raw_terms": ["平台模式", "自运营"],
+          "site_scope": ["US", "MX", "BR", "GB", "DE", "FR", "IT", "ES", "RO", "AT", "EUROPE_NON_EU"],
+          "fulfillment": "seller_fulfilled_after_order",
+          "source_ids": ["miaoshou_shein_auth_2943"]
+        },
+        {
+          "id": "supply_obm_official_full_managed",
+          "raw_terms": ["供货模式", "OBM", "全托管"],
+          "site_scope": ["NOT_SITE_DISTINGUISHED_IN_MIAOSHOU_AUTH"],
+          "fulfillment": "platform_requests_stock_in_then_platform_fulfills",
+          "selectable_for_teelab": false,
+          "source_ids": ["miaoshou_shein_auth_2943"]
+        },
+        {
+          "id": "semi_managed",
+          "raw_terms": ["半托管"],
+          "site_scope": ["US", "GB", "DE", "FR", "IT", "ES", "MX", "CA", "AE", "SA", "KR", "JP", "AU"],
+          "fulfillment_options": ["merchant_fulfilled", "shein_platform_fulfilled"],
+          "source_ids": ["miaoshou_shein_semi_auth_2477", "miaoshou_shein_semi_fulfillment_11732"]
+        }
+      ],
+      "category_scope": {
+        "verified_facts": [
+          "SHEIN Marketplace要求每个Listing选择商品类目并填写类目属性。",
+          "SHEIN官方说明Marketplace已从时尚服饰扩展到家电、智能家居和家装等更多类目。"
+        ],
+        "unverified_store_type_candidates": ["服装", "家居", "定制", "全类目"],
+        "candidate_status": "pending_verification",
+        "warning": "现有证据不能证明这些词是四种店铺类型；在登录页确认前只按category_scope候选保存。",
+        "source_ids": ["shein_official_listing", "shein_official_full_category"]
+      },
+      "category_authorization_level": {
+        "observed_values": ["L3", "L7"],
+        "status": "observed_authenticated_ui_screenshot",
+        "warning": "这是发品类目层级，不是SHEIN经营模式。",
+        "source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+      },
+      "seller_entity_scope": {
+        "verified_values": ["business", "individual"],
+        "warning": "卖家主体类型不是店铺经营模式。",
+        "source_ids": ["shein_official_marketplace_agreement"]
+      },
+      "fulfillment_modes": [
+        {"id": "merchant_fulfilled", "source_ids": ["shein_official_shipping_requirements"]},
+        {"id": "shein_fulfillment_service", "source_ids": ["shein_official_fulfillment_service"]}
+      ]
+    },
+    {
+      "platform": "tiktok_shop",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "TikTok Shop",
+          "verified_submodes": ["cross_border", "local"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_tiktok_auth_3192"]
+        },
+        {
+          "raw_label": "TikTok Shop全托管",
+          "verified_submodes": ["official_full_managed"],
+          "selectable_for_teelab": false,
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_tiktok_landing"]
+        }
+      ],
+      "commerce_modes": [
+        {
+          "id": "cross_border",
+          "verified_sites": ["US", "JP", "MY", "PH", "SG", "TH", "VN", "GB", "ES", "FR", "DE", "IE", "IT"],
+          "source_ids": ["miaoshou_tiktok_landing"]
+        },
+        {
+          "id": "local",
+          "provider_observed_sites": ["SG", "MY", "TH", "VN", "PH", "ID", "US", "GB", "DE", "FR", "IT", "ES", "IE", "JP", "MX", "BR"],
+          "seller_entity_types": ["US_ENTERPRISE", "US_INDIVIDUAL", "US_ACCU"],
+          "warning": "这些是妙手接入或平台市场候选；真实可执行站点必须以当前授权店铺返回的region与shop id为准。",
+          "source_ids": ["miaoshou_tiktok_landing", "miaoshou_tiktok_auth_3192"]
+        },
+        {
+          "id": "official_full_managed",
+          "verified_example_sites": ["US", "GB", "SA"],
+          "selectable_for_teelab": false,
+          "source_ids": ["miaoshou_tiktok_landing"]
+        }
+      ],
+      "fulfillment_modes": [
+        {
+          "id": "fbt",
+          "meaning": "TikTok Shop官方海外仓履约服务",
+          "current_miaoshou_authorization_scope": ["US_LOCAL"],
+          "source_ids": ["miaoshou_tiktok_fbt_13233"]
+        },
+        {
+          "id": "fulfillment_by_seller",
+          "meaning": "卖家履约；物流责任与平台物流/卖家物流再分层保存。",
+          "source_ids": ["tiktok_official_fulfillment_api"]
+        },
+        {
+          "id": "cross_border_direct_ship_from_china",
+          "axis": "fulfillment_mode",
+          "store_mode": "cross_border",
+          "meaning": "TikTok Shop跨境店使用中国仓并从中国直发目标市场；不是独立店铺模式，也不是本土店。",
+          "warehouse_country": "CN",
+          "ship_from_country": "CN",
+          "verified_sites": ["JP"],
+          "other_site_status": "unknown_until_official_or_authorized_shop_evidence",
+          "raw_aliases": ["直邮店", "中国仓直邮", "中国直邮"],
+          "execution_status": "reference_only_not_connected",
+          "warning": "JP以外站点必须由站点官方文档或已授权店铺证据确认；不得据此推断费率、税率、权限或连接状态。",
+          "source_ids": ["tiktok_official_development_shops", "tiktok_official_logistics_api_overview", "tiktok_official_jp_cross_border_direct_shipping"]
+        }
+      ],
+      "official_seller_api_types": {
+        "values": ["local_seller", "global_seller", "intra_eu_seller"],
+        "axis": "seller_entity_type",
+        "warning": "ACCU保留为准入主体标签，不能冒充TikTok Seller API的独立经营模式。",
+        "source_ids": ["tiktok_official_seller_api_overview"]
+      },
+      "authorization_identity_fields": {
+        "values": ["shop_id", "region", "seller_type"],
+        "execution_rule": "每个真实店铺和国家站点独立绑定，不能共用可写执行身份。",
+        "source_ids": ["tiktok_official_authorized_shops"]
+      },
+      "raw_miaoshou_dropdown_values": [
+        "东南亚/英国/墨西哥/美国ACCU店铺/日本",
+        "美国跨境店铺",
+        "美国本土店铺（受益人为美国人）",
+        "欧洲跨境店铺",
+        "欧洲本土店铺",
+        "日本本土店铺",
+        "巴西本土店铺"
+      ],
+      "dropdown_source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+    },
+    {
+      "platform": "shopee",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "Shopee",
+          "verified_scopes": ["ordinary_store", "global_store", "sip_program"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopee_sip_3177"]
+        },
+        {
+          "raw_label": "Shopee全托管",
+          "verified_submodes": ["official_full_managed"],
+          "selectable_for_teelab": false,
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopee_full_2751"]
+        },
+        {
+          "raw_label": "Shopee轻出海",
+          "verified_programs": ["light_overseas_program"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopee_light_12792"]
+        }
+      ],
+      "store_scope_programs": [
+        {
+          "id": "ordinary_store",
+          "rule": "非SIP账户按站点单独授权，一个站点计一个店铺。",
+          "source_ids": ["miaoshou_shopee_sip_3177"]
+        },
+        {
+          "id": "global_store",
+          "rule": "以全球店铺主账号授权公司和普通店铺站点；它是授权范围，不是国家站点。",
+          "source_ids": ["miaoshou_shopee_sip_3177"]
+        },
+        {
+          "id": "sip_program",
+          "rule": "授权TW或MY主站后，SIP子站点可自动同步；子站点不能被当成独立授权身份。",
+          "source_ids": ["miaoshou_shopee_sip_3177"]
+        },
+        {
+          "id": "light_overseas_program",
+          "rule": "妙手使用独立授权代码接入；后续代运营店铺由系统识别同步。",
+          "source_ids": ["miaoshou_shopee_light_12792"]
+        }
+      ],
+      "official_programs": [
+        {"id": "sip", "axis": "account_program", "source_ids": ["shopee_official_sip_terms"]},
+        {"id": "direct_program", "axis": "account_program", "source_ids": ["shopee_official_direct_program"]},
+        {"id": "fulfilled_by_shopee", "axis": "fulfillment_mode", "source_ids": ["shopee_official_fbs"]}
+      ],
+      "pending_items": [
+        "妙手营销页与专项帮助页对Shopee本土店支持存在冲突，真实支持范围必须从当前授权页读取。",
+        "CNSC、轻出海、3PF和全托管与Shopee官方术语的准确映射。"
+      ],
+      "pending_source_ids": ["miaoshou_shopee_local_conflict_13736"]
+    },
+    {
+      "platform": "lazada",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "Lazada",
+          "observed_only": true,
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+        },
+        {
+          "raw_label": "Lazada全托管",
+          "observed_only": true,
+          "selectable_for_teelab": false,
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+        }
+      ],
+      "store_scope_programs": [
+        {
+          "id": "six_in_one_publish",
+          "meaning": "马来站跨境店可作为入口同时发布到多个站点；是多站发布能力，不是一个国家站点或独立店铺模式。",
+          "source_ids": ["miaoshou_lazada_6in1_2269"]
+        }
+      ],
+      "category_authorization": {
+        "rule": "六合一发布依赖全球类目和末端子类目权限。",
+        "source_ids": ["miaoshou_lazada_category_3174"]
+      },
+      "verified_authorization_sites": ["SG", "MY", "TH", "VN", "PH", "ID"],
+      "authorization_scopes": ["single_country_local_or_crossborder", "crossborder_multi_site", "choice_by_country"],
+      "authorization_rule": "Crossborder授权可返回六国各自seller_id和short_code；执行仍按国家店铺隔离。",
+      "choice_inventory_modes": ["JIT", "VMI"],
+      "source_ids": ["lazada_official_authorization", "lazada_official_choice_inventory", "lazada_official_category_tree"],
+      "pending_items": ["Lazada Choice是否存在平台官方全托管定义；妙手将其放入全托管流程不能替代平台官方术语。"],
+      "pending_source_ids": ["miaoshou_lazada_choice_2846"]
+    },
+    {
+      "platform": "temu",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "Temu",
+          "verified_submodes": ["official_full_managed", "semi_managed", "local"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_help_index", "miaoshou_temu_local_2558", "miaoshou_temu_semi_2857"]
+        }
+      ],
+      "commerce_modes": [
+        {
+          "id": "official_full_managed",
+          "selectable_for_teelab": false,
+          "site_scope": ["PENDING_PLATFORM_VERIFICATION"]
+        },
+        {
+          "id": "semi_managed",
+          "authorization_scope_groups": ["US_REGION", "EU_REGION", "GLOBAL"],
+          "source_ids": ["miaoshou_temu_semi_2857", "miaoshou_temu_sites_7758"]
+        },
+        {
+          "id": "local",
+          "authorization_scope_groups": ["US_REGION", "EU_REGION", "GLOBAL"],
+          "source_ids": ["miaoshou_temu_local_2558", "miaoshou_temu_sites_7758"]
+        }
+      ],
+      "authorization_invariants": [
+        "全托管、半托管、美国本土和欧洲本土Token不通用。",
+        "不同真实站点使用不同Token，不能把美区/欧区/全球分组当作一个执行站点。"
+      ],
+      "seller_entity_types": {
+        "verified_values": ["company", "partnership", "sole_proprietor", "individual"],
+        "axis": "seller_entity_type",
+        "source_ids": ["temu_official_local_seller"]
+      },
+      "fulfillment_programs": [
+        {
+          "id": "y2_domestic_direct_shipping",
+          "verified_scope": "US_SEMI_MANAGED",
+          "warning": "Y2是半托管下的国内直发履约方案，不是独立店铺模式。",
+          "source_ids": ["miaoshou_temu_sites_7758"]
+        }
+      ]
+    },
+    {
+      "platform": "aliexpress",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "AliExpress",
+          "verified_submodes": ["self_operated"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_aliexpress_auth_3190"]
+        },
+        {
+          "raw_label": "速卖通托管",
+          "verified_submodes": ["official_full_managed", "semi_managed", "overseas_managed"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_aliexpress_auth_3190"]
+        },
+        {
+          "raw_label": "速卖通本土POP",
+          "observed_only": true,
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+        }
+      ],
+      "authorization_dependency": "托管店铺需要先授权自营店铺，再由速卖通托管入口同步已有全托管、半托管或海外托管业务。",
+      "blocked_modes": ["official_full_managed"],
+      "official_mode_sources": {
+        "semi_managed": "aliexpress_official_semi_terms",
+        "official_full_managed": "aliexpress_official_full_terms",
+        "overseas_managed": "aliexpress_official_overseas_terms"
+      },
+      "pending_items": ["本土POP的国家站点矩阵"],
+      "source_ids": ["miaoshou_aliexpress_auth_3190", "aliexpress_official_semi_terms", "aliexpress_official_full_terms", "aliexpress_official_overseas_terms"]
+    },
+    {
+      "platform": "amazon",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "amazon",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_amazon_auth_2310"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "seller_plans": [
+        {
+          "id": "individual",
+          "axis": "seller_plan",
+          "source_ids": ["amazon_official_selling_plans"]
+        },
+        {
+          "id": "professional",
+          "axis": "seller_plan",
+          "source_ids": ["amazon_official_selling_plans"]
+        }
+      ],
+      "fulfillment_modes": [
+        {
+          "id": "fba",
+          "axis": "fulfillment_mode",
+          "source_ids": ["amazon_official_fba"]
+        },
+        {
+          "id": "fbm",
+          "axis": "fulfillment_mode",
+          "source_ids": ["amazon_official_fbm"]
+        }
+      ],
+      "site_resolution": {
+        "field": "marketplaceId",
+        "rule": "妙手区域或Amazon销售区域不能代替具体国家站点；真实路由保存授权返回的marketplaceId。",
+        "source_ids": ["amazon_official_marketplace_ids"]
+      },
+      "category_permission": {
+        "rule": "类目、品牌或商品可能需要审批，必须逐ASIN/类目读取限制。",
+        "source_ids": ["amazon_official_listing_restrictions"]
+      },
+      "warning": "Individual/Professional、FBA/FBM以及卖家所在地都不是Amazon店铺模式；国家站点必须从真实Seller授权读取。"
+    },
+    {
+      "platform": "walmart",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "Walmart",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_help_index"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "current_miaoshou_verified_sites": ["US"],
+      "additional_markets": "READ_FROM_ELIGIBLE_ACCOUNT_AND_AUTHORIZATION",
+      "seller_entity_requirement": "business_entity",
+      "seller_levels_not_plans": ["pro_seller"],
+      "fulfillment_modes": ["seller_fulfilled", "wfs"],
+      "warning": "WFS是履约方式，Pro Seller是表现等级；二者都不是Walmart店铺类型。",
+      "source_ids": ["miaoshou_walmart_auth_2301", "walmart_official_onboarding", "walmart_official_fulfillment", "walmart_official_pro_seller"]
+    },
+    {
+      "platform": "ozon",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "OZON",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_ozon_auth_3189"]
+        }
+      ],
+      "verified_capabilities": ["seller_api_authorization", "separate_ads_api_authorization", "store_currency_configuration"],
+      "observed_store_modes": ["local_store_supported"],
+      "fulfillment_modes": ["fbo", "fbs", "real_fbs"],
+      "pending_items": ["跨境与本土账号的国家/主体矩阵", "FBO/FBS/realFBS的官方履约定义"],
+      "source_ids": ["miaoshou_ozon_auth_3189", "ozon_official_launch", "ozon_official_fulfillment"]
+    },
+    {
+      "platform": "mercado_libre",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "mercado libre",
+          "verified_submodes": ["cross_border", "local"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_mercado_group_1120"]
+        }
+      ],
+      "store_scope_programs": ["global_selling_multi_market_account", "local_country_store"],
+      "product_models": ["user_product"],
+      "listing_exposure_types": ["Gratuita", "Classic", "Premium"],
+      "warning": "Gratuita/Classic/Premium是Listing曝光或收费类型，不是店铺模式。",
+      "pending_items": ["妙手本土店支持的完整国家站点矩阵"],
+      "source_ids": ["mercado_official_global_selling", "mercado_official_listing_types"]
+    },
+    {
+      "platform": "jumia",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "JUMIA",
+          "verified_account_programs": ["seller_center", "vendor_center"],
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_jumia_guide_3080"]
+        }
+      ],
+      "warning": "Seller Center与Vendor Center是两套商家合作/账号体系；不能只用一个Jumia店铺类型覆盖。",
+      "pending_items": ["各体系的国家站点、履约与结算差异"]
+    },
+    {
+      "platform": "wildberries",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "wildberries",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_help_index"]
+        }
+      ],
+      "fulfillment_modes": [
+        {
+          "id": "fbs",
+          "miaoshou_order_support": true,
+          "subtypes": ["cross_border", "local"],
+          "source_ids": ["miaoshou_wildberries_orders_9208"]
+        },
+        {
+          "id": "fbo",
+          "miaoshou_order_support": false,
+          "source_ids": ["miaoshou_wildberries_orders_9208"]
+        }
+      ],
+      "warning": "FBS/FBO是履约模式；妙手当前只能处理FBS订单不等于平台没有FBO。"
+    },
+    {
+      "platform": "yandex_market",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "Yandex",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_yandex_auth_12393"]
+        }
+      ],
+      "verified_capabilities": ["api_token_store_authorization"],
+      "pending_items": ["店铺国家站点", "FBY/FBS/DBS等履约模式的官方定义"]
+    },
+    {
+      "platform": "coupang",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "coupang",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_coupang_auth_2592"]
+        }
+      ],
+      "account_variants": [
+        {
+          "id": "c_prefix_cross_border",
+          "raw_identifier": "C开头企业代码",
+          "miaoshou_capabilities": ["listing", "order_management"],
+          "source_ids": ["miaoshou_coupang_store_types_11807"]
+        },
+        {
+          "id": "a0_local",
+          "raw_identifier": "A0",
+          "miaoshou_capabilities": ["order_management"],
+          "miaoshou_unsupported_capabilities": ["listing"],
+          "source_ids": ["miaoshou_coupang_store_types_11807"]
+        },
+        {
+          "id": "a158_taiwan",
+          "raw_identifier": "A158",
+          "miaoshou_supported": false,
+          "source_ids": ["miaoshou_coupang_store_types_11807"]
+        }
+      ],
+      "warning": "企业代码前缀是账号/接入变体；不得把妙手暂不支持某能力解释成平台不存在该业务。"
+    },
+    {
+      "platform": "allegro",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "allegro",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_allegro_auth_2313"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "verified_capabilities": ["oauth_store_authorization"],
+      "pending_items": ["国家市场范围", "履约模式", "卖家主体差异"]
+    },
+    {
+      "platform": "joom",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "JOOM",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_joom_auth_2311"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "authorization_fields": ["seller_name", "store_name", "client_id", "client_secret"],
+      "pending_items": ["国家市场范围", "履约模式", "是否存在平台级独立经营计划"]
+    },
+    {
+      "platform": "wish",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "wish",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_wish_auth_2303"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "verified_capabilities": ["oauth_store_authorization"],
+      "pending_items": ["国家市场范围", "履约模式", "卖家计划"]
+    },
+    {
+      "platform": "emag",
+      "status": "official_sites_verified_connection_pending",
+      "authorization_products": [
+        {
+          "raw_label": "eMAG",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_emag_auth_3259"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "authorization_requirements": ["site_selection", "erp_ip_allowlist", "seller_account", "seller_password"],
+      "country_sites": ["RO", "HU", "BG"],
+      "site_values": "RO_HU_BG_verified_on_official_public_seller_pages; exact_enabled_site_read_from_authorized_store",
+      "verified_capabilities": ["erp_store_authorization_entry", "public_api_documentation"],
+      "source_ids": ["miaoshou_emag_auth_3259", "emag_official_start_selling_2026_07_21", "emag_official_cross_border_2026_07_21", "emag_official_api_documentation_2026_07_21"],
+      "pending_items": ["绑定店铺实际启用站点", "履约模式", "类目资格", "API和广告授权范围"]
+    },
+    {
+      "platform": "miravia",
+      "status": "partially_verified",
+      "authorization_products": [
+        {
+          "raw_label": "Miravia",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_miravia_auth_2699"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "authorization_dependency": "部分由AliExpress全球CSP账号开通的Miravia店铺，需先授权AliExpress，再在Miravia入口同步授权。",
+      "warning": "CSP是账号体系/授权依赖，不是商品类目或履约模式。",
+      "pending_items": ["非AliExpress派生店铺的接入范围", "履约模式"]
+    },
+    {
+      "platform": "daraz",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "Daraz",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_daraz_auth_2305"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "authorization_requirements": ["site_selection", "seller_oauth"],
+      "site_values": "READ_FROM_AUTHORIZATION_UI",
+      "pending_items": ["公开文档中的完整国家站点值", "履约模式"]
+    },
+    {
+      "platform": "joybuy",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "Joybuy",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_joybuy_auth_12922"]
+        }
+      ],
+      "platform_kind": "pending_platform_verification",
+      "warning": "当前只确认妙手存在授权入口；在核对Joybuy官方商家体系前，不映射成跨境店、本土店或其他模式。"
+    },
+    {
+      "platform": "alibaba_com",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "Alibaba",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_alibaba_auth_2317"]
+        }
+      ],
+      "platform_kind": "b2b_marketplace",
+      "authorization_dependency": "通过Alibaba服务市场订购并授权妙手ERP服务。",
+      "warning": "Alibaba国际站是B2B渠道，不应套用零售Marketplace的本土/跨境店枚举。"
+    },
+    {
+      "platform": "qoo10",
+      "status": "authorization_verified_mode_pending",
+      "authorization_products": [
+        {
+          "raw_label": "Qoo10",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_qoo10_auth_2312"]
+        }
+      ],
+      "commerce_mode": "marketplace_seller",
+      "authorization_fields": ["store_name", "account", "password", "authorization_key"],
+      "site_values": "PENDING_CURRENT_VERIFICATION"
+    },
+    {
+      "platform": "shopify",
+      "status": "authorization_verified",
+      "authorization_products": [
+        {
+          "raw_label": "shopify",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopify_auth_2318"]
+        }
+      ],
+      "platform_kind": "independent_store",
+      "commerce_mode": "independent_site",
+      "authorization_method": "app_install_oauth",
+      "warning": "国家市场、币种和收款方式属于该独立站配置，不是预设店铺类型。"
+    },
+    {
+      "platform": "shoplazza",
+      "status": "authorization_verified",
+      "authorization_products": [
+        {
+          "raw_label": "SHOPLAZZA",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shoplazza_auth_2307"]
+        }
+      ],
+      "platform_kind": "independent_store",
+      "commerce_mode": "independent_site",
+      "authorization_method": "store_url_then_oauth"
+    },
+    {
+      "platform": "shopyy_v1",
+      "status": "authorization_verified",
+      "authorization_products": [
+        {
+          "raw_label": "SHOPYY V1.0",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopyy_v1_auth_2308"]
+        }
+      ],
+      "platform_kind": "independent_store",
+      "commerce_mode": "independent_site",
+      "authorization_fields": ["store_alias", "api_domain", "core_token"]
+    },
+    {
+      "platform": "shopyy_v2",
+      "status": "authorization_verified",
+      "authorization_products": [
+        {
+          "raw_label": "SHOPYY V2.0",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopyy_v2_auth_2309"]
+        }
+      ],
+      "platform_kind": "independent_store",
+      "commerce_mode": "independent_site",
+      "authorization_fields": ["store_alias", "regional_api_endpoint", "developer_token"],
+      "warning": "V1与V2使用不同授权协议，必须作为两个连接器版本保留，不能当成两种店铺经营模式。"
+    },
+    {
+      "platform": "shopline",
+      "status": "authorization_verified",
+      "authorization_products": [
+        {
+          "raw_label": "SHOPLINE",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_shopline_auth_3193"]
+        }
+      ],
+      "platform_kind": "independent_store",
+      "commerce_mode": "independent_site",
+      "authorization_method": "store_url_then_oauth",
+      "source_ids": ["shopline_official_independent_store"]
+    },
+    {
+      "platform": "greatboss_bridge",
+      "status": "bridge_verified",
+      "authorization_products": [
+        {
+          "raw_label": "GreatBoss",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_greatboss_bridge_6776"]
+        }
+      ],
+      "platform_kind": "erp_authorization_bridge",
+      "verified_scope": ["TIKTOK_US_LOCAL_US_BENEFICIARY", "TIKTOK_DE_LOCAL", "TIKTOK_FR_LOCAL", "TIKTOK_IT_LOCAL"],
+      "warning": "GreatBoss不是销售平台或店铺类型；它是妙手体系内用于特定TikTok本土店授权同步的桥接ERP。"
+    },
+    {
+      "platform": "other_connector",
+      "status": "pending_verification",
+      "authorization_products": [
+        {
+          "raw_label": "其他",
+          "source_ids": ["user_miaoshou_auth_ui_2026_07_17"]
+        }
+      ],
+      "selectable_for_execution": false,
+      "rule": "必须先记录真实平台名称、接口协议、站点、授权范围和支持能力，再创建具体连接器。"
+    }
+  ],
+  "unresolved_authorization_products": [
+    "其他"
+  ],
+  "internal_business_boundaries": [
+    {
+      "id": "teelab_not_official_full_managed",
+      "rule": "TeeLab代运营/联名运营是ownership与内部服务模式，不是任何平台的官方全托管。",
+      "evidence_level": "internal_business_rule"
+    },
+    {
+      "id": "official_full_managed_blocked",
+      "rule": "平台官方全托管保留为识别标签，不作为TeeLab当前可选择或可执行模式。",
+      "evidence_level": "internal_business_rule"
+    }
+  ]
+}

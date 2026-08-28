@@ -6,6 +6,10 @@
     {
       "id": "apparel-growth",
       "name": "Apparel Growth",
+      "relationship_model": "b2c",
+      "secondary_relationship_models": ["b2b"],
+      "commerce_forms": ["cross_border_commerce", "content_commerce"],
+      "commerce_model_source": "explicit",
       "channels": [
         {
           "id": "amazon-us",
@@ -20,6 +24,10 @@
               "external_id": "",
               "store_model": "marketplace_seller",
               "ownership": "self_store",
+              "relationship_model": "b2c",
+              "secondary_relationship_models": ["b2b"],
+              "commerce_forms": ["cross_border_commerce", "content_commerce"],
+              "commerce_model_source": "inherited_project",
               "route_key": "amazon:US:marketplace_seller",
               "status": "needs_connection",
               "tasks": [

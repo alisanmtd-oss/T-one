@@ -7,10 +7,10 @@
   "verified_at": "2026-07-18",
   "timezone": "Asia/Shanghai",
   "purpose": "Machine-readable training, evidence, routing, evaluation, and software-gap contract for the T One Etsy expert.",
-  "skill_path": "skills/platform-experts/etsy/SKILL.md",
+  "skill_path": "private_platform_expert_source_excluded",
   "shared_runtime_policy": {
     "llm_gateway": "LLMClient",
-    "provider_config": "config/multi_ai.json",
+    "provider_config": "private_model_provider_registry_excluded",
     "model_slots": [
       "reasoning",
       "copy",
@@ -432,7 +432,7 @@
     "captured_at": "2026-07-19T03:29:40+08:00",
     "gap_selected": "Open API connector preflight: current client-generation, OAuth-header, quota and credential-storage design before any shop binding exists",
     "registry_precheck": {
-      "path": "config/github_capability_registry.json",
+      "path": "private_github_admission_registry_excluded",
       "matching_owner_repositories": [],
       "shared_registry_mutated": false,
       "boundary": "Research findings remain inside the Etsy training assets; installation admission belongs to the shared registry owner."
@@ -5011,13 +5011,13 @@
     },
     "credentials_or_customer_pii_allowed": false,
     "asset_refs": {
-      "curriculum": "skills/platform-experts/etsy/references/curriculum.json",
-      "evidence_index": "skills/platform-experts/etsy/references/evidence-index.json",
-      "failure_review": "skills/platform-experts/etsy/references/failure-review.json",
-      "training_state": "skills/platform-experts/etsy/references/training-state.json",
-      "latest_learning_run": "skills/platform-experts/etsy/references/learning-runs/2026-07-19-review-response-knowledge-package-audit-readonly.json",
-      "mother_requirement_matrix": "skills/platform-experts/etsy/references/mother-requirement-matrix.md",
-      "connector_readiness": "skills/platform-experts/etsy/references/connector-readiness.json"
+      "curriculum": "private_platform_expert_source_excluded",
+      "evidence_index": "private_platform_expert_source_excluded",
+      "failure_review": "private_platform_expert_source_excluded",
+      "training_state": "private_platform_expert_source_excluded",
+      "latest_learning_run": "private_platform_expert_source_excluded",
+      "mother_requirement_matrix": "private_platform_expert_source_excluded",
+      "connector_readiness": "private_platform_expert_source_excluded"
     },
     "automation": {
       "id": "etsy",
@@ -7799,7 +7799,7 @@
     "audited_turns": 32,
     "status": "merged_rules_and_regressions_no_connector_admitted",
     "stale_claim_corrections": [
-      "config/github_capability_registry.json parses successfully as UTF-8 in the owner task; the specialist's parse-error observation is not current truth"
+      "private_github_admission_registry_excluded parses successfully as UTF-8 in the owner task; the specialist's parse-error observation is not current truth"
     ],
     "candidate_dispositions": [
       {

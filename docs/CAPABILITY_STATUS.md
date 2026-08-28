@@ -1,42 +1,17 @@
-# Capability status
+# 功能状态
 
-This file is the public truth table for T One Community Core.
-
-## Status definitions
-
-- `verified`: implemented and exercised by public tests or the synthetic public demo.
-- `requires_setup`: implementation exists but needs operator-owned credentials, an
-  approved account, or a compatible local environment.
-- `partial`: a useful foundation exists, but the end-to-end workflow is incomplete.
-- `planned`: schema, research, or design only.
-- `private_product`: exists outside the public repository and is not a public claim.
-
-## Current public status
-
-| Area | Status | Notes |
+| 功能 | 状态 | 说明 |
 | --- | --- | --- |
-| Python domain core | `verified` | Dependency-light package and public tests |
-| Project/store/task isolation | `verified` | Synthetic fixtures only |
-| Knowledge-pack catalog | `verified` | Sanitized packs; no private TikTok Shop pack |
-| Approval/evidence contracts | `verified` | Local contracts, no automatic external writes |
-| Browser reference UI | `verified` | Synthetic data; demo-only |
-| Windows community installer | `verified` | Installable shell for the same offline synthetic demo |
-| Chinese capability market | `verified` | Agent/Skill local demo assignment; MCP/CLI visibly unconfigured or undetected |
-| Model/provider configuration | `partial` | Credentials are never shipped |
-| Local MCP/API surface | `partial` | Scoped read/draft surface, not a universal runtime |
-| Marketplace/ERP reads | `requires_setup` | No public live account |
-| Marketplace/ERP writes | `planned` | Human approval remains mandatory |
-| Advertising execution | `planned` | No public ad account or budget authorization |
-| Messaging/email/social connectors | `planned` | No public OAuth sessions |
-| Payments/settlement/banking | `planned` | Financial contracts only |
-| Full Windows operating runtime | `private_product` | Computer control and commercial connectors are not distributed here |
+| Windows 中文桌面程序 | `已实测` | 安装包带本地运行时，干净首启通过 |
+| 项目与任务文件夹 | `已实测` | 首启创建，按项目/任务保存资料、记忆和结果 |
+| 对话/任务树与历史上下文 | `已实现` | 正式桌面路由包含历史上下文入口 |
+| Agent / Skill / MCP / CLI 市场 | `已实测` | 四类独立筛选并可按项目搭配 |
+| 开放工具注册 | `已实测` | 可登记本地工具和连接；未验证不显示已连接 |
+| Codex CLI 与多 AI 协作界面 | `已实测` | 本地入口与项目回执链存在；实际提供方取决于用户安装 |
+| Windows 鼠标/键盘/浏览器控制 | `已实现，待本机确认` | 由桌面桥提供，具体动作在用户机器执行 |
+| 平台/站点/店铺/账号隔离 | `已实测` | 运行时数据模型和桌面路径均保留隔离字段 |
+| 店铺、ERP、广告、通信、付款连接 | `待用户配置` | 公开包不带账号、OAuth、密钥或已连接声明 |
+| 外部平台写入 | `按项目授权` | 新安装默认不会自动执行外部动作 |
+| 可读源码完整度 | `已实测` | 正式 UI 运行层为可读 Python 源码，公开构建拒绝 `.pyc` |
 
-## Verification rule
-
-A capability is not `verified` merely because a page, button, schema, test fixture,
-research report, or connector name exists. Verification requires an implementation,
-the appropriate automated tests, understandable failure feedback, and the correct
-runtime or synthetic demo evidence.
-
-中文说明：公开能力市场中的“已包含”只代表代码和离线示例随安装包提供；
-“未配置”与“未检测”不能理解为已经安装、登录或连接第三方服务。
+判定规则：页面、按钮、注册表、测试、候选名称或报告不能单独证明已经安装、连接或完成业务。实际状态必须来自当前安装、当前项目和当前执行身份。

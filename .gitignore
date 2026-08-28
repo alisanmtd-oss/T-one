@@ -1,5 +1,4 @@
 __pycache__/
-node_modules/
 *.py[cod]
 *.pyd
 *.so
@@ -11,7 +10,6 @@ htmlcov/
 .venv/
 venv/
 dist/
-desktop_public/dist/
 build/
 *.egg-info/
 .env
@@ -20,7 +18,6 @@ build/
 runtime_data/
 data/
 outputs/
-output/
 logs/
 config/account_profile.json
 config/company_operating_profile.json

@@ -1,75 +1,73 @@
-# Changelog
+# 更新记录
 
-## 0.5.0 - 2026-08-10
+## 0.5.9 - 2026-08-24
 
-- Replaced the single-file synthetic demo shell with a real local Electron workspace.
-- Added persistent project and task folders, task-scoped conversation history, attachments,
-  results, receipts, memory directories, and restart recovery.
-- Added task-scoped Agent and Skill assignment plus truthful MCP/CLI registration and
-  CLI path detection, explicit task executor selection, and real CLI result roundtrips.
-- Added explicit MCP initialize checks; MCP endpoints are never probed automatically.
-- Protected optional connection secrets with Electron safeStorage and kept them out of
-  renderer state, screenshots, source, and release evidence.
-- Removed the duplicated 30 KB legacy demo page and its duplicate test shell.
+- 正式桌面工作区运行层改为可读 Python 源码，不再加载或发布兼容 `.pyc`。
+- 公开源码构建遇到任何 Python 字节码会直接失败，Windows 运行时只从可读模块打包。
+- 保留 0.5.8 的项目/任务、能力市场、CLI、电脑控制和 DeepSeek Harness 正式链路。
+- 同步更新中英文安装说明、功能状态、架构和路线图，公开包继续排除私人账号、凭据、浏览器配置、经营数据和历史对话。
 
-## 0.4.4 - 2026-08-10
+## 0.5.8 - 2026-08-17
 
-- Made Simplified Chinese the default GitHub entrypoint and moved the normal Windows
-  download path to the top of the page.
-- Added a Chinese capability market to the public offline desktop app, organized by
-  Agent, Skill, MCP, and CLI with purpose filters and truthful connection states.
-- Added local-only Agent/Skill assignment for the synthetic demo; no external account,
-  MCP server, CLI, store, or network request is invoked.
-- Added repeatable Electron UI acceptance and a current Chinese screenshot.
+- 接入 DeepSeek 官方开源 `deepseek-ai/deepseek-harness`，固定核验提交 `47f943859bef60e4160492346772ded9b24f765a` 和 MIT 许可证。
+- 每个项目或任务只生成小型 MCP patch 与清单，共用一套 Harness，不复制完整源码。
+- Harness 可调用 T One 全部桌面桥接方法，并接入鼠标、键盘、窗口和浏览器控制；能力市场与 `tone harness` CLI 均可启用。
+- Windows 正式运行时加入 `harness-mcp` 模式，安装版不依赖开发者电脑的 Python 路径。
 
-## 0.4.3 - 2026-08-08
+## 0.5.7 - 2026-08-13
 
-- Added an assisted Windows installer for the offline community demo, with selectable
-  install location, Start menu and desktop shortcuts, and an uninstaller.
-- Added a repeatable installer acceptance script and GitHub release build workflow.
-- Kept the public installer limited to synthetic offline assets; private operating
-  runtime, computer control, browser profiles, credentials, and live connectors remain excluded.
+- 修复新任务已返回成功但重载后消失的问题；未填写目标的真实任务不再被当作占位项清理。
+- 补齐本地浏览器的任务目标保存与 Skill 准备接口，失败时不再伪装成成功 0 项。
+- Electron 页面桥接与后端 73 个允许方法完全一致，历史、学习、网页 AI 等入口不再因 preload 缺项而不可用。
+- CLI 能为旧项目和任务解析稳定的本地文件夹，不写入时也能让 Agent、Skill、MCP 快速定位资料。
+- Windows 安装器会先生成并校验工作区定位文件、运行时和初始配置；过深构建路径会提前失败，不再生成缺资源的假安装包。
+- 公开源码、CLI 和安装包按 0.5.7 独立版本发布；公开构建会清理兼容字节码中的本机路径并同步完整性哈希。
 
-## 0.4.2 - 2026-07-25
+## 0.5.6 - 2026-08-12
 
-- Reframed T One as a multi-project, multi-store group commerce operating brain.
-- Aligned English and Simplified Chinese entrypoints.
-- Added sanitized product screenshots, a file guide, and a strict capability status
-  matrix.
-- Separated the public Python core, synthetic browser reference, and private desktop
-  product boundaries.
-- Added the companion Codex x T One Operator Skill as a separate project direction.
+- 把项目、任务、能力、执行输入、结果历史和重启恢复连成一条可继续的本地流程。
+- “开始执行”会带入已保存的任务目标，但不会替用户自动发送或触发店铺动作。
+- CLI 新增 `workspace show`，可从项目或任务编号查看目标、状态、能力配置和真实本地文件夹。
+- 安装版加入页面入口、空按钮、断链、桌面与 CLI 同源读取及关闭重开的完整检查。
 
-## 0.4.1
+## 0.5.4 - 2026-08-11
 
-- Added exact provider-and-model multimodal verification receipts instead of inferring one model's capabilities from another model or provider.
-- Added per-modality verification counts and evidence references while keeping credentials, prompts, private files, and live connector state outside the public snapshot.
-- Preserved the 17 sanitized non-TikTok-Shop knowledge packs and continued to exclude the entire TikTok Shop agent pack and private desktop/runtime connectors.
+- 统一桌面包、Python 包和 CLI 的版本号，公开构建会在测试中拒绝版本不一致。
+- 默认热恢复摘要重新蒸馏到 3.5 KB 门槛内，不删除项目、任务、连接状态或 backlog 真值。
+- Electron 固定升级到 43.3.0，并修复 Windows 多屏 DPI、退出崩溃等上游问题。
+- 固定已修补的构建期传递依赖；`pnpm audit` 当前为 0 个已知漏洞。
 
-## 0.4.0
+## 0.5.3 - 2026-08-11
 
-- Published all 17 reusable non-TikTok-Shop knowledge packs as complete sanitized bundles.
-- Added per-pack Skill instructions, curated references, machine contracts, rules, evaluations, source ledgers or capability schemas where available.
-- Added Amazon, B2B outbound customer development, B2B marketplace sales and commerce-video packs to ordinary-chat routing.
-- Kept raw browser captures, private product fixtures, customer data, local learning runs and live connector state outside the public tree.
-- Continued to exclude the TikTok Shop agent, Skill, training contract, tests and references.
+- 新增统一 `tone` CLI：访问项目/任务、本机文件、进程、精确 argv、鼠标、键盘、窗口和浏览器。
+- 权限严格等于启动 CLI 的 Windows 访问令牌；管理员操作必须经过系统 UAC，所有修改或执行动作要求显式 `--yes`。
+- 安装包加入 `T One CLI` 开始菜单入口；任务页补齐本地结算文件导入和对账中间流程。
+- 清理旧选品入口、无效日常小字和虚假实时状态；未连接时明确显示未连接，缺失数据保持空白。
 
-## 0.3.1
+## 0.5.2 - 2026-08-11
 
-- Simplified the public chat demo to one goal-first composer with automatic agent selection.
-- Renamed settings to Agent, Model, Account, and Manage so technical controls stay out of the daily workflow.
-- Added a safe, non-connecting account-settings walkthrough for seven supported email and business-messaging account types.
-- Kept the demo local-only: it never accepts credentials, connects accounts, reads messages, or performs external actions.
+- 补齐任务创建后的中间工作流：明确目标、选择 Agent/Skill、开始执行、查看历史结果。
+- 任务目标、能力配置和“待执行”状态同步写入当前任务及本地清单，关闭重开仍可继续。
+- 能力市场保留当前任务范围，保存后返回原任务；任务页提供直接打开本地文件夹的入口。
+- 页面只显示能力数量，不暴露内部能力标识；未发送任务时外部店铺动作保持 0。
 
-## 0.3.0
+## 0.5.1 - 2026-08-11
 
-- Added ordinary-chat routing to sanitized public platform agents.
-- Added 13 public knowledge packs and explicitly excluded the TikTok Shop pack.
-- Added platform-specific identity, country/site, approval, privacy, retry, and evidence boundaries.
-- Added research dispositions for reviewed community connector candidates without installing or admitting them.
-- Kept every public agent local-only: no live store connection or external execution is claimed.
+- 在正式桌面版侧栏加入“新建项目”和“新建任务”，不再只能选择已有项目。
+- 创建项目与任务时同步生成稳定的本地文件夹和清单文件，并在侧栏立即显示。
+- 创建流程支持项目任务与独立任务；不触发店铺写入或其他外部动作。
 
-## 0.2.0
+## 0.5.0 - 2026-08-11
 
-- Added the dependency-free chat-first workspace reference.
-- Expanded bilingual documentation, community templates, CI, and public-tree verification.
+- 删除过去替代正式产品的简化网页壳、错误截图和专用测试。
+- 公开清单改为正式 T One Python/Electron 运行时的精确文件列表。
+- 加入能力市场、开放工具、项目/任务工作区、历史上下文、MCP、CLI、Agent 和 Skill 正式界面。
+- Windows 安装包加入内置本地运行时、可选择安装目录、桌面/开始菜单快捷方式和卸载入口。
+- 首次启动自动建立本机工作区与经过随机桌面密钥认证的 Owner 会话，不再依赖开发者电脑路径或预装 Python。
+- 修复公开首启设置页两个本地接口 403，以及单文件运行时退出残留进程。
+- 重写中英文说明，普通用户从 Release 安装包开始，不再要求理解源码目录。
+- 明确披露 `desktop_workspace.recovery.pyc` 的可读源码缺口。
+
+## 0.4.x
+
+- 旧版本只发布社区核心、知识包和合成演示，没有包含正式桌面产品。该发布方向已在 0.5.0 纠正。

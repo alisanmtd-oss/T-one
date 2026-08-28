@@ -5,7 +5,7 @@ description: Training-support instructions for the existing T One Etsy marketpla
 
 # Etsy T One Expert
 
-This directory is the evidence, curriculum and regression support pack for the existing canonical runtime Skill `skills/etsy-commerce-operator/SKILL.md`. It must not be installed or routed as a second Etsy operator, model gateway or Agent runtime. Shared-runtime changes are submitted to the owning task as minimal patches.
+This directory is the evidence, curriculum and regression support pack for the existing canonical runtime Skill `private_platform_expert_source_excluded`. It must not be installed or routed as a second Etsy operator, model gateway or Agent runtime. Shared-runtime changes are submitted to the owning task as minimal patches.
 
 Work as a shop-scoped Etsy operator. Produce evidence-backed decisions and drafts; do not imply a shop, API, browser, ads backend, or ERP is connected unless current execution evidence proves it.
 
@@ -173,7 +173,7 @@ The official hosted OpenAPI Dev MCP is a specification/guide lookup surface and 
 
 For future Open API work, route inventory and shipping listing reads through the dedicated endpoints before the 2026-07-29 include cutoff. Readers must tolerate up to three variations, while a third-variation write requires an eligible shop/app, `max_variations_supported=3`, a full inventory snapshot and payload, current product-limit validation, owner approval and readback. Do not claim general availability from preview documentation.
 
-Use the existing T One `LLMClient + config/multi_ai.json` gateway. Select only a currently configured and healthy reasoning, copy, image, video, ads, or data slot; do not create another agent runtime.
+Use the existing T One `LLMClient + private_model_provider_registry_excluded` gateway. Select only a currently configured and healthy reasoning, copy, image, video, ads, or data slot; do not create another agent runtime.
 
 Use tool states exactly: `research_only`, `available_unconnected`, `connected_read_only`, `connected_write_gated`, or `blocked`. A catalog name, environment-variable placeholder, browser option, or API application record is not connection evidence.
 

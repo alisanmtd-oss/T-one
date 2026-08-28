@@ -1,0 +1,1868 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19",
+  "agent_id": "agent-cross-channel-media-buyer",
+  "name": "跨渠道广告投手智能体",
+  "purpose": "当前统一管理 Meta Ads、TikTok Ads、Google Ads 的研究、测量、草稿、审批、投放、监控、优化、止损和复盘；TikTok One 只作为创意、达人、授权与素材同步供应层。Amazon Ads 历史知识保留，但按负责人指令暂停。",
+  "automation_ceiling": "L3",
+  "owner_paused_platforms": ["amazon_ads"],
+  "required_route_dimensions": [
+    "tenant_id",
+    "project_id",
+    "store_binding_id",
+    "platform",
+    "country_site",
+    "commerce_mode",
+    "ownership",
+    "ad_account_binding_id",
+    "execution_identity_id"
+  ],
+  "workflow": [
+    "research",
+    "preflight",
+    "measurement_check",
+    "economics_check",
+    "draft",
+    "owner_review",
+    "isolated_execution",
+    "monitor",
+    "optimize",
+    "stop_or_scale",
+    "learn"
+  ],
+  "channels": [
+    {
+      "id": "meta_ads",
+      "name": "Meta Ads",
+      "surfaces": ["advantage_plus_sales", "sales", "leads", "catalog_sales", "retargeting", "events_manager", "measurement_and_reporting", "experiments"],
+      "measurement": ["meta_pixel", "conversions_api", "event_deduplication", "event_match_quality", "catalog_or_product_set", "purchase_value_and_currency", "attribution_window_source", "incrementality_or_lift_study"],
+      "authorization": ["business_portfolio_binding", "ad_account_binding", "page_or_instagram_identity", "pixel_or_dataset_binding", "credential_ref"],
+      "connection": {
+        "state": "blocked_connector",
+        "verified_bindings": [],
+        "blocker": "Meta Ads OAuth、广告账户、Pixel/CAPI 与执行身份尚未完成逐账户只读验证"
+      },
+      "software_observations": [
+        {
+          "software": "T-one-0.1.0 formal Windows package",
+          "product_version": "0.1.0",
+          "captured_at": "2026-07-19T00:42:26.3605822+08:00",
+          "country_site": "GLOBAL",
+          "store_mode": "formal_app_no_verified_meta_account",
+          "ownership": "local_app_read_only",
+          "permission": "process_and_window_discovery_only",
+          "observed_operations": ["detect_running_process", "select_window_titled_realtime_dashboard", "request_read_only_window_capture"],
+          "real_input": "none_read_only",
+          "real_output": "T-one-0.1.0 process and 实时大盘 · T-one window observed; app approval timed out before page capture",
+          "verified_fields": ["running_process", "window_title"],
+          "unknown_fields": ["meta_page_entry", "connector_state_in_ui", "model_selection_in_current_window", "skill_read_in_current_window", "task_route_context_in_current_window"],
+          "evidence_level": "verified_software_observation",
+          "state": "failed_attempt",
+          "safe_recovery": "stop UI input after capture failure; require a later approved read-only app session"
+        }
+      ],
+      "native_ai": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "surfaces": [
+          {
+            "id": "meta_ai_business_assistant",
+            "availability": "announced_testing_not_verified_live",
+            "documented_inputs": ["advertiser_chat", "remembered_business_goals"],
+            "documented_outputs": ["optimization_help", "account_support", "personalized_performance_recommendations"],
+            "editable_boundary": "unknown_without_authorized_account",
+            "submit_boundary": "blocked_owner_input",
+            "effect_metrics": "unknown_without_authorized_account",
+            "failure_recovery": "unknown_without_authorized_account"
+          },
+          {
+            "id": "generative_ai_ad_transparency",
+            "availability": "public_policy_documented_region_dependent",
+            "documented_inputs": ["meta_generative_ai_creative_edits", "third_party_ai_industry_signals"],
+            "documented_outputs": ["about_this_ad_ai_info", "sponsored_adjacent_label_for_photorealistic_ai_human"],
+            "editable_boundary": "label_placement_is_platform_controlled",
+            "submit_boundary": "creative_publication_requires_owner_confirmation",
+            "effect_metrics": "not_a_performance_metric",
+            "failure_recovery": "recheck_region_and_current_transparency_policy"
+          }
+        ],
+        "distilled_rules": [
+          "公告中的测试或计划扩展不等于当前广告账户已获得入口；在授权账户逐字段验收前保持 unknown",
+          "生成式 AI 素材必须在发布前检查可编辑内容、权利与平台透明标签；标签体验可能因地区法律要求不同",
+          "不得把 Meta 排名模型或公司级效果数字写成单一广告账户可复现的承诺"
+        ],
+        "evidence": [
+          {
+            "url": "https://about.fb.com/news/2025/02/gen-ai-transparency-metas-ads-products/",
+            "title": "Expanding GenAI Transparency for Meta’s Ads Products",
+            "published_at": "2025-02-03",
+            "updated_at": "2026-06-01",
+            "captured_at": "2026-07-18T23:17:19.2706748+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_announcement_no_ad_account",
+            "ownership": "public_read_only",
+            "permission": "no_meta_account_or_oauth",
+            "observed_operations": ["open_public_page", "read_update_and_labeling_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_article_text",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "7d55e4e6368756817057e0398a860a99be7d6862f9801ab548c43199246f5ccc"
+          },
+          {
+            "url": "https://about.fb.com/news/2026/01/2026-ai-drives-performance/",
+            "title": "2026: AI Drives Performance",
+            "published_at": "2026-01-28",
+            "captured_at": "2026-07-18T23:17:19.2706748+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_announcement_no_ad_account",
+            "ownership": "public_read_only",
+            "permission": "no_meta_account_or_oauth",
+            "observed_operations": ["open_public_page", "read_ai_momentum_in_ads_section"],
+            "real_input": "none_read_only",
+            "real_output": "public_article_text",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "636688b4220084e8b988d5bc6e8aa49d88e7b57cb4c7c3a4654fa4b9ee2a0a22"
+          }
+        ]
+      },
+      "api_change_watch": [
+        {
+          "id": "meta_marketing_api_v25_automation_unification",
+          "state": "time_sensitive_evidence",
+          "rule": "不得生成 ASC/AAC 的 Marketing API 创建或更新调用；执行前按当前 API 版本复核统一后的 Advantage+ 建模方式",
+          "effective_all_versions_by": "2026-05-19",
+          "source_url": "https://github.com/facebook/facebook-python-business-sdk/releases",
+          "source_version": "25.0.0",
+          "captured_at": "2026-07-18T23:17:19.2706748+08:00",
+          "country_site": "GLOBAL",
+          "store_mode": "public_repository_no_ad_account",
+          "ownership": "official_meta_repository",
+          "permission": "public_read_only",
+          "repository_integration": "research_only",
+          "install_allowed": false,
+          "evidence_level": "official_current",
+          "registry_reason": "config/github_capability_registry.json 无该仓库准入记录",
+          "sha256": "e2761f4f9f5c08b3fac40868e21c3e9eebf49221744a7d692140d70efba54a4f"
+        },
+        {
+          "id": "meta_business_sdk_v25_0_3_capi_request_context",
+          "state": "time_sensitive_evidence",
+          "rule": "当前官方 Python SDK 的 Event.set_request_context 可从请求上下文补充 CAPI 字段；调用该方法时必须显式提供最小 Preference 白名单和租户级合法数据依据，不得使用默认全允许，也不得把原始 HTTP 上下文写入任务载荷",
+          "source_url": "https://github.com/facebook/facebook-python-business-sdk/releases/tag/25.0.3",
+          "source_version": "25.0.3",
+          "released_at": "2026-07-17T17:34:43Z",
+          "captured_at": "2026-07-19T00:13:53.6618055+08:00",
+          "country_site": "GLOBAL",
+          "store_mode": "public_repository_no_ad_account",
+          "ownership": "official_meta_repository",
+          "permission": "public_read_only",
+          "repository_integration": "research_only",
+          "install_allowed": false,
+          "evidence_level": "official_current",
+          "registry_reason": "config/github_capability_registry.json 无该仓库准入记录；未安装 SDK 或新增依赖",
+          "event_sha256": "873a640e9a9b9f572f5655027e8024f5c0f7bcd2f45e94a964ba87be4c539e5a",
+          "preference_sha256": "eec7c4c0efb0a9891b3cde9f7b8b72e53af093774522adcc422d78d3d3a82b91"
+        }
+      ],
+      "measurement_and_attribution": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "layers": [
+          {
+            "id": "meta_pixel_browser_events",
+            "kind": "browser_event_collection",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "documented_entry": "Events Manager > Connect data > Web",
+            "documented_setup_modes": ["partner_integration", "conversions_api_gateway", "manual"],
+            "execution_boundary": "pixel_or_dataset_connection_and_code_change_require_owner_confirmation"
+          },
+          {
+            "id": "meta_conversions_api_server_events",
+            "kind": "server_event_collection",
+            "verified_live_availability": "unknown_without_authorized_pixel_or_dataset",
+            "current_sdk_fields": ["event_name", "event_time", "event_source_url", "event_id", "action_source", "data_processing_options"],
+            "request_context_boundary": "set_request_context_is_opt_in_but_omitted_preference_defaults_supported_fields_to_allowed; T-one requires an explicit minimum allowlist",
+            "privacy_boundary": "normalization_or_hashing_is_not_consent_or_legal_basis; CAPI is not a data-policy or regional-privacy bypass",
+            "execution_boundary": "test_event_or_live_event_send_requires_verified_connector_and_owner_confirmation"
+          },
+          {
+            "id": "meta_browser_server_deduplication",
+            "kind": "event_identity",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "current_rule": "for one customer action, keep event_name and event_id aligned across browser and server events",
+            "scope_boundary": "event_id must be unique within the tenant/project/source action and must never be reused across tenants",
+            "historical_timing_boundary": "archived v8.0 timing guidance is superseded and must not be treated as a current window"
+          },
+          {
+            "id": "meta_event_match_quality",
+            "kind": "diagnostic_quality_signal",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "account_value": "unknown",
+            "interpretation_boundary": "a quality or match diagnostic is not a conversion, revenue, causal lift or guaranteed performance KPI",
+            "failure_recovery": "inspect tenant-scoped event diagnostics and permitted matching fields; never add unauthorized identifiers merely to raise a score"
+          },
+          {
+            "id": "meta_ads_insights_attribution_reporting",
+            "kind": "platform_attribution_report_configuration",
+            "verified_live_availability": "unknown_without_authorized_ad_account",
+            "current_sdk_controls": ["action_attribution_windows", "use_account_attribution_setting", "use_unified_attribution_setting"],
+            "account_default": "unknown",
+            "reporting_boundary": "every report draft must state selected action window and whether account or unified attribution settings were used; never silently assume a default window"
+          },
+          {
+            "id": "meta_adstudy_experiments_and_lift",
+            "kind": "experimentation_and_incrementality",
+            "verified_live_availability": "unknown_without_authorized_ad_account",
+            "current_sdk_study_types": ["SPLIT_TEST", "LIFT", "GEO_LIFT", "CONTINUOUS_LIFT_CONFIG"],
+            "interpretation_boundary": "platform-attributed results are not incremental lift; split tests and lift studies remain separate designs",
+            "execution_boundary": "study creation, application or publication requires current account eligibility, verified routing and owner confirmation"
+          }
+        ],
+        "distilled_rules": [
+          "Pixel 与 CAPI 可并行收集网站事件；同一客户动作的浏览器与服务端事件必须保持 event_name 和 event_id 一致，Purchase 的 value、currency、content IDs 与订单身份也必须来自同一租户事实，不能跨租户复用",
+          "CAPI SDK 的字段归一化、哈希或请求上下文自动补全不等于用户同意、合法依据或区域合规；T-one 只传经允许的第一方字段，并显式配置最小 Preference 白名单",
+          "Event Match Quality 仅是诊断信号；无授权 Events Manager 时分数和告警保持 unknown，不得为了提分加入无授权标识，也不得把分数写成业务完成或效果承诺",
+          "Meta 报表必须记录 action_attribution_windows 以及使用 account 或 unified attribution setting 的来源；当前账户默认值未验证时不得假定 7-day click、1-day view 或任何其他窗口",
+          "广告平台归因与因果增量不是同一结论；A/B split test、lift 与 geo lift 必须分别设计、分别读取结果，并在创建或应用前进入人工确认",
+          "公开帮助页被登录或限流阻断时只保留 failed_attempt/unknown；搜索摘要、按钮存在或 SDK 字段存在都不代表当前账户入口、权限或业务结果已验证"
+        ],
+        "evidence": [
+          {
+            "url": "https://github.com/facebook/facebook-python-business-sdk/releases/tag/25.0.3",
+            "title": "facebook-python-business-sdk 25.0.3",
+            "published_at": "2026-07-17T17:34:43Z",
+            "captured_at": "2026-07-19T00:13:53.6618055+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_repository_no_ad_account",
+            "ownership": "official_meta_repository",
+            "permission": "public_read_only",
+            "observed_operations": ["open_release_page", "read_latest_tag_and_release_time", "inspect_current_raw_sdk_files"],
+            "real_input": "none_read_only",
+            "real_output": "latest tag 25.0.3 and current generated SDK fields",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence"
+          },
+          {
+            "url": "https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/serverside/event.py",
+            "title": "Current Python SDK server-side Event object",
+            "captured_at": "2026-07-19T00:12:38.6390080+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_repository_no_pixel_or_dataset",
+            "ownership": "official_meta_repository",
+            "permission": "public_read_only",
+            "observed_operations": ["read_event_fields", "read_event_id_dedup_docstring", "read_request_context_defaults"],
+            "real_input": "none_read_only",
+            "real_output": "event identity, action source, data processing options and request-context behavior",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "873a640e9a9b9f572f5655027e8024f5c0f7bcd2f45e94a964ba87be4c539e5a"
+          },
+          {
+            "url": "https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adaccount.py",
+            "title": "Current Python SDK Ads Insights attribution parameters",
+            "captured_at": "2026-07-19T00:11:32.9020482+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_repository_no_ad_account",
+            "ownership": "official_meta_repository",
+            "permission": "public_read_only",
+            "observed_operations": ["read_action_attribution_windows_parameter", "read_account_and_unified_attribution_switches", "inspect_adstudy_types"],
+            "real_input": "none_read_only",
+            "real_output": "report attribution controls and separate split/lift study types",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "adaccount_sha256": "7349d7ec8da801a33d37f7a02c67e163cfa7ebcc23eb2a5969adcc093d0a2b7e",
+            "adsinsights_sha256": "4bfb9424877f477ba00f1eea4ac37abe824b2ab301e77039658277009b2f22dd",
+            "adstudy_sha256": "0f4f5be6f3d47e516347d02a49fd1f7b72e5ac82f738569b6979c2a00c3b24cd"
+          },
+          {
+            "url": "https://github.com/facebookarchive/Facebook-Server-Side-API-Swagger/blob/main/server-side-api.yaml",
+            "title": "Archived Facebook Server-Side API Swagger v8.0",
+            "captured_at": "2026-07-19T00:14:31.0938916+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "archived_public_repository",
+            "ownership": "official_archived_repository",
+            "permission": "public_read_only",
+            "observed_operations": ["read_archived_base_version", "read_historical_dedup_description"],
+            "real_input": "none_read_only",
+            "real_output": "historical v8.0 timing and deduplication description",
+            "evidence_level": "historical_trace",
+            "state": "superseded",
+            "rule_upgrade_allowed": false,
+            "sha256": "a07be4c6ca65e22aca15adfa437d34bbeee2aa6912c0319e8f5bbe2bdbebdefe"
+          }
+        ],
+        "failed_attempts": [
+          {
+            "url": "https://www.facebook.com/business/help/AboutConversionsAPI",
+            "captured_at": "2026-07-19T00:13:53.6618055+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_help_no_ad_account",
+            "ownership": "no_meta_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_direct_help_url"],
+            "real_input": "none_read_only",
+            "real_output": "redirect_to_facebook_login",
+            "evidence_level": "unknown",
+            "state": "failed_attempt",
+            "safe_recovery": "do_not_retry_or_bypass_login; use official repository evidence and wait for authorized account"
+          },
+          {
+            "url": "https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/v25.0/",
+            "captured_at": "2026-07-19T00:13:53.6618055+08:00",
+            "country_site": "GLOBAL",
+            "store_mode": "public_developer_docs_no_app",
+            "ownership": "no_meta_developer_app",
+            "permission": "public_read_only",
+            "observed_operations": ["open_current_parameters_url_once"],
+            "real_input": "none_read_only",
+            "real_output": "http_429_too_many_requests",
+            "evidence_level": "unknown",
+            "state": "failed_attempt",
+            "safe_recovery": "stop_retries; no region switching, login borrowing or anti-rate-limit workaround"
+          }
+        ]
+      },
+      "api_client_reference": {
+        "repository": "facebook/facebook-python-business-sdk",
+        "url": "https://github.com/facebook/facebook-python-business-sdk",
+        "official_owner": "facebook",
+        "latest_observed_release": "25.0.3",
+        "latest_observed_release_date": "2026-07-17T17:34:43Z",
+        "latest_observed_push": "2026-07-17T17:34:26Z",
+        "archived": false,
+        "license": "Meta platform-specific license; GitHub SPDX NOASSERTION",
+        "captured_at": "2026-07-19T00:13:53.6618055+08:00",
+        "evidence_level": "official_current",
+        "repository_integration": "research_only",
+        "install_allowed": false,
+        "registry_reason": "config/github_capability_registry.json 无该仓库准入记录；T-one 无 import、安装、OAuth 或真实 API 调用证据",
+        "license_sha256": "48d97b3c936203a750a3288c2b924327769d62327383a1060244b3d3c05ad01f",
+        "requirements_sha256": "e259c6b12900b7087b81f9c19b37a307209495b9ee23165302eb2dd06513151e",
+        "inspected_paths": [
+          {
+            "path": "examples/ServerSideApi.py",
+            "content_sha256": "57c39bc3e69a38cd89dec59338c435f42df7c077ad3d6d6d9a8136ee36ab44da",
+            "safe_reuse": "field_and_flow_reference_only",
+            "execution_allowed": false,
+            "reason": "example contains placeholder credential and pixel fields and must not be executed or copied into a task payload"
+          },
+          {
+            "path": "facebook_business/adobjects/serverside/event.py",
+            "content_sha256": "873a640e9a9b9f572f5655027e8024f5c0f7bcd2f45e94a964ba87be4c539e5a",
+            "safe_reuse": "event_identity_and_request_context_reference_only",
+            "execution_allowed": false,
+            "reason": "current source documents deduplication fields and opt-in parameter builder behavior but is not an authorized connector"
+          },
+          {
+            "path": "facebook_business/adobjects/serverside/preference.py",
+            "content_sha256": "eec7c4c0efb0a9891b3cde9f7b8b72e53af093774522adcc422d78d3d3a82b91",
+            "safe_reuse": "explicit_allowlist_design_reference_only",
+            "execution_allowed": false,
+            "reason": "supported request-context preferences default true, so T-one must impose a stricter explicit minimum allowlist"
+          },
+          {
+            "path": "facebook_business/adobjects/serverside/event_request.py",
+            "content_sha256": "42deb660c0b9a6f5249069d74110b5e1d613fb285c7ab84aaf06947346c32726",
+            "safe_reuse": "connector_requirement_reference_only",
+            "execution_allowed": false,
+            "reason": "test_event_code, pixel identity and credential use prove an external send boundary; T-one only accepts credential_ref in tasks"
+          },
+          {
+            "path": "facebook_business/adobjects/serverside/user_data.py",
+            "content_sha256": "be6e47c95800ade1e5052bd4e59615979ca2a20ba92350904c6af20cea506ed9",
+            "safe_reuse": "normalization_schema_reference_only",
+            "execution_allowed": false,
+            "reason": "supported identity fields and hashing do not establish permission or legal basis"
+          }
+        ]
+      },
+      "official_sources": [
+        "https://www.facebook.com/business/ads/meta-advantage-plus/sales-campaigns",
+        "https://www.facebook.com/business/help/AboutConversionsAPI",
+        "https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/v25.0/",
+        "https://github.com/facebook/facebook-python-business-sdk/releases/tag/25.0.3",
+        "https://about.fb.com/news/2025/02/gen-ai-transparency-metas-ads-products/",
+        "https://about.fb.com/news/2026/01/2026-ai-drives-performance/"
+      ]
+    },
+    {
+      "id": "tiktok_ads",
+      "name": "TikTok Ads",
+      "surfaces": ["product_gmv_max", "live_gmv_max", "smart_plus_web", "spark_ads", "website_sales", "events_manager", "measurement_and_reporting"],
+      "measurement": ["shop_order_signal_or_pixel", "events_api_when_website", "event_deduplication", "events_manager_diagnostics", "content_and_product_attribution", "gmv_max_attribution_scope", "paid_organic_affiliate_decomposition", "platform_roi_vs_paid_roas", "refund_and_commission_cost"],
+      "authorization": ["business_center_binding", "ad_account_binding", "shop_or_pixel_binding", "tiktok_identity_binding", "credential_ref"],
+      "connection": {
+        "state": "blocked_connector",
+        "verified_bindings": [],
+        "blocker": "TikTok Ads/Business Center、广告账户、Shop/Pixel 与执行身份尚未完成逐账户只读验证"
+      },
+      "native_ai": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "kind": "creative_generation_and_editing_not_media_objective",
+        "surfaces": [
+          {
+            "id": "symphony_creative_studio",
+            "documented_availability": "official_blog_says_generally_available_to_logged_in_tiktok_for_business_marketers",
+            "verified_live_availability": "unknown_without_authorized_account",
+            "documented_inputs": [
+              "product_or_service_details",
+              "text_prompt",
+              "uploaded_video_or_image_assets",
+              "reference_assets",
+              "script_or_voice_input"
+            ],
+            "documented_outputs": [
+              "generated_or_remixed_video",
+              "script",
+              "captions",
+              "voiceover_or_dubbing",
+              "avatar_video",
+              "timeline_edit"
+            ],
+            "editable_boundary": "assets_audio_voiceover_captions_avatar_text_effects_and_stickers_are_documented_as_editable",
+            "export_boundary": "download_or_select_a_linked_ads_manager_account_after_login",
+            "submit_boundary": "export_is_not_publication; generated_content_requires_platform_moderation_and_owner_confirmation",
+            "transparency": "exported_videos_receive_an_ai_generated_label",
+            "effect_metrics": "unknown_without_tenant_scoped_experiment",
+            "failure_recovery": "retain_source_assets_and_return_to_manual_editing_or_regeneration; live_controls_unverified"
+          },
+          {
+            "id": "symphony_agent",
+            "documented_availability": "announced_inside_symphony_creative_studio",
+            "verified_live_availability": "unknown_without_authorized_account",
+            "documented_inputs": ["creative_brief", "brand_goals", "reference_assets"],
+            "documented_outputs": ["made_for_tiktok_ad_creative_draft"],
+            "submit_boundary": "creative_draft_only_until_account_rights_moderation_and_owner_gates_pass"
+          },
+          {
+            "id": "dreamina_seedance_2_0_in_symphony",
+            "documented_availability": "model_option_in_symphony_video_generation",
+            "verified_live_availability": "unknown_without_authorized_account",
+            "documented_inputs": ["text", "images", "reference_clips"],
+            "documented_outputs": ["generated_video_with_audio"],
+            "submit_boundary": "model_output_is_not_an_ad_launch_or_rights_clearance"
+          }
+        ],
+        "distilled_rules": [
+          "Symphony Creative Studio、Symphony Agent 与 Seedance 2.0 属于素材生成和编辑层，不是 GMV Max、TikTok One 达人授权或广告投放目标",
+          "导出到 Ads Manager 需要选择与登录资料关联的广告账户；导出不等于审核通过、发布或允许花费",
+          "生成式视频自动带 AI-generated 标签并仍需平台政策审核；素材来源、肖像、声音、音乐和品牌权利继续单独核验",
+          "官方产品级效率或效果表述不得直接写成租户账户可复现指标，必须通过隔离实验回写"
+        ],
+        "evidence": [
+          {
+            "url": "https://ads.tiktok.com/business/en-US/blog/tiktok-symphony-ai-creative-suite",
+            "title": "Meet TikTok Symphony, our new Creative AI suite",
+            "published_at": "2026-06-22",
+            "captured_at": "2026-07-18T23:26:06.7090799+08:00",
+            "country_site": "US_EN",
+            "store_mode": "public_product_announcement_no_ad_account",
+            "ownership": "no_tiktok_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_suite_agent_seedance_and_responsibility_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_product_article_text",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "e2f9ee23972c6ee1cd21a20cf98faa8e72038d5e8cc4d72e537f452d64f61c4c"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/how-to-edit-videos-with-symphony-creative-studio?lang=en",
+            "title": "How to edit videos with Symphony Creative Studio",
+            "updated_at": "2026-03",
+            "captured_at": "2026-07-18T23:26:06.7090799+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_ad_account",
+            "ownership": "no_tiktok_account",
+            "permission": "public_read_only; login_profile_and_creative_genai_terms_required_for_live_use",
+            "observed_operations": ["open_help_page", "read_editor_steps", "click_creative_studio_entry"],
+            "real_input": "none_read_only",
+            "real_output": "public_editor_workflow_and_login_boundary",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "3fdca8cdaa2859ee843836391c5d9cc5533a881ad756928ded76dcb43e79cd4d"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/about-tiktok-symphony-and-dreamina-seedance-2-0?lang=en",
+            "title": "About TikTok Symphony and Dreamina Seedance 2.0",
+            "updated_at": "2026-06",
+            "captured_at": "2026-07-18T23:26:06.7090799+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_ad_account",
+            "ownership": "no_tiktok_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_help_page", "read_benefits_and_access_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_model_access_description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "3dd207c4437c4fb816d97fdb600ac018114ac5768f5fda30dbf63eaf5a378e9d"
+          },
+          {
+            "url": "https://ads.tiktok.com/creative/creativestudio/home/en",
+            "title": "Symphony Creative Studio public landing page",
+            "captured_at": "2026-07-18T23:26:06.7090799+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_landing_no_ad_account",
+            "ownership": "no_tiktok_account",
+            "permission": "public_read_only; login_required_to_generate_or_edit",
+            "observed_operations": ["follow_official_help_link", "read_public_feature_navigation_and_login_boundary"],
+            "real_input": "none_read_only",
+            "real_output": "public_feature_list; no_generated_asset",
+            "evidence_level": "verified_software_observation",
+            "state": "blocked_owner_input",
+            "sha256": "89e2820123800ba50d632fd6aca8f64305612a5437650d2db7fddda84f013c6e"
+          }
+        ],
+        "community_observations": [
+          {
+            "url": "https://www.reddit.com/r/PPC/comments/1t9yoxb/tiktok_smart_campaigns_automatically_using_other/",
+            "platform_content_id": "1t9yoxb",
+            "title": "Advertiser report about creator content surfaced in Smart+",
+            "author": "Patrick_McKenna_",
+            "published_at": "2026-05-11",
+            "captured_at": "2026-07-18T23:26:06.7090799+08:00",
+            "language": "en",
+            "country_site": "unknown",
+            "store_mode": "unknown_advertiser_account",
+            "ownership": "public_community_post",
+            "permission": "public_read_only_under_platform_terms",
+            "evidence_level": "single_case",
+            "state": "single_case",
+            "observed_claim": "advertiser reports creator posts appearing through account-level preauthorization or recommendation behavior",
+            "rule_upgrade_allowed": false,
+            "safe_use": "rights_and_account_level_authorization_counterexample_only; never infer permission from recommendation or eligibility",
+            "sha256": "7ab1ededc6608d52204f51e36480d5a02a86dc40cd27b50321fa64c3d4386c87"
+          }
+        ]
+      },
+      "measurement_and_attribution": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "layers": [
+          {
+            "id": "tiktok_pixel_browser_events",
+            "kind": "website_browser_event_collection",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "documented_scope": "website conversion measurement; not a substitute for TikTok Shop order truth",
+            "execution_boundary": "pixel creation, code installation or event edits require verified website ownership and owner confirmation"
+          },
+          {
+            "id": "tiktok_events_api_server_events",
+            "kind": "web_app_offline_crm_server_event_collection",
+            "verified_live_availability": "unknown_without_authorized_data_connection",
+            "documented_boundary": "share only the event data required for the tenant's marketing objective",
+            "route_boundary": "website Events API and TikTok Shop GMV Max must remain separate measurement routes",
+            "execution_boundary": "test or live event send requires a verified connector and owner confirmation"
+          },
+          {
+            "id": "tiktok_pixel_events_api_deduplication",
+            "kind": "website_event_identity",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "current_rule": "when the same conversion is sent through overlapping Pixel and Events API paths, keep the event name and event_id identical",
+            "documented_windows": {
+              "pixel_to_pixel": "identical event and event_id within 48 hours from the first event",
+              "events_api_to_events_api": "identical event and event_id within 48 hours from the first event",
+              "pixel_to_events_api": "identical event and event_id after 5 minutes and within 48 hours from the first event when applicable"
+            },
+            "scope_boundary": "event_id must be unique per tenant/project/source conversion and must never be reused across tenants"
+          },
+          {
+            "id": "tiktok_events_manager_diagnostics",
+            "kind": "test_and_diagnostic_workspace",
+            "verified_live_availability": "unknown_without_authorized_events_manager",
+            "documented_surfaces": ["overview", "test_events_pixel_or_eapi", "diagnostic_cards", "change_log_local_or_utc", "settings", "payload_helper"],
+            "interpretation_boundary": "a validated payload, visible test event or diagnostic card is not a paid conversion, order, revenue result or live campaign completion",
+            "execution_boundary": "opening a public help page is read-only; sending a test event or editing an event requires owner confirmation"
+          },
+          {
+            "id": "tiktok_product_gmv_max_attribution",
+            "kind": "shop_total_channel_product_attribution",
+            "verified_live_availability": "unknown_without_authorized_shop_and_primary_ad_account",
+            "documented_scope": "selected products while the Product GMV Max campaign is running",
+            "documented_inclusions": ["paid_orders", "organic_orders", "affiliate_orders", "selected_product_orders_without_ad_engagement"],
+            "documented_window": "same-day orders with a one-day attribution window",
+            "interpretation_boundary": "dashboard attribution is total-channel allocation and does not by itself prove paid or causal incrementality"
+          },
+          {
+            "id": "tiktok_live_gmv_max_attribution",
+            "kind": "shop_total_channel_live_event_attribution",
+            "verified_live_availability": "unknown_without_authorized_live_and_primary_ad_account",
+            "documented_inclusions": "paid and organic conversions inside the selected LIVE, including orders from shops not used to set up the campaign",
+            "documented_exclusion": "orders placed after the customer leaves the LIVE are not attributed to LIVE GMV Max",
+            "route_boundary": "Product GMV Max, LIVE GMV Max, shop identity and participating-shop order ownership must remain separate"
+          },
+          {
+            "id": "tiktok_gmv_max_reporting_economics",
+            "kind": "seller_center_and_ads_manager_total_channel_reporting",
+            "verified_live_availability": "unknown_without_authorized_shop_and_ad_account",
+            "documented_entry": "Seller Center > Shop Ads; US Seller Center shows Marketing before Shop Ads; or TikTok Ads Manager > GMV Max",
+            "documented_metrics": ["cost", "orders_sku", "cost_per_order", "gross_revenue", "roi", "paid_product_impressions", "paid_product_clicks", "paid_click_conversion_rate", "video_view_rates"],
+            "platform_roi_formula": "gross_revenue_from_attributed_paid_and_organic_shop_orders / ad_cost",
+            "profit_boundary": "platform ROI denominator is ad cost; T-one contribution margin must separately include affiliate commission, discounts, refunds, product cost, fulfillment, fees, taxes and duties",
+            "rights_boundary": "Authorization Recommended means the content is not currently authorized for ads; recommendation or attributed orders do not grant usage rights",
+            "availability_boundary": "the official reporting page says some product or creative metrics may not yet be available to every account"
+          }
+        ],
+        "distilled_rules": [
+          "TikTok 网站投放的 Pixel/Events API 与 TikTok Shop 的 GMV Max 订单归因必须分开路由；网站事件配置不能替代 Shop、主广告账户或商品/直播范围验证",
+          "同一网站转化通过 Pixel 与 Events API 重复发送时必须使用一致的 event 与 event_id；当前帮助页记录 Pixel/Pixel、eAPI/eAPI 的 48 小时窗口，以及 Pixel/eAPI 在适用时的 5 分钟后至 48 小时窗口",
+          "Events API 只发送租户目标所必需且有合法依据的数据；原始 email、phone、IP、user agent、访问令牌或请求上下文不得进入广告任务载荷，哈希或 SDK 字段存在也不等于授权",
+          "Events Manager 的 Test events、Payload Helper、diagnostic cards、change log 和设置页是诊断层；按钮存在、测试载荷通过或测试事件可见都不等于真实订单、广告发布或业务完成",
+          "Product GMV Max 仪表盘会把活动运行期间选中商品的付费、自然、联盟以及未与广告互动的订单纳入总渠道归因；因此 ROI 不是纯付费 ROAS，也不能直接声称为因果增量",
+          "LIVE GMV Max 会按所选直播间归因直播内的付费与自然订单，官方当前说明可能包含未用于建活动的其他店铺订单；离开直播后下单不计入该 LIVE 归因，必须保留店铺和直播 ownership",
+          "GMV Max 平台 ROI 为归因 Gross revenue / Ad cost；T-one 利润复盘必须另外扣除联盟佣金、折扣、退款、商品与履约成本、平台/支付费和税费，不得把平台 ROI 写成贡献利润",
+          "官方产品页的 incremental GMV 表述与其广覆盖归因方法之间存在解释张力；T-one 只把前者保留为产品声明，真实增量必须通过租户隔离的基线、holdout 或实验验证",
+          "报告中的 Authorization Recommended 表示素材尚未授权用于广告；推荐、可见、已带订单或自动纳入候选都不能替代创作者授权和使用范围证据"
+        ],
+        "official_conflicts": [
+          {
+            "id": "tiktok_gmv_max_incremental_claim_vs_attribution_scope",
+            "claim_source": "About Product GMV Max says the system optimizes paid and organic traffic to achieve incremental GMV",
+            "method_source": "About attribution for GMV Max says selected-product orders can be attributed while the campaign runs even without ad engagement",
+            "resolution": "retain the first as a dated product claim; treat dashboard ROI as total-channel attribution and require a separate experiment for causal lift",
+            "evidence_level": "official_current",
+            "state": "multi_source_conflict"
+          }
+        ],
+        "evidence": [
+          {
+            "url": "https://ads.tiktok.com/help/article/events-api?lang=en",
+            "title": "About Events API",
+            "updated_at": "2025-04",
+            "captured_at": "2026-07-19T00:46:26.8838453+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_ad_account",
+            "ownership": "no_tiktok_account_or_data_connection",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_scope_prerequisite_joint_pixel_dedup_and_data_control_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public Events API scope and website setup recommendations",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "20b89388f64bbbb8e7b3410360919a765221465522af92f35de8513b280c8007"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/event-deduplication?lang=en",
+            "title": "About event deduplication",
+            "updated_at": "2025-05",
+            "captured_at": "2026-07-19T00:46:27.6952017+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_events_manager",
+            "ownership": "no_tiktok_account_or_data_connection",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_overlap_cases_event_id_and_current_windows"],
+            "real_input": "none_read_only",
+            "real_output": "public Pixel and Events API deduplication rules",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "2e712c9438f6bfec8149bb74221d8bd0b26d240a6313b2371110832f71ec712b"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/about-tiktok-events-manager?lang=en",
+            "title": "About TikTok Events Manager",
+            "updated_at": "2025-11",
+            "captured_at": "2026-07-19T00:46:29.3756976+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_events_manager",
+            "ownership": "no_tiktok_account_or_data_connection",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_entry_test_events_diagnostics_payload_helper_changelog_and_settings"],
+            "real_input": "none_read_only",
+            "real_output": "public Events Manager workspace and diagnostic surfaces",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "4024058567ac294090d7d823169027be1beb4d4d829f54baee723e5423f5991a"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/about-product-gmv-max",
+            "title": "About Product GMV Max",
+            "updated_at": "2026-07",
+            "captured_at": "2026-07-19T00:46:28.7650303+08:00",
+            "country_site": "GLOBAL_EN_COUNTRY_AVAILABILITY_UNKNOWN",
+            "store_mode": "public_help_no_tiktok_shop_or_primary_ad_account",
+            "ownership": "no_tiktok_shop_or_ad_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_total_channel_roi_orders_window_creative_and_authorization_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public Product GMV Max scope, one-day window and total-channel product claims",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "d891d88798f25b4b6e1d5a56a2e400a1613b72a35be144d503245e88cd331805"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/about-attribution-for-gmv-max?lang=en",
+            "title": "About attribution for GMV Max",
+            "updated_at": "2026-06",
+            "captured_at": "2026-07-19T00:46:29.5770757+08:00",
+            "country_site": "GLOBAL_EN_COUNTRY_AVAILABILITY_UNKNOWN",
+            "store_mode": "public_help_no_tiktok_shop_or_primary_ad_account",
+            "ownership": "no_tiktok_shop_or_ad_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_product_live_no_ad_engagement_and_live_exit_examples"],
+            "real_input": "none_read_only",
+            "real_output": "public Product and LIVE GMV Max attribution scope",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "c677cbc121efd830f8b85ecebad6e9d3957c34cb049f1e2bc0c6591cf43a505c"
+          },
+          {
+            "url": "https://ads.tiktok.com/help/article/how-to-see-reporting-for-your-product-gmv-max-campaign?aadvid=72391499277",
+            "title": "How to view reporting for your Product GMV Max campaign",
+            "updated_at": "2026-06",
+            "captured_at": "2026-07-19T00:46:27.3416518+08:00",
+            "country_site": "GLOBAL_EN_WITH_US_MENU_VARIANT",
+            "store_mode": "public_help_no_tiktok_shop_or_primary_ad_account",
+            "ownership": "no_tiktok_shop_or_ad_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_seller_center_and_ads_manager_entries", "read_overview_product_and_creative_metrics", "read_authorization_recommended_boundary"],
+            "real_input": "none_read_only",
+            "real_output": "public reporting formulas, metric availability and creative authorization status",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "last_modified": "not_provided",
+            "sha256": "cf6f99f0acc715e85616ded010d8fb210c8b52259ebd229bc6ee2fd912e682b8"
+          }
+        ]
+      },
+      "api_client_reference": {
+        "repository": "tiktok/tiktok-business-api-sdk",
+        "url": "https://github.com/tiktok/tiktok-business-api-sdk",
+        "official_owner": "tiktok",
+        "repository_package_version": "1.0.1",
+        "observed_gmv_max_endpoint": "/open_api/v1.3/gmv_max/report/get/",
+        "latest_observed_commit": "f809c396520df2d7b201a9ccc5378d822b728ed3",
+        "latest_observed_commit_date": "2026-02-27T22:32:37Z",
+        "latest_observed_push": "2026-03-09T06:18:55Z",
+        "archived": false,
+        "license": "MIT",
+        "captured_at": "2026-07-19T00:47:08.3886768+08:00",
+        "evidence_level": "official_current",
+        "repository_integration": "research_only",
+        "install_allowed": false,
+        "registry_reason": "config/github_capability_registry.json 无该仓库准入记录；T-one 无 import、安装、developer app、OAuth 或真实 API 调用证据",
+        "readme_sha256": "1beaf9c1d26d7398c63efcc68b77746084f683f753b786d598feb2b51b02ec3f",
+        "license_sha256": "991c218ea2332d85698a9f2bae9e15a035492db91e7b4b2ffba18c8c8863ca03",
+        "requirements_sha256": "177522726f8e67954b058ceb4868afa2a68fc6be8a0764dc373e278952199161",
+        "inspected_paths": [
+          {
+            "path": "python_sdk/docs/ReportingApi.md",
+            "content_sha256": "d1e1a02a25ebb2005f395162e40734041f6cb5089137937658966819f7f6b52b",
+            "safe_reuse": "report_route_and_parameter_reference_only",
+            "execution_allowed": false,
+            "observed_requirements": ["advertiser_id", "store_ids", "dimensions", "metrics", "start_date", "end_date", "access_token"],
+            "reason": "the generated SDK documents a GMV Max report endpoint, but it is not an authorized T-one connector and raw credentials are forbidden in task payloads"
+          },
+          {
+            "path": "python_sdk/docs/PixelTrackBody.md",
+            "content_sha256": "bc267cae44110f4553b72c685d20c2827a736904bbe1ab5c2b47ce696affae00",
+            "safe_reuse": "event_identity_reference_only",
+            "execution_allowed": false,
+            "observed_fields": ["event", "event_id", "pixel_code", "properties", "timestamp"],
+            "reason": "the event body documents event_id for overlapping Pixel and Events API events but does not prove a live pixel or permission to send"
+          },
+          {
+            "path": "python_sdk/docs/ContextInfoGmvMaxReportGet.md",
+            "content_sha256": "2901f336362c99b5c10228608aa0f795858f70ba2cc342b07f1d763ab332cdcd",
+            "safe_reuse": "none_for_task_payload",
+            "execution_allowed": false,
+            "rejected_context_fields": ["user_agent", "x_forwarded_for", "x_real_ip"],
+            "reason": "request context fields are not advertising route dimensions and must not be copied into a task payload or shared log"
+          }
+        ]
+      },
+      "special_rules": [
+        "TikTok Shop 与独立站投放必须分开路由",
+        "GMV Max 必须核对 Shop 的当前主广告账户",
+        "GMV Max ROI 含归因到活动的自然与联盟订单，不能直接当纯付费增量 ROAS",
+        "Symphony 生成或导出的素材不自动取得达人授权、不自动通过审核，也不授权创建或发布广告"
+      ],
+      "official_sources": [
+        "https://ads.tiktok.com/help/article/about-product-gmv-max",
+        "https://ads.tiktok.com/help/article/about-gmv-max-campaigns-in-tiktok-ads-manager",
+        "https://ads.tiktok.com/help/article/events-api?lang=en",
+        "https://ads.tiktok.com/help/article/event-deduplication?lang=en",
+        "https://ads.tiktok.com/help/article/about-tiktok-events-manager?lang=en",
+        "https://ads.tiktok.com/help/article/about-attribution-for-gmv-max?lang=en",
+        "https://ads.tiktok.com/help/article/how-to-see-reporting-for-your-product-gmv-max-campaign?aadvid=72391499277"
+      ]
+    },
+    {
+      "id": "tiktok_one",
+      "name": "TikTok One 创意与达人供应层",
+      "kind": "creative_supply",
+      "surfaces": ["creator_project", "creative_partner", "spark_authorization", "authorized_content_sync"],
+      "measurement": ["deliverable_status", "usage_rights", "spark_authorization", "creative_performance"],
+      "authorization": ["tto_account_binding", "business_verification", "business_center_binding", "rights_evidence_ref"],
+      "connection": {
+        "state": "blocked_connector",
+        "verified_bindings": [],
+        "blocker": "TikTok One 工作区、TTO 账户、商业验证与执行身份尚未完成逐账户只读验证"
+      },
+      "special_rules": [
+        "TikTok One 不是广告目标、不是 GMV Max、也不直接花广告预算",
+        "达人费用、素材制作费、联盟佣金和广告预算必须分别记账",
+        "同步到 Ads Manager 前必须核验内容、肖像、音乐、品牌披露和投放权利",
+        "Symphony Creative Studio 属于创意生成编辑层；其导出结果不能替代 TikTok One 创作者授权或 TTO 项目权利证据"
+      ],
+      "official_sources": [
+        "https://ads.tiktok.com/help/article/about-working-with-creators-on-tiktok-one-campaigns?lang=en",
+        "https://ads.tiktok.com/help/article/how-to-use-spark-ad-recommendations-in-tiktok-one?lang=en"
+      ]
+    },
+    {
+      "id": "google_ads",
+      "name": "Google Ads",
+      "surfaces": ["performance_max", "search", "shopping", "demand_gen", "remarketing"],
+      "measurement": ["conversion_tracking", "conversion_value_and_currency", "merchant_center_when_feed_based", "enhanced_or_offline_conversion_plan"],
+      "authorization": ["client_customer_binding", "manager_customer_binding_when_applicable", "developer_token_ref", "oauth_credential_ref"],
+      "connection": {
+        "state": "blocked_connector",
+        "verified_bindings": [],
+        "blocker": "Google Ads OAuth、developer token、customer/login-customer 与执行身份尚未完成逐客户只读验证"
+      },
+      "native_ai": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "surfaces": [
+          {
+            "id": "ai_max_for_search",
+            "kind": "search_campaign_optimization_layer_not_campaign_type",
+            "verified_live_availability": "unknown_without_authorized_customer",
+            "documented_inputs": [
+              "existing_search_keywords",
+              "ads_and_assets",
+              "landing_page_urls",
+              "conversion_signals",
+              "brand_and_location_controls"
+            ],
+            "documented_outputs": [
+              "search_term_matching",
+              "text_customization",
+              "final_url_expansion",
+              "optimized_asset_and_search_term_reporting"
+            ],
+            "editable_boundary": "campaign_and_ad_group_controls_exist_for_matching_urls_brands_and_asset_optimization",
+            "submit_boundary": "enable_disable_or_apply_requires_verified_customer_and_owner_confirmation",
+            "measurement_boundary": "conversion_tracking_and_conversion_based_bidding_must_be_verified_before_use",
+            "failure_recovery": "disable_or_narrow_matching_asset_optimization_url_or_brand_controls_after_owner_review"
+          },
+          {
+            "id": "asset_studio",
+            "kind": "account_level_creative_asset_workspace_not_campaign_launch",
+            "verified_live_availability": "unknown_without_authorized_customer",
+            "documented_inputs": [
+              "uploaded_assets",
+              "merchant_center_assets",
+              "google_drive_or_dropbox_assets",
+              "one_or_two_product_images",
+              "image_edit_prompt"
+            ],
+            "documented_outputs": [
+              "generated_product_imagery",
+              "edited_image",
+              "video_build_or_trim",
+              "voiceover",
+              "shareable_preview"
+            ],
+            "editable_boundary": "create_edit_manage_preview_and_share_are_documented; live_fields_unverified",
+            "submit_boundary": "asset_create_edit_share_or_export_requires_account_role_and_owner_confirmation; asset_presence_is_not_ad_publication",
+            "account_scope_boundary": "asset_library_is_account_level_and_visible_to_account_users; never cross_customer_or_tenant_routes",
+            "transparency": "google_ai_generated_or_edited_images_use_synthid",
+            "effect_metrics": "unknown_without_tenant_scoped_experiment"
+          }
+        ],
+        "experiments": [
+          {
+            "id": "ai_max_search_experiment",
+            "kind": "single_campaign_control_and_trial_split",
+            "documented_control": "ai_max_off_for_a_percentage_of_existing_search_campaign_traffic_and_budget",
+            "documented_trial": "ai_max_on_for_remaining_percentage",
+            "apply_boundary": "manual_owner_review_required_after_results",
+            "auto_apply": "blocked_policy",
+            "limitations": [
+              "legacy_ai_max_features",
+              "display_network_targeting",
+              "portfolio_bidding",
+              "shared_budget",
+              "bidding_exploration",
+              "active_experiment"
+            ]
+          }
+        ],
+        "distilled_rules": [
+          "AI Max 是 Search campaign 优化层，不是 Performance Max，也不是新的 campaign type",
+          "启用 AI Max 会带入搜索词匹配和素材优化；Text customization 与 Final URL expansion 的默认状态、URL/品牌控制和 RSA 固定资产影响必须逐项预览",
+          "Final URL expansion 与现有 tracking template 组合可能产生错误落地页；上线前必须做 URL 与参数预检",
+          "AI Max 实验可在同一 campaign 内分配 control/trial 流量和预算，但禁止自动应用结果，结束后必须由 Owner 复核",
+          "Asset Studio 是账户级素材层；生成、编辑、共享或导出均不等于广告发布，且不得跨 customer/tenant 复用素材"
+        ],
+        "evidence": [
+          {
+            "url": "https://support.google.com/google-ads/answer/15910187?hl=en",
+            "title": "How AI Max for Search campaigns works",
+            "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_google_ads_customer",
+            "ownership": "no_google_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_help_page", "read_matching_asset_controls_reporting_and_faq_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_ai_max_feature_and_control_description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "16e8a209160fd9ccb28331d2112986ff063a17a51ba60a82a2aa212927af698f"
+          },
+          {
+            "url": "https://support.google.com/google-ads/answer/15909989?hl=en",
+            "title": "Set up AI Max for Search campaigns",
+            "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_google_ads_customer",
+            "ownership": "no_google_ads_account",
+            "permission": "public_read_only; campaign mutation requires account role",
+            "observed_operations": ["open_help_page", "read_enable_disable_asset_url_and_brand_controls"],
+            "real_input": "none_read_only",
+            "real_output": "public_setup_workflow; no_account_change",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "9b223f002c58018f4bc4d2ce352b315837210a0c0323ea2fa0fd720d1e6a9c1f"
+          },
+          {
+            "url": "https://support.google.com/google-ads/answer/16456563?hl=en",
+            "title": "About Asset studio",
+            "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_google_ads_customer",
+            "ownership": "no_google_ads_account",
+            "permission": "public_read_only; account_role_required_for_live_workspace",
+            "observed_operations": ["open_help_page", "read_features_account_scope_and_ai_asset_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_asset_studio_capability_description; no_asset_generated",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "47ec0a0e9df6c84c78cfdebedcb76a3f9537ce3860d85051e23d61a17e05044f"
+          },
+          {
+            "url": "https://support.google.com/google-ads/answer/16450159?hl=en",
+            "title": "About AI Max experiments",
+            "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_google_ads_customer",
+            "ownership": "no_google_ads_account",
+            "permission": "public_read_only; experiment creation and apply require account role",
+            "observed_operations": ["open_help_page", "read_control_trial_limitations_reporting_and_apply_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public_experiment_workflow; no_traffic_or_budget_changed",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "a9dafefd0265ba4c4836282c2ceb24767a8ff0a38188753957da9f8eb9b30459"
+          }
+        ],
+        "failed_attempts": [
+          {
+            "id": "google_generative_asset_api_closed_beta_404_2026_07_18",
+            "url": "https://developers.google.com/google-ads/api/docs/generative-asset-creation/asset-generation?hl=en",
+            "captured_at": "2026-07-18T22:21:50+08:00",
+            "evidence_level": "unknown",
+            "lifecycle_state": "failed_attempt",
+            "error": "HTTP_404",
+            "boundary": "request_fields_outputs_eligibility_and_submit_controls_remain_unknown",
+            "recovery": "use_current_public_asset_studio_help_for_capability_only_and_recheck_api_docs_later"
+          },
+          {
+            "id": "google_ai_max_official_youtube_caption_fetch_2026_07_18",
+            "url": "https://www.youtube.com/watch?v=nHNUzkCREvc",
+            "captured_at": "2026-07-18T23:32:00+08:00",
+            "evidence_level": "unknown",
+            "lifecycle_state": "failed_attempt",
+            "error": "public_video_fetch_throttled",
+            "boundary": "no_video_or_caption_content_was_collected",
+            "recovery": "do_not_retry_or_download; rely_on_official_text_help_and_recheck_legally_later"
+          }
+        ]
+      },
+      "api_change_watch": [
+        {
+          "id": "google_ads_api_v24_ai_max_setting",
+          "state": "time_sensitive_evidence",
+          "evidence_level": "official_current",
+          "rule": "Google Ads API v24 已公开 Campaign.ai_max_setting；生成请求前仍须按版本核验字段、OAuth、developer token、customer 与 login-customer 路由",
+          "source_url": "https://developers.google.com/google-ads/api/reference/rpc/v24/Campaign",
+          "source_version": "v24",
+          "source_updated_at": "2026-06-18T00:00:00Z",
+          "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+          "country_site": "GLOBAL_EN",
+          "store_mode": "public_api_reference_no_customer",
+          "ownership": "google_ads_api",
+          "permission": "public_read_only",
+          "supersedes": "旧 FAQ 中 API 支持预计在 2025 年稍后提供的表述",
+          "sha256": "784d02c52cc0080c5304718ed8eaab32621d3d3867556b6920988b2fd8f09fd0"
+        }
+      ],
+      "api_client_reference": {
+        "repository": "googleads/google-ads-python",
+        "url": "https://github.com/googleads/google-ads-python",
+        "official_owner": "googleads",
+        "latest_observed_release": "31.1.0",
+        "latest_observed_release_date": "2026-06-24",
+        "latest_observed_commit": "e43bef8d9d9d96206948023af48e88e52c679ba7",
+        "latest_observed_commit_date": "2026-06-24T22:47:42Z",
+        "license": "Apache-2.0",
+        "python_requirement": "3.9+",
+        "captured_at": "2026-07-18T23:33:55.9036824+08:00",
+        "evidence_level": "official_current",
+        "repository_integration": "research_only",
+        "install_allowed": false,
+        "registry_reason": "config/github_capability_registry.json 无该仓库准入记录，项目也无现有 import 或依赖声明",
+        "sha256": "ba83be477055a1dde85bcce082b719494a1987d4ef33bea8ca0e628199627d85"
+      },
+      "official_open_source_assets": {
+        "state": "research_only",
+        "captured_at": "2026-07-19T01:17:09.8238607+08:00",
+        "country_site": "GLOBAL_EN_and_zh-CN_localized_docs",
+        "store_mode": "public_developer_docs_no_google_ads_customer",
+        "ownership": "no_google_ads_account",
+        "organization_index": {
+          "organization": "googleads",
+          "url": "https://github.com/googleads",
+          "verification_source": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+          "verification_scope": "official Google Ads developer page links directly to googleads/google-ads-mcp; this verifies the repository identity, not every repository in the organization",
+          "evidence_level": "official_current",
+          "source_updated_at": "2026-06-29T00:00:00Z",
+          "source_last_modified": "Mon, 29 Jun 2026 16:31:53 GMT",
+          "source_sha256": "39ba65ad87f63229e5df41c8768ca568400ec690bcfe5d5b45e9eb5a0844e427"
+        },
+        "repositories": [
+          {
+            "repository": "googleads/google-ads-python",
+            "capability_label": "reuse_existing",
+            "purpose": "official Google Ads API Python client",
+            "dedupe_key": "googleads/google-ads-python@e43bef8d9d9d96206948023af48e88e52c679ba7",
+            "integration_state": "research_only",
+            "install_allowed": false,
+            "reason": "already indexed as api_client_reference; no duplicate connector or dependency is created"
+          },
+          {
+            "repository": "googleads/google-ads-mcp",
+            "url": "https://github.com/googleads/google-ads-mcp",
+            "capability_label": "research_only",
+            "purpose": "official read-only MCP server for Google Ads account discovery, GAQL search and resource metadata",
+            "official_identity_chain": [
+              "developers.google.com Google Ads MCP Server page",
+              "direct repository link to github.com/googleads/google-ads-mcp"
+            ],
+            "latest_observed_commit": "f48a6b85e1f43ebd44a72531c9611e2b7265ca28",
+            "latest_observed_commit_date": "2026-07-13T14:02:23Z",
+            "dedupe_key": "googleads/google-ads-mcp@f48a6b85e1f43ebd44a72531c9611e2b7265ca28",
+            "version": "0.0.1",
+            "releases": "none_observed",
+            "tags": "none_observed",
+            "license": "Apache-2.0",
+            "python_requirement": ">=3.10",
+            "dependencies": ["google-ads>=31.0.0", "mcp[cli]>=1.2.0", "fastmcp>=3.2.0"],
+            "documented_transports": ["stdio", "remote_http_via_cloud_run_example"],
+            "documented_authentication": ["OAuth2", "service_account"],
+            "documented_tools": ["list_accessible_customers", "search", "get_resource_metadata"],
+            "write_capability": false,
+            "write_boundary": "official current documentation says the server cannot change bids, pause campaigns or create assets",
+            "integration_state": "research_only",
+            "install_allowed": false,
+            "connection_state": "blocked_connector",
+            "connector_requirements": [
+              "tenant_id",
+              "project_id",
+              "store_binding_id",
+              "country_site",
+              "google_ads_customer_id",
+              "manager_customer_binding_when_supported",
+              "execution_identity_id",
+              "credential_ref",
+              "developer_token_ref"
+            ],
+            "t_one_minimum_reuse": "candidate read-only Google Ads connector behind the existing advertising route and LLMClient; never a new model gateway or second advertising agent",
+            "bundled_skill_boundary": "repository account-performance-diagnostics skill is reference-only until duplicate review against the existing Google Ads rules; no copy or install",
+            "manager_account_boundary": {
+              "state": "unknown_not_released",
+              "evidence_level": "single_case_and_open_pr",
+              "open_prs": [
+                "https://github.com/googleads/google-ads-mcp/pull/10",
+                "https://github.com/googleads/google-ads-mcp/pull/73"
+              ],
+              "observed_fact": "per-search login_customer_id support is still open in PR 10 and the Cloud Run environment-variable documentation is still open in PR 73; a collaborator said the per-search feature was being evaluated but would not be added at that time; any underlying client configuration behavior remains unverified without an authorized account",
+              "rule": "do not claim Manager Account or cross-customer querying is supported until a released pinned revision and tenant-isolated route test prove it"
+            },
+            "security_review": {
+              "security_policy": "none_detected",
+              "published_advisories": "none_observed",
+              "recent_fixed_issue": {
+                "pull_request": "https://github.com/googleads/google-ads-mcp/pull/91",
+                "state": "merged_at_pinned_commit",
+                "evidence_level": "official_repository_trace",
+                "finding": "HTTPX and Uvicorn logs could expose OAuth access tokens, authorization codes or state; the merged change lowered HTTPX logging and disabled Uvicorn access logging",
+                "checks": "13_passed"
+              },
+              "open_production_auth_case": {
+                "issue": "https://github.com/googleads/google-ads-mcp/issues/92",
+                "state": "open_no_maintainer_reply_observed",
+                "evidence_level": "single_case",
+                "finding": "a user reports in-memory OAuth client state loss on restart and plaintext persistent-storage concerns",
+                "rule_upgrade_allowed": false
+              },
+              "deployment_risks": [
+                "official Cloud Run example includes allow-unauthenticated and a public bind address; never reuse unmodified for a production T-one connector",
+                "repository documentation says account data is made available to the connected agent or LLM",
+                "repository adds an extra telemetry header to Google Ads API requests",
+                "no SECURITY.md and no published advisories are not proof that the repository is risk free"
+              ]
+            },
+            "content_hashes": {
+              "README.md": "df186175f1612b828be7a5a739a8fe8c0c34f81c30a0323ecf99d140370976d9",
+              "LICENSE": "c62a1cc62e85e51a18ddd590970e03ffe47017653033cc515781fdb445a7aa5e",
+              "pyproject.toml": "87f2da11045327bfa121fa03781c8e2cb1fc4bd58153359f99c113598a08769c",
+              "server.py": "cce5c5e26907b4f209a284b9f2e5154135c046684fc13b7496e72f86dc66bf74",
+              "utils.py": "b2d15a2821264f1a85305f7f81429f936996df3b8685a74c6285596105d230a2",
+              "account_performance_diagnostics_skill": "b6a34954eea0431a940b310cddd7782cf329d237be3a3345c1ea50bd35f62004"
+            },
+            "coverage": {
+              "official_docs": {
+                "url": "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server",
+                "sections": ["table_of_contents", "configuration", "authentication", "cloud_run", "tools", "sample_prompts", "footer_and_updated_date"],
+                "scroll_y": [900, 2100, 3700, 4872],
+                "viewport": 720,
+                "page_height": 5592,
+                "at_bottom": true,
+                "followed_links": ["https://github.com/googleads/google-ads-mcp"]
+              },
+              "repository": {
+                "sections": ["file_tree", "README", "docs", "license", "dependencies", "deployment", "tools", "bundled_skill", "releases", "commits_first_page", "commits_next_page", "issues", "pull_requests", "security"],
+                "main_scroll_y": [1600, 4000, 7200, 9029],
+                "main_viewport": 720,
+                "main_page_height": 9749,
+                "main_at_bottom": true,
+                "releases_result": "no_releases_no_tags_no_packages",
+                "commit_pagination": "first_page_and_next_page_checked",
+                "open_issue_sort": "updated_desc_checked_3_open",
+                "open_pull_request_sort": "updated_desc_checked_4_open_no_next_page",
+                "security_page": "scrolled_to_272_of_992_with_720_viewport_at_bottom; no_security_policy_and_no_published_advisories",
+                "discussions": "HTTP_404_feature_not_enabled_or_not_public"
+              },
+              "comments_and_replies": {
+                "merged_security_pr_91": "conversation, maintainer approval, 13 checks and footer; scroll_y_1300_then_1307_at_bottom_of_2027",
+                "issue_92": "body and one supporting reply, no maintainer reply; scroll_y_488_at_bottom_of_1208",
+                "issue_50": "body, collaborator reply, author follow-ups, contributor and later user replies, merged docs PR reference; scroll_y_1200_then_2644_at_bottom_of_3364",
+                "open_pr_10": "body, commits, checks, inline threads, collaborator response and later contributor review; scroll_y_1600_then_2395_at_bottom_of_3115",
+                "open_pr_73": "body, CLA bot reply, checks and footer; scroll_y_566_at_bottom_of_1286"
+              },
+              "uncovered": [
+                "authenticated Google Ads account behavior",
+                "OAuth and developer-token execution",
+                "private security reports",
+                "real Manager Account query",
+                "write operations because current official MCP is read-only"
+              ]
+            }
+          }
+        ],
+        "excluded_repositories": [
+          {
+            "repository": "google-marketing-solutions/google_ads_mcp",
+            "capability_label": "rejected_unsafe",
+            "reason": "README says it is experimental, not officially supported and not for production; it points to googleads/google-ads-mcp instead"
+          },
+          {
+            "repository": "google-marketing-solutions/google_ads_mcp_server",
+            "capability_label": "rejected_unsafe",
+            "reason": "archived on 2025-12-13 and points to the current official repository"
+          },
+          {
+            "repository": "johnoconnor0/google-ads-mcp",
+            "capability_label": "research_only",
+            "reason": "third-party repository with no verified Google official identity chain; no T-one integration"
+          }
+        ],
+        "failed_attempts": [
+          {
+            "id": "github_public_api_rate_limit_2026_07_19",
+            "state": "failed_attempt",
+            "evidence_level": "unknown",
+            "error": "public GitHub API rate limit after repository fingerprint reads",
+            "recovery": "do not retry or bypass; continue through public repository pages and pinned raw-file evidence"
+          },
+          {
+            "id": "meta_official_github_reverse_identity_429_2026_07_19",
+            "state": "failed_attempt",
+            "evidence_level": "unknown",
+            "error": "official developer page returned HTTP_429",
+            "recovery": "do not retry or bypass; keep the existing Meta SDK audit research_only and recheck in a later source-rotation round"
+          },
+          {
+            "id": "tiktok_business_mcp_repository_identity_unknown_2026_07_19",
+            "state": "failed_attempt",
+            "evidence_level": "unknown",
+            "error": "public TikTok Business API documentation exposed MCP chapters but no exact GitHub target was verified",
+            "recovery": "do not infer an official repository from organization names or search ranking"
+          },
+          {
+            "id": "logged_in_chrome_runtime_unavailable_2026_07_19",
+            "state": "failed_attempt",
+            "evidence_level": "unknown",
+            "error": "authorized logged-in Chrome session could not be initialized before any tab discovery",
+            "boundary": "no tabs, cookies, credentials, account data or private content were inspected",
+            "recovery": "do not retry in this round; continue public read-only sources and revisit after the browser connection is healthy"
+          }
+        ]
+      },
+      "special_rules": [
+        "经理账号与客户账号必须显式绑定，不能复用成模糊的全局账号",
+        "Performance Max 上线前必须验证转化跟踪",
+        "conversion goal 或 conversion customer 变更属于高风险写操作",
+        "AI Max 是 Search 优化层而非 Performance Max；开关、实验应用、URL 扩展和自动素材设置都属于账户写操作",
+        "Asset Studio 账户级素材不得跨 customer、tenant、project 或 ownership 复用"
+      ],
+      "official_sources": [
+        "https://developers.google.com/google-ads/api/performance-max/getting-started",
+        "https://developers.google.com/google-ads/api/docs/conversions/getting-started",
+        "https://developers.google.com/google-ads/api/docs/oauth/overview",
+        "https://support.google.com/google-ads/answer/15910187?hl=en",
+        "https://support.google.com/google-ads/answer/16456563?hl=en",
+        "https://developers.google.com/google-ads/api/reference/rpc/v24/Campaign"
+      ]
+    },
+    {
+      "id": "amazon_ads",
+      "name": "Amazon Ads",
+      "surfaces": [
+        "sponsored_products",
+        "sponsored_brands",
+        "display_ads",
+        "amazon_attribution",
+        "amazon_marketing_cloud",
+        "amazon_marketing_stream",
+        "measurement_and_reporting"
+      ],
+      "measurement": ["attributed_sales", "acos", "tacos", "featured_offer_and_inventory", "contribution_margin"],
+      "authorization": ["advertiser_profile_binding", "marketplace_binding", "credential_ref"],
+      "connection": {
+        "state": "blocked_connector",
+        "verified_bindings": [],
+        "blocker": "Amazon Ads advertiser profile/OAuth 尚未完成验证；BitBrowser profile 的 Seller Central 连接不等于 Amazon Ads API 授权"
+      },
+      "software_observation": {
+        "state": "blocked_connector",
+        "evidence_level": "verified_software_observation",
+        "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+        "software": "BitBrowser 7.1.4",
+        "fixed_profile_id": "22",
+        "country_site": "US",
+        "store_mode": "public_read_only_no_authenticated_seller_or_ads_session",
+        "ownership": "project_bound_authorized_desktop_identity",
+        "permission": "public_pages_only; no_login_no_mfa_no_account_recovery",
+        "observed_operations": [
+          "open_fixed_profile_22_content_window",
+          "read_public_amazon_listing_ai_article",
+          "open_browser_tab_search",
+          "inspect_visible_amazon_seller_and_ads_tab_titles"
+        ],
+        "real_input": "keyboard tab-search shortcut and read-only accessibility inspection; no site form submitted",
+        "real_output": "public Amazon listing-AI article was readable; visible Seller Central tabs were sign-in pages; no authenticated Amazon Ads Console tab or Ads API evidence was present",
+        "boundary": "BitBrowser profile existence and public page access do not verify Seller Central, advertiser profile, Ads Console, OAuth, AMC, DSP or Ads API access"
+      },
+      "native_ai": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "surfaces": [
+          {
+            "id": "creative_studio_and_creative_agent",
+            "kind": "creative_generation_and_asset_library_layer_not_campaign_launch",
+            "verified_live_availability": "unknown_without_authenticated_amazon_ads_account",
+            "documented_inputs": [
+              "product_or_brand_website",
+              "amazon_product_detail_page",
+              "audience_and_brand_guidelines",
+              "prior_ads_or_images",
+              "single_product_image"
+            ],
+            "documented_outputs": [
+              "concepts_and_taglines",
+              "editable_storyboards_and_scene_scripts",
+              "lifestyle_images",
+              "multi_scene_video",
+              "voiceover_music_and_audio_assets"
+            ],
+            "editable_boundary": "official workflow documents concept selection, regeneration, scene-level editing and refinement",
+            "save_boundary": "assets can be saved to the Amazon Ads Creative Asset library after account access",
+            "submit_boundary": "asset generation or library save is not campaign creation, attachment, publication or spend; owner confirmation remains required",
+            "rights_boundary": "brand, product, image, music, voice and website inputs require tenant-scoped ownership or license evidence",
+            "effect_metrics": "unknown_without_tenant_scoped_experiment"
+          },
+          {
+            "id": "ads_agent",
+            "kind": "in_console_planning_analysis_and_change_recommendation_layer",
+            "verified_live_availability": "unknown_without_authenticated_amazon_ads_account",
+            "documented_inputs": ["natural_language_request", "media_plan", "authorized_account_signals"],
+            "documented_outputs": ["campaign_structure", "targeting_or_audience_recommendations", "amc_sql", "proposed_account_changes"],
+            "review_boundary": "official public workflow says proposed changes are summarized for user review, selection and approval before specified changes are executed",
+            "submit_boundary": "no verified connector means draft or recommendation only"
+          },
+          {
+            "id": "amazon_ads_mcp_server",
+            "kind": "natural_language_to_amazon_ads_api_execution_bridge",
+            "documented_availability": "global_open_beta_for_amazon_ads_partners_with_active_api_credentials",
+            "verified_live_availability": "blocked_connector",
+            "documented_inputs": ["natural_language_prompt", "authorized_advertiser_and_api_context"],
+            "documented_outputs": ["structured_api_calls", "reports", "ready_to_launch_sponsored_products_campaign", "account_or_billing_operations"],
+            "execution_boundary": "active API credentials, advertiser/profile routing and explicit owner approval are required before any write, deletion, billing, launch or locale expansion action",
+            "integration_state": "blocked_connector",
+            "install_or_connection_claim_allowed": false
+          },
+          {
+            "id": "sponsored_products_and_brands_prompts",
+            "kind": "automatically_enrolled_ai_powered_ad_enhancement",
+            "documented_availability": "US_general_availability_from_2026-03-25_excluding_authors_and_publishers",
+            "verified_live_availability": "unknown_without_authenticated_us_advertiser",
+            "documented_inputs": ["product_detail_page", "brand_store", "campaign_data", "amazon_first_party_signals"],
+            "documented_outputs": ["contextual_product_question", "rufus_or_in_page_response", "prompt_level_report"],
+            "billing_boundary": "uses existing campaign CPC bidding and billing parameters",
+            "control_boundary": "prompt review, reporting and pause controls are documented in Ads Console and API; any pause or setting change requires owner confirmation"
+          },
+          {
+            "id": "responsive_ecommerce_creative",
+            "kind": "amazon_dsp_dynamic_display_creative_and_optimization_layer",
+            "documented_availability": "official_page_says_available_to_all_amazon_dsp_advertisers; in_banner_video_is_us_specific",
+            "verified_live_availability": "unknown_without_dsp_advertiser_access",
+            "documented_inputs": ["selected_products", "product_detail_page", "brand_store", "prior_campaign_assets", "uploaded_or_generated_video"],
+            "documented_outputs": ["resized_dynamic_display_creative", "rich_media_layout", "animated_or_generated_lifestyle_asset", "conversational_prompt"],
+            "optimization_boundary": "automatic creative selection and dynamic delivery are campaign behavior, not a reusable cross-tenant asset permission",
+            "effect_metrics": "official aggregate figures are not tenant performance guarantees"
+          }
+        ],
+        "distilled_rules": [
+          "Creative Studio/Creative Agent 是素材层，Ads Agent 是控制台建议与审批层，Amazon Ads MCP Server 是 API 执行桥接层；三者不得合并成一个已连接的万能 AI",
+          "Seller Central 登录、固定 BitBrowser 配置和 Amazon Ads 公共页面都不能证明 advertiser profile、Ads Console、OAuth、AMC、DSP、Ads API 或 MCP Server 已授权",
+          "Creative Asset library 保存、生成或编辑素材不等于创建、挂载、发布广告或允许花费；素材权利和 Owner 审批必须独立通过",
+          "Amazon Ads MCP Server 的公开 beta 只面向持有有效 API 凭据的 Amazon Ads partners；T-one 未连接时只能研究、诊断和模拟",
+          "美国 Sponsored Products/Brands prompts 自 2026-03-25 起按现有 CPC 参数计费且可单独暂停；自动加入不等于 Owner 已批准其继续花费，必须先做账户级可见性与控制检查",
+          "Amazon 官方汇总效果数字、推荐产品数或归因窗口不得写成单一租户可复现承诺；应由隔离实验和利润指标回写"
+        ],
+        "evidence": [
+          {
+            "url": "https://advertising.amazon.com/library/news/creative-tools-rec",
+            "title": "The new creative advantage: Tools that easily scale, optimize, and drive creative performance",
+            "published_at": "2026-06-22",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "US_EN",
+            "store_mode": "public_amazon_ads_news_no_account",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_rec_video_ai_optimization_prompts_and_availability_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public REC feature, input, delivery and availability description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "5163e62449e10fda2df274fa5497cc8f97c9e619f725280cbffbe8f09ee307f8"
+          },
+          {
+            "url": "https://advertising.amazon.com/en-us/library/news/amazon-ads-mcp-server-open-beta/",
+            "title": "Introducing the Amazon Ads MCP Server, the foundation for the next generation of advertising workflows",
+            "published_at": "2026-02-02",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_product_announcement_no_partner_credentials",
+            "ownership": "no_amazon_ads_api_credentials",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_beta_eligibility_tools_actions_and_review_boundary"],
+            "real_input": "none_read_only",
+            "real_output": "public MCP Server capability and eligibility description; no server connection",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "5d3b0709bf2745334e4bf01cc150156d545e54c1ad97ae725343caf2b6109db1"
+          },
+          {
+            "url": "https://advertising.amazon.com/resources/whats-new/unboxed-2025-sponsored-products-and-sponsored-brands-prompts/",
+            "title": "Sponsored Products prompts and Sponsored Brands prompts",
+            "published_at": "2026-03-10",
+            "effective_at": "2026-03-25",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "US",
+            "store_mode": "public_whats_new_no_advertiser",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_enrollment_billing_reporting_pause_and_eligibility_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public GA, automatic-enrollment, CPC, reporting and pause-control description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "previous_sha256": "882d3e2e98ce4df446392d3b3341934285f445c6871ebd4df67afd23fa3ec418",
+            "sha256": "5c321860ba1c35630b41806f0da8d36ec79d7f0bc119bbb74ce5ea862248da37",
+            "fingerprint_change_observation": "raw HTML hash changed on same-day recheck; no semantic change was observed in the extracted GA date, CPC billing, reporting metrics or pause-control sections"
+          },
+          {
+            "url": "https://advertising.amazon.com/about-api",
+            "title": "Amazon Ads API",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_api_overview_no_approval",
+            "ownership": "no_amazon_ads_api_credentials",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_access_approval_test_account_and_developer_repository_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public application/approval requirements and non-spending test-account description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "5fec3a9b1ecd3df5bebce987593c4d764c1369e8c8165abe092bb2dcc9eba5d6"
+          },
+          {
+            "url": "https://sellingpartners.aboutamazon.com/creative-studio",
+            "title": "Creative Studio",
+            "published_at": "2026-07-15",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "US_EN",
+            "store_mode": "public_selling_partner_page_no_account",
+            "ownership": "no_amazon_seller_or_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_independent_seller_creative_studio_capabilities"],
+            "real_input": "none_read_only",
+            "real_output": "public description of lifestyle image, product-image-to-video and audio ad capabilities",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "025795f5124f2d7684d454316644b4af0a99b36a5081cb9dd5113345a45893e7"
+          },
+          {
+            "url": "https://advertising.amazon.com/solutions/products/ads-agent",
+            "title": "Amazon Ads Agent",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "US_EN",
+            "store_mode": "public_product_page_no_ad_account",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["reuse_same_day_verified_public_page_observation", "fingerprint_current_page"],
+            "real_input": "prior read-only FAQ expansion; no media plan uploaded",
+            "real_output": "public planning, AMC SQL, proposal-summary and user-approval workflow description",
+            "evidence_level": "verified_software_observation",
+            "state": "time_sensitive_evidence",
+            "evidence_ref": "outputs/expert_training/b2b_export_training_2026-07-18.md",
+            "sha256": "85c77a353349b85265b7ed7eca4d20a7841915e14c4cd19b1412e107c29b0e8f"
+          }
+        ],
+        "failed_attempts": [
+          {
+            "id": "bitbrowser_22_public_amazon_ads_tab_switch_2026_07_18",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "country_site": "US",
+            "store_mode": "public_read_only_no_authenticated_ads_session",
+            "ownership": "project_bound_authorized_desktop_identity",
+            "evidence_level": "unknown",
+            "lifecycle_state": "failed_attempt",
+            "operation": "select_visible_public_amazon_ads_guide_tab_from_browser_tab_search",
+            "error": "tab did not switch; rehydrated window title remained on the public Amazon listing-AI article",
+            "boundary": "no Amazon Ads Console, advertiser profile, campaign field or account output was observed from this attempt",
+            "recovery": "stop account UI interaction; retain blocked_connector and use official public Ads pages until owner supplies the correct authenticated execution identity"
+          }
+        ],
+        "community_observations": [
+          {
+            "url": "https://www.reddit.com/r/adtech/comments/1qvt0pp/i_set_up_amazons_new_ai_ad_tool_for_ads_so_you/",
+            "platform_content_id": "1qvt0pp",
+            "title": "I set up Amazon's new AI ad tool for Ads so you don't have to. What do you want tested?",
+            "author": "NiceRecognition9603",
+            "published_at": "2026-02-04",
+            "captured_at": "2026-07-18T23:48:11.5008217+08:00",
+            "language": "en",
+            "country_site": "unknown",
+            "store_mode": "unknown_advertiser_or_partner_account",
+            "ownership": "public_community_post",
+            "permission": "public_read_only_under_platform_terms",
+            "evidence_level": "single_case",
+            "state": "single_case",
+            "observed_claim": "one poster reports a working Amazon Ads MCP Server setup and says developer experience is required",
+            "rule_upgrade_allowed": false,
+            "safe_use": "setup-complexity anecdote only; official eligibility and connector health remain authoritative",
+            "sha256": "40161233050793deea952331b869b03cd5b2067b818f2b96eda376340804edf6"
+          }
+        ]
+      },
+      "measurement_and_attribution": {
+        "state": "time_sensitive_evidence",
+        "account_availability": "unknown",
+        "layers": [
+          {
+            "id": "amazon_store_unified_reporting",
+            "kind": "on_amazon_ad_delivery_and_conversion_reporting",
+            "verified_live_availability": "unknown_without_authenticated_advertiser",
+            "current_methodology": "shopping_signal_enhanced_last_touch_is_standard_from_2026_01_01_for_eligible_view_attributed_campaigns",
+            "affected_surfaces": [
+              "sponsored_brands_vcpm_including_branded_keywords",
+              "sponsored_display_vcpm",
+              "amazon_dsp_serving_in_amazon_store"
+            ],
+            "unchanged_boundary": "click_based_attribution_and_other_campaign_or_inventory_types_are documented as unchanged",
+            "all_views_boundary": "eligible campaigns retain 14-day all-views metrics in Unified Reporting and API",
+            "comparison_rule": "reports spanning 2026-01-01 or mixing standard and all-views fields require methodology and field-version labels before trend comparison"
+          },
+          {
+            "id": "amazon_attribution",
+            "kind": "non_amazon_media_to_on_amazon_outcome_measurement",
+            "verified_live_availability": "unknown_without_eligible_advertising_console_account",
+            "documented_channels": ["search", "social", "display", "video", "email", "affiliate_or_influencer"],
+            "documented_model": "14-day last-touch; the most recent eligible click receives conversion credit",
+            "documented_metrics": [
+              "clicks",
+              "detail_page_views",
+              "add_to_cart",
+              "purchases",
+              "units_sold",
+              "product_sales",
+              "new_to_brand"
+            ],
+            "tag_boundary": "tag taxonomy determines reporting granularity; create one tenant-scoped tag per approved tactic only after product, channel, publisher and ownership review",
+            "mobile_boundary": "in-app browsers can undercount conversions when shoppers are not logged in or redirected to the Amazon app; annotate this limitation instead of fabricating lift",
+            "causal_boundary": "Amazon Attribution is attributed outcome reporting, not proof of incremental lift or a substitute for platform-native attribution"
+          },
+          {
+            "id": "amazon_marketing_cloud",
+            "kind": "privacy_safe_clean_room_analytics_and_audience_layer",
+            "verified_live_availability": "unknown_without_authenticated_amc_instance",
+            "documented_inputs": ["amazon_ads_signals", "pseudonymized_advertiser_inputs", "onboarded_third_party_signals"],
+            "documented_outputs": ["aggregated_anonymous_insights", "scheduled_or_on_demand_reports", "custom_audiences"],
+            "privacy_boundary": "only pseudonymized inputs are accepted and only aggregated anonymous outputs are accessible; no raw PII or cross-advertiser signal reuse",
+            "activation_boundary": "analysis, query generation, audience creation, audience activation and first-party signal onboarding are separate permissioned actions",
+            "lookback_evidence": "current product page documents 25 months of ad traffic signals; each dataset and query still requires live schema and availability verification",
+            "native_ai_boundary": "Ads Agent in AMC may generate queries or audience segments, but output review, privacy thresholds, account routing and activation approval remain mandatory"
+          },
+          {
+            "id": "amazon_marketing_stream",
+            "kind": "hourly_push_reporting_and_campaign_change_message_layer",
+            "verified_live_availability": "blocked_connector",
+            "documented_outputs": ["hourly_performance_metrics", "near_real_time_campaign_change_messages", "budget_consumption_signals"],
+            "connector_requirements": ["amazon_ads_api_integration", "aws_account", "sqs_or_data_firehose_destination", "developer_resources"],
+            "freshness_boundary": "hourly summarized push data is near real time, not instantaneous transaction truth",
+            "execution_boundary": "stream data can inform alerts and drafts; any automated bid, budget or campaign change still requires verified routing and owner approval"
+          },
+          {
+            "id": "sponsored_prompts_reporting",
+            "kind": "prompt_level_paid_ad_reporting",
+            "verified_live_availability": "unknown_without_authenticated_us_advertiser",
+            "documented_metrics": ["prompt_text", "associated_ad", "impressions", "clicks", "ctr", "cpc", "spend", "sales", "acos", "roas", "7_day_orders", "7_day_units"],
+            "comparison_rule": "7-day prompt orders and units must not be silently combined with Amazon Attribution 14-day last-touch or Unified Reporting all-views metrics"
+          }
+        ],
+        "distilled_rules": [
+          "Amazon Attribution、Amazon Store 统一报告、AMC、Marketing Stream 和 Prompts 报告是五个不同测量层，必须保留来源、窗口、模型、字段版本和账户范围",
+          "Amazon Attribution 衡量站外营销对 Amazon 店内结果的归因，采用 14 天 last-touch；不得把其结果写成因果增量或直接替代 Meta、TikTok、Google 的平台归因",
+          "2026-01-01 起部分 vCPM Sponsored Brands/Display 与店内 DSP 的标准 view-attributed 报告方法发生变化；跨日期趋势必须标记方法切换，click-based attribution 保持独立",
+          "AMC 仅接收假名化输入并只输出聚合匿名结果；查询草稿不等于已运行，受众创建不等于已激活，信号上传不等于允许跨租户复用",
+          "Marketing Stream 是按小时推送的近实时报告层，不是实时订单账本；无 Ads API、AWS 目的地和开发资源时保持 blocked_connector",
+          "Prompts 的 7 天订单/件数、Amazon Attribution 的 14 天 last-touch、统一报告的标准或 all-views 字段不得混算成单一 ROAS"
+        ],
+        "evidence": [
+          {
+            "url": "https://advertising.amazon.com/solutions/products/amazon-marketing-cloud",
+            "title": "Amazon Marketing Cloud: Discover advertising insights",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_product_page_no_amc_instance",
+            "ownership": "no_amazon_ads_or_amc_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_privacy_inputs_outputs_api_ads_agent_lookback_and_eligibility_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public AMC privacy, analytics, audience, API and availability description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "f4c0e991536cdf3895d220cd0b1df674f6c436f0f5b610e6efaa81d6e5ca4ee4"
+          },
+          {
+            "url": "https://advertising.amazon.com/solutions/products/amazon-marketing-stream",
+            "title": "Amazon Marketing Stream",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_product_page_no_api_or_aws_destination",
+            "ownership": "no_amazon_ads_api_or_aws_connection",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_hourly_push_eligibility_api_aws_and_destination_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public hourly near-real-time stream capability and connector prerequisites",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "2c4d034d6637bf719eb97c83574973f7ec6e6e35821ca5a37eb99ad58f2d34cc"
+          },
+          {
+            "url": "https://advertising.amazon.com/en-us/solutions/products/amazon-attribution/",
+            "title": "Amazon Attribution: Get started with advertising analytics",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "US_EN_WITH_DOCUMENTED_MULTI_COUNTRY_ELIGIBILITY",
+            "store_mode": "public_product_page_no_attribution_account",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_channels_eligibility_tags_metrics_window_and_api_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public non-Amazon media measurement, eligibility, tag and metric description",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "9bb638c588fe1ea7606dbb45b12745109e7542399297327ca85ba812fc9c5278"
+          },
+          {
+            "url": "https://advertising.amazon.com/help/G4YK9L2G4NXDD7SC",
+            "title": "Amazon Attribution methodology",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_help_no_attribution_account",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_help", "read_14_day_last_touch_and_in_app_measurement_limitations"],
+            "real_input": "none_read_only",
+            "real_output": "public attribution methodology and mobile in-app measurement boundary",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "516773c3db385bdaeb28a36d6488b88365bcf93320de7944404afeee880ebcb2"
+          },
+          {
+            "url": "https://advertising.amazon.com/resources/whats-new/view-attribution-updates-for-amazon-store-ads/",
+            "title": "View Attribution Updates for Amazon Store ads",
+            "published_at": "2026-01-01",
+            "effective_at": "2026-01-01",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "MULTI_COUNTRY",
+            "store_mode": "public_launch_announcement_no_advertiser",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_method_change_affected_surfaces_unchanged_clicks_and_all_views_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public standard attribution method change and Unified Reporting boundary",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "5e58c396cd49b6b1d0b4f196f3e7a82c2fd9aa4d31a339988218f81551487a22"
+          },
+          {
+            "url": "https://advertising.amazon.com/library/news/amc-for-sponsored-ads",
+            "title": "Amazon Marketing Cloud now available to all advertisers running sponsored ads campaigns",
+            "published_at": "2025-09-18",
+            "captured_at": "2026-07-18T23:57:02.5150111+08:00",
+            "country_site": "GLOBAL_EN",
+            "store_mode": "public_news_no_authenticated_ads_console",
+            "ownership": "no_amazon_ads_account",
+            "permission": "public_read_only",
+            "observed_operations": ["open_public_page", "read_sponsored_ads_availability_entry_and_no_code_template_sections"],
+            "real_input": "none_read_only",
+            "real_output": "public AMC entry under Measurement and Reporting; current account visibility remains unknown",
+            "evidence_level": "official_current",
+            "state": "time_sensitive_evidence",
+            "sha256": "08d08f5de5de76a4b4c06dd5e028e3325af73fc8830506b19d54895c5b4dad38"
+          }
+        ]
+      },
+      "api_client_reference": {
+        "repository": "amzn/ads-advanced-tools-docs",
+        "url": "https://github.com/amzn/ads-advanced-tools-docs",
+        "official_owner": "amzn",
+        "latest_observed_commit": "a722a3080655c47e9b29997bd8c1269f0e52c3c8",
+        "latest_observed_commit_date": "2026-07-06T23:18:45Z",
+        "license": "MIT-0",
+        "captured_at": "2026-07-18T23:57:57.8587352+08:00",
+        "evidence_level": "official_current",
+        "repository_integration": "research_only",
+        "install_allowed": false,
+        "registry_reason": "config/github_capability_registry.json 无该仓库准入记录；项目无现有 import、安装或连接证据",
+        "readme_sha256": "733a5eb51657b208b6a5bf46d07be87550fd72dfc96e5147a10c5cfa879eb31f",
+        "license_sha256": "ef47b4ae2a1a8d38ef87b38dc5927967e7b472ffa3f7d125e89dbc8353a1e7af",
+        "inspected_paths": [
+          {
+            "path": "amazon_marketing_cloud/AMC_API_sample_python_collection.ipynb",
+            "blob_sha": "16a1a1d0fde43cadfded8867da410fa6c8d706df",
+            "content_sha256": "d360195b75bcb48529f60bd075dde4449b5fc2d84024a968c90c65f6c6095d63",
+            "safe_reuse": "authorization_and_route_field_reference_only",
+            "execution_allowed": false,
+            "observed_requirements": ["login_with_amazon_application", "approved_ads_api_scopes", "marketplace_id", "advertiser_id", "bearer_token"],
+            "rejected_patterns": ["hardcoded_credentials", "printing_token_response", "executing_placeholders", "unreviewed_dependency_install"],
+            "reason": "official sample is not a production connector and contains credential-handling examples that conflict with T-one credential policy"
+          },
+          {
+            "path": "amazon_marketing_stream/README.md",
+            "blob_sha": "efb92c50a27f4579e6de3458e9470967559d508f",
+            "content_sha256": "a5eab5b6bf077685f008158fdfb0049da417124198a6cede8c60c3f6582c44ac",
+            "safe_reuse": "architecture_reference_only",
+            "execution_allowed": false,
+            "observed_resources": ["sqs_cloudformation", "firehose_cloudformation", "cloudwatch_alarms_and_dashboards"],
+            "reason": "templates were not installed, deployed or security-reviewed and the repository is not admitted by the capability registry"
+          },
+          {
+            "path": "amazon_marketing_cloud/amc_playbooks/AMC_PersonaAPI.zip",
+            "blob_sha": "2e08235361bf2de9c24d11cf73c0414aab628c89",
+            "safe_reuse": "none_not_inspected_binary",
+            "execution_allowed": false,
+            "state": "research_only",
+            "reason": "binary archive was listed but not downloaded, extracted or executed"
+          }
+        ]
+      },
+      "special_rules": [
+        "复用 Amazon 平台专家和当前租户/项目专属广告门禁，不建立第二套 Amazon Ads 运行时，也不把项目商品事实写入平台公共层",
+        "Amazon Ads advertiser profile、marketplace、country-site、Ads Console、OAuth/API credential 和 execution identity 必须逐路由验证；Seller Central 或 BitBrowser 登录不能替代",
+        "Sponsored Products、Sponsored Brands、Display/DSP、AMC、Attribution、Ads Agent、Creative Studio 与 MCP Server 保持分层，不把某一入口的授权泛化到其他入口"
+      ],
+      "official_sources": [
+        "https://advertising.amazon.com/solutions/products/sponsored-products",
+        "https://advertising.amazon.com/solutions/products/ads-agent",
+        "https://advertising.amazon.com/library/news/creative-tools-rec",
+        "https://advertising.amazon.com/en-us/library/news/amazon-ads-mcp-server-open-beta/",
+        "https://advertising.amazon.com/resources/whats-new/unboxed-2025-sponsored-products-and-sponsored-brands-prompts/",
+        "https://advertising.amazon.com/about-api",
+        "https://advertising.amazon.com/solutions/products/amazon-marketing-cloud",
+        "https://advertising.amazon.com/solutions/products/amazon-marketing-stream",
+        "https://advertising.amazon.com/en-us/solutions/products/amazon-attribution/",
+        "https://advertising.amazon.com/resources/whats-new/view-attribution-updates-for-amazon-store-ads/"
+      ]
+    }
+  ],
+  "actions": {
+    "read_only_or_draft": [
+      "performance_read",
+      "attribution_audit",
+      "anomaly_detection",
+      "creative_audit",
+      "campaign_draft",
+      "budget_simulation",
+      "stop_loss_recommendation",
+      "meta_event_map_draft",
+      "meta_dedup_audit_draft",
+      "meta_attribution_report_spec_draft",
+      "meta_experiment_design_draft",
+      "tiktok_event_map_draft",
+      "tiktok_dedup_audit_draft",
+      "tiktok_events_manager_diagnostic_plan_draft",
+      "tiktok_gmv_max_report_spec_draft",
+      "tiktok_gmv_max_incrementality_analysis_draft",
+      "tiktok_paid_organic_affiliate_decomposition_draft",
+      "tiktok_events_manager_diagnostics_read",
+      "tiktok_gmv_max_report_read",
+      "google_ads_mcp_connection_plan_draft",
+      "google_ads_mcp_gaql_query_draft",
+      "google_ads_mcp_account_diagnostic_plan_draft",
+      "google_ads_mcp_list_accessible_customers",
+      "google_ads_mcp_search_read",
+      "google_ads_mcp_resource_metadata_read",
+      "amazon_amc_query_draft",
+      "amazon_attribution_tag_taxonomy_draft"
+    ],
+    "connection_required": [
+      "performance_read",
+      "tiktok_events_manager_diagnostics_read",
+      "tiktok_gmv_max_report_read",
+      "google_ads_mcp_list_accessible_customers",
+      "google_ads_mcp_search_read",
+      "google_ads_mcp_resource_metadata_read"
+    ],
+    "confirmation_required": [
+      "connect_account",
+      "create_campaign",
+      "launch_campaign",
+      "pause_campaign",
+      "resume_campaign",
+      "budget_change",
+      "bid_change",
+      "target_change",
+      "creative_replace",
+      "conversion_goal_change",
+      "primary_ad_account_change",
+      "ai_max_toggle",
+      "ai_max_experiment_create",
+      "ai_max_experiment_apply",
+      "google_ads_mcp_connect_or_change_scope",
+      "asset_studio_asset_create_or_edit",
+      "asset_studio_export_or_share",
+      "meta_pixel_or_dataset_connect_or_change",
+      "meta_capi_test_event_send",
+      "meta_attribution_setting_change",
+      "meta_ab_test_create_or_apply",
+      "meta_lift_study_create_or_apply",
+      "tiktok_pixel_or_events_api_connect_or_change",
+      "tiktok_events_api_test_event_send",
+      "tiktok_events_manager_event_add_or_edit",
+      "tiktok_gmv_max_campaign_create_or_change",
+      "amazon_ads_creative_generate_or_edit",
+      "amazon_ads_creative_export_or_attach",
+      "amazon_ads_mcp_connect_or_change_scope",
+      "amazon_ads_prompt_pause_or_resume",
+      "amazon_attribution_tag_create_or_change",
+      "amazon_amc_query_or_schedule",
+      "amazon_amc_audience_create_or_activate",
+      "amazon_amc_first_party_signal_onboard",
+      "amazon_marketing_stream_subscription_change",
+      "tto_creator_invite",
+      "tto_payment",
+      "tto_authorized_content_sync"
+    ],
+    "always_blocked": [
+      "verification_bypass",
+      "cross_account_credential_reuse",
+      "raw_credential_in_task_payload",
+      "spend_without_economics_gate",
+      "unlicensed_creative_use",
+      "hidden_identity_or_undisclosed_sponsorship",
+      "fabricated_conversion_or_attribution",
+      "ai_max_experiment_auto_apply_without_owner_review",
+      "meta_capi_without_consent_or_legal_basis",
+      "meta_raw_pii_in_task_payload",
+      "meta_event_id_reuse_across_tenants",
+      "meta_attribution_claim_as_incremental_lift",
+      "meta_experiment_auto_apply_without_owner_review",
+      "meta_capi_request_context_without_explicit_allowlist",
+      "tiktok_events_api_without_consent_or_legal_basis",
+      "tiktok_event_id_reuse_across_tenants",
+      "tiktok_raw_pii_or_request_context_in_task_payload",
+      "tiktok_gmv_max_roi_claim_as_paid_roas",
+      "tiktok_gmv_max_dashboard_claim_as_incremental_lift",
+      "tiktok_unauthorized_affiliate_video_use",
+      "tiktok_live_gmv_max_cross_shop_attribution_as_own_shop_sales",
+      "tiktok_gmv_max_auto_apply_without_owner_review",
+      "google_ads_mcp_public_unauthenticated_deployment",
+      "google_ads_mcp_raw_credentials_in_task_payload",
+      "google_ads_mcp_cross_customer_query",
+      "google_ads_mcp_claim_write_capability",
+      "google_ads_mcp_unpinned_install_or_run",
+      "google_ads_mcp_copy_skill_without_duplicate_review",
+      "amazon_raw_pii_to_amc",
+      "amazon_cross_advertiser_amc_signal_reuse",
+      "amazon_attribution_claim_as_incremental_lift",
+      "amazon_marketing_stream_auto_bid_change_without_owner_review"
+    ]
+  },
+  "preflight_states": {
+    "authorization": "ready",
+    "measurement": "ready",
+    "economics": "ready",
+    "owner_approval": "approved"
+  },
+  "economics": {
+    "required_inputs": [
+      "net_revenue",
+      "product_cost",
+      "fulfillment_cost",
+      "platform_fee",
+      "payment_fee",
+      "creator_or_affiliate_cost",
+      "expected_refund_loss",
+      "tax_or_duty_when_applicable"
+    ],
+    "decision_metrics": [
+      "break_even_roas",
+      "contribution_margin_after_ads",
+      "customer_acquisition_cost",
+      "new_customer_revenue",
+      "incremental_revenue",
+      "cash_payback"
+    ]
+  },
+  "credential_policy": {
+    "task_payload_allows": ["credential_ref"],
+    "task_payload_forbids": ["password", "client_secret", "access_token", "refresh_token", "developer_token", "cookie", "session"]
+  }
+}

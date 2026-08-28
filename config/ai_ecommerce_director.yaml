@@ -1,0 +1,236 @@
+agent:
+  id: ai_ecommerce_director
+  name: AI Ecommerce Director
+  zh_name: AI 电商运营总监
+  role: Unified growth, product, keyword, listing, influencer, and content director.
+  principle: One director agent with shared data, shared scoring, and shared daily output.
+
+modules:
+  - id: competitor_intelligence
+    name: Competitor Intelligence
+    zh_name: 竞品情报系统
+    responsibilities:
+      - Monitor fast-growing products.
+      - Monitor fast-growing influencers.
+      - Monitor fast-growing content angles.
+      - Monitor fast-growing keywords.
+    data_sources:
+      - TikTok
+      - FastMoss
+      - Kalodata
+      - EchoTik
+      - Amazon BSR
+      - Amazon New Release
+      - Amazon Movers & Shakers
+      - Etsy
+    outputs:
+      - top_growth_products
+      - top_growth_influencers
+      - top_growth_content_angles
+      - top_growth_keywords
+
+  - id: keyword_hunter
+    name: Keyword Hunter
+    zh_name: 关键词猎人
+    responsibilities:
+      - Build keyword database.
+      - Classify product, identity, interest, holiday, location, and long-tail keywords.
+      - Find high-growth, low-competition, and content-ready keywords.
+    outputs:
+      - high_growth_keywords
+      - low_competition_keywords
+      - long_tail_keywords
+      - listing_keyword_sets
+      - content_keyword_sets
+      - influencer_search_terms
+
+  - id: listing_builder
+    name: Listing Builder
+    zh_name: Listing 优化系统
+    responsibilities:
+      - Analyze top competitor listings.
+      - Generate title, bullet points, descriptions, tags, and price suggestions.
+      - Adapt listing recommendations by platform.
+    outputs:
+      - recommended_titles
+      - recommended_bullets
+      - recommended_prices
+      - amazon_tags
+      - tiktok_tags
+      - etsy_tags
+
+  - id: influencer_hunter
+    name: Influencer Hunter
+    zh_name: 达人开发系统
+    responsibilities:
+      - Discover creators on TikTok, Instagram, and YouTube.
+      - Score average views, engagement rate, audience quality, and content quality.
+      - Classify influencers into A, B, and C levels.
+    outputs:
+      - grade_a_influencers
+      - grade_b_influencers
+      - grade_c_influencers
+
+  - id: influencer_crm
+    name: Influencer CRM
+    zh_name: 达人管理系统
+    responsibilities:
+      - Track outreach status.
+      - Track replies, samples, delivery, video posting, sales, and ROI.
+      - Recommend follow-up actions.
+    outputs:
+      - outreach_queue
+      - sample_queue
+      - follow_up_queue
+      - roi_report
+
+  - id: viral_content_intelligence
+    name: Viral Content Intelligence
+    zh_name: 爆款内容情报中心
+    responsibilities:
+      - Monitor fast-growing videos on TikTok, Instagram Reels, and YouTube Shorts.
+      - Detect creator spikes against each creator's baseline average views.
+      - Break down video structure, hooks, audience, scenes, emotions, captions, voiceover, and comments.
+      - Convert viral content patterns into replicable scripts and creator profiles.
+    outputs:
+      - viral_content_alerts
+      - creator_spike_watchlist
+      - video_breakdowns
+      - hook_patterns
+      - audience_emotion_maps
+      - replication_plans
+
+  - id: content_direction
+    name: Content Direction
+    zh_name: 素材方向系统
+    responsibilities:
+      - Analyze competitors, influencers, comments, and keywords.
+      - Recommend weekly content themes.
+      - Generate scripts and recommended influencer profiles.
+    outputs:
+      - weekly_content_themes
+      - recommended_scripts
+      - recommended_influencer_types
+
+  - id: store_access_browser_profile_manager
+    name: Store Access and Browser Profile Manager
+    zh_name: 店铺身份与浏览器/IP 管理
+    responsibilities:
+      - Manage store identity references without storing plaintext credentials.
+      - Map each store to a BitBrowser or Chrome profile.
+      - Map each browser profile to a proxy or IP node reference.
+      - Track login status, verification method, and required human action.
+      - Enforce guardrails before password entry, verification, proxy purchase, shop settings changes, publishing, campaign signup, or payments.
+    outputs:
+      - store_identity_profiles
+      - browser_profile_map
+      - proxy_node_map
+      - login_runbooks
+      - human_confirmation_queue
+
+daily_report:
+  name: AI Ecommerce Director Daily Morning Report
+  schedule: every_morning
+  outputs:
+    - today_new_winning_products
+    - today_new_keywords
+    - today_new_influencers
+    - today_recommended_titles
+    - today_recommended_image_directions
+    - today_recommended_content_directions
+    - today_recommended_influencer_list
+    - today_action_items
+    - risks
+
+scoring:
+  product_opportunity:
+    growth_score: 0.30
+    margin_score: 0.20
+    content_fit_score: 0.20
+    influencer_fit_score: 0.15
+    competition_score: 0.15
+  influencer_grade:
+    avg_views: 0.25
+    engagement_rate: 0.20
+    audience_quality_score: 0.20
+    content_quality_score: 0.15
+    category_fit_score: 0.10
+    sample_fit_score: 0.05
+    commission_fit_score: 0.05
+  keyword_score:
+    growth_rate: 0.30
+    conversion_intent: 0.25
+    low_competition: 0.20
+    listing_fit: 0.10
+    content_fit: 0.10
+    influencer_search_fit: 0.05
+
+mvp:
+  version: 0.1
+  goal: Generate useful daily operating decisions from imported or manually collected data.
+  includes:
+    - Shared data model.
+    - Manual data import.
+    - Opportunity scoring.
+    - Daily morning report.
+    - Product, keyword, listing, influencer, and content recommendations.
+  excludes:
+    - Full automatic scraping.
+    - Account-login automation.
+    - Automated influencer messaging.
+    - Sales attribution automation.
+
+training_data_priority:
+  principle: Real battlefield data has higher decision weight than course material.
+  high_priority:
+    - rank: 1
+      id: money_cases
+      name: Real winning and losing cases
+      value_score: 5
+      template: templates/money_case.md
+    - rank: 2
+      id: influencer_cooperation
+      name: Influencer cooperation results
+      value_score: 5
+      template: templates/influencer_cooperation_record.md
+    - rank: 3
+      id: hot_links
+      name: Hot product and viral listing links
+      value_score: 5
+      template: templates/hot_link_capture.md
+    - rank: 4
+      id: supply_chain
+      name: Supply chain, inventory, cost, and fulfillment data
+      value_score: 4
+      template: templates/supply_chain_record.md
+    - rank: 5
+      id: us_culture_labels
+      name: US culture labels and audience identities
+      value_score: 4
+      template: templates/culture_label_record.md
+    - rank: 6
+      id: holiday_database
+      name: Holiday keyword, design, creator, and content opportunities
+      value_score: 4
+      template: templates/holiday_opportunity_record.md
+    - rank: 7
+      id: tk_rule_updates
+      name: TikTok Shop rule and risk updates
+      value_score: 4
+      template: templates/tk_rule_update.md
+  low_priority:
+    - id: basic_operation_courses
+      value_score: 2
+      reason: The first version already has enough operating methodology.
+    - id: basic_product_research_courses
+      value_score: 2
+      reason: Real products and outcomes should override generic research theory.
+    - id: basic_ad_courses
+      value_score: 2
+      reason: Real ROI, creator output, and shop risk data are more useful now.
+  intake_rule:
+    - Do not over-analyze hot links during capture. Save link, screenshot, source, and visible signal first.
+    - Always record both winning and losing cases.
+    - Convert every losing case into a future avoidance rule.
+    - Convert every profitable case into product, influencer, listing, keyword, and content signals.
+    - Give supply chain data execution priority when inventory, speed, and margin are strong.

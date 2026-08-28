@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-23",
+  "purpose": "Register collection providers between platform settlement and final bank receipt without inventing provider fees or API connectivity.",
+  "truth_rules": {
+    "platform_actual": "actual_platform_settlement",
+    "final_cash_actual": "actual_bank_receipt",
+    "statement_precedence": true,
+    "fee_or_fx_without_dated_evidence": "unknown",
+    "full_account_and_credentials_forbidden": true
+  },
+  "providers": [
+    {
+      "provider_id": "paypal",
+      "display_name": "PayPal",
+      "status": "configuration_only",
+      "oauth_connected": false,
+      "verified_fee_snapshot": false,
+      "supports_statement_import": true
+    },
+    {
+      "provider_id": "lianlian_global",
+      "display_name": "连连国际",
+      "status": "configuration_only",
+      "oauth_connected": false,
+      "verified_fee_snapshot": false,
+      "supports_statement_import": true
+    },
+    {
+      "provider_id": "worldfirst",
+      "display_name": "万里汇 WorldFirst",
+      "status": "configuration_only",
+      "oauth_connected": false,
+      "verified_fee_snapshot": false,
+      "supports_statement_import": true
+    },
+    {
+      "provider_id": "other",
+      "display_name": "其他收款账户",
+      "status": "configuration_only",
+      "oauth_connected": false,
+      "verified_fee_snapshot": false,
+      "supports_statement_import": true
+    }
+  ]
+}

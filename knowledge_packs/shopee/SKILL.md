@@ -5,7 +5,7 @@ description: Operate as the approval-gated T One Shopee marketplace expert for S
 
 # Shopee T One Expert
 
-Use the existing `LLMClient + config/multi_ai.json` gateway. Do not create a second agent runtime.
+Use the existing `LLMClient + private_model_provider_registry_excluded` gateway. Do not create a second agent runtime.
 
 ## Preserve product and tenant scope
 
@@ -26,7 +26,7 @@ Use the existing `LLMClient + config/multi_ai.json` gateway. Do not create a sec
 - Read [references/failure-review.md](references/failure-review.md) before retrying a blocked source, validator, connector, or authorization path.
 - Read [references/continuous-training.md](references/continuous-training.md) for the incremental training loop and automation boundaries.
 - Read [references/mother-requirement-fusion-matrix.md](references/mother-requirement-fusion-matrix.md) before adopting a requirement from the cross-border mother document or proposing new software.
-- Use `config/platform_expert_training/shopee.json` as the machine contract and regression-evaluation source.
+- Use `private_platform_training_contract_excluded` as the machine contract and regression-evaluation source.
 
 ## Require an executable scope
 
@@ -121,7 +121,7 @@ Use exactly one of: `verified_live_fact`, `time_sensitive_evidence`, `historical
 ## Audit official open source without inventing a connector
 
 - Verify a GitHub organization from a first-party website or developer page and require a reverse identity link where available. A matching name, search rank, star count, or owner string is not enough.
-- Deduplicate `owner/repo + commit/tag` against `config/github_capability_registry.json` before reading. Revisit only for a changed commit, release, license, security state, or relevant issue.
+- Deduplicate `owner/repo + commit/tag` against `private_github_admission_registry_excluded` before reading. Revisit only for a changed commit, release, license, security state, or relevant issue.
 - Cover README/relevant docs, releases or changelog, tags, the actual LICENSE file, issues and replies, discussions, pull requests, security policy/advisories, and recent commits. Record exactly what was covered and what was unavailable.
 - Keep code license, model-weight/upstream license, dataset rights, dependency security, data destination, GPU/cost, and commercial-use scope separate. A README license claim does not replace the repository LICENSE file.
 - Sea AI Lab's verified `sail-sg` organization is a research source. It is not evidence of a Shopee seller SDK, Open Platform/OAuth/Ads connector, store authorization, MCP, or T One integration.

@@ -1,0 +1,96 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-08-11T23:20:25+08:00",
+  "scope": "non_amazon_local_read_only_control",
+  "providers": [
+    {"id": "ziniao", "name": "紫鸟浏览器", "adapter": "desktop_adapter_pending", "automatic_profile_open": false},
+    {"id": "zhanfu", "name": "战斧浏览器", "adapter": "desktop_adapter_pending", "automatic_profile_open": false},
+    {"id": "chrome", "name": "Google Chrome", "adapter": "desktop_or_extension", "automatic_profile_open": false}
+  ],
+  "plugin": {
+    "source_path": "browser_extension/ai_ecommerce_director_capture",
+    "package_path": "outputs/AI_Ecommerce_Director_Capture_Extension.zip",
+    "local_auth_token_path": "runtime_data/plugin_install_token.txt",
+    "expected_manifest_version": 3,
+    "allowed_host_permissions": [
+      "http://127.0.0.1/*",
+      "http://localhost/*",
+      "https://chatgpt.com/*",
+      "https://gemini.google.com/*"
+    ],
+    "package_manifest_required": true,
+    "package_verification": "exact_entry_bytes_plus_canonical_source_sha256",
+    "reproducible_zip": true,
+    "fixed_zip_timestamp": "2020-01-01T00:00:00Z",
+    "source_version": "0.3.2",
+    "package_sha256": "FFAD2B973161C0E4AADA22B7FF78FC7096941929043B8AAFEFED192F36841F2F"
+  },
+  "store_data_capture_fallback": {
+    "status": "built_verified_not_installed",
+    "source_path": "browser_extension/t_one_store_data_capture",
+    "package_path": "outputs/T-One-Store-Data-Capture-Extension.zip",
+    "package_sha256": "6271e182b1fa4c0e8c8cb68c37d3a75b08685f2800f76e54330aac1734e31f20",
+    "supported_surface": "https://sellerhub.shein.com/#/gsp/order-management/list",
+    "supported_scope": {
+      "platform": "shein",
+      "country_site": "US",
+      "data": ["order_count", "unit_count", "gross_sales", "expected_income", "public_product_links_when_visible"]
+    },
+    "local_return_endpoint": "/api/plugin/store-data/capture",
+    "local_auth_token_path": "runtime_data/plugin_install_token.txt",
+    "reads_cookie_password_order_id_or_customer_pii": false,
+    "external_store_write_actions": 0,
+    "installation_status": "owner_confirmation_required_for_target_browser_profile",
+    "real_store_capture_status": "not_run_through_extension"
+  },
+  "browser_ai_existing_login": {
+    "owner_authorized_at": "2026-08-11",
+    "allowed_surfaces": ["chatgpt.com", "gemini.google.com"],
+    "reuse_existing_tabs_only": true,
+    "new_browser_profile_allowed": false,
+    "cookie_token_password_read_allowed": false,
+    "store_page_access_allowed": false,
+    "result_writeback_scope": "current_t_one_project_and_task",
+    "installed_profile_hint": "(AI)",
+    "extension_status": "installed_in_existing_ai_profile_only",
+    "installed_extension_version": "0.3.2",
+    "existing_thread_control_status": "manually_verified_real_roundtrip",
+    "existing_thread_control_evidence": "outputs/qa/browser-existing-thread-control-0.3.2.json",
+    "older_duplicate_heartbeat_policy": "ignore_lower_version_while_newer_heartbeat_is_live",
+    "wrong_profile_correction": "t_one_extension_removed_from_miaoshou_profile",
+    "native_visible_connector": {
+      "status": "verified_two_provider_roundtrip",
+      "default_delivery_method": "windows_uia_visible_keyboard",
+      "verified_providers": ["chatgpt-browser", "gemini-browser"],
+      "extension_dom_sender_verified": true,
+      "duplicate_older_extension_heartbeat_contained": true,
+      "connection_rechecked_per_run": true,
+      "existing_ai_tab_lock": true,
+      "business_tab_exclusion": true,
+      "visible_window_required": true,
+      "confirmed_thread_url_required": true,
+      "external_store_action_count": 0
+    }
+  },
+  "required_binding_route": [
+    "tenant_id",
+    "project_id",
+    "store_binding_id",
+    "platform",
+    "country_site",
+    "store_model",
+    "ownership",
+    "execution_identity_id"
+  ],
+  "local_actions": ["inspect_provider", "inspect_plugin_chain", "prepare_binding_packet", "send_visible_message_to_existing_logged_ai_profile", "read_visible_ai_response", "write_project_result_and_receipt"],
+  "blocked_actions": ["open_browser", "install_extension", "bind_store", "capture_page", "execute_cloud_task", "create_new_browser_profile", "read_cookie_token_or_password"],
+  "hard_boundaries": [
+    "amazon_excluded_by_current_owner_instruction",
+    "no_new_browser_process_or_profile",
+    "no_profile_or_account_binding",
+    "no_cookie_token_password_read",
+    "browser_ai_send_requires_owner_confirmation_per_run",
+    "no_cloud_task_execution",
+    "no_platform_write"
+  ]
+}

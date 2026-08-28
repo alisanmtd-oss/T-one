@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "updated_at": "2026-07-19T06:55:00+08:00",
+  "allow_external_auto_execute": false,
+  "monitoring_policy": "Only revenue-bound, explicitly scoped jobs may be enabled. Legacy global templates remain visible but disabled.",
+  "scheduler_jobs": [
+    {"id": "collect_tiktok_top_ads", "name": "TikTok Top Ads and viral videos", "cadence_hours": 2, "priority": 95, "target_agent_id": "agn_viral_content_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"source_family": "TikTok", "record_type": "creative_snapshot", "read_only": true}},
+    {"id": "collect_tiktok_top_products", "name": "TikTok Shop buyer-side top products", "cadence_hours": 2, "priority": 94, "target_agent_id": "agn_competitor_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"source_family": "TikTok Shop", "record_type": "platform_ranking_signal", "read_only": true}},
+    {"id": "refresh_keyword_trends", "name": "Keyword trend snapshots", "cadence_hours": 4, "priority": 88, "target_agent_id": "agn_keyword_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "query_snapshot", "read_only": true}},
+    {"id": "refresh_creator_growth", "name": "Creator growth and cooperation watchlist", "cadence_hours": 6, "priority": 86, "target_agent_id": "agn_influencer_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "creator_spike_event", "read_only": true}},
+    {"id": "refresh_competitor_price", "name": "Competitor listing and price movement", "cadence_hours": 6, "priority": 84, "target_agent_id": "agn_competitor_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "competitor_snapshot", "read_only": true}},
+    {"id": "refresh_review_sentiment", "name": "Review, return, and complaint intelligence", "cadence_hours": 24, "priority": 82, "target_agent_id": "agn_risk_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "review_insight", "read_only": true}},
+    {"id": "diff_platform_policies", "name": "Official platform policy diff", "cadence_hours": 24, "priority": 90, "target_agent_id": "agn_risk_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "policy_diff", "read_only": true}},
+    {"id": "refresh_account_health", "name": "Own-store account health and appeal watch", "cadence_hours": 24, "priority": 89, "target_agent_id": "agn_risk_intelligence", "enabled": false, "disabled_reason": "legacy_unbound_template", "payload": {"record_type": "account_health", "read_only": true}}
+  ]
+}

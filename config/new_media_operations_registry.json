@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "group_id": "new_media_operations_creative_group",
+  "department_id": "content-and-social",
+  "name": "新媒体运营与创意制作组",
+  "purpose": "围绕真实项目和账号完成跨平台内容策划、视觉与视频制作、互动运营和证据化复盘。",
+  "platform_families": [
+    {"id": "short_video", "platforms": ["tiktok", "douyin", "instagram_reels", "youtube_shorts", "facebook_reels", "kuaishou"]},
+    {"id": "visual_social", "platforms": ["instagram", "xiaohongshu", "pinterest", "facebook"]},
+    {"id": "long_video", "platforms": ["youtube", "bilibili"]},
+    {"id": "professional_community", "platforms": ["linkedin", "x", "reddit", "wechat_official", "wechat_channels"]},
+    {"id": "social_commerce", "platforms": ["tiktok_shop", "amazon_posts", "shopify_content"]}
+  ],
+  "roles": [
+    {"id": "new-media-lead", "name": "新媒体运营组长", "owns": ["目标拆解", "账号组合", "排期", "跨岗位验收"]},
+    {"id": "account-operator", "name": "账号运营", "owns": ["账号基线", "发布日历", "平台适配", "异常记录"]},
+    {"id": "content-strategist", "name": "内容策划", "owns": ["受众", "选题", "内容支柱", "系列化栏目"]},
+    {"id": "copy-hashtag-editor", "name": "文案与标签编辑", "owns": ["标题", "正文", "CTA", "标签组合", "搜索词"]},
+    {"id": "visual-designer-retoucher", "name": "美工与修图", "owns": ["商品图", "场景图", "封面", "版式", "修图", "尺寸适配"]},
+    {"id": "video-director-editor", "name": "视频导演与剪辑", "owns": ["脚本", "分镜", "拍摄清单", "剪辑", "字幕", "节奏"]},
+    {"id": "ai-creative-producer", "name": "AI 创意制作", "owns": ["AI 生图", "AI 视频", "提示词", "一致性检查"]},
+    {"id": "music-voice-producer", "name": "音乐与配音", "owns": ["音乐筛选", "音效", "配音", "混音", "授权证据"]},
+    {"id": "community-comment-operator", "name": "社区与评论运营", "owns": ["评论分类", "回复草稿", "舆情升级", "购买信号"]},
+    {"id": "localization-editor", "name": "多语言本地化", "owns": ["语言", "文化语境", "禁忌", "站点表达"]},
+    {"id": "content-data-analyst", "name": "内容数据与算法实验", "owns": ["指标窗口", "单变量实验", "归因边界", "复盘"]}
+  ],
+  "workflow": [
+    {"id": "account-baseline", "name": "账号与受众基线", "output": "账号、站点、受众、历史指标和权限边界"},
+    {"id": "topic-calendar", "name": "选题与内容日历", "output": "内容支柱、栏目、频率和负责人"},
+    {"id": "copy-and-hashtags", "name": "文案与标签", "output": "平台化标题、正文、CTA、标签和搜索词草稿"},
+    {"id": "visual-production", "name": "图片与美工", "output": "图片位、尺寸、修图、封面和素材来源"},
+    {"id": "video-audio-production", "name": "视频、音乐与配音", "output": "脚本、分镜、剪辑、字幕、音乐和配音计划"},
+    {"id": "rights-and-fact-review", "name": "事实与版权检查", "output": "产品事实、素材、音乐、字体、肖像和平台规则证据"},
+    {"id": "publish-approval", "name": "发布审批", "output": "单次发布动作、账号身份和批准回执"},
+    {"id": "comment-triage", "name": "评论与私信分流", "output": "购买意向、产品问题、售后风险、侵权安全、垃圾攻击和回复草稿"},
+    {"id": "metrics-capture", "name": "效果数据回收", "output": "带平台、站点、账号和时间窗口的指标证据"},
+    {"id": "algorithm-experiment-retrospective", "name": "算法实验与复盘", "output": "单变量假设、盲预测、观察证据和下一轮动作"}
+  ],
+  "metrics": [
+    "impressions", "views", "three_second_views", "average_watch_seconds", "completion_rate",
+    "retention_25_rate", "retention_50_rate", "retention_75_rate", "rewatches", "likes",
+    "comments", "shares", "saves", "profile_visits", "followers_gained", "clicks", "leads",
+    "orders", "revenue", "negative_feedback", "refunds"
+  ],
+  "comment_categories": [
+    "purchase_intent", "product_question", "positive_community", "service_risk",
+    "legal_safety_risk", "spam_or_abuse", "unknown"
+  ],
+  "algorithm_learning_policy": {
+    "claim_type": "dated_account_level_hypothesis_only",
+    "required_dimensions": ["platform", "country_site", "account_baseline_ref", "content_format", "window_start", "window_end"],
+    "required_method": "single_variable_blind_prediction_then_evidence",
+    "forbidden_claims": ["永久推流秘诀", "跨平台通用算法结论", "无证据保证爆款"]
+  },
+  "reused_capabilities": [
+    "config/creative_video_capabilities.json",
+    "config/video_aip_publish_workflow.json",
+    "config/growth_creative_tool_stack.json",
+    "skills/commerce-video-director/SKILL.md",
+    "ai_ecommerce_director/content_feedback_loop.py"
+  ],
+  "shared_service_ids": ["legal-compliance", "copyright-ip", "content-video-data", "connector-browser-data", "approval-receipts"],
+  "external_action_gates": {
+    "publish": "owner_confirmation_required",
+    "comment_reply": "owner_confirmation_required",
+    "direct_message": "owner_confirmation_required",
+    "live_stream": "owner_confirmation_required",
+    "account_setting_change": "owner_confirmation_required",
+    "music_or_template_without_verified_commercial_rights": "blocked",
+    "ad_spend": "finance_and_owner_confirmation_required"
+  },
+  "release_truth": {
+    "required_asset_rights_fields": [
+      "asset_id",
+      "asset_kind",
+      "source_ref",
+      "rights_state"
+    ],
+    "rights_states_allowed_for_publish": [
+      "original_verified",
+      "licensed_commercial_use_verified"
+    ],
+    "real_publish_connector_count": 0,
+    "real_publication_receipt_count": 0,
+    "real_metric_receipt_count": 0,
+    "publish_execution_enabled": false,
+    "automatic_comment_reply_enabled": false,
+    "external_action_count": 0,
+    "amazon_status": "paused_by_owner_not_touched"
+  }
+}

@@ -81,7 +81,7 @@ For analytics, define the metric envelope before comparing or aggregating anythi
 
 For `GET_SALES_AND_TRAFFIC_REPORT`, use exactly one marketplace and the current `sellerSalesAndTrafficReport` contract. Treat `dateGranularity=DAY|WEEK|MONTH` and `asinGranularity=PARENT|CHILD|SKU` as independent: `salesAndTrafficByDate` aggregates the catalog by date period, while `salesAndTrafficByAsin` aggregates each ASIN entity over the requested range. They do not create daily-by-ASIN rows. Retain both requested and effective boundaries because WEEK expands to Sunday through Saturday and MONTH to the complete calendar month. Respect the public maximum of three requests per five minutes and two-year lookback. B2B fields may be unpopulated for a non-B2B seller; missing is not zero. Public schema access does not prove the Brand Analytics role, seller authorization, marketplace routing or a real report.
 
-For Data Kiosk Sales and Traffic queries, pin the current public dataset to `analytics_salesAndTraffic_2024_04_24`; the prior `analytics_salesAndTraffic_2023_11_15` dataset was removed on March 27, 2026. Follow `createQuery -> poll/notification -> CANCELLED|DONE|FATAL -> data/error/no-document -> getDocument -> download and validate JSONL`, and continue pagination only while `nextToken` exists. `DONE` without data or error documents means no data, not a successful delivery. The current public contract has no native scheduling/backlogging and allows only one identical pending query per seller/application combination. Encrypt query data at rest and never write an unencrypted result to disk, even temporarily. Keep the connector `available_unconnected` until an authorized query and validated document are observed.
+For Data Kiosk Sales and Traffic queries, pin the current public dataset to `analytics_salesAndTraffic_2024_04_24`; the prior `analytics_salesAndTraffic_2023_11_15` dataset was removed on March 27, 2026. Follow `createQuery -> poll/notification -> CANCELLED|DONE|FATAL -> private_runtime_data_excluded -> getDocument -> download and validate JSONL`, and continue pagination only while `nextToken` exists. `DONE` without data or error documents means no data, not a successful delivery. The current public contract has no native scheduling/backlogging and allows only one identical pending query per seller/application combination. Encrypt query data at rest and never write an unencrypted result to disk, even temporarily. Keep the connector `available_unconnected` until an authorized query and validated document are observed.
 
 Treat Brand Analytics dashboards as separate scopes, not a universal keyword table. Access requires a Professional selling account, Brand Representative status and an enrolled Brand Registry brand. Search Catalog Performance measures the brand catalog funnel; Search Query Performance measures brand-query volume, funnel and share; Top Search Terms provides broader Amazon-store search context; Repeat Purchase, Market Basket and Customer Loyalty have their own customer/entity semantics; public Demographics guidance is US-only and thresholded. Keep eligibility, marketplace, dashboard entity, period and captured time attached to every export or observation.
 
@@ -104,7 +104,7 @@ Treat every Amazon-native AI output as an editable draft. Before an owner-approv
 
 For the US announcement updated June 10, 2026, treat the July 27, 2026 title change as an effective-dated rule, not a timeless global default: non-media titles are announced at 75 characters including spaces and Item Highlights at 125 characters. Brand owners receive a 14-day review window; other sellers can inspect `Manage All Inventory > View Change History`. Apply this only to the documented US marketplace and current category context. If the live PTD or form does not expose Item Highlights, block that field instead of inventing it or treating a forum error as a policy exception.
 
-For Amazon Ads work, reuse the single cross-channel contract at `config/advertising_agent.json` under channel `amazon_ads`; do not create another Ads runtime, connector, model gateway or MCP layer. Keep Creative Studio/Creative Agent, Ads Agent, Amazon Ads MCP Server, prompts, Responsive eCommerce Creative, Amazon Marketing Cloud and measurement as separate permission surfaces. A Seller Central session, public Ads page or fixed browser profile proves none of their advertiser-profile, OAuth, AMC, DSP or API entitlements.
+For Amazon Ads work, reuse the single cross-channel contract at `private_advertising_runtime_contract_excluded` under channel `amazon_ads`; do not create another Ads runtime, connector, model gateway or MCP layer. Keep Creative Studio/Creative Agent, Ads Agent, Amazon Ads MCP Server, prompts, Responsive eCommerce Creative, Amazon Marketing Cloud and measurement as separate permission surfaces. A Seller Central session, public Ads page or fixed browser profile proves none of their advertiser-profile, OAuth, AMC, DSP or API entitlements.
 
 Treat automatic eligibility for Alexa for Shopping sponsored ads or conversational prompts as an additional delivery possibility under an existing campaign, not a new campaign, verified impression, incremental conversion or blanket global entitlement. Before analysis, preserve marketplace, campaign type, current billing parameters, placement/reporting fields and account controls. Never apply Amazon aggregate engagement or conversion figures to a tenant forecast without an isolated experiment and profit readback.
 
@@ -131,7 +131,7 @@ Never treat an accepted Seller Central submission as buyer-page publication. Nev
 
 Treat recovered chats and legacy agents only as `historical_operator_trace`. They may supply paths, screenshots, verified operations and failed attempts, but may not define the current curriculum, platform policy, live store state or final strategy.
 
-For broad Amazon work, load [curriculum.md](references/curriculum.md) and `config/amazon_training_curriculum.json`. A domain below its graduation threshold remains learning-only.
+For broad Amazon work, load [curriculum.md](references/curriculum.md) and `private_runtime_registry_excluded`. A domain below its graduation threshold remains learning-only.
 
 ## Distill each modality
 
@@ -143,12 +143,12 @@ For broad Amazon work, load [curriculum.md](references/curriculum.md) and `confi
 
 Load these expert-owned state files before promoting incremental knowledge:
 
-- `config/amazon_expert_software_capabilities.json`
-- `config/amazon_expert_evidence_index.json`
-- `config/amazon_expert_failure_reviews.json`
-- `config/amazon_expert_rules.json`
+- `private_runtime_registry_excluded`
+- `private_runtime_registry_excluded`
+- `private_runtime_registry_excluded`
+- `private_runtime_registry_excluded`
 
-Run `python skills/amazon-commerce-operator/scripts/run_training_cycle.py --root .` only after the live evidence index has been updated. The script blocks promotion when the evidence watermark has not advanced.
+Run `python private_platform_expert_source_excluded --root .` only after the live evidence index has been updated. The script blocks promotion when the evidence watermark has not advanced.
 
 ## Produce an operational answer
 
@@ -175,7 +175,7 @@ Never bypass CAPTCHA, MFA, account checks, paywalls or platform controls. Keep c
 Run:
 
 ```powershell
-python skills/amazon-commerce-operator/scripts/validate_training_pack.py --root .
+python private_platform_expert_source_excluded --root .
 ```
 
 The validator checks source identity, modality recipes, official-domain policy, eval coverage, canonical local paths and accidental secret fields.

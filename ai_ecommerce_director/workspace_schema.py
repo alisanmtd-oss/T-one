@@ -96,6 +96,88 @@ def _records(value: Any) -> list[dict[str, Any]]:
     return [dict(item) for item in value if isinstance(item, dict)]
 
 
+def _normalized_identifier_list(value: Any) -> list[str]:
+    if isinstance(value, str):
+        value = value.split(",")
+    rows = value if isinstance(value, (list, tuple, set)) else []
+    normalized: list[str] = []
+    for item in rows:
+        identifier = (
+            str(item or "")
+            .strip()
+            .lower()
+            .replace("-", "_")
+            .replace(" ", "_")
+        )
+        if identifier and identifier not in normalized:
+            normalized.append(identifier)
+    return normalized
+
+
+def _normalized_commerce_metadata(
+    record: dict[str, Any], *, inherited: dict[str, Any] | None = None
+) -> dict[str, Any]:
+    """Preserve normalized classification metadata without inferring a model.
+
+    Creation paths validate the values against the central registry.  Schema
+    normalization only keeps already-persisted data stable and lets stores
+    inherit project classification field by field.
+    """
+
+    parent = inherited if isinstance(inherited, dict) else {}
+    explicit_relationship = (
+        "relationship_model" in record or "primary_relationship_model" in record
+    )
+    relationship_model = str(
+        record.get("relationship_model")
+        or record.get("primary_relationship_model")
+        or ("" if explicit_relationship else parent.get("relationship_model"))
+        or ""
+    ).strip().lower().replace("-", "_").replace(" ", "_")
+
+    explicit_secondary = "secondary_relationship_models" in record
+    secondary_relationship_models = _normalized_identifier_list(
+        record.get("secondary_relationship_models")
+        if explicit_secondary
+        else parent.get("secondary_relationship_models")
+    )
+    secondary_relationship_models = [
+        item for item in secondary_relationship_models if item != relationship_model
+    ]
+
+    explicit_forms = "commerce_forms" in record
+    commerce_forms = _normalized_identifier_list(
+        record.get("commerce_forms")
+        if explicit_forms
+        else parent.get("commerce_forms")
+    )
+    explicit_any = explicit_relationship or explicit_secondary or explicit_forms
+    inherited_any = bool(parent) and any(
+        (
+            not explicit_relationship and relationship_model,
+            not explicit_secondary and secondary_relationship_models,
+            not explicit_forms and commerce_forms,
+        )
+    )
+    if explicit_any and inherited_any:
+        source = "project_inherited_with_explicit_override"
+    elif explicit_any:
+        source = str(record.get("commerce_model_source") or "explicit")
+    elif inherited_any:
+        source = "inherited_project"
+    else:
+        source = str(record.get("commerce_model_source") or "unknown")
+    return {
+        "relationship_model": relationship_model,
+        "secondary_relationship_models": secondary_relationship_models,
+        "commerce_forms": commerce_forms,
+        "commerce_model_source": source,
+        "commerce_model_status": (
+            "configured" if relationship_model else "unknown"
+        ),
+    }
+
+
 def _record_refs(value: Any) -> list[dict[str, Any]]:
     """Return mutable records for traversal without cloning the workspace tree."""
 
@@ -187,6 +269,19 @@ def _enrich_task(
     enriched = dict(task)
     enriched["project_id"] = str(project.get("id") or "")
     enriched["scope_type"] = scope_type
+    for key in (
+        "relationship_model",
+        "secondary_relationship_models",
+        "commerce_forms",
+        "commerce_model_source",
+        "commerce_model_status",
+        "commerce_model_owner_review_required",
+        "commerce_model_registry_path",
+        "commerce_model_registry_version",
+        "commerce_dimension_route",
+    ):
+        if key in project:
+            enriched[key] = deepcopy(project.get(key))
     if channel is not None:
         enriched["channel_id"] = str(channel.get("id") or "")
         enriched["platform"] = str(channel.get("platform") or "")
@@ -216,6 +311,7 @@ def _enrich_task(
             "browser_binding_status",
             "browser_environment_id",
             "browser_environment_sharing",
+            "store_surface_connector_script",
             "store_model",
             "ownership",
             "route_key",
@@ -227,6 +323,15 @@ def _enrich_task(
             "scope_status",
             "connection_updated_at",
             "connection_updated_by",
+            "relationship_model",
+            "secondary_relationship_models",
+            "commerce_forms",
+            "commerce_model_source",
+            "commerce_model_status",
+            "commerce_model_owner_review_required",
+            "commerce_model_registry_path",
+            "commerce_model_registry_version",
+            "commerce_dimension_route",
         ):
             enriched[key] = deepcopy(store.get(key)) if key in store else ""
         enriched["execution_domains"] = [
@@ -244,6 +349,7 @@ def _enrich_task(
 
 def _normalize_v3_project(raw_project: dict[str, Any]) -> dict[str, Any]:
     project = dict(raw_project)
+    project.update(_normalized_commerce_metadata(project))
     channels: list[dict[str, Any]] = []
     flat_tasks: list[dict[str, Any]] = []
     seen_channel_ids: set[str] = set()
@@ -269,6 +375,7 @@ def _normalize_v3_project(raw_project: dict[str, Any]) -> dict[str, Any]:
         stores: list[dict[str, Any]] = []
         for raw_store in _records(channel.get("stores")):
             store = dict(raw_store)
+            store.update(_normalized_commerce_metadata(store, inherited=project))
             store_id = str(store.get("id") or "").strip().lower()
             if not store_id or store_id in seen_store_ids:
                 continue

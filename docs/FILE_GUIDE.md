@@ -1,44 +1,13 @@
-# File guide
+# 文件说明
 
-## Runtime and domain code
+- `ai_ecommerce_director/`：正式 Python 服务、桌面渲染、业务运行时、工具与连接器。
+- `desktop_app/`：Electron 主进程、预加载桥、Python 桌面桥和安装配置。
+- `config/`：公开安全的默认注册表与空白初始配置；不含真实账号或凭据。
+- `knowledge_packs/`：Agent/Skill 可复用规则、参考资料和机器合同。
+- `scripts/start_local_server_port.py`：源码开发时启动本地服务。
+- `scripts/prepare_windows_installer.py`：从已审查公开树构建内置运行时。
+- `scripts/verify_public_tree.py`：检查私人路径、密钥和禁止进入公开包的运行数据。
+- `tests/`：公开行为、权限、工作区和发行回归测试。
+- `PUBLIC_RELEASE_AUDIT.json` 与 `SHA256SUMS.json`：生成公开暂存树时产生的审查与哈希清单。
 
-- `ai_ecommerce_director/`: public Python core. It contains domain models, isolation
-  rules, evidence and approval contracts, and safe knowledge-pack access.
-- `knowledge_packs/`: sanitized public knowledge. A pack is not a live connector and
-  does not grant permission to act on a platform.
-- `config/`: synthetic examples and public-safe registries. Values in this directory
-  are examples unless a file explicitly states otherwise.
-
-## User experience
-
-- `demo/chat-first-workspace.html`: dependency-free browser reference. It uses only
-  synthetic data and cannot operate a real store.
-- `assets/screenshots/`: sanitized images used by the public README. Screenshots show
-  product direction, not live integration evidence.
-
-## Quality and release integrity
-
-- `tests/`: public regression tests for behavior and boundaries.
-- `scripts/`: validation and release-integrity helpers.
-- `SHA256SUMS.json`: generated artifact hashes in a staged release.
-- `PUBLIC_RELEASE_AUDIT.json`: generated audit describing the staged release.
-
-## Project documentation
-
-- `README.md` and `README.zh-CN.md`: aligned English and Chinese entrypoints.
-- `docs/CAPABILITY_STATUS.md`: source of truth for usable, partial, and planned areas.
-- `ROADMAP.md`: next milestones and explicit non-goals.
-- `CHANGELOG.md`: released and unreleased changes.
-- `SECURITY.md`: vulnerability reporting and security boundaries.
-- `desktop_public/`: public offline Electron shell and Windows installer definition.
-- `CONTRIBUTING.md`: contribution workflow.
-- `GOVERNANCE.md`: community decision process.
-- `BRAND_PUBLIC_BOUNDARY.md`: brand and data publication boundary.
-- `FEISHU_BRAND_OPERATING_SYSTEM.md`: sanitized brand operating reference, not a live
-  Feishu connector.
-
-## What is intentionally absent
-
-The public repository must not contain private operating-runtime code, credentials,
-store/customer/supplier data, browser profiles, identity documents, internal prompts,
-raw conversations, or unrestricted external execution connectors.
+公开包中不会出现 `data/`、真实 `outputs/`、浏览器配置、账号、店铺、客户、付款、私有对话或凭据文件。`desktop_app/build/` 和 `desktop_app/dist/` 是本机构建产物，不属于源码提交内容。

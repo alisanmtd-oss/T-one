@@ -14,25 +14,35 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: npm
-          cache-dependency-path: desktop_public/package-lock.json
+      - name: Install fixed Python build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+          python -m pip install .
       - name: Install fixed desktop build dependencies
-        working-directory: desktop_public
-        run: npm ci
+        working-directory: desktop_app
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.17.0 --activate
+          pnpm install --frozen-lockfile
       - name: Build assisted Windows installer
-        working-directory: desktop_public
-        run: npm run dist:win
-      - name: Verify public installer contract
-        run: python -m unittest tests.test_windows_installer_contract -v
+        working-directory: desktop_app
+        run: pnpm run dist:win
+      - name: Verify installer and desktop-control contracts
+        run: python -m unittest tests.test_windows_installer_and_desktop_control -v
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: T-One-Community-Windows-Setup
-          path: desktop_public/dist/T-One-Community-Setup-*.exe
+          name: T-One-Windows-Setup
+          path: desktop_app/dist/T-One-Setup-*.exe
           if-no-files-found: error
+
   publish:
     if: github.event_name == 'release'
     needs: build
@@ -43,11 +53,11 @@ jobs:
       - name: Download verified installer artifact
         uses: actions/download-artifact@v4
         with:
-          name: T-One-Community-Windows-Setup
+          name: T-One-Windows-Setup
           path: release-assets
       - name: Attach installer to published release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
           REPOSITORY: ${{ github.repository }}
-        run: gh release upload "$env:RELEASE_TAG" release-assets/T-One-Community-Setup-*.exe --clobber --repo "$env:REPOSITORY"
+        run: gh release upload "$env:RELEASE_TAG" release-assets/T-One-Setup-*.exe --clobber --repo "$env:REPOSITORY"

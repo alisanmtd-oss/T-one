@@ -1,0 +1,79 @@
+{
+  "name": "t-one-commerce-agent-desktop",
+  "version": "0.5.9",
+  "private": false,
+  "description": "T One local-first commerce agent desktop",
+  "author": {
+    "name": "T-one Contributors"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "prepare:runtime": "python ../scripts/prepare_windows_installer.py",
+    "dist:win": "npm run prepare:runtime && node prepare-build.js && electron-builder --win nsis",
+    "dist:win:portable": "npm run prepare:runtime && node prepare-build.js && electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "43.3.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.teelab.commerceagent",
+    "productName": "T-one",
+    "asar": true,
+    "compression": "maximum",
+    "electronLanguages": [
+      "zh-CN",
+      "en-US",
+      "es-MX",
+      "de-DE",
+      "fr-FR"
+    ],
+    "files": [
+      "main.js",
+      "backend-compatibility.js",
+      "startup-route.js",
+      "preload.js",
+      "bridge.py",
+      "app-config.json",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/teelab-agent-root.json",
+        "to": "teelab-agent-root.json"
+      },
+      {
+        "from": "build/t-one-runtime",
+        "to": "t-one-runtime"
+      },
+      {
+        "from": "build/runtime-template",
+        "to": "t-one-runtime/template"
+      },
+      {
+        "from": "T-One-CLI.cmd",
+        "to": "T-One-CLI.cmd"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.png",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "include": "installer.nsh",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "T One",
+      "uninstallDisplayName": "T One",
+      "artifactName": "T-One-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "T-one-${version}.exe"
+    }
+  }
+}

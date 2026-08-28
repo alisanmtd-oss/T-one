@@ -1,0 +1,90 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-19T07:36:00+08:00",
+  "deployment": "local_loopback_only",
+  "authentication": {
+    "type": "bearer_token",
+    "storage": "pbkdf2_sha256_hash_only",
+    "raw_token_return": "once_at_registration",
+    "owner_session_required_for_registration_and_revocation": true,
+    "codex_stdio_runtime_credential": "windows_dpapi_current_user_outside_workspace",
+    "plaintext_token_in_codex_config": false
+  },
+  "scopes": {
+    "context.read": "Read sanitized context for explicitly allowed projects, tasks and stores.",
+    "draft.submit": "Submit a local draft for owner review; never enqueue or execute it.",
+    "result.read": "Read the status of drafts created by the same client."
+  },
+  "client_types": [
+    {
+      "id": "codex",
+      "name": "Codex",
+      "status": "local_rest_contract_available",
+      "transport": "REST over loopback",
+      "allowed_scopes": ["context.read", "draft.submit", "result.read"]
+    },
+    {
+      "id": "claude_code",
+      "name": "Claude Code",
+      "status": "local_rest_contract_available",
+      "transport": "REST over loopback",
+      "allowed_scopes": ["context.read", "draft.submit", "result.read"]
+    },
+    {
+      "id": "cli",
+      "name": "Approved CLI",
+      "status": "local_rest_contract_available",
+      "transport": "REST over loopback",
+      "allowed_scopes": ["context.read", "draft.submit", "result.read"]
+    },
+    {
+      "id": "mcp_client",
+      "name": "Approved MCP client",
+      "status": "local_stdio_mcp_server_available",
+      "transport": "MCP stdio subprocess; no HTTP listener",
+      "allowed_scopes": ["context.read", "draft.submit", "result.read"]
+    },
+    {
+      "id": "openclaw",
+      "name": "OpenClaw",
+      "status": "blocked_unknown_repository",
+      "transport": "none",
+      "allowed_scopes": [],
+      "reason": "No exact OpenClaw repository is admitted in config/github_capability_registry.json. The disabled openclaw-local model placeholder and agency-agents conversion files are not a verified runtime connection."
+    }
+  ],
+  "mcp_server": {
+    "implemented": true,
+    "transport": "stdio",
+    "protocol_version": "2025-11-25",
+    "backward_compatible_protocol_versions": ["2025-06-18"],
+    "command": "python -m ai_ecommerce_director.mcp_stdio_server --root <workspace>",
+    "token_environment_variable": "TONE_MCP_BEARER_TOKEN",
+    "protected_credential_argument": "--credential-file <windows-dpapi-current-user-json>",
+    "raw_token_persisted": false,
+    "tools": [
+      "tone.read_project_context",
+      "tone.submit_owner_review_draft",
+      "tone.read_draft_status"
+    ],
+    "tool_execution_task_support": "forbidden",
+    "external_side_effect_count": 0,
+    "official_spec_sources": [
+      "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports",
+      "https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle",
+      "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+      "https://github.com/modelcontextprotocol/modelcontextprotocol/blob/main/schema/2025-11-25/schema.ts"
+    ]
+  },
+  "hard_boundaries": [
+    "no_public_internet_listener",
+    "no_store_credentials_or_browser_sessions",
+    "no_verified_fact_mutation",
+    "no_task_enqueue_or_tool_execution",
+    "no_platform_api_or_external_side_effect",
+    "no_mcp_http_or_public_listener",
+    "mcp_tools_only_read_sanitized_context_submit_owner_review_draft_and_read_same_client_receipt",
+    "mcp_raw_token_process_memory_only_and_never_logged_or_persisted",
+    "no_unknown_repository_installation"
+  ]
+}

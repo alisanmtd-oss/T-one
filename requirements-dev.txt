@@ -1,1 +1,2 @@
 # The public test suite uses Python's built-in unittest framework.
+pyinstaller==6.16.0

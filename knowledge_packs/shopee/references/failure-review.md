@@ -28,7 +28,7 @@
 
 - Status: `blocked_owner_input`
 - Date: 2026-07-18
-- Evidence checked: `data/real_world/store_profile.jsonl`, `data/workspace_runtime.json`, and `config/workspace_projects.json` contain no Shopee binding.
+- Evidence checked: `private_store_profile_data_excluded`, `private_workspace_runtime_data_excluded`, and `private_workspace_registry_excluded` contain no Shopee binding.
 - Blocked: live product/order/logistics/returns/settlement/native-AI visibility and all writes.
 - Owner input: one deliberately authorized site/store binding, shop identity, seller origin, account program, fulfillment, ownership, and separate permission references. MFA, bank, identity, and credentials remain owner-controlled.
 
@@ -85,7 +85,7 @@ Before retrying a failure, record what condition changed. Repeating the same uns
 - Status: `failed_attempt`; expected authorization boundary
 - Date/time: 2026-07-18T23:06:44+08:00
 - Actual input: selected `zhipu-glm-free-flash` on the live 8818 task page without a desktop owner session.
-- Actual output: `/api/v1/task-configuration` returned HTTP 401 and `data/workspace_runtime.json` did not change.
+- Actual output: `/api/v1/task-configuration` returned HTTP 401 and `private_workspace_runtime_data_excluded` did not change.
 - Established: a model dropdown is not proof of saved configuration, and the browser-only entry cannot impersonate the desktop session.
 - Retry gate: formal App becomes healthy, then re-run select→save→reload→real call→clear error. No credential or token is to be extracted for the retry.
 

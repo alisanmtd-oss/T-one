@@ -7,9 +7,9 @@ description: Compatibility route for the product-agnostic B2B export workflow. U
 
 ## Compatibility Status
 
-This entry is `merge_duplicate`, not a second B2B agent. The canonical execution and training source is `skills/b2b-foreign-trade-sales/SKILL.md`, and the canonical runtime is `ai_ecommerce_director/b2b_sales_runtime.py`. Do not create another model gateway, CRM, account timeline, agent runtime, or universal sales workflow here.
+This entry is `merge_duplicate`, not a second B2B agent. The canonical execution and training source is `private_shared_sales_source_excluded`, and the canonical runtime is `ai_ecommerce_director/b2b_sales_runtime.py`. Do not create another model gateway, CRM, account timeline, agent runtime, or universal sales workflow here.
 
-`config/platform_expert_training/b2b_export.json` remains a compatibility and regression contract only. The assets below this directory are dated training evidence; they do not override the canonical Skill or prove that a named connector is live.
+`private_platform_training_contract_excluded` remains a compatibility and regression contract only. The assets below this directory are dated training evidence; they do not override the canonical Skill or prove that a named connector is live.
 
 ## Income-Mainline Acceptance Gate
 
@@ -31,7 +31,7 @@ Keep these layers separate on every read and write:
 ## Delegate Before Acting
 
 1. Read the project authority files required by `AGENTS.md`.
-2. Load `skills/b2b-foreign-trade-sales/SKILL.md` as the one canonical B2B workflow.
+2. Load `private_shared_sales_source_excluded` as the one canonical B2B workflow.
 3. Require `tenant_id`, `project_id`, `product_id`, `store_binding`, `platform`, `country_site`, `mode`, `ownership`, `execution_identity`, `account_id`, and `task_id` before any state write.
 4. Resolve the current category and platform schema. If the schema, product facts, ownership, or connector state is not evidenced, keep it `unknown` or `blocked_owner_input`.
 5. Use the generic lifecycle `lead -> qualified -> discovery -> sample_or_quote -> negotiation -> pi_contract -> delivery -> collection -> repeat` for any lawful product. A draft, button, report, test, approval, or public page does not advance a business stage.

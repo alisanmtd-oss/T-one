@@ -9,5 +9,4 @@ Use the right channel so questions remain useful to others:
 
 Do not post API keys, cookies, account IDs, order data, customer data, store screenshots, warehouse addresses, or recovered conversations. Redact examples and use synthetic records.
 
-The community core does not provide emergency support for live store, payment, advertising, fulfillment, or account-security incidents.
-
+The public project does not provide emergency support for live store, payment, advertising, fulfillment, or account-security incidents.

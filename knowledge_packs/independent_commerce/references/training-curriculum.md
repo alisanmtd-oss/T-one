@@ -90,7 +90,7 @@ This curriculum is a set of small evidence-backed modules, not a universal promp
 | Surface | Verified public behavior | Current T One state | Required gate |
 |---|---|---|---|
 | Shopify Sidekick / Campaign Autopilot | Drafts and reviews content/actions; some merchant permissions can broaden automation | `research_only` | Authorized store, role/plan check, draft-only test, confirm every external mutation |
-| Adobe Live Search / Product Recommendations | AI/ML search, reranking and recommendations after service setup/data sync | `research_only` | Entitlement, extension/config, store view, data/event health and metric validation |
+| Adobe Live Search / Product Recommendations | AI/ML search, reranking and recommendations after service setup/data sync | `research_only` | Entitlement, extension/config, store view, private_runtime_data_excluded health and metric validation |
 | Adobe Developer AI Assistant | Documentation beta; first tested answer failed | `research_only` | Treat output as draft and open every cited official source |
 | BigAI Copywriter | English v3 product-editor draft generator with review disclaimer | `research_only` | Store compatibility, app install, product-fact input, human QA, separate save/publish confirmation |
 | BigAI Product Recommendations | Closed beta, Enterprise, GCP billing/data/analytics requirements | `research_only` | Waitlist/plan, billing approval, data consent, model and storefront test |

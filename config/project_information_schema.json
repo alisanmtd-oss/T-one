@@ -1,0 +1,102 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-17T21:20:00+08:00",
+  "rules": [
+    "项目硬必填只保留无法从注册账号、店铺授权、ERP 或项目上下文自动读取的真实商品数据。",
+    "项目目标、KPI、负责人、品牌、币种、站点、广告充值和审批阈值属于可选设置或系统读取，不阻塞项目启动。",
+    "AI 可以补文案、洞察、计划和草稿，但不能编造产品参数、成本、价格、图片权利、库存、订单、客户回复或授权。"
+  ],
+  "common_required": [
+    {
+      "id": "product_catalog_source_ref",
+      "label": "商品和规格",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false
+    },
+    {
+      "id": "product_cost_source_ref",
+      "label": "单件成本",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false
+    },
+    {
+      "id": "pricing_source_ref",
+      "label": "销售价格",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false
+    },
+    {
+      "id": "product_image_source_ref",
+      "label": "商品图片",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false
+    }
+  ],
+  "project_types": {
+    "commerce": {
+      "required": [
+        {
+          "id": "inventory_source_ref",
+          "label": "现有库存",
+          "group": "产品必填",
+          "value_type": "text",
+          "sensitive": false
+        }
+      ],
+      "optional_settings": [
+        "店铺路由与授权",
+        "仓库与物流模板",
+        "结算与利润规则",
+        "广告账户与审批阈值"
+      ],
+      "ai_generated_draft": [
+        "Listing 文案与本地化",
+        "关键词与竞品洞察",
+        "活动、广告和预算草稿",
+        "库存与利润建议"
+      ]
+    },
+    "b2b": {
+      "required": [
+        {
+          "id": "capacity_source_ref",
+          "label": "库存、产能与交期",
+          "group": "产品必填",
+          "value_type": "text",
+          "sensitive": false
+        }
+      ],
+      "optional_settings": [
+        "MOQ 与贸易条款",
+        "样品策略",
+        "官方外联账户",
+        "CRM 客户管线"
+      ],
+      "ai_generated_draft": [
+        "客户画像与优先级",
+        "个性化触达话术",
+        "询盘澄清与报价草稿",
+        "跟单节奏和下一步建议"
+      ]
+    },
+    "creative": {
+      "required": [],
+      "optional_settings": [
+        "版权与授权证明",
+        "品牌规范",
+        "目标渠道与画幅",
+        "音乐许可和发布权限"
+      ],
+      "ai_generated_draft": [
+        "同行视频结构拆解",
+        "原创分镜和镜头提示词",
+        "剪辑、字幕与节奏建议",
+        "多版本测试和质检报告"
+      ]
+    }
+  }
+}

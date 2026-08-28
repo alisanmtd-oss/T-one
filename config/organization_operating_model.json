@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "organization_name": "T-one 集团经营组织",
+  "hierarchy": [
+    "owner_investor",
+    "group_operating_brain_pmo",
+    "business_group_lead",
+    "department_supervisor",
+    "specialist_agent"
+  ],
+  "management_actions": [
+    "owner_goal_set",
+    "goal_decomposed",
+    "priority_set",
+    "work_assigned",
+    "evidence_checked",
+    "coaching_recorded",
+    "blocker_escalated",
+    "cross_group_handoff",
+    "retrospective_recorded"
+  ],
+  "management_cycle_truth": {
+    "required_cycle": [
+      {"action": "owner_goal_set", "actor_level": "owner_investor"},
+      {"action": "goal_decomposed", "actor_level": "group_operating_brain_pmo"},
+      {"action": "priority_set", "actor_level": "business_group_lead"},
+      {"action": "work_assigned", "actor_level": "department_supervisor"},
+      {"action": "evidence_checked", "actor_level": "specialist_agent"},
+      {"action": "coaching_recorded", "actor_level": "department_supervisor"},
+      {"action": "blocker_escalated", "actor_level": "business_group_lead"},
+      {"action": "retrospective_recorded", "actor_level": "group_operating_brain_pmo"}
+    ],
+    "real_staffed_cycle_receipt_count": 0,
+    "external_action_count": 0,
+    "amazon_status": "paused_by_owner_not_touched"
+  },
+  "business_groups": [
+    {
+      "id": "commerce-and-brand-growth",
+      "name": "跨境电商与品牌增长事业组",
+      "project_ids": ["product-10001-growth"],
+      "lead_login_id": "",
+      "departments": [
+        {
+          "id": "commerce-operations",
+          "name": "货架与内容电商运营",
+          "supervisor_login_id": "",
+          "platforms": ["amazon", "tiktok_shop", "shein", "shopee", "lazada", "walmart", "etsy", "ebay", "shopify", "woocommerce"],
+          "shared_service_ids": ["legal-compliance", "finance-cashflow", "connector-browser-data", "approval-receipts"]
+        },
+        {
+          "id": "b2b-foreign-trade",
+          "name": "B2B 外贸销售",
+          "supervisor_login_id": "",
+          "platforms": ["b2b"],
+          "shared_service_ids": ["legal-compliance", "finance-cashflow", "crm-customer-timeline", "approval-receipts"]
+        },
+        {
+          "id": "content-and-social",
+          "name": "新媒体运营与创意制作",
+          "supervisor_login_id": "",
+          "platforms": ["creative_video", "social_media"],
+          "platform_families": [
+            "短视频与直播内容",
+            "图文与视觉社区",
+            "长视频与搜索内容",
+            "职业社交与行业社区",
+            "社交电商内容"
+          ],
+          "role_ids": [
+            "new-media-lead",
+            "account-operator",
+            "content-strategist",
+            "copy-hashtag-editor",
+            "visual-designer-retoucher",
+            "video-director-editor",
+            "ai-creative-producer",
+            "music-voice-producer",
+            "community-comment-operator",
+            "localization-editor",
+            "content-data-analyst"
+          ],
+          "workflow_stage_ids": [
+            "account-baseline",
+            "topic-calendar",
+            "copy-and-hashtags",
+            "visual-production",
+            "video-audio-production",
+            "rights-and-fact-review",
+            "publish-approval",
+            "comment-triage",
+            "metrics-capture",
+            "algorithm-experiment-retrospective"
+          ],
+          "metric_ids": [
+            "impressions",
+            "views",
+            "average_watch_seconds",
+            "completion_rate",
+            "rewatches",
+            "likes",
+            "comments",
+            "shares",
+            "saves",
+            "profile_visits",
+            "clicks",
+            "leads",
+            "orders",
+            "negative_feedback"
+          ],
+          "boundaries": [
+            "平台算法只能记录带日期证据和账号实验结论，不能写成永久秘诀",
+            "真实发布、回评、私信、直播和账号设置必须逐项确认",
+            "音乐、字体、模板、肖像和素材必须先有商用授权证据",
+            "广告预算与花费由广告增长岗位和财务共享能力审批"
+          ],
+          "shared_service_ids": [
+            "legal-compliance",
+            "copyright-ip",
+            "content-video-data",
+            "connector-browser-data",
+            "approval-receipts"
+          ]
+        },
+        {
+          "id": "performance-marketing",
+          "name": "广告与增长投放",
+          "supervisor_login_id": "",
+          "platforms": ["ad_agent"],
+          "shared_service_ids": ["finance-cashflow", "content-video-data", "approval-receipts"]
+        }
+      ]
+    },
+    {
+      "id": "equipment-and-industrial-sales",
+      "name": "设备与工业销售事业组",
+      "project_ids": ["dtg-equipment-sales"],
+      "lead_login_id": "",
+      "departments": [
+        {
+          "id": "equipment-sales",
+          "name": "设备客户开发与成交",
+          "supervisor_login_id": "",
+          "platforms": ["b2b"],
+          "shared_service_ids": ["legal-compliance", "finance-cashflow", "crm-customer-timeline", "approval-receipts"]
+        }
+      ]
+    }
+  ],
+  "shared_services": [
+    {"id": "legal-compliance", "name": "法律、合规与平台规则", "approval_policy": "risk_review_before_external_action"},
+    {"id": "copyright-ip", "name": "版权、商标与知识产权", "approval_policy": "rights_evidence_before_publish"},
+    {"id": "finance-cashflow", "name": "财务、预算、利润与现金流", "approval_policy": "money_changes_require_owner_approval"},
+    {"id": "content-video-data", "name": "内容、视频与数据分析", "approval_policy": "source_and_rights_provenance_required"},
+    {"id": "approval-receipts", "name": "审批、执行证据与回执", "approval_policy": "single_action_single_use"},
+    {"id": "connector-browser-data", "name": "连接器、浏览器与数据访问", "approval_policy": "store_scoped_execution_identity"},
+    {"id": "crm-customer-timeline", "name": "CRM 与共享客户时间线", "approval_policy": "lawful_source_and_send_approval"}
+  ]
+}

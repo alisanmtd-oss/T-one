@@ -41,26 +41,26 @@
       "evidence_status"
     ],
     "no_new_external_evidence_policy": "Do not add learned rules; report that no new evidence was obtained and why.",
-    "browser_evidence_ref": "skills/platform-experts/walmart/references/browser-evidence-2026-07-18.md",
+    "browser_evidence_ref": "private_platform_expert_source_excluded",
     "browser_evidence_refs": [
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-18.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-18-wfs.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-18-dynamic-schema.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-18-native-ai.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-18-payments.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-global-reports.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-success-hub.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-content-recovery.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-connect-ai-intelligence.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-release-notes-gtin-mcs.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-ca-performance.md",
-      "skills/platform-experts/walmart/references/browser-evidence-2026-07-19-seller-app.md",
-      "skills/platform-experts/walmart/references/github-official-audit-2026-07-19.md"
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded",
+      "private_platform_expert_source_excluded"
     ],
-    "failure_reviews_ref": "skills/platform-experts/walmart/references/failure-reviews.json"
+    "failure_reviews_ref": "private_platform_expert_source_excluded"
   },
   "curriculum": {
-    "reference": "skills/platform-experts/walmart/references/curriculum.md",
+    "reference": "private_platform_expert_source_excluded",
     "incremental_only": true,
     "modules": [
       {
@@ -146,7 +146,7 @@
     ]
   },
   "parent_requirement_mapping": {
-    "reference": "skills/platform-experts/walmart/references/mother-requirement-mapping.md",
+    "reference": "private_platform_expert_source_excluded",
     "allowed_dispositions": [
       "reuse_existing",
       "extend_existing",
@@ -165,13 +165,13 @@
     "cross_expert_scheduler": false,
     "external_visible_evidence_required_before_distillation": true,
     "allowed_write_scope": [
-      "skills/platform-experts/walmart/**",
-      "config/platform_expert_training/walmart.json",
-      "tests/test_walmart_expert_training.py"
+      "private_platform_expert_source_excluded**",
+      "private_platform_training_contract_excluded",
+      "private_regression_suite_excluded"
     ]
   },
   "shared_runtime": {
-    "llm_gateway": "LLMClient + config/multi_ai.json",
+    "llm_gateway": "LLMClient + private_model_provider_registry_excluded",
     "second_general_agent_runtime_allowed": false,
     "required_model_slots": [
       "reasoning",
@@ -3470,7 +3470,7 @@
   },
   "official_github_assets": {
     "captured_at": "2026-07-19T01:18:45+08:00",
-    "audit_reference": "skills/platform-experts/walmart/references/github-official-audit-2026-07-19.md",
+    "audit_reference": "private_platform_expert_source_excluded",
     "organization": {
       "owner": "walmartlabs",
       "url": "https://github.com/walmartlabs",
@@ -3771,11 +3771,11 @@
   },
   "software_gap_map": {
     "reusable": [
-      "config/platform_adapter_registry.json already models Walmart US/CA/MX and separates WFS as fulfillment.",
-      "config/platform_store_type_evidence_registry.json already states WFS is fulfillment and Pro Seller is a performance level.",
-      "config/platform_developer_capabilities.json and config/platform_activity_rules.json already separate Marketplace and Walmart Connect authorization surfaces and include owner gates.",
-      "config/capability_pack_registry.json already declares a Walmart platform capability pack.",
-      "Existing LLMClient + config/multi_ai.json, store route isolation, approval queues and cloud execution guardrails can be reused."
+      "private_platform_adapter_registry_excluded already models Walmart US/CA/MX and separates WFS as fulfillment.",
+      "private_store_type_evidence_registry_excluded already states WFS is fulfillment and Pro Seller is a performance level.",
+      "private_platform_capability_registry_excluded and private_platform_activity_rules_excluded already separate Marketplace and Walmart Connect authorization surfaces and include owner gates.",
+      "private_runtime_registry_excluded already declares a Walmart platform capability pack.",
+      "Existing LLMClient + private_model_provider_registry_excluded, store route isolation, approval queues and cloud execution guardrails can be reused."
     ],
     "configure": [
       "Create one store_binding_id and execution identity for each real US, CA or MX seller account/market.",

@@ -1,0 +1,432 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-08-08T21:20:00+08:00",
+  "purpose": "T-one seller-mode skill pack registry. These packs describe operating patterns and routing needs; they do not grant platform, ERP, browser, payment, ad, fulfillment or outreach authority.",
+  "source_requirement": "2026-07-21 owner note about POD, 铺货型, 品牌型, 工厂型, 选品型, 测品型 and 货盘型 seller modes.",
+  "truth_policy": {
+    "knowledge_pack_not_agent": true,
+    "execution_requires_store_identity": true,
+    "external_side_effects_default": 0,
+    "no_fake_connected_running_synced": true,
+    "estimate_never_overwrites_actual_statement": true,
+    "prohibited_variants_are_for_detection_and_blocking_only": true,
+    "legitimate_seller_modes_local_work_allowed": true,
+    "local_work_scope": ["学习记忆", "资料结构化", "风险识别", "合规检查", "利润/费用测算", "Listing/内容草稿", "负责人复核包"],
+    "external_execution_scope": ["真实发布", "真实采购", "付款/退款", "发货", "广告投放", "店铺/API/浏览器写入"],
+    "external_execution_requires_explicit_owner_approval": true
+  },
+  "global_guardrails": {
+    "prohibited_behaviors": [
+      {
+        "id": "irregular_funds",
+        "label": "不正规资金",
+        "classification": "prohibited",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "allowed_use_cases": ["风险识别", "拦截", "风控教育", "升级负责人复核", "审计记录"],
+        "forbidden_outputs": ["执行步骤", "资金路径", "规避风控方案", "自动化脚本", "优化建议"]
+      },
+      {
+        "id": "malicious_refund_no_return",
+        "label": "采购后恶意退款不退货",
+        "classification": "prohibited",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "allowed_use_cases": ["风险识别", "拦截", "风控教育", "升级负责人复核", "审计记录"],
+        "forbidden_outputs": ["执行步骤", "话术模板", "退款滥用流程", "规避平台规则方案", "自动化脚本"]
+      }
+    ],
+    "review_gated_behaviors": [
+      {
+        "id": "direct_copy_external_listing_link",
+        "label": "直接搬运别人链接",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "required_gates": ["copyright_review", "platform_policy_review", "owner_review"],
+        "allowed_use_cases": ["识别来源", "提炼非版权卖点", "重写草稿", "风险提示", "负责人复核包"]
+      },
+      {
+        "id": "direct_copy_external_image",
+        "label": "直接搬运别人图片",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "required_gates": ["copyright_review", "platform_policy_review", "owner_review"],
+        "allowed_use_cases": ["图片来源风险识别", "原创化方向", "替代素材需求", "负责人复核包"]
+      },
+      {
+        "id": "direct_copy_external_design",
+        "label": "直接搬运别人设计",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "required_gates": ["copyright_review", "platform_policy_review", "owner_review"],
+        "allowed_use_cases": ["设计元素风险识别", "clean-room 重新创作方向", "IP 检查", "负责人复核包"]
+      },
+      {
+        "id": "real_publish_unproduced_product",
+        "label": "未量产产品真实发布",
+        "local_work_allowed": true,
+        "execution_allowed": false,
+        "required_gates": ["truthful_availability", "platform_policy_review", "owner_review"],
+        "allowed_use_cases": ["概念验证", "图片/视频/Listing 草稿", "生产可行性测算", "预售政策检查", "负责人复核包"]
+      }
+    ]
+  },
+  "shared_capabilities": [
+    "shared-rights-compliance",
+    "shared-platform-rule-library",
+    "shared-product-catalog",
+    "shared-creative-video",
+    "shared-pricing-profit",
+    "shared-inventory-procurement",
+    "shared-order-fulfillment",
+    "shared-finance-settlement",
+    "shared-customer-service",
+    "shared-analytics-monitoring",
+    "shared-security-approval",
+    "shared-connector-automation"
+  ],
+  "modes": [
+    {
+      "id": "distribution_seller",
+      "label": "铺货型",
+      "positioning": "从供应链或平台商品中发现可售商品，批量整理商品资料、图片、价格、库存和履约方案，再按店铺规则上架草稿。",
+      "mode_family": "resale_or_listing_volume",
+      "operating_profile": {
+        "suitable_for": "有稳定供应商或可授权商品目录，希望用较多 SKU 覆盖需求、靠效率和周转经营的卖家。",
+        "product_source": "签约供应商、1688/产业带、品牌授权分销或可验证的供货目录；竞品链接只能用于研究，不能直接复制。",
+        "inventory_model": "优先供应商库存或小额安全库存；每个 SKU 保存库存更新时间、采购价、MOQ、缺货替代和停售条件。",
+        "fulfillment_model": "供应商代发、国内集货跨境或本地仓发货，必须按平台、站点、店铺和承诺时效分别核算。",
+        "cash_cycle": "采购款、平台账期、退款准备金和物流赔付共同决定可铺 SKU 上限。",
+        "primary_growth_engine": "合规商品覆盖率、上新效率、价格竞争力和低缺货率。",
+        "daily_loop": ["同步供应商价格与库存", "筛掉侵权、低毛利和不可履约商品", "生成差异化 Listing/素材草稿", "复核订单与采购需求", "按动销和售后淘汰 SKU"],
+        "required_inputs": ["供应商主体与合同", "SKU/规格/采购价", "库存与更新时间", "图片和文案授权", "物流时效与退货规则", "平台站点费用"],
+        "decision_metrics": ["有效毛利率", "缺货取消率", "采购履约时效", "30天动销率", "退款退货率", "单SKU资金占用"],
+        "scale_conditions": ["连续观察期内库存稳定", "扣除平台费物流售后后仍达目标毛利", "图片与品牌授权完整", "缺货取消率低于项目阈值"],
+        "stop_conditions": ["供应商库存或价格长期失真", "授权链不完整", "连续观察期无动销", "售后成本吞噬毛利", "平台判定重复或违规铺货"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "cross_border", "local_store", "semi_managed"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["source_link", "supplier_offer", "listing_draft", "price_rule", "purchase_order", "fulfillment_plan", "rights_review"],
+      "workflows": [
+        "1688/PDD/source catalog intake -> rights and quality review -> listing draft -> owner approval -> store-scoped publish gate",
+        "order signal -> purchase/fulfillment decision -> settlement/profit reconciliation",
+        "image replacement/originalization only after rights check; never copy protected assets blindly"
+      ],
+      "variants": [
+        {
+          "id": "supplier_catalog_resale",
+          "label": "1688/拼多多/供应商采集后铺货",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["supplier_rights", "platform_listing_policy", "image_rights_or_original_assets", "margin_and_fee_estimate", "owner_publish_approval"],
+          "notes": "可以做资料结构化、图片重做方向、价格和履约测算；真实采购、发布和发货仍需授权。"
+        },
+        {
+          "id": "marketplace_link_resale_markup",
+          "label": "平台链接加价代采",
+          "status": "high_risk_owner_review",
+          "local_work_allowed": true,
+          "execution_allowed": false,
+          "required_gates": ["resale_rights", "counterfeit_check", "inventory_truthfulness", "platform_terms_review", "owner_legal_review"],
+          "allowed_use_cases": ["来源识别", "价格/利润测算", "库存真实性检查", "版权/平台政策风险提示", "负责人复核包"],
+          "notes": "只能做风险识别和负责人复核包；不得自动搬运竞品链接、图片、品牌或库存承诺。"
+        },
+        {
+          "id": "refund_abuse_or_irregular_funds",
+          "label": "不正规资金 / 采购后恶意退款不退货",
+          "status": "prohibited",
+          "local_work_allowed": true,
+          "execution_allowed": false,
+          "required_gates": ["block_and_escalate"],
+          "allowed_use_cases": ["风险识别", "拦截", "升级负责人复核", "风控教育", "审计记录"],
+          "forbidden_outputs": ["执行步骤", "话术模板", "资金路径", "退款滥用流程", "规避平台规则方案", "自动化脚本"],
+          "notes": "仅用于检测、拦截、风控教育和审计；T-one 不提供执行步骤、模板、自动化或优化建议。"
+        }
+      ],
+      "default_agent_routes": ["商品资料整理员", "版权与合规审核员", "利润测算员", "采购履约协调员", "店铺发布审批员"]
+    },
+    {
+      "id": "pod_seller",
+      "label": "POD 型",
+      "positioning": "POD 本质是图案和产品底板组合生意：同一产品不同图案、同一图案不同产品，订单触发 ERP/本土工厂生产履约。",
+      "mode_family": "design_variation_and_on_demand_production",
+      "operating_profile": {
+        "suitable_for": "有原创设计能力、设计师生态、内容流量或小批量柔性生产资源，希望低成品库存扩展款式的卖家。",
+        "product_source": "已验证底板库 + 自有/授权/原创设计资产；每个设计保存作者、授权范围、适用品类和版本。",
+        "inventory_model": "主要管理空白底板、耗材和工厂产能，不把尚未生产的成品冒充现货。",
+        "fulfillment_model": "订单触发生产，按买家地区、底板库存、工厂能力、时效、质量和落地成本选择工厂。",
+        "cash_cycle": "订单回款、生产费、失败重做、退款和设计师结算分开核算。",
+        "primary_growth_engine": "原创设计命中率、同图跨品类复用、同底板多受众裂变、内容带货和复购。",
+        "daily_loop": ["读取趋势与受众需求", "生成或接收原创设计", "做 IP/肖像/商标检查", "适配底板并生成真实 mockup", "形成 Listing/内容草稿", "订单后路由工厂并复盘质量"],
+        "required_inputs": ["底板 SKU/颜色/尺码/成本", "设计源文件与权属", "印花区域和工艺限制", "工厂产能/SLA/瑕疵率", "平台内容和定制品规则"],
+        "decision_metrics": ["设计转化率", "每个设计覆盖底板数", "生产一次合格率", "平均生产时长", "退款重做率", "设计师/工厂结算毛利"],
+        "scale_conditions": ["设计权属清晰", "多个订单验证转化", "工厂一次合格率达到项目阈值", "生产与配送承诺稳定", "扩品后仍保持贡献毛利"],
+        "stop_conditions": ["出现明确 IP 风险", "mockup 与实物长期不符", "重做退款率超阈值", "底板断供", "单设计长期无转化"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "cross_border", "local_store", "designer_owned_store", "platform_co_brand_operation", "direct_to_consumer"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["base_product", "design_asset", "design_family", "mockup", "listing_variant", "ip_review", "factory_route", "pod_order"],
+      "workflows": [
+        "base product library -> design/pattern generation -> mockup/video/title -> IP review -> multi-platform listing draft",
+        "winning design -> product line expansion -> local factory/ERP fulfillment route",
+        "3D printing can be treated as POD when production is on-demand and design-file driven"
+      ],
+      "variants": [
+        {
+          "id": "ai_original_design_pod",
+          "label": "纯 AI 原创图案 POD",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["prompt_rights_review", "trademark_character_persona_check", "platform_content_policy", "owner_publish_approval"],
+          "notes": "优先做原创图案、节日/人群/兴趣裂变、标题标签和多底板适配。"
+        },
+        {
+          "id": "reference_inspired_design_variation",
+          "label": "参考链接/图片后做图案裂变",
+          "status": "rights_sensitive",
+          "local_work_allowed": true,
+          "execution_allowed": false,
+          "required_gates": ["clean_room_rewrite", "no_direct_copy", "ip_review", "owner_review"],
+          "allowed_use_cases": ["受众/场景/卖点提炼", "原创化方向", "clean-room 草稿", "IP 风险识别", "负责人复核包"],
+          "notes": "只能提炼受众、场景和卖点，不能复制原图、商标、角色、明星肖像或品牌元素。"
+        },
+        {
+          "id": "direct_link_copy_pod",
+          "label": "直接搬运别人链接上架",
+          "status": "blocked_until_rights_verified",
+          "local_work_allowed": true,
+          "execution_allowed": false,
+          "required_gates": ["source_rights_contract", "platform_terms_review", "owner_legal_review"],
+          "allowed_use_cases": ["来源识别", "版权风险提示", "平台规则检查", "替代原创方案", "负责人复核包"],
+          "notes": "默认阻断；没有授权不能自动复制链接、图片、设计或 Listing。"
+        },
+        {
+          "id": "pod_3d_printing",
+          "label": "3D 打印 POD",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["design_file_rights", "material_safety", "production_feasibility", "factory_route", "owner_publish_approval"],
+          "notes": "把 STL/设计文件、材料、打印时长、成本、质检和履约路线纳入同一 POD 订单链。"
+        }
+      ],
+      "default_agent_routes": ["POD选品与底板经理", "AI图案设计员", "IP风险审核员", "Listing裂变员", "工厂履约协调员"]
+    },
+    {
+      "id": "factory_seller",
+      "label": "工厂型",
+      "positioning": "用供应链和产品开发能力做出海：单品多图多链接测试、新款预验证、达到阈值后规划生产与正规店铺承接。",
+      "mode_family": "manufacturing_and_product_development",
+      "operating_profile": {
+        "suitable_for": "拥有工厂、稳定产线、产品开发或 BOM/打样能力，希望从制造能力延伸到全球零售和 B2B 的卖家。",
+        "product_source": "自研产品、既有产线、客户反馈驱动改款和合规授权开发，不以复制竞品结构或素材替代研发。",
+        "inventory_model": "原料、半成品、成品和海外仓分层管理；打样、首单、补货各设不同上限。",
+        "fulfillment_model": "工厂直发、区域仓或渠道仓，按 MOQ、产能、质检、清关和承诺时效选择。",
+        "cash_cycle": "原料预付款、生产周期、海运/空运、平台账期和 B2B 应收共同形成资金占用。",
+        "primary_growth_engine": "成本/质量/交期优势、新品开发速度、渠道适配和 B2B+零售复用。",
+        "daily_loop": ["读取订单售后和市场缺口", "筛选产品开发机会", "打样并核对 BOM/认证", "生成真实内容和 Listing 草稿", "小批验证", "达到阈值后排产补货"],
+        "required_inputs": ["BOM与阶梯成本", "产能/MOQ/交期", "质检标准与瑕疵率", "认证/材料/原产地资料", "包装物流参数", "各站点需求预测"],
+        "decision_metrics": ["单位贡献毛利", "一次交检合格率", "准时交付率", "产能利用率", "库存周转天数", "新品打样到首单周期"],
+        "scale_conditions": ["样品和量产一致", "认证与标签满足目标站点", "需求达到排产阈值", "资金和产能均有余量", "售后率在阈值内"],
+        "stop_conditions": ["生产可行性或认证失败", "需求未达阈值", "原料/物流导致毛利失效", "质量问题未闭环", "不可真实承诺库存与交期"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "cross_border", "local_store", "direct_to_consumer", "b2b_export", "platform_co_brand_operation"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["factory_sku", "prototype", "main_image_variant", "production_drawing", "test_listing_draft", "demand_threshold", "production_plan"],
+      "workflows": [
+        "factory product line -> image/video/material generation -> policy review -> test draft -> demand threshold -> production plan",
+        "review/return/creator feedback -> new model development -> manufacturing drawing and BOM",
+        "test stores cannot make false stock or delivery claims; real production and publish require platform-compliant route"
+      ],
+      "variants": [
+        {
+          "id": "same_product_multi_visual_listing",
+          "label": "同一产品多主图/多链接测试",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["duplicate_listing_policy", "image_truthfulness", "inventory_truthfulness", "owner_publish_approval"]
+        },
+        {
+          "id": "prototype_demand_test",
+          "label": "新款/未量产产品需求测试",
+          "status": "policy_sensitive",
+          "local_work_allowed": true,
+          "execution_allowed": false,
+          "required_gates": ["platform_presale_policy", "truthful_availability", "production_feasibility", "owner_legal_review"],
+          "allowed_use_cases": ["概念验证", "图片/视频/Listing 草稿", "需求测算", "生产可行性检查", "负责人复核包"],
+          "notes": "只能生成概念、图片、视频和测算；不得发布不可履约或误导库存的真实商品。"
+        }
+      ],
+      "default_agent_routes": ["工厂产品经理", "AI商品视觉员", "生产图/BOM助理", "需求测试分析员", "生产计划员"]
+    },
+    {
+      "id": "selection_seller",
+      "label": "选品型",
+      "positioning": "先看市场数据、竞品、热卖趋势、蓝海机会和利润空间，再决定是否上架、采购或备货。",
+      "mode_family": "market_research_first",
+      "operating_profile": {
+        "suitable_for": "还没有确定产品、希望用公开/自有经营数据缩小候选范围，再交给铺货、测品、POD、工厂或品牌流程执行的卖家。",
+        "product_source": "平台趋势、搜索需求、评论痛点、竞品结构、自有成交/退货数据和已验证供应链候选。",
+        "inventory_model": "本模式默认不直接产生库存；只形成候选、验证计划、成本上限和后续模式建议。",
+        "fulfillment_model": "在候选进入执行前比较国内直发、本地仓、POD、供应商代发或工厂生产的真实成本与时效。",
+        "cash_cycle": "先计算最大可承受试错成本、采购上限和回款周期，再决定是否进入测品或备货。",
+        "primary_growth_engine": "更高的候选命中率、更快排除伪需求和更早发现毛利/合规/履约缺口。",
+        "daily_loop": ["收集带时间戳的市场与自有数据", "去重并区分事实和推测", "按需求/竞争/毛利/供应/风险评分", "形成证据缺口", "将合格候选交给相应卖家模式"],
+        "required_inputs": ["国家与站点", "目标客群和价格带", "平台费用", "竞争商品与评论", "供应/生产候选", "项目预算和目标毛利"],
+        "decision_metrics": ["候选有效率", "需求稳定性", "竞争密度", "预估贡献毛利", "供应可得性", "证据新鲜度"],
+        "scale_conditions": ["多来源需求一致", "可获得供应或生产路线", "真实费用后毛利达标", "平台与内容适配", "试错预算可承受"],
+        "stop_conditions": ["数据过期或来源单一", "只热不买", "竞争密度与价格战不可承受", "无可验证供应", "合规或履约缺口无法关闭"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["research_only", "marketplace_seller", "cross_border", "local_store", "direct_to_consumer"], "requires_platform_site_store_account_scope": false, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["market_signal", "competitor_product", "keyword", "price_band", "review_pain_point", "margin_estimate", "sourcing_candidate"],
+      "workflows": [
+        "market tools/community/platform signals -> candidate scoring -> evidence gap list -> sourcing and listing decision",
+        "hot product, niche blue ocean, low competition and stable order signal are separate evidence dimensions",
+        "all external tools are market-data candidates until authorized and cross-checked"
+      ],
+      "variants": [
+        {
+          "id": "data_driven_hot_product_selection",
+          "label": "数据驱动热卖/潜力品筛选",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["source_quality", "margin_estimate", "competition_review", "platform_fit_review"]
+        },
+        {
+          "id": "blue_ocean_selection",
+          "label": "小众蓝海/低内卷品筛选",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["demand_floor", "competition_review", "supply_availability", "cash_risk_review"]
+        }
+      ],
+      "default_agent_routes": ["选品研究员", "竞品监控员", "关键词分析员", "利润测算员", "采购候选整理员"]
+    },
+    {
+      "id": "testing_seller",
+      "label": "测品型",
+      "positioning": "先少量备货或轻量上架测试，用出单速度、增长趋势、退货率和库存周转决定补货上限。",
+      "mode_family": "small_batch_validation",
+      "operating_profile": {
+        "suitable_for": "已有候选产品但证据不足，希望用明确预算、周期和止损线验证真实转化的卖家；原“打品型”统一归入此模式。",
+        "product_source": "选品流程通过的候选、自有新品、供应商小批货或可按单履约商品。",
+        "inventory_model": "零库存/按单、小批量或单站点安全库存；每次测试必须有数量、金额、周期和清货上限。",
+        "fulfillment_model": "先验证承诺时效和售后承载，再选择国内直发、本地小仓或供应商代发。",
+        "cash_cycle": "试品预算、内容/达人/广告预算、库存资金和退款准备金分别设上限。",
+        "primary_growth_engine": "用小成本快速获得真实点击、加购、成交、退货和内容反馈，再决定放大。",
+        "daily_loop": ["写清测试假设和成功阈值", "准备真实商品/内容/Listing 草稿", "负责人确认后启动单站点测试", "每日读取流量成交售后", "到期做补货、迭代或停止决定"],
+        "required_inputs": ["测试 SKU 与真实可售状态", "测试周期和预算上限", "内容/价格变量", "履约承诺", "成功/失败阈值", "退出与清货方案"],
+        "decision_metrics": ["首单时间", "点击到成交率", "获客成本", "退款退货率", "库存周转", "测试期贡献毛利"],
+        "scale_conditions": ["达到预设成交与毛利阈值", "售后和履约稳定", "流量不是单一偶发来源", "补货后现金流仍安全"],
+        "stop_conditions": ["测试期结束仍无有效成交", "获客成本持续高于毛利", "退款/差评超阈值", "库存或交期无法保证", "继续投入超过止损线"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "cross_border", "local_store", "semi_managed", "direct_to_consumer"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["test_batch", "overseas_stock_lot", "sales_velocity", "replenishment_cap", "return_rate", "cash_lockup"],
+      "workflows": [
+        "candidate product -> small batch overseas stock or direct-ship test -> listing/content test -> replenishment decision",
+        "slow sellers use safety stock cap and exit plan; never let warehouse stock pile up blindly",
+        "post-test settlement and fee truth updates future budget and stock rules"
+      ],
+      "variants": [
+        {
+          "id": "small_batch_overseas_stock_test",
+          "label": "海外仓小批量测品",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["warehouse_cost", "lead_time", "return_rate_assumption", "cash_lockup_limit", "owner_purchase_approval"]
+        },
+        {
+          "id": "direct_ship_before_stock",
+          "label": "先上架/国内发货再决定备货",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["delivery_promise_truthfulness", "platform_shipping_policy", "customer_service_capacity", "owner_publish_approval"]
+        }
+      ],
+      "default_agent_routes": ["测品经理", "库存资金计划员", "物流履约员", "Listing测试员", "复盘分析员"]
+    },
+    {
+      "id": "brand_seller",
+      "label": "品牌型",
+      "positioning": "用品牌定位、合规资产、内容资产、受众画像、产品矩阵和长期复购经营利润，不只追短期出单。",
+      "mode_family": "brand_and_audience_compounding",
+      "operating_profile": {
+        "suitable_for": "拥有品牌/授权资产、稳定产品质量和长期经营意愿，希望积累受众、内容、渠道与复购资产的卖家。",
+        "product_source": "自有研发、授权合作、联名或经过品牌标准筛选的供应链；所有品牌使用范围可追溯。",
+        "inventory_model": "按核心款、增长款、形象款和试验款分层；核心款保障可得性，试验款严格限额。",
+        "fulfillment_model": "品牌包装、交付体验、退换货和客服口径一致；不同站点仍按本地法规和时效配置。",
+        "cash_cycle": "商品毛利、内容投入、达人/广告、会员复购、退款和品牌资产投入分开核算。",
+        "primary_growth_engine": "清晰定位、持续内容、产品矩阵、口碑、社群与复购，而不是只依赖单次低价流量。",
+        "daily_loop": ["读取品牌搜索/内容/销售/售后", "维护受众与产品矩阵", "生成一致的内容和活动草稿", "复核声明/IP/价格", "跟踪新客转化与复购", "季度淘汰或升级 SKU"],
+        "required_inputs": ["品牌与授权资产", "受众/定位/价格带", "产品质量和供应能力", "内容资产与口径", "CRM许可与隐私范围", "渠道费用和复购数据"],
+        "decision_metrics": ["品牌搜索占比", "新客贡献毛利", "复购率", "内容辅助转化", "退货与口碑", "产品矩阵集中度"],
+        "scale_conditions": ["品牌权利和商品声明清晰", "核心 SKU 质量/供货稳定", "新客与复购均有正贡献", "内容可持续生产", "渠道扩张不破坏价格体系"],
+        "stop_conditions": ["权利或声明存在高风险", "长期靠补贴维持虚假增长", "质量口碑持续恶化", "渠道价格冲突失控", "SKU 无战略作用且无利润"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "local_store", "cross_border", "direct_to_consumer", "platform_co_brand_operation", "designer_owned_store"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["brand_asset", "trademark", "patent_or_design_review", "audience_persona", "content_pillar", "product_matrix", "crm_segment", "repeat_purchase_offer"],
+      "workflows": [
+        "audience/persona -> product positioning -> content pillar -> compliant listing -> CRM/repeat purchase loop",
+        "brand registration, patent/design review and claims compliance are shared risk-control inputs",
+        "platform marketplaces and independent site roles are separated: acquisition, conversion, retention and community"
+      ],
+      "variants": [
+        {
+          "id": "marketplace_brand_operator",
+          "label": "平台品牌运营",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["brand_registry_or_authorization", "claims_review", "content_rights", "ad_budget_approval"]
+        },
+        {
+          "id": "dtc_brand_operator",
+          "label": "独立站/DTC 品牌运营",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["site_connection", "crm_permission", "privacy_compliance", "payment_and_tax_review"]
+        }
+      ],
+      "default_agent_routes": ["品牌经理", "合规/IP专员", "内容增长员", "CRM复购员", "广告与人群分析员"]
+    },
+    {
+      "id": "catalog_supply_seller",
+      "label": "货盘型",
+      "positioning": "使用工厂或货盘公司在海外仓已有库存和商品表，卖家出单后再向货盘方采购/代发。",
+      "mode_family": "third_party_catalog_and_overseas_stock",
+      "operating_profile": {
+        "suitable_for": "能取得供应商货盘、海外仓库存和代发服务，希望少碰生产、重点做渠道和销售的卖家。",
+        "product_source": "签约货盘公司、工厂海外仓或可核验的区域仓目录；同一货盘在不同站点的价格和库存分别保存。",
+        "inventory_model": "以供应商可用库存为主，不把表格库存当实时库存；设置同步时效、预留量和断货替代。",
+        "fulfillment_model": "货盘方本地代发或区域仓发货，SLA、退货地址、包裹轨迹和赔付责任必须明确。",
+        "cash_cycle": "平台回款与向货盘方采购/结算的时间差、退款准备金和滞销价差决定规模。",
+        "primary_growth_engine": "货盘更新速度、库存真实性、渠道差异化、客服履约和价格空间。",
+        "daily_loop": ["同步货盘价格/库存/SLA", "识别同质化和价格倒挂", "筛选可差异化商品", "生成渠道化 Listing 草稿", "按订单向货盘方采购/代发", "对账缺货售后和赔付"],
+        "required_inputs": ["货盘合同与主体", "SKU映射和库存时间戳", "采购价/服务费/退货费", "仓库与配送范围", "售后赔付规则", "图片和品牌授权"],
+        "decision_metrics": ["库存同步延迟", "货盘价差率", "订单缺货率", "准时发货率", "同质化竞争密度", "售后赔付回收率"],
+        "scale_conditions": ["库存和 SLA 连续稳定", "价格与售后后仍有毛利", "渠道有明确差异化", "供应商赔付责任可执行"],
+        "stop_conditions": ["库存表长期不准", "频繁临时涨价", "同质化导致无利润", "退货/赔付责任不清", "仓库履约连续失约"]
+      },
+      "store_scope_rules": {"compatible_store_modes": ["marketplace_seller", "cross_border", "local_store", "semi_managed"], "requires_platform_site_store_account_scope": true, "official_full_managed": "recognition_only_non_executable"},
+      "core_objects": ["catalog_feed", "supplier_sku", "supplier_price", "warehouse_stock", "dropship_rule", "margin_gap", "generic_competition_risk"],
+      "workflows": [
+        "supplier catalog/system/spreadsheet -> normalize product data -> margin and competition review -> listing draft",
+        "because catalog prices are often high and products are generic, T-one must show weak-differentiation and high-price warnings",
+        "supplier stock, SLA and aftersales truth must be verified before any store promise"
+      ],
+      "variants": [
+        {
+          "id": "overseas_stock_catalog_resale",
+          "label": "海外仓货盘代发",
+          "status": "allowed_with_gates",
+          "execution_allowed": true,
+          "required_gates": ["supplier_contract", "stock_sla", "price_margin_review", "return_policy", "owner_publish_approval"]
+        },
+        {
+          "id": "generic_high_price_catalog",
+          "label": "泛滥高价货盘",
+          "status": "warn_before_use",
+          "execution_allowed": true,
+          "required_gates": ["competition_density_review", "price_gap_review", "differentiation_plan", "cash_risk_review"],
+          "notes": "可以分析但要默认提示弱优势、难出单和利润/库存风险。"
+        }
+      ],
+      "default_agent_routes": ["货盘资料整理员", "供应商审核员", "价格竞争分析员", "库存SLA审核员", "差异化方案员"]
+    }
+  ]
+}

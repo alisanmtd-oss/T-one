@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "storage_policy": "Uninstalled optional Skills keep only this manifest. Selected packages download once into a SHA-256-addressed compressed cache and projects store references instead of copies.",
+  "packages": []
+}

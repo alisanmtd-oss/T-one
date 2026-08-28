@@ -1,0 +1,1102 @@
+{
+  "updated_at": "2026-06-12",
+  "purpose": "Mature cross-border ecommerce skill/agent registry for AI Ecommerce Director. Priority is Amazon, Walmart, and TikTok Shop. TikTok Shop operational playbooks follow TK体系2.0 (see standard_doc).",
+  "standard_doc": "docs/TK_OPERATION_STANDARD_V2.md",
+  "rules": [
+    "Use official APIs for own-shop, order, inventory, listing, and advertising data.",
+    "Use mature third-party data tools for competitor product research, BSR history, keyword intelligence, creator/video intelligence, and market monitoring.",
+    "If an API is unavailable, use browser capture after the user passes login or verification. Do not bypass CAPTCHA, sliders, or account checks.",
+    "Every execution action remains read-only or draft-only until the user confirms."
+  ],
+  "recommended_purchase_order": [
+    "Keepa API",
+    "FastMoss or Kalodata",
+    "Amazon Ads API / SP-API after own-shop authorization",
+    "Walmart Marketplace + Walmart Connect APIs after own-shop authorization",
+    "SellerSprite or Helium 10 for manual/operator workflow",
+    "Jungle Scout API or SmartScout if extra Amazon category intelligence is needed",
+    "Perpetua/Pacvue/Teikametrics only when ad spend is large enough"
+  ],
+  "skills": [
+    {
+      "id": "amazon-product-research-keepa",
+      "name": "Amazon Product Research - Keepa",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "mature",
+      "priority": 1,
+      "best_for": [
+        "BSR history",
+        "price history",
+        "review/rating history",
+        "offer count",
+        "sudden rank movement",
+        "ASIN tracking"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "keepa-product-query",
+        "required_env": [
+          "KEEPA_API_KEY"
+        ]
+      },
+      "operator_prompt": "Use Keepa to validate whether an Amazon product is truly growing or only temporarily visible in search."
+    },
+    {
+      "id": "amazon-keyword-sellersprite",
+      "name": "Amazon Keyword/Product Research - SellerSprite",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Keyword Hunter",
+      "maturity": "mature_operator_tool",
+      "priority": 2,
+      "best_for": [
+        "keyword mining",
+        "reverse ASIN",
+        "market size",
+        "Chinese operator workflow",
+        "listing keyword expansion"
+      ],
+      "integration": {
+        "type": "browser_or_api",
+        "api_source_id": "sellersprite-openapi-placeholder",
+        "required_env": [
+          "SELLERSPRITE_API_KEY"
+        ]
+      },
+      "operator_prompt": "Use SellerSprite for keyword expansion, reverse ASIN checks, and Amazon niche validation."
+    },
+    {
+      "id": "amazon-keyword-helium10",
+      "name": "Amazon Research - Helium 10",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Keyword Hunter / Listing Builder",
+      "maturity": "mature_operator_tool",
+      "priority": 3,
+      "best_for": [
+        "Black Box product search",
+        "Cerebro reverse ASIN",
+        "Magnet keywords",
+        "listing optimizer"
+      ],
+      "integration": {
+        "type": "browser_capture",
+        "api_source_id": "",
+        "required_env": []
+      },
+      "operator_prompt": "Use Helium 10 manually or by browser capture for reverse ASIN and listing keyword checks."
+    },
+    {
+      "id": "amazon-own-shop-sp-api",
+      "name": "Amazon Own-Shop Operations - SP-API",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "OMS Director / Listing Builder / Risk Director",
+      "maturity": "official",
+      "priority": 4,
+      "best_for": [
+        "own orders",
+        "own listings",
+        "inventory",
+        "reports",
+        "pricing health",
+        "settlement data"
+      ],
+      "integration": {
+        "type": "signed_oauth_api",
+        "api_source_id": "amazon-sp-api-own-shop",
+        "required_env": [
+          "AMAZON_LWA_CLIENT_ID",
+          "AMAZON_LWA_CLIENT_SECRET",
+          "AMAZON_REFRESH_TOKEN"
+        ]
+      },
+      "operator_prompt": "Use SP-API only for authorized own-shop data. Do not treat it as a competitor ranking API."
+    },
+    {
+      "id": "amazon-ads-director",
+      "name": "Amazon Advertising Director",
+      "platforms": [
+        "Amazon Ads"
+      ],
+      "agent_module": "Advertising Director",
+      "maturity": "official",
+      "priority": 5,
+      "best_for": [
+        "Sponsored Products",
+        "Sponsored Brands",
+        "campaign spend",
+        "ACOS/TACOS",
+        "keyword bid monitoring",
+        "search term reports"
+      ],
+      "integration": {
+        "type": "oauth_api",
+        "api_source_id": "amazon-ads-api",
+        "required_env": [
+          "AMAZON_ADS_CLIENT_ID",
+          "AMAZON_ADS_CLIENT_SECRET",
+          "AMAZON_ADS_REFRESH_TOKEN"
+        ]
+      },
+      "operator_prompt": "Use Amazon Ads data to make bid/budget suggestions, never to change campaigns without user confirmation."
+    },
+    {
+      "id": "tiktok-shop-fastmoss",
+      "name": "TikTok Shop Product/Video Intelligence - FastMoss",
+      "platforms": [
+        "TikTok Shop",
+        "TikTok"
+      ],
+      "agent_module": "Viral Content Intelligence / Product Intelligence / Influencer Hunter",
+      "maturity": "mature",
+      "priority": 6,
+      "best_for": [
+        "viral videos",
+        "creator discovery",
+        "product GMV clues",
+        "TikTok Shop category trend",
+        "content hooks"
+      ],
+      "integration": {
+        "type": "browser_or_vendor_api",
+        "api_source_id": "fastmoss-openapi-products",
+        "required_env": [
+          "FASTMOSS_API_KEY"
+        ]
+      },
+      "operator_prompt": "Use FastMoss as the default TikTok Shop research entrance when TikTok buyer pages are verification-gated."
+    },
+    {
+      "id": "tiktok-shop-kalodata",
+      "name": "TikTok Shop GMV/Product Validation - Kalodata",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Product Intelligence / Competitor Intelligence",
+      "maturity": "mature",
+      "priority": 7,
+      "best_for": [
+        "GMV validation",
+        "product rank",
+        "creator/product relation",
+        "category demand"
+      ],
+      "integration": {
+        "type": "browser_or_vendor_api",
+        "api_source_id": "kalodata-enterprise-api",
+        "required_env": [
+          "KALODATA_API_KEY"
+        ]
+      },
+      "operator_prompt": "Use Kalodata to verify whether TikTok viral content has real commerce demand."
+    },
+    {
+      "id": "tiktok-shop-open-api-own-shop",
+      "name": "TikTok Shop Own-Shop Operations - Open API",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "OMS Director / Listing Builder / Influencer CRM",
+      "maturity": "official",
+      "priority": 8,
+      "best_for": [
+        "own products",
+        "own orders",
+        "fulfillment",
+        "authorized shop data",
+        "affiliate-related own-shop data"
+      ],
+      "integration": {
+        "type": "oauth_signed_api",
+        "api_source_id": "tiktok-shop-open-api-own-shop",
+        "required_env": [
+          "TIKTOK_SHOP_APP_KEY",
+          "TIKTOK_SHOP_APP_SECRET",
+          "TIKTOK_SHOP_ACCESS_TOKEN"
+        ]
+      },
+      "operator_prompt": "Use TikTok Shop Open API for authorized store operations, not public competitor search."
+    },
+    {
+      "id": "walmart-marketplace-own-shop",
+      "name": "Walmart Marketplace Operations",
+      "platforms": [
+        "Walmart"
+      ],
+      "agent_module": "OMS Director / Listing Builder",
+      "maturity": "official",
+      "priority": 9,
+      "best_for": [
+        "own items",
+        "orders",
+        "inventory",
+        "prices",
+        "feeds",
+        "Walmart listing operations"
+      ],
+      "integration": {
+        "type": "signed_api",
+        "api_source_id": "walmart-marketplace-api-own-shop",
+        "required_env": [
+          "WALMART_CLIENT_ID",
+          "WALMART_CLIENT_SECRET"
+        ]
+      },
+      "operator_prompt": "Use Walmart Marketplace API for authorized store operations; use public pages or third-party data for competitor product research."
+    },
+    {
+      "id": "walmart-ads-director",
+      "name": "Walmart Connect Advertising Director",
+      "platforms": [
+        "Walmart Connect"
+      ],
+      "agent_module": "Advertising Director",
+      "maturity": "official",
+      "priority": 10,
+      "best_for": [
+        "Walmart ad campaign data",
+        "keyword bids",
+        "spend",
+        "ROAS",
+        "campaign drafts"
+      ],
+      "integration": {
+        "type": "oauth_api",
+        "api_source_id": "walmart-connect-ads-api",
+        "required_env": [
+          "WALMART_ADS_CLIENT_ID",
+          "WALMART_ADS_CLIENT_SECRET"
+        ]
+      },
+      "operator_prompt": "Use Walmart ad data for recommendations and drafts only until the user confirms changes."
+    },
+    {
+      "id": "seo-serp-dataforseo",
+      "name": "SERP / Keyword Data - DataForSEO",
+      "platforms": [
+        "Google",
+        "Amazon SERP",
+        "Walmart SERP",
+        "YouTube"
+      ],
+      "agent_module": "Keyword Hunter / Competitor Intelligence",
+      "maturity": "mature",
+      "priority": 11,
+      "best_for": [
+        "SERP monitoring",
+        "keyword volume",
+        "competitor page discovery",
+        "Google Shopping-style research"
+      ],
+      "integration": {
+        "type": "basic_auth_api",
+        "api_source_id": "dataforseo-serp-placeholder",
+        "required_env": [
+          "DATAFORSEO_LOGIN",
+          "DATAFORSEO_PASSWORD"
+        ]
+      },
+      "operator_prompt": "Use DataForSEO to monitor search result changes and discover competitor sites when marketplace APIs are unavailable."
+    },
+    {
+      "id": "ad-optimization-suite",
+      "name": "Advanced Ad Optimization Suite",
+      "platforms": [
+        "Amazon Ads",
+        "Walmart Connect",
+        "Instacart",
+        "Retail Media"
+      ],
+      "agent_module": "Advertising Director",
+      "maturity": "mature_enterprise",
+      "priority": 12,
+      "best_for": [
+        "large-budget PPC optimization",
+        "cross-retail media",
+        "bid automation",
+        "budget pacing"
+      ],
+      "candidate_tools": [
+        "Perpetua",
+        "Pacvue",
+        "Teikametrics"
+      ],
+      "integration": {
+        "type": "vendor_api_or_browser_capture",
+        "api_source_id": "perpetua-pacvue-teikametrics-placeholder",
+        "required_env": []
+      },
+      "operator_prompt": "Use only after ad spend justifies tool cost. AI should produce suggestions before any automated bid change."
+    },
+    {
+      "id": "patent-ip-zhihuiya",
+      "name": "Patent / IP Risk - 智慧芽 PatSnap",
+      "platforms": [
+        "All",
+        "Amazon",
+        "TikTok"
+      ],
+      "agent_module": "Risk Director",
+      "maturity": "connector",
+      "priority": 1,
+      "enabled": false,
+      "best_for": [
+        "专利检索",
+        "专利家族",
+        "法律状态",
+        "外观/实用专利",
+        "侵权预警"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "patent-ip-zhihuiya",
+        "required_env": [
+          "ZHIHUIYA_API_KEY"
+        ]
+      },
+      "operator_prompt": "上架/选品前查真实专利与侵权风险；命中则进入人工确认，不自动上架。",
+      "recommendation": "付费可接",
+      "source_ref": "借鉴 Linkfox 专利系列(智慧芽/Eureka/Ruiguan)，取智慧芽为单一最佳源；未填 key 回退本地侵权词库 pod-ip-risk。"
+    },
+    {
+      "id": "product-image-ai",
+      "name": "Product Image AI - 生成/识别/相似",
+      "platforms": [
+        "All"
+      ],
+      "agent_module": "Listing Intelligence",
+      "maturity": "connector",
+      "priority": 1,
+      "enabled": false,
+      "best_for": [
+        "主图/场景图生成",
+        "竞品图识别",
+        "以图找相似",
+        "去背景/扩图/高清"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "product-image-ai",
+        "required_env": [
+          "IMAGE_AI_API_KEY"
+        ]
+      },
+      "operator_prompt": "选品出图、Listing 主图、竞品图识别；可接 Linkfox Multimodal 或你自己的图模型。",
+      "recommendation": "付费可接 / 可自建",
+      "source_ref": "借鉴 Linkfox Multimodal Generate/Recognize/Similarity；可换成你自己的图模型端点。"
+    },
+    {
+      "id": "tk-video-heygen",
+      "name": "TikTok 短视频 / 数字人 - HeyGen",
+      "platforms": [
+        "TikTok"
+      ],
+      "agent_module": "Viral Content Intelligence",
+      "maturity": "connector",
+      "priority": 1,
+      "enabled": false,
+      "best_for": [
+        "数字人口播视频",
+        "短视频成片",
+        "视频缩略图",
+        "TK 起量素材"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "tk-video-heygen",
+        "required_env": [
+          "HEYGEN_API_KEY"
+        ]
+      },
+      "operator_prompt": "为 TK 主战场批量产数字人/短视频素材；脚本走你 TK体系2.0 的钩子/场景/CTA。",
+      "recommendation": "付费可接",
+      "source_ref": "借鉴 Linkfox HeyGen Avatar / TikTok Short Video / Video Thumbnail，取 HeyGen 为最佳单一源。"
+    },
+    {
+      "id": "amazon-reviews-insight",
+      "name": "Amazon 评论 / 差评痛点",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Competitor Intelligence",
+      "maturity": "connector",
+      "priority": 2,
+      "enabled": false,
+      "best_for": [
+        "差评痛点",
+        "卖点验证",
+        "评论监控",
+        "改良点提取"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "amazon-reviews-insight",
+        "required_env": [
+          "AMAZON_REVIEWS_API_KEY"
+        ]
+      },
+      "operator_prompt": "提取 Amazon 评论痛点和卖点，反哺选品与 Listing；TK 评论已另有覆盖。",
+      "recommendation": "付费可接",
+      "source_ref": "借鉴 Linkfox Amazon Reviews / Review Monitor，取单一源。"
+    },
+    {
+      "id": "amazon-image-search",
+      "name": "以图搜品 - Amazon Search By Image",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "connector",
+      "priority": 2,
+      "enabled": false,
+      "best_for": [
+        "以图找同款",
+        "竞品反查",
+        "侵权同款排查"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "amazon-image-search",
+        "required_env": [
+          "AMAZON_IMG_SEARCH_API_KEY"
+        ]
+      },
+      "operator_prompt": "用一张图反查 Amazon 同款/竞品，辅助选品和侵权排查。",
+      "recommendation": "付费可接",
+      "source_ref": "借鉴 Linkfox Amazon Search By Image。"
+    },
+    {
+      "id": "trends-google",
+      "name": "趋势 - Google Trends",
+      "platforms": [
+        "All"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "self-built",
+      "priority": 2,
+      "enabled": true,
+      "best_for": [
+        "关键词趋势",
+        "季节性",
+        "地区热度",
+        "上升词"
+      ],
+      "integration": {
+        "type": "module",
+        "module": "ai_ecommerce_director.trend_insight",
+        "entry": "run_trend_insight",
+        "required_env": []
+      },
+      "operator_prompt": "看品类/关键词的趋势和季节性，判断红利窗口；免费自建。",
+      "recommendation": "自建免费（已跑通，用我们自己的数据/模型）",
+      "source_ref": "借鉴 Linkfox Google Trends Keyword；用公开 Google Trends，跑你自己的算力。"
+    },
+    {
+      "id": "web-search-realtime",
+      "name": "联网搜索 - 实时检索",
+      "platforms": [
+        "All"
+      ],
+      "agent_module": "Research",
+      "maturity": "self-built",
+      "priority": 2,
+      "enabled": true,
+      "best_for": [
+        "实时联网检索",
+        "新闻/政策/红利",
+        "竞品官网/独立站查找"
+      ],
+      "integration": {
+        "type": "module",
+        "module": "ai_ecommerce_director.web_research",
+        "entry": "run_web_research",
+        "required_env": []
+      },
+      "operator_prompt": "实时联网查资料、政策、竞品独立站；免费自建，跑你自己的联网能力。",
+      "recommendation": "自建免费（已跑通，用我们自己的数据/模型）",
+      "source_ref": "借鉴 Linkfox Tsearch Web Search；用你自己的联网检索。"
+    },
+    {
+      "id": "ebay-search",
+      "name": "eBay 选品 - Search",
+      "platforms": [
+        "eBay"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "connector",
+      "priority": 3,
+      "enabled": false,
+      "best_for": [
+        "eBay 长尾需求",
+        "价格带",
+        "二手/翻新需求"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "ebay-search",
+        "required_env": [
+          "EBAY_API_KEY"
+        ]
+      },
+      "operator_prompt": "看 eBay 长尾和价格带，非主战场，先接不开。",
+      "recommendation": "付费可接（暂缓）",
+      "source_ref": "借鉴 Linkfox eBay Search。"
+    },
+    {
+      "id": "ozon-mpstats",
+      "name": "Ozon 选品 - Mpstats",
+      "platforms": [
+        "Ozon"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "connector",
+      "priority": 3,
+      "enabled": false,
+      "best_for": [
+        "俄区 Ozon 选品",
+        "类目销量"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "ozon-mpstats",
+        "required_env": [
+          "MPSTATS_API_KEY"
+        ]
+      },
+      "operator_prompt": "俄区 Ozon 选品，非主战场，先接不开。",
+      "recommendation": "付费可接（暂缓）",
+      "source_ref": "借鉴 Linkfox Mpstats Ozon 系列。"
+    },
+    {
+      "id": "shopee-youying",
+      "name": "Shopee 选品 - 优鹰 YouYing",
+      "platforms": [
+        "Shopee"
+      ],
+      "agent_module": "Product Intelligence",
+      "maturity": "connector",
+      "priority": 3,
+      "enabled": false,
+      "best_for": [
+        "东南亚 Shopee 选品"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "shopee-youying",
+        "required_env": [
+          "YOUYING_API_KEY"
+        ]
+      },
+      "operator_prompt": "东南亚 Shopee 选品，非主战场，先接不开。",
+      "recommendation": "付费可接（暂缓）",
+      "source_ref": "借鉴 Linkfox YouYing Shopee Product Search。"
+    },
+    {
+      "id": "temu-marketplace",
+      "name": "Temu 选品/运营 - 一揽子",
+      "platforms": [
+        "Temu"
+      ],
+      "agent_module": "Store Operations",
+      "maturity": "connector",
+      "priority": 3,
+      "enabled": false,
+      "best_for": [
+        "Temu 选品",
+        "上品/订单/价格/退款"
+      ],
+      "integration": {
+        "type": "api",
+        "api_source_id": "temu-marketplace",
+        "required_env": [
+          "TEMU_API_KEY"
+        ]
+      },
+      "operator_prompt": "Temu 选品与店铺运营，非主战场，先接不开。",
+      "recommendation": "付费可接（暂缓）",
+      "source_ref": "借鉴 Linkfox Temu 系列(Ehunt/上品/订单/广告/税)，合并为单一连接器占位。"
+    },
+    {
+      "id": "review-insight",
+      "name": "评论痛点分析（自建）",
+      "platforms": [
+        "All",
+        "TikTok",
+        "Amazon"
+      ],
+      "agent_module": "Competitor Intelligence",
+      "maturity": "self-built",
+      "priority": 2,
+      "enabled": true,
+      "best_for": [
+        "差评痛点提取",
+        "改良建议",
+        "好评信号",
+        "卖点验证"
+      ],
+      "integration": {
+        "type": "module",
+        "module": "ai_ecommerce_director.review_insight",
+        "entry": "run_review_insight",
+        "required_env": []
+      },
+      "operator_prompt": "对采集到的评论/评论区文本做痛点提取，反哺选品与 Listing；跑我们自己的数据，免费。",
+      "recommendation": "自建免费（已跑通）",
+      "source_ref": "借鉴 Linkfox Amazon Reviews 的输出结构，实现为通用自建版。"
+    }
+  ],
+  "tk_operation_skills_note": "TikTok Shop 品牌化教程 2.0 的运营方法论技能（playbook）。每个绑定 standard_doc，给阈值与判定，不调外部接口。设备/账号/地理环境配置与平台校验属操作者本人手动且合规的责任——系统不自动化伪装、不绕过验证码/滑块/账号校验。",
+  "tk_operation_skills": [
+    {
+      "id": "tk-market-stage",
+      "name": "TK 市场阶段判断与冷启动",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Selection Intelligence / Launch Control",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#0-市场阶段决定打法",
+      "key_thresholds": "当前=打品/达人红利期(佣金20-30%)；本土店商品卡起单→300-500单介入达人→ADS；跨境店付费启动(PSA/VSA)，0销量先补3-5单评分评论",
+      "operator_prompt": "先判断市场阶段与店铺类型，再选冷启动路径：本土店走商品卡+低价动销，跨境店付费启动。",
+      "source": "tiktok_shop_brand_course_2.0 第1课"
+    },
+    {
+      "id": "tk-product-selection",
+      "name": "TK 选品（流量品/利润品/六维打分）",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Selection Intelligence",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#1-选品标准",
+      "key_thresholds": "轻量化≤500g、客单$15-35甜区或低价截流；流量品占比初70-80%→成熟50%；跟品定价Max(亚马逊×0.8-0.9,成本×4.5-6.5,竞品×0.7-0.9)；风控红线=侵权/文化宗教禁忌/医疗宣称",
+      "operator_prompt": "按六维(需求/竞争/利润/运营/风险/机会)打分并区分流量品与利润品；命中风控红线直接判不推荐。界面用 /product-scout。",
+      "source": "tiktok_shop_brand_course_2.0 第2课"
+    },
+    {
+      "id": "tk-product-testing",
+      "name": "TK 测品判定",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Selection Intelligence",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#2-测品标准",
+      "key_thresholds": "短视频原创<1000播出1单=达标/2单+=爆品；静态 CTR 1.5/2/3%、CVR 5/10/15%；VSA出价=毛利,消耗到毛利80%不出单停,CPA≤毛利50%好；GPM≥客单价=爆品",
+      "operator_prompt": "用 CTR/CVR/GPM 阈值判定测品结果并给下一步(放量/优化/淘汰)。",
+      "source": "tiktok_shop_brand_course_2.0 第3课"
+    },
+    {
+      "id": "tk-product-card-audit",
+      "name": "TK 商品卡四维体检",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Listing Builder",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#3-商品卡四维",
+      "key_thresholds": "流量池72h L1 CTR>2.5%&CVR>1.2% / L2 >5%&>1.8% / L3 >7%&>2.5%；标题五段式[流量+核心+场景+信任+长尾],前30字符,≤255,禁堆砌/虚假/绝对化；主图5张(首图点击/2-4转化/第5防流失),原创,赠品≤50%,促销文字≤10%",
+      "operator_prompt": "按四维(标题/主图/价格/动销)体检商品卡：标题做五段式+禁用词扫描，主图按5张分工，给优化项。",
+      "source": "tiktok_shop_brand_course_2.0 第3课"
+    },
+    {
+      "id": "tk-influencer-tiering",
+      "name": "TK 达人分层与建联",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Influencer Hunter / Influencer CRM",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#4-达人体系",
+      "key_thresholds": "S1-S5分层(UGC/垂类KOL/泛垂转化/破圈/品牌)；合格线 粉丝5K-50K、垂直>80%、均播>5W点赞>3%、样品7天发布>65%、画像重合>60%；三阶段(月1发样300/月2发500-1000/月3总数2000)；黄金时段美西10-11发首触",
+      "operator_prompt": "按 S1-S5 给达人定战略角色与预算配比，按合格线筛选，按三阶段推进建联；禁群发、禁首条提佣金。",
+      "source": "tiktok_shop_brand_course_2.0 第5课"
+    },
+    {
+      "id": "tk-ads-gmvmax",
+      "name": "TK 投流（GMV MAX / VSA）",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Advertising Director",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#5-投流-gmv-max",
+      "key_thresholds": "GMV MAX 喂20-30条素材+目标ROI+学习期3-5天勿频繁改；eCPM=出价×CTR×CVR×1000；A1-A5人群分层做素材；冠军素材CTR>行业均值1.5倍；100%挂车主商品放第一位",
+      "operator_prompt": "按 GMV MAX 逻辑：喂多样化素材、设目标ROI、尊重学习期；用素材诊断表定位问题；危险动作(改预算/投放)仍排队待确认。",
+      "source": "tiktok_shop_brand_course_2.0 第4课"
+    },
+    {
+      "id": "tk-content-hooks",
+      "name": "TK 内容钩子与北美原生感",
+      "platforms": [
+        "TikTok Shop",
+        "TikTok"
+      ],
+      "agent_module": "Content Strategy / Visual Creative",
+      "maturity": "playbook",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#6-内容",
+      "key_thresholds": "6类钩子(视觉/提问/利益/悬念/挑战/萌宠)+9维度开头；账号权重 完播35%+互动30%+权重20%+质量15%；种草vs硬广(完播>35%vs<15%,分享>0.8%vs<0.2%)；北美原生感:素人/前3秒/1-2秒换镜/字幕/国外BGM",
+      "operator_prompt": "按6类钩子+9维度开头生成脚本框架，做北美原生感；规避硬广特征(7天商业内容>90%触发僵尸号锁500)。",
+      "source": "tiktok_shop_brand_course_2.0 第4/5课"
+    },
+    {
+      "id": "tk-store-ops-sop",
+      "name": "TK 店铺运营实操 SOP",
+      "platforms": [
+        "TikTok Shop"
+      ],
+      "agent_module": "Store Operations / Risk Director",
+      "maturity": "playbook_video",
+      "standard_ref": "docs/TK_OPERATION_STANDARD_V2.md#8-店铺与合规",
+      "key_thresholds": "运费8-9刀(过高判薅羊毛)；虚拟仓最近仓当天发隔天到；出村 个人100/企业200单,60天常规或30天提前(500单+,取消<2.5%,延迟<4%,退款<1%)；同IP不超1店,同仓相似品防店群；混剪不彻底挂车易封橱窗",
+      "operator_prompt": "按课程实操SOP给店铺设置建议(发货/运费/偏远地区/出村/合规)；账号与设备/地理环境配置由操作者本人手动且合规处理，系统不自动化；危险动作仍排队待确认。",
+      "source": "tiktok_shop_brand_course_2.0 第3章实操视频",
+      "reference_assets": [
+        "产品虚拟仓成本和利润计算.mp4",
+        "海外仓头程尾程运费计算.mp4",
+        "绑定店铺.mp4",
+        "如何设置运费折扣和免运费.mp4",
+        "店铺后台如何设置偏远地区不发货.mp4",
+        "商品上架达人广场和达人发送免费样品申请流程.mp4",
+        "达人建联方式和指标.mp4",
+        "违规类型.mp4",
+        "短视频0播与低播放的原因.mp4",
+        "浏览器选择使用.mp4",
+        "2023苹果手机刷机流程.pdf"
+      ]
+    }
+  ],
+  "multichannel_operation_skills_note": "Amazon / 独立站(DTC) / 外贸(B2B) 通用运营技能（行业标准方法论 + 阈值）。与 TK体系2.0 同一引擎，可执行项由 skill_agents 跑。",
+  "multichannel_operation_skills": [
+    {
+      "id": "amazon-commerce-operator",
+      "name": "Amazon 证据化运营与多模态蒸馏",
+      "platforms": [
+        "Amazon",
+        "Amazon Ads"
+      ],
+      "agent_module": "Amazon Operations / Knowledge Distillation / Risk Director",
+      "maturity": "project_skill_executable",
+      "key_thresholds": "必须绑定站点、店铺、route key、对象、捕获时间与证据状态；草稿/旧证据/第三方说法不得冒充线上事实；外部动作必须人工确认",
+      "operator_prompt": "使用项目 Skill `skills/amazon-commerce-operator/SKILL.md` 对文字、截图、视频和软件操作做证据化蒸馏，并在任何外部动作前运行证据门禁。",
+      "source": "skills/amazon-commerce-operator/SKILL.md"
+    },
+    {
+      "id": "workbuddy-amazon-private-reference",
+      "name": "WorkBuddy Amazon 私有只读参考（已蒸馏）",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Amazon Private Knowledge Pack / Read-Only Reference",
+      "maturity": "private_reference_only",
+      "key_thresholds": "只保留 Listing、市场研究、评论/VOC、费用和季节性方法；不安装原包脚本，不连接 Amazon，不执行广告、订单、付款、上传、价格或库存动作",
+      "operator_prompt": "读取 `skills/amazon-commerce-operator/references/workbuddy-amazon-private-pack.md` 作为补充检查表；所有结论和动作仍由 `amazon-commerce-operator` 做站点、店铺、对象、时间和证据门禁。Amazon 暂停期间只允许本地分析与草稿。",
+      "source": "skills/amazon-commerce-operator/references/workbuddy-amazon-private-pack.md"
+    },
+    {
+      "id": "product-catalog-collector",
+      "name": "商品采集与来源整理（SHEIN 任务路由）",
+      "platforms": [
+        "SHEIN"
+      ],
+      "agent_module": "SHEIN Product Source Intake / Local Task Workspace",
+      "maturity": "workflow_reference",
+      "key_thresholds": "只采集公开可达的商品名称、图片与可选描述；来源可访问不等于拥有图片、商标或上架授权；每条商品必须绑定来源 URL 与权利状态",
+      "operator_prompt": "把候选来源整理到所选 SHEIN 任务的 inputs/catalog-collector；未确认商品所有权、图片授权、库存、价格和尺寸前只做本地采集与预检，不写入店铺。",
+      "source": "skills/platform-experts/shein/SKILL.md"
+    },
+    {
+      "id": "shein-keyword-library",
+      "name": "SHEIN 词库与长尾词",
+      "platforms": [
+        "SHEIN"
+      ],
+      "agent_module": "SHEIN Keyword Library / Category-scoped Ranking Signals",
+      "maturity": "workflow_reference",
+      "key_thresholds": "按站点、类目、时间窗和榜单来源去重；热度只代表需求信号；只有与商品事实逐词匹配且通过 IP 审查的词才可进入标题或属性",
+      "operator_prompt": "将去重后的词库放入所选 SHEIN 任务的 inputs/keyword-library；默认均为 reserve/blocked，不把高排名自动改成可上架长尾词。",
+      "source": "skills/platform-experts/shein/assets/keyword-library.csv"
+    },
+    {
+      "id": "shein-listing-intake",
+      "name": "SHEIN 批量上架预检与人工工作台",
+      "platforms": [
+        "SHEIN"
+      ],
+      "agent_module": "SHEIN Batch Listing / Exact Store and Template Gate",
+      "maturity": "workflow_reference",
+      "key_thresholds": "一次一站点、一店铺、一叶子类目、一份当前模板；图片权利、品牌/IP、价格、库存、尺寸与仓库均须为真实值；上传与发布需要精确文件和店铺确认",
+      "operator_prompt": "在所选 SHEIN 任务的 inputs/batch-listing 生成本地预检状态；缺少真实商品资料时保持 needs_owner_product_inputs，不使用竞品图片、假库存或默认价格。",
+      "source": "skills/platform-experts/shein/references/real-store-bulk-operation.md"
+    },
+    {
+      "id": "amazon-product-validation",
+      "name": "Amazon 选品验证（BSR/退货/评分）",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Amazon Operations / Product Intelligence",
+      "maturity": "playbook",
+      "key_thresholds": "BSR 类目前1%-5%且趋势稳；退货率<5%；评分≥4.0且评论数足；用 Keepa 验证真增长",
+      "operator_prompt": "用 Keepa/BSR 历史验证真实增长，退货率<5%、评分≥4.0 才进入，避免一次性热度。",
+      "source": "industry standard"
+    },
+    {
+      "id": "amazon-listing-audit",
+      "name": "Amazon Listing 标题体检",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Amazon Operations / Listing Builder",
+      "maturity": "playbook_executable",
+      "key_thresholds": "标题含品牌+核心词+卖点；禁绝对化/虚假/侵权词；前段承载主关键词",
+      "operator_prompt": "体检 Listing 标题：关键词覆盖 + 禁用词扫描。",
+      "source": "industry standard"
+    },
+    {
+      "id": "amazon-profit-check",
+      "name": "Amazon 单位经济测算",
+      "platforms": [
+        "Amazon"
+      ],
+      "agent_module": "Amazon Operations",
+      "maturity": "playbook_executable",
+      "key_thresholds": "毛利率≥20%健康；单位净利>CAC；含 FBA/佣金/广告/退货/头程",
+      "operator_prompt": "测算单位净利与毛利率，看广告/CAC 占比是否可持续。",
+      "source": "industry standard"
+    },
+    {
+      "id": "amazon-ppc-acos",
+      "name": "Amazon 广告 ACOS/TACOS",
+      "platforms": [
+        "Amazon Ads"
+      ],
+      "agent_module": "Advertising Director",
+      "maturity": "playbook",
+      "key_thresholds": "目标 ACOS<毛利率；起量期可亏打，稳定期 TACOS 收敛；按搜索词报告砍无效词",
+      "operator_prompt": "按 ACOS<毛利率 控广告；用搜索词报告做否词与竞价建议（仅建议，改动需确认）。",
+      "source": "industry standard"
+    },
+    {
+      "id": "dtc-unit-economics",
+      "name": "独立站 单位经济与 LTV/CAC",
+      "platforms": [
+        "Shopify",
+        "DTC"
+      ],
+      "agent_module": "DTC Operations",
+      "maturity": "playbook_executable",
+      "key_thresholds": "毛利率≥20%；LTV/CAC≥3；首单可不赚靠复购；含支付/物流/退货/广告",
+      "operator_prompt": "测算独立站单位经济：毛利、CAC、LTV/CAC≥3 才可放量获客。",
+      "source": "industry standard"
+    },
+    {
+      "id": "dtc-ad-roas",
+      "name": "独立站 广告 ROAS/获客",
+      "platforms": [
+        "Shopify",
+        "Meta Ads",
+        "Google Ads"
+      ],
+      "agent_module": "DTC Operations / Advertising Director",
+      "maturity": "playbook",
+      "key_thresholds": "盈亏平衡 ROAS=1/毛利率；新客 CAC<毛利；素材/受众/落地页三端优化",
+      "operator_prompt": "按盈亏平衡 ROAS 控投放，诊断素材/受众/落地页；改动需确认。",
+      "source": "industry standard"
+    },
+    {
+      "id": "b2b-inquiry-score",
+      "name": "外贸 B2B 询盘评估",
+      "platforms": [
+        "B2B",
+        "Alibaba"
+      ],
+      "agent_module": "B2B Operations",
+      "maturity": "playbook_executable",
+      "key_thresholds": "达到MOQ、公司信息齐、目标价≥底价 → 合格优先报价/打样",
+      "operator_prompt": "按 MOQ/公司资质/目标价评估询盘质量，给报价或补料建议。",
+      "source": "industry standard"
+    },
+    {
+      "id": "b2b-quote-moq",
+      "name": "外贸 报价与 MOQ 策略",
+      "platforms": [
+        "B2B"
+      ],
+      "agent_module": "B2B Operations",
+      "maturity": "playbook",
+      "key_thresholds": "阶梯报价(量大价优)；明确 MOQ/交期/付款/认证；保留底价不破",
+      "operator_prompt": "给阶梯报价与 MOQ/交期/付款/认证清单，不破底价；合同条款需人工确认。",
+      "source": "industry standard"
+    },
+    {
+      "id": "web-seo-geo-audit",
+      "name": "网站 SEO/AEO/GEO 体检",
+      "platforms": [
+        "Website",
+        "Shopify",
+        "DTC"
+      ],
+      "agent_module": "Web Marketing",
+      "maturity": "playbook_executable",
+      "key_thresholds": "SEO(title/description/H1/canonical/OG/JSON-LD)；AEO(FAQ/HowTo schema+问答内容)；GEO(实体schema/可引用段落134-167词/未屏蔽AI抓取/llms.txt)",
+      "operator_prompt": "对自有站点做 SEO/AEO/GEO 体检，给逐项通过/未过 + 修复建议；只读分析，改代码前确认。界面用 /web-audit。",
+      "source": "industry standard；方法参考 MIT 项目 claude-seo / nuxt-seo"
+    }
+  ],
+  "agent_routing": {
+    "Product Intelligence": [
+      "amazon-product-research-keepa",
+      "tiktok-shop-fastmoss",
+      "tiktok-shop-kalodata",
+      "seo-serp-dataforseo",
+      "amazon-image-search",
+      "trends-google",
+      "ebay-search",
+      "ozon-mpstats",
+      "shopee-youying"
+    ],
+    "Keyword Hunter": [
+      "amazon-keyword-sellersprite",
+      "amazon-keyword-helium10",
+      "seo-serp-dataforseo"
+    ],
+    "Selection Intelligence": [
+      "tk-market-stage",
+      "tk-product-selection",
+      "tk-product-testing"
+    ],
+    "Listing Builder": [
+      "amazon-keyword-helium10",
+      "amazon-own-shop-sp-api",
+      "walmart-marketplace-own-shop",
+      "tk-product-card-audit"
+    ],
+    "Viral Content Intelligence": [
+      "tiktok-shop-fastmoss",
+      "tiktok-shop-kalodata",
+      "tk-video-heygen"
+    ],
+    "Content Strategy": [
+      "tk-content-hooks"
+    ],
+    "Influencer Hunter": [
+      "tk-influencer-tiering"
+    ],
+    "Advertising Director": [
+      "amazon-ads-director",
+      "walmart-ads-director",
+      "ad-optimization-suite",
+      "tk-ads-gmvmax"
+    ],
+    "OMS Director": [
+      "amazon-own-shop-sp-api",
+      "tiktok-shop-open-api-own-shop",
+      "walmart-marketplace-own-shop"
+    ],
+    "Store Operations": [
+      "tk-store-ops-sop",
+      "temu-marketplace"
+    ],
+    "Amazon Operations": [
+      "amazon-product-validation",
+      "amazon-listing-audit",
+      "amazon-profit-check",
+      "amazon-ppc-acos"
+    ],
+    "DTC Operations": [
+      "dtc-unit-economics",
+      "dtc-ad-roas"
+    ],
+    "B2B Operations": [
+      "b2b-inquiry-score",
+      "b2b-quote-moq"
+    ],
+    "Web Marketing": [
+      "web-seo-geo-audit"
+    ],
+    "Risk Director": [
+      "patent-ip-zhihuiya"
+    ],
+    "Listing Intelligence": [
+      "product-image-ai"
+    ],
+    "Competitor Intelligence": [
+      "amazon-reviews-insight",
+      "review-insight"
+    ],
+    "Research": [
+      "web-search-realtime"
+    ]
+  },
+  "linkfox_mapping_note": "对标 Linkfox 143 技能：去重后每能力取最佳单一源；新增连接器默认 enabled=false，填 required_env 的 key 才启用，未填则回退自采数据。详见 docs/linkfox_skill_mapping_2026-06.md。",
+  "method_library": {
+    "doc": "docs/absorbed_skill_methods_2026-06.md",
+    "note": "借鉴 Linkfox/PingHuman 公开技能，提炼可量化方法补进体系；TK 冲突时以 TK体系2.0 为准；数量/利润为估算模型。",
+    "sections": {
+      "selection_amazon_supplement": [
+        "Amazon BSR→月销量换算",
+        "利润测算公式",
+        "商品卡输出模板"
+      ],
+      "content_tk_video": [
+        "TK 5类型+黄金结构+钩子模板+剪辑节奏"
+      ],
+      "evaluation_viral_thresholds": [
+        "TK 爆款指标阈值表",
+        "算法清单"
+      ],
+      "creator_bd": [
+        "达人分层报价",
+        "达人筛选指标（配 S1-S5）"
+      ],
+      "ads_review": [
+        "投流诊断决策规则"
+      ]
+    }
+  },
+  "capability_gaps": {
+    "doc": "docs/capability_gap_vs_linkfox_2026-06.md",
+    "biggest_missing": [
+      "产品视觉:作图/识图/相似图",
+      "短视频/数字人(HeyGen)"
+    ],
+    "buildable_free": [
+      "技能路由进一步升级"
+    ],
+    "needs_paid_key": [
+      "product-image-ai",
+      "tk-video-heygen",
+      "patent-ip-zhihuiya",
+      "关键词历史深度"
+    ],
+    "fill_order": [
+      "1 自建免费:评论/趋势/搜索",
+      "2 付费:视觉/专利(给key即上)",
+      "3 暂缓:其他平台"
+    ],
+    "built_selfhosted_2026_06": [
+      "评论痛点分析(review-insight)",
+      "趋势(trends-google)",
+      "联网搜索(web-search-realtime)"
+    ]
+  },
+  "ai_employee_personas": {
+    "file": "config/ai_employee_personas.json",
+    "count": 14,
+    "note": "AI员工角色库（借鉴 agency-agents MIT，改写为跨境版）；persona=身份+原则，technic skill=能力/数据。跑我们自己模型，免费。"
+  },
+  "advertising_agent": {
+    "file": "config/advertising_agent.json",
+    "runtime": "ai_ecommerce_director/advertising_agent.py",
+    "persona_id": "persona-cross-channel-media-buyer",
+    "note": "Meta Ads、TikTok Ads、Google Ads、Amazon Ads 共用投手内核；TikTok One 只作创意与达人供应层。所有写操作按广告账户隔离并进入人审。"
+  }
+}

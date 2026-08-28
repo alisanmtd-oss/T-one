@@ -21,7 +21,7 @@
 Run:
 
 ```powershell
-python skills/platform-experts/b2b_export/b2b-export-expert/scripts/run_incremental_training.py --write
+python private_platform_expert_source_excluded --write
 ```
 
 

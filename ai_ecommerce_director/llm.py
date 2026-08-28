@@ -5,6 +5,7 @@ import hashlib
 import os
 import socket
 import subprocess
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
@@ -25,6 +26,9 @@ from .credential_store import (
 MULTI_AI_CONFIG = Path("config") / "multi_ai.json"
 AI_WORKER_ONBOARDING = Path("config") / "ai_worker_onboarding.md"
 DEFAULT_ONBOARDING_CONTEXT_CHARS = 12000
+TRANSIENT_PROVIDER_RETRY_CODES = {"provider_unavailable", "timeout", "connection_failed"}
+TRANSIENT_PROVIDER_ATTEMPTS = 2
+TRANSIENT_PROVIDER_RETRY_DELAY_SECONDS = 0.35
 ALLOWED_API_KEY_ENVS = {
     "OPENAI_API_KEY",
     "ANTHROPIC_API_KEY",
@@ -63,6 +67,8 @@ class LLMConfig:
     headers: dict[str, str] = field(default_factory=dict)
     requires_api_key: bool = False
     policy_id: str = "unknown"
+    reasoning_effort: str = ""
+    preserve_complete_assistant_message: bool = False
 
     @classmethod
     def from_env(cls) -> "LLMConfig":
@@ -109,6 +115,14 @@ class LLMConfig:
                 payload.get("requires_api_key", bool(api_key_env or credential_ref))
             ),
             policy_id=str(payload.get("policy_id") or infer_provider_policy_id(name, base_url)).strip().lower(),
+            reasoning_effort=str(
+                payload.get("default_reasoning_effort")
+                or payload.get("reasoning_effort")
+                or ""
+            ).strip().lower(),
+            preserve_complete_assistant_message=bool(
+                payload.get("preserve_complete_assistant_message")
+            ),
         )
 
     @property
@@ -372,13 +386,31 @@ class LLMClient:
                     max_data_level=policy.max_data_level,
                     task=task or self.task,
                 ).text
-                text = self._chat_once(
-                    config,
-                    safe_system_prompt,
-                    safe_user_prompt,
-                    task=task or self.task,
-                    record=True,
-                )
+                text = ""
+                for provider_attempt in range(TRANSIENT_PROVIDER_ATTEMPTS):
+                    try:
+                        text = self._chat_once(
+                            config,
+                            safe_system_prompt,
+                            safe_user_prompt,
+                            task=task or self.task,
+                            record=True,
+                        )
+                        break
+                    except Exception as exc:  # noqa: BLE001 - retry only transient provider failures.
+                        classified = classify_provider_error(
+                            exc,
+                            provider=config.name,
+                            model=config.model or "",
+                        )
+                        can_retry = (
+                            provider_attempt + 1 < TRANSIENT_PROVIDER_ATTEMPTS
+                            and classified.get("code") in TRANSIENT_PROVIDER_RETRY_CODES
+                        )
+                        if not can_retry:
+                            raise
+                        errors.append({**classified, "retry": "same_provider"})
+                        time.sleep(TRANSIENT_PROVIDER_RETRY_DELAY_SECONDS)
                 return {
                     "text": text,
                     "provider": config.name,
@@ -586,6 +618,8 @@ class LLMClient:
             ],
             "temperature": config.temperature,
         }
+        if config.reasoning_effort:
+            payload["reasoning_effort"] = config.reasoning_effort
         body = json.dumps(payload).encode("utf-8")
         headers = {
             "Content-Type": "application/json",
@@ -643,6 +677,8 @@ class LLMClient:
                 "messages": messages,
                 "temperature": config.temperature,
             }
+            if config.reasoning_effort:
+                payload["reasoning_effort"] = config.reasoning_effort
             if tool_schemas:
                 payload["tools"] = tool_schemas
                 payload["tool_choice"] = "auto"
@@ -673,13 +709,18 @@ class LLMClient:
                     )
                 if not isinstance(tool_calls, list):
                     raise AIProviderChainError("tool_invalid_response", "模型工具调用格式无效。")
-                messages.append(
-                    {
-                        "role": "assistant",
-                        "content": message.get("content"),
-                        "tool_calls": tool_calls,
-                    }
-                )
+                if config.preserve_complete_assistant_message:
+                    assistant_message = dict(message)
+                    assistant_message["role"] = "assistant"
+                    messages.append(assistant_message)
+                else:
+                    messages.append(
+                        {
+                            "role": "assistant",
+                            "content": message.get("content"),
+                            "tool_calls": tool_calls,
+                        }
+                    )
                 for call in tool_calls:
                     if not isinstance(call, dict):
                         raise AIProviderChainError("tool_invalid_response", "模型工具调用格式无效。")

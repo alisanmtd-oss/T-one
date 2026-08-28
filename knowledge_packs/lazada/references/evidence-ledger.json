@@ -39,10 +39,10 @@
       "claim": "The current workspace has Lazada routing, training, approval and connector definitions, but no recorded real Lazada store_binding_id, OAuth success, seller_id/short_code binding, Seller Center session, ads wallet, ERP mapping or successful business API call.",
       "source_type": "local_software_audit",
       "source_refs": [
-        "config/integration_hub.json",
-        "config/platform_adapter_registry.json",
-        "config/platform_developer_capabilities.json",
-        "config/platform_activity_rules.json"
+        "private_integration_registry_excluded",
+        "private_platform_adapter_registry_excluded",
+        "private_platform_capability_registry_excluded",
+        "private_platform_activity_rules_excluded"
       ],
       "captured_at": "2026-07-18T22:11:11+08:00",
       "country_sites": [
@@ -81,7 +81,7 @@
         "scrolled document",
         "inspected authorization tables and token fields"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-14-18-431Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "SG",
         "MY",
@@ -118,7 +118,7 @@
         "inspected allowed APIs",
         "inspected category and supply_price differences"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-15-17-880Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "unknown"
       ],
@@ -146,7 +146,7 @@
         "opened",
         "inspected finance API table and paths"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-15-37-971Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "SG",
         "MY",
@@ -182,7 +182,7 @@
         "inspected Choice API list",
         "inspected item_type and inventory models"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-16-06-523Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "SG",
         "MY",
@@ -217,7 +217,7 @@
         "inspected feature areas",
         "inspected six-country destination links"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-13-08-857Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "SG",
         "MY",
@@ -253,7 +253,7 @@
         "inspected FAQ",
         "inspected six-country links"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-13-50-958Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "SG",
         "MY",
@@ -287,7 +287,7 @@
         "observed redirect to /apps/user/login",
         "stopped before credentials"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-14-47-390Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "country_sites": [
         "unknown"
       ],
@@ -428,7 +428,7 @@
         "inspected operation table",
         "clicked GetCategoryAttributes link"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-39-34-923Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -471,8 +471,8 @@
         "opened canonical GetCategoryAttributes API detail"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category.md",
-        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category_api_deeplink.md"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -514,7 +514,7 @@
         "opened tutorial",
         "scrolled request, pagination, push and field sections"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-41-32-295Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -555,7 +555,7 @@
         "opened fulfillment document",
         "scrolled API list, country endpoints and availability notes"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_fulfillment.md",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -596,7 +596,7 @@
         "opened reverse-order document",
         "scrolled webhook properties and reverse-type/state table"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_reverse_order.md",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -640,9 +640,9 @@
         "expanded Diagnosis availability FAQ"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-26-253Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-51-300Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-44-13-773Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -682,7 +682,7 @@
       "browser_actions": [
         "expanded active-product overlap FAQ"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-43-51-300Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -727,7 +727,7 @@
       "browser_actions": [
         "expanded Diagnosis availability FAQ"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T14-44-13-773Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -779,8 +779,8 @@
         "scrolled advice and risk warning"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_industry_blog.md",
-        "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_industry_blog_after_click.md"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -813,10 +813,10 @@
       "source_type": "local_software_audit",
       "evidence_class": "verified_software_observation",
       "source_refs": [
-        "config/integration_hub.json",
-        "config/platform_adapter_registry.json",
-        "config/platform_developer_capabilities.json",
-        "config/current_task_queue.json"
+        "private_integration_registry_excluded",
+        "private_platform_adapter_registry_excluded",
+        "private_platform_capability_registry_excluded",
+        "private_task_queue_excluded"
       ],
       "captured_at": "2026-07-18T22:38:45+08:00",
       "language": "en_zh_config",
@@ -864,7 +864,7 @@
         "removed tracking parameter",
         "opened canonical API path successfully"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/lazada_increment_02_category_api_deeplink.md",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "not_applicable"
@@ -991,7 +991,7 @@
         "scrolled the webhook property table",
         "inspected retry, authorization, promotion-type, expiry and stock-budget fields"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-28-25-890Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -1033,7 +1033,7 @@
         "inspected generation and capability descriptions",
         "inspected the App Console download path and login prerequisite"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-10-791Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en",
       "country_sites": [
         "SG",
@@ -1076,8 +1076,8 @@
         "clicked and inspected the Apache-2.0 license"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-36-451Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-56-370Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -1126,8 +1126,8 @@
         "inspected security interception, recall, refund card, session validity and API best practices"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-45-37-437Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-46-09-175Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -1173,8 +1173,8 @@
         "observed the transcript panel remain in loading state"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-48-34-160Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-50-48-531Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -1217,7 +1217,7 @@
         "observed HTTP 403 and JavaScript challenge",
         "stopped without attempting challenge bypass"
       ],
-      "browser_capture_ref": "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-47-16-408Z.yml",
+      "browser_capture_ref": "private_browser_capture_excluded",
       "language": "en_fil",
       "country_sites": [
         "PH_candidate"
@@ -1254,8 +1254,8 @@
         "scrolled without clicking Chat Now or Raise Concern"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-49-32-439Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T15-49-22-446Z.log"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "en",
       "country_sites": [
@@ -1339,7 +1339,7 @@
         "did not sign in, open the testing console or call the API"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-01-54-681Z.yml",
+        "private_browser_capture_excluded",
         "playwright-cli lazada_increment05 mousewheel output"
       ],
       "visible_input_output": [
@@ -1400,8 +1400,8 @@
         "did not sign up, connect a store, export data, synchronize statements or mark Collected"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-04-01-334Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-03-52-830Z.log",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
         "playwright-cli lazada_increment05 mousewheel output"
       ],
       "visible_input_output": [
@@ -1459,8 +1459,8 @@
         "captured pages 34, 35 and 37 through the PDF page renderer"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-23-47-698Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-25-51-748Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "source_pages": [
         34,
@@ -1517,9 +1517,9 @@
         "captured the release, feature announcement and annex pages through the PDF page renderer"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-23-47-698Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-24-24-524Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-24-25-498Z.log"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "source_pages": [
         0,
@@ -1577,9 +1577,9 @@
         "stopped without entering credentials"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-28-43-044Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-29-07-353Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/console-2026-07-18T16-28-33-566Z.log"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "visible_input_output": [
         "Please select the country for your account",
@@ -1641,8 +1641,8 @@
         "did not download, clone, install or copy prompts into T One"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-26-45-228Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-27-01-304Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "language": "th_en",
       "country_sites": [
@@ -1688,11 +1688,11 @@
         "did not log in, activate, subscribe, edit, save, send or transfer"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-49-22-992Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-14-42-509Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-16-03-296Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-17-37-393Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-20-44-357Z.png"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "slides": "1-29",
@@ -1772,9 +1772,9 @@
         "did not download, transcribe by bypass, log in, configure chat or send a message"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-23-04-123Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-23-34-444Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-24-55-250Z.png"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "playback": "00:00-01:25 of 01:25",
@@ -1843,7 +1843,7 @@
         "stopped without login or bypass"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T16-54-58-017Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "organization_header": true,
@@ -1895,7 +1895,7 @@
         "did not clone, install or execute any repository"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-00-18-981Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "official_catalog_projects_visible": 39,
@@ -1950,10 +1950,10 @@
         "did not clone, install, execute or register a connector"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-02-12-675Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-46-669Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-01-38-628Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-01-54-182Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "repository_pages": [
@@ -2031,14 +2031,14 @@
         "did not clone, install, run or provide credentials"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-05-42-562Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-16-348Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-27-420Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-25-560Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-33-308Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-08-40-590Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-50-573Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-06-57-295Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "readme": true,
@@ -2117,7 +2117,7 @@
         "did not infer identity from organization name"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T15-29-10-791Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "official_sdk_path": true,
@@ -2237,10 +2237,10 @@
         "stopped without credentials, OTP or authorization"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-51-36-800Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-52-20-191Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-52-42-335Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-01-972Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "catalog_results": 21,
@@ -2313,11 +2313,11 @@
         "did not enter phone, password, OTP, identity, bank or seller data and did not accept terms"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-44-269Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-49-636Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-53-55-924Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-01-663Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-27-479Z.png"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "top_navigation": [
@@ -2408,10 +2408,10 @@
         "did not subscribe, like, save, share or sign in"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-54-45-962Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-55-10-400Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-08-34-848Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-08-50-949Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "verification_chain": [
@@ -2496,14 +2496,14 @@
         "did not like, dislike, subscribe, save, share, reply or sign in"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-56-23-127Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T17-57-05-394Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-00-53-954Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-01-11-718Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-02-34-035Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-03-07-231Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-04-42-313Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-05-23-463Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "playback": {
@@ -2600,8 +2600,8 @@
         "did not open Contact Us or submit any form"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-27-59-217Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-32-56-387Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "sections": [
@@ -2701,8 +2701,8 @@
         "did not email, click Contact Us or submit a form"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-29-39-546Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-03-448Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "sections": [
@@ -2791,7 +2791,7 @@
         "did not email or submit any contact action"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-38-53-851Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "sections": [
@@ -2893,9 +2893,9 @@
         "did not log in, subscribe, share or submit any form"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-30-50-128Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-16-195Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-32-02-258Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "article_sections": [
@@ -3007,13 +3007,13 @@
         "did not log in, follow, like, save, share, comment or submit anything"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-34-25-578Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-09-662Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-40-516Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-35-52-334Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-36-10-756Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-36-41-827Z.png",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-38-03-262Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "carousel_items_reviewed": 5,
@@ -3105,7 +3105,7 @@
         "closed the named browser session"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T18-33-58-188Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "http_status": 403,
@@ -3177,8 +3177,8 @@
           "src/Auth.php",
           "src/Client.php",
           "src/Resource.php",
-          "tests/OrderTest.php",
-          "tests/SystemTest.php",
+          "private_regression_suite_excluded",
+          "private_regression_suite_excluded",
           "bin/lazada-mcp-server"
         ],
         "issues": 0,
@@ -3474,8 +3474,8 @@
         "did not sign in or use credentials"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-28-51-526Z.yml",
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-29-35-215Z.yml"
+        "private_browser_capture_excluded",
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "sections": [
@@ -3562,7 +3562,7 @@
         "did not call an API"
       ],
       "browser_capture_refs": [
-        "skills/platform-experts/lazada/.playwright-cli/page-2026-07-18T19-30-11-623Z.yml"
+        "private_browser_capture_excluded"
       ],
       "coverage": {
         "sections": [

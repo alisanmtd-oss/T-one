@@ -1,0 +1,53 @@
+{
+  "mode": "full_safe_autopilot",
+  "goal": "Automate the whole ecommerce operating loop while protecting real stores, accounts, money, ads, refunds, listings, and publishing permissions.",
+  "always_auto": [
+    "read_public_pages",
+    "import_pasted_store_data",
+    "classify_orders_returns_ads_finance",
+    "dedupe_records",
+    "score_products_creators_scripts_keywords",
+    "generate_reports",
+    "generate_listing_drafts",
+    "generate_video_scripts",
+    "generate_publish_packages",
+    "check_music_copyright_and_audio_mix",
+    "analyze_sales_roas_returns_refunds",
+    "draft_ads_content_listing_diagnosis",
+    "create_pending_action_queue",
+    "write_strategy_memory"
+  ],
+  "manual_gate_then_auto_analysis": [
+    "store_login",
+    "captcha_or_slider",
+    "security_check",
+    "download_reports",
+    "copy_store_backend_tables",
+    "open_aip_publisher"
+  ],
+  "confirmation_required": [
+    "publish_video_via_aip",
+    "upload_video_asset_to_platform",
+    "bind_or_authorize_aip_app",
+    "publish_or_update_listing",
+    "change_price",
+    "change_inventory",
+    "set_discount",
+    "join_campaign",
+    "change_ad_budget_or_bid",
+    "start_or_stop_ads",
+    "refund_customer",
+    "ship_order",
+    "delist_product",
+    "submit_appeal",
+    "contact_creator_or_customer",
+    "pay_invoice_or_buy_ip"
+  ],
+  "protected_store_rules": {
+    "unknown_store": "draft_only",
+    "old_or_stable_store": "draft_only",
+    "high_gmv_store": "draft_only",
+    "active_ads_store": "draft_only",
+    "new_test_store": "confirmed_execution_allowed"
+  }
+}

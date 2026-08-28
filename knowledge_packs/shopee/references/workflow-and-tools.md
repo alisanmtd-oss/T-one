@@ -27,7 +27,7 @@ TW AI Store Customer Service increment: the public 2026-04-17 Seller Help articl
 
 | Tool/surface | Current state | Allowed now | Unlock requirement |
 |---|---|---|---|
-| Existing `LLMClient + config/multi_ai.json` | `connected_read_only` | Reasoning, localization, drafts, structured analysis | Use configured model health/budget checks; it never supplies store authorization. |
+| Existing `LLMClient + private_model_provider_registry_excluded` | `connected_read_only` | Reasoning, localization, drafts, structured analysis | Use configured model health/budget checks; it never supplies store authorization. |
 | Shopee Open Platform | `available_unconnected` | Official documentation research and interface design | Approved developer app, OAuth/shop authorization, scopes, credential reference, store mapping, and connector tests. |
 | Shopee Seller Centre browser | `available_unconnected` | Public help research only | Isolated per-store browser profile, owner login/MFA, explicit task approval, and evidence capture. |
 | PH Shopee Standard Product | `available_unconnected` | Official workflow, exact-match, pending-deadline, renewal and conditional Hot Listing eligibility research | PH store binding, authorized Seller Centre/App, current master control, eligibility, match/link/pending/renewal state, and item-level approval for Link/Don't Link/Modify/Confirm/Change/Unlink/Test/Update/Adopt/evidence upload/Publish. |

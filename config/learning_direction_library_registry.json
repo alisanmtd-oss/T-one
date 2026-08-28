@@ -1,0 +1,119 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-29T08:00:00+08:00",
+  "registry_kind": "learning_direction_library",
+  "purpose": "统一登记公开学习网站、用户资料包、平台规则候选与未接入的外部 AI 工具；仅供蒸馏、评测和回归，不冒充运行能力或真实连接。",
+  "source_registries": {
+    "learning_websites": [
+      "outputs/conversation_audit/platform_course_source_index_2026-07-21.json",
+      "config/learning_sources.json"
+    ],
+    "user_material_packs": [
+      "config/user_collected_training_materials.json"
+    ],
+    "platform_learning_packs": [
+      "config/platform_rule_library_manifest.json"
+    ],
+    "unconnected_ai_research_packs": [
+      "config/web_ai_bridge.json",
+      "config/github_capability_registry.json",
+      "config/ai_agent_skill_connector_master_registry.json"
+    ]
+  },
+  "classification_rules": {
+    "learning_websites": "只保存合法可访问的索引、链接、元数据、哈希、短蒸馏卡和回归题；不得绕过登录、付费墙、验证码、企业权限或复制限制。",
+    "user_material_packs": "保留原始附件路径、哈希、目标智能体、蒸馏状态和使用边界；原文不进入公开包，也不直接建立平台事实。",
+    "platform_learning_packs": "平台规则库是专家的学习记忆与差异规则候选；没有连接、执行身份、审批、真实调用和回执时不叫可执行智能体。",
+    "unconnected_ai_research_packs": "未完成真实连接或自动化验收的外部 AI、Agent、记忆、评测和工作流工具只能作为研究方向；不得显示为已连接、已安装或可执行。",
+    "public_reference_sources": "公开第三方指南只能蒸馏可复用方法；营销主张、供应商 API、未知附件和当前平台规则必须隔离并独立核验。"
+  },
+  "public_reference_sources": [
+    {
+      "source_id": "PUBLIC-REF-WENMAI-001",
+      "title": "Wenmai 全球电商 Skills 小白使用指南",
+      "url": "https://ecnvzobmhfo3.feishu.cn/wiki/FYrjwTH0Bi7P4SkkFD9cIKk9n7e",
+      "source_type": "vendor_authored_public_guide",
+      "access": "public_read_only",
+      "captured_at": "2026-07-29",
+      "content_blocks": 239,
+      "chapter_count": 10,
+      "status": "distilled_reference_only",
+      "runtime_eligible": false,
+      "installed": false,
+      "connected": false,
+      "external_action_authorized": false,
+      "distilled_reference": "skills/t-one-operating-brain/references/cross-platform-commerce-research-workflow.md",
+      "evidence_report": "outputs/learning_sources/wenmai_global_ecommerce_skills_guide_2026-07-29.md",
+      "adopted_scope": [
+        "bounded_research_intake",
+        "product_opportunity_triangulation",
+        "competitor_listing_analysis",
+        "review_mining",
+        "supplier_screening",
+        "trend_content_research",
+        "multi_platform_comparison",
+        "creative_ad_research",
+        "source_linked_evidence"
+      ],
+      "quarantined_scope": [
+        "vendor_invitation",
+        "vendor_api_monetization_claims",
+        "embedded_install_commands",
+        "unverified_current_platform_rules",
+        "unknown_zip_attachment"
+      ],
+      "attachments": [
+        {
+          "file_token": "T8QKbno3polYBFxH061cy8yJnQf",
+          "file_name": "wenmai-skills-整合包-全球电商平台-格林尼治.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 559140,
+          "status": "quarantined_unreviewed",
+          "license": "unknown",
+          "downloaded": false,
+          "installed": false,
+          "connected": false
+        }
+      ]
+    }
+  ],
+  "visibility_policy": {
+    "allowed_surfaces": [
+      "settings_learning_library"
+    ],
+    "forbidden_surfaces": [
+      "realtime_dashboard",
+      "module_dashboard",
+      "project_task_tree",
+      "connector_catalog",
+      "capability_center",
+      "installed_agents",
+      "runtime_router"
+    ]
+  },
+  "truth_policy": {
+    "classification": "learning_only",
+    "runtime_eligible": false,
+    "connected_claim": false,
+    "show_in_dashboard": false,
+    "show_in_capability_center": false,
+    "external_action_authorized": false,
+    "amazon_state": "paused_by_owner"
+  },
+  "github_ai_research_categories": [
+    "agent_framework",
+    "agent_memory",
+    "agent_eval",
+    "agent_observability",
+    "agent_runtime",
+    "agent_security",
+    "super_agent_harness",
+    "software_engineering_agent",
+    "workflow_automation",
+    "workflow_editor_framework",
+    "desktop_agent_runtime",
+    "desktop_computer_use_agent",
+    "legacy_agent_memory_server",
+    "memory_first_agent_runtime"
+  ]
+}

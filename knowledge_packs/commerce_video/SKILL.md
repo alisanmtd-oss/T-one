@@ -37,4 +37,4 @@ description: Use when private_tenant needs competitor commerce-video analysis, s
 - Three test variants
 - Approval boundary
 
-Use `config/creative_video_capabilities.json` as the canonical schema and template registry.
+Use `private_creative_video_registry_excluded` as the canonical schema and template registry.

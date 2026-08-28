@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "updated_at": "2026-07-17T21:20:00+08:00",
+  "rules": [
+    "硬必填只保留 AI 无法可靠编造、且缺失后无法上架或成交的商品事实。",
+    "公司主体、品牌、币种、广告充值、收款通道、时区和站点优先从注册账号与已授权平台读取，不作为项目启动硬门槛。",
+    "负责人确认事实、授权系统读取和 AI 草稿必须分开保存。",
+    "密码、API Key、令牌、验证码、完整银行资料和完整仓库地址不得写入普通配置。"
+  ],
+  "owner_verified_required": [
+    {
+      "id": "product_catalog_source_ref",
+      "label": "商品和规格",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false,
+      "storage_rule": "上传商品表，或填写商品名称、颜色和尺码"
+    },
+    {
+      "id": "product_cost_source_ref",
+      "label": "单件成本",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false,
+      "storage_rule": "从商品表读取，缺失时填写单件成本"
+    },
+    {
+      "id": "pricing_source_ref",
+      "label": "销售价格",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false,
+      "storage_rule": "从商品表读取，缺失时填写已确认售价"
+    },
+    {
+      "id": "product_image_source_ref",
+      "label": "商品图片",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false,
+      "storage_rule": "上传商品图片或图片 ZIP"
+    },
+    {
+      "id": "inventory_source_ref",
+      "label": "现有库存",
+      "group": "产品必填",
+      "value_type": "text",
+      "sensitive": false,
+      "storage_rule": "从商品表或 ERP 读取；没有库存时明确按需生产"
+    }
+  ],
+  "optional_settings": [
+    {
+      "id": "legal_company_name",
+      "label": "公司主体",
+      "source_priority": "注册账号或支付/平台认证"
+    },
+    {
+      "id": "approved_customer_brand",
+      "label": "品牌",
+      "source_priority": "商品或店铺资料；无品牌时不要求"
+    },
+    {
+      "id": "default_currency",
+      "label": "币种",
+      "source_priority": "国家站点与收款通道"
+    },
+    {
+      "id": "target_markets",
+      "label": "目标国家站点",
+      "source_priority": "项目路由与已授权店铺"
+    },
+    {
+      "id": "automation_timezone",
+      "label": "运营时区",
+      "source_priority": "项目站点或账号设置"
+    },
+    {
+      "id": "margin_floor_pct",
+      "label": "最低毛利率",
+      "source_priority": "利润策略设置"
+    },
+    {
+      "id": "max_unapproved_ad_spend_usd",
+      "label": "广告审批阈值",
+      "source_priority": "广告策略设置；充值由平台账户决定"
+    },
+    {
+      "id": "max_unapproved_refund_usd",
+      "label": "退款审批阈值",
+      "source_priority": "售后策略设置"
+    },
+    {
+      "id": "fulfillment_location_ref",
+      "label": "仓库与履约",
+      "source_priority": "订单或履约项目设置"
+    },
+    {
+      "id": "official_sender_ref",
+      "label": "外联账号",
+      "source_priority": "B2B 项目连接器"
+    }
+  ],
+  "system_read_required": [
+    {
+      "id": "store_routes",
+      "label": "平台+站点+店铺模式+归属",
+      "source": "店铺/ERP 授权"
+    },
+    {
+      "id": "orders_inventory_settlement",
+      "label": "订单/库存/退款/结算",
+      "source": "平台 API、ERP 或核验报表"
+    },
+    {
+      "id": "advertising_accounts",
+      "label": "广告账户/余额/花费/归因",
+      "source": "平台广告账户与独立授权"
+    },
+    {
+      "id": "customer_pipeline",
+      "label": "客户/触达/回复/报价/成交",
+      "source": "CRM 与人工证据"
+    },
+    {
+      "id": "fulfillment_status",
+      "label": "仓库/承运商/时效/签收",
+      "source": "仓储物流系统"
+    },
+    {
+      "id": "connector_health",
+      "label": "连接器授权与健康状态",
+      "source": "连接中心"
+    }
+  ],
+  "ai_generated_draft": [
+    {
+      "id": "listing_copy",
+      "label": "Listing 文案与本地化"
+    },
+    {
+      "id": "competitor_insight",
+      "label": "同行与市场洞察"
+    },
+    {
+      "id": "campaign_draft",
+      "label": "活动/广告/内容草稿"
+    },
+    {
+      "id": "outreach_draft",
+      "label": "邮件/私信/WhatsApp 话术草稿"
+    },
+    {
+      "id": "forecast_and_priority",
+      "label": "预测、优先级和下一步"
+    }
+  ]
+}

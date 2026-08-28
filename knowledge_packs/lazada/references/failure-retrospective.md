@@ -7,7 +7,7 @@
 - 状态：`failed_attempt`
 - 发生：`skill-creator/scripts/quick_validate.py` 启动时出现 `ModuleNotFoundError: yaml`。
 - 影响：官方快速校验脚本未完成；不影响 JSON/Skill 专属测试执行。
-- 处理：未擅自安装新依赖；使用 `tests/test_lazada_expert_training.py` 验证 frontmatter、路径、契约、安全边界和回归集。
+- 处理：未擅自安装新依赖；使用 `private_regression_suite_excluded` 验证 frontmatter、路径、契约、安全边界和回归集。
 - 后续：若负责人批准依赖变更，再在共享依赖治理中处理，不能为单一 Skill 私装一套环境。
 
 ## F002 Open Platform URL 的 `&nodeId` 被命令行拆分
@@ -83,7 +83,7 @@
 - 状态：`failed_attempt`
 - 发生：Lazada Skill 曾把 POD 作为默认 Listing 分支，LZ-E007 只用 POD shirt 做版权样例；共享旧桌面入口和 B2B Skill 也存在当前优先项目耦合。
 - 修复：Lazada Skill 改为任意第三方/个性化/用户素材的权利审查，评测改为匿名家居商品并新增跨类目、跨租户、跨任务回归。
-- 共享移交：`desktop_app/private_tenant_desktop.py` 和 `skills/b2b-foreign-trade-sales/**` 由其所有者评估通用化；本专家不并发修改共享资产。
+- 共享移交：`desktop_app/private_tenant_desktop.py` 和 `private_shared_sales_source_excluded**` 由其所有者评估通用化；本专家不并发修改共享资产。
 - 边界：项目样本仍可在其 tenant/project/product/task 内做真实回归，但不得成为平台公共默认值或进入开源包。
 
 ## F012 证据账本 v2 URL 字段兼容
@@ -148,7 +148,7 @@
 ## F020 组合回归中的共享 Amazon 字符串断言误命中
 
 - 状态：`failed_attempt`
-- 发生：第 05 轮最终组合回归执行 89 项，其中共享 `tests/test_platform_product_requirements.py` 的 Amazon 匿名家电测试用 `assertNotIn("US", json.dumps(submission))` 检查站点串台，但合法事件名 `LISTINGS_ITEM_STATUS_CHANGE` 中的 `STATUS` 自身包含连续大写字符 `US`，导致 1 项与 Lazada 无关的失败。
+- 发生：第 05 轮最终组合回归执行 89 项，其中共享 `private_regression_suite_excluded` 的 Amazon 匿名家电测试用 `assertNotIn("US", json.dumps(submission))` 检查站点串台，但合法事件名 `LISTINGS_ITEM_STATUS_CHANGE` 中的 `STATUS` 自身包含连续大写字符 `US`，导致 1 项与 Lazada 无关的失败。
 - 处理：本专家没有修改共享测试或 Amazon 契约；保留定向 Lazada 41/41 结果，并把组合结果如实记为 88/89，交由共享文件负责人把断言收窄到结构化站点字段。
 - 边界：该失败不证明 Lazada 训练资产回归，也不能被本专家越权修成绿色。
 
@@ -206,7 +206,7 @@
 
 - 状态：`failed_attempt`
 - 发生：本轮 Playwright 深度浏览的部分新快照最初落在工作区根 `.playwright-cli`，超出 Lazada 专家独立写入目录。
-- 处理：先解析并核对绝对源/目标路径，再只移动本轮可识别的 39 个产物到 `skills/platform-experts/lazada/.playwright-cli/`；未碰其他任务文件。
+- 处理：先解析并核对绝对源/目标路径，再只移动本轮可识别的 39 个产物到 `private_browser_capture_excluded`；未碰其他任务文件。
 - 边界：这是本地证据目录所有权修复，不改变网页事实或业务状态。
 
 ## F029 increment-07 规则测试措辞不匹配

@@ -1,0 +1,71 @@
+{
+  "enabled": false,
+  "status": "quarantined_low_quality_inference",
+  "disabled_reason": "Only reviewed, scoped learning memories may enter T One. Generic inference from mixed historical records is quarantined.",
+  "safe_mode": true,
+  "cadence": "hourly when external automation is enabled; otherwise every auto-mode run",
+  "principles": [
+    "Only observe, analyze, remember, and draft.",
+    "Never bypass login, CAPTCHA, slider, paywall, or platform anti-bot controls.",
+    "Never publish, delist, change price, contact creators, ship orders, refund, pay, authorize apps, or change store settings without human confirmation.",
+    "Prefer real money cases, seller data, competitor links, videos, reviews, and store metrics over generic courses."
+  ],
+  "tracks": [
+    {
+      "id": "product_market_learning",
+      "name": "Product and category learning",
+      "enabled": true,
+      "record_types": ["platform_ranking_signal", "hot_link", "collection_job", "store_metric_snapshot"],
+      "question": "Which products, categories, countries, platforms, and time windows are becoming more worth testing?"
+    },
+    {
+      "id": "viral_content_learning",
+      "name": "Viral content and script learning",
+      "enabled": true,
+      "record_types": ["viral_content_signal", "video_breakdown", "video_script", "creator_spike_event"],
+      "question": "Which hooks, scenes, emotions, creator types, edit structures, and CTAs should we copy or avoid?"
+    },
+    {
+      "id": "review_pain_learning",
+      "name": "Reviews, complaints, and product-pain learning",
+      "enabled": true,
+      "record_types": ["review_insight", "store_health_event", "store_operation_event"],
+      "question": "Which competitor pain points and own-store complaints should change product, listing, script, or service strategy?"
+    },
+    {
+      "id": "risk_compliance_learning",
+      "name": "IP, prohibited-term, and platform-rule learning",
+      "enabled": true,
+      "record_types": ["ip_image_risk", "compliance_term", "tk_rule_update"],
+      "question": "Which words, images, characters, brands, claims, patents, and policy changes should block or slow automation?"
+    },
+    {
+      "id": "industry_operator_learning",
+      "name": "Industry operator learning",
+      "enabled": true,
+      "record_types": ["industry_research_asset", "selection_playbook", "money_case", "influencer_cooperation"],
+      "question": "Which outside lessons and real cases should become operating rules for the AI Ecommerce Director?"
+    },
+    {
+      "id": "paid_ads_roi_learning",
+      "name": "Paid ads, breakeven ROI, and cold-start learning",
+      "enabled": true,
+      "record_types": ["store_metric_snapshot", "video_script", "viral_content_signal", "video_breakdown", "money_case", "industry_research_asset"],
+      "question": "What breakeven ROI, ROAS, budget pacing, cold-start material test, and harvest timing rules should control paid ads?"
+    },
+    {
+      "id": "live_room_operator_learning",
+      "name": "Live room control, link, and discount learning",
+      "enabled": true,
+      "record_types": ["store_metric_snapshot", "store_operation_event", "video_script", "industry_research_asset", "money_case"],
+      "question": "When should live control add product links, change discount rhythm, push coupons, protect margin, or stop a live-room tactic?"
+    },
+    {
+      "id": "ai_video_production_learning",
+      "name": "AI video, real-shot, and mixed-edit learning",
+      "enabled": true,
+      "record_types": ["viral_content_signal", "video_breakdown", "video_script", "industry_research_asset", "ip_image_risk", "compliance_term"],
+      "question": "Which Seedance 2.0, real-shot, editing, voiceover, and mixed-cut workflows produce high-quality compliant ecommerce videos?"
+    }
+  ]
+}

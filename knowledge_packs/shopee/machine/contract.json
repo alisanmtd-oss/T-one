@@ -10,7 +10,7 @@
   "purpose": "Incrementally extend the existing T One Shopee capability for SG/MY/TH/VN/PH/ID/TW/BR while keeping platform rules product-agnostic, category schemas dynamic, tenant product facts isolated, and all live actions approval-gated.",
   "runtime": {
     "llm_gateway": "ai_ecommerce_director.llm.LLMClient",
-    "provider_config": "config/multi_ai.json",
+    "provider_config": "private_model_provider_registry_excluded",
     "second_agent_runtime_allowed": false,
     "model_slots": {
       "reasoning": [
@@ -379,14 +379,14 @@
     "app_visible_disabled_youying_shell": true,
     "expert_router_probe_for_shopee": "returned_none",
     "checked_files": [
-      "data/real_world/store_profile.jsonl",
-      "data/workspace_runtime.json",
-      "config/workspace_projects.json",
-      "config/platform_expert_registry.json",
-      "config/platform_adapter_registry.json",
-      "config/platform_developer_capabilities.json",
-      "config/platform_activity_rules.json",
-      "config/platform_store_type_evidence_registry.json"
+      "private_store_profile_data_excluded",
+      "private_workspace_runtime_data_excluded",
+      "private_workspace_registry_excluded",
+      "private_platform_expert_registry_excluded",
+      "private_platform_adapter_registry_excluded",
+      "private_platform_capability_registry_excluded",
+      "private_platform_activity_rules_excluded",
+      "private_store_type_evidence_registry_excluded"
     ]
   },
   "mother_requirement_fusion": {
@@ -399,7 +399,7 @@
       "blocked_connector",
       "rejected_unsafe"
     ],
-    "matrix": "skills/platform-experts/shopee/references/mother-requirement-fusion-matrix.md",
+    "matrix": "private_platform_expert_source_excluded",
     "reuse_invariants": [
       "single_existing_LLMClient_and_multi_ai_gateway",
       "existing_desktop_project_store_task_hierarchy",
@@ -701,16 +701,16 @@
       "failure_recovery"
     ],
     "allowed_write_paths": [
-      "skills/platform-experts/shopee/**",
-      "config/platform_expert_training/shopee.json",
-      "tests/test_shopee_expert_training.py"
+      "private_platform_expert_source_excluded**",
+      "private_platform_training_contract_excluded",
+      "private_regression_suite_excluded"
     ],
     "forbidden_shared_writes": [
       "desktop_workspace.py",
       "server.py",
-      "config/platform_expert_registry.json",
-      "config/current_task_queue.json",
-      "tk智能体_当前权威记忆.md",
+      "private_platform_expert_registry_excluded",
+      "private_task_queue_excluded",
+      "private_authoritative_project_memory_excluded",
       "other_expert_assets"
     ]
   },
@@ -1505,7 +1505,7 @@
       ],
       "evidence_level": "verified_software_observation",
       "dedupe_before_research": {
-        "registry": "config/github_capability_registry.json",
+        "registry": "private_github_admission_registry_excluded",
         "registry_updated_at": "2026-07-18T01:48:00+08:00",
         "owner_repo_matches_for_sail_sg": 0,
         "existing_Shopee_repository_record": "congminh1254/shopee-sdk_research_only_not_admitted",
@@ -3961,7 +3961,7 @@
         "write_and_delete_lifecycle_tests",
         "community_endpoint_coverage_claim_conflicted_by_issue_history"
       ],
-      "boundary": "The repository is absent from config/github_capability_registry.json and remains uninstalled. Only store-scoped token namespace, manager separation and structured error patterns may be reimplemented inside T One's existing connector and DPAPI credential-ref system. Author claims about endpoint coverage, tests or live sandbox are not official platform facts.",
+      "boundary": "The repository is absent from private_github_admission_registry_excluded and remains uninstalled. Only store-scoped token namespace, manager separation and structured error patterns may be reimplemented inside T One's existing connector and DPAPI credential-ref system. Author claims about endpoint coverage, tests or live sandbox are not official platform facts.",
       "valid_until_or_recheck_when": "before_any_architecture_reuse_or_registry_admission"
     },
     {

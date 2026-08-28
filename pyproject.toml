@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "t-one-community-core"
-version = "0.5.0"
-description = "Local-first AI operating core for global e-commerce and B2B foreign trade."
+name = "t-one"
+version = "0.5.9"
+description = "Local-first T One desktop runtime for multi-project commerce operations."
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
@@ -20,6 +20,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+tone = "ai_ecommerce_director.tone_cli:main"
+
 [project.urls]
 Homepage = "https://github.com/alisanmtd-oss/T-one"
 Issues = "https://github.com/alisanmtd-oss/T-one/issues"
@@ -29,4 +32,4 @@ Discussions = "https://github.com/alisanmtd-oss/T-one/discussions"
 include = ["ai_ecommerce_director*"]
 
 [tool.setuptools.package-data]
-"ai_ecommerce_director.knowledge_packs" = ["catalog.json"]
+"ai_ecommerce_director" = ["desktop_assets/**/*"]

@@ -687,7 +687,7 @@
         "amz-data-kiosk-current-2026",
         "amz-data-kiosk-sample-audit-2026"
       ],
-      "graduate_when": "Connects traffic, conversion, margin, returns and repeat behavior with the correct marketplace, entity, time and denominator; keeps by-date and by-ASIN aggregations separate; handles Data Kiosk data/error/no-data states; and never reports public contracts as a connected store result."
+      "graduate_when": "Connects traffic, conversion, margin, returns and repeat behavior with the correct marketplace, entity, time and denominator; keeps by-date and by-ASIN aggregations separate; handles Data Kiosk private_runtime_data_excluded states; and never reports public contracts as a connected store result."
     },
     {
       "id": "api-data-security",

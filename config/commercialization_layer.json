@@ -1,0 +1,331 @@
+{
+  "version": "commercialization-layer-ai-credit-reseller-v1",
+  "positioning": {
+    "internal_name": "Global Commerce OS Commercialization Layer",
+    "current_product_name": "AI TikTok Shop Operations Director",
+    "stage": "closed_beta",
+    "pricing_enabled": true,
+    "goal": "Commercialize the AI Ecommerce Director as a cloud brain plus local connector. Base tools can be opened without recharge; paid value comes from AI/API consumption, data automation, reports, monitoring and strategy work."
+  },
+  "business_model": {
+    "name": "AI credit reseller and operations automation",
+    "customer_pricing_principle": "Customers recharge platform credits and consume credits when AI models, data automation, report generation, video breakdown or strategy meetings are used.",
+    "margin_principle": "Customer-facing prices can follow the public retail/API list price of each AI provider. Owner profit comes from negotiated supplier discounts, volume rebates, enterprise agreements or model-routing optimization.",
+    "base_access": [
+      "dashboard browsing",
+      "manual product target setup",
+      "manual competitor/link/screenshot upload",
+      "basic reports from already-collected data",
+      "read-only store data viewing when data is imported by the customer"
+    ],
+    "metered_access": [
+      "multi-AI chat",
+      "strategy meetings",
+      "large report generation",
+      "video script and viral-content breakdown",
+      "AI employee batch work",
+      "automated collection jobs run by the platform",
+      "customer-specific long-running monitoring"
+    ],
+    "owner_margin_sources": [
+      "provider discount spread",
+      "enterprise model quota discount",
+      "bundled monitoring packages",
+      "managed data automation service",
+      "premium strategy/report templates",
+      "high-touch store operations service"
+    ]
+  },
+  "credit_wallet": {
+    "customer_visible": [
+      "balance",
+      "recharge records",
+      "AI job usage",
+      "estimated cost per job",
+      "model used",
+      "report generated"
+    ],
+    "owner_only": [
+      "provider wholesale cost",
+      "provider discount",
+      "gross margin",
+      "routing rules",
+      "provider API keys",
+      "supplier contract terms"
+    ],
+    "billing_events": [
+      "ai_chat",
+      "strategy_review",
+      "video_breakdown",
+      "report_generation",
+      "skill_agent_run",
+      "automated_collection",
+      "monitoring_task",
+      "data_cleaning",
+      "translation",
+      "listing_draft"
+    ],
+    "required_fields": [
+      "tenant_id",
+      "workspace_id",
+      "user_id",
+      "provider_id",
+      "model_id",
+      "job_type",
+      "input_tokens",
+      "output_tokens",
+      "retail_cost_usd",
+      "owner_cost_usd",
+      "gross_margin_usd",
+      "created_at"
+    ]
+  },
+  "ability_pricing_catalog": [
+    {
+      "ability_id": "manual_capture",
+      "customer_name": "平台页面采集",
+      "admin_name": "manual_capture",
+      "customer_visible_label": "采集入口",
+      "billing_policy": "free",
+      "unit": "page",
+      "retail_price_usd": 0,
+      "owner_cost_usd": 0,
+      "customer_note": "客户自己打开已登录页面并采集当前可见数据，不扣余额。",
+      "owner_note": "平台不承担模型成本，只保存证据和原始记录。"
+    },
+    {
+      "ability_id": "automated_collection",
+      "customer_name": "自动采集任务",
+      "admin_name": "scheduled_collection_job",
+      "customer_visible_label": "自动巡检",
+      "billing_policy": "metered",
+      "unit": "run",
+      "retail_price_usd": 0.2,
+      "owner_cost_usd": 0.05,
+      "customer_note": "按平台、关键词、商品或店铺的自动巡检次数计费。",
+      "owner_note": "后台可按实际供应商/API/代理/服务器成本调整。"
+    },
+    {
+      "ability_id": "video_breakdown",
+      "customer_name": "TikTok 视频拆解",
+      "admin_name": "viral_content_breakdown",
+      "customer_visible_label": "视频脚本拆解",
+      "billing_policy": "metered",
+      "unit": "video",
+      "retail_price_usd": 0.5,
+      "owner_cost_usd": 0.12,
+      "customer_note": "输出钩子、场景、运镜、字幕、CTA、评论购买原因和复刻建议。",
+      "owner_note": "后台可路由到免费小模型清洗，再用高质量模型做最终报告。"
+    },
+    {
+      "ability_id": "strategy_review",
+      "customer_name": "多模型策略复盘",
+      "admin_name": "multi_ai_strategy_meeting",
+      "customer_visible_label": "AI 复盘会议",
+      "billing_policy": "metered",
+      "unit": "meeting",
+      "retail_price_usd": 2,
+      "owner_cost_usd": 0.4,
+      "customer_note": "多个模型讨论选品、内容、达人、预算、风控和下一步动作。",
+      "owner_note": "供应商折扣、模型路由和批量套餐差价是毛利来源。"
+    },
+    {
+      "ability_id": "report_generation",
+      "customer_name": "经营报告生成",
+      "admin_name": "commerce_report_generation",
+      "customer_visible_label": "报告生成",
+      "billing_policy": "metered",
+      "unit": "report",
+      "retail_price_usd": 1,
+      "owner_cost_usd": 0.2,
+      "customer_note": "生成简短老板版报告，特殊项可展开看证据。",
+      "owner_note": "报告正文不显示模型、能力或内部工具署名。"
+    },
+    {
+      "ability_id": "operation_ability_run",
+      "customer_name": "运营能力检查",
+      "admin_name": "skill_agent_run",
+      "customer_visible_label": "运营能力检查",
+      "billing_policy": "metered",
+      "unit": "check",
+      "retail_price_usd": 0.3,
+      "owner_cost_usd": 0.06,
+      "customer_note": "用于商品卡、达人、利润、Listing、风控等专项检查。",
+      "owner_note": "内部可映射到多个 skill/agent，但前台不显示 skill 署名。"
+    }
+  ],
+  "delivery_model": {
+    "recommended": "cloud_brain_with_local_connector",
+    "forbidden_first_stage": [
+      "one_time_offline_installer",
+      "full_source_code_delivery",
+      "customer_local_copy_of_global_knowledge_base",
+      "unlimited_export_of_pattern_library"
+    ],
+    "cloud_brain_modules": [
+      "commerce_brain",
+      "signal_engine",
+      "hypothesis_engine",
+      "learning_engine",
+      "knowledge_graph",
+      "agent_prompt_and_policy",
+      "public_pattern_library",
+      "evaluation_and_governance"
+    ],
+    "local_connector_modules": [
+      "manual_excel_csv_import",
+      "screenshot_upload",
+      "browser_visible_page_capture",
+      "authorized_store_report_import",
+      "local_file_staging",
+      "redaction_before_upload"
+    ]
+  },
+  "tenant_model": {
+    "required_ids": [
+      "tenant_id",
+      "workspace_id",
+      "user_id",
+      "store_id",
+      "report_id",
+      "source_id"
+    ],
+    "data_separation": {
+      "customer_private_knowledge_base": "customer-specific store, product, creator, sales, ad, review and strategy memory",
+      "public_pattern_library": "sanitized reusable platform patterns, video structures, category signals and risk rules",
+      "global_risk_library": "platform rules, IP/TRO/account-risk terms and banned-word intelligence without customer secrets"
+    },
+    "rules": [
+      "Every record must carry tenant_id and workspace_id before customer deployment.",
+      "A customer can never query another customer's private records.",
+      "Global public patterns can only be created from sanitized, non-private, non-secret knowledge.",
+      "Reports must show whether the conclusion came from private data, public pattern library, or both."
+    ]
+  },
+  "customer_strategy_controls": {
+    "goal": "Customers can talk to AI and adjust strategy without touching hidden admin settings.",
+    "visible_to_customer": [
+      "AI chat input panel",
+      "strategy correction box",
+      "monitoring target setup",
+      "preferred platform/country/store/product filters",
+      "report feedback",
+      "approval queue notes"
+    ],
+    "writes_to": [
+      "customer_feedback",
+      "strategy_memory",
+      "learning_event",
+      "agent_task",
+      "pending_approval"
+    ],
+    "rules": [
+      "Customer strategy changes affect only their tenant/workspace unless manually promoted to a sanitized global pattern.",
+      "Customer can request a strategy change, but high-risk store actions still enter the approval queue.",
+      "AI must show whether a recommendation came from customer private data, global pattern library, or platform public data."
+    ]
+  },
+  "data_automation_model": {
+    "owner_platform_jobs": [
+      "global public trend collection",
+      "platform policy and risk library updates",
+      "generic keyword/risk-word/blue-ocean-word expansion",
+      "sanitized public pattern library updates",
+      "system health checks"
+    ],
+    "customer_configured_jobs": [
+      "monitored products",
+      "competitor links",
+      "brand radar",
+      "own store data import",
+      "own ads/order/return reports",
+      "private creator database",
+      "private strategy memory"
+    ],
+    "principle": "Owner can run shared automation centrally. Customers manually decide what they want monitored, then the platform schedules and charges metered work where applicable."
+  },
+  "security_and_control": {
+    "license_required": true,
+    "audit_required": true,
+    "visible_signature_required": false,
+    "backend_audit_trace_required": true,
+    "export_control_required": true,
+    "object_level_authorization_required": true,
+    "approval_required_actions": [
+      "login_or_verification",
+      "publish_listing",
+      "delist_listing",
+      "change_price",
+      "change_discount",
+      "join_campaign",
+      "launch_or_adjust_ads",
+      "refund",
+      "ship_order",
+      "contact_creator",
+      "upload_public_video",
+      "authorize_app",
+      "buy_ip_node",
+      "change_store_setting",
+      "export_private_knowledge_base"
+    ],
+    "never_export_by_default": [
+      "global_video_pattern_library",
+      "global_creator_library",
+      "global_keyword_library",
+      "global_strategy_memory",
+      "full_competitor_database",
+      "raw_customer_store_data",
+      "api_keys",
+      "passwords",
+      "cookies",
+      "browser_profiles",
+      "legal_identity_data",
+      "customer_personal_data"
+    ]
+  },
+  "closed_beta_workflow": [
+    "Collect authorized or manually uploaded store data.",
+    "Run market and product monitoring.",
+    "Generate product, video, listing, creator, ad and risk reports.",
+    "Create action queue instead of direct execution.",
+    "Human confirms sensitive actions.",
+    "Import outcomes after execution.",
+    "Update StrategyMemory, LearningEvent, KnowledgeScore and PatternWeight.",
+    "Review bugs, data gaps and wrong conclusions daily."
+  ],
+  "ai_employee_permissions": {
+    "deepseek_gui": {
+      "role": "controlled_external_worker",
+      "allowed": [
+        "course transcript cleanup",
+        "knowledge classification",
+        "TikTok video breakdown draft",
+        "keyword and risk-word classification",
+        "missing-data list",
+        "report draft",
+        "self-review"
+      ],
+      "blocked": [
+        "store login",
+        "credential access",
+        "api key access",
+        "cookie or browser profile access",
+        "customer private data export",
+        "real store action",
+        "publishing",
+        "refund",
+        "shipping",
+        "creator contact"
+      ]
+    }
+  },
+  "p0_implementation_tasks": [
+    "Add tenant/workspace/store fields to customer-facing records.",
+    "Keep report ownership and audit records in backend only; do not embed visible signatures, model names, agent names or watermark text in customer-facing reports.",
+    "Add export-control policy for global and private knowledge.",
+    "Add audit records for imports, analysis, report generation, export and approvals.",
+    "Split customer private knowledge from sanitized public pattern library.",
+    "Keep all real store actions approval-gated during closed beta.",
+    "Run daily evidence-quality and bug review before expanding customer access."
+  ]
+}

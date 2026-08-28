@@ -55,7 +55,7 @@ Source checklist: `pasted-text.txt`, read in full on 2026-07-18. The source is a
 ## Current baseline that must not regress
 
 - C1 is complete: `T-One-0.1.0`, T1 lettermark, one-store long-lived primary conversation, project/platform/multi-store hierarchy, context isolation and formal App acceptance.
-- The only model gateway is `LLMClient + config/multi_ai.json`; credentials use local DPAPI references.
+- The only model gateway is `LLMClient + private_model_provider_registry_excluded`; credentials use local DPAPI references.
 - Shared expert/extension/adapter/approval foundations are existing capabilities, not Walmart deliverables.
 - Amazon BitBrowser/store facts, Amazon ASIN structures and B2B customer timelines remain scoped historical/verified facts of their own projects; they do not prove Walmart connectivity.
 - Walmart currently has no evidenced store binding, Marketplace OAuth, Seller Center session, WFS enrollment, Connect advertiser, ERP map, orders, inventory, payments or ads data.

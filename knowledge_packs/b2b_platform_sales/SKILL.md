@@ -8,7 +8,7 @@ description: Operate T One's B2B platform sales specialist for Alibaba.com, Made
 ## Load the shared foundation
 
 1. Read the authority files required by `AGENTS.md`.
-2. Read `skills/b2b-foreign-trade-sales/SKILL.md`. It remains the canonical account timeline, qualification, quotation, negotiation, delivery, collection, and approval workflow.
+2. Read `private_shared_sales_source_excluded`. It remains the canonical account timeline, qualification, quotation, negotiation, delivery, collection, and approval workflow.
 3. Read [source-and-boundaries.md](references/source-and-boundaries.md) before using the user training document or any fixed threshold from it.
 4. Reuse `ai_ecommerce_director/b2b_sales_runtime.py`; do not create a second CRM, customer, quote, order, payment, or shipment runtime.
 

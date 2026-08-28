@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-20T18:34:00+08:00",
+  "selected_adapter": "t-one-owned-runtime",
+  "adapters": [
+    {
+      "id": "t-one-owned-runtime",
+      "label": "T-one 自有任务、模型与多模态运行时",
+      "status": "selected_formal_app_verified",
+      "source": {
+        "repository": "local:t-one-commerce-agent-desktop",
+        "version": "0.2.0",
+        "commit": "78EB2B3E90035330CD84FD5F45CCAA528D1E35F37E345E736DF19215FCBF0258",
+        "tree": "5FA5D06AF7948C3522C24C53ADDA11178DAF6D170310172DF3C6E5869E15EF13",
+        "license": "project_private_pending_public_split",
+        "license_sha256": "A847D639C1F4CB8CB1665C31C63789726D4CFE2F4A4605C59F7A0B201724B208"
+      },
+      "transport": "local_t_one_task_and_provider_pipeline",
+      "enabled_toolsets": [],
+      "blocked_features": [
+        "yolo",
+        "gateway",
+        "cron",
+        "messaging",
+        "skill_write",
+        "plugin_load",
+        "remote_mcp",
+        "terminal",
+        "browser",
+        "computer_use",
+        "external_write",
+        "external_side_effect"
+      ],
+      "business_control_plane": "t_one",
+      "credential_policy": "provider_secret_reference_only",
+      "store_identity_policy": "exact_t_one_execution_identity_required",
+      "external_action_policy": "owner_confirmation_and_receipt_required",
+      "formal_app_evidence": "outputs/a43_formal_app_runtime_decision_latest.json",
+      "formal_package_sha256": "61E40932076367E550D472E11641ED8E1545B637111C6AF6B2579EECE6F1F0A8",
+      "external_actions_in_acceptance": 0
+    },
+    {
+      "id": "hermes-agent-v0.18.2-isolated",
+      "label": "Hermes Agent v0.18.2 隔离运行时",
+      "status": "evaluated_selective_patterns_retained_not_product_default",
+      "source": {
+        "repository": "NousResearch/hermes-agent",
+        "release": "v2026.7.7.2",
+        "version": "0.18.2",
+        "commit": "9de9c25f620ff7f1ce0fd5457d596052d5159596",
+        "tree": "1624297419fab639f57302244f6bb28b161bd014",
+        "license": "MIT",
+        "license_sha256": "E29DFAF6905A8D396A58EA4BD84AD27057756BBD9599B5BEC0971AE34D2A2118"
+      },
+      "transport": "isolated_local_subprocess_json_envelope",
+      "pilot_network": "loopback_only_socket_guard_enforced",
+      "enabled_toolsets": [],
+      "maximum_iterations": 1,
+      "blocked_features": [
+        "yolo",
+        "gateway",
+        "cron",
+        "messaging",
+        "skill_write",
+        "plugin_load",
+        "remote_mcp",
+        "terminal",
+        "browser",
+        "computer_use",
+        "external_write"
+      ],
+      "business_control_plane": "t_one",
+      "credential_policy": "no_raw_credentials_in_envelope_or_receipt",
+      "store_identity_policy": "exact_t_one_execution_identity_required",
+      "external_action_policy": "forbidden_in_pilot"
+      ,
+      "core_pilot_evidence": "outputs/a43_hermes_runtime_adapter_pilot_latest.json",
+      "core_pilot_result": {
+        "actual_hermes_agent_runs": 3,
+        "provider_fixtures": 2,
+        "isolated_store_scopes": 2,
+        "durable_t_one_task_runs": 2,
+        "restart_and_idempotency_verified": true,
+        "cross_store_isolation_verified": true,
+        "zero_tool_surface_verified": true,
+        "loopback_network_guard_verified": true,
+        "process_cleanup_verified": true,
+        "external_actions": 0,
+        "cold_process_time_ms": [30125, 29952, 29969],
+        "remaining": [],
+        "decision": "adapt_selectively_not_adopt_full_runtime",
+        "decision_evidence": "outputs/a43_formal_app_runtime_decision_latest.json",
+          "image_pdf_semantic_slice": {
+            "status": "verified_formal_t_one_app",
+            "evidence": "outputs/a41_formal_app_multimodal_acceptance_latest.json",
+            "package": "desktop_app/dist/T-one-0.2.0.exe",
+            "external_ai_call_count": 1,
+            "external_business_action_count": 0
+          },
+          "browser_read_only_slice": {
+            "status": "verified_local_t_one_dashboard_read_only",
+            "evidence": "outputs/a43_browser_readonly_receipt_latest.json",
+            "source_scope": "loopback_t_one_dashboard",
+            "browser_write_action_count": 0,
+            "external_business_action_count": 0
+          },
+          "windows_computer_use_local_slice": {
+            "status": "verified_isolated_local_test_app_only",
+            "evidence": "outputs/a43_windows_local_receipt_latest.json",
+            "credential_count": 0,
+            "external_business_action_count": 0
+          },
+          "warm_worker_performance_comparison": {
+            "status": "verified_fixture_only",
+            "evidence": "outputs/a43_hermes_warm_worker_pilot_latest.json",
+            "cold_median_ms": 29969,
+            "warm_median_ms": 10265,
+            "cold_to_warm_median_ratio": 2.92,
+            "production_provider_verified": false,
+            "real_store_verified": false,
+            "external_business_action_count": 0
+          }
+      }
+    }
+  ]
+}

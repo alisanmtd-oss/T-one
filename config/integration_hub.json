@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T06:44:00+08:00",
+  "open_api": {
+    "status": "local_owner_controlled_mvp",
+    "planned_base_path": "/api/v1",
+    "implemented_read_endpoints": [
+      "GET /api/v1/openapi.json",
+      "GET /api/v1/realtime-dashboard",
+      "GET /api/v1/projects",
+      "GET /api/v1/projects/{project_id}/state",
+      "GET /api/v1/projects/{project_id}/stores/{store_binding_id}/product-requirements",
+      "GET /api/v1/projects/{project_id}/channels/{channel_id}/product-requirements",
+      "GET /api/v1/projects/{project_id}/stores/{store_binding_id}/connection-test",
+      "GET /api/v1/projects/{project_id}/stores/{store_binding_id}/connection-options (owner session; metadata only)",
+      "GET /api/v1/erp-cost-source-control (owner session; non-Amazon metadata only)",
+      "GET /api/v1/integrations"
+    ],
+    "owner_only_local_write": [
+      "POST /api/v1/verified-facts (owner session or desktop bridge)",
+      "POST /api/v1/product-intake (owner session or desktop bridge)",
+      "POST /api/v1/projects/{project_id}/stores/{store_binding_id}/connection-config (owner session; references only)",
+      "POST /api/v1/projects/{project_id}/stores/{store_binding_id}/platform-authorizations/amazon-sp-api/verify (owner session; online read-only verification before encrypted save)",
+      "POST /api/v1/projects/{project_id}/stores/{store_binding_id}/platform-authorizations/amazon-sp-api/retest (owner session; encrypted credential reuse)",
+      "POST /api/v1/projects/{project_id}/stores/{store_binding_id}/erp-connectors/http-json/verify (owner session; online read-only verification before encrypted save)",
+      "POST /api/v1/projects/{project_id}/stores/{store_binding_id}/erp-connectors/http-json/retest (owner session; exact store scope)",
+      "POST /api/v1/erp-cost-source/audit (owner session; metadata-only preflight)",
+      "POST /api/v1/erp-cost-source/review (owner session; no external action)"
+    ],
+    "implemented_external_local_contract": [
+      "GET /api/v1/external-access-control (owner session; metadata only)",
+      "POST /api/v1/external-access/clients (owner session; one-time raw token)",
+      "POST /api/v1/external-access/clients/revoke (owner session)",
+      "GET /api/v1/external/context?project_id=... (scoped bearer token)",
+      "POST /api/v1/external/drafts (scoped bearer token + idempotency key; owner review only)",
+      "GET /api/v1/external/drafts/{draft_id} (same-client scoped bearer token)",
+      "MCP stdio: python -m ai_ecommerce_director.mcp_stdio_server --root <workspace> (mcp_client token via TONE_MCP_BEARER_TOKEN; no listener)"
+    ],
+    "not_implemented": [
+      "external OAuth client registration",
+      "public internet deployment",
+      "signed webhook receiver",
+      "store write scopes",
+      "MCP Streamable HTTP or public listener"
+    ],
+    "client_types": ["TeeLab App", "Codex", "Claude Code", "CLI", "MCP client", "approved external AI"],
+    "required_controls": [
+      "workspace-scoped API key or OAuth client",
+      "least-privilege scopes",
+      "tenant/workspace/project/task/store-route isolation",
+      "idempotency key on writes",
+      "signed webhooks with replay protection",
+      "audit event before and after every side effect",
+      "approval policy and reversible-action metadata"
+    ],
+    "fact_rule": "External AI may draft or infer only fields marked ai_generated_draft; verified business facts stay read-only unless an authorized source or owner updates them."
+  },
+  "connectors": [
+    {"id": "multi-ai-runtime", "group": "AI与开发工具", "name": "OpenAI / Claude / DeepSeek / Gemini / OpenAI-compatible", "protocol": "provider API", "status": "core_available", "capabilities": ["chat", "analysis", "task routing"], "write_boundary": "task-scoped model selection"},
+    {"id": "external-ai-api", "group": "AI与开发工具", "name": "Codex / Claude Code / CLI / approved MCP client", "protocol": "local REST bearer contract + MCP 2025-11-25 stdio", "status": "local_rest_and_stdio_mcp_available", "capabilities": ["read sanitized project/task context within explicit route scope", "submit local draft for owner review", "read same-client draft status"], "write_boundary": "loopback/stdio only; no store credential, verified fact mutation, task enqueue, model or platform tool execution, platform call or unapproved side effect"},
+    {"id": "openclaw", "group": "AI与开发工具", "name": "OpenClaw", "protocol": "none", "status": "blocked_unknown_repository", "capabilities": [], "write_boundary": "No exact admitted OpenClaw repository; disabled model placeholder and agency-agents conversion files do not prove a runtime connection"},
+    {"id": "amazon-us", "group": "电商平台", "name": "Amazon US", "protocol": "BitBrowser + planned SP-API + Ads API", "status": "browser_connected_api_pending", "dimensions": "platform+country/site+store mode+ownership", "capabilities": ["listing", "orders", "inventory", "reports", "ads"], "write_boundary": "store-isolated confirmation and verification"},
+    {"id": "tiktok-shop", "group": "电商平台", "name": "TikTok Shop", "protocol": "Shop Open API + Seller Center + Business API", "status": "planned_official_authorization", "dimensions": "platform+country/site+store mode+ownership", "capabilities": ["listing", "orders", "promotion", "affiliate", "ads"]},
+    {"id": "marketplaces", "group": "电商平台", "name": "SHEIN / Shopee / Lazada / Walmart / Etsy / eBay", "protocol": "official seller APIs where available", "status": "planned_per_store", "dimensions": "platform+country/site+store mode+ownership", "capabilities": ["listing", "orders", "inventory", "promotion", "settlement"]},
+    {"id": "independent-stores", "group": "电商平台", "name": "Shopify / WooCommerce", "protocol": "Admin API / REST API + webhooks", "status": "planned_per_store", "dimensions": "platform+country/site+store mode+ownership", "capabilities": ["catalog", "orders", "inventory", "discounts", "webhooks"]},
+    {"id": "erp-cost-source-control", "group": "ERP与成本", "name": "Non-Amazon ERP / real cost-source control", "protocol": "local metadata-only REST", "status": "local_control_available_unconnected", "capabilities": ["inspect actual store and ERP state", "prepare scoped ERP metadata packet", "prepare cost-source evidence metadata packet"], "write_boundary": "no raw credentials, no cost values, no external connection/read, no profit-ready claim; Amazon SP-API, Ads and PTD paused"},
+    {"id": "feishu", "group": "通讯与协作", "name": "飞书", "protocol": "Feishu Open Platform bot/webhook", "status": "local_control_available_unconnected", "capabilities": ["approval notification", "task message", "document/table sync"], "write_boundary": "approved tenant and bot scopes; local control exists but no account is connected"},
+    {"id": "wechat", "group": "通讯与协作", "name": "企业微信 / 微信公众号", "protocol": "official API", "status": "local_control_available_unconnected", "capabilities": ["customer service", "notification", "CRM event"], "write_boundary": "personal WeChat injection or unofficial automation is not supported; official account is not connected"},
+    {"id": "telegram", "group": "通讯与协作", "name": "Telegram", "protocol": "Bot API + webhook", "status": "local_control_available_unconnected", "capabilities": ["task notification", "approved message", "command intake"], "write_boundary": "bot membership and chat allowlist; no bot is connected"},
+    {"id": "whatsapp", "group": "通讯与协作", "name": "WhatsApp Business", "protocol": "Meta WhatsApp Business Platform", "status": "local_control_available_unconnected", "capabilities": ["approved template message", "inbound lead", "conversation status"], "write_boundary": "customer opt-in, template and business-account rules; no WABA or phone identity is connected"},
+    {"id": "email", "group": "通讯与协作", "name": "Gmail / Outlook", "protocol": "OAuth API", "status": "local_control_available_unconnected", "capabilities": ["inbound classification", "draft reply", "approved send"], "write_boundary": "no bulk send; sender identity and approval required; no mailbox is connected"},
+    {"id": "meta-social", "group": "社交媒体与广告", "name": "Facebook / Instagram", "protocol": "Meta Graph + Marketing API", "status": "local_control_available_unconnected", "capabilities": ["page/catalog", "comments", "lead forms", "ads"], "write_boundary": "business/page/ad-account scopes are separate; no account is connected"},
+    {"id": "content-social", "group": "社交媒体与广告", "name": "YouTube / Pinterest / X / LinkedIn", "protocol": "official platform APIs", "status": "local_control_available_unconnected", "capabilities": ["content metrics", "publishing where approved", "lead signals"], "write_boundary": "platform terms, account scopes and publish approval; no account is connected"}
+  ]
+}

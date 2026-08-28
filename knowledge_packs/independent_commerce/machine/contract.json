@@ -7,7 +7,7 @@
   "status": "incremental_training_cycle_r11_local_webhook_payment_refund_dispute_and_pim_reliability_runtime_verified_external_connectors_unverified",
   "purpose": "Train T One to operate independent commerce sites with a shared catalog-to-profit workflow, platform-specific API boundaries, vertical-specific fulfillment and tax extensions, evidence discipline, and store-isolated write gates.",
   "runtime_contract": {
-    "llm_gateway": "ai_ecommerce_director LLMClient + config/multi_ai.json",
+    "llm_gateway": "ai_ecommerce_director LLMClient + private_model_provider_registry_excluded",
     "new_agent_runtime_allowed": false,
     "model_slots": [
       "reasoning",
@@ -374,10 +374,10 @@
       "short_video": "For 10 minutes or less, at least 95 percent playback or reliable subtitle coverage plus opening, core-operation and ending visual checks; 0:00 is opened_not_reviewed.",
       "work_mix": "At least 70 percent Shopify/WooCommerce operating mainline, no more than 20 percent tools or AI, and no more than 10 percent cross-platform reference."
     },
-    "browser_evidence_path": "skills/platform-experts/independent_commerce/independent-commerce-operator/state/browser_evidence_2026-07-18.json",
-    "failure_log_path": "skills/platform-experts/independent_commerce/independent-commerce-operator/state/failure_log.json",
-    "training_state_path": "skills/platform-experts/independent_commerce/independent-commerce-operator/state/training_state.json",
-    "mother_requirement_matrix_path": "skills/platform-experts/independent_commerce/independent-commerce-operator/state/mother_requirement_matrix.json"
+    "browser_evidence_path": "private_platform_expert_source_excluded",
+    "failure_log_path": "private_platform_expert_source_excluded",
+    "training_state_path": "private_platform_expert_source_excluded",
+    "mother_requirement_matrix_path": "private_platform_expert_source_excluded"
   },
   "knowledge_package_first_policy": {
     "inventory_before_search": [
@@ -2376,7 +2376,7 @@
     {
       "id": "shopify_admin_api",
       "status": "available_unconnected",
-      "evidence": "config/integration_hub.json planned_per_store and config/api_applications.json store_owner_setup_needed",
+      "evidence": "private_integration_registry_excluded planned_per_store and private_runtime_registry_excluded store_owner_setup_needed",
       "allowed_now": [
         "official_research",
         "schema_design",
@@ -2393,7 +2393,7 @@
     {
       "id": "woocommerce_rest_api",
       "status": "available_unconnected",
-      "evidence": "config/integration_hub.json planned_per_store; adapter and route declarations exist without a verified site key",
+      "evidence": "private_integration_registry_excluded planned_per_store; adapter and route declarations exist without a verified site key",
       "allowed_now": [
         "official_research",
         "schema_design",
@@ -3095,7 +3095,7 @@
     "finite_web_coverage_rule": "Record measured rendered scroll coverage of at least 90 percent, the footer or stop reason, navigation/table of contents and one necessary first-party detail page.",
     "video_coverage_rule": "A 0:00 or cover-only video is opened_not_reviewed. For 10 minutes or less require 95 percent playback or reliable subtitles plus opening, core-operation and ending visual checks; record duration, seconds, subtitle coverage, timestamps and comments.",
     "cycle_mix_rule": "At least 70 percent of evidence work must directly serve Shopify/WooCommerce operating outcomes; tools or AI may not exceed 20 percent and cross-platform references may not exceed 10 percent.",
-    "github_admission_rule": "Reverse-verify official identity from the platform site, deduplicate owner/repo plus commit/tag/license/security state, inspect relevant README/docs/releases/license/commits/issues/discussions/PR/security/dependencies/data flows, then defer installation admission to config/github_capability_registry.json ownership.",
+    "github_admission_rule": "Reverse-verify official identity from the platform site, deduplicate owner/repo plus commit/tag/license/security state, inspect relevant README/docs/releases/license/commits/issues/discussions/PR/security/dependencies/data flows, then defer installation admission to private_github_admission_registry_excluded ownership.",
     "knowledge_package_promotion_rule": "For one operating gap, compare two or three English-discovered packages, inspect one core workflow, one failure boundary and three rules, then verify time-sensitive differences on current first-party deep pages. Record one allowed verdict; package presence never proves integration.",
     "knowledge_package_rejection_rule": "Unknown or conflicting license, stale maintenance, unsafe credential/telemetry/data flow, raw PII, consent bypass, missing security posture or absent shared admission blocks installation and code reuse.",
     "comment_learning_required_fields": [
@@ -4267,7 +4267,7 @@
     "reusable": [
       "Existing tenant/project/store/platform/country_site/store_model/ownership route dimensions",
       "Existing one-store isolation and confirmation boundaries",
-      "Existing LLMClient plus config/multi_ai.json gateway",
+      "Existing LLMClient plus private_model_provider_registry_excluded gateway",
       "Shopify and WooCommerce adapter declarations and activity guardrails",
       "Draft, audit, simulation, evidence, and approval patterns"
     ],

@@ -1,0 +1,63 @@
+{
+  "enabled": false,
+  "status": "retired_legacy_runtime_disabled",
+  "disabled_reason": "The legacy auto-mode surface is retired. Unreviewed page collection and inferred strategy memory must not enter the current T One context.",
+  "mode": "no_api_overnight_patrol",
+  "safe_mode": true,
+  "open_browser": false,
+  "collect_public_pages": true,
+  "daily_collect": true,
+  "use_llm": true,
+  "steps": {
+    "api_sources": false,
+    "platform_autopilot": true,
+    "browser_operator": true,
+    "learning_sources": false,
+    "patent_search": true,
+    "selection_intelligence": true,
+    "selection_meeting": true,
+    "daily_director": true,
+    "visual_creative": true,
+    "idle_learning": false
+  },
+  "auto_allowed": [
+    "read_public_page",
+    "read_keyword_monitor",
+    "read_competitor_link",
+    "read_manual_capture_records",
+    "read_pod_snapshot",
+    "score_records",
+    "compare_product_text",
+    "save_reference_image",
+    "generate_reports",
+    "generate_listing_draft",
+    "generate_product_image_brief",
+    "generate_ai_image_video_prompts",
+    "generate_video_script",
+    "generate_creator_brief",
+    "run_patent_trademark_ip_search",
+    "save_ip_risk_database",
+    "generate_action_queue"
+  ],
+  "confirmation_required": [
+    "login",
+    "captcha_or_slider",
+    "publish_or_delist_product",
+    "change_price_or_inventory",
+    "set_discount",
+    "join_campaign",
+    "contact_creator",
+    "upload_asset",
+    "buy_ip_or_change_browser_profile",
+    "change_store_setting",
+    "payment",
+    "ship_order",
+    "appeal",
+    "authorize_app"
+  ],
+  "notes": [
+    "API sources are disabled by default. The agent now works through public page scans, keyword monitors, competitor links, and manual captures.",
+    "Competitor monitor items can include reference images. Current matching uses text/category signals and stores images for visual review or future vision-model matching.",
+    "Human verification is never bypassed. If a page needs login, slider, or captcha, the agent records a manual gate."
+  ]
+}

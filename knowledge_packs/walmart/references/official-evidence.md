@@ -2,7 +2,7 @@
 
 Verified: 2026-07-19 (Asia/Shanghai)
 
-Use this file for source selection and human review. Use `config/platform_expert_training/walmart.json` for the machine-readable version. Official pages remain authoritative; the summaries below are evidence notes, not substitutes for the current page.
+Use this file for source selection and human review. Use `private_platform_training_contract_excluded` for the machine-readable version. Official pages remain authoritative; the summaries below are evidence notes, not substitutes for the current page.
 
 ## Source matrix
 

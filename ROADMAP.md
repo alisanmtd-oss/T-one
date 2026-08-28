@@ -1,62 +1,25 @@
-# T One public roadmap
+# T One 公开路线图
 
-The roadmap is ordered by operational safety and evidence, not by the number of
-platform logos or UI buttons.
+## 已完成
 
-## Shipped foundation
+- 正式 Python/Electron 运行时进入精确公开清单。
+- Windows 引导安装包内置本地运行时，不依赖用户预装 Python。
+- 首次启动建立独立项目/任务工作区和本机 Owner 会话。
+- Agent、Skill、MCP、CLI 能力市场与开放工具注册进入正式桌面版。
+- 项目、站点、店铺、账号与执行身份保持隔离。
+- 正式桌面工作区运行层以可读 Python 源码发布，公开构建拒绝 `.pyc`。
+- 私人账号、凭据、浏览器配置、运行数据库、输出和历史对话从公开包排除。
 
-- Local-first Python community core.
-- Workspace, project, platform, store, task, and execution-identity boundaries.
-- Synthetic chat-first browser reference.
-- Sanitized knowledge-pack registry.
-- Local approval and evidence contracts.
-- Public release allowlist, audit, and SHA-256 manifests.
-- English and Simplified Chinese entrypoints.
-- Simplified-Chinese-first GitHub entrypoint and assisted Windows installer.
-- Offline capability market grouped by Agent, Skill, MCP, and CLI.
+## P0
 
-## Next public milestone: trustworthy integrations
+1. 在全新 Windows 用户环境中重复安装、升级、卸载和自定义安装路径测试。
+2. 建立正式桌面与公开安装版的结构化视觉/功能差异门禁。
+3. 把乱码或旧“社区核心/合成演示”发行文案从既有 Release 页面纠正。
 
-1. Extend the shipped public capability taxonomy into a stable machine-readable manifest.
-2. Add a scoped local MCP/API with revocable tokens and read/draft/write capability
-   separation.
-3. Add provider connection tests that distinguish missing credentials, unsupported
-   scopes, network failure, and provider rejection.
-4. Provide read-only marketplace and ERP adapter examples before any write adapter.
-5. Add durable jobs, leases, retry policy, evidence receipts, and recovery.
-6. Keep project, platform, site, store mode, store binding, and execution identity
-   isolated in every adapter.
+## 后续
 
-## Commerce operations
-
-- Dynamic product intake schemas for files, images, and platform-specific fields.
-- Listing, inventory, order, fulfillment, settlement, activity, advertising, refund,
-  and customer-service contracts.
-- Platform/site/store-mode rule versions with effective dates and source evidence.
-- Settlement and operating-cost planning that separates platform fees, tax,
-  advertising, samples, affiliate commission, logistics, payment-provider fees,
-  withdrawal, FX, refunds, and daily expenses.
-- Human approval for all external writes and financial actions.
-
-## B2B and outbound development
-
-- Separate B2B marketplace acquisition and outbound customer development workflows.
-- Shared CRM timeline, qualification, discovery, samples, quotation, negotiation,
-  order/PI/contract, delivery, payment, repurchase, and cross-sell contracts.
-- Confirmation-gated email, messaging, and social connectors.
-- Anti-spam, privacy, sanctions, export-control, and evidence boundaries.
-
-## Content and growth
-
-- Competitor creative analysis with provenance and rights checks.
-- Image/video prompt, storyboard, editing, localization, and QA contracts.
-- Social publishing plans, tags, copy, music, comments, attribution, and feedback.
-- Tool routing without claiming unavailable third-party models or permissions.
-
-## Explicit non-goals
-
-- No credentials, cookies, browser profiles, identity documents, or private data.
-- No bypass of CAPTCHA, MFA, platform restrictions, or account security.
-- No unguarded store writes, mass outreach, ad spend, payments, fulfillment, or refunds.
-- No claim that schemas, research, screenshots, or buttons are live integrations.
-- No bulk copying of third-party repositories without license and security review.
+- 能力市场增加清晰的安装来源、许可证、固定版本、权限范围和卸载入口。
+- MCP/CLI/Agent/Skill 按项目智能装载，减少不相关上下文和 token 消耗。
+- 增加可撤销连接、连接测试、失败原因和本地回执。
+- 继续完善卖家模式、店铺读回、订单/库存/财务和内容反馈闭环。
+- 只有在用户提供自己的账号与授权后，才验证对应平台的真实连接。

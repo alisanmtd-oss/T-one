@@ -31,9 +31,9 @@
 
 ## 允许的写入范围
 
-- `skills/platform-experts/lazada/**`
-- `config/platform_expert_training/lazada.json`
-- `tests/test_lazada_expert_training.py`
+- `private_platform_expert_source_excluded**`
+- `private_platform_training_contract_excluded`
+- `private_regression_suite_excluded`
 
 不修改共享 C1/C4 核心、权威记忆、机器队列、平台专家注册表或其他专家资产。需要共享改动时只写建议。
 

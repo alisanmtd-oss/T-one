@@ -15,10 +15,10 @@ Keep three surfaces distinct:
 
 Read these before producing platform facts or updating this Skill:
 
-- `config/platform_expert_training/advertising_media_buyer/evidence_index.json`
-- `config/platform_expert_training/advertising_media_buyer/rules.json`
-- `config/platform_expert_training/advertising_media_buyer/tool_registry.json`
-- `config/platform_expert_training/advertising_media_buyer/training_state.json`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
 - [references/surface-and-evidence.md](references/surface-and-evidence.md)
 
 ## Evidence-first workflow

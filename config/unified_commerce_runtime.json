@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T21:00:00+08:00",
+  "product": {
+    "name": "T-one",
+    "positioning": "跨境电商与外贸统一 AI 工作底座",
+    "daily_surface": "chat_first",
+    "admin_surface": "progressive_settings",
+    "runtime_rule": "one_core_runtime_many_scoped_connectors_skills_and_agents"
+  },
+  "core_flow": [
+    "intent",
+    "scope",
+    "data_read",
+    "ai_or_skill_processing",
+    "draft",
+    "approval",
+    "scoped_execution",
+    "effect_verification",
+    "receipt",
+    "learning"
+  ],
+  "action_classes": {
+    "public_read": {"approval": "none", "external_side_effect": false},
+    "private_read": {"approval": "authorized_account_scope", "external_side_effect": false},
+    "local_analysis": {"approval": "none", "external_side_effect": false},
+    "draft": {"approval": "none", "external_side_effect": false},
+    "external_write": {"approval": "owner_or_delegated_policy", "external_side_effect": true},
+    "money_or_budget": {"approval": "owner_exclusive", "external_side_effect": true},
+    "credential_or_authorization": {"approval": "owner_exclusive", "external_side_effect": true}
+  },
+  "data_domains": [
+    "organization_project_identity",
+    "store_account_and_site",
+    "product_catalog_and_listing",
+    "inventory_warehouse_and_fulfillment",
+    "order_return_refund_and_settlement",
+    "customer_lead_conversation_and_document",
+    "competitor_market_keyword_and_platform_signal",
+    "content_asset_script_post_and_performance",
+    "advertiser_campaign_creative_metric_and_attribution",
+    "task_approval_evidence_receipt_and_learning"
+  ],
+  "connector_catalog": [
+    {
+      "id": "multi_ai_runtime",
+      "name": "多模型 AI Runtime",
+      "kind": "ai_provider",
+      "status": "core_available",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["provider_api", "local_model", "manual_browser_ai_package"],
+      "capabilities": ["analyze", "draft", "classify", "extract", "route", "summarize"],
+      "adapter": {"type": "integration_hub", "id": "multi-ai-runtime"}
+    },
+    {
+      "id": "marketplace_store_api",
+      "name": "跨境电商店铺 API",
+      "kind": "commerce_platform",
+      "status": "requires_platform_authorization",
+      "source": "framework_contract",
+      "integration_modes": ["official_api", "approved_browser_assist"],
+      "capabilities": ["catalog", "listing", "orders", "inventory", "fulfillment", "promotion", "settlement", "customer_service"],
+      "required_scope": ["project_id", "platform", "country_site", "store_binding_id", "store_model", "ownership", "execution_identity_id"]
+    },
+    {
+      "id": "miaoshou_erp",
+      "name": "妙手 ERP",
+      "kind": "erp",
+      "status": "candidate_requires_vendor_contract",
+      "source": "owner_direction",
+      "integration_modes": ["official_open_api_if_approved", "approved_http_json_adapter"],
+      "capabilities": ["catalog", "orders", "inventory", "fulfillment", "warehouse", "cost"],
+      "required_scope": ["project_id", "store_binding_id", "erp_account_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "dianxiaomi_erp",
+      "name": "店小秘 ERP",
+      "kind": "erp",
+      "status": "candidate_requires_vendor_contract",
+      "source": "owner_direction",
+      "integration_modes": ["official_open_api_if_approved", "approved_http_json_adapter"],
+      "capabilities": ["catalog", "orders", "inventory", "fulfillment", "warehouse", "cost"],
+      "required_scope": ["project_id", "store_binding_id", "erp_account_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "lingxing_erp",
+      "name": "领星 ERP / 海外仓储",
+      "kind": "warehouse_erp",
+      "status": "candidate_requires_vendor_contract",
+      "source": "owner_direction",
+      "integration_modes": ["official_open_api_if_approved", "approved_http_json_adapter"],
+      "capabilities": ["inventory", "warehouse", "fulfillment", "cost", "settlement"],
+      "required_scope": ["project_id", "store_binding_id", "warehouse_account_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "generic_erp_http_json",
+      "name": "通用 ERP / WMS HTTP JSON 适配器",
+      "kind": "warehouse_erp",
+      "status": "local_adapter_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["approved_http_json_adapter"],
+      "capabilities": ["health_read", "inventory", "warehouse", "orders", "cost"],
+      "required_scope": ["project_id", "store_binding_id", "erp_account_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "sellersprite_intelligence",
+      "name": "卖家精灵",
+      "kind": "commerce_intelligence",
+      "status": "candidate_requires_vendor_contract",
+      "source": "owner_direction",
+      "integration_modes": ["official_api_if_approved", "permitted_browser_read", "owner_export_import"],
+      "capabilities": ["product_research", "keyword_research", "competitor_monitoring", "market_signal"],
+      "required_scope": ["project_id", "platform", "country_site"]
+    },
+    {
+      "id": "commerce_intelligence_tools",
+      "name": "选品与同行数据工具",
+      "kind": "commerce_intelligence",
+      "status": "catalog_only",
+      "source": "existing_skill_registry",
+      "integration_modes": ["official_api_if_approved", "owner_export_import", "permitted_browser_read"],
+      "capabilities": ["product_research", "keyword_research", "competitor_monitoring", "content_signal", "review_signal"],
+      "required_scope": ["project_id", "platform", "country_site"]
+    },
+    {
+      "id": "cross_channel_ads",
+      "name": "跨渠道广告",
+      "kind": "advertising",
+      "status": "local_preflight_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_marketing_api"],
+      "capabilities": ["campaign_read", "measurement", "creative_analysis", "draft", "budget_change"],
+      "required_scope": ["project_id", "platform", "country_site", "advertiser_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail",
+      "kind": "email",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_oauth_api"],
+      "capabilities": ["inbound_classification", "attachment_intake", "draft_reply", "approved_send"],
+      "adapter": {"type": "communications", "id": "gmail"}
+    },
+    {
+      "id": "outlook",
+      "name": "Outlook",
+      "kind": "email",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_oauth_api"],
+      "capabilities": ["inbound_classification", "attachment_intake", "draft_reply", "approved_send"],
+      "adapter": {"type": "communications", "id": "outlook"}
+    },
+    {
+      "id": "enterprise_email",
+      "name": "企业邮箱 IMAP",
+      "kind": "email",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["imap_read", "smtp_send_if_separately_approved"],
+      "capabilities": ["mailbox_authentication", "inbound_classification", "attachment_intake", "draft_reply"],
+      "adapter": {"type": "communications", "id": "email_imap"}
+    },
+    {
+      "id": "feishu",
+      "name": "飞书",
+      "kind": "collaboration",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_open_platform"],
+      "capabilities": ["group_message_read", "task_intake", "file_intake", "draft_reply", "approved_send", "approval_notification"],
+      "adapter": {"type": "communications", "id": "feishu"}
+    },
+    {
+      "id": "wechat_work",
+      "name": "企业微信",
+      "kind": "collaboration",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_api"],
+      "capabilities": ["customer_service", "group_message_read", "task_intake", "file_intake", "draft_reply", "approved_send"],
+      "adapter": {"type": "communications", "id": "wechat_official"}
+    },
+    {
+      "id": "whatsapp_business",
+      "name": "WhatsApp Business",
+      "kind": "communication",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_business_platform"],
+      "capabilities": ["inbound_lead", "customer_service", "draft_reply", "approved_template_send"],
+      "adapter": {"type": "communications", "id": "whatsapp_business"}
+    },
+    {
+      "id": "social_media_accounts",
+      "name": "主流社交媒体账号",
+      "kind": "social_media",
+      "status": "local_control_available_unconnected",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["official_platform_api"],
+      "capabilities": ["content_research", "account_metrics", "comments", "lead_signal", "draft", "approved_publish"],
+      "required_scope": ["project_id", "platform", "social_account_binding_id", "execution_identity_id"]
+    },
+    {
+      "id": "approved_browser_assistant",
+      "name": "受控浏览器助手",
+      "kind": "browser",
+      "status": "local_control_available_scope_required",
+      "source": "existing_t_one_runtime",
+      "integration_modes": ["playwright", "chrome_control", "store_scoped_profile"],
+      "capabilities": ["public_read", "permitted_private_read", "form_draft", "effect_verification"],
+      "required_scope": ["project_id", "browser_environment_id", "execution_identity_id"]
+    }
+  ],
+  "task_profiles": {
+    "store_operations": {
+      "connector_kinds": ["commerce_platform", "erp", "warehouse_erp"],
+      "capabilities": ["catalog", "orders", "inventory", "fulfillment"],
+      "required_scope": ["project_id", "platform", "country_site", "store_binding_id", "store_model", "ownership", "execution_identity_id"],
+      "default_action_class": "private_read"
+    },
+    "product_and_competitor_research": {
+      "connector_kinds": ["commerce_intelligence", "browser"],
+      "capabilities": ["product_research", "keyword_research", "competitor_monitoring", "public_read"],
+      "required_scope": ["project_id", "platform", "country_site"],
+      "default_action_class": "public_read"
+    },
+    "inventory_and_fulfillment": {
+      "connector_kinds": ["erp", "warehouse_erp", "commerce_platform"],
+      "capabilities": ["inventory", "warehouse", "fulfillment"],
+      "required_scope": ["project_id", "store_binding_id", "execution_identity_id"],
+      "default_action_class": "private_read"
+    },
+    "b2b_sales_and_email": {
+      "connector_kinds": ["email", "communication", "collaboration"],
+      "capabilities": ["inbound_lead", "inbound_classification", "draft_reply", "attachment_intake"],
+      "required_scope": ["project_id", "communication_account_binding_id", "lawful_recipient_scope_id", "execution_identity_id"],
+      "required_scope_by_action": {
+        "local_analysis": ["project_id"],
+        "draft": ["project_id"]
+      },
+      "default_action_class": "draft"
+    },
+    "workgroup_and_customer_service": {
+      "connector_kinds": ["collaboration", "communication", "email"],
+      "capabilities": ["group_message_read", "customer_service", "task_intake", "file_intake", "draft_reply"],
+      "required_scope": ["project_id", "communication_account_binding_id", "execution_identity_id"],
+      "default_action_class": "draft"
+    },
+    "advertising_optimization": {
+      "connector_kinds": ["advertising"],
+      "capabilities": ["campaign_read", "measurement", "creative_analysis", "draft"],
+      "required_scope": ["project_id", "platform", "country_site", "advertiser_binding_id", "execution_identity_id"],
+      "default_action_class": "draft"
+    },
+    "social_content_operations": {
+      "connector_kinds": ["social_media", "commerce_intelligence", "browser"],
+      "capabilities": ["content_research", "account_metrics", "comments", "draft"],
+      "required_scope": ["project_id", "platform", "social_account_binding_id", "execution_identity_id"],
+      "required_scope_by_action": {
+        "local_analysis": ["project_id", "platform"],
+        "draft": ["project_id", "platform"],
+        "public_read": ["project_id", "platform"]
+      },
+      "skill_agent_ids": ["tk-content-hooks"],
+      "default_action_class": "draft"
+    },
+    "unified_data_analysis": {
+      "connector_kinds": ["ai_provider"],
+      "capabilities": ["analyze", "classify", "extract", "summarize"],
+      "required_scope": ["project_id"],
+      "default_action_class": "local_analysis"
+    }
+  },
+  "hard_boundaries": [
+    "no_connector_is_connected_without_verified_account_evidence",
+    "no_external_write_without_scoped_approval",
+    "no_budget_change_without_owner_confirmation",
+    "no_cross_store_cross_site_or_cross_customer_context_leakage",
+    "no_raw_credentials_in_task_payloads_or_logs",
+    "no_ai_generated_claim_may_overwrite_verified_business_fact",
+    "every_side_effect_requires_effect_verification_and_receipt"
+  ]
+}

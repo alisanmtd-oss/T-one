@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T04:40:00+08:00",
+  "scope": "non_amazon_local_control_plane",
+  "excluded_platforms": [
+    "amazon"
+  ],
+  "external_execution_default_allowed": false,
+  "required_route_dimensions": [
+    "tenant_id",
+    "project_id",
+    "store_binding_id",
+    "platform",
+    "country_site",
+    "commerce_mode",
+    "ownership",
+    "execution_identity_id"
+  ],
+  "actions": {
+    "public_review": [
+      "inspect_public_capability"
+    ],
+    "store_scoped_local_draft": [
+      "prepare_input_packet"
+    ],
+    "external_or_account_scoped": [
+      "connect_account",
+      "open_live_tool",
+      "submit_prompt",
+      "accept_output",
+      "apply_changes",
+      "enable_feature",
+      "send_message",
+      "upload_asset",
+      "publish"
+    ]
+  },
+  "source_adapters": [
+    {
+      "id": "tiktok_shop_native_ai_tools",
+      "platform": "tiktok_shop",
+      "path": "config/platform_expert_training/tiktok_shop.json",
+      "field": "native_ai_tools",
+      "reviewed_at": "2026-07-18"
+    },
+    {
+      "id": "shopee_native_ai_catalog",
+      "platform": "shopee",
+      "path": "config/platform_expert_training/shopee.json",
+      "field": "native_ai_catalog",
+      "reviewed_at": "2026-07-18"
+    },
+    {
+      "id": "advertising_native_ai_surfaces",
+      "platform": "advertising",
+      "path": "config/advertising_agent.json",
+      "field": "channels[].native_ai.surfaces",
+      "included_channels": [
+        "meta_ads",
+        "tiktok_ads",
+        "google_ads"
+      ],
+      "reviewed_at": "2026-07-19"
+    }
+  ],
+  "curated_tools": [
+    {
+      "platform": "shein",
+      "tool_id": "listing_optimizer",
+      "display_name": "SHEIN Listing Optimizer",
+      "classification": "native_automation_not_proven_ai",
+      "availability_state": "available_unconnected",
+      "country_sites": [
+        "US"
+      ],
+      "store_models": [
+        "marketplace_seller"
+      ],
+      "seller_executable": true,
+      "inputs": [],
+      "outputs": [
+        "automated_improvement_recommendations",
+        "ab_test_surface_claimed_by_public_page"
+      ],
+      "editable_boundary": "unknown_without_authorized_store",
+      "submit_boundary": "public page did not expose save, apply or submit controls",
+      "metrics": "public page did not expose store-scoped experiment metrics",
+      "failure_recovery": "keep current listing unchanged and require an authorized store observation",
+      "source_ref": "skills/platform-experts/shein/references/native-ai-and-tool-matrix.md",
+      "source_url": "https://seller-us.shein.com/platform-tools",
+      "reviewed_at": "2026-07-19"
+    },
+    {
+      "platform": "shein",
+      "tool_id": "developer_platform_intelligent_customer_service",
+      "display_name": "SHEIN Developer Platform 智能客服",
+      "classification": "platform_native_ai",
+      "availability_state": "available_unconnected",
+      "country_sites": [
+        "COUNTRY_SITE_REQUIRES_AUTHORIZED_CHECK"
+      ],
+      "store_models": [
+        "platform_invited_developer"
+      ],
+      "seller_executable": true,
+      "inputs": [],
+      "outputs": [],
+      "editable_boundary": "unknown; public read-only entry redirected to login",
+      "submit_boundary": "prompt, answer, edit and send behavior remain blocked_owner_input",
+      "metrics": "unknown_without_authorized_observation",
+      "failure_recovery": "do not invent a workflow from the login redirect",
+      "source_ref": "skills/platform-experts/shein/references/native-ai-and-tool-matrix.md",
+      "source_url": "https://open.sheincorp.com/documents/system/main",
+      "reviewed_at": "2026-07-19"
+    },
+    {
+      "platform": "shein",
+      "tool_id": "platform_ai_risk_monitoring",
+      "display_name": "SHEIN 平台 AI 风险监测",
+      "classification": "internal_platform_control",
+      "availability_state": "research_only",
+      "country_sites": [
+        "GLOBAL_PUBLIC_DESCRIPTION_ONLY"
+      ],
+      "store_models": [
+        "internal_platform_governance"
+      ],
+      "seller_executable": false,
+      "inputs": [],
+      "outputs": [
+        "platform_governance_signal"
+      ],
+      "editable_boundary": "not a seller control surface",
+      "submit_boundary": "not seller executable and not an OpenAPI entitlement",
+      "metrics": "no seller-scoped metric",
+      "failure_recovery": "route seller compliance questions to current rules and human review",
+      "source_ref": "skills/platform-experts/shein/references/native-ai-and-tool-matrix.md",
+      "source_url": "https://www.sheingroup.com/newsroom/shein-expands-marketplace-seller-education-offering-with-product-safety-and-quality-compliance",
+      "reviewed_at": "2026-07-19"
+    }
+  ]
+}

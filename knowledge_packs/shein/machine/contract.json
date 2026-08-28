@@ -2,23 +2,23 @@
   "schema_version": 1,
   "expert_id": "expert-shein-marketplace",
   "skill_name": "shein",
-  "skill_path": "skills/platform-experts/shein/SKILL.md",
+  "skill_path": "private_platform_expert_source_excluded",
   "verified_at": "2026-07-19",
   "timezone": "Asia/Shanghai",
   "training_status": "implemented_unintegrated",
   "integration_owner": "primary_task",
   "purpose": "Provide an evidence-first, store-isolated SHEIN operating contract without claiming live store, API, ERP, ads or warehouse connectivity.",
   "asset_references": {
-    "curriculum": "skills/platform-experts/shein/references/curriculum.md",
-    "official_evidence": "skills/platform-experts/shein/references/official-evidence.md",
-    "evidence_status_and_rules": "skills/platform-experts/shein/references/evidence-status-and-rules.md",
-    "decision_workflows": "skills/platform-experts/shein/references/decision-workflows.md",
-    "native_ai_and_tools": "skills/platform-experts/shein/references/native-ai-and-tool-matrix.md",
-    "failure_review": "skills/platform-experts/shein/references/failure-review.md",
-    "learning_governance": "skills/platform-experts/shein/references/learning-governance.md",
-    "mother_requirements_mapping": "skills/platform-experts/shein/references/mother-requirements-mapping.md",
-    "browser_evidence_latest": "skills/platform-experts/shein/references/browser-evidence-2026-07-19-cycle-10.md",
-    "learning_state": "config/platform_expert_training/shein_learning_state.json"
+    "curriculum": "private_platform_expert_source_excluded",
+    "official_evidence": "private_platform_expert_source_excluded",
+    "evidence_status_and_rules": "private_platform_expert_source_excluded",
+    "decision_workflows": "private_platform_expert_source_excluded",
+    "native_ai_and_tools": "private_platform_expert_source_excluded",
+    "failure_review": "private_platform_expert_source_excluded",
+    "learning_governance": "private_platform_expert_source_excluded",
+    "mother_requirements_mapping": "private_platform_expert_source_excluded",
+    "browser_evidence_latest": "private_platform_expert_source_excluded",
+    "learning_state": "private_platform_training_contract_excluded"
   },
   "mother_requirement_disposition_enum": [
     "reuse_existing",
@@ -39,7 +39,7 @@
   "mother_requirement_source": {
     "sha256": "f564a2e8341a6f3370e1efac9b249df65af67ef44957ecb7c907f789381acf3b",
     "role": "candidate_cross_border_requirement_inventory_not_authority",
-    "mapping_path": "skills/platform-experts/shein/references/mother-requirements-mapping.md"
+    "mapping_path": "private_platform_expert_source_excluded"
   },
   "evidence_status_enum": [
     "verified_live_fact",
@@ -137,8 +137,8 @@
     "research_or_test_alone_is_business_completion": false,
     "raw_14gb_session_forbidden": true,
     "shared_core_write_forbidden": true,
-    "learning_state_path": "config/platform_expert_training/shein_learning_state.json",
-    "failure_review_path": "skills/platform-experts/shein/references/failure-review.md",
+    "learning_state_path": "private_platform_training_contract_excluded",
+    "failure_review_path": "private_platform_expert_source_excluded",
     "evidence_before_distillation": true,
     "unchanged_official_content_action": "record_duplicate_skip_and_do_not_redistill",
     "minimum_source_diversity": {
@@ -4430,7 +4430,7 @@
       "product import and draft generation foundations",
       "approval queue and external-effect policy",
       "browser capture and public research foundations",
-      "config/github_capability_registry.json as the only open-source integration admission gate"
+      "private_github_admission_registry_excluded as the only open-source integration admission gate"
     ],
     "latest_app_registry_observation": {
       "captured_at": "2026-07-19T02:26:00+08:00/2026-07-19T02:29:00+08:00",

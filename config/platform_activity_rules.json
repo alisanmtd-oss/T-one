@@ -1,0 +1,4019 @@
+{
+  "last_checked_at": "2026-06-30",
+  "source_review": {
+    "checked_at": "2026-06-30",
+    "default_boundary": "Campaign rules are maintained per channel, country/site, store model, and ad account. AI may learn rules, calculate stackability, prepare calendars, and generate drafts; real campaign signup, discount creation, price change, coupon publish, ad launch, budget change, and external submission require confirmation.",
+    "required_checks": [
+      "eligibility",
+      "stacking",
+      "margin",
+      "inventory",
+      "fulfillment_sla",
+      "ads_budget",
+      "refund_risk",
+      "platform_policy"
+    ],
+    "implementation_policy": [
+      "The AI checks channel, country site, store model, ad account, and route key before activity execution planning.",
+      "The backend activity execution plan returns missing prerequisites, required stack checks, backend task package readiness, and external-submit boundaries before any task is queued.",
+      "Campaign signup, discount creation, coupon activation, price change, budget change, refund, shipment, and authorization changes are never submitted autonomously.",
+      "When shared login or token usage can associate stores, create an isolated backend task package with screenshots, draft id, execution log, and ERP writeback evidence."
+    ],
+    "official_sources": [
+      "https://partner.tiktokshop.com/docv2/",
+      "https://open.sheincorp.com/",
+      "https://open.shopee.com/documents",
+      "https://open.lazada.com/doc/doc.htm",
+      "https://developer-docs.amazon.com/sp-api/",
+      "https://advertising.amazon.com/API/docs/en-us",
+      "https://developer.walmart.com/us-marketplace/docs",
+      "https://developer.walmart.com/advertising-partners/docs",
+      "https://shopify.dev/docs/apps/build/discounts",
+      "https://developer.woocommerce.com/docs/apis/rest-api/resources/coupons/",
+      "https://developers.facebook.com/docs/marketing-apis/",
+      "https://developers.etsy.com/documentation/",
+      "https://help.etsy.com/hc/en-us/articles/360000338367-How-Etsy-Ads-Works",
+      "https://developer.ebay.com/api-docs/sell/marketing/static/overview.html",
+      "https://open.shopee.com/developer-guide/16",
+      "https://open.shopee.com/developer-guide/20"
+    ]
+  },
+  "site_overrides": [
+    {
+      "site_override_id": "tiktok_shop_gb_local_crossborder_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "GB"
+      ],
+      "store_models": [
+        "local_store",
+        "local_seller",
+        "cross_border",
+        "cross_border_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_ads_gmv_max",
+        "creator_affiliate_push",
+        "localized_voucher",
+        "free_shipping",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "gb_tiktok_local_seasonal_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "gb_site_separate_from_eu",
+        "uk_vat_return_address_check",
+        "owner_confirmation_before_campaign_or_ad_submit"
+      ],
+      "activity_types_add": [
+        "gmv_max_shop_ads",
+        "affiliate_creator_push",
+        "localized_voucher"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "uk_vat_return_address_check",
+        "tiktok_affiliate_commission_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_seller_center_access",
+        "marketing_account_authorization"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "shop_ads_budget_confirmed",
+        "uk_vat_return_address_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_eu_local_crossborder_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "IE"
+      ],
+      "store_models": [
+        "local_store",
+        "local_seller",
+        "cross_border",
+        "cross_border_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "local_language_campaign",
+        "product_discount"
+      ],
+      "site_campaign_window": "eu_tiktok_local_seasonal_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "eu_site_separate_by_country",
+        "eu_vat_ioss_check",
+        "local_language_content_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "product_discount",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "eu_vat_ioss_check",
+        "local_language_content_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_seller_center_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "eu_vat_ioss_passed",
+        "content_language_checked"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_mx_local_crossborder_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "MX"
+      ],
+      "store_models": [
+        "local_store",
+        "local_seller",
+        "cross_border",
+        "cross_border_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "local_language_campaign",
+        "payday_campaign"
+      ],
+      "site_campaign_window": "mx_tiktok_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "mx_site_separate_from_us",
+        "mx_tax_localization_check",
+        "local_currency_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "payday_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "mx_tax_localization_check",
+        "local_currency_margin_check",
+        "local_delivery_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_seller_center_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "mx_tax_localization_passed",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_br_local_crossborder_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "BR"
+      ],
+      "store_models": [
+        "local_store",
+        "local_seller",
+        "cross_border",
+        "cross_border_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "local_language_campaign",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "br_tiktok_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "br_site_separate_from_us_and_mx",
+        "br_tax_localization_check",
+        "local_currency_tax_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "br_tax_localization_check",
+        "local_currency_margin_check",
+        "tax_fee_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_seller_center_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "br_tax_localization_passed",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_my_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "MY"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "my_tiktok_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "my_site_separate_from_us_and_th",
+        "local_fulfillment_sla_first",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_th_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "TH"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "th_tiktok_double_day_and_live_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "th_site_separate_from_us_and_my",
+        "local_language_content_check",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_sg_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "SG"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "sg_tiktok_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "sg_site_separate_from_my_th_id",
+        "local_payment_and_fulfillment_check",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_vn_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "VN"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "vn_tiktok_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "vn_site_separate_from_th_ph",
+        "local_language_content_check",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_ph_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "PH"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "ph_tiktok_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "ph_site_separate_from_sg_id",
+        "cash_on_delivery_or_local_payment_check",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_id_semimanaged_country_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "ID"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "id_tiktok_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "id_site_separate_from_my_sg",
+        "local_language_content_check",
+        "semi_managed_scope_confirmed",
+        "sea_site_separate_by_country"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_fulfillment_sla_check",
+        "sea_cod_payment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_us_semimanaged_crossborder_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "semi_managed_crossborder"
+      ],
+      "site_activity_focus": [
+        "shop_ads_gmv_max",
+        "creator_affiliate_push",
+        "shop_coupon",
+        "free_shipping",
+        "cross_border_semi_managed_submission_review"
+      ],
+      "site_campaign_window": "us_holiday_and_weekend_calendar",
+      "site_ads_notes": [
+        "business_center_shop_access_required",
+        "marketing_account_qr_authorization_required",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "us_site_do_not_mix_with_sea_sites",
+        "semi_managed_scope_confirmed",
+        "owner_confirmation_before_campaign_or_ad_submit"
+      ],
+      "activity_types_add": [
+        "gmv_max_shop_ads",
+        "affiliate_creator_push",
+        "shop_coupon"
+      ],
+      "stacking_rules_add": [
+        "marketing_account_authorization_check",
+        "site_holiday_margin_check",
+        "semi_managed_fulfillment_scope_check",
+        "tiktok_affiliate_commission_check",
+        "cross_border_shipping_fee_check"
+      ],
+      "authorization_requirements_add": [
+        "business_center_shop_access",
+        "marketing_account_authorization",
+        "tiktok_seller_center_access",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "site_calendar_checked",
+        "shop_ads_budget_confirmed",
+        "semi_managed_scope_confirmed",
+        "campaign_price_confirmed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_us_semimanaged_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "shop_ads_gmv_max",
+        "creator_affiliate_push",
+        "shop_coupon",
+        "free_shipping",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "us_holiday_and_weekend_calendar",
+      "site_ads_notes": [
+        "business_center_shop_access_required",
+        "marketing_account_qr_authorization_required",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "us_site_do_not_mix_with_sea_sites",
+        "semi_managed_scope_confirmed",
+        "local_seller_compliance_check"
+      ],
+      "activity_types_add": [
+        "gmv_max_shop_ads",
+        "affiliate_creator_push",
+        "shop_coupon"
+      ],
+      "stacking_rules_add": [
+        "marketing_account_authorization_check",
+        "site_holiday_margin_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_tax_fee_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "business_center_shop_access",
+        "marketing_account_authorization",
+        "tiktok_seller_center_access",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "site_calendar_checked",
+        "shop_ads_budget_confirmed",
+        "semi_managed_scope_confirmed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_sg_my_th_vn_ph_id_semimanaged_crossborder_compat_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "semi_managed_crossborder"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "cross_border_semi_managed_submission_review"
+      ],
+      "site_campaign_window": "sg_my_th_vn_ph_id_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "sea_site_separate_by_country",
+        "semi_managed_scope_confirmed",
+        "local_payment_and_fulfillment_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "cross_border_shipping_fee_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_sg_my_th_vn_ph_id_semimanaged_local_compat_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "sg_my_th_vn_ph_id_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "sea_site_separate_by_country",
+        "semi_managed_scope_confirmed",
+        "local_payment_and_fulfillment_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "semi_managed_fulfillment_scope_check",
+        "local_tax_fee_check",
+        "local_fulfillment_sla_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified",
+        "tiktok_global_seller_center_scope",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "country_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_us_accu_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "tiktok_accu_local"
+      ],
+      "site_activity_focus": [
+        "shop_ads_gmv_max",
+        "creator_affiliate_push",
+        "holiday_calendar",
+        "shop_coupon",
+        "accu_partner_fulfillment_review"
+      ],
+      "site_campaign_window": "us_holiday_and_weekend_calendar",
+      "site_ads_notes": [
+        "business_center_shop_access_required",
+        "marketing_account_qr_authorization_required",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "us_site_do_not_mix_with_sea_sites",
+        "accu_partner_scope_confirmed",
+        "owner_confirmation_before_campaign_or_ad_submit"
+      ],
+      "activity_types_add": [
+        "gmv_max_shop_ads",
+        "affiliate_creator_push",
+        "shop_coupon"
+      ],
+      "stacking_rules_add": [
+        "marketing_account_authorization_check",
+        "site_holiday_margin_check",
+        "accu_partner_fulfillment_check",
+        "tiktok_affiliate_commission_check"
+      ],
+      "authorization_requirements_add": [
+        "business_center_shop_access",
+        "marketing_account_authorization",
+        "tiktok_seller_center_access",
+        "accu_partner_scope_confirmed"
+      ],
+      "real_submission_requires_add": [
+        "site_calendar_checked",
+        "shop_ads_budget_confirmed",
+        "accu_partner_scope_confirmed",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_us_local_ads_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "local_store",
+        "tiktok_accu_local",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "site_activity_focus": [
+        "shop_ads_gmv_max",
+        "creator_affiliate_push",
+        "holiday_calendar",
+        "shop_coupon",
+        "free_shipping"
+      ],
+      "site_campaign_window": "us_holiday_and_weekend_calendar",
+      "site_ads_notes": [
+        "business_center_shop_access_required",
+        "marketing_account_qr_authorization_required",
+        "shop_ads_budget_guardrail"
+      ],
+      "site_rule_notes": [
+        "us_site_do_not_mix_with_sea_sites",
+        "owner_confirmation_before_campaign_or_ad_submit"
+      ],
+      "activity_types_add": [
+        "gmv_max_shop_ads",
+        "affiliate_creator_push"
+      ],
+      "stacking_rules_add": [
+        "marketing_account_authorization_check",
+        "site_holiday_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "business_center_shop_access",
+        "marketing_account_authorization"
+      ],
+      "real_submission_requires_add": [
+        "site_calendar_checked",
+        "shop_ads_budget_confirmed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_my_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "MY"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "payday_campaign",
+        "live_coupon"
+      ],
+      "site_campaign_window": "my_local_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check"
+      ],
+      "site_rule_notes": [
+        "my_site_separate_from_us_and_th",
+        "local_fulfillment_sla_first"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "payday_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_th_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "TH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "live_coupon",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "th_local_double_day_and_live_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check"
+      ],
+      "site_rule_notes": [
+        "th_site_separate_from_us_and_my",
+        "local_language_content_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_language_content_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "content_language_checked"
+      ]
+    },
+    {
+      "site_override_id": "shein_us_semimanaged_crossborder_activity",
+      "channel_id": "shein",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "semi_managed_crossborder"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "stock_sla_campaign",
+        "cross_border_semi_managed_submission_review",
+        "product_listing_push"
+      ],
+      "site_campaign_window": "us_marketplace_seasonal_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "do_not_mix_with_official_full_managed",
+        "semi_managed_scope_confirmed",
+        "cross_border_shipping_fee_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "campaign_price_floor",
+        "semi_managed_service_fee_check",
+        "cross_border_shipping_fee_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "semi_managed_backend_access",
+        "site_store_model_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_hub_store_verified",
+        "semi_managed_scope_confirmed",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_us_semimanaged_local_activity",
+      "channel_id": "shein",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "stock_sla_campaign",
+        "semi_managed_local_submission_review",
+        "localized_price_check"
+      ],
+      "site_campaign_window": "us_marketplace_seasonal_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "do_not_mix_with_official_full_managed",
+        "semi_managed_scope_confirmed",
+        "local_return_address_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "campaign_price_floor",
+        "semi_managed_service_fee_check",
+        "local_tax_fee_check",
+        "local_delivery_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "semi_managed_backend_access",
+        "site_store_model_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_hub_store_verified",
+        "semi_managed_scope_confirmed",
+        "campaign_price_confirmed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_gb_semimanaged_country_activity",
+      "channel_id": "shein",
+      "countries": [
+        "GB"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "localized_voucher",
+        "stock_sla_campaign",
+        "semi_managed_submission_review"
+      ],
+      "site_campaign_window": "gb_shein_marketplace_campaign_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review",
+        "do_not_reuse_us_or_eu_ads_identity"
+      ],
+      "site_rule_notes": [
+        "gb_site_separate_from_us_and_eu",
+        "uk_vat_return_address_check",
+        "local_language_currency_check",
+        "do_not_mix_with_official_full_managed"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_voucher",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "country_site_rule_check",
+        "uk_vat_return_address_check",
+        "local_currency_margin_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "site_store_model_verified",
+        "semi_managed_backend_access_if_needed"
+      ],
+      "real_submission_requires_add": [
+        "gb_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "uk_vat_return_address_passed",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_de_semimanaged_country_activity",
+      "channel_id": "shein",
+      "countries": [
+        "DE"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "localized_voucher",
+        "stock_sla_campaign",
+        "semi_managed_submission_review"
+      ],
+      "site_campaign_window": "de_shein_marketplace_campaign_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review",
+        "do_not_reuse_us_or_gb_ads_identity"
+      ],
+      "site_rule_notes": [
+        "de_site_separate_from_eu_neighbors",
+        "eu_vat_ioss_check",
+        "local_language_currency_check",
+        "do_not_mix_with_official_full_managed"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_voucher",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "country_site_rule_check",
+        "eu_vat_ioss_check",
+        "local_language_content_check",
+        "local_currency_margin_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "site_store_model_verified",
+        "semi_managed_backend_access_if_needed"
+      ],
+      "real_submission_requires_add": [
+        "de_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "eu_vat_ioss_passed",
+        "content_language_checked",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_fr_semimanaged_country_activity",
+      "channel_id": "shein",
+      "countries": [
+        "FR"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "localized_voucher",
+        "stock_sla_campaign",
+        "semi_managed_submission_review"
+      ],
+      "site_campaign_window": "fr_shein_marketplace_campaign_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review",
+        "do_not_reuse_us_or_gb_ads_identity"
+      ],
+      "site_rule_notes": [
+        "fr_site_separate_from_eu_neighbors",
+        "eu_vat_ioss_check",
+        "local_language_currency_check",
+        "do_not_mix_with_official_full_managed"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_voucher",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "country_site_rule_check",
+        "eu_vat_ioss_check",
+        "local_language_content_check",
+        "local_currency_margin_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "site_store_model_verified",
+        "semi_managed_backend_access_if_needed"
+      ],
+      "real_submission_requires_add": [
+        "fr_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "eu_vat_ioss_passed",
+        "content_language_checked",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_it_semimanaged_country_activity",
+      "channel_id": "shein",
+      "countries": [
+        "IT"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "localized_voucher",
+        "stock_sla_campaign",
+        "semi_managed_submission_review"
+      ],
+      "site_campaign_window": "it_shein_marketplace_campaign_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review",
+        "do_not_reuse_us_or_gb_ads_identity"
+      ],
+      "site_rule_notes": [
+        "it_site_separate_from_eu_neighbors",
+        "eu_vat_ioss_check",
+        "local_language_currency_check",
+        "do_not_mix_with_official_full_managed"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_voucher",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "country_site_rule_check",
+        "eu_vat_ioss_check",
+        "local_language_content_check",
+        "local_currency_margin_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "site_store_model_verified",
+        "semi_managed_backend_access_if_needed"
+      ],
+      "real_submission_requires_add": [
+        "it_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "eu_vat_ioss_passed",
+        "content_language_checked",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_es_semimanaged_country_activity",
+      "channel_id": "shein",
+      "countries": [
+        "ES"
+      ],
+      "store_models": [
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "localized_voucher",
+        "stock_sla_campaign",
+        "semi_managed_submission_review"
+      ],
+      "site_campaign_window": "es_shein_marketplace_campaign_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review",
+        "do_not_reuse_us_or_gb_ads_identity"
+      ],
+      "site_rule_notes": [
+        "es_site_separate_from_eu_neighbors",
+        "eu_vat_ioss_check",
+        "local_language_currency_check",
+        "do_not_mix_with_official_full_managed"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_voucher",
+        "campaign_price"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "country_site_rule_check",
+        "eu_vat_ioss_check",
+        "local_language_content_check",
+        "local_currency_margin_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "site_store_model_verified",
+        "semi_managed_backend_access_if_needed"
+      ],
+      "real_submission_requires_add": [
+        "es_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "eu_vat_ioss_passed",
+        "content_language_checked",
+        "campaign_price_confirmed",
+        "stock_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_mx_semimanaged_crossborder_activity",
+      "channel_id": "shein",
+      "countries": [
+        "MX"
+      ],
+      "store_models": [
+        "semi_managed_crossborder"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check",
+        "cross_border_semi_managed_submission_review"
+      ],
+      "site_campaign_window": "mx_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "mx_site_separate_from_us",
+        "semi_managed_scope_confirmed",
+        "local_currency_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_price_check"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "cross_border_shipping_fee_check",
+        "semi_managed_service_fee_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "mx_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_mx_semimanaged_local_activity",
+      "channel_id": "shein",
+      "countries": [
+        "MX"
+      ],
+      "store_models": [
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "mx_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "mx_site_separate_from_us",
+        "semi_managed_scope_confirmed",
+        "local_currency_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_price_check"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "local_tax_fee_check",
+        "local_delivery_sla_check",
+        "semi_managed_service_fee_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "mx_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "local_currency_margin_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_br_semimanaged_crossborder_activity",
+      "channel_id": "shein",
+      "countries": [
+        "BR"
+      ],
+      "store_models": [
+        "semi_managed_crossborder"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check",
+        "cross_border_semi_managed_submission_review"
+      ],
+      "site_campaign_window": "br_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "br_site_separate_from_us_and_mx",
+        "semi_managed_scope_confirmed",
+        "local_currency_tax_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_price_check"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "cross_border_shipping_fee_check",
+        "semi_managed_service_fee_check",
+        "tax_fee_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "br_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_br_semimanaged_local_activity",
+      "channel_id": "shein",
+      "countries": [
+        "BR"
+      ],
+      "store_models": [
+        "semi_managed_local"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check",
+        "semi_managed_local_submission_review"
+      ],
+      "site_campaign_window": "br_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "br_site_separate_from_us_and_mx",
+        "semi_managed_scope_confirmed",
+        "local_currency_tax_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "localized_price_check"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "local_tax_fee_check",
+        "local_delivery_sla_check",
+        "semi_managed_service_fee_check",
+        "tax_fee_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified",
+        "semi_managed_backend_access"
+      ],
+      "real_submission_requires_add": [
+        "br_site_store_verified",
+        "semi_managed_scope_confirmed",
+        "local_currency_margin_passed",
+        "local_delivery_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_us_marketplace_activity",
+      "channel_id": "shein",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "stock_sla_campaign",
+        "product_listing_push"
+      ],
+      "site_campaign_window": "us_marketplace_seasonal_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "traffic_metrics_may_not_be_api_available"
+      ],
+      "site_rule_notes": [
+        "do_not_mix_with_official_full_managed",
+        "seller_hub_submission_requires_confirmation"
+      ],
+      "activity_types_add": [
+        "seller_hub_campaign",
+        "stock_sla_campaign"
+      ],
+      "stacking_rules_add": [
+        "seller_hub_rule_check",
+        "stock_sla_campaign_check"
+      ],
+      "authorization_requirements_add": [
+        "open_platform_account",
+        "application_review",
+        "authorization_integration"
+      ],
+      "real_submission_requires_add": [
+        "seller_hub_store_verified",
+        "campaign_price_confirmed"
+      ]
+    },
+    {
+      "site_override_id": "shein_mx_marketplace_activity",
+      "channel_id": "shein",
+      "countries": [
+        "MX"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check"
+      ],
+      "site_campaign_window": "mx_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "mx_site_separate_from_us",
+        "local_currency_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "localized_price_check",
+        "seller_hub_campaign"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "local_delivery_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified"
+      ],
+      "real_submission_requires_add": [
+        "mx_site_store_verified",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "shopee_my_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "MY"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "my_shopee_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "shop_api_needs_seller_authorization",
+        "voucher_discount_uses_shop_permission",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "local_payment_and_tax_check"
+      ],
+      "activity_types_add": [
+        "double_day_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "double_day_margin_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "local_payment_and_tax_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "double_day_margin_passed",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_th_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "TH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "th_shopee_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "th_site_separate_from_my",
+        "local_language_content_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "local_language_content_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "local_language_checked",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_my_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "MY"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "my_lazada_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "seller_voucher_create_activate_requires_confirmation",
+        "seller_id_access_token_mapping_required",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "local_payment_and_tax_check"
+      ],
+      "activity_types_add": [
+        "double_day_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "local_payment_and_tax_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "free_shipping_margin_passed",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_th_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "TH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "th_lazada_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "th_site_separate_from_my",
+        "seller_id_access_token_mapping_required",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "local_language_content_check",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "local_language_content_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "local_language_checked",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_sg_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "SG"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "payday_campaign",
+        "mall_campaign"
+      ],
+      "site_campaign_window": "sg_local_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "sg_site_separate_from_my_th_id",
+        "local_fulfillment_sla_first"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "payday_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_vn_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "VN"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "local_language_campaign",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "vn_local_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "vn_site_separate_from_th_ph",
+        "local_language_content_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "local_language_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_ph_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "PH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "payday_campaign",
+        "double_day_campaign"
+      ],
+      "site_campaign_window": "ph_local_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "ph_site_separate_from_sg_id",
+        "cash_on_delivery_or_local_payment_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "payday_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "tiktok_shop_id_local_activity",
+      "channel_id": "tiktok_shop",
+      "countries": [
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "localized_voucher",
+        "free_shipping",
+        "creator_affiliate_push",
+        "double_day_campaign",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "id_local_double_day_and_payday_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "seller_center_shop_ads_check",
+        "do_not_reuse_us_business_center"
+      ],
+      "site_rule_notes": [
+        "id_site_separate_from_my_sg",
+        "local_language_content_check"
+      ],
+      "activity_types_add": [
+        "localized_voucher",
+        "double_day_campaign"
+      ],
+      "stacking_rules_add": [
+        "country_site_rule_check",
+        "local_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "local_site_store_verified",
+        "fulfillment_sla_passed"
+      ]
+    },
+    {
+      "site_override_id": "shein_br_marketplace_activity",
+      "channel_id": "shein",
+      "countries": [
+        "BR"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_hub_campaign",
+        "campaign_price",
+        "inventory_campaign",
+        "localized_price_check"
+      ],
+      "site_campaign_window": "br_marketplace_local_calendar",
+      "site_ads_notes": [
+        "seller_hub_or_platform_backend_first",
+        "ads_or_traffic_backend_needs_separate_review"
+      ],
+      "site_rule_notes": [
+        "br_site_separate_from_us_and_mx",
+        "local_currency_tax_and_delivery_check"
+      ],
+      "activity_types_add": [
+        "localized_price_check",
+        "seller_hub_campaign"
+      ],
+      "stacking_rules_add": [
+        "local_currency_margin_check",
+        "local_delivery_sla_check",
+        "tax_fee_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "site_store_model_verified"
+      ],
+      "real_submission_requires_add": [
+        "br_site_store_verified",
+        "local_currency_margin_passed"
+      ]
+    },
+    {
+      "site_override_id": "shopee_sg_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "SG"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "payday_campaign"
+      ],
+      "site_campaign_window": "sg_shopee_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "sg_site_separate_from_my_id",
+        "shop_api_needs_seller_authorization",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "local_payment_and_fulfillment_check"
+      ],
+      "activity_types_add": [
+        "payday_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "local_payment_and_fulfillment_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_vn_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "VN"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "vn_shopee_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "vn_site_separate_from_th_ph",
+        "local_language_content_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "local_language_content_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_ph_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "PH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "payday_campaign"
+      ],
+      "site_campaign_window": "ph_shopee_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "ph_site_separate_from_sg_id",
+        "local_payment_and_fulfillment_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cash_on_delivery_or_local_payment_check"
+      ],
+      "activity_types_add": [
+        "payday_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "cash_on_delivery_or_local_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_id_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "id_shopee_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "id_site_separate_from_my_sg",
+        "local_language_content_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check",
+        "local_language_content_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_tw_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "TW"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "free_shipping",
+        "localized_price_check"
+      ],
+      "site_campaign_window": "tw_shopee_local_seasonal_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "tw_site_separate_from_sea_cross_border",
+        "local_currency_margin_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation"
+      ],
+      "activity_types_add": [
+        "localized_price_check",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopee_br_campaign_activity",
+      "channel_id": "shopee",
+      "countries": [
+        "BR"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_voucher",
+        "product_discount",
+        "free_shipping",
+        "localized_price_check"
+      ],
+      "site_campaign_window": "br_shopee_local_campaign_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "shopee_ads_backend_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "shop_or_merchant_token_required",
+        "ads_backend_separate_from_shop_api"
+      ],
+      "site_rule_notes": [
+        "br_site_separate_from_sea_sites",
+        "local_currency_tax_and_delivery_check",
+        "shop_voucher_product_discount_free_shipping_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation"
+      ],
+      "activity_types_add": [
+        "localized_price_check",
+        "shopee_ads_budget_review",
+        "shopee_affiliate_creator_review",
+        "shop_live_coupon_review"
+      ],
+      "stacking_rules_add": [
+        "access_token_shop_permission_check",
+        "country_site_rule_check",
+        "voucher_discount_stack_check",
+        "free_shipping_subsidy_check",
+        "shopee_ads_budget_check",
+        "affiliate_commission_margin_check"
+      ],
+      "authorization_requirements_add": [
+        "shop_access_token",
+        "merchant_or_shop_permission",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "affiliate_permission_if_available",
+        "live_or_creator_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "voucher_stack_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "affiliate_commission_confirmed_if_used",
+        "live_coupon_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_sg_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "SG"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "payday_campaign"
+      ],
+      "site_campaign_window": "sg_lazada_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "sg_site_separate_from_my_id",
+        "seller_id_access_token_mapping_required",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "local_payment_and_fulfillment_check"
+      ],
+      "activity_types_add": [
+        "payday_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "country_site_rule_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "local_payment_and_fulfillment_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_vn_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "VN"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "vn_lazada_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "vn_site_separate_from_th_ph",
+        "local_language_content_check",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "country_site_rule_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "local_language_content_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_ph_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "PH"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "payday_campaign"
+      ],
+      "site_campaign_window": "ph_lazada_payday_and_double_day_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "ph_site_separate_from_sg_id",
+        "local_payment_and_fulfillment_check",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cash_on_delivery_or_local_payment_check"
+      ],
+      "activity_types_add": [
+        "payday_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "country_site_rule_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "cash_on_delivery_or_local_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "lazada_id_campaign_activity",
+      "channel_id": "lazada",
+      "countries": [
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "seller_voucher",
+        "free_shipping",
+        "product_discount",
+        "bundle",
+        "local_language_campaign"
+      ],
+      "site_campaign_window": "id_lazada_double_day_and_local_calendar",
+      "site_ads_notes": [
+        "country_site_ads_account_required",
+        "do_not_reuse_cross_site_ads_identity",
+        "sponsored_solutions_separate_from_open_platform",
+        "affiliate_and_live_backend_separate_from_store_api",
+        "seller_authorization_code_required",
+        "voucher_and_free_shipping_api_need_permission"
+      ],
+      "site_rule_notes": [
+        "id_site_separate_from_my_sg",
+        "local_language_content_check",
+        "seller_voucher_free_shipping_bundle_stack_must_be_checked",
+        "campaign_ads_affiliate_live_execution_need_owner_confirmation",
+        "cod_payment_check"
+      ],
+      "activity_types_add": [
+        "local_language_campaign",
+        "lazada_sponsored_solutions_review",
+        "lazada_affiliate_or_live_review",
+        "flexicombo_bundle_review"
+      ],
+      "stacking_rules_add": [
+        "seller_voucher_api_permission_check",
+        "country_site_rule_check",
+        "free_shipping_stack_check",
+        "sponsored_solutions_budget_check",
+        "flexicombo_bundle_margin_check",
+        "local_language_content_check",
+        "cod_payment_check"
+      ],
+      "authorization_requirements_add": [
+        "seller_authorization_code",
+        "seller_access_token",
+        "country_site_verified",
+        "ads_account_if_ads",
+        "promotion_permission",
+        "affiliate_or_live_permission_if_available"
+      ],
+      "real_submission_requires_add": [
+        "seller_voucher_confirmed",
+        "country_site_store_verified",
+        "ads_budget_confirmed_if_ads",
+        "bundle_margin_confirmed_if_used",
+        "affiliate_or_live_confirmed_if_used",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "amazon_us_marketplace_activity",
+      "channel_id": "amazon",
+      "countries": [
+        "US"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border"
+      ],
+      "site_activity_focus": [
+        "coupon",
+        "promotion",
+        "deal",
+        "price_discount",
+        "amazon_ads"
+      ],
+      "site_campaign_window": "us_amazon_deal_and_coupon_calendar",
+      "site_ads_notes": [
+        "amazon_ads_profile_required",
+        "seller_central_not_same_as_ads_authorization",
+        "do_not_reuse_other_marketplace_ads_profile",
+        "sp_api_not_ads_or_coupon_submit"
+      ],
+      "site_rule_notes": [
+        "us_marketplace_separate_from_ca_mx",
+        "seller_central_promotions_need_confirmation",
+        "sp_api_does_not_unlock_ads_or_coupon_submit",
+        "coupon_deal_price_and_ads_need_owner_confirmation",
+        "seller_central_promotions_scope_check"
+      ],
+      "activity_types_add": [
+        "coupon",
+        "deal",
+        "prime_exclusive_discount",
+        "amazon_sponsored_products_review",
+        "deal_event_review"
+      ],
+      "stacking_rules_add": [
+        "seller_central_rule_check",
+        "seller_central_promotions_scope_check",
+        "buy_box_price_check",
+        "amazon_ads_budget_check",
+        "coupon_deal_stack_check",
+        "amazon_ads_profile_scope_check"
+      ],
+      "authorization_requirements_add": [
+        "sp_api_authorization",
+        "seller_central_access",
+        "amazon_ads_authorization_if_ads",
+        "marketplace_verified",
+        "ads_profile_verified_if_ads"
+      ],
+      "real_submission_requires_add": [
+        "seller_authorized",
+        "coupon_or_deal_confirmed",
+        "amazon_ads_profile_verified_if_ads",
+        "buy_box_price_checked",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "shopify_global_independent_site_activity",
+      "channel_id": "shopify",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "site_activity_focus": [
+        "discount_code",
+        "automatic_discount",
+        "bundle",
+        "free_shipping",
+        "email_or_ads_campaign"
+      ],
+      "site_campaign_window": "shopify_store_campaign_calendar",
+      "site_ads_notes": [
+        "external_ads_account_required_if_ads",
+        "store_admin_api_not_ads_authorization",
+        "one_store_one_app_scope",
+        "do_not_share_store_app_token"
+      ],
+      "site_rule_notes": [
+        "independent_site_scope_not_marketplace_site",
+        "discount_combination_requires_store_scope",
+        "do_not_share_store_app_token",
+        "discount_function_and_admin_discount_stack_need_review",
+        "external_ads_budget_not_store_api"
+      ],
+      "activity_types_add": [
+        "discount_code",
+        "automatic_discount",
+        "free_shipping_discount",
+        "discount_function_review",
+        "external_ads_campaign_review"
+      ],
+      "stacking_rules_add": [
+        "discount_combination_check",
+        "admin_api_discount_scope_check",
+        "payment_and_tax_check",
+        "discount_function_scope_check",
+        "external_ads_budget_check"
+      ],
+      "authorization_requirements_add": [
+        "store_app_installed",
+        "write_discounts_if_discount_api",
+        "discount_function_if_custom",
+        "ads_account_if_ads"
+      ],
+      "real_submission_requires_add": [
+        "store_app_scope_verified",
+        "discount_combination_checked",
+        "discount_activation_confirmed",
+        "ads_budget_confirmed_if_ads",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "meta_ads_global_content_catalog_activity",
+      "channel_id": "meta_ads",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "content_catalog",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "site_activity_focus": [
+        "catalog_sales",
+        "campaign",
+        "ad_set",
+        "creative_test",
+        "budget_change"
+      ],
+      "site_campaign_window": "meta_ads_catalog_test_calendar",
+      "site_ads_notes": [
+        "business_manager_ad_account_required",
+        "catalog_pixel_event_match_required",
+        "not_order_store_do_not_treat_as_erp_shop"
+      ],
+      "site_rule_notes": [
+        "content_catalog_is_not_order_store",
+        "business_manager_scope_separate_from_store_erp",
+        "campaign_budget_needs_confirmation"
+      ],
+      "activity_types_add": [
+        "catalog_sales",
+        "creative_test",
+        "campaign_budget_review"
+      ],
+      "stacking_rules_add": [
+        "business_permission_check",
+        "ad_account_budget_check",
+        "catalog_pixel_check",
+        "store_margin_roas_check"
+      ],
+      "authorization_requirements_add": [
+        "business_authorization",
+        "ad_account_permission",
+        "catalog_or_pixel_if_catalog_sales",
+        "ads_read_or_ads_management"
+      ],
+      "real_submission_requires_add": [
+        "business_authorized",
+        "ad_account_authorized",
+        "catalog_pixel_verified",
+        "budget_guardrail_passed"
+      ]
+    },
+    {
+      "channel_id": "walmart",
+      "store_models": [
+        "marketplace_seller",
+        "local_store"
+      ],
+      "site_activity_focus": [
+        "promotion",
+        "price_discount",
+        "deal",
+        "walmart_connect_ads",
+        "sponsored_search"
+      ],
+      "site_ads_notes": [
+        "walmart_connect_ads_account_required",
+        "marketplace_api_not_ads_authorization",
+        "do_not_reuse_other_marketplace_ads_profile",
+        "seller_center_and_ads_backend_separate"
+      ],
+      "activity_types_add": [
+        "promotional_price",
+        "walmart_connect_sponsored_search",
+        "walmart_connect_display_review"
+      ],
+      "stacking_rules_add": [
+        "marketplace_price_rule_check",
+        "walmart_promotional_price_stack_check",
+        "walmart_connect_budget_check",
+        "buy_box_price_check",
+        "stock_and_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "marketplace_seller_authorization",
+        "seller_center_access",
+        "walmart_connect_or_ads_authorization_if_ads",
+        "marketplace_verified",
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_authorized",
+        "promotional_price_confirmed",
+        "ads_budget_confirmed_if_ads",
+        "price_and_stock_checked",
+        "owner_confirmation"
+      ],
+      "site_override_id": "walmart_us_marketplace_activity",
+      "countries": [
+        "US"
+      ],
+      "site_campaign_window": "us_walmart_marketplace_campaign_calendar",
+      "site_rule_notes": [
+        "us_marketplace_separate_from_ca_mx",
+        "us_tax_delivery_and_return_address_check",
+        "promotion_price_stock_and_ads_need_owner_confirmation"
+      ]
+    },
+    {
+      "channel_id": "walmart",
+      "store_models": [
+        "marketplace_seller",
+        "local_store"
+      ],
+      "site_activity_focus": [
+        "promotion",
+        "price_discount",
+        "deal",
+        "walmart_connect_ads",
+        "sponsored_search"
+      ],
+      "site_ads_notes": [
+        "walmart_connect_ads_account_required",
+        "marketplace_api_not_ads_authorization",
+        "do_not_reuse_other_marketplace_ads_profile",
+        "seller_center_and_ads_backend_separate"
+      ],
+      "activity_types_add": [
+        "promotional_price",
+        "walmart_connect_sponsored_search",
+        "walmart_connect_display_review"
+      ],
+      "stacking_rules_add": [
+        "marketplace_price_rule_check",
+        "walmart_promotional_price_stack_check",
+        "walmart_connect_budget_check",
+        "buy_box_price_check",
+        "stock_and_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "marketplace_seller_authorization",
+        "seller_center_access",
+        "walmart_connect_or_ads_authorization_if_ads",
+        "marketplace_verified",
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_authorized",
+        "promotional_price_confirmed",
+        "ads_budget_confirmed_if_ads",
+        "price_and_stock_checked",
+        "owner_confirmation"
+      ],
+      "site_override_id": "walmart_ca_marketplace_activity",
+      "countries": [
+        "CA"
+      ],
+      "site_campaign_window": "ca_walmart_marketplace_campaign_calendar",
+      "site_rule_notes": [
+        "ca_site_separate_from_us_mx",
+        "cad_currency_tax_delivery_check",
+        "promotion_price_stock_and_ads_need_owner_confirmation"
+      ]
+    },
+    {
+      "channel_id": "walmart",
+      "store_models": [
+        "marketplace_seller",
+        "local_store"
+      ],
+      "site_activity_focus": [
+        "promotion",
+        "price_discount",
+        "deal",
+        "walmart_connect_ads",
+        "sponsored_search"
+      ],
+      "site_ads_notes": [
+        "walmart_connect_ads_account_required",
+        "marketplace_api_not_ads_authorization",
+        "do_not_reuse_other_marketplace_ads_profile",
+        "seller_center_and_ads_backend_separate"
+      ],
+      "activity_types_add": [
+        "promotional_price",
+        "walmart_connect_sponsored_search",
+        "walmart_connect_display_review"
+      ],
+      "stacking_rules_add": [
+        "marketplace_price_rule_check",
+        "walmart_promotional_price_stack_check",
+        "walmart_connect_budget_check",
+        "buy_box_price_check",
+        "stock_and_fulfillment_sla_check"
+      ],
+      "authorization_requirements_add": [
+        "marketplace_seller_authorization",
+        "seller_center_access",
+        "walmart_connect_or_ads_authorization_if_ads",
+        "marketplace_verified",
+        "country_site_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_authorized",
+        "promotional_price_confirmed",
+        "ads_budget_confirmed_if_ads",
+        "price_and_stock_checked",
+        "owner_confirmation"
+      ],
+      "site_override_id": "walmart_mx_marketplace_activity",
+      "countries": [
+        "MX"
+      ],
+      "site_campaign_window": "mx_walmart_marketplace_campaign_calendar",
+      "site_rule_notes": [
+        "mx_site_separate_from_us_ca",
+        "mx_currency_tax_delivery_check",
+        "promotion_price_stock_and_ads_need_owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "etsy_global_shop_activity",
+      "channel_id": "etsy",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "self_store",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "shop_sale",
+        "coupon",
+        "thank_you_coupon",
+        "abandoned_cart_offer",
+        "etsy_ads"
+      ],
+      "site_campaign_window": "etsy_shop_sale_and_ads_calendar",
+      "site_ads_notes": [
+        "etsy_ads_access_if_ads",
+        "offsite_ads_fee_review_required",
+        "open_api_not_shop_manager_ads_authorization",
+        "one_shop_one_oauth_identity"
+      ],
+      "site_rule_notes": [
+        "shop_manager_sales_and_coupons_need_confirmation",
+        "offsite_ads_fee_can_change_margin",
+        "listing_quantity_processing_time_check"
+      ],
+      "activity_types_add": [
+        "shop_sale",
+        "thank_you_coupon",
+        "abandoned_cart_offer",
+        "etsy_ads",
+        "offsite_ads_review"
+      ],
+      "stacking_rules_add": [
+        "sale_coupon_stack_check",
+        "free_shipping_margin_check",
+        "etsy_ads_budget_check",
+        "offsite_ads_fee_check",
+        "listing_quantity_processing_time_check"
+      ],
+      "authorization_requirements_add": [
+        "etsy_app_oauth",
+        "shop_manager_access",
+        "etsy_ads_access_if_ads",
+        "shop_identity_verified"
+      ],
+      "real_submission_requires_add": [
+        "shop_authorization",
+        "sale_or_coupon_confirmed",
+        "etsy_ads_budget_confirmed_if_ads",
+        "offsite_ads_fee_reviewed",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "ebay_global_marketing_activity",
+      "channel_id": "ebay",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "site_activity_focus": [
+        "order_discount",
+        "markdown_sale",
+        "coupon",
+        "promoted_listings",
+        "seller_hub_campaign"
+      ],
+      "site_campaign_window": "ebay_seller_hub_campaign_calendar",
+      "site_ads_notes": [
+        "promoted_listings_permission_if_ads",
+        "sell_marketing_scope_not_inventory_scope",
+        "seller_hub_ads_backend_separate",
+        "do_not_launch_campaign_from_order_sync"
+      ],
+      "site_rule_notes": [
+        "promotions_now_called_discounts_in_seller_hub",
+        "cross_border_fee_and_delivery_check",
+        "marketing_campaign_setup_requires_confirmation"
+      ],
+      "activity_types_add": [
+        "order_discount",
+        "markdown_sale",
+        "coupon",
+        "promoted_listings",
+        "seller_hub_campaign"
+      ],
+      "stacking_rules_add": [
+        "marketing_promotion_stack_check",
+        "best_offer_price_check",
+        "promoted_listing_budget_check",
+        "cross_border_fee_check",
+        "fulfillment_policy_check"
+      ],
+      "authorization_requirements_add": [
+        "sell_marketing_scope",
+        "sell_inventory_scope",
+        "seller_hub_access",
+        "ads_campaign_permission_if_ads",
+        "seller_account_verified"
+      ],
+      "real_submission_requires_add": [
+        "seller_authorization",
+        "promotion_stack_confirmed",
+        "budget_confirmed_if_ads",
+        "seller_hub_campaign_confirmed",
+        "owner_confirmation"
+      ]
+    },
+    {
+      "site_override_id": "woocommerce_global_independent_site_activity",
+      "channel_id": "woocommerce",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "site_activity_focus": [
+        "coupon",
+        "sale_price",
+        "bundle",
+        "free_shipping",
+        "email_or_ads_campaign"
+      ],
+      "site_campaign_window": "woocommerce_store_campaign_calendar",
+      "site_ads_notes": [
+        "external_ads_account_required_if_ads",
+        "rest_api_not_ads_authorization",
+        "one_store_one_rest_key_or_plugin_scope",
+        "do_not_share_store_plugin_token"
+      ],
+      "site_rule_notes": [
+        "independent_site_scope_not_marketplace_site",
+        "coupon_stack_depends_on_plugins",
+        "payment_tax_shipping_plugin_check"
+      ],
+      "activity_types_add": [
+        "coupon",
+        "sale_price",
+        "free_shipping_coupon",
+        "bundle_plugin_review",
+        "external_ads_campaign_review"
+      ],
+      "stacking_rules_add": [
+        "coupon_stack_check",
+        "plugin_scope_check",
+        "payment_tax_shipping_check",
+        "rest_key_write_permission_check",
+        "external_ads_budget_check"
+      ],
+      "authorization_requirements_add": [
+        "rest_api_key_or_plugin_access",
+        "store_backend_access_if_needed",
+        "write_coupon_or_product_price_scope",
+        "ads_account_if_ads"
+      ],
+      "real_submission_requires_add": [
+        "store_rest_key_verified",
+        "coupon_stack_checked",
+        "sale_price_confirmed",
+        "ads_budget_confirmed_if_ads",
+        "owner_confirmation"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "channel_id": "tiktok_shop",
+      "label": "TikTok Shop promotions",
+      "countries": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "IE",
+        "MX",
+        "BR",
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "tiktok_accu_local",
+        "platform_co_ops",
+        "teelab_owned",
+        "semi_managed_crossborder",
+        "semi_managed_local",
+        "local_seller",
+        "cross_border_seller"
+      ],
+      "activity_types": [
+        "platform_campaign",
+        "product_discount",
+        "shop_coupon",
+        "live_coupon",
+        "creator_coupon",
+        "free_shipping"
+      ],
+      "stacking_rules": [
+        "platform_rule_first",
+        "merchant_subsidy_margin_check",
+        "creator_commission_check",
+        "ad_roas_check"
+      ],
+      "api_boundary": "promotion_api_or_seller_center_draft",
+      "ads_boundary": "separate_tiktok_business_api_and_ad_account",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "min_margin_and_break_even_roas_required",
+      "inventory_guardrail": "campaign_stock_and_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://partner.tiktokshop.com/docv2/",
+      "last_checked_at": "2026-06-29",
+      "notes": "TikTok Shop promotions, Seller Center drafts, affiliate, Shop Ads/GMV Max and Business Center ownership must stay separated by country site, store model, ad account and execution identity. Partner Center/Open API exposes promotion-related surfaces, but real campaign signup, discount publish, ad launch and budget changes still require owner confirmation. Official full-managed remains recognition-only and is not executable.",
+      "authorization_requirements": [
+        "shop_authorization",
+        "seller_center_access",
+        "business_center",
+        "ads_account_if_ads"
+      ],
+      "execution_surfaces": [
+        "open_api",
+        "seller_center",
+        "business_center",
+        "ads_manager",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "country_site_and_store_model",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "platform_store_configured",
+        "business_center_if_ads",
+        "ads_account_if_ads",
+        "margin_guardrail_passed",
+        "owner_confirmation"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "shein",
+      "label": "SHEIN marketplace campaigns",
+      "countries": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "BR",
+        "MX"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border",
+        "platform_co_ops",
+        "teelab_owned",
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "activity_types": [
+        "platform_campaign",
+        "product_discount",
+        "campaign_price",
+        "inventory_campaign"
+      ],
+      "stacking_rules": [
+        "platform_eligibility_check",
+        "campaign_price_floor",
+        "stock_and_fulfillment_check"
+      ],
+      "api_boundary": "open_platform_or_backend_draft",
+      "ads_boundary": "separate_ads_or_platform_backend",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "campaign_price_floor_and_fee_check",
+      "inventory_guardrail": "reserved_stock_and_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://open.sheincorp.com/",
+      "last_checked_at": "2026-06-29",
+      "notes": "SHEIN Open Platform is primarily treated as product, order, fulfillment, stock preparation, webhook and reporting surface; marketplace, semi-managed cross-border/local, TeeLab co-ops and official full-managed labels must stay separated. Promotion or traffic actions without verified public write coverage stay as seller-hub/backend drafts plus owner confirmation. Official full-managed remains recognition-only and is not executable.",
+      "authorization_requirements": [
+        "open_platform_account",
+        "application_review",
+        "seller_hub_or_backend_access",
+        "site_store_model_verified"
+      ],
+      "execution_surfaces": [
+        "open_platform",
+        "seller_hub",
+        "campaign_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "country_site_and_store_model",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "platform_store_configured",
+        "site_store_model_verified",
+        "stock_sla_passed",
+        "owner_confirmation"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "shopee",
+      "label": "Shopee campaigns",
+      "countries": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID",
+        "TW",
+        "BR"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "activity_types": [
+        "campaign",
+        "shop_voucher",
+        "product_discount",
+        "bundle_deal",
+        "free_shipping"
+      ],
+      "stacking_rules": [
+        "voucher_stack_check",
+        "platform_subsidy_check",
+        "commission_and_shipping_check"
+      ],
+      "api_boundary": "open_platform_or_seller_center_draft",
+      "ads_boundary": "separate_ads_backend_or_account",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "voucher_after_margin_required",
+      "inventory_guardrail": "campaign_stock_and_delivery_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://open.shopee.com/documents",
+      "last_checked_at": "2026-06-29",
+      "notes": "Shopee Open Platform has shop authorization and promotion-related surfaces such as discount/voucher directions, but Southeast Asia sites must be split by country; campaign, voucher, ads and affiliate execution should not be treated as one regional store or one shared identity.",
+      "authorization_requirements": [
+        "shop_authorization",
+        "country_site_verified",
+        "voucher_or_discount_permission",
+        "ads_account_if_ads"
+      ],
+      "execution_surfaces": [
+        "open_platform",
+        "seller_center",
+        "ads_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "country_site_and_store_model",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "platform_store_configured",
+        "country_site_verified",
+        "voucher_stack_checked",
+        "owner_confirmation"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "lazada",
+      "label": "Lazada campaigns",
+      "countries": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "activity_types": [
+        "campaign",
+        "seller_voucher",
+        "product_discount",
+        "bundle",
+        "free_shipping"
+      ],
+      "stacking_rules": [
+        "country_site_rule_check",
+        "voucher_stack_check",
+        "ad_cost_and_fee_check"
+      ],
+      "api_boundary": "open_platform_or_seller_center_draft",
+      "ads_boundary": "separate_ads_backend_or_account",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "discount_fee_and_ad_cost_check",
+      "inventory_guardrail": "stock_and_fulfillment_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://open.lazada.com/doc/doc.htm",
+      "last_checked_at": "2026-06-29",
+      "notes": "Lazada Open Platform and Seller Center expose product/order/logistics/finance plus promotion directions such as Seller Voucher, Free Shipping and bundle-style tools, while Sponsored Solutions/ads stay a separate surface. Country-site campaign and promotion coverage can vary, so unresolved paths stay as drafts.",
+      "authorization_requirements": [
+        "seller_authorization",
+        "country_or_crossborder_scope",
+        "promotion_permission",
+        "ads_account_if_ads"
+      ],
+      "execution_surfaces": [
+        "open_platform",
+        "seller_center",
+        "seller_voucher_api",
+        "ads_or_sponsor_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "country_site_and_store_model",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "platform_store_configured",
+        "authorization_scope_verified",
+        "fee_margin_checked",
+        "owner_confirmation"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "amazon",
+      "label": "Amazon promotions and ads",
+      "countries": [
+        "US",
+        "CA",
+        "MX",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "NL",
+        "SE",
+        "PL",
+        "JP",
+        "IN",
+        "AU",
+        "AE",
+        "SA"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border"
+      ],
+      "activity_types": [
+        "coupon",
+        "promotion",
+        "deal",
+        "price_discount",
+        "amazon_ads",
+        "amazon_sponsored_products_review",
+        "deal_event_review"
+      ],
+      "stacking_rules": [
+        "seller_central_rule_check",
+        "buy_box_price_check",
+        "amazon_ads_budget_check",
+        "coupon_deal_stack_check",
+        "seller_central_promotions_scope_check",
+        "amazon_ads_profile_scope_check"
+      ],
+      "api_boundary": "sp_api_reports_or_seller_central_draft",
+      "ads_boundary": "separate_amazon_ads_api",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "buy_box_price_fee_and_acos_check",
+      "inventory_guardrail": "fba_or_mfn_stock_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://developer-docs.amazon.com/sp-api/",
+      "last_checked_at": "2026-06-30",
+      "notes": "SP-API, Seller Central promotions/coupons/deals and Amazon Ads API are separate authorization surfaces. The AI may prepare drafts and evidence; coupon/deal submit, price change, ad launch and budget edits stay behind owner confirmation and isolated execution identity.",
+      "authorization_requirements": [
+        "sp_api_authorization",
+        "seller_central_access",
+        "amazon_ads_authorization_if_ads",
+        "marketplace_verified",
+        "ads_profile_verified_if_ads"
+      ],
+      "execution_surfaces": [
+        "sp_api",
+        "seller_central",
+        "amazon_ads_api",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "marketplace_and_seller_account",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "seller_authorized",
+        "ads_authorized_if_ads",
+        "buy_box_price_checked",
+        "owner_confirmation",
+        "coupon_or_deal_confirmed",
+        "ads_budget_confirmed_if_ads"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "walmart",
+      "label": "Walmart marketplace promotions and ads",
+      "countries": [
+        "US",
+        "CA",
+        "MX"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store"
+      ],
+      "activity_types": [
+        "promotion",
+        "price_discount",
+        "deal",
+        "walmart_connect_ads",
+        "campaign",
+        "promotional_price",
+        "walmart_connect_sponsored_search",
+        "walmart_connect_display_review"
+      ],
+      "stacking_rules": [
+        "marketplace_price_rule_check",
+        "buy_box_price_check",
+        "walmart_connect_budget_check",
+        "stock_and_fulfillment_sla_check",
+        "walmart_promotional_price_stack_check",
+        "country_site_rule_check"
+      ],
+      "api_boundary": "marketplace_api_or_seller_center_draft",
+      "ads_boundary": "separate_walmart_connect_or_ads_api",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "price_fee_shipping_and_ad_cost_check",
+      "inventory_guardrail": "inventory_and_fulfillment_sla_required",
+      "confirmation_required": true,
+      "official_source_url": "https://developer.walmart.com/us-marketplace/docs",
+      "last_checked_at": "2026-06-30",
+      "notes": "Marketplace seller APIs and Walmart Connect advertising are separate surfaces. Promotions, ads and budget changes require confirmation.",
+      "authorization_requirements": [
+        "marketplace_seller_authorization",
+        "seller_center_access",
+        "walmart_connect_or_ads_authorization_if_ads",
+        "marketplace_verified",
+        "country_site_verified"
+      ],
+      "execution_surfaces": [
+        "marketplace_api",
+        "seller_center",
+        "walmart_connect",
+        "ads_api",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "marketplace_country_and_seller_account",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_marketplace_or_ads_surface",
+      "real_submission_requires": [
+        "seller_authorized",
+        "ads_authorized_if_ads",
+        "price_and_stock_checked",
+        "owner_confirmation",
+        "promotional_price_confirmed",
+        "ads_budget_confirmed_if_ads"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "shopify",
+      "label": "Shopify discounts and campaigns",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "activity_types": [
+        "discount_code",
+        "automatic_discount",
+        "bundle",
+        "free_shipping",
+        "email_or_ads_campaign",
+        "discount_function_review",
+        "external_ads_campaign_review"
+      ],
+      "stacking_rules": [
+        "discount_combination_check",
+        "app_scope_check",
+        "payment_and_tax_check",
+        "discount_function_scope_check",
+        "external_ads_budget_check"
+      ],
+      "api_boundary": "admin_api_or_discount_function_draft",
+      "ads_boundary": "separate_meta_google_tiktok_ads",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "discount_combination_and_margin_check",
+      "inventory_guardrail": "inventory_policy_and_fulfillment_check",
+      "confirmation_required": true,
+      "official_source_url": "https://shopify.dev/docs/apps/build/discounts",
+      "last_checked_at": "2026-06-30",
+      "notes": "Each independent store has its own app scopes and discount permissions; ads are not part of store Admin API authorization. Confirmed tasks may use an isolated store backend package, but real discount activation and ad launch still require owner confirmation.",
+      "authorization_requirements": [
+        "store_app_installed",
+        "write_discounts_if_discount_api",
+        "discount_function_if_custom",
+        "ads_account_if_ads"
+      ],
+      "execution_surfaces": [
+        "admin_api",
+        "discount_function",
+        "admin_ui",
+        "external_ads_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "store_instance_and_app_scope",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "store_app_scope_verified",
+        "discount_combination_checked",
+        "owner_confirmation",
+        "discount_activation_confirmed",
+        "ads_budget_confirmed_if_ads"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "woocommerce",
+      "label": "WooCommerce coupons and store campaigns",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "activity_types": [
+        "coupon",
+        "sale_price",
+        "bundle",
+        "free_shipping",
+        "email_or_ads_campaign",
+        "free_shipping_coupon",
+        "bundle_plugin_review",
+        "external_ads_campaign_review"
+      ],
+      "stacking_rules": [
+        "coupon_stack_check",
+        "plugin_scope_check",
+        "payment_tax_shipping_check",
+        "rest_key_write_permission_check",
+        "external_ads_budget_check"
+      ],
+      "api_boundary": "rest_api_coupon_or_store_backend_draft",
+      "ads_boundary": "separate_meta_google_tiktok_ads",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "coupon_sale_price_and_margin_check",
+      "inventory_guardrail": "stock_status_and_fulfillment_check",
+      "confirmation_required": true,
+      "official_source_url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+      "last_checked_at": "2026-06-30",
+      "notes": "WooCommerce coupons and sale prices depend on per-store REST keys/plugins; external ads stay separate.",
+      "authorization_requirements": [
+        "rest_api_key_or_plugin_access",
+        "store_backend_access_if_needed",
+        "ads_account_if_ads",
+        "write_coupon_or_product_price_scope"
+      ],
+      "execution_surfaces": [
+        "rest_api",
+        "woocommerce_admin",
+        "plugin_backend",
+        "external_ads_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "store_instance_and_plugin_scope",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "store_rest_key_verified",
+        "coupon_stack_checked",
+        "owner_confirmation",
+        "sale_price_confirmed",
+        "ads_budget_confirmed_if_ads"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "meta_ads",
+      "label": "Meta Ads campaigns",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "content_catalog",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "activity_types": [
+        "campaign",
+        "ad_set",
+        "ad",
+        "catalog_sales",
+        "budget_change",
+        "creative_test"
+      ],
+      "stacking_rules": [
+        "business_permission_check",
+        "ad_account_budget_check",
+        "catalog_pixel_check",
+        "store_margin_roas_check"
+      ],
+      "api_boundary": "not_store_api",
+      "ads_boundary": "marketing_api_after_business_and_ad_account_authorization",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "break_even_roas_and_daily_budget_required",
+      "inventory_guardrail": "catalog_stock_and_fulfillment_check",
+      "confirmation_required": true,
+      "official_source_url": "https://developers.facebook.com/docs/marketing-apis/",
+      "last_checked_at": "2026-06-26",
+      "notes": "Meta Ads uses Business/ad-account permissions. It is not unlocked by store ERP binding and must be isolated per ad account.",
+      "authorization_requirements": [
+        "business_authorization",
+        "ad_account_permission",
+        "catalog_or_pixel_if_catalog_sales",
+        "ads_read_or_ads_management"
+      ],
+      "execution_surfaces": [
+        "marketing_api",
+        "business_manager",
+        "ads_manager",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "business_and_ad_account",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "isolated_route_identity_required_for_api_or_backend_or_ads_surface",
+      "real_submission_requires": [
+        "business_authorized",
+        "ad_account_authorized",
+        "budget_guardrail_passed",
+        "owner_confirmation"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "etsy",
+      "label": "Etsy shop promotions and ads",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "self_store",
+        "platform_co_ops"
+      ],
+      "activity_types": [
+        "shop_sale",
+        "coupon",
+        "thank_you_coupon",
+        "abandoned_cart_offer",
+        "etsy_ads",
+        "offsite_ads_review"
+      ],
+      "stacking_rules": [
+        "sale_coupon_stack_check",
+        "free_shipping_margin_check",
+        "etsy_ads_budget_check",
+        "offsite_ads_fee_check"
+      ],
+      "api_boundary": "open_api_or_shop_manager_draft",
+      "ads_boundary": "separate_etsy_ads_or_offsite_ads_backend",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "item_fee_shipping_offsite_ads_and_ad_budget_check",
+      "inventory_guardrail": "listing_quantity_processing_time_and_shipping_profile_required",
+      "confirmation_required": true,
+      "official_source_url": "https://developers.etsy.com/documentation/",
+      "last_checked_at": "2026-06-30",
+      "notes": "Etsy listing, inventory and order APIs do not equal permission to create sales, coupons or change Etsy Ads budgets. Shop Manager changes require confirmation.",
+      "authorization_requirements": [
+        "etsy_app_oauth",
+        "shop_manager_access",
+        "etsy_ads_access_if_ads",
+        "shop_identity_verified"
+      ],
+      "execution_surfaces": [
+        "etsy_open_api_v3",
+        "shop_manager",
+        "etsy_ads_backend",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "shop_and_listing_scope",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "shop_manager_or_ads_backend_may_require_isolated_store_identity",
+      "real_submission_requires": [
+        "shop_authorization",
+        "margin_guardrail_passed",
+        "etsy_ads_budget_confirmed_if_ads",
+        "owner_confirmation",
+        "sale_or_coupon_confirmed",
+        "offsite_ads_fee_reviewed"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    },
+    {
+      "channel_id": "ebay",
+      "label": "eBay promotions and promoted listings",
+      "countries": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "activity_types": [
+        "order_discount",
+        "markdown_sale",
+        "coupon",
+        "promoted_listings",
+        "seller_hub_campaign"
+      ],
+      "stacking_rules": [
+        "marketing_promotion_stack_check",
+        "best_offer_price_check",
+        "promoted_listing_budget_check",
+        "cross_border_fee_check"
+      ],
+      "api_boundary": "marketing_api_or_seller_hub_draft",
+      "ads_boundary": "separate_promoted_listings_marketing_api",
+      "execution_mode": "draft_then_confirmation_or_isolated_cloud_plugin",
+      "margin_guardrail": "price_fee_shipping_cross_border_and_ad_rate_check",
+      "inventory_guardrail": "offer_quantity_fulfillment_policy_required",
+      "confirmation_required": true,
+      "official_source_url": "https://developer.ebay.com/api-docs/sell/marketing/static/overview.html",
+      "last_checked_at": "2026-06-30",
+      "notes": "eBay Sell Marketing API, Seller Hub promotions and Promoted Listings are separate from inventory/order sync. eBay decommissioned setupQuickCampaign and launchCampaign from the campaign resource, so campaign setup/launch stays draft plus owner confirmation instead of one-click execution.",
+      "authorization_requirements": [
+        "sell_marketing_scope",
+        "sell_inventory_scope",
+        "seller_hub_access",
+        "ads_campaign_permission_if_ads",
+        "seller_account_verified"
+      ],
+      "execution_surfaces": [
+        "sell_inventory_api",
+        "sell_marketing_api",
+        "seller_hub",
+        "promoted_listings",
+        "isolated_cloud_plugin"
+      ],
+      "platform_rule_scope": "seller_account_and_marketplace_scope",
+      "customer_execution_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "cloud_plugin_reason": "seller_hub_or_marketing_backend_may_require_isolated_seller_identity",
+      "real_submission_requires": [
+        "seller_authorization",
+        "promotion_stack_confirmed",
+        "budget_confirmed_if_ads",
+        "owner_confirmation",
+        "seller_hub_campaign_confirmed"
+      ],
+      "automation_level": "L2_draft_or_L3_after_confirmation"
+    }
+  ]
+}

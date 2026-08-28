@@ -9,7 +9,7 @@
   "purpose": "Train T One to run an evidence-driven B2B export sales lifecycle while preserving authorization, status, country, account, and tool-connection truth.",
   "fusion": {
     "status": "merge_duplicate",
-    "canonical_skill": "skills/b2b-foreign-trade-sales/SKILL.md",
+    "canonical_skill": "private_shared_sales_source_excluded",
     "canonical_runtime": "ai_ecommerce_director/b2b_sales_runtime.py",
     "compatibility_only": true,
     "must_not_create": [
@@ -40,19 +40,19 @@
     "scope_leakage_policy": "Any inheritance of tenant product, customer, price, inventory, warehouse, image, account timeline, or offer defaults across route boundaries is scope_leakage and blocks release."
   },
   "authority": {
-    "project_memory": "tk智能体_当前权威记忆.md",
-    "expert_registry": "config/platform_expert_registry.json",
+    "project_memory": "private_authoritative_project_memory_excluded",
+    "expert_registry": "private_platform_expert_registry_excluded",
     "existing_runtime": "ai_ecommerce_director/b2b_sales_runtime.py",
-    "existing_project_skill": "skills/b2b-foreign-trade-sales/SKILL.md"
+    "existing_project_skill": "private_shared_sales_source_excluded"
   },
   "training_assets": {
-    "curriculum": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_curriculum.json",
-    "rules": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_rules.json",
-    "mother_requirement_map": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_mother_requirement_map.json",
-    "evidence_index": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_evidence_index.json",
-    "incremental_evaluations": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_evaluations.json",
-    "failure_log": "skills/platform-experts/b2b_export/b2b-export-expert/assets/b2b_export_failures.json",
-    "incremental_runner": "skills/platform-experts/b2b_export/b2b-export-expert/scripts/run_incremental_training.py"
+    "curriculum": "private_platform_expert_source_excluded",
+    "rules": "private_platform_expert_source_excluded",
+    "mother_requirement_map": "private_platform_expert_source_excluded",
+    "evidence_index": "private_platform_expert_source_excluded",
+    "incremental_evaluations": "private_platform_expert_source_excluded",
+    "failure_log": "private_platform_expert_source_excluded",
+    "incremental_runner": "private_platform_expert_source_excluded"
   },
   "route_contract": {
     "required_dimensions": [

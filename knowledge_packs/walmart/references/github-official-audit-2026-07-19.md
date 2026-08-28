@@ -5,7 +5,7 @@
 - Capture window: 2026-07-19 01:04–01:18 Asia/Shanghai.
 - Browser: headed public Playwright session `walmart-github-audit-20260719`; no GitHub sign-in, clone, install, execution, authorization, credential entry or form submission.
 - Country/store scope: global Walmart engineering open source; this is not a US/CA/MX Marketplace seller account, Marketplace OAuth grant, Walmart Connect account or WFS enrollment.
-- Shared registry check: `config/github_capability_registry.json` contained no `walmartlabs/*` owner/repo record. Existing `whitebox-co/walmart-marketplace-api` and `api-evangelist/walmart` records are third-party and remain `research_only` / `rejected_unsafe`; this file does not modify the shared registry.
+- Shared registry check: `private_github_admission_registry_excluded` contained no `walmartlabs/*` owner/repo record. Existing `whitebox-co/walmart-marketplace-api` and `api-evangelist/walmart` records are third-party and remain `research_only` / `rejected_unsafe`; this file does not modify the shared registry.
 
 ## Official identity verification chain
 

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_registry": "config/seller_mode_skill_pack_registry.json",
+  "required_stages": [
+    "product_selection",
+    "content_and_assets",
+    "listing_draft",
+    "inventory_plan",
+    "procurement",
+    "production",
+    "fulfillment",
+    "finance_settlement",
+    "scale_or_exit_decision"
+  ],
+  "mode_policies": [
+    {"seller_mode_id": "distribution_seller", "selection_rule": "supplier_offer_rights_and_margin_first", "production_rule": "resale_or_supplier_fulfillment_only_after_rights", "exit_rule": "stop_on_rights_stock_or_margin_failure"},
+    {"seller_mode_id": "pod_seller", "selection_rule": "base_product_and_original_design_fit", "production_rule": "order_triggered_verified_factory_route", "exit_rule": "retire_infringing_or_unprofitable_design_family"},
+    {"seller_mode_id": "factory_seller", "selection_rule": "product_line_and_prototype_evidence", "production_rule": "bom_feasibility_and_demand_threshold_before_scale", "exit_rule": "stop_before_production_if_threshold_or_truthfulness_fails"},
+    {"seller_mode_id": "selection_seller", "selection_rule": "dated_market_evidence_and_margin_gap", "production_rule": "no_production_until_sourcing_decision", "exit_rule": "discard_candidate_when_evidence_or_margin_fails"},
+    {"seller_mode_id": "testing_seller", "selection_rule": "small_batch_hypothesis_with_loss_cap", "production_rule": "replenish_only_after_velocity_return_and_cash_review", "exit_rule": "stop_replenishment_and_clear_with_approved_plan"},
+    {"seller_mode_id": "brand_seller", "selection_rule": "brand_audience_product_matrix_fit", "production_rule": "rights_claims_quality_and_cashflow_before_scale", "exit_rule": "retire_sku_without_erasing_customer_or_finance_truth"},
+    {"seller_mode_id": "catalog_supply_seller", "selection_rule": "supplier_stock_sla_margin_and_competition", "production_rule": "supplier_or_dropship_route_only_after_stock_truth", "exit_rule": "stop_weak_high_price_or_unreliable_sla_items"}
+  ],
+  "real_store_connector_count": 0,
+  "real_complete_workflow_receipt_count": 0,
+  "official_full_managed_execution_count": 0,
+  "external_execution_enabled": false,
+  "external_action_count": 0,
+  "amazon_status": "paused_by_owner_not_touched"
+}

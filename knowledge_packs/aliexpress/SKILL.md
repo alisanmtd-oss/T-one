@@ -5,11 +5,11 @@ description: Evidence-first AliExpress marketplace operations inside T One. Use 
 
 # AliExpress T One Expert
 
-Use the existing `LLMClient + config/multi_ai.json` gateway. Do not create another agent runtime. Never present a documented product, UI label, connector name, or third-party tool as connected without store-scoped connection evidence. Never use private_tenant product, price, inventory, warehouse, customer, or creative facts as AliExpress defaults.
+Use the existing `LLMClient + private_model_provider_registry_excluded` gateway. Do not create another agent runtime. Never present a documented product, UI label, connector name, or third-party tool as connected without store-scoped connection evidence. Never use private_tenant product, price, inventory, warehouse, customer, or creative facts as AliExpress defaults.
 
 ## Load the current contract
 
-- Read `config/platform_expert_training/aliexpress.json` before routing a store, classifying Choice/托管, selecting a tool, or relying on a volatile rule.
+- Read `private_platform_training_contract_excluded` before routing a store, classifying Choice/托管, selecting a tool, or relying on a volatile rule.
 - Read [references/maternal-requirements-matrix.md](references/maternal-requirements-matrix.md) before mapping the cross-border maternal checklist or proposing software work. Reuse T One capabilities and do not create a second universal Agent or model gateway.
 - Read [references/course.md](references/course.md) before training, evaluating, or expanding an AliExpress operating module.
 - Read [references/official-evidence.md](references/official-evidence.md) before stating seller eligibility, country scope, operating mode, advertising, activity, or fulfillment rules.
@@ -105,7 +105,7 @@ Run `scripts/validate_incremental_evidence.py` after an evidence-backed training
 
 Use only `research_only`, `available_unconnected`, `connected_read_only`, `connected_write_gated`, or `blocked` for tools. A tool name is never connection proof.
 
-Keep an unofficial AliExpress SDK as research evidence only until it passes `config/github_capability_registry.json`, license, maintenance, dependency, security, credential-boundary, pinned-version, isolated-test, and official-endpoint checks. Never install or connect an unknown repository because its README shows authentication or order examples.
+Keep an unofficial AliExpress SDK as research evidence only until it passes `private_github_admission_registry_excluded`, license, maintenance, dependency, security, credential-boundary, pinned-version, isolated-test, and official-endpoint checks. Never install or connect an unknown repository because its README shows authentication or order examples.
 
 Verify an official GitHub identity by following an exact repository or organization link from an official platform/developer/social property. Record repository redirects or ownership transfers. A same-name organization, search rank, star count, official Alibaba relation, active release or accepted discussion answer does not make a repository an AliExpress seller connector or a completed workflow. The 2026-07-19 Alibaba Open Source catalog exposed no AliExpress/速卖通 project among its visible 39 records; the official-linked `higress-group/higress` repository is generic gateway infrastructure and remains `research_only_no_install` because T One already has one gateway/runtime.
 

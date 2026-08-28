@@ -943,7 +943,7 @@
         "analytics-growth",
         "api-data-security"
       ],
-      "claim": "Current official Sales and Traffic GraphQL examples use analytics_salesAndTraffic_2024_04_24; analytics_salesAndTraffic_2023_11_15 was removed March 27 2026. Data Kiosk is asynchronous: createQuery, terminal processing state, data/error/no-document branch, getDocument, encrypted-at-rest JSONL retrieval, validation and nextToken pagination are separate states. DONE without a document means no data, not analytics completion.",
+      "claim": "Current official Sales and Traffic GraphQL examples use analytics_salesAndTraffic_2024_04_24; analytics_salesAndTraffic_2023_11_15 was removed March 27 2026. Data Kiosk is asynchronous: createQuery, terminal processing state, private_runtime_data_excluded branch, getDocument, encrypted-at-rest JSONL retrieval, validation and nextToken pagination are separate states. DONE without a document means no data, not analytics completion.",
       "evidence_state": "time_sensitive_evidence",
       "signal_class": "official_current_async_analytics_contract",
       "source": "https://developer-docs.amazon.com/sp-api/docs/data-kiosk-api ; https://developer-docs.amazon.com/sp-api/docs/request-and-filter-data-with-graphql ; https://developer-docs.amazon.com/sp-api/docs/sp-api-deprecations",

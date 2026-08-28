@@ -2,15 +2,15 @@
   "schema_version": 1,
   "generated_at": "2026-07-19T10:30:00+08:00",
   "expert_id": "expert-meta-channel",
-  "skill_ref": "skills/platform-experts/meta-channel/SKILL.md",
-  "runtime_source": "config/advertising_agent.json",
+  "skill_ref": "private_platform_expert_source_excluded",
+  "runtime_source": "private_advertising_runtime_contract_excluded",
   "runtime_channel_id": "meta_ads",
   "shared_training_sources": [
-    "config/advertising_agent.json",
-    "config/platform_expert_training/advertising_media_buyer/evidence_index.json",
-    "config/platform_expert_training/advertising_media_buyer/rules.json",
-    "config/platform_expert_training/advertising_media_buyer/eval_cases.json",
-    "config/platform_expert_training/advertising_media_buyer/tool_registry.json"
+    "private_advertising_runtime_contract_excluded",
+    "private_platform_training_contract_excluded",
+    "private_platform_training_contract_excluded",
+    "private_platform_training_contract_excluded",
+    "private_platform_training_contract_excluded"
   ],
   "scope": {
     "owned": [

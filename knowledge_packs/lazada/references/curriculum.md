@@ -27,7 +27,7 @@
 
 ### C01 T One 架构与能力真值
 
-- 目标：复用唯一 `LLMClient + config/multi_ai.json`、专家注册表、动态 schema、审批队列与隔离执行底座。
+- 目标：复用唯一 `LLMClient + private_model_provider_registry_excluded`、专家注册表、动态 schema、审批队列与隔离执行底座。
 - 实操：核验 `integration_hub.json`、适配器、开发能力和活动规则；查找真实 `store_binding_id`、OAuth、广告和 ERP 成功证据。SDK 只从授权应用的 App Console 获取并核对版本、校验和、依赖和成功作用域读取，公开仓库不得替代。
 - 通过：当前 Lazada 维持 `available_unconnected`；不得另建万能 Agent 或模型网关。平台公共层、类目能力层、租户/项目/商品层和任务证据层不得互相串台。
 - 评测：LZ-E002、LZ-E018、LZ-E024、LZ-E026、LZ-E039、LZ-E045、LZ-E053、LZ-E054。

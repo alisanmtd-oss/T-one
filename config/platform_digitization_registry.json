@@ -1,0 +1,1959 @@
+{
+  "schema_version": "2026-07-21.g63-china-platforms",
+  "updated_at": "2026-07-21T10:32:00+08:00",
+  "registry_kind": "platform_digitization_registry",
+  "purpose": "?????????????????????????????????? T-one ??????????????????????????????????????????????????",
+  "truth_policy": {
+    "no_fake_connection": true,
+    "external_actions": 0,
+    "amazon_status": "paused_until_owner_explicitly_resumes",
+    "settlement_truth": "actual_platform_statement_is_canonical_when_imported",
+    "sku_count_rule": "parent_sku_or_spu_only; child_sku_or_variant_excluded_from_total_sku_count",
+    "unsupported_metrics": "如果平台没有明确广告、直播或店铺后台字段，不默认显示；只有本地导入或官方/真实后台证据存在时才显示。",
+    "evidence_upgrade_required": "每个平台字段从 schema_defined 升级为 usable 前，必须有官方文档、授权后台/API、导入报表或负责人确认来源。"
+  },
+  "identity_axes": [
+    "project_id",
+    "business_group_id",
+    "platform_id",
+    "country_site",
+    "store_mode",
+    "store_id",
+    "seller_account_id",
+    "email_account_id",
+    "browser_profile_id",
+    "erp_account_id",
+    "social_account_id",
+    "authorization_id"
+  ],
+  "record_statuses": [
+    "schema_defined_pending_evidence",
+    "imported_local_statement",
+    "manual_owner_verified",
+    "authorized_api_read",
+    "authorized_browser_read",
+    "blocked_missing_authorization",
+    "not_default_for_platform",
+    "prohibited"
+  ],
+  "canonical_objects": {
+    "commerce": [
+      "seller_account",
+      "country_site",
+      "store",
+      "product_parent",
+      "child_sku_or_variant",
+      "listing",
+      "order",
+      "refund",
+      "return",
+      "settlement_statement",
+      "fee_line",
+      "inventory_position",
+      "warehouse_route",
+      "customer_message",
+      "promotion_or_activity",
+      "ad_account_or_campaign"
+    ],
+    "content_and_social": [
+      "social_account",
+      "official_account",
+      "channel_account",
+      "video",
+      "live_room",
+      "creator_or_affiliate",
+      "creator_profile",
+      "affiliate_plan",
+      "sample_request",
+      "sample_shipment",
+      "authorized_creator_content",
+      "content_traffic",
+      "product_click",
+      "shop_click"
+    ],
+    "b2b_and_communication": [
+      "lead",
+      "inquiry",
+      "email_thread",
+      "reply",
+      "bounce",
+      "meeting",
+      "customer_timeline"
+    ],
+    "china_domestic_commerce": [
+      "domestic_seller_account",
+      "domestic_store",
+      "shop",
+      "product_parent",
+      "child_sku_or_variant",
+      "listing",
+      "order",
+      "refund",
+      "return",
+      "settlement_statement",
+      "traffic_report",
+      "ad_account_or_campaign"
+    ],
+    "china_social_private_domain": [
+      "content_account",
+      "official_account",
+      "channel_account",
+      "note_or_post",
+      "short_video",
+      "live_room",
+      "creator_or_kol",
+      "private_message_thread",
+      "lead",
+      "shop_or_product_click",
+      "homepage_or_profile_visit"
+    ],
+    "china_sourcing_supply": [
+      "supplier",
+      "source_offer",
+      "quote",
+      "sample",
+      "purchase_order",
+      "warehouse_route",
+      "quality_review",
+      "rights_review"
+    ]
+  },
+  "canonical_metric_catalog": {
+    "sales": [
+      "revenue",
+      "orders",
+      "units",
+      "average_order_value",
+      "gross_merchandise_value"
+    ],
+    "catalog": [
+      "parent_sku_count",
+      "child_sku_count_reference_only",
+      "active_listing_count",
+      "draft_listing_count",
+      "listing_quality_score"
+    ],
+    "traffic": [
+      "sessions",
+      "visits",
+      "page_views",
+      "homepage_views",
+      "store_homepage_views",
+      "profile_views",
+      "impressions",
+      "product_views",
+      "clicks",
+      "conversion_rate"
+    ],
+    "ads": [
+      "ad_spend",
+      "ad_sales",
+      "roas",
+      "acos",
+      "campaign_count"
+    ],
+    "content": [
+      "video_views",
+      "likes",
+      "comments",
+      "shares",
+      "saves",
+      "profile_views",
+      "followers",
+      "product_clicks",
+      "private_messages",
+      "leads",
+      "kol_collaboration_count"
+    ],
+    "live": [
+      "live_views",
+      "live_duration_minutes",
+      "live_gmv",
+      "live_orders",
+      "live_product_clicks"
+    ],
+    "creator_affiliate": [
+      "creator_count",
+      "active_creator_count",
+      "creator_invites",
+      "creator_collaborations",
+      "creator_content_count",
+      "affiliate_gmv",
+      "affiliate_orders",
+      "creator_commission",
+      "sample_sent"
+    ],
+    "operations": [
+      "refund_count",
+      "return_count",
+      "cancellation_count",
+      "late_shipment_count",
+      "message_response_time"
+    ],
+    "finance": [
+      "settlement_amount",
+      "fee_total",
+      "commission_fee",
+      "payment_fee",
+      "shipping_fee",
+      "tax_withheld",
+      "reserve_amount",
+      "adjustment_amount"
+    ],
+    "inventory": [
+      "stock_units",
+      "reserved_units",
+      "inbound_units",
+      "out_of_stock_parent_skus",
+      "days_of_cover",
+      "replenishment_qty"
+    ],
+    "sourcing": [
+      "source_offer_count",
+      "supplier_count",
+      "quote_count",
+      "sample_count",
+      "purchase_order_count"
+    ]
+  },
+  "default_dashboard_metrics": [
+    {
+      "key": "revenue",
+      "label": "销售额",
+      "value": "amount",
+      "source": "store_metric_snapshot / settlement when imported"
+    },
+    {
+      "key": "orders_units",
+      "label": "订单/件数",
+      "value": "orders/units",
+      "source": "store_metric_snapshot"
+    },
+    {
+      "key": "parent_skus",
+      "label": "母体SKU",
+      "value": "parent_sku_count",
+      "source": "catalog_metric_snapshot / product_catalog_snapshot",
+      "policy": "parent_only"
+    },
+    {
+      "key": "traffic",
+      "label": "流量/访问",
+      "value": "traffic",
+      "source": "sessions/visits/page_views/impressions/product_views"
+    },
+    {
+      "key": "homepage_views_when_imported",
+      "label": "主页浏览量",
+      "value": "homepage_views",
+      "source": "storefront_views/shop_homepage_views/profile_views/profile_visits; only when report/API/browser-read import contains the field"
+    }
+  ],
+  "platforms": [
+    {
+      "platform_id": "amazon",
+      "label": "Amazon",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "fba",
+        "fbm",
+        "brand_registry_if_eligible"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "marketplace_site",
+        "store",
+        "parent_asin",
+        "child_asin_or_variation",
+        "listing",
+        "order",
+        "return",
+        "refund",
+        "settlement_statement",
+        "fba_inventory",
+        "advertising_account",
+        "buyer_message"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "featured_offer_rate",
+        "buy_box_rate",
+        "account_health",
+        "fba_stock",
+        "voice_of_customer"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "parent_asin",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "child_asin",
+          "variation_sku"
+        ]
+      },
+      "traffic_policy": "sessions/page_views/impressions when report or API import exists",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "brand/social content can be attached to product/store but is not a native marketplace live metric by default",
+      "required_evidence_to_activate": [
+        "authorized Seller Central/API/report import",
+        "settlement report import for finance truth"
+      ],
+      "current_owner_gate": "paused"
+    },
+    {
+      "platform_id": "tiktok_shop",
+      "label": "TikTok Shop",
+      "category": "marketplace_social_commerce",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "local",
+        "cross_border",
+        "semi_managed_if_authorized"
+      ],
+      "primary_objects": [
+        "shop",
+        "seller_account",
+        "official_account",
+        "marketing_account",
+        "channel_account",
+        "product_parent",
+        "child_sku_or_variant",
+        "listing",
+        "order",
+        "affiliate_creator",
+        "creator_profile",
+        "affiliate_plan",
+        "sample_request",
+        "sample_shipment",
+        "authorized_creator_content",
+        "video",
+        "live_room",
+        "settlement_statement",
+        "shop_ads_campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "content",
+        "live",
+        "affiliate",
+        "ads",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "video_product_clicks",
+        "live_gmv_orders",
+        "live_views",
+        "live_duration",
+        "affiliate_gmv_commission",
+        "creator_collaboration",
+        "creator_samples_content",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "affiliate_orders",
+        "affiliate_gmv",
+        "creator_commission",
+        "creator_invites",
+        "creator_collaborations",
+        "sample_sent",
+        "creator_content_count",
+        "gmv_max_spend",
+        "product_card_clicks",
+        "shop_tab_clicks"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "sku_id",
+          "seller_sku",
+          "variation"
+        ]
+      },
+      "traffic_policy": "shop/product traffic plus bound video/live traffic; video account must bind to store/product before rolling up to shop",
+      "advertising_policy": "available_when_ads_or_gmv_max_report_imported; no campaign creation or spend without approval",
+      "live_policy": "first_class_metric_group",
+      "creator_affiliate_policy": "达人池、联盟计划、合作邀约、寄样、授权内容、达人佣金和联盟成交独立成组；只有绑定店铺/商品或导入达人/联盟报表时才汇入 TikTok Shop。",
+      "content_binding_policy": "official account and channel accounts must remain separate identities but roll up to the bound shop when binding evidence exists",
+      "required_evidence_to_activate": [
+        "authorized Shop/Seller/API/report import",
+        "video/live account binding evidence",
+        "creator/affiliate/sample report import or owner-confirmed binding evidence",
+        "settlement report import for finance truth"
+      ]
+    },
+    {
+      "platform_id": "shein",
+      "label": "SHEIN",
+      "category": "marketplace_or_supplier_platform",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "supplier_or_half_managed_if_authorized"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store_or_supplier_profile",
+        "site",
+        "spu_or_style",
+        "sku_or_variant",
+        "listing",
+        "order",
+        "return",
+        "settlement_statement",
+        "inventory_position",
+        "supply_chain_task"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "operations",
+        "finance",
+        "inventory",
+        "listing_quality"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "traffic_when_report_imported",
+        "quality_reject_rate",
+        "supply_delay",
+        "ad_spend_when_explicitly_imported"
+      ],
+      "explicitly_not_default": [
+        "ad_roas",
+        "live_gmv_orders"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "spu",
+          "style_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "only shown when SHEIN report/import has a traffic field",
+      "advertising_policy": "not_default_for_platform; show only if an explicit SHEIN ad/promoted report is imported",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external social content can support listing but is not treated as native SHEIN traffic without evidence",
+      "required_evidence_to_activate": [
+        "authorized seller/supplier report import",
+        "settlement report import for finance truth"
+      ]
+    },
+    {
+      "platform_id": "shopee",
+      "label": "Shopee",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "local",
+        "cross_border",
+        "seller_fulfilled",
+        "platform_logistics_if_available"
+      ],
+      "primary_objects": [
+        "shop",
+        "seller_account",
+        "site",
+        "product_parent",
+        "variation_sku",
+        "order",
+        "return_refund",
+        "voucher_or_campaign",
+        "ads_campaign",
+        "chat_thread",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "chat",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "chat_response_rate",
+        "voucher_cost",
+        "campaign_orders",
+        "logistics_status"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "item_id",
+          "product_parent",
+          "spu"
+        ],
+        "child_terms_reference_only": [
+          "model_id",
+          "variation_sku"
+        ]
+      },
+      "traffic_policy": "visits/views/impressions when seller report/API import exists",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized",
+      "live_policy": "optional_by_site_and_account_evidence",
+      "content_binding_policy": "shop social/live data must include shop binding before rollup",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "lazada",
+      "label": "Lazada",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "local",
+        "cross_border",
+        "seller_fulfilled",
+        "platform_logistics_if_available"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store",
+        "site",
+        "product_parent",
+        "variation_sku",
+        "order",
+        "return_refund",
+        "campaign",
+        "ads_campaign",
+        "message_thread",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "customer_service",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "seller_rating",
+        "voucher_cost",
+        "campaign_orders",
+        "logistics_status"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "item_id",
+          "spu",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "sku_id",
+          "variation_sku"
+        ]
+      },
+      "traffic_policy": "visits/views/impressions when report/API import exists",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized",
+      "live_policy": "optional_by_site_and_account_evidence",
+      "content_binding_policy": "content data rolls up only when store or product binding is present",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "walmart",
+      "label": "Walmart",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "wfs",
+        "seller_fulfilled"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "marketplace_site",
+        "item",
+        "variant",
+        "offer",
+        "order",
+        "return",
+        "wfs_inventory",
+        "settlement_statement",
+        "ads_campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "wfs_stock",
+        "item_quality",
+        "pro_seller_status"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "item_id",
+          "product_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "variant_sku"
+        ]
+      },
+      "traffic_policy": "item views/impressions when report/import exists",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external social content is separate unless campaign/product binding is imported",
+      "required_evidence_to_activate": [
+        "authorized marketplace/API/report import"
+      ]
+    },
+    {
+      "platform_id": "ebay",
+      "label": "eBay",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "managed_payments"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "marketplace_site",
+        "listing",
+        "variation",
+        "order",
+        "return",
+        "buyer_message",
+        "traffic_report",
+        "promoted_listing",
+        "settlement_statement"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "customer_service",
+        "operations",
+        "finance"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "watchers",
+        "listing_views",
+        "promoted_listing_fees",
+        "message_unread"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "listing_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "variation_sku"
+        ]
+      },
+      "traffic_policy": "listing views/watchers/clicks when report/import exists",
+      "advertising_policy": "available_when_promoted_listing_report_imported",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless listing binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "etsy",
+      "label": "Etsy",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "shop_owner",
+        "production_partner_if_declared"
+      ],
+      "primary_objects": [
+        "shop",
+        "listing",
+        "variation",
+        "order",
+        "review",
+        "message_thread",
+        "traffic_report",
+        "ads_campaign",
+        "payment_statement"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "customer_service",
+        "operations",
+        "finance"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "favorites",
+        "reviews",
+        "production_partner_status"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "listing_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "variation_sku"
+        ]
+      },
+      "traffic_policy": "listing visits/views/favorites when report/API import exists",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "social content separate unless listing/shop binding is imported",
+      "required_evidence_to_activate": [
+        "authorized shop/API/report import"
+      ]
+    },
+    {
+      "platform_id": "aliexpress",
+      "label": "AliExpress",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "cross_border"
+      ],
+      "primary_objects": [
+        "store",
+        "seller_account",
+        "product_parent",
+        "sku_or_variant",
+        "order",
+        "dispute",
+        "return_refund",
+        "marketing_plan",
+        "settlement_statement",
+        "logistics_order"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "dispute_rate",
+        "coupon_cost",
+        "affiliate_or_marketing_fee"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_id",
+          "spu",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "sku_id",
+          "variant_sku"
+        ]
+      },
+      "traffic_policy": "product exposure/views/clicks when report/import exists",
+      "advertising_policy": "available_when_current_marketing_report_imported; historical legal pages are not enough for live capability",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "content/social separate unless product/store binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import",
+        "current marketing system evidence for ads"
+      ]
+    },
+    {
+      "platform_id": "rakuten",
+      "label": "Rakuten",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store",
+        "marketplace_site",
+        "product_parent",
+        "sku_or_variant",
+        "order",
+        "return_refund",
+        "campaign",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads_optional",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "campaign_fee",
+        "mall_event_participation",
+        "store_score"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "sku",
+          "variant"
+        ]
+      },
+      "traffic_policy": "store/product traffic when report/import exists",
+      "advertising_policy": "optional; show only with imported ad/campaign data",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless store/product binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "emag",
+      "label": "eMAG",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "marketplace_seller",
+        "fulfillment_by_platform_if_authorized"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "offer",
+        "product_parent",
+        "sku_or_variant",
+        "order",
+        "return",
+        "courier_or_fulfillment",
+        "settlement_statement",
+        "campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic_when_imported",
+        "ads_optional",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "offer_quality",
+        "campaign_fee",
+        "courier_delay"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "offer_sku",
+          "variant"
+        ]
+      },
+      "traffic_policy": "only shown when marketplace report/import contains traffic fields",
+      "advertising_policy": "optional; show only with imported campaign/ad data",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless product/store binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "coupang",
+      "label": "Coupang",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "wing_seller",
+        "rocket_or_fulfillment_if_authorized",
+        "seller_fulfilled"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "product_parent",
+        "option_sku",
+        "order",
+        "return",
+        "rocket_inventory",
+        "settlement_statement",
+        "ads_campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic_when_imported",
+        "ads_optional",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "rocket_stock",
+        "delivery_performance",
+        "campaign_spend"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_id",
+          "vendor_item_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "option_id",
+          "seller_sku"
+        ]
+      },
+      "traffic_policy": "only shown when report/import contains traffic fields",
+      "advertising_policy": "optional; show only with imported ad data",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless product/store binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "wildberries",
+      "label": "Wildberries",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "seller_cabinet",
+        "fbo_or_fbs_if_authorized"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "nomenclature_or_parent_product",
+        "barcode_or_size_variant",
+        "order",
+        "buyout",
+        "return",
+        "warehouse_stock",
+        "finance_report",
+        "advertising_campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic_when_imported",
+        "ads_optional",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "buyout_rate",
+        "warehouse_balance",
+        "storage_fee"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "nm_id",
+          "nomenclature_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "barcode",
+          "size_variant"
+        ]
+      },
+      "traffic_policy": "only shown when cabinet/report import contains traffic fields",
+      "advertising_policy": "optional; show only with imported ad data",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless product/store binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "ozon",
+      "label": "Ozon",
+      "category": "marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "seller_account",
+        "fbo",
+        "fbs",
+        "real_fbs_if_authorized"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "product_parent",
+        "offer_sku",
+        "order",
+        "return",
+        "finance_report",
+        "warehouse_stock",
+        "campaign"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic_when_imported",
+        "ads_optional",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "fbo_stock",
+        "fbs_stock",
+        "promotion_fee",
+        "storage_fee"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_id",
+          "parent_sku"
+        ],
+        "child_terms_reference_only": [
+          "offer_id",
+          "offer_sku",
+          "variant"
+        ]
+      },
+      "traffic_policy": "only shown when seller/report import contains traffic fields",
+      "advertising_policy": "optional; show only with imported ad/campaign data",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "external content separate unless product/store binding is imported",
+      "required_evidence_to_activate": [
+        "authorized seller/API/report import"
+      ]
+    },
+    {
+      "platform_id": "douyin_ecommerce",
+      "label": "抖音电商",
+      "category": "china_social_commerce",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "domestic_store",
+        "local_store",
+        "content_commerce"
+      ],
+      "primary_objects": [
+        "shop",
+        "seller_account",
+        "official_account",
+        "channel_account",
+        "product_parent",
+        "listing",
+        "order",
+        "refund",
+        "return",
+        "video",
+        "live_room",
+        "creator_or_kol",
+        "ad_account_or_campaign",
+        "settlement_statement"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "content",
+        "live",
+        "creator_affiliate",
+        "ads",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "live_gmv_orders",
+        "live_views",
+        "live_duration",
+        "affiliate_gmv_commission",
+        "creator_collaboration",
+        "social_engagement_when_imported",
+        "followers_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "活动、补贴与平台费用仅在导入后显示",
+        "达人样品与联盟费用仅在导入后显示"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "first_class_metric_group",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization",
+      "creator_affiliate_policy": "达人、机构、样品和佣金只在授权或导入证据存在时显示"
+    },
+    {
+      "platform_id": "douyin",
+      "label": "抖音内容号",
+      "category": "china_social_media",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "content_account"
+      ],
+      "primary_objects": [
+        "content_account",
+        "short_video",
+        "live_room",
+        "creator_or_kol",
+        "private_message_thread",
+        "lead",
+        "shop_or_product_click"
+      ],
+      "dashboard_groups": [
+        "traffic",
+        "content",
+        "live",
+        "creator_affiliate"
+      ],
+      "default_card_metric_keys": [
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "live_views",
+        "social_engagement_when_imported",
+        "followers_when_imported"
+      ],
+      "optional_metric_keys": [
+        "内容发布量",
+        "主页访问量",
+        "粉丝变化"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "not_default_for_platform; use douyin_ecommerce/ad account reports when imported",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "kuaishou_shop",
+      "label": "快手小店",
+      "category": "china_social_commerce",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "domestic_store",
+        "local_store",
+        "content_commerce"
+      ],
+      "primary_objects": [
+        "shop",
+        "seller_account",
+        "content_account",
+        "product_parent",
+        "listing",
+        "order",
+        "refund",
+        "return",
+        "video",
+        "live_room",
+        "creator_or_kol",
+        "ad_account_or_campaign",
+        "settlement_statement"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "content",
+        "live",
+        "creator_affiliate",
+        "ads",
+        "operations",
+        "finance",
+        "inventory"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "live_gmv_orders",
+        "live_views",
+        "live_duration",
+        "affiliate_gmv_commission",
+        "creator_collaboration",
+        "social_engagement_when_imported",
+        "followers_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "kuaishou",
+      "label": "快手内容号",
+      "category": "china_social_media",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "content_account"
+      ],
+      "primary_objects": [
+        "content_account",
+        "short_video",
+        "live_room",
+        "creator_or_kol",
+        "private_message_thread",
+        "lead",
+        "shop_or_product_click"
+      ],
+      "dashboard_groups": [
+        "traffic",
+        "content",
+        "live",
+        "creator_affiliate"
+      ],
+      "default_card_metric_keys": [
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "live_views",
+        "social_engagement_when_imported",
+        "followers_when_imported"
+      ],
+      "optional_metric_keys": [],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "xiaohongshu",
+      "label": "小红书",
+      "category": "china_social_media_social_commerce",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "content_account",
+        "merchant_store_if_authorized"
+      ],
+      "primary_objects": [
+        "content_account",
+        "merchant_store",
+        "note_or_post",
+        "product_link",
+        "lead",
+        "private_message_thread",
+        "kol_or_creator",
+        "homepage_or_profile_visit"
+      ],
+      "dashboard_groups": [
+        "traffic",
+        "content",
+        "creator_affiliate",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "social_engagement_when_imported",
+        "followers_when_imported"
+      ],
+      "optional_metric_keys": [
+        "笔记、视频、直播与店铺访问",
+        "种草、进店与成交归因"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "wechat_channels",
+      "label": "视频号 / 微信小店",
+      "category": "china_social_private_domain_commerce",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "content_account",
+        "mini_shop",
+        "private_domain"
+      ],
+      "primary_objects": [
+        "official_account",
+        "channel_account",
+        "wechat_shop",
+        "short_video",
+        "live_room",
+        "private_message_thread",
+        "lead",
+        "product_parent",
+        "order",
+        "settlement_statement"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "content",
+        "live",
+        "operations",
+        "finance",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "video_product_clicks",
+        "live_gmv_orders",
+        "live_views",
+        "live_duration",
+        "social_engagement_when_imported",
+        "followers_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [
+        "视频号、公众号、小店与私域会话导入指标"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "taobao_tmall",
+      "label": "淘宝 / 天猫",
+      "category": "china_marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "domestic_store",
+        "marketplace_seller"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store",
+        "product_parent",
+        "child_sku_or_variant",
+        "listing",
+        "order",
+        "refund",
+        "return",
+        "customer_message",
+        "ad_account_or_campaign",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "jd",
+      "label": "京东",
+      "category": "china_marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "domestic_store",
+        "marketplace_seller",
+        "self_operated_supplier_if_authorized"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store",
+        "product_parent",
+        "child_sku_or_variant",
+        "listing",
+        "order",
+        "refund",
+        "return",
+        "customer_message",
+        "ad_account_or_campaign",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "pinduoduo",
+      "label": "拼多多",
+      "category": "china_marketplace",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "domestic_store",
+        "marketplace_seller"
+      ],
+      "primary_objects": [
+        "seller_account",
+        "store",
+        "product_parent",
+        "child_sku_or_variant",
+        "listing",
+        "order",
+        "refund",
+        "return",
+        "customer_message",
+        "ad_account_or_campaign",
+        "settlement_statement",
+        "inventory_position"
+      ],
+      "dashboard_groups": [
+        "sales",
+        "catalog",
+        "traffic",
+        "ads",
+        "operations",
+        "finance",
+        "inventory",
+        "customer_service"
+      ],
+      "default_card_metric_keys": [
+        "revenue",
+        "orders_units",
+        "parent_skus",
+        "traffic",
+        "homepage_views_when_imported",
+        "ad_roas_when_imported",
+        "returns_refunds",
+        "settlement",
+        "fees"
+      ],
+      "optional_metric_keys": [],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "available_when_ads_report_imported_or_authorized; no spend action without approval",
+      "live_policy": "optional_by_account_and_platform_evidence",
+      "content_binding_policy": "内容账号、店铺与商品必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "店铺、内容账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    },
+    {
+      "platform_id": "1688",
+      "label": "1688 采购",
+      "category": "china_sourcing_supply",
+      "digitization_status": "schema_defined_pending_evidence",
+      "country_site_axis": true,
+      "store_modes": [
+        "sourcing_marketplace",
+        "supplier_account"
+      ],
+      "primary_objects": [
+        "supplier_account",
+        "supplier",
+        "source_offer",
+        "product_parent",
+        "quote",
+        "sample",
+        "purchase_order",
+        "warehouse_route",
+        "quality_review",
+        "rights_review"
+      ],
+      "dashboard_groups": [
+        "catalog",
+        "traffic",
+        "sourcing",
+        "inventory",
+        "finance",
+        "risk_review"
+      ],
+      "default_card_metric_keys": [
+        "parent_skus",
+        "traffic_when_imported",
+        "homepage_views_when_imported"
+      ],
+      "optional_metric_keys": [
+        "询价数量",
+        "报价数量",
+        "样品数量",
+        "采购订单",
+        "质检、退货与供应商评价"
+      ],
+      "sku_policy": {
+        "count_parent_only": true,
+        "parent_terms": [
+          "product_parent",
+          "spu",
+          "parent_sku",
+          "item_id",
+          "goods_id"
+        ],
+        "child_terms_reference_only": [
+          "child_sku",
+          "variant_sku",
+          "sku_id",
+          "spec_sku",
+          "size_color_variant"
+        ]
+      },
+      "traffic_policy": "仅在真实授权、API 或受控浏览器读取后显示，不把账号存在写成统计事实",
+      "advertising_policy": "not_default_for_platform",
+      "live_policy": "not_default_for_platform",
+      "content_binding_policy": "货源、供应商与采购对象必须按授权关系分别绑定；未验证关系保持未知",
+      "required_evidence_to_activate": [
+        "官方授权、API 或受控浏览器只读回执",
+        "供应商、采购账号与 ERP 的绑定证据"
+      ],
+      "current_owner_gate": "blocked_missing_authorization"
+    }
+  ]
+}

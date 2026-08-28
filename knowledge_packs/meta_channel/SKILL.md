@@ -11,10 +11,10 @@ Use this Skill for Meta Ads only. Do not import TikTok or Google product rules i
 
 Read these before producing platform facts or updating this Skill:
 
-- `config/platform_expert_training/advertising_media_buyer/evidence_index.json`
-- `config/platform_expert_training/advertising_media_buyer/rules.json`
-- `config/platform_expert_training/advertising_media_buyer/tool_registry.json`
-- `config/platform_expert_training/advertising_media_buyer/training_state.json`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
 - [references/official-evidence.md](references/official-evidence.md)
 
 ## Evidence-first workflow
@@ -34,4 +34,4 @@ Before any live budget, launch, pause, creative publish, or account change, stop
 
 ## T One integration
 
-Reuse the existing LLMClient, `config/multi_ai.json`, advertising measurement/profit/draft/human-review/stop-loss base, and expert registry. Do not create another model gateway or universal advertising Agent. Shared-core changes are recommendations only.
+Reuse the existing LLMClient, `private_model_provider_registry_excluded`, advertising measurement/profit/draft/human-review/stop-loss base, and expert registry. Do not create another model gateway or universal advertising Agent. Shared-core changes are recommendations only.

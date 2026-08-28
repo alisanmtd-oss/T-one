@@ -1,64 +1,44 @@
-# Architecture
+# T One architecture
 
-## Design principles
-
-1. **Local first:** operating data and credentials stay on the operator's machine unless a connector is explicitly authorized.
-2. **Fail closed:** unknown dependencies, stores, permissions, or data classes do not become executable capabilities.
-3. **Identity isolation:** authorization is scoped to one concrete store identity and route.
-4. **Evidence before action:** external facts and current platform state must be observed before a write is proposed.
-5. **Approval by consequence:** higher-impact actions require stronger limits, confirmation, idempotency, and audit evidence.
-
-## Workspace model
+## Runtime
 
 ```text
-workspace
-  projects[]
-    channels[]
-      stores[]
-        tasks[]
-    workstreams[]
+Electron desktop
+  -> localhost authenticated session
+  -> bundled Python server + desktop bridge
+  -> local workspace
+       config/
+       projects/<project>/
+       tasks/<task>/
+       logs/
+       outputs/
 ```
 
-A channel expresses an intended operating route. A store represents a real executable authorization. A task combines a store or workstream context with a model, skills, tools, policy, and audit trail.
+The release installer carries the Electron shell and a bundled Python runtime. A first launch copies only public-safe initial configuration into the current user's workspace. Existing workspace files are not overwritten during later launches.
 
-## Chat-first operator surface
-
-The public `demo/chat-first-workspace.html` is a dependency-free interaction reference, not the private production desktop. Its daily surface contains only conversations with task-oriented agents. Product files enter through the conversation composer, while model, account connection, diagnostics, and automation controls live behind one settings drawer.
-
-Content planning, scripting, storyboarding, generation prompts, and editing guidance belong to one content agent. Advertising follows `observe evidence -> explain -> recommend -> owner confirmation`; spending, publishing, pausing, messaging, and other external writes remain outside the public demo.
-
-## Route identity
-
-The minimum commerce route is:
+## Project and task model
 
 ```text
-platform:country-or-site:store-mode:ownership:store-id
+project
+  platform + country/site
+  store bindings
+  project AI/Agent/Skill/MCP/CLI selection
+  tasks
+    inputs + attachments
+    memory + history
+    runs + results + receipts
 ```
 
-Regional groupings are useful for reporting but cannot replace a country/site in store binding, activity rules, advertising accounts, or authorization checks.
+Platform, country/site, store mode, ownership, account and execution identity are separate fields. A marketplace tool can be general, project-scoped, or store-scoped; it does not gain access to unrelated projects merely because it is installed.
 
-## AI boundary
+## Capability marketplace
 
-Model requests flow through:
+The marketplace is one surface with four first-class types: Agent, Skill, MCP and CLI. Items are organized by purpose, not by the country of an AI provider. Connection status is explicit: installed, configured, verified, unavailable, or candidate.
 
-```text
-task context -> data classification -> redaction -> provider policy -> model request -> usage/audit record
-```
+## Local and external execution
 
-The provider never receives a credential value from project JSON. Configuration stores only a credential reference; the secret remains in the local credential backend.
-
-## Connector boundary
-
-Read-only adapters normalize external data into stable records. A future write adapter must add:
-
-- scoped authorization;
-- idempotency key;
-- correlation and audit IDs;
-- before/after state hashes;
-- rate, spend, and quantity limits;
-- approval policy;
-- verifiable result or rollback evidence.
+Model or tool requests flow through the selected project/task context. Credentials remain in local credential storage or user-controlled environment references. External writes are separate from read, analysis and draft operations and require the relevant project/store authorization.
 
 ## Public boundary
 
-This repository contains public contracts, local-first primitives, and a synthetic browser-only UX reference.
+The public tree includes the formal desktop and backend source selected by an exact-file manifest. It excludes compiled Python bytecode, runtime databases, credentials, accounts, store/customer records, browser profiles, outputs and private histories.

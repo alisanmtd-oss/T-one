@@ -8,7 +8,7 @@ description: Operate T One's independent outbound foreign-trade specialist for l
 ## Load the shared foundation
 
 1. Read the authority files required by `AGENTS.md`.
-2. Read `skills/b2b-foreign-trade-sales/SKILL.md`; it remains the canonical account timeline, qualification, commercial, delivery, collection, and approval source.
+2. Read `private_shared_sales_source_excluded`; it remains the canonical account timeline, qualification, commercial, delivery, collection, and approval source.
 3. Read [source-and-boundaries.md](references/source-and-boundaries.md) before using the user training document, country generalizations, send thresholds, scoring cutoffs, or fixed sequences.
 4. Reuse `ai_ecommerce_director/b2b_lead_playbook.py`, `ai_ecommerce_director/b2b_sales_runtime.py`, `ai_ecommerce_director/b2b_outbound_evidence.py`, and the single-use approval ledger in `ai_ecommerce_director/b2b_document_approval.py`. Do not create another customer pool, CRM, sequencer, email sender, or chat connector.
 

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-16T19:10:00+08:00",
+  "manager": {
+    "base_url": "http://127.0.0.1:54345",
+    "request_method": "POST",
+    "content_type": "application/json",
+    "health_endpoint": "/health"
+  },
+  "amazon_profile": {
+    "sequence": 22,
+    "expected_name": "亚马逊",
+    "group": "us",
+    "tags": [
+      "amazon:US",
+      "seller:self",
+      "fulfillment:FBM"
+    ],
+    "route": "amazon:US:marketplace_seller:self_store:FBM",
+    "third_party_extension_bindings_expected": 0
+  },
+  "capabilities": [
+    {
+      "id": "session_lifecycle",
+      "status": "adopted",
+      "endpoints": ["/browser/list", "/browser/ports", "/browser/pids/all", "/browser/open", "/browser/close"],
+      "purpose": "Resolve, reuse, open and close the fixed operating profile without duplicate windows."
+    },
+    {
+      "id": "cdp_control",
+      "status": "adopted",
+      "purpose": "Use the ws/http endpoint returned by BitBrowser with Playwright for live page operation and verification."
+    },
+    {
+      "id": "group_and_tags",
+      "status": "adopted",
+      "endpoints": ["/group/list", "/browser/group/update", "/browserTag/list", "/browserTag/updateRelation"],
+      "purpose": "Enforce platform/site, ownership and fulfillment identity before actions."
+    },
+    {
+      "id": "safe_local_ledger",
+      "status": "adopted_optional_mirror",
+      "endpoints": ["/extralog/list", "/extralog/add", "/extralog/detail"],
+      "purpose": "Mirror non-sensitive operation IDs and outcomes while project JSONL remains authoritative."
+    },
+    {
+      "id": "simulated_input",
+      "status": "adopt_selectively",
+      "endpoints": ["/autopaste"],
+      "purpose": "Enter text into a focused real field when CDP fill is unreliable; verify persistence after save."
+    },
+    {
+      "id": "rpa",
+      "status": "adopt_after_manual_validation",
+      "endpoints": ["/rpa/run", "/rpa/stop"],
+      "purpose": "Run deterministic repetitive workflows with explicit stop rules."
+    },
+    {
+      "id": "headless",
+      "status": "public_research_only",
+      "purpose": "Public competitor monitoring with one startup page; not the primary Seller Central session."
+    },
+    {
+      "id": "first_party_extension",
+      "status": "planned",
+      "purpose": "Expose current-page context, evidence and a safe command queue without exporting sessions or credentials."
+    },
+    {
+      "id": "cloud_phone",
+      "status": "deferred_tiktok_mobile_only",
+      "purpose": "Future mobile-channel workflows; asynchronous, billable and limited to one request per second."
+    }
+  ],
+  "extension_policy": {
+    "review_candidates": ["鸥鹭", "EarData", "SellerMotor", "Sif", "卖狐", "EasyYa", "AsinSeed", "Sorftime Save"],
+    "blocked_categories_for_operating_store": [
+      "token login",
+      "cookie editor",
+      "password manager",
+      "authenticator",
+      "proxy switcher",
+      "bulk outreach",
+      "unknown seller scraper"
+    ],
+    "installation_rule": "Do not install or authorize until provenance, requested permissions, data destinations and platform-policy fit are reviewed."
+  },
+  "sensitive_data_never_read_or_logged": [
+    "passwords",
+    "cookies",
+    "OTP or MFA codes",
+    "proxy credentials",
+    "bank data",
+    "identity documents"
+  ]
+}

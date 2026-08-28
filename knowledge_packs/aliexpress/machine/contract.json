@@ -6,7 +6,7 @@
   "updated_at": "2026-07-19T04:08:38+08:00",
   "training_scope": "Evidence-first, product-independent AliExpress operations training; private_tenant product traces remain tenant-scoped and no live store or ads authorization is implied.",
   "runtime": {
-    "llm_gateway": "LLMClient + config/multi_ai.json",
+    "llm_gateway": "LLMClient + private_model_provider_registry_excluded",
     "model_slots": [
       "reasoning",
       "copy",
@@ -2759,7 +2759,7 @@
   ],
   "official_open_source_identity_audit": {
     "registry_precheck": {
-      "checked_path": "config/github_capability_registry.json",
+      "checked_path": "private_github_admission_registry_excluded",
       "checked_at": "2026-07-19",
       "aliexpress_or_alibaba_candidates_found": 0
     },
@@ -7598,7 +7598,7 @@
       "eligible_for_distillation": true,
       "software": "T One registries and AliExpress expert contract",
       "product_version": "workspace state 2026-07-19",
-      "url": "local://config/platform_adapter_registry.json+config/platform_store_type_evidence_registry.json+config/github_capability_registry.json",
+      "url": "local://config/platform_adapter_registry.json+private_store_type_evidence_registry_excluded+private_github_admission_registry_excluded",
       "captured_at": "2026-07-19T03:48:41+08:00",
       "country_sites": [
         "NOT_STORE_BOUND"
@@ -8185,10 +8185,10 @@
     ],
     "no_new_evidence_policy": "record no_change and do not rewrite rules or claim learning",
     "write_scope": [
-      "skills/platform-experts/aliexpress",
-      "config/platform_expert_training/aliexpress.json",
-      "tests/test_aliexpress_expert_training.py",
-      "outputs/expert_training"
+      "private_platform_expert_source_excluded",
+      "private_platform_training_contract_excluded",
+      "private_regression_suite_excluded",
+      "private_run_artifact_excluded"
     ],
     "shared_core_writes_forbidden": true
   },

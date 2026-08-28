@@ -1,6 +1,6 @@
 # Independent Amazon curriculum
 
-The machine-readable source of truth is `config/amazon_training_curriculum.json`.
+The machine-readable source of truth is `private_runtime_registry_excluded`.
 
 Cover all domains before treating the agent as a complete Amazon operator:
 

@@ -11,11 +11,11 @@ Use this Skill to evaluate one exact channel and country. Do not turn a list of 
 
 Read these before producing channel facts:
 
-- `config/platform_expert_training/global_local_channel.json`
-- `config/advertising_agent.json`
-- `config/platform_expert_training/advertising_media_buyer/evidence_index.json`
-- `config/platform_expert_training/advertising_media_buyer/rules.json`
-- `config/github_capability_registry.json`
+- `private_platform_training_contract_excluded`
+- `private_advertising_runtime_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_platform_training_contract_excluded`
+- `private_github_admission_registry_excluded`
 
 ## Resolve one executable route
 
@@ -32,7 +32,7 @@ Require tenant, project, store binding, platform, exact country site, commerce m
 
 ## Reuse the existing runtime
 
-Route verified advertising work through `config/advertising_agent.json`. Reuse the existing LLMClient, measurement, profit, draft, human-review, and stop-loss contracts. Do not create another model gateway, universal ad agent, connector, or scheduler.
+Route verified advertising work through `private_advertising_runtime_contract_excluded`. Reuse the existing LLMClient, measurement, profit, draft, human-review, and stop-loss contracts. Do not create another model gateway, universal ad agent, connector, or scheduler.
 
 ## Hard stops
 

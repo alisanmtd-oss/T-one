@@ -1,0 +1,1258 @@
+{
+  "last_checked_at": "2026-06-29",
+  "source_review": {
+    "checked_at": "2026-06-29",
+    "default_boundary": "Official APIs, seller/admin backends, promotion tools, and ads accounts are separate authorization surfaces. Read-only sync can be automated after authorization; listing, discount, campaign, ad budget, refund, shipment, and authorization changes stay draft_then_confirmation or isolated_cloud_plugin_after_confirmation.",
+    "official_sources": [
+      {
+        "channel_id": "tiktok_shop",
+        "url": "https://partner.tiktokshop.com/docv2/",
+        "finding": "Shop Open API, Seller Center promotion flows, Business Center, and ads account ownership must be treated as separate site/store identities."
+      },
+      {
+        "channel_id": "shein",
+        "url": "https://open.sheincorp.com/",
+        "finding": "Marketplace/Open Platform routes must not mix local, cross-border, semi-managed, TeeLab co-ops, and official full-managed labels."
+      },
+      {
+        "channel_id": "shopee",
+        "url": "https://open.shopee.com/documents",
+        "finding": "Open Platform is app/shop authorization based; campaign and voucher execution still needs country-site and store identity checks."
+      },
+      {
+        "channel_id": "lazada",
+        "url": "https://open.lazada.com/doc/doc.htm",
+        "finding": "Open Platform coverage varies by country site and app permission; unresolved promotion actions remain backend drafts."
+      },
+      {
+        "channel_id": "amazon",
+        "url": "https://developer-docs.amazon.com/sp-api/",
+        "finding": "Selling Partner API is separate from Amazon Ads API and Seller Central promotion workflows."
+      },
+      {
+        "channel_id": "walmart",
+        "url": "https://developer.walmart.com/us-marketplace/docs",
+        "finding": "Marketplace item/order/inventory/report APIs and Walmart Connect advertising must be treated as separate seller and ad-account surfaces."
+      },
+      {
+        "channel_id": "shopify",
+        "url": "https://shopify.dev/docs/apps/build/discounts",
+        "finding": "Discounts require app/admin scopes and per-store authorization; ads are outside Shopify Admin API."
+      },
+      {
+        "channel_id": "woocommerce",
+        "url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+        "finding": "REST API keys and webhooks are per WooCommerce store; ads and campaign tools are external."
+      },
+      {
+        "channel_id": "meta_ads",
+        "url": "https://developers.facebook.com/docs/marketing-apis/",
+        "finding": "Meta advertising connection depends on Business/ad-account permissions and is not equivalent to store ERP authorization."
+      },
+      {
+        "channel_id": "etsy",
+        "url": "https://developers.etsy.com/documentation/",
+        "finding": "Etsy Open API v3 is shop/app authorization based; listings, inventory, receipts/orders, payments and shop data require explicit scopes, while Etsy Ads and Offsite Ads stay separate seller/ads surfaces."
+      },
+      {
+        "channel_id": "ebay",
+        "url": "https://developer.ebay.com/api-docs/sell/static/sell-landing.html",
+        "finding": "eBay Sell APIs split Inventory, Fulfillment, Account, Finances and Marketing; Promotions Manager, Promoted Listings and budget/ad changes are separate execution domains requiring confirmation. Campaign setup/launch cannot be treated as one-click automation because eBay removed setupQuickCampaign and launchCampaign from the campaign resource."
+      }
+    ],
+    "implementation_policy": [
+      "Treat APIs, seller backends, ads backends, Business/ad accounts as separate authorization surfaces.",
+      "Map every store action to channelId:countryCode:storeModel before execution planning.",
+      "Use /api/platform-activity/plan as the internal preflight before promotion, coupon, campaign, discount, or ad task packaging.",
+      "Use isolated backend task identities when multi-store or multi-entity binding may create account association risk.",
+      "Campaign signup, price change, coupon publish, refund, shipment, authorization, ad launch, and budget change require owner confirmation."
+    ]
+  },
+  "execution_capability_matrix": [
+    {
+      "channel_id": "tiktok_shop",
+      "label": "TikTok Shop execution domains",
+      "sites": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "IE",
+        "MX",
+        "BR",
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "tiktok_accu_local",
+        "platform_co_ops",
+        "teelab_owned",
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "store_binding_policy": "one_store_one_route_one_shop_authorization_no_cross_store_write_permission",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://partner.tiktokshop.com/docv2/"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "ad_launch_without_ads_account",
+        "budget_or_campaign_change_without_confirmation",
+        "campaign_signup_without_store_owner_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "open_api_or_seller_center_draft",
+          "surface": "shop_open_api",
+          "required_authorizations": [
+            "shop_authorization"
+          ]
+        },
+        "promotion": {
+          "mode": "promotion_api_or_seller_center_draft",
+          "surface": "seller_center_promotions",
+          "required_authorizations": [
+            "shop_authorization",
+            "seller_center_access"
+          ]
+        },
+        "coupon": {
+          "mode": "shop_coupon_or_live_coupon_draft",
+          "surface": "seller_center_coupon_backend",
+          "required_authorizations": [
+            "shop_authorization",
+            "seller_center_access"
+          ]
+        },
+        "ads": {
+          "mode": "business_api_or_ads_manager_draft",
+          "surface": "tiktok_business_center_ads_manager",
+          "required_authorizations": [
+            "business_center",
+            "ads_account"
+          ]
+        },
+        "affiliate": {
+          "mode": "affiliate_creator_backend_draft",
+          "surface": "affiliate_center_or_creator_backend",
+          "required_authorizations": [
+            "shop_authorization",
+            "creator_affiliate_permission"
+          ]
+        },
+        "catalog": {
+          "mode": "catalog_or_product_feed_draft",
+          "surface": "shop_product_catalog_or_feed",
+          "required_authorizations": [
+            "shop_authorization"
+          ]
+        },
+        "reporting": {
+          "mode": "api_read_or_report_import",
+          "surface": "open_api_reports_or_seller_center_reports",
+          "required_authorizations": [
+            "shop_authorization"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "shein",
+      "label": "SHEIN execution domains",
+      "sites": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "BR",
+        "MX"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border",
+        "platform_co_ops",
+        "teelab_owned",
+        "semi_managed_crossborder",
+        "semi_managed_local"
+      ],
+      "store_binding_policy": "one_store_one_route_no_official_full_managed_selection",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://open.sheincorp.com/"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "campaign_price_change_without_confirmation",
+        "inventory_reserve_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "open_platform_or_seller_hub_draft",
+          "surface": "shein_open_platform_or_seller_hub",
+          "required_authorizations": [
+            "open_platform_account",
+            "application_review"
+          ]
+        },
+        "promotion": {
+          "mode": "seller_hub_campaign_draft",
+          "surface": "seller_hub_campaign_backend",
+          "required_authorizations": [
+            "site_store_model_verified"
+          ]
+        },
+        "coupon": {
+          "mode": "platform_rule_draft_then_confirmation",
+          "surface": "seller_hub_discount_backend",
+          "required_authorizations": [
+            "seller_hub_access"
+          ]
+        },
+        "ads": {
+          "mode": "separate_ads_or_traffic_backend_review",
+          "surface": "seller_hub_or_ads_backend",
+          "required_authorizations": [
+            "ads_or_traffic_account_if_available"
+          ]
+        },
+        "catalog": {
+          "mode": "product_feed_or_listing_backend_draft",
+          "surface": "open_platform_listing_backend",
+          "required_authorizations": [
+            "open_platform_account"
+          ]
+        },
+        "reporting": {
+          "mode": "api_read_or_report_import",
+          "surface": "open_platform_reports_or_seller_hub_reports",
+          "required_authorizations": [
+            "open_platform_account"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "shopee",
+      "label": "Shopee execution domains",
+      "sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID",
+        "TW",
+        "BR"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "store_binding_policy": "one_country_site_one_shop_or_merchant_authorization",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://open.shopee.com/documents"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "voucher_or_discount_create_without_confirmation",
+        "ad_launch_without_ads_account"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "open_platform_or_seller_center_draft",
+          "surface": "shopee_open_platform",
+          "required_authorizations": [
+            "shop_access_token"
+          ]
+        },
+        "promotion": {
+          "mode": "discount_or_campaign_backend_draft",
+          "surface": "seller_center_campaigns",
+          "required_authorizations": [
+            "shop_or_merchant_permission"
+          ]
+        },
+        "coupon": {
+          "mode": "shop_voucher_draft_then_confirmation",
+          "surface": "seller_center_voucher_backend",
+          "required_authorizations": [
+            "voucher_or_discount_permission"
+          ]
+        },
+        "ads": {
+          "mode": "separate_ads_backend_or_account",
+          "surface": "shopee_ads_backend",
+          "required_authorizations": [
+            "ads_account_if_ads"
+          ]
+        },
+        "affiliate": {
+          "mode": "affiliate_or_creator_backend_draft",
+          "surface": "affiliate_backend",
+          "required_authorizations": [
+            "affiliate_permission_if_available"
+          ]
+        },
+        "catalog": {
+          "mode": "product_feed_or_item_api_draft",
+          "surface": "open_platform_item_api",
+          "required_authorizations": [
+            "shop_access_token"
+          ]
+        },
+        "reporting": {
+          "mode": "api_read_or_report_import",
+          "surface": "open_platform_reports_or_seller_center_reports",
+          "required_authorizations": [
+            "shop_access_token"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "lazada",
+      "label": "Lazada execution domains",
+      "sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "store_models": [
+        "local_store",
+        "cross_border",
+        "marketplace_seller",
+        "platform_co_ops"
+      ],
+      "store_binding_policy": "one_country_site_one_seller_authorization",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://open.lazada.com/doc/doc.htm"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "voucher_activate_without_confirmation",
+        "price_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "open_platform_or_seller_center_draft",
+          "surface": "lazada_open_platform",
+          "required_authorizations": [
+            "seller_authorization_code",
+            "seller_access_token"
+          ]
+        },
+        "promotion": {
+          "mode": "seller_voucher_or_campaign_draft",
+          "surface": "seller_center_campaign_backend",
+          "required_authorizations": [
+            "promotion_permission"
+          ]
+        },
+        "coupon": {
+          "mode": "seller_voucher_create_activate_after_confirmation",
+          "surface": "seller_voucher_api_or_backend",
+          "required_authorizations": [
+            "voucher_permission"
+          ]
+        },
+        "ads": {
+          "mode": "separate_ads_backend_or_account",
+          "surface": "lazada_ads_or_sponsor_backend",
+          "required_authorizations": [
+            "ads_account_if_ads"
+          ]
+        },
+        "catalog": {
+          "mode": "product_feed_or_item_api_draft",
+          "surface": "open_platform_product_api",
+          "required_authorizations": [
+            "seller_access_token"
+          ]
+        },
+        "reporting": {
+          "mode": "api_read_or_report_import",
+          "surface": "open_platform_reports_or_seller_center_reports",
+          "required_authorizations": [
+            "seller_access_token"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "amazon",
+      "label": "Amazon execution domains",
+      "sites": [
+        "US",
+        "CA",
+        "MX",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "NL",
+        "SE",
+        "PL",
+        "JP",
+        "IN",
+        "AU",
+        "AE",
+        "SA"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store",
+        "cross_border"
+      ],
+      "store_binding_policy": "sp_api_seller_authorization_and_ads_authorization_are_separate",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developer-docs.amazon.com/sp-api/",
+        "https://advertising.amazon.com/API/docs/en-us"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "coupon_or_deal_submit_without_confirmation",
+        "amazon_ads_budget_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "sp_api_after_seller_authorization",
+          "surface": "selling_partner_api",
+          "required_authorizations": [
+            "sp_api_authorization"
+          ]
+        },
+        "promotion": {
+          "mode": "seller_central_or_api_draft",
+          "surface": "seller_central_promotions",
+          "required_authorizations": [
+            "seller_central_access"
+          ]
+        },
+        "coupon": {
+          "mode": "coupon_or_deal_draft_then_confirmation",
+          "surface": "seller_central_coupons_deals",
+          "required_authorizations": [
+            "seller_central_access"
+          ]
+        },
+        "ads": {
+          "mode": "separate_amazon_ads_api",
+          "surface": "amazon_ads_api",
+          "required_authorizations": [
+            "amazon_ads_authorization"
+          ]
+        },
+        "catalog": {
+          "mode": "sp_api_catalog_and_feeds_after_authorization",
+          "surface": "sp_api_catalog_items_or_feeds",
+          "required_authorizations": [
+            "sp_api_authorization"
+          ]
+        },
+        "reporting": {
+          "mode": "sp_api_reports_or_finance_report",
+          "surface": "sp_api_reports",
+          "required_authorizations": [
+            "sp_api_authorization"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "walmart",
+      "label": "Walmart Marketplace execution domains",
+      "sites": [
+        "US",
+        "CA",
+        "MX"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "local_store"
+      ],
+      "store_binding_policy": "marketplace_seller_authorization_and_walmart_connect_are_separate",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developer.walmart.com/us-marketplace/docs",
+        "https://developer.walmart.com/advertising-partners/docs"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "promotion_submit_without_confirmation",
+        "walmart_connect_budget_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "marketplace_api_after_seller_authorization",
+          "surface": "walmart_marketplace_api",
+          "required_authorizations": [
+            "marketplace_seller_authorization"
+          ]
+        },
+        "promotion": {
+          "mode": "seller_center_or_marketplace_api_draft",
+          "surface": "seller_center_promotions_or_marketplace_api",
+          "required_authorizations": [
+            "marketplace_seller_authorization"
+          ]
+        },
+        "coupon": {
+          "mode": "seller_center_promotion_draft_then_confirmation",
+          "surface": "seller_center_promotions",
+          "required_authorizations": [
+            "marketplace_seller_authorization"
+          ]
+        },
+        "ads": {
+          "mode": "separate_walmart_connect_or_ads_api",
+          "surface": "walmart_connect_or_ads_api",
+          "required_authorizations": [
+            "walmart_connect_or_ads_account"
+          ]
+        },
+        "catalog": {
+          "mode": "items_feeds_api_after_authorization",
+          "surface": "marketplace_items_feeds_api",
+          "required_authorizations": [
+            "marketplace_seller_authorization"
+          ]
+        },
+        "reporting": {
+          "mode": "marketplace_reports_or_report_import",
+          "surface": "marketplace_reports",
+          "required_authorizations": [
+            "marketplace_seller_authorization"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "shopify",
+      "label": "Shopify execution domains",
+      "sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "store_binding_policy": "one_store_one_app_installation_and_scope_set",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://shopify.dev/docs/apps/build/discounts"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "discount_activate_without_confirmation",
+        "theme_or_app_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "admin_api_after_store_authorization",
+          "surface": "shopify_admin_api",
+          "required_authorizations": [
+            "store_app_installed"
+          ]
+        },
+        "promotion": {
+          "mode": "discount_function_or_admin_draft",
+          "surface": "admin_api_discounts",
+          "required_authorizations": [
+            "write_discounts"
+          ]
+        },
+        "coupon": {
+          "mode": "discount_code_or_automatic_discount_draft",
+          "surface": "admin_api_discounts",
+          "required_authorizations": [
+            "write_discounts"
+          ]
+        },
+        "ads": {
+          "mode": "separate_meta_google_tiktok_ads",
+          "surface": "external_ads_backend",
+          "required_authorizations": [
+            "ads_account_if_ads"
+          ]
+        },
+        "catalog": {
+          "mode": "product_feed_or_sales_channel_draft",
+          "surface": "admin_api_products_or_sales_channel",
+          "required_authorizations": [
+            "write_products"
+          ]
+        },
+        "reporting": {
+          "mode": "admin_api_read_or_report_import",
+          "surface": "admin_api_orders_reports",
+          "required_authorizations": [
+            "read_orders"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "woocommerce",
+      "label": "WooCommerce execution domains",
+      "sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "independent_site",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "store_binding_policy": "one_store_one_rest_key_or_plugin_connection",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developer.woocommerce.com/docs/apis/rest-api/"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "coupon_create_without_confirmation",
+        "plugin_setting_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "rest_api_after_store_authorization",
+          "surface": "woocommerce_rest_api_products",
+          "required_authorizations": [
+            "rest_api_key_or_plugin_access"
+          ]
+        },
+        "promotion": {
+          "mode": "plugin_or_store_backend_draft",
+          "surface": "woocommerce_admin_or_plugin_backend",
+          "required_authorizations": [
+            "store_backend_access_if_needed"
+          ]
+        },
+        "coupon": {
+          "mode": "rest_api_coupons_or_store_backend_draft",
+          "surface": "woocommerce_rest_api_coupons",
+          "required_authorizations": [
+            "rest_api_key_or_plugin_access"
+          ]
+        },
+        "ads": {
+          "mode": "separate_meta_google_tiktok_ads",
+          "surface": "external_ads_backend",
+          "required_authorizations": [
+            "ads_account_if_ads"
+          ]
+        },
+        "catalog": {
+          "mode": "product_feed_or_rest_api_draft",
+          "surface": "woocommerce_rest_api_products_or_feed_plugin",
+          "required_authorizations": [
+            "rest_api_key_or_plugin_access"
+          ]
+        },
+        "reporting": {
+          "mode": "rest_api_read_or_report_import",
+          "surface": "woocommerce_rest_api_orders_reports",
+          "required_authorizations": [
+            "rest_api_key_or_plugin_access"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "meta_ads",
+      "label": "Meta Ads execution domains",
+      "sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "content_catalog",
+        "platform_co_ops",
+        "teelab_owned"
+      ],
+      "store_binding_policy": "business_manager_ad_account_catalog_pixel_are_separate_from_store_erp",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developers.facebook.com/docs/marketing-apis/"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "campaign_launch_without_confirmation",
+        "budget_or_campaign_change_without_confirmation"
+      ],
+      "domains": {
+        "ads": {
+          "mode": "marketing_api_after_business_and_ad_account_authorization",
+          "surface": "meta_marketing_api",
+          "required_authorizations": [
+            "business_authorization",
+            "ad_account_permission"
+          ]
+        },
+        "catalog": {
+          "mode": "catalog_or_pixel_sync_after_authorization",
+          "surface": "commerce_catalog_or_marketing_api",
+          "required_authorizations": [
+            "catalog_or_pixel_permission"
+          ]
+        },
+        "reporting": {
+          "mode": "marketing_api_read_or_report_import",
+          "surface": "ads_insights_api",
+          "required_authorizations": [
+            "ads_read"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "etsy",
+      "label": "Etsy execution domains",
+      "sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "self_store",
+        "platform_co_ops"
+      ],
+      "store_binding_policy": "one_shop_one_app_authorization_and_scope_set",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developers.etsy.com/documentation/",
+        "https://help.etsy.com/hc/en-us/articles/360000338367-How-Etsy-Ads-Works"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "listing_publish_without_confirmation",
+        "coupon_or_sale_create_without_confirmation",
+        "etsy_ads_budget_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "open_api_v3_or_shop_manager_draft",
+          "surface": "etsy_open_api_v3_listings",
+          "required_authorizations": [
+            "etsy_app_oauth",
+            "listings_scope"
+          ]
+        },
+        "promotion": {
+          "mode": "shop_manager_sale_or_coupon_draft",
+          "surface": "etsy_shop_manager_sales_coupons",
+          "required_authorizations": [
+            "shop_manager_access"
+          ]
+        },
+        "coupon": {
+          "mode": "shop_coupon_or_sale_draft_then_confirmation",
+          "surface": "etsy_sales_and_coupons_backend",
+          "required_authorizations": [
+            "shop_manager_access"
+          ]
+        },
+        "ads": {
+          "mode": "etsy_ads_backend_draft",
+          "surface": "etsy_ads_or_offsite_ads_backend",
+          "required_authorizations": [
+            "etsy_ads_access_if_ads"
+          ]
+        },
+        "catalog": {
+          "mode": "open_api_listing_inventory_after_authorization",
+          "surface": "etsy_open_api_v3_listings_inventory",
+          "required_authorizations": [
+            "etsy_app_oauth",
+            "listings_scope"
+          ]
+        },
+        "reporting": {
+          "mode": "open_api_receipts_payments_or_report_import",
+          "surface": "etsy_open_api_v3_receipts_payments",
+          "required_authorizations": [
+            "etsy_app_oauth",
+            "transactions_scope"
+          ]
+        }
+      }
+    },
+    {
+      "channel_id": "ebay",
+      "label": "eBay execution domains",
+      "sites": [
+        "GLOBAL"
+      ],
+      "store_models": [
+        "marketplace_seller",
+        "cross_border",
+        "platform_co_ops"
+      ],
+      "store_binding_policy": "one_seller_account_one_marketplace_authorization_and_scope_set",
+      "cloud_package_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "single_store_isolation_required": true,
+      "official_sources": [
+        "https://developer.ebay.com/api-docs/sell/static/sell-landing.html",
+        "https://developer.ebay.com/api-docs/sell/marketing/static/overview.html"
+      ],
+      "blocked_external_actions": [
+        "external_submit_without_owner_confirmation",
+        "offer_publish_without_confirmation",
+        "promotion_submit_without_confirmation",
+        "promoted_listing_budget_change_without_confirmation"
+      ],
+      "domains": {
+        "listing": {
+          "mode": "sell_inventory_api_or_seller_hub_draft",
+          "surface": "ebay_sell_inventory_api",
+          "required_authorizations": [
+            "sell_inventory_scope"
+          ]
+        },
+        "promotion": {
+          "mode": "marketing_api_or_seller_hub_promotion_draft",
+          "surface": "ebay_marketing_promotions_manager",
+          "required_authorizations": [
+            "sell_marketing_scope"
+          ]
+        },
+        "coupon": {
+          "mode": "discount_promotion_draft_then_confirmation",
+          "surface": "ebay_marketing_discounts_manager",
+          "required_authorizations": [
+            "sell_marketing_scope"
+          ]
+        },
+        "ads": {
+          "mode": "promoted_listings_campaign_draft",
+          "surface": "ebay_promoted_listings_marketing_api",
+          "required_authorizations": [
+            "sell_marketing_scope",
+            "ads_campaign_permission"
+          ]
+        },
+        "catalog": {
+          "mode": "browse_or_inventory_api_draft",
+          "surface": "ebay_browse_and_inventory_api",
+          "required_authorizations": [
+            "sell_inventory_scope"
+          ]
+        },
+        "reporting": {
+          "mode": "fulfillment_finances_or_report_import",
+          "surface": "ebay_sell_fulfillment_finances_api",
+          "required_authorizations": [
+            "sell_fulfillment_scope",
+            "sell_finances_scope"
+          ]
+        }
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "channel_id": "tiktok_shop",
+      "label": "TikTok Shop",
+      "sites": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "IE",
+        "MX",
+        "BR",
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "listing": "api_or_cloud_plugin_after_confirmation",
+      "order": "api_read_after_store_authorization",
+      "shipment": "api_or_erp_callback_after_mapping",
+      "settlement": "api_or_report_import",
+      "discount": "api_or_seller_center_draft",
+      "promotion": "seller_center_or_campaign_backend_draft",
+      "ads": "separate_business_api_and_ad_account",
+      "official_source_url": "https://partner.tiktokshop.com/docv2/",
+      "notes": "Site, store model, ad account and Business Center must be separated. Promotion-related Open API surfaces can support drafts and preflight checks, but real promotion, ad submission or budget changes go to confirmation.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "listing_publish",
+        "price_change",
+        "promotion_submit",
+        "coupon_publish",
+        "ad_launch",
+        "budget_change",
+        "refund",
+        "shipment"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "shein",
+      "label": "SHEIN Marketplace",
+      "sites": [
+        "US",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "BR",
+        "MX"
+      ],
+      "listing": "api_or_cloud_plugin_after_confirmation",
+      "order": "api_read_after_store_authorization",
+      "shipment": "api_or_erp_callback_after_mapping",
+      "settlement": "api_or_report_import",
+      "discount": "platform_rule_draft_then_confirmation",
+      "promotion": "platform_campaign_backend_draft",
+      "ads": "separate_ads_or_platform_backend",
+      "official_source_url": "https://open.sheincorp.com/",
+      "notes": "Do not mix local, cross-border, semi-managed, TeeLab co-ops and official full-managed labels. Treat Open Platform product/order/fulfillment/stock/reporting as separate from unverified promotion or traffic write actions.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "listing_publish",
+        "campaign_price_change",
+        "promotion_submit",
+        "inventory_reserve",
+        "shipment_mapping"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "shopee",
+      "label": "Shopee",
+      "sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID",
+        "TW",
+        "BR"
+      ],
+      "listing": "api_or_seller_center_draft",
+      "order": "api_read_after_store_authorization",
+      "shipment": "api_or_erp_callback_after_mapping",
+      "settlement": "api_or_report_import",
+      "discount": "seller_center_draft_then_confirmation",
+      "promotion": "seller_center_campaign_draft",
+      "ads": "separate_ads_account_or_backend",
+      "official_source_url": "https://open.shopee.com/documents",
+      "notes": "Southeast Asia must be split by country site and store identity. Discount, voucher, campaign, affiliate and ads capabilities stay scoped to the authorized shop/site and owner confirmation.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "voucher_create",
+        "discount_create",
+        "bundle_create",
+        "free_shipping_submit",
+        "ad_launch"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "lazada",
+      "label": "Lazada",
+      "sites": [
+        "SG",
+        "MY",
+        "TH",
+        "VN",
+        "PH",
+        "ID"
+      ],
+      "listing": "api_or_seller_center_draft",
+      "order": "api_read_after_store_authorization",
+      "shipment": "api_or_erp_callback_after_mapping",
+      "settlement": "api_or_report_import",
+      "discount": "seller_center_draft_then_confirmation",
+      "promotion": "seller_center_campaign_draft",
+      "ads": "separate_ads_account_or_backend",
+      "official_source_url": "https://open.lazada.com/doc/doc.htm",
+      "notes": "Country-site campaign capability can vary; seller voucher/free shipping/bundle and sponsored solutions surfaces must be checked per site and unresolved actions stay as drafts.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "voucher_create",
+        "voucher_activate",
+        "free_shipping_submit",
+        "price_change",
+        "ad_launch"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "amazon",
+      "label": "Amazon",
+      "sites": [
+        "US",
+        "CA",
+        "MX",
+        "GB",
+        "DE",
+        "FR",
+        "IT",
+        "ES",
+        "NL",
+        "SE",
+        "PL",
+        "JP",
+        "IN",
+        "AU",
+        "AE",
+        "SA"
+      ],
+      "listing": "sp_api_after_seller_authorization",
+      "order": "sp_api_after_seller_authorization",
+      "shipment": "sp_api_or_fba_mapping",
+      "settlement": "sp_api_reports_or_finance_report",
+      "discount": "seller_central_or_api_draft",
+      "promotion": "seller_central_draft_then_confirmation",
+      "ads": "separate_amazon_ads_api",
+      "official_source_url": "https://developer-docs.amazon.com/sp-api/",
+      "notes": "SP-API and Amazon Ads API require separate authorization planning.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "coupon_create",
+        "promotion_submit",
+        "deal_submit",
+        "price_change",
+        "amazon_ads_budget_change"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "walmart",
+      "label": "Walmart Marketplace",
+      "sites": [
+        "US",
+        "CA",
+        "MX"
+      ],
+      "listing": "marketplace_api_after_seller_authorization",
+      "order": "marketplace_api_after_seller_authorization",
+      "shipment": "marketplace_api_or_erp_callback",
+      "settlement": "marketplace_reports_or_report_import",
+      "discount": "seller_center_or_marketplace_api_draft",
+      "promotion": "seller_center_or_marketplace_api_draft",
+      "ads": "separate_walmart_connect_or_ads_api",
+      "official_source_url": "https://developer.walmart.com/us-marketplace/docs",
+      "notes": "Marketplace seller APIs and Walmart Connect advertising require separate authorization. Promotions, ads, budget changes and external submissions require confirmation.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "listing_publish",
+        "price_change",
+        "promotion_submit",
+        "ad_launch",
+        "budget_change",
+        "shipment"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "shopify",
+      "label": "Shopify",
+      "sites": [
+        "GLOBAL"
+      ],
+      "listing": "admin_api_after_store_authorization",
+      "order": "admin_api_or_webhook",
+      "shipment": "admin_api_or_fulfillment_callback",
+      "settlement": "report_import_or_payment_mapping",
+      "discount": "admin_api_or_discount_function",
+      "promotion": "app_or_theme_draft_then_confirmation",
+      "ads": "separate_meta_google_tiktok_ads",
+      "official_source_url": "https://shopify.dev/docs/apps/build/discounts",
+      "notes": "Each independent store has separate app scopes; ads are not the same as Admin API authorization.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "discount_create",
+        "discount_activate",
+        "theme_or_app_change",
+        "ad_launch",
+        "budget_change"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "woocommerce",
+      "label": "WooCommerce",
+      "sites": [
+        "GLOBAL"
+      ],
+      "listing": "rest_api_after_store_authorization",
+      "order": "rest_api_or_webhook",
+      "shipment": "rest_api_or_fulfillment_callback",
+      "settlement": "report_import_or_payment_mapping",
+      "discount": "rest_api_coupons_or_store_backend_draft",
+      "promotion": "plugin_or_store_backend_draft_then_confirmation",
+      "ads": "separate_meta_google_tiktok_ads",
+      "official_source_url": "https://developer.woocommerce.com/docs/apis/rest-api/",
+      "notes": "Each WooCommerce store has separate REST API keys/webhooks. Ads and marketplace campaigns stay outside store API authorization.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "coupon_create",
+        "sale_price_change",
+        "plugin_setting_change",
+        "refund",
+        "shipment",
+        "ad_launch"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "meta_ads",
+      "label": "Meta Ads / Facebook Marketing",
+      "sites": [
+        "GLOBAL"
+      ],
+      "listing": "not_a_listing_store",
+      "order": "not_an_order_store",
+      "shipment": "not_a_shipment_store",
+      "settlement": "ad_spend_report_import",
+      "discount": "not_a_store_discount_api",
+      "promotion": "campaign_draft_after_business_authorization",
+      "ads": "marketing_api_after_business_and_ad_account_authorization",
+      "official_source_url": "https://developers.facebook.com/docs/marketing-apis/",
+      "notes": "Ad accounts, pixels, catalogs and Business permissions are separate from store ERP authorization. Budget and campaign changes require confirmation.",
+      "authorization_surface": "separate_api_seller_backend_ads_business_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "campaign_create",
+        "ad_set_create",
+        "ad_create",
+        "budget_change",
+        "campaign_pause_or_launch"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "etsy",
+      "label": "Etsy",
+      "sites": [
+        "GLOBAL"
+      ],
+      "listing": "open_api_v3_after_shop_authorization",
+      "order": "open_api_receipts_after_shop_authorization",
+      "shipment": "open_api_or_shop_manager_callback",
+      "settlement": "payments_api_or_report_import",
+      "discount": "shop_manager_sale_coupon_draft",
+      "promotion": "shop_manager_sale_coupon_draft_then_confirmation",
+      "ads": "separate_etsy_ads_or_offsite_ads_backend",
+      "official_source_url": "https://developers.etsy.com/documentation/",
+      "notes": "Etsy Open API scopes, Shop Manager promotions, Etsy Ads and Offsite Ads are separate surfaces. Listing publish, sales/coupons and ads budget changes require confirmation.",
+      "authorization_surface": "separate_api_shop_manager_ads_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "listing_publish",
+        "sale_create",
+        "coupon_create",
+        "etsy_ads_budget_change",
+        "shipment"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    },
+    {
+      "channel_id": "ebay",
+      "label": "eBay",
+      "sites": [
+        "GLOBAL"
+      ],
+      "listing": "sell_inventory_api_after_seller_authorization",
+      "order": "sell_fulfillment_api_after_seller_authorization",
+      "shipment": "sell_fulfillment_or_erp_callback",
+      "settlement": "sell_finances_or_report_import",
+      "discount": "marketing_api_or_seller_hub_draft",
+      "promotion": "marketing_api_promotions_draft_then_confirmation",
+      "ads": "separate_promoted_listings_marketing_api",
+      "official_source_url": "https://developer.ebay.com/api-docs/sell/static/sell-landing.html",
+      "notes": "eBay Inventory, Fulfillment, Finances and Marketing APIs are separate scopes. Promotions, Promoted Listings, campaign setup/launch and budget changes require confirmation; removed quick-campaign methods must not be surfaced as executable automation.",
+      "authorization_surface": "separate_api_seller_hub_marketing_ads_surface",
+      "store_binding_policy": "one_store_one_route_no_cross_store_write_permission",
+      "cloud_plugin_policy": "isolated_cloud_profile_after_confirmation_stop_before_external_submit",
+      "customer_boundary": "read_and_draft_only_real_external_changes_need_confirmation",
+      "write_actions_need_confirmation": [
+        "offer_publish",
+        "promotion_create",
+        "discount_create",
+        "promoted_listing_launch",
+        "budget_change",
+        "shipment"
+      ],
+      "single_store_isolation_required": true,
+      "ads_account_required_for_ads": true
+    }
+  ]
+}

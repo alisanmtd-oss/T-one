@@ -378,6 +378,16 @@ def safe_record_summary(
     allowed: dict[str, Any] = {}
     blocked_fields: list[str] = []
     blocked_categories: list[str] = []
+    safe_metadata: dict[str, str] = {}
+    for metadata_field in ("record_id", "record_type", "source", "created_at"):
+        metadata_result = redact_text_for_model(
+            data.get(metadata_field, ""),
+            max_data_level=max_data_level,
+        )
+        safe_metadata[metadata_field] = metadata_result.text
+        if metadata_result.blocked_categories:
+            blocked_fields.append(metadata_field)
+            blocked_categories.extend(metadata_result.blocked_categories)
     for key, value in fields.items():
         info = classify_field(str(key))
         if not _field_allowed(str(key), max_data_level):
@@ -389,10 +399,10 @@ def safe_record_summary(
             allowed[str(key)] = safe_value
 
     return SafeRecordSummary(
-        record_id=str(data.get("record_id", "")),
-        record_type=str(data.get("record_type", "")),
-        source=str(data.get("source", "")),
-        created_at=str(data.get("created_at", "")),
+        record_id=safe_metadata["record_id"],
+        record_type=safe_metadata["record_type"],
+        source=safe_metadata["source"],
+        created_at=safe_metadata["created_at"],
         allowed_fields=allowed,
         score=_compact_score(data.get("score")),
         blocked_fields=sorted(set(blocked_fields)),

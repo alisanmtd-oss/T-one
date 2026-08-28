@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-19T06:20:00+08:00",
+  "scope": "local_encrypted_binding_and_read_only_verification",
+  "connectors": [
+    {"id": "feishu", "group": "communications", "name": "飞书", "protocol": "Feishu Open Platform bot/webhook", "status": "not_configured", "capabilities": ["approval_notification", "task_message", "document_table_sync"], "required_authorization": ["tenant_identity", "app_or_bot_identity", "approved_scopes", "callback_or_webhook_receipt"]},
+    {"id": "wechat_official", "group": "communications", "name": "企业微信", "protocol": "WeCom official API", "status": "not_configured", "capabilities": ["customer_service", "notification", "crm_event"], "required_authorization": ["corp_identity", "approved_app_identity", "approved_scopes", "callback_receipt"]},
+    {"id": "wechat_official_account", "group": "communications", "name": "微信公众号", "protocol": "WeChat Official Account API", "status": "not_configured", "capabilities": ["customer_service", "notification", "crm_event"], "required_authorization": ["official_account_identity", "approved_app_identity", "approved_scopes", "callback_receipt"]},
+    {"id": "wechat_personal", "group": "unsupported", "name": "个人微信", "protocol": "none", "status": "unsupported_private_client", "capabilities": [], "required_authorization": [], "boundary": "Personal WeChat chat injection, private-message scraping and unofficial automation are not supported."},
+    {"id": "telegram", "group": "communications", "name": "Telegram", "protocol": "Bot API + webhook", "status": "not_configured", "capabilities": ["task_notification", "approved_message", "command_intake"], "required_authorization": ["bot_identity", "chat_allowlist", "approved_scopes", "webhook_receipt"]},
+    {"id": "whatsapp_business", "group": "communications", "name": "WhatsApp Business", "protocol": "Meta WhatsApp Business Platform", "status": "not_configured", "capabilities": ["approved_template_message", "inbound_lead", "conversation_status"], "required_authorization": ["business_identity", "waba_identity", "phone_number_identity", "recipient_opt_in", "approved_template_or_service_window", "webhook_receipt"]},
+    {"id": "gmail", "group": "email", "name": "Gmail", "protocol": "Google OAuth API", "status": "not_configured", "capabilities": ["inbound_classification", "draft_reply", "approved_send"], "required_authorization": ["oauth_client", "mailbox_identity", "least_privilege_scopes", "send_approval"]},
+    {"id": "outlook", "group": "email", "name": "Outlook", "protocol": "Microsoft Graph OAuth", "status": "not_configured", "capabilities": ["inbound_classification", "draft_reply", "approved_send"], "required_authorization": ["oauth_client", "tenant_and_mailbox_identity", "least_privilege_scopes", "send_approval"]},
+    {"id": "email_imap", "group": "email", "name": "其他企业邮箱", "protocol": "IMAP over TLS", "status": "not_configured", "capabilities": ["mailbox_authentication", "inbound_classification", "draft_reply"], "required_authorization": ["mailbox_identity", "app_password_or_oauth_token", "public_tls_endpoint", "send_approval"]},
+    {"id": "meta_social", "group": "social", "name": "Facebook / Instagram", "protocol": "Meta Graph API", "status": "not_configured", "capabilities": ["page_and_profile_read", "comments", "lead_forms", "approved_publish"], "required_authorization": ["business_identity", "page_or_profile_identity", "separate_read_and_publish_scopes", "publish_approval"]},
+    {"id": "youtube", "group": "social", "name": "YouTube", "protocol": "YouTube Data API OAuth", "status": "not_configured", "capabilities": ["channel_metrics", "comments", "approved_publish"], "required_authorization": ["channel_identity", "oauth_client", "separate_read_and_publish_scopes", "publish_approval"]},
+    {"id": "pinterest", "group": "social", "name": "Pinterest", "protocol": "Pinterest API OAuth", "status": "not_configured", "capabilities": ["account_metrics", "pins", "approved_publish"], "required_authorization": ["business_account_identity", "oauth_client", "separate_read_and_publish_scopes", "publish_approval"]},
+    {"id": "x", "group": "social", "name": "X", "protocol": "X API OAuth", "status": "not_configured", "capabilities": ["account_metrics", "mentions", "approved_publish"], "required_authorization": ["account_identity", "developer_app", "separate_read_and_write_scopes", "publish_approval"]},
+    {"id": "linkedin", "group": "social", "name": "LinkedIn", "protocol": "LinkedIn API OAuth", "status": "not_configured", "capabilities": ["organization_metrics", "lead_signals", "approved_publish"], "required_authorization": ["member_or_organization_identity", "developer_app", "approved_product_and_scopes", "publish_approval"]}
+  ],
+  "required_route": ["tenant_id", "project_id", "task_id", "execution_identity_id", "connector_account_ref"],
+  "local_actions": ["inspect_connector", "prepare_binding_packet", "prepare_draft_metadata_packet"],
+  "blocked_actions": ["read_inbox", "sync_contacts", "subscribe_webhook", "send_message", "reply_message", "publish_content", "post_comment"],
+  "hard_boundaries": [
+    "no_plugin_install",
+    "no_interactive_login_or_oauth_consent_bypass",
+    "read_only_connection_test_only",
+    "no_private_message_or_contact_read",
+    "no_personal_wechat_injection",
+    "no_webhook_or_subscription_change",
+    "no_message_send_reply_comment_or_social_publish",
+    "no_raw_credentials_or_recipient_pii",
+    "no_cross_tenant_project_task_store_or_identity_scope"
+  ],
+  "current_session_plugin_observations": {
+    "gmail": "recommended_but_not_installed",
+    "outlook": "recommended_but_not_installed",
+    "source": "current Codex session recommended_plugins list",
+    "observation_only": true
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "safe_mode": true,
+  "default_window": "today",
+  "notes": "Own-store data sources for read-only sales, order, return, refund, and ads monitoring. Login, verification, publishing, delisting, pricing, promotion, and ad budget actions require human confirmation.",
+  "sources": [
+    {
+      "id": "tiktok-shop-us-local-pop-seller-center",
+      "name": "TikTok Shop US Local/POP Seller Center",
+      "enabled": false,
+      "requires_login": true,
+      "record_type": "store_metric_snapshot",
+      "source_platform": "TikTok Shop",
+      "marketplace": "TikTok Shop",
+      "country_code": "US",
+      "url": "https://seller-us.tiktok.com/account/register?channel=portal_header_2",
+      "collect_fields": [
+        "store_id",
+        "store_name",
+        "snapshot_start",
+        "snapshot_end",
+        "total_revenue",
+        "net_revenue",
+        "order_count",
+        "unit_count",
+        "ad_spend",
+        "refund_amount",
+        "refund_count",
+        "return_count"
+      ],
+      "notes": "Provided by user. Use after the user has logged in or passed verification. Read data only."
+    },
+    {
+      "id": "amazon-seller-central-us",
+      "name": "Amazon Seller Central US",
+      "enabled": false,
+      "requires_login": true,
+      "record_type": "store_metric_snapshot",
+      "source_platform": "Amazon",
+      "marketplace": "Amazon",
+      "country_code": "US",
+      "url": "https://sellercentral.amazon.com/",
+      "notes": "Read-only own-store business reports, order, return, refund, and ads snapshots when authorized."
+    },
+    {
+      "id": "walmart-seller-center-us",
+      "name": "Walmart Seller Center US",
+      "enabled": false,
+      "requires_login": true,
+      "record_type": "store_metric_snapshot",
+      "source_platform": "Walmart",
+      "marketplace": "Walmart",
+      "country_code": "US",
+      "url": "https://seller.walmart.com/",
+      "notes": "Read-only own-store sales, order, return, refund, and ads snapshots when authorized."
+    },
+    {
+      "id": "pod-admin-channel-analytics",
+      "name": "POD Admin Channel Analytics",
+      "enabled": false,
+      "requires_login": true,
+      "record_type": "store_metric_snapshot",
+      "source_platform": "POD",
+      "marketplace": "POD",
+      "url": "http://localhost:3100/api/admin/channel-analytics?channel=all",
+      "notes": "POD admin channel analytics endpoint from the separate POD project. Read-only integration first."
+    }
+  ]
+}

@@ -1,0 +1,1902 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-07-21",
+  "registry_kind": "installable_platform_experts",
+  "purpose": "把零散的插件、Skills、智能体和工具收敛为少数按真实业务路由安装的平台专家；专家负责规则、证据、模型能力槽、复盘与执行边界，底层能力仍由现有注册表提供。",
+  "provider_catalog_ref": "config/ai_provider_catalog.json",
+  "required_route_dimensions": [
+    "platform",
+    "country_site",
+    "store_model",
+    "ownership"
+  ],
+  "required_model_slots": [
+    "reasoning",
+    "copy",
+    "image",
+    "video",
+    "ads",
+    "data"
+  ],
+  "global_rules": {
+    "expert_selection": "先按 platform + capability 选择专家，再用 country_site + store_model + ownership 校验真实执行范围。",
+    "provider_selection": "候选 provider 只表示能力偏好；运行前仍需检查用户已配置模型的真实模态、健康、预算和数据边界。",
+    "evidence_first": "平台规则必须保留来源、版本和适用站点；未核实规则不得进入写操作。",
+    "store_isolation": "店铺授权、广告账号、浏览器身份和执行记录必须按真实店铺与国家站点隔离。",
+    "official_full_managed": "official_full_managed 及平台官方全托管同义模式只识别、不接入、不推荐、不执行。",
+    "southeast_asia": "Southeast Asia 只能作为不可执行分组；TikTok Shop 等执行路由必须使用 SG/MY/TH/VN/PH/ID。"
+  },
+  "experts": [
+    {
+      "id": "expert-amazon-marketplace",
+      "name": "Amazon Marketplace 运营专家",
+      "summary": "覆盖 Amazon 各国家 Marketplace 的 Listing、广告、促销、订单、库存、履约、客服、利润、竞品与持续复盘。",
+      "sort_order": 100,
+      "platforms": [
+        "amazon"
+      ],
+      "routing": {
+        "required_dimensions": [
+          "platform",
+          "country_site",
+          "store_model",
+          "ownership"
+        ],
+        "routes": [
+          {
+            "platform": "amazon",
+            "country_sites": [
+              "US",
+              "CA",
+              "MX",
+              "GB",
+              "DE",
+              "FR",
+              "IT",
+              "ES",
+              "NL",
+              "SE",
+              "PL",
+              "JP",
+              "IN",
+              "AU",
+              "AE",
+              "SA"
+            ],
+            "store_models": [
+              "marketplace_seller"
+            ],
+            "ownerships": [
+              "self_owned",
+              "teelab_owned",
+              "platform_co_ops",
+              "partner_owned"
+            ]
+          }
+        ],
+        "blocked_store_models": [
+          "official_full_managed"
+        ]
+      },
+      "job_modules": [
+        "listing",
+        "ads",
+        "activity",
+        "orders",
+        "inventory",
+        "fulfillment",
+        "customer_service",
+        "finance",
+        "competitor",
+        "learning"
+      ],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_store_type_evidence_registry.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json",
+          "skills/amazon-commerce-operator/SKILL.md",
+          "skills/amazon-commerce-operator/references/user-collected-paused-research.md"
+        ],
+        "source_ids": [
+          "amazon_official_marketplace_ids",
+          "amazon_official_listing_restrictions",
+          "amazon_official_selling_plans",
+          "amazon_official_fba",
+          "amazon_official_fbm",
+          "miaoshou_amazon_auth_2310"
+        ],
+        "rule_scope": "国家站点读取真实 marketplaceId；seller plan、FBA/FBM 和类目审批不得误当作店铺模式。"
+      },
+      "default_capabilities": {
+        "skills": [
+          "amazon-commerce-operator",
+          "pod-listing-operator",
+          "pod-market-research-memory",
+          "pod-feedback-quality-loop",
+          "amazon-product-research-keepa",
+          "amazon-keyword-sellersprite",
+          "amazon-ads-director"
+        ],
+        "agents": [
+          "amazon-listing-operator",
+          "amazon-ads-operator",
+          "amazon-inventory-fulfillment-operator",
+          "amazon-profit-reviewer"
+        ],
+        "tools": [
+          "amazon-sp-api",
+          "amazon-ads-api",
+          "amazon-seller-central-browser",
+          "keepa",
+          "sellersprite",
+          "erp-connector"
+        ]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": [
+            "listing_audit",
+            "policy_reasoning",
+            "profit_decision",
+            "root_cause_analysis"
+          ],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_policy_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": [
+            "title",
+            "bullets",
+            "description",
+            "a_plus",
+            "localization",
+            "customer_reply"
+          ],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_conversion_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "brand_consistent_long_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_copy"}
+          ]
+        },
+        "image": {
+          "task_types": [
+            "main_image_audit",
+            "secondary_image_plan",
+            "a_plus_visual_plan",
+            "competitor_visual_analysis"
+          ],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "product_visual_reasoning"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_comparison"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": [
+            "listing_video_plan",
+            "competitor_video_breakdown",
+            "storyboard"
+          ],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": [
+            "campaign_structure",
+            "search_term_mining",
+            "bid_budget_review",
+            "negative_keywords"
+          ],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_actions"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "policy_and_budget_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": [
+            "store_metrics",
+            "inventory_forecast",
+            "profit_reconciliation",
+            "competitor_monitoring"
+          ],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": [
+          "public_platform_rules",
+          "tenant_private",
+          "project",
+          "store",
+          "task"
+        ],
+        "inputs": [
+          "official_rule_changes",
+          "listing_and_ads_results",
+          "orders_returns_reviews",
+          "competitor_changes",
+          "execution_failures"
+        ],
+        "outputs": [
+          "versioned_amazon_playbook",
+          "listing_and_ads_tests",
+          "expired_rule_flags",
+          "store_specific_next_actions"
+        ],
+        "review_triggers": [
+          "platform_rule_change",
+          "material_metric_change",
+          "failed_write_action",
+          "weekly_store_review"
+        ]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": [
+          "public_research",
+          "drafts",
+          "audits",
+          "simulations"
+        ],
+        "confirmation_required": [
+          "publish",
+          "price_change",
+          "promotion_launch",
+          "ad_spend",
+          "shipment_confirmation",
+          "refund",
+          "external_message"
+        ],
+        "always_blocked": [
+          "verification_bypass",
+          "account_linkage_evasion",
+          "invented_product_facts",
+          "cross_store_authorization_reuse"
+        ],
+        "scope_policy": "真实写操作必须绑定 store_binding_id、marketplaceId、execution_identity_id 和可审计证据。"
+      }
+    },
+    {
+      "id": "expert-tiktok-shop",
+      "name": "TikTok Shop 内容电商专家",
+      "summary": "按国家站点管理 TikTok Shop 商品、达人、直播、活动、GMV Max、订单履约和内容归因。",
+      "sort_order": 95,
+      "platforms": [
+        "tiktok"
+      ],
+      "routing": {
+        "required_dimensions": [
+          "platform",
+          "country_site",
+          "store_model",
+          "ownership"
+        ],
+        "routes": [
+          {
+            "platform": "tiktok",
+            "country_sites": [
+              "US",
+              "GB",
+              "DE",
+              "FR",
+              "IT",
+              "ES",
+              "IE",
+              "MX",
+              "BR",
+              "SG",
+              "MY",
+              "TH",
+              "VN",
+              "PH",
+              "ID"
+            ],
+            "store_models": [
+              "local",
+              "cross_border"
+            ],
+            "ownerships": [
+              "self_owned",
+              "teelab_owned",
+              "platform_co_ops",
+              "partner_owned"
+            ]
+          }
+        ],
+        "non_executable_groups": {
+          "Southeast Asia": [
+            "SG",
+            "MY",
+            "TH",
+            "VN",
+            "PH",
+            "ID"
+          ]
+        },
+        "blocked_store_models": [
+          "official_full_managed"
+        ]
+      },
+      "job_modules": [
+        "listing",
+        "ads",
+        "activity",
+        "affiliate",
+        "content",
+        "live",
+        "orders",
+        "inventory",
+        "fulfillment",
+        "customer_service",
+        "finance",
+        "competitor",
+        "attribution",
+        "learning",
+        "video"
+      ],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_store_type_evidence_registry.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "outputs/tiktok_tto_official_research_2026-07-18.md"
+        ],
+        "source_ids": [
+          "tiktok_official_seller_api_overview",
+          "tiktok_official_authorized_shops",
+          "tiktok_official_fulfillment_api",
+          "miaoshou_tiktok_auth_3192",
+          "miaoshou_tiktok_fbt_13233"
+        ],
+        "rule_scope": "执行时读取真实 shop_id、region 和 seller_type；SG/MY/TH/VN/PH/ID 分别建路由，Southeast Asia 不作为店铺站点。"
+      },
+      "default_capabilities": {
+        "skills": [
+          "pod-listing-operator",
+          "pod-market-research-memory",
+          "tiktok-shop-open-api-own-shop",
+          "tiktok-shop-fastmoss",
+          "tiktok-shop-kalodata",
+          "tiktok-gmv-max",
+          "tiktok-activity-stacking",
+          "creative-production"
+        ],
+        "agents": [
+          "tiktok-shop-operator",
+          "creator-affiliate-operator",
+          "live-commerce-operator",
+          "content-ads-analyst"
+        ],
+        "tools": [
+          "tiktok-shop-open-api",
+          "tiktok-ads-api",
+          "tiktok-one",
+          "fastmoss",
+          "kalodata",
+          "store-browser-connector"
+        ]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["shop_diagnosis", "policy_reasoning", "gmv_plan", "root_cause_analysis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "tool_use_and_commerce_reasoning"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "china_ecosystem_reasoning"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["listing_copy", "creator_brief", "live_script", "customer_reply"],
+          "candidates": [
+            {"provider_id": "qwen-dashscope", "priority": 1, "fit": "short_form_multilingual_copy"},
+            {"provider_id": "openai", "priority": 2, "fit": "conversion_copy"},
+            {"provider_id": "zhipu", "priority": 3, "fit": "fast_copy_iteration"}
+          ]
+        },
+        "image": {
+          "task_types": ["product_card", "thumbnail", "creative_variants", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_analysis"},
+            {"provider_id": "openai", "priority": 2, "fit": "visual_reasoning_and_generation"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["viral_breakdown", "storyboard", "prompt_reverse_engineering", "creative_branching"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multimodal_content_reasoning"},
+            {"provider_id": "openai", "priority": 3, "fit": "storyboard_and_prompting"}
+          ]
+        },
+        "ads": {
+          "task_types": ["gmv_max", "creative_authorization", "budget_review", "attribution_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_actions_and_guardrails"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "content_commerce_ads"},
+            {"provider_id": "google-gemini", "priority": 3, "fit": "large_context_campaign_review"}
+          ]
+        },
+        "data": {
+          "task_types": ["gmv_metrics", "creator_metrics", "content_attribution", "inventory_forecast"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "large_context_analysis"},
+            {"provider_id": "openai", "priority": 2, "fit": "structured_data_and_tools"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "task"],
+        "inputs": ["official_rule_changes", "shop_content_ads_results", "creator_and_live_results", "returns_reviews", "execution_failures"],
+        "outputs": ["versioned_tiktok_playbook", "country_specific_tests", "creative_patterns", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "country_site_change", "creative_fatigue", "spend_or_gmv_anomaly", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "creative_drafts", "listing_audits", "campaign_simulations"],
+        "confirmation_required": ["publish", "price_change", "activity_enrollment", "ad_spend", "creator_invitation", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["official_full_managed", "verification_bypass", "unauthorized_content_reuse", "cross_store_authorization_reuse", "broad_southeast_asia_execution_route"],
+        "scope_policy": "每个国家站点、店铺、广告账号和执行身份独立；TTO/TikTok One 不得误当作广告 campaign type。"
+      }
+    },
+    {
+      "id": "expert-shein-marketplace",
+      "name": "SHEIN Marketplace 运营专家",
+      "summary": "区分平台自运营与半托管，按模式和国家站点管理 Listing、活动、广告、订单、仓配、结算与规则复盘。",
+      "sort_order": 90,
+      "platforms": ["shein"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "shein",
+            "country_sites": ["US", "MX", "BR", "GB", "DE", "FR", "IT", "ES", "RO", "AT", "EUROPE_NON_EU"],
+            "store_models": ["platform_self_operated"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"]
+          },
+          {
+            "platform": "shein",
+            "country_sites": ["US", "GB", "DE", "FR", "IT", "ES", "MX", "CA", "AE", "SA", "KR", "JP", "AU"],
+            "store_models": ["semi_managed"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"]
+          }
+        ],
+        "blocked_store_models": ["official_full_managed", "supply_obm_official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_store_type_evidence_registry.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json",
+          "skills/platform-experts/shein/SKILL.md",
+          "skills/platform-experts/shein/references/live-batch-validation-2026-08-08.md",
+          "skills/platform-experts/independent_commerce/independent-commerce-operator/SKILL.md",
+          "skills/platform-experts/independent_commerce/independent-commerce-operator/references/user-collected-practice-hypotheses.md"
+        ],
+        "source_ids": [
+          "miaoshou_shein_auth_2943",
+          "miaoshou_shein_semi_auth_2477",
+          "miaoshou_shein_semi_fulfillment_11732",
+          "shein_official_listing",
+          "shein_official_marketplace_agreement",
+          "shein_official_shipping_requirements",
+          "shein_official_fulfillment_service"
+        ],
+        "rule_scope": "服装、家居、定制、全类目只能作为待核实类目范围，不得冒充店铺模式；官方全托管只识别不接。"
+      },
+      "default_capabilities": {
+        "skills": ["shein", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["shein-listing-operator", "shein-activity-operator", "shein-order-fulfillment-operator", "shein-profit-reviewer"],
+        "tools": ["shein-crawler-intake-normalizer", "shein-product-keyword-matcher", "shein-bulk-workbook-runtime", "shein-keyword-library", "shein-authenticated-ranking-capture-read-only", "shein-batch-task-status-read-only", "shein-published-readback-read-only", "shein-draft-backend-readback", "shein-seller-center-browser-pending-store-binding", "erp-connector-pending-authorization", "warehouse-connector-pending-authorization"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["mode_site_validation", "listing_audit", "policy_reasoning", "fulfillment_diagnosis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "tool_use_and_policy_reasoning"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "china_ecosystem_reasoning"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["listing_copy", "attribute_localization", "activity_copy", "customer_reply"],
+          "candidates": [
+            {"provider_id": "qwen-dashscope", "priority": 1, "fit": "multilingual_marketplace_copy"},
+            {"provider_id": "openai", "priority": 2, "fit": "structured_conversion_copy"},
+            {"provider_id": "zhipu", "priority": 3, "fit": "fast_copy_iteration"}
+          ]
+        },
+        "image": {
+          "task_types": ["product_image_audit", "category_visual_plan", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_comparison"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["product_video_plan", "competitor_video_breakdown", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["authorized_ads_plan", "activity_ads_interaction", "budget_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "marketplace_ads_copy"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "settlement_reconciliation", "competitor_monitoring", "returns_analysis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "task"],
+        "inputs": ["official_rule_changes", "mode_site_authorization", "listing_activity_results", "orders_returns_settlement", "execution_failures"],
+        "outputs": ["versioned_shein_playbook", "mode_site_matrix", "attribute_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "authorization_scope_change", "listing_rejection", "fulfillment_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "drafts", "listing_audits", "mode_site_planning"],
+        "confirmation_required": ["publish", "price_change", "activity_enrollment", "ad_spend", "inventory_commitment", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["official_full_managed", "supply_obm_official_full_managed", "verification_bypass", "invented_category_authorization", "cross_store_authorization_reuse"],
+        "scope_policy": "平台自运营与半托管分别校验模式、站点、履约和真实授权；类目范围从店铺授权读取。"
+      }
+    },
+    {
+      "id": "expert-lazada-marketplace",
+      "name": "Lazada Marketplace 运营专家",
+      "summary": "按 SG/MY/TH/VN/PH/ID 国家站点和真实 seller_id 隔离 Listing、活动、优惠券、广告、订单、库存、履约、客服、财务与持续复盘；六合一只作为多站发布范围，不作为一个店铺。",
+      "sort_order": 90,
+      "platforms": ["lazada"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "lazada",
+            "country_sites": ["SG", "MY", "TH", "VN", "PH", "ID"],
+            "store_models": ["local", "cross_border"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "seller_id_per_country_required": true,
+            "separate_ads_authorization_required": true,
+            "six_in_one_publish_is_scope_only": true
+          }
+        ],
+        "non_executable_groups": {
+          "Southeast Asia": ["SG", "MY", "TH", "VN", "PH", "ID"]
+        },
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "affiliate", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_store_type_evidence_registry.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json"
+        ],
+        "source_ids": ["lazada_official_authorization", "lazada_official_choice_inventory", "lazada_official_category_tree"],
+        "rule_scope": "执行时必须读取并保存各国家站点自己的 seller_id、short_code、授权 scope、类目权限与履约能力；Crossborder/六合一不能合并成一个 SEA 店铺。Lazada Open Platform 与 Sponsored Solutions/广告后台分开授权；Choice 是否属于平台官方全托管尚未核实，不进入可执行模式。"
+      },
+      "default_capabilities": {
+        "skills": ["pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop", "lazada-listing-localization", "lazada-activity-and-ads", "lazada-multisite-fulfillment"],
+        "agents": ["lazada-listing-operator", "lazada-activity-ads-reviewer", "lazada-order-fulfillment-operator", "lazada-customer-service-operator", "lazada-profit-reviewer"],
+        "tools": ["lazada-open-platform", "lazada-seller-center-browser", "lazada-sponsored-solutions-backend", "report-import", "erp-connector"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["country_route_validation", "listing_audit", "policy_reasoning", "fulfillment_diagnosis", "profit_decision"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "southeast_asia_commerce_reasoning"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["mobile_first_title", "localized_bullets", "description", "search_terms", "buyer_message", "return_reply"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_conversion_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multilingual_localization"},
+            {"provider_id": "google-gemini", "priority": 3, "fit": "large_context_localization_review"}
+          ]
+        },
+        "image": {
+          "task_types": ["gallery_audit", "mobile_thumbnail_plan", "variation_image_plan", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_comparison"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["listing_video_plan", "affiliate_video_brief", "competitor_video_breakdown", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["seller_voucher", "flexi_combo", "free_shipping", "campaign_review", "sponsored_search", "budget_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "regional_campaign_copy_and_rules"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "settlement_reconciliation", "returns_analysis", "competitor_monitoring", "campaign_reporting"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "country_site", "task"],
+        "inputs": ["official_rule_changes", "authorization_and_category_changes", "listing_campaign_ads_results", "orders_returns_buyer_messages", "settlements_fees", "execution_failures"],
+        "outputs": ["versioned_lazada_playbook", "country_specific_listing_tests", "voucher_campaign_ads_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "authorization_scope_change", "listing_rejection", "spend_or_conversion_anomaly", "fulfillment_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "listing_and_policy_audits", "campaign_simulations"],
+        "confirmation_required": ["product_publish", "price_change", "inventory_change", "seller_voucher_activation", "campaign_submission", "ad_launch_or_budget_change", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["verification_bypass", "invented_product_or_category_facts", "cross_store_or_cross_site_authorization_reuse", "sea_group_write_route", "six_in_one_as_single_store", "choice_as_verified_official_full_managed"],
+        "scope_policy": "每个 store_binding_id + country_site 独立保存 seller_id、类目权限、履约能力、广告身份和执行证据；Listing/订单、活动/优惠券、Sponsored Solutions/广告及财务报告作为分离的授权和写操作域。"
+      }
+    },
+    {
+      "id": "expert-ebay-marketplace",
+      "name": "eBay Marketplace 运营专家",
+      "summary": "按真实 eBay marketplaceId 和卖家店铺隔离 Listing、订单、库存、跨境履约、客服、财务、促销与 Promoted Listings，先审计和生成草稿，所有外部写操作保留人工确认。",
+      "sort_order": 88,
+      "platforms": ["ebay"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "ebay",
+            "country_sites": ["US", "GB", "DE", "AU", "CA", "FR", "IT", "ES", "AT", "BE", "CH", "HK", "IE", "MY", "NL", "PH", "PL", "SG"],
+            "marketplace_id_format": "EBAY_{country_site}",
+            "store_models": ["marketplace_seller"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "separate_marketing_authorization_required": true
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json"
+        ],
+        "official_urls": [
+          "https://developer.ebay.com/api-docs/sell/inventory/static/overview.html",
+          "https://developer.ebay.com/api-docs/sell/marketing/static/overview.html",
+          "https://developer.ebay.com/api-docs/static/oauth-details.html"
+        ],
+        "rule_scope": "GLOBAL 仅作展示分组，不是可执行站点。执行时读取真实 marketplaceId、seller account、OAuth scope、SKU、inventory location、category 与 payment/fulfillment/return policies；Inventory API 管理的 Listing 不得假设可从 Seller Hub 直接修改。"
+      },
+      "default_capabilities": {
+        "skills": ["pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop", "ebay-listing-quality", "ebay-cross-border-fulfillment", "ebay-promoted-listings-review"],
+        "agents": ["ebay-listing-operator", "ebay-order-fulfillment-operator", "ebay-customer-service-operator", "ebay-profit-and-ads-reviewer"],
+        "tools": ["ebay-inventory-api", "ebay-account-api", "ebay-fulfillment-api", "ebay-finances-api", "ebay-marketing-api", "ebay-seller-hub-browser", "erp-connector"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["marketplace_route_validation", "listing_audit", "policy_reasoning", "fulfillment_diagnosis", "profit_decision"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_policy_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["title", "item_specifics", "description", "localization", "buyer_message", "return_reply"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_marketplace_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "fact_preserving_long_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_localization"}
+          ]
+        },
+        "image": {
+          "task_types": ["gallery_audit", "variation_image_plan", "condition_evidence_review", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "product_visual_reasoning"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_comparison"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["listing_video_plan", "competitor_video_breakdown", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["promoted_listings_general", "promoted_listings_priority", "discounts_manager", "eligibility_review", "bid_budget_review", "campaign_reporting"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "eligibility_policy_and_budget_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "payout_fee_reconciliation", "returns_analysis", "competitor_monitoring", "promoted_listings_reporting"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "marketplace", "task"],
+        "inputs": ["official_rule_changes", "authorization_and_eligibility_changes", "listing_ads_results", "orders_returns_buyer_messages", "payouts_fees", "execution_failures"],
+        "outputs": ["versioned_ebay_playbook", "marketplace_specific_listing_tests", "ads_and_discount_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "oauth_scope_or_eligibility_change", "listing_rejection", "spend_or_conversion_anomaly", "fulfillment_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "listing_and_policy_audits", "campaign_simulations"],
+        "confirmation_required": ["offer_publish", "price_change", "quantity_change", "discount_launch", "promoted_listings_launch", "ad_rate_or_budget_change", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["verification_bypass", "invented_product_or_condition_facts", "cross_store_authorization_reuse", "global_site_write_route", "publish_without_required_business_policies"],
+        "scope_policy": "每个 store_binding_id 的卖家授权、marketplaceId、inventory location、business policies、广告资格和执行证据独立；Listing、订单/发货、财务和 Marketing 作为分离的授权与写操作域。"
+      }
+    },
+    {
+      "id": "expert-etsy-marketplace",
+      "name": "Etsy Marketplace 运营专家",
+      "summary": "围绕原创设计、个性化礼品与合规 POD，按真实 Etsy shop_id 隔离 Listing、SEO、订单、履约、客服、财务、促销、Etsy Ads 与 Offsite Ads；默认只读、审计和生成草稿。",
+      "sort_order": 87,
+      "platforms": ["etsy"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "etsy",
+            "country_sites": ["GLOBAL"],
+            "store_models": ["marketplace_seller"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "shop_id_required": true,
+            "shop_currency_required": true,
+            "ship_from_country_required": true,
+            "one_shop_one_oauth_identity": true,
+            "separate_ads_access_required": true
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json",
+          "config/api_applications.json"
+        ],
+        "official_urls": [
+          "https://developers.etsy.com/documentation/essentials/authentication/",
+          "https://developers.etsy.com/documentation/tutorials/listings/",
+          "https://www.etsy.com/legal/creativity/",
+          "https://help.etsy.com/hc/en-us/articles/360000336547-Working-with-Production-Partners-on-Etsy"
+        ],
+        "rule_scope": "Etsy GLOBAL 表示一个跨地区店铺路由，不表示共享授权。执行必须绑定真实 shop_id、店铺币种、发货国家、OAuth scope 和 execution identity。POD 商品必须是卖家原创设计或买家个性化内容，披露生产合作方与准确发货地；空白成衣转售不能冒充 handmade。"
+      },
+      "default_capabilities": {
+        "skills": ["etsy-commerce-operator", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["etsy-listing-seo-operator", "etsy-order-fulfillment-operator", "etsy-customer-service-operator", "etsy-profit-and-ads-reviewer"],
+        "tools": ["etsy-open-api-v3", "etsy-shop-manager-browser", "etsy-ads-backend", "erp-connector"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["creativity_standard_review", "listing_audit", "policy_reasoning", "fulfillment_diagnosis", "profit_decision"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_policy_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["title", "description", "thirteen_tags", "attributes", "occasion_gift_copy", "buyer_message", "localization"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_conversion_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "designer_story_and_fact_preservation"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_localization"}
+          ]
+        },
+        "image": {
+          "task_types": ["listing_gallery_audit", "mockup_truthfulness_review", "personalization_image_plan", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "product_visual_reasoning"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_comparison"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["listing_video_plan", "maker_story_video", "competitor_video_breakdown", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["etsy_ads_review", "offsite_ads_fee_review", "shop_sale", "coupon", "budget_review", "listing_margin_check"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "policy_and_margin_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["shop_metrics", "orders_inventory", "payout_fee_reconciliation", "search_term_analysis", "competitor_monitoring"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "listing", "task"],
+        "inputs": ["official_rule_changes", "listing_search_and_ads_results", "orders_returns_reviews_messages", "payouts_fees", "production_partner_changes", "execution_failures"],
+        "outputs": ["versioned_etsy_playbook", "listing_tag_and_gallery_tests", "ads_and_promotion_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["creativity_standard_change", "oauth_scope_change", "listing_rejection", "spend_or_conversion_anomaly", "fulfillment_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "seo_and_policy_audits", "campaign_simulations"],
+        "confirmation_required": ["listing_publish", "price_change", "quantity_change", "sale_or_coupon_launch", "etsy_ads_budget_change", "offsite_ads_enrollment_change", "shipment_confirmation", "refund", "external_message", "app_authorization"],
+        "always_blocked": ["verification_bypass", "invented_product_or_designer_facts", "undisclosed_production_partner", "blank_apparel_resale_as_handmade", "cross_shop_authorization_reuse", "publish_without_ip_review"],
+        "scope_policy": "每个 store_binding_id 独立绑定 shop_id、OAuth 身份、店铺币种、发货地、生产合作方、Ads/Offsite Ads 状态和执行证据；Open API Listing 权限不等于促销或广告预算权限。"
+      }
+    },
+    {
+      "id": "expert-shopee-marketplace",
+      "name": "Shopee Marketplace 运营智能体",
+      "summary": "按真实国家站点和 shop_id 隔离商品、活动、广告、订单、履约、客服与结算；SIP、Direct、Global Store 是账号项目，不是可跨站复用的执行身份。",
+      "sort_order": 89,
+      "platforms": ["shopee"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "shopee",
+            "country_sites": ["SG", "MY", "TH", "VN", "PH", "ID", "TW", "BR"],
+            "store_models": ["marketplace_seller"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "shop_id_required": true,
+            "one_site_one_store_binding": true,
+            "separate_ads_identity_required": true
+          }
+        ],
+        "non_executable_groups": {"Southeast Asia": ["SG", "MY", "TH", "VN", "PH", "ID"]},
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "affiliate", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_expert_training/shopee.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json"
+        ],
+        "rule_scope": "每次执行必须绑定一个明确 country_site、store_binding_id、shop_id、ownership 和 execution_identity_id。SEA 只能汇总，SIP、Direct、Global Store 与 FBS 不能替代国家站点或店铺身份。"
+      },
+      "default_capabilities": {
+        "skills": ["shopee", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["shopee-listing-operator", "shopee-growth-reviewer", "shopee-order-fulfillment-operator"],
+        "tools": ["official-public-research", "report-import", "shopee-open-platform-blocked"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["country_route_validation", "listing_audit", "policy_reasoning", "fulfillment_diagnosis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multilingual_marketplace_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["localized_title", "description", "attributes", "buyer_message"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_conversion_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "regional_localization"}
+          ]
+        },
+        "image": {
+          "task_types": ["gallery_audit", "thumbnail_plan", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_comparison"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"}
+          ]
+        },
+        "video": {
+          "task_types": ["shoppable_video_plan", "affiliate_video_brief", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"}
+          ]
+        },
+        "ads": {
+          "task_types": ["voucher_review", "campaign_review", "shop_ads_review", "affiliate_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "deepseek", "priority": 2, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "settlement_reconciliation", "returns_analysis", "campaign_reporting"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "inputs": ["official_rule_changes", "authorized_reports", "listing_campaign_results", "orders_returns_messages", "execution_failures"],
+        "outputs": ["versioned_shopee_playbook", "site_specific_regression_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "authorization_scope_change", "listing_rejection", "fulfillment_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "policy_audits", "campaign_simulations", "user_provided_report_analysis"],
+        "confirmation_required": ["store_authorization", "listing_publish", "price_change", "inventory_change", "voucher_or_campaign_activation", "ad_launch_or_budget_change", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["verification_bypass", "anti_bot_evasion", "cross_store_or_cross_site_authorization_reuse", "raw_credentials_in_payload", "sea_group_write_route", "invented_product_platform_or_tool_facts"],
+        "scope_policy": "公开规则可供全部项目读取；店铺、商品、订单、客户、结算与失败证据只属于绑定的租户、项目、站点和店铺。"
+      }
+    },
+    {
+      "id": "expert-walmart-marketplace",
+      "name": "Walmart Marketplace 运营智能体",
+      "summary": "按 US、CA、MX 与真实店铺身份隔离商品、库存、WFS、订单、退货、财务和 Walmart Connect；公开训练就绪不等于已连接卖家账号。",
+      "sort_order": 86,
+      "platforms": ["walmart"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "walmart",
+            "country_sites": ["US", "CA", "MX"],
+            "store_models": ["marketplace_seller"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "one_country_one_store_binding": true,
+            "wfs_is_fulfillment_mode": true,
+            "separate_connect_ads_identity_required": true
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_expert_training/walmart.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json"
+        ],
+        "rule_scope": "US、CA、MX 的认证、schema、WFS、活动与广告能力必须逐站核对。WFS 是履约方式，Walmart Connect 是单独广告身份；训练包、SDK 或公开文档不构成店铺授权。"
+      },
+      "default_capabilities": {
+        "skills": ["walmart", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["walmart-listing-operator", "walmart-wfs-reviewer", "walmart-connect-reviewer"],
+        "tools": ["official-public-research", "report-import", "walmart-marketplace-api-blocked"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["country_route_validation", "listing_audit", "wfs_diagnosis", "policy_reasoning"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_policy_review"}
+          ]
+        },
+        "copy": {
+          "task_types": ["item_name", "key_features", "description", "customer_message"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_listing_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "fact_preserving_copy"}
+          ]
+        },
+        "image": {
+          "task_types": ["gallery_audit", "media_spec_review", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_comparison"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"}
+          ]
+        },
+        "video": {
+          "task_types": ["listing_video_plan", "creative_review", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"}
+          ]
+        },
+        "ads": {
+          "task_types": ["walmart_connect_review", "campaign_recommendation_review", "budget_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "deepseek", "priority": 2, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "wfs_reports", "payments_returns", "feed_processing"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "inputs": ["official_rule_changes", "authorized_reports", "item_feed_results", "orders_returns_payments", "execution_failures"],
+        "outputs": ["versioned_walmart_playbook", "country_specific_regression_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["api_or_schema_change", "listing_rejection", "wfs_eligibility_change", "ads_deprecation", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "policy_audits", "campaign_simulations", "sandbox_test"],
+        "confirmation_required": ["app_or_api_authorization", "listing_publish", "price_change", "inventory_change", "promotion_or_ad_submit", "bid_or_budget_change", "shipment_confirmation", "order_cancellation", "refund", "external_message"],
+        "always_blocked": ["verification_bypass", "anti_bot_evasion", "cross_store_or_cross_country_authorization_reuse", "credential_or_cookie_in_task_payload", "invented_product_or_online_facts", "unsafe_write_retry_without_idempotency"],
+        "scope_policy": "每个 country_site + store_binding_id 独立保存认证方式、API schema、WFS 资格、广告身份和执行回执；公开资料只能生成草稿和审计。"
+      }
+    },
+    {
+      "id": "expert-aliexpress-marketplace",
+      "name": "AliExpress 速卖通运营智能体",
+      "summary": "使用统一聊天入口处理速卖通公开规则、商品草稿、活动和运营分析；当前无真实店铺、OAuth、广告或 ERP 连接，所有外部写入保持阻断。",
+      "sort_order": 84,
+      "platforms": ["aliexpress"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "aliexpress",
+            "country_sites": ["GLOBAL"],
+            "store_models": ["marketplace_seller", "semi_managed", "overseas_managed"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "exact_authorized_market_required_before_external_action": true,
+            "missing_store_status": "needs_platform_store"
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "affiliate", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_expert_training/aliexpress.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json"
+        ],
+        "rule_scope": "GLOBAL 只允许公开研究和本地草稿；任何真实动作前必须从授权店铺读取精确市场、卖家实体、commerce mode、store_binding_id 与 execution identity。Choice/full-managed 仅识别、不接入。"
+      },
+      "default_capabilities": {
+        "skills": ["aliexpress", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["aliexpress-listing-operator", "aliexpress-activity-reviewer", "aliexpress-order-fulfillment-reviewer"],
+        "tools": ["official-public-research", "report-import", "aliexpress-api-blocked"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["route_validation", "listing_audit", "policy_reasoning", "fulfillment_diagnosis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "complex_reasoning_and_tool_use"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "cross_border_marketplace_reasoning"}
+          ]
+        },
+        "copy": {
+          "task_types": ["localized_title", "description", "attributes", "buyer_message"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_conversion_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multilingual_localization"}
+          ]
+        },
+        "image": {
+          "task_types": ["gallery_audit", "main_image_plan", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_comparison"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"}
+          ]
+        },
+        "video": {
+          "task_types": ["listing_video_plan", "creative_brief", "storyboard"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"}
+          ]
+        },
+        "ads": {
+          "task_types": ["on_platform_ads_review", "activity_review", "affiliate_report_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "ads_reasoning_and_guardrails"},
+            {"provider_id": "deepseek", "priority": 2, "fit": "cost_aware_campaign_analysis"}
+          ]
+        },
+        "data": {
+          "task_types": ["orders_inventory", "settlement_reconciliation", "batch_feed_results", "returns_analysis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_data_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_data_review"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "inputs": ["official_rule_changes", "authorized_reports", "listing_activity_results", "orders_returns_messages", "execution_failures"],
+        "outputs": ["versioned_aliexpress_playbook", "market_specific_regression_tests", "expired_rule_flags", "store_next_actions"],
+        "review_triggers": ["platform_rule_change", "authorization_scope_change", "listing_rejection", "partial_batch_failure", "weekly_store_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "listing_drafts", "policy_audits", "campaign_simulations", "user_provided_report_analysis"],
+        "confirmation_required": ["authorization_change", "listing_publish", "price_change", "inventory_change", "activity_or_discount_activation", "ad_launch_or_spend", "shipment_confirmation", "refund", "external_message", "payment"],
+        "always_blocked": ["official_full_managed_execution", "verification_bypass", "anti_bot_evasion", "unauthorized_scraping", "private_data_harvesting", "cross_store_credential_reuse", "invented_tool_connection", "invented_product_or_store_fact"],
+        "scope_policy": "平台公开知识可共享；商品、库存、客户、订单、价格、仓库、媒体与执行失败只保存在绑定的租户、项目、店铺和任务范围。"
+      }
+    },
+    {
+      "id": "expert-google-independent-commerce",
+      "name": "Google 与独立站增长专家",
+      "summary": "统一 Google Ads、Merchant Center、SEO/Analytics 与 Shopify/WooCommerce 独立站运营，但每个站点、广告账号、支付和仓库仍独立授权。",
+      "sort_order": 85,
+      "platforms": ["google_ads", "google_merchant_center", "shopify", "woocommerce"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {"platform": "google_ads", "country_sites": ["GLOBAL"], "store_models": ["content_catalog"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "google_merchant_center", "country_sites": ["GLOBAL"], "store_models": ["content_catalog"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "shopify", "country_sites": ["GLOBAL"], "store_models": ["independent_site"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "woocommerce", "country_sites": ["GLOBAL"], "store_models": ["independent_site"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]}
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "seo", "analytics", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/platform_store_type_evidence_registry.json",
+          "config/platform_adapter_registry.json",
+          "config/platform_developer_capabilities.json",
+          "config/platform_activity_rules.json",
+          "config/operating_job_taxonomy.json"
+        ],
+        "source_ids": ["miaoshou_shopify_auth_2318"],
+        "official_urls": [
+          "https://developers.google.com/google-ads/api/docs/start",
+          "https://developers.google.com/merchant/api",
+          "https://shopify.dev/docs/api",
+          "https://woocommerce.github.io/woocommerce-rest-api-docs/"
+        ],
+        "rule_scope": "Google 广告账号、Merchant Center、独立站实例、国家市场、支付和仓库分别绑定；content catalog 不等于订单店铺。"
+      },
+      "default_capabilities": {
+        "skills": ["independent-commerce-operator", "independent-store-operator", "google-ads-operator", "merchant-feed-quality", "seo-geo-aeo", "conversion-rate-optimization", "pod-listing-operator"],
+        "agents": ["independent-store-operator", "google-ads-specialist", "merchant-feed-specialist", "seo-analytics-specialist"],
+        "tools": ["google-ads-api", "google-merchant-api", "google-analytics-data-api", "google-search-console", "shopify-admin-api", "woocommerce-rest-api"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["growth_diagnosis", "feed_policy_review", "cro_plan", "root_cause_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "google_ecosystem_reasoning"},
+            {"provider_id": "openai", "priority": 2, "fit": "tool_use_and_commerce_reasoning"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "long_context_site_review"}
+          ]
+        },
+        "copy": {
+          "task_types": ["product_copy", "search_ads_copy", "landing_page", "email", "seo_content"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "search_and_ads_copy"},
+            {"provider_id": "openai", "priority": 2, "fit": "conversion_copy"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "long_form_brand_copy"}
+          ]
+        },
+        "image": {
+          "task_types": ["merchant_product_image", "display_creative", "landing_visual", "competitor_visual_analysis"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "google_ecosystem_multimodal"},
+            {"provider_id": "openai", "priority": 2, "fit": "visual_reasoning_and_generation"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["youtube_ads_plan", "video_action_campaign", "storyboard", "site_video"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding_and_google_ads"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["search", "shopping", "performance_max", "remarketing", "budget_review"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "google_ads_native_fit"},
+            {"provider_id": "openai", "priority": 2, "fit": "cross_channel_reasoning"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "policy_and_budget_review"}
+          ]
+        },
+        "data": {
+          "task_types": ["ga4_analysis", "merchant_diagnostics", "search_console", "profit_and_inventory"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "google_data_ecosystem"},
+            {"provider_id": "openai", "priority": 2, "fit": "structured_data_and_tools"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "site", "campaign", "task"],
+        "inputs": ["official_rule_changes", "feed_diagnostics", "ads_and_analytics_results", "orders_returns", "site_experiments"],
+        "outputs": ["versioned_growth_playbook", "feed_and_cro_tests", "negative_keyword_patterns", "expired_rule_flags", "site_next_actions"],
+        "review_triggers": ["policy_or_feed_change", "tracking_break", "spend_anomaly", "conversion_change", "weekly_site_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_research", "site_audit", "feed_draft", "campaign_simulation"],
+        "confirmation_required": ["site_publish", "price_change", "discount_launch", "ad_spend", "tracking_change", "payment_change", "external_message"],
+        "always_blocked": ["verification_bypass", "invented_product_facts", "cross_site_authorization_reuse", "payment_identity_change_without_owner"],
+        "scope_policy": "Google 与独立站可共享分析，但写操作必须分别绑定站点、广告账号、Merchant Center、支付和仓库身份。"
+      }
+    },
+    {
+      "id": "expert-b2b-export-sales",
+      "name": "B2B 外贸获客与成交专家",
+      "summary": "覆盖 ICP、线索发现、联系人补全、CRM、触达、报价、样品、谈判、生产、交付、回款、复购与代理网络。",
+      "sort_order": 80,
+      "platforms": ["b2b_export"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {"platform": "b2b_export", "country_sites": ["GLOBAL"], "store_models": ["project_workstream"], "ownerships": ["self_owned", "teelab_owned", "b2b_client_owned"]}
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["lead_generation", "enrichment", "crm", "outreach", "qualification", "quotation", "negotiation", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "partner_network", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/operating_job_taxonomy.json",
+          "config/capability_pack_registry.json",
+          "ai_ecommerce_director/b2b_lead_playbook.py",
+          "ai_ecommerce_director/b2b_sales_runtime.py",
+          "skills/b2b-foreign-trade-sales/SKILL.md"
+        ],
+        "source_ids": [],
+        "rule_scope": "只收集公开、合规且与业务相关的企业与联系人路径；外联、报价、合同和收款逐条进入确认与审计。"
+      },
+      "default_capabilities": {
+        "skills": ["b2b-foreign-trade-sales", "b2b-lead-discovery", "b2b-lead-enrichment", "b2b-crm-pipeline", "b2b-outreach-drafting", "b2b-quotation-sample", "b2b-export-delivery"],
+        "agents": ["b2b-researcher", "sales-development-representative", "account-executive", "merchandiser", "export-coordinator", "accounts-receivable-operator"],
+        "tools": ["public-web-research", "maps-business-search", "customs-data-connector", "crm", "email-draft-connector", "whatsapp-draft-connector"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["icp", "lead_qualification", "negotiation_plan", "deal_risk"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "sales_reasoning_and_tools"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_account_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_research"}
+          ]
+        },
+        "copy": {
+          "task_types": ["email", "whatsapp", "social_dm", "quotation_note", "follow_up"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "personalized_sales_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "account_aware_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_outreach"}
+          ]
+        },
+        "image": {
+          "task_types": ["sample_pack", "quotation_visual", "product_comparison", "machine_sales_visual"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "product_sales_visuals"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_document_review"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["factory_intro", "product_demo", "machine_demo", "case_story"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["lead_generation_ads", "account_based_ads", "retargeting_plan"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "search_and_lead_ads"},
+            {"provider_id": "openai", "priority": 2, "fit": "cross_channel_ads_reasoning"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "offer_and_policy_review"}
+          ]
+        },
+        "data": {
+          "task_types": ["lead_scoring", "pipeline", "quotation_profit", "delivery_and_collection"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_crm_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_account_analysis"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_scoring"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_market_knowledge", "tenant_private", "project", "account", "deal", "task"],
+        "inputs": ["lead_sources", "contact_outcomes", "qualification_notes", "quotes_samples_orders", "delivery_collection_results"],
+        "outputs": ["versioned_icp", "channel_yield", "message_tests", "objection_library", "next_best_actions"],
+        "review_triggers": ["reply_or_bounce", "stage_change", "quote_result", "delivery_issue", "weekly_pipeline_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_company_research", "lead_scoring", "drafts", "pipeline_analysis"],
+        "confirmation_required": ["email_send", "social_dm", "whatsapp_send", "quotation_send", "contract_commitment", "payment_request", "shipment_commitment"],
+        "always_blocked": ["bulk_unsolicited_messaging", "private_contact_scraping", "verification_bypass", "invented_company_or_contact_facts"],
+        "scope_policy": "公开线索可自动整理；任何真实外联、报价、合同、收款和交付承诺逐条确认并保存证据。"
+      }
+    },
+    {
+      "id": "expert-b2b-platform-sales",
+      "name": "B2B 平台外贸智能体",
+      "summary": "负责精确 B2B 平台店铺、商品、关键词、RFQ、询盘、消息、平台广告、订单表面与共享成交链交接。",
+      "sort_order": 82,
+      "platforms": ["b2b_platform"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {"platform": "b2b_platform", "country_sites": ["GLOBAL"], "store_models": ["platform_seller_workstream"], "ownerships": ["self_owned", "teelab_owned", "b2b_client_owned"]}
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "catalog", "rfq", "inquiries", "campaigns", "paid_placement", "membership", "ranking", "qualification", "quotation", "orders", "platform_fees", "finance", "customer_service", "analytics", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "skills/b2b-platform-sales-operator/SKILL.md",
+          "skills/b2b-platform-sales-operator/references/source-and-boundaries.md",
+          "skills/b2b-foreign-trade-sales/SKILL.md",
+          "skills/b2b-foreign-trade-sales/references/user-collected-practice-hypotheses.md",
+          "ai_ecommerce_director/b2b_sales_runtime.py"
+        ],
+        "source_ids": ["USER-B2B-TRAINING-2026-07-19"],
+        "rule_scope": "平台 family 不是执行身份；每个 seller/store、站点、平台、商品、RFQ/询盘和外部动作都绑定精确上下文并复用共享客户时间线。"
+      },
+      "default_capabilities": {
+        "skills": ["b2b-platform-sales-operator", "b2b-foreign-trade-sales"],
+        "agents": ["b2b-platform-sales-operator", "shared-account-executive", "export-coordinator"],
+        "tools": ["public-platform-research", "platform-catalog-draft", "rfq-inquiry-review", "platform-campaign-review", "platform-ads-review", "platform-fee-estimator", "shared-crm", "quotation-draft"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["platform_route", "rfq_qualification", "inquiry_risk", "campaign_eligibility", "membership_and_fee_review", "deal_handoff"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "platform_workflow_and_tools"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "policy_and_account_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_research"}
+          ]
+        },
+        "copy": {
+          "task_types": ["listing_draft", "platform_reply", "rfq_quote_note", "follow_up"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "platform_sales_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "account_aware_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_platform_copy"}
+          ]
+        },
+        "image": {
+          "task_types": ["catalog_image_audit", "quotation_visual", "product_comparison"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "product_sales_visuals"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_catalog_review"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["factory_intro", "product_demo", "platform_video_audit"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["platform_keyword_ads", "rfq_budget_review", "paid_placement_diagnostics", "campaign_attribution_review"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "platform_ads_reasoning"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "search_and_lead_ads"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "offer_and_policy_review"}
+          ]
+        },
+        "data": {
+          "task_types": ["rfq_inquiry_pipeline", "platform_analytics", "quotation_profit", "order_receipts"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_platform_data"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_account_analysis"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "platform_store", "account", "deal", "task"],
+        "inputs": ["mature_knowledge_packages", "current_deep_platform_diffs", "rfq_inquiry_outcomes", "catalog_campaign_and_ads_results", "membership_fee_and_settlement_receipts", "order_and_dispute_receipts"],
+        "outputs": ["versioned_platform_playbook", "rfq_inquiry_patterns", "catalog_and_campaign_tests", "fee_and_attribution_models", "expired_rule_flags", "shared_account_next_actions"],
+        "review_triggers": ["platform_rule_change", "campaign_or_fee_change", "inquiry_or_reply", "quote_result", "order_or_dispute_change", "weekly_platform_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_platform_research", "catalog_draft", "rfq_inquiry_schema", "quotation_draft"],
+        "confirmation_required": ["seller_login_or_connection", "catalog_publish", "message_or_quote_send", "paid_rfq_or_ad_spend", "order_acceptance", "contract_or_payment", "shipment_or_refund"],
+        "always_blocked": ["private_buyer_scraping", "verification_bypass", "cross_platform_authorization_reuse", "invented_product_or_buyer_facts"],
+        "scope_policy": "B2B 平台公开页只支持研究；真实店铺、RFQ、询盘、消息、订单和付款必须绑定精确 seller/store 身份，所有客户事件进入共享 account timeline。"
+      }
+    },
+    {
+      "id": "expert-b2b-outbound-development",
+      "name": "主动开发客户外贸智能体",
+      "summary": "负责合法公开买家研究、账户去重、决策链与采购信号假设、一对一开发草稿、跟进计划和共享成交链交接。",
+      "sort_order": 81,
+      "platforms": ["b2b_outbound"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {"platform": "b2b_outbound", "country_sites": ["GLOBAL"], "store_models": ["outbound_workstream"], "ownerships": ["self_owned", "teelab_owned", "b2b_client_owned"]}
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["lead_generation", "outreach", "owned_media_inbound", "public_social_research", "creator_and_comment_signals", "web_and_maps", "ecommerce_seller_research", "events_and_tenders", "lawful_trade_data", "hiring_and_expansion_signals", "partner_network", "reactivation_and_referrals", "enrichment", "crm", "qualification", "outreach_drafts", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "skills/b2b-outbound-customer-development/SKILL.md",
+          "skills/b2b-platform-sales-operator/references/source-and-boundaries.md",
+          "skills/b2b-foreign-trade-sales/SKILL.md",
+          "skills/b2b-foreign-trade-sales/references/user-collected-practice-hypotheses.md",
+          "ai_ecommerce_director/b2b_lead_playbook.py",
+          "ai_ecommerce_director/b2b_sales_runtime.py"
+        ],
+        "source_ids": ["USER-B2B-TRAINING-2026-07-19"],
+        "rule_scope": "公开公司与联系路径只形成候选证据；同一客户只有一个 account owner，任何外联、序列、CRM 外部写入或预约逐项确认。"
+      },
+      "default_capabilities": {
+        "skills": ["b2b-outbound-customer-development", "b2b-foreign-trade-sales"],
+        "agents": ["b2b-outbound-customer-developer", "shared-account-executive", "export-coordinator"],
+        "tools": ["public-company-research", "public-social-research", "website-and-map-research", "ecommerce-seller-research", "procurement-event-research", "lawful-trade-data-review", "intent-signal-review", "partner-network-research", "lawful-source-ledger", "shared-crm", "contact-path-draft", "email-draft", "whatsapp-draft", "social-dm-draft"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["icp", "account_research", "social_and_content_signal_review", "website_and_map_research", "procurement_and_event_research", "hiring_and_expansion_signal_review", "decision_chain_hypothesis", "qualification_and_stop"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "outbound_reasoning_and_tools"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_account_review"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_research"}
+          ]
+        },
+        "copy": {
+          "task_types": ["email_draft", "linkedin_draft", "whatsapp_draft", "form_draft", "follow_up"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "personalized_outbound_copy"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "account_aware_copy"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multilingual_outreach"}
+          ]
+        },
+        "image": {
+          "task_types": ["account_visual_evidence", "sample_pack", "quotation_visual"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_public_evidence"},
+            {"provider_id": "openai", "priority": 2, "fit": "product_sales_visuals"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["public_company_video_review", "factory_intro", "case_story"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_prompting"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["lead_generation_ads", "account_based_ads", "retargeting_plan"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "search_and_lead_ads"},
+            {"provider_id": "openai", "priority": 2, "fit": "cross_channel_ads_reasoning"},
+            {"provider_id": "anthropic", "priority": 3, "fit": "offer_and_policy_review"}
+          ]
+        },
+        "data": {
+          "task_types": ["account_dedupe", "source_ledger", "lead_scoring", "pipeline_and_suppression"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "structured_crm_and_tools"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "large_context_account_analysis"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_scoring"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_market_knowledge", "tenant_private", "project", "source", "account", "deal", "task"],
+        "inputs": ["mature_knowledge_packages", "lawful_public_sources", "owned_content_inbound", "public_social_and_comment_signals", "website_map_marketplace_event_procurement_trade_and_hiring_signals", "contact_outcomes", "qualification_notes", "suppression_and_failure_events"],
+        "outputs": ["versioned_icp", "source_yield", "signal_quality", "permission_aware_contact_paths", "message_hypotheses", "objection_library", "shared_account_next_actions"],
+        "review_triggers": ["reply_or_bounce", "opt_out_or_block", "stage_change", "source_or_channel_policy_change", "intent_signal_change", "weekly_outbound_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["lawful_public_company_research", "account_dedupe", "lead_hypothesis", "message_draft"],
+        "confirmation_required": ["paid_data_purchase_or_export", "email_send", "linkedin_or_social_action", "whatsapp_send", "form_submit", "sequence_activation", "external_crm_write", "calendar_booking"],
+        "always_blocked": ["private_contact_scraping", "verification_or_rate_limit_bypass", "bulk_unsolicited_messaging", "account_or_domain_rotation_for_evasion", "invented_company_contact_consent_or_purchase_facts"],
+        "scope_policy": "公开资料只能形成可追溯假设；recipient、consent、suppression、channel policy、执行身份和逐条 owner approval 缺一项都不得外联。"
+      }
+    },
+    {
+      "id": "expert-ozon-marketplace",
+      "name": "Ozon 运营专家",
+      "summary": "以单一真实 Ozon 店铺为边界，完成商品、履约、活动、广告、订单和结算的证据审计与审批前草稿；默认不连接 Seller API 或 Seller 后台。",
+      "sort_order": 125,
+      "platforms": ["ozon"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [{
+          "platform": "ozon",
+          "country_sites": ["RU"],
+          "store_models": ["marketplace_seller"],
+          "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+          "seller_id_per_store_required": true,
+          "seller_api_and_ads_authorization_separate": true,
+          "fulfillment_modes_are_not_store_models": true
+        }],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": ["config/platform_store_type_evidence_registry.json", "config/platform_adapter_registry.json", "config/commerce_skill_registry.json"],
+        "source_ids": ["ozon_official_launch", "ozon_official_fulfillment", "ozon-mpstats"],
+        "rule_scope": "当前可执行路由只允许经真实店铺授权核实后的 ozon:RU:marketplace_seller:ownership:store_binding_id。FBO、FBS、realFBS 是履约模式，不得冒充店铺模式；广告授权、Seller API、ERP 和浏览器身份相互独立。"
+      },
+      "default_capabilities": {
+        "skills": ["ozon-marketplace-operator", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["ozon-listing-reviewer", "ozon-fulfillment-reviewer", "ozon-finance-reviewer"],
+        "tools": ["ozon-seller-api", "ozon-seller-browser", "ozon-ads-backend", "mpstats-ozon-candidate", "erp-connector"]
+      },
+      "model_slots": {
+        "reasoning": {"task_types": ["route_validation", "policy_audit", "fulfillment_diagnosis"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "evidence_bounded_reasoning"}]},
+        "copy": {"task_types": ["russian_listing_draft", "buyer_message_draft"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_localization"}]},
+        "image": {"task_types": ["gallery_audit", "product_visual_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_review"}]},
+        "video": {"task_types": ["listing_video_brief", "video_compliance_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"}]},
+        "ads": {"task_types": ["promotion_simulation", "ads_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "approval_gated_analysis"}]},
+        "data": {"task_types": ["report_import_analysis", "settlement_reconciliation", "inventory_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_data_review"}]}
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "task"],
+        "inputs": ["official_rule_updates", "authorized_report_imports", "listing_and_fulfillment_failures"],
+        "outputs": ["versioned_ozon_playbook", "store_scoped_drafts", "expired_evidence_flags"],
+        "review_triggers": ["rule_change", "listing_rejection", "fulfillment_failure", "settlement_variance"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_rule_research", "local_drafts", "imported_report_analysis", "promotion_simulation"],
+        "confirmation_required": ["store_authorization", "product_publish", "price_or_stock_change", "promotion_enrollment", "ad_spend_change", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["captcha_or_mfa_bypass", "cross_store_credential_reuse", "raw_credential_storage", "fabricated_store_data", "mpstats_as_official_truth"],
+        "scope_policy": "一个 store_binding_id 只对应一个 Seller API 或隔离浏览器身份；没有后台真实店铺时固定返回 needs_platform_store，不能自动上架、拉单、物流回传或结算映射。"
+      }
+    },
+    {
+      "id": "expert-coupang-marketplace",
+      "name": "Coupang 酷澎运营智能体",
+      "summary": "以韩国 KR 单店为边界，完成商品、订单、履约、结算与活动的证据审计、草稿和审批前准备；默认未连接 Coupang 后台、API、广告或 ERP。",
+      "sort_order": 124,
+      "platforms": ["coupang"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "coupang",
+            "country_sites": ["KR"],
+            "store_models": ["cross_border", "local_store"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "one_site_one_store_binding": true,
+            "account_variant_required_before_external_action": true,
+            "separate_api_browser_erp_identity_required": true
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": ["config/platform_store_type_evidence_registry.json", "config/platform_adapter_registry.json", "config/platform_fee_settlement_registry.json"],
+        "source_ids": ["user_miaoshou_auth_ui_2026_07_17", "miaoshou_coupang_auth_2592", "miaoshou_coupang_store_types_11807"],
+        "rule_scope": "C 前缀企业代码、A0 和 A158 是已收集的账号/ERP 接入变体，不是可互换店铺模式或平台能力结论。执行前必须确认 KR、account_variant、store_binding_id、execution_identity_id 与当前后台/授权范围；无真实店铺时返回 needs_platform_store。"
+      },
+      "default_capabilities": {
+        "skills": ["pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["coupang-listing-reviewer", "coupang-order-fulfillment-reviewer", "coupang-settlement-reviewer"],
+        "tools": ["authorized-report-import", "isolated-browser-pending-authorization", "erp-connector-pending-authorization"]
+      },
+      "model_slots": {
+        "reasoning": {"task_types": ["route_validation", "policy_audit", "fulfillment_diagnosis"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "evidence_bounded_reasoning"}]},
+        "copy": {"task_types": ["korean_listing_draft", "buyer_message_draft", "attribute_completeness_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_localization"}, {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multilingual_copy_review"}]},
+        "image": {"task_types": ["gallery_audit", "product_visual_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_review"}, {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"}]},
+        "video": {"task_types": ["listing_video_brief", "video_compliance_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"}]},
+        "ads": {"task_types": ["activity_simulation", "promotion_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "approval_gated_analysis"}]},
+        "data": {"task_types": ["authorized_report_analysis", "settlement_reconciliation", "inventory_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_data_review"}]}
+      },
+      "learning_loop": {
+        "inputs": ["versioned_official_rule_evidence", "authorized_report_imports", "listing_order_fulfillment_failures"],
+        "outputs": ["versioned_coupang_playbook", "store_scoped_drafts", "expired_evidence_flags"],
+        "review_triggers": ["rule_change", "listing_rejection", "fulfillment_failure", "settlement_variance"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_rule_research", "local_listing_drafts", "authorized_report_analysis", "settlement_simulation"],
+        "confirmation_required": ["store_authorization", "listing_publish", "price_or_stock_change", "activity_enrollment", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["captcha_or_mfa_bypass", "cross_store_credential_reuse", "raw_credential_storage", "fabricated_store_or_fee_data", "treating_erp_support_as_platform_entitlement"],
+        "scope_policy": "一个 store_binding_id 只能绑定一个 KR 店铺及其隔离执行身份。C 前缀企业代码、A0、A158 的真实授权与可用功能必须逐店核实；没有店铺或授权时不得自动上架、拉单、发货、退款或结算映射。"
+      }
+    },
+    {
+      "id": "expert-emag-marketplace",
+      "name": "eMAG 运营专家",
+      "summary": "面向 eMAG 罗马尼亚、匈牙利和保加利亚站点的商品、广告、履约、订单和结算证据审计与审批前草稿；默认没有店铺或 API 连接。",
+      "sort_order": 120,
+      "platforms": ["emag"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [{
+          "platform": "emag",
+          "country_sites": ["RO", "HU", "BG"],
+          "store_models": ["marketplace_seller"],
+          "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+          "store_binding_per_country_required": true,
+          "api_ads_erp_and_browser_authorization_separate": true,
+          "fulfillment_modes_are_not_store_models": true
+        }],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": ["config/platform_store_type_evidence_registry.json", "config/platform_adapter_registry.json", "skills/platform-experts/emag/SKILL.md"],
+        "source_ids": ["emag_official_start_selling_2026_07_21", "emag_official_cross_border_2026_07_21", "emag_official_api_documentation_2026_07_21", "miaoshou_emag_auth_3259"],
+        "rule_scope": "eMAG 官方公开资料确认 RO、HU、BG 三个国家站点与产品/API公开页面；卖家后台、类目要求、履约方式、费用、广告资格和任何连接能力必须以绑定店铺和当前官方页面为准。"
+      },
+      "default_capabilities": {
+        "skills": ["emag-marketplace-operator", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["emag-listing-reviewer", "emag-operations-reviewer", "emag-finance-reviewer"],
+        "tools": ["emag-marketplace-api", "emag-seller-browser", "emag-ads-console", "erp-connector"]
+      },
+      "model_slots": {
+        "reasoning": {"task_types": ["route_validation", "policy_audit", "fulfillment_diagnosis"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "evidence_bounded_reasoning"}]},
+        "copy": {"task_types": ["localized_listing_draft", "buyer_message_draft"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_multilingual_copy"}]},
+        "image": {"task_types": ["gallery_audit", "product_visual_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_review"}]},
+        "video": {"task_types": ["listing_video_brief", "video_compliance_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"}]},
+        "ads": {"task_types": ["emag_ads_plan", "promotion_simulation"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "approval_gated_analysis"}]},
+        "data": {"task_types": ["report_import_analysis", "settlement_reconciliation", "inventory_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_data_review"}]}
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "store", "task"],
+        "inputs": ["official_rule_updates", "authorized_report_imports", "listing_and_fulfillment_failures"],
+        "outputs": ["versioned_emag_playbook", "store_scoped_drafts", "expired_evidence_flags"],
+        "review_triggers": ["rule_change", "listing_rejection", "fulfillment_failure", "settlement_variance"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_rule_research", "local_drafts", "imported_report_analysis", "promotion_simulation"],
+        "confirmation_required": ["store_authorization", "product_publish", "price_or_stock_change", "promotion_enrollment", "ad_spend_change", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["captcha_or_mfa_bypass", "cross_store_credential_reuse", "raw_credential_storage", "fabricated_store_data", "third_party_claim_as_official_truth"],
+        "scope_policy": "每个 store_binding_id 与国家站点、ERP/API、广告和浏览器执行身份必须可追溯且相互隔离；没有真实店铺时固定返回 needs_platform_store，不能自动上架、拉单、物流回传或结算映射。"
+      }
+    },
+    {
+      "id": "expert-rakuten-ichiba-marketplace",
+      "name": "Rakuten 乐天市场运营智能体",
+      "summary": "以日本 JP、单一 Rakuten Ichiba 店铺与隔离执行身份为边界，完成 RMS 运营信息的证据审计、日文商品草稿、订单/履约/结算导入分析和审批前准备；默认未连接 RMS、广告、ERP 或 API。",
+      "sort_order": 130,
+      "platforms": ["rakuten"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {
+            "platform": "rakuten",
+            "country_sites": ["JP"],
+            "store_models": ["marketplace_seller"],
+            "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+            "one_site_one_store_binding": true,
+            "rms_account_required_before_external_action": true,
+            "separate_public_api_browser_ads_erp_identity_required": true
+          }
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "default_capabilities": {
+        "skills": ["pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop", "rakuten-ichiba-marketplace-operator"],
+        "agents": ["rakuten-listing-reviewer", "rakuten-rms-operations-reviewer", "rakuten-settlement-reviewer"],
+        "tools": ["authorized-report-import", "rakuten-web-service-public-search-pending-app-id", "isolated-rms-browser-pending-authorization", "erp-connector-pending-authorization"]
+      },
+      "model_slots": {
+        "reasoning": {"task_types": ["route_validation", "rms_policy_audit", "fulfillment_diagnosis"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "evidence_bounded_reasoning"}]},
+        "copy": {"task_types": ["japanese_listing_draft", "buyer_message_draft", "attribute_completeness_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_fact_preserving_copy"}, {"provider_id": "qwen-dashscope", "priority": 2, "fit": "multilingual_copy_review"}]},
+        "image": {"task_types": ["gallery_audit", "product_visual_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_review"}, {"provider_id": "openai", "priority": 2, "fit": "product_visual_reasoning"}]},
+        "video": {"task_types": ["listing_video_brief", "video_compliance_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"}]},
+        "ads": {"task_types": ["promotion_review", "ad_evidence_audit"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "approval_gated_analysis"}]},
+        "data": {"task_types": ["authorized_report_analysis", "settlement_reconciliation", "inventory_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_data_review"}]}
+      },
+      "learning_loop": {
+        "inputs": ["versioned_official_rule_evidence", "authorized_report_imports", "listing_order_fulfillment_failures"],
+        "outputs": ["versioned_rakuten_playbook", "store_scoped_drafts", "expired_evidence_flags"],
+        "review_triggers": ["rule_change", "listing_rejection", "fulfillment_failure", "settlement_variance"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_rule_research", "local_listing_drafts", "authorized_report_analysis", "settlement_simulation"],
+        "confirmation_required": ["store_authorization", "listing_publish", "price_or_stock_change", "promotion_enrollment", "ad_spend", "shipment_confirmation", "refund", "external_message"],
+        "always_blocked": ["captcha_or_mfa_bypass", "cross_store_credential_reuse", "raw_credential_storage", "fabricated_store_or_fee_data", "treating_public_item_search_as_seller_entitlement"],
+        "scope_policy": "一个 store_binding_id 只能绑定一个 JP Rakuten Ichiba 店铺及其隔离执行身份。RMS、Rakuten Web Service App ID、广告、ERP、浏览器和结算权限均须逐店核实；没有店铺或授权时固定返回 needs_platform_store。"
+      },
+      "evidence": {
+        "registry_refs": ["config/platform_adapter_registry.json", "config/platform_fee_settlement_registry.json", "skills/platform-experts/rakuten/references/official-evidence-2026-07-21.md"],
+        "official_urls": ["https://www.rakuten.co.jp/ec/environment/service/", "https://www.rakuten.co.jp/ec/open/?l-id=pc_header_nagare_open", "https://webservice.rakuten.co.jp/documentation", "https://webservice.rakuten.co.jp/index.php/documentation/ichiba-item-search"],
+        "rule_scope": "公开资料确认 RMS 是店铺运营系统，且公开商品搜索 API 需要获批 App ID；两者都不是本项目已连接店铺、可发布商品、可读订单或可改价的证明。费用、活动资格、类目限制、税务、广告功能和结算规则保持 unknown，直至获得定期复核的官方资料或店铺只读回执。"
+      }
+    },
+    {
+      "id": "expert-mercado-libre-marketplace",
+      "name": "Mercado Libre Marketplace Operator",
+      "summary": "Country-site and store-scoped Mercado Libre listing, pricing, exposure, fulfillment, order, promotion, advertising and settlement draft expert. No store, API or browser connection is claimed.",
+      "sort_order": 118,
+      "platforms": ["mercado_libre"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [{
+          "platform": "mercado_libre",
+          "country_sites": ["AR", "BR", "MX", "CO", "CL", "UY"],
+          "store_models": ["local_store", "cross_border"],
+          "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "partner_owned"],
+          "store_binding_per_country_required": true,
+          "mercado_site_id_required": true,
+          "api_ads_erp_and_browser_authorization_separate": true,
+          "listing_type_is_not_store_model": true
+        }],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["listing", "ads", "activity", "orders", "inventory", "fulfillment", "customer_service", "finance", "competitor", "learning"],
+      "evidence": {
+        "registry_refs": ["config/platform_store_type_evidence_registry.json", "config/platform_adapter_registry.json", "config/platform_expert_training/mercado_libre.json", "skills/platform-experts/mercado_libre/SKILL.md"],
+        "source_ids": ["ML-OFFICIAL-001", "ML-OFFICIAL-002", "ML-OFFICIAL-003"],
+        "rule_scope": "Country site, Mercado Libre site ID, store mode, listing type, exposure, seller entitlement and execution identity are independently verified. There is no claimed connected store or platform action."
+      },
+      "default_capabilities": {
+        "skills": ["mercado-libre", "pod-listing-operator", "pod-market-research-memory", "pod-feedback-quality-loop"],
+        "agents": ["mercado-libre-listing-reviewer", "mercado-libre-operations-reviewer", "mercado-libre-finance-reviewer"],
+        "tools": ["mercado-libre-api-pending-authorization", "mercado-libre-browser-pending-authorization", "mercado-libre-ads-pending-authorization", "authorized-report-import", "erp-connector-pending-authorization"]
+      },
+      "model_slots": {
+        "reasoning": {"task_types": ["route_validation", "policy_audit", "fulfillment_diagnosis"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "evidence_bounded_reasoning"}]},
+        "copy": {"task_types": ["localized_listing_draft", "buyer_message_draft"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_fact_preserving_copy"}]},
+        "image": {"task_types": ["gallery_audit", "product_visual_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "multimodal_review"}]},
+        "video": {"task_types": ["listing_video_brief", "video_compliance_review"], "candidates": [{"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"}]},
+        "ads": {"task_types": ["promotion_review", "ad_evidence_audit"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "approval_gated_analysis"}]},
+        "data": {"task_types": ["authorized_report_analysis", "settlement_reconciliation", "inventory_review"], "candidates": [{"provider_id": "openai", "priority": 1, "fit": "structured_data_review"}]}
+      },
+      "learning_loop": {
+        "inputs": ["versioned_official_rule_evidence", "authorized_report_imports", "listing_order_fulfillment_failures"],
+        "outputs": ["versioned_mercado_libre_playbook", "store_scoped_drafts", "expired_evidence_flags"],
+        "review_triggers": ["rule_change", "listing_rejection", "fulfillment_failure", "settlement_variance"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_rule_research", "local_listing_drafts", "authorized_report_analysis", "settlement_simulation"],
+        "confirmation_required": ["store_authorization", "listing_publish", "price_or_stock_change", "listing_type_change", "promotion_enrollment", "ad_spend", "shipment_confirmation", "refund_or_claim", "external_message"],
+        "always_blocked": ["captcha_or_mfa_bypass", "cross_store_credential_reuse", "raw_credential_storage", "fabricated_store_or_fee_data", "listing_type_as_store_model"],
+        "scope_policy": "Each store_binding_id must map to one country-site Mercado Libre seller route and isolated API, ads, ERP and browser execution identities. Without an actual store binding, return needs_platform_store and do not publish, retrieve orders, confirm logistics or map settlements."
+      }
+    },
+    {
+      "id": "expert-social-content-growth",
+      "name": "社媒内容与视觉增长专家",
+      "summary": "为电商和 B2B 提供同行内容拆解、图片/视频提示词反推、原创裂变、分镜、生成、剪辑、发布、社群和归因。",
+      "sort_order": 75,
+      "platforms": ["tiktok", "instagram", "facebook", "youtube", "pinterest", "xiaohongshu", "douyin", "linkedin"],
+      "routing": {
+        "required_dimensions": ["platform", "country_site", "store_model", "ownership"],
+        "routes": [
+          {"platform": "tiktok", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "instagram", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "facebook", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "youtube", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "pinterest", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "xiaohongshu", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "douyin", "country_sites": ["CN"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]},
+          {"platform": "linkedin", "country_sites": ["GLOBAL"], "store_models": ["content_account"], "ownerships": ["self_owned", "teelab_owned", "platform_co_ops", "b2b_client_owned"]}
+        ],
+        "blocked_store_models": ["official_full_managed"]
+      },
+      "job_modules": ["content_strategy", "competitor", "creative", "image", "video", "editing", "publishing", "ads", "community", "customer_service", "attribution", "commerce_handoff", "learning"],
+      "evidence": {
+        "registry_refs": [
+          "config/creative_video_capabilities.json",
+          "config/operating_job_taxonomy.json",
+          "config/capability_pack_registry.json",
+          "outputs/github_useful_projects_scan_2026-07-17_video.md"
+        ],
+        "source_ids": [],
+        "rule_scope": "区分可见事实、推断和未知；复用结构与节奏，不复制商标、人物、台词、受保护画面或未授权音乐。"
+      },
+      "default_capabilities": {
+        "skills": ["creative-production", "imagegen", "heygen-video", "competitor-video-breakdown", "storyboard-prompting", "creative-branching", "editing-and-music-rights"],
+        "agents": ["creative-strategist", "visual-director", "scriptwriter", "video-editor", "community-operator", "rights-reviewer"],
+        "tools": ["image-generation", "video-generation-connector", "heygen", "capcut-desktop", "ffmpeg", "media-library", "social-publishing-connector"]
+      },
+      "model_slots": {
+        "reasoning": {
+          "task_types": ["audience_strategy", "creative_hypothesis", "rights_review", "performance_diagnosis"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "creative_reasoning_and_tools"},
+            {"provider_id": "anthropic", "priority": 2, "fit": "long_context_brand_review"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "china_content_ecosystem"}
+          ]
+        },
+        "copy": {
+          "task_types": ["hook", "script", "caption", "cta", "community_reply"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "creative_copy_variation"},
+            {"provider_id": "qwen-dashscope", "priority": 2, "fit": "short_form_chinese_copy"},
+            {"provider_id": "zhipu", "priority": 3, "fit": "fast_copy_iteration"}
+          ]
+        },
+        "image": {
+          "task_types": ["prompt_reverse_engineering", "product_visual", "thumbnail", "creative_variants"],
+          "candidates": [
+            {"provider_id": "openai", "priority": 1, "fit": "visual_generation_and_reasoning"},
+            {"provider_id": "google-gemini", "priority": 2, "fit": "multimodal_reference_analysis"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "multimodal_fallback"}
+          ]
+        },
+        "video": {
+          "task_types": ["shot_reverse_engineering", "storyboard", "generation_prompt", "viral_branching", "editing_plan"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "video_understanding"},
+            {"provider_id": "openai", "priority": 2, "fit": "storyboard_and_generation_prompt"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "china_multimodal_fallback"}
+          ]
+        },
+        "ads": {
+          "task_types": ["creative_test_matrix", "boosting_plan", "audience_hypothesis", "fatigue_review"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "cross_media_analysis"},
+            {"provider_id": "openai", "priority": 2, "fit": "creative_ads_reasoning"},
+            {"provider_id": "qwen-dashscope", "priority": 3, "fit": "content_commerce_ads"}
+          ]
+        },
+        "data": {
+          "task_types": ["content_metrics", "attribution", "cohort_review", "creative_fatigue"],
+          "candidates": [
+            {"provider_id": "google-gemini", "priority": 1, "fit": "large_context_multimedia_analysis"},
+            {"provider_id": "openai", "priority": 2, "fit": "structured_data_and_tools"},
+            {"provider_id": "deepseek", "priority": 3, "fit": "cost_aware_batch_analysis"}
+          ]
+        }
+      },
+      "learning_loop": {
+        "memory_scopes": ["public_platform_rules", "tenant_private", "project", "account", "content_asset", "task"],
+        "inputs": ["reference_assets", "published_content", "engagement_and_conversion", "comments_dm", "creative_failures"],
+        "outputs": ["versioned_content_playbook", "hook_and_storyboard_patterns", "creative_test_matrix", "rights_evidence", "next_creative_branches"],
+        "review_triggers": ["content_result", "creative_fatigue", "platform_policy_change", "rights_issue", "weekly_account_review"]
+      },
+      "execution_boundaries": {
+        "read_only_without_authorization": ["public_reference_analysis", "prompt_drafts", "storyboards", "offline_edits"],
+        "confirmation_required": ["publish", "ad_spend", "licensed_asset_purchase", "creator_contact", "community_message", "live_start"],
+        "always_blocked": ["copyrighted_asset_copying", "unlicensed_music", "identity_impersonation", "verification_bypass", "cross_account_authorization_reuse"],
+        "scope_policy": "素材来源、人物/品牌授权、音乐许可、国家地区和账号身份必须可追溯；候选模型能力需运行时探测。"
+      }
+    }
+  ]
+}

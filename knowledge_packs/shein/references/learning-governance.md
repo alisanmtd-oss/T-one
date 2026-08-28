@@ -85,7 +85,7 @@ Do not retain protected images, video, music, private messages, customer materia
 
 - Video: prefer platform-permitted captions or transcripts. Download only owner-authorized material when platform terms allow it; never bypass DRM, login, CAPTCHA or anti-bot controls.
 - Public social/community: summarize claims and retain attribution; do not copy protected media, buyer assets, private groups or personal datasets.
-- GitHub: consult `config/github_capability_registry.json` first. Verify repository ownership, license, maintenance, dependencies, security and data boundaries. Unknown candidates remain `research_only` and are not installed automatically.
+- GitHub: consult `private_github_admission_registry_excluded` first. Verify repository ownership, license, maintenance, dependencies, security and data boundaries. Unknown candidates remain `research_only` and are not installed automatically.
 - “Anti-association” requests are limited to compliant per-store identity stability and authorization isolation; evasion of platform controls is `rejected_unsafe`.
 
 ## Required cycle output

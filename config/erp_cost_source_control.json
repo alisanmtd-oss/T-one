@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "scope": "non_amazon_local_read_only_preflight",
+  "paused_scope": [
+    "amazon_sp_api",
+    "amazon_ads_api",
+    "amazon_product_type_definitions"
+  ],
+  "required_erp_route": [
+    "tenant_id",
+    "project_id",
+    "store_binding_id",
+    "platform",
+    "country_site",
+    "store_model",
+    "ownership",
+    "execution_identity_id",
+    "erp_connector_ref"
+  ],
+  "required_cost_evidence": [
+    "tenant_id",
+    "project_id",
+    "product_id",
+    "variant_scope_ref",
+    "currency",
+    "cost_basis",
+    "cost_source_type",
+    "cost_source_ref",
+    "verified_at_ref"
+  ],
+  "cost_source_types": [
+    "product_import",
+    "factory_bom",
+    "erp_read_only",
+    "supplier_quote",
+    "fulfillment_invoice",
+    "settlement_report"
+  ],
+  "cost_components": [
+    "blank_or_base_product",
+    "printing_or_customization",
+    "packaging",
+    "inbound_freight",
+    "outbound_fulfillment",
+    "platform_fee",
+    "payment_fee",
+    "ads_spend",
+    "refund_return_reserve",
+    "tax_or_duty"
+  ],
+  "local_actions": [
+    "inspect_local_state",
+    "prepare_non_amazon_erp_packet",
+    "prepare_cost_source_packet"
+  ],
+  "blocked_actions": [
+    "connect_erp",
+    "fetch_erp_private_data",
+    "save_cost_values",
+    "claim_profit_ready",
+    "run_amazon_sp_api",
+    "run_amazon_ads_api",
+    "run_amazon_ptd"
+  ],
+  "hard_boundaries": [
+    "channel_intent_is_not_a_platform_store",
+    "catalog_cost_field_is_not_a_verified_cost",
+    "estimate_is_not_a_real_cost_source",
+    "no_raw_credentials_or_cost_values_in_control_runtime",
+    "no_external_connection_or_read_without_separate_owner_action"
+  ]
+}

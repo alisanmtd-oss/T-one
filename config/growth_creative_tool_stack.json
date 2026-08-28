@@ -1,0 +1,67 @@
+{
+  "safe_mode": true,
+  "positioning": "Tool stack for paid ads, live room operations, video editing, AI video, and real-shot plus AI mixed ecommerce creative.",
+  "rules": [
+    "External tools are used to save time, not to bypass platform rules.",
+    "AI can generate briefs, prompts, storyboards, editing checklists, and action queues.",
+    "Publishing, ad budget changes, live product links, discounts, coupons, uploads, and creator outreach require human confirmation.",
+    "All AI videos must pass IP, celebrity likeness, brand, music, claim, and platform policy checks before use."
+  ],
+  "tools": [
+    {
+      "id": "seedance-2",
+      "name": "Seedance 2.0",
+      "category": "ai_video_generation",
+      "priority": "preferred",
+      "use_for": [
+        "product support shots",
+        "scene extension",
+        "motion shots",
+        "model/lifestyle atmosphere",
+        "B-roll for mixed edits",
+        "script-to-video experiments"
+      ],
+      "workflow": [
+        "Start from real product proof shot or reference image.",
+        "Generate only supporting shots that do not replace truthful product evidence.",
+        "Keep product, logo, package, color, and material consistent.",
+        "Mix with real-shot closeups, subtitle hook, product-card CTA, and end card.",
+        "Run compliance/IP review before publish or creator delivery."
+      ],
+      "guardrails": [
+        "Do not imitate a celebrity, influencer, competitor model, copyrighted character, or brand-owned scene.",
+        "Do not generate false product effects, fake before/after, medical claims, or unrealistic performance proof.",
+        "Do not use unauthorized music, logos, trademarks, or copyrighted footage."
+      ]
+    },
+    {
+      "id": "real-shot-mobile",
+      "name": "Real-shot mobile product footage",
+      "category": "real_shooting",
+      "priority": "required",
+      "use_for": ["texture proof", "package proof", "fit proof", "usage proof", "detail closeups"],
+      "workflow": ["Shoot product closeups first.", "Use AI video only to add missing scenes, transitions, or lifestyle support."]
+    },
+    {
+      "id": "editing-stack",
+      "name": "Video editing stack",
+      "category": "editing",
+      "priority": "flexible",
+      "use_for": ["subtitle rhythm", "hook cuts", "product-card timing", "voiceover", "music-safe export", "platform aspect ratios"],
+      "workflow": ["Cut 0-2s hook first.", "Keep product proof before lifestyle support.", "End with CTA and product-card timing."]
+    },
+    {
+      "id": "ads-live-data",
+      "name": "Ads and live room data",
+      "category": "growth_measurement",
+      "priority": "required",
+      "use_for": ["breakeven ROI", "ROAS", "creative cold-start", "live link timing", "discount ladder", "coupon push"],
+      "workflow": ["Import own-store sales/ad/live metrics.", "Compare against breakeven ROI.", "Queue scale/stop/discount suggestions for confirmation."]
+    }
+  ],
+  "learning_tracks": [
+    "paid_ads_roi_learning",
+    "live_room_operator_learning",
+    "ai_video_production_learning"
+  ]
+}

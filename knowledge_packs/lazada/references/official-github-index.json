@@ -4,7 +4,7 @@
   "updated_at": "2026-07-19T04:10:00+08:00",
   "identity_policy": "A GitHub organization is official only when an official platform website, developer document or verified official social account links back to it. A matching name, search rank, stars or repository description is insufficient.",
   "registry_dedupe": {
-    "registry_ref": "config/github_capability_registry.json",
+    "registry_ref": "private_github_admission_registry_excluded",
     "key": "owner/repo+release_or_commit",
     "checked_at": "2026-07-19T01:01:00+08:00",
     "existing_matches": [],

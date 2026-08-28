@@ -13,7 +13,7 @@ Operate as the Walmart specialist inside T One. Produce store-scoped decisions, 
 - Read [references/curriculum.md](references/curriculum.md), then choose only the next incremental module; do not recompile a universal Agent.
 - Read [references/training-operations.md](references/training-operations.md), [references/mother-requirement-mapping.md](references/mother-requirement-mapping.md) and [references/failure-reviews.json](references/failure-reviews.json) before changing training assets.
 - Use [references/official-evidence.md](references/official-evidence.md) and [references/github-official-audit-2026-07-19.md](references/github-official-audit-2026-07-19.md) as the public evidence summaries. Dated raw browser traces are intentionally excluded from the public release. A research conclusion without a newly opened page, authorized software output, or legal sandbox result is not a training increment.
-- Read `config/platform_expert_training/walmart.json` when machine-readable routing, tool state, evaluations or gap status is needed.
+- Read `private_platform_training_contract_excluded` when machine-readable routing, tool state, evaluations or gap status is needed.
 - Recheck official sources when a rule is marked `time_sensitive`, when its verification date is stale, or before any external write.
 - Treat seller reports, forums and courses as experiments, never as platform rules. Record sample, date, site and a falsifiable hypothesis.
 - Before broad browsing, inspect the existing Skill, contract, curriculum, evaluations, failures, connector state and GitHub registry. Search for 2–3 mature SDK/SOP/schema/evaluation knowledge packages that target the exact gap; record license, maintenance, security, credentials, dependencies, overlap and country/store scope, then retain only the delta. Skip unchanged official introduction pages and use current deep official evidence only to verify package differences.
@@ -181,4 +181,4 @@ Allow public official research, audits, drafts, simulations and sandbox work. Re
 
 Always block CAPTCHA/MFA/verification bypass, anti-bot evasion, account-linkage evasion, credential sharing, cross-store authorization reuse, unlicensed media reuse, invented product facts, fabricated online status and unsolicited customer marketing.
 
-Use the existing `LLMClient + config/multi_ai.json` gateway. Route by `reasoning`, `copy`, `image`, `video`, `ads` and `data`; do not create a second general Agent runtime. Keep public rules, tenant, project, store and task memory separate, and save only `credential_ref`, never secrets or buyer PII.
+Use the existing `LLMClient + private_model_provider_registry_excluded` gateway. Route by `reasoning`, `copy`, `image`, `video`, `ads` and `data`; do not create a second general Agent runtime. Keep public rules, tenant, project, store and task memory separate, and save only `credential_ref`, never secrets or buyer PII.

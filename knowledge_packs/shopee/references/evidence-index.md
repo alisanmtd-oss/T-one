@@ -1,6 +1,6 @@
 # Shopee evidence index
 
-Capture date: 2026-07-19, Asia/Shanghai. Machine records live in `config/platform_expert_training/shopee.json`. The dedupe key for platform evidence is `url + country_site + store_model + ownership + applies_to + content_hash`; GitHub deltas also key on `owner/repo + commit/tag`.
+Capture date: 2026-07-19, Asia/Shanghai. Machine records live in `private_platform_training_contract_excluded`. The dedupe key for platform evidence is `url + country_site + store_model + ownership + applies_to + content_hash`; GitHub deltas also key on `owner/repo + commit/tag`.
 
 | Evidence | Site | Mode / ownership / permission | Evidence level / knowledge status | Current boundary |
 |---|---|---|---|---|

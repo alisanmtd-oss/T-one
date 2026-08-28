@@ -48,14 +48,14 @@
     ]
   },
   "asset_refs": {
-    "curriculum": "skills/platform-experts/ebay/references/curriculum.md",
-    "rules": "skills/platform-experts/ebay/references/rules.md",
-    "official_evidence": "skills/platform-experts/ebay/references/official-evidence.md",
-    "browser_evidence": "skills/platform-experts/ebay/references/browser-evidence-2026-07-18.md",
-    "mother_requirement_mapping": "skills/platform-experts/ebay/references/mother-requirements-mapping.json",
-    "evaluation_set": "skills/platform-experts/ebay/references/evaluation-set.json",
-    "failure_review": "skills/platform-experts/ebay/references/failure-review.json",
-    "training_state": "skills/platform-experts/ebay/references/training-state.json"
+    "curriculum": "private_platform_expert_source_excluded",
+    "rules": "private_platform_expert_source_excluded",
+    "official_evidence": "private_platform_expert_source_excluded",
+    "browser_evidence": "private_platform_expert_source_excluded",
+    "mother_requirement_mapping": "private_platform_expert_source_excluded",
+    "evaluation_set": "private_platform_expert_source_excluded",
+    "failure_review": "private_platform_expert_source_excluded",
+    "training_state": "private_platform_expert_source_excluded"
   },
   "allowed_connection_states": [
     "research_only",
@@ -80,8 +80,8 @@
     "erp_connector": "available_unconnected",
     "ebay_browse_api": "available_unconnected",
     "evidence": [
-      "config/api_applications.json",
-      "config/commerce_skill_registry.json"
+      "private_runtime_registry_excluded",
+      "private_runtime_registry_excluded"
     ],
     "public_browser_learning": "research_only",
     "truth_boundary": "Official public pages were operated in an isolated anonymous browser, but no real eBay seller OAuth, store binding, live seller API response, advertising eligibility, Seller Hub session, or ERP writeback has been evidenced."
@@ -750,7 +750,7 @@
     "error_recovery": "Preserve the documented 215000-series validation error and correct missing signature headers, digest, timestamp, JWE/application-key match or signature validation; do not downgrade or bypass the signature layer.",
     "out_of_scope_boundary": "The guide says signatures on out-of-scope calls may be ignored and the call handled normally; this is not evidence that an in-scope call may omit them.",
     "current_status": "available_unconnected",
-    "admission_boundary": "The eBay Java SDK remains research_only until config/github_capability_registry.json admits it and license, maintenance, dependency, security and data-boundary review passes."
+    "admission_boundary": "The eBay Java SDK remains research_only until private_github_admission_registry_excluded admits it and license, maintenance, dependency, security and data-boundary review passes."
   },
   "native_tools": [
     {
@@ -1008,7 +1008,7 @@
     "organization_url": "https://github.com/eBay",
     "verification_chain": "The first-party eBay Digital Signatures guide links directly to eBay/digital-signature-java-sdk; do not recognize a same-name organization from search ranking alone.",
     "dedup_key": "owner_repo_plus_commit_or_tag",
-    "registry_gate": "Every repository remains research_only until config/github_capability_registry.json contains an explicit admission; no eBay entry exists at the current capture.",
+    "registry_gate": "Every repository remains research_only until private_github_admission_registry_excluded contains an explicit admission; no eBay entry exists at the current capture.",
     "audited_repositories": [
       {
         "owner_repo": "eBay/digital-signature-java-sdk",
@@ -1074,7 +1074,7 @@
       "three_rule_sample",
       "decision"
     ],
-    "shared_registry_truth": "config/github_capability_registry.json already keeps nexscope-ai/eCommerce-Skills as community reference_only for taxonomy and blocks bulk Skill install, store execution and automatic install. It contains no admission for eBay/npm-public-api-mcp, YosefHayim/ebay-mcp or adbertram/cli-tools at capture. This expert does not modify the shared registry.",
+    "shared_registry_truth": "private_github_admission_registry_excluded already keeps nexscope-ai/eCommerce-Skills as community reference_only for taxonomy and blocks bulk Skill install, store execution and automatic install. It contains no admission for eBay/npm-public-api-mcp, YosefHayim/ebay-mcp or adbertram/cli-tools at capture. This expert does not modify the shared registry.",
     "candidates": [
       {
         "name": "eBay public API MCP",
@@ -1177,7 +1177,7 @@
           ".env.example": "8d3866e38f897cf3cd74628d50602bd40bcd76d6910749bfc72cb832da4a68ad",
           "src/mcp/readOnlyFilter.ts": "535f14106ae7be37de359c9fc3242e5b524ebf00983403d760527a2ea064a960",
           "src/config/toolFamilies.ts": "ee5d1d3e8dfc9767de93bdc8dbf0465ef6238d43dceaa1bc91bcc084505f0cb7",
-          "tests/unit/mcp/readOnlyFilter.test.ts": "e2677f7e5c35102c923eaae50c0a29bc05d27376dc2ada36e5c2077cc12f43a4"
+          "private_regression_suite_excluded": "e2677f7e5c35102c923eaae50c0a29bc05d27376dc2ada36e5c2077cc12f43a4"
         },
         "core_workflow_sample": "read-only request plus static/dynamic tool-family exposure",
         "failure_boundary_sample": "EBAY_READ_ONLY is false when unset and EBAY_MCP_TOOLS defaults to all; write-capable tools and plaintext environment ownership are unsafe defaults for T One",
@@ -2146,8 +2146,8 @@
       ]
     }
   ],
-  "curriculum_ref": "skills/platform-experts/ebay/references/curriculum.md",
-  "evaluation_set_ref": "skills/platform-experts/ebay/references/evaluation-set.json",
+  "curriculum_ref": "private_platform_expert_source_excluded",
+  "evaluation_set_ref": "private_platform_expert_source_excluded",
   "evaluation_case_count": 74,
   "software_gap_map": {
     "reusable": [
