@@ -67,7 +67,7 @@
   "ai_ecommerce_director/data_contract.py": "3e2d9c0b1e397987e20ab81dfda8b41a4ce3bb9d990567e4f5d14c78b755c494",
   "ai_ecommerce_director/data_lake_cleanup.py": "a6f4a929b4989afeca8bec99b8f6021aa3e4bc19d5907f342185445cc427793c",
   "ai_ecommerce_director/deepseek_harness_mcp.py": "17b250fda59415a3eac23734e5c38891e6ef49f513d163a0d5cd9ad9f21ab6e2",
-  "ai_ecommerce_director/deepseek_harness_runtime.py": "7e017d136be943cee66cfe3e7d72f3e57622182f7dfa2b1f230afe4163458562",
+  "ai_ecommerce_director/deepseek_harness_runtime.py": "7fa70d1fbddbec469eadd069af59151cab3251732437d7b3e3074c095d64586b",
   "ai_ecommerce_director/desktop_assets/jsvectormap-1.7.0/jsvectormap.min.css": "66c86acfa5fe46cd917f9b0fb6249b6beaf02c12f5653c8b069a5b60eb2d47d3",
   "ai_ecommerce_director/desktop_assets/jsvectormap-1.7.0/jsvectormap.min.js": "ca3a014fc66d8249c4da0700f32bd6131cf0f0bb0801f8fafebfd7030f3cf50c",
   "ai_ecommerce_director/desktop_assets/jsvectormap-1.7.0/LICENSE": "591fe138899a0a5dfa9f02d772ba9ed625b21c7b03cc32d6915cfc13dcc8808c",

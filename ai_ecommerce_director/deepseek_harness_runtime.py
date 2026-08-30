@@ -363,7 +363,10 @@ class DeepSeekHarnessRuntime:
                 process.terminate()
                 process.wait(timeout=4)
                 raise
-        deadline = time.monotonic() + 15
+        # The first Windows launch can spend more than 15 seconds warming the
+        # official Node runtime and loading the web profile.  Keep this below
+        # the desktop bridge timeout while avoiding a false cold-start failure.
+        deadline = time.monotonic() + 45
         last_error = ""
         while time.monotonic() < deadline:
             if process.poll() is not None:
