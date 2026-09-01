@@ -51,7 +51,7 @@ jobs:
       contents: write
     steps:
       - name: Download verified installer artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: T-One-Windows-Setup
           path: release-assets
