@@ -37,7 +37,7 @@ jobs:
       - name: Verify installer and desktop-control contracts
         run: python -m unittest tests.test_windows_installer_and_desktop_control -v
       - name: Upload workflow artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: T-One-Windows-Setup
           path: desktop_app/dist/T-One-Setup-*.exe
