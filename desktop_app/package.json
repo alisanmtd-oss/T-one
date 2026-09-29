@@ -14,7 +14,7 @@
     "dist:win:portable": "npm run prepare:runtime && node prepare-build.js && electron-builder --win portable"
   },
   "devDependencies": {
-    "electron": "43.3.0",
+    "electron": "43.5.0",
     "electron-builder": "26.15.3"
   },
   "build": {
